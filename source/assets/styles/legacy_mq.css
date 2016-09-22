@@ -1,0 +1,808 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*media-queries*/
+@media screen and (min-width: 1400px) {
+  #main #hotels, #main #agents {
+    background-size: auto 100%;
+  }
+}
+
+@media screen and (max-width: 1250px) and (min-width: 950px) {
+  body {
+    font-size: 9px;
+  }
+  #main #hotels header,
+  #main #hotels section.icons {
+    max-width: 485px;
+  }
+  #main #agents header,
+  #main #agents section.icons {
+    max-width: 500px;
+  } 
+  #main #agents header h1, #main #hotels header h1 {
+    font-size: 2.7em;
+    width: 65%;
+  }
+  #main {
+    height: auto;
+    min-height: 100%;
+  }
+  #main #hotels, #main #agents {
+    height: auto;
+    min-height: 100%;
+  }
+  #main #hotels section.icons div.part1,
+  #main #agents section.icons div.part1 {
+    font-size: 1.3em;
+    min-height: 140px;
+  }
+    
+     
+  #partners h5 span.text {
+    font-size: 2em;
+  }
+
+
+  /* костыли для адаптивности профайла */
+  #profile div.head div.displace a {
+    padding-top: 3.4em;
+  }
+  /* идеальные костыли для минимизации профайла */
+  .minimized #profile .head .displace a {
+    padding-top: 36px;
+    margin-left: 4px;
+  }
+  .minimized #profile .head .displace a i { 
+    bottom: inherit;
+    top: 21px;
+  }
+  
+}
+          
+
+/*
+@media screen and (max-width: 1230px) {
+  #mainpage section.content div.center {
+    background-size: auto 100%;
+  }
+}*/
+
+
+@media screen and (max-width: 1220px) {
+  #mainpage section.content div.head nav ul li a {
+    padding: 10px 7px;
+  }
+  /* submenu dropdown items */
+  #mainpage section.content div.head nav ul li ul li a {
+    padding: 3px 20px;
+  }
+}
+
+@media screen and (max-width: 1160px) {
+  #profile div.head div.displace a {
+    left: -10px;
+  }
+  .minimized #profile .head .displace a {
+    left: 0;
+  }
+}
+
+
+@media screen and (max-width: 1100px) and (min-width: 750px) {
+  #teasers div.teaser p.title {
+    font-size: 1.6em;
+  }
+}
+
+
+@media screen and (max-width: 1025px) and (min-width: 768px) {
+  #main #agents {
+    left: 85%;
+  }
+}
+
+
+@media screen and (max-width: 1000px) {
+  #profile div.head div.displace a {
+    left: -20px;
+  }
+  .minimized #profile .head .displace a {
+    left: 0;
+  }
+}
+
+          
+@media screen and (max-width: 949px) and (min-width: 768px) {
+  body {
+    font-size: 8px;
+  }
+    
+      
+  #main #hotels header, 
+  #main #hotels section.icons,
+  #main #agents section.icons  {
+    max-width: 455px; 
+  }
+  #main #agents header {
+    max-width: 425px;
+  }
+  #main #agents header h1,
+  #main #hotels header h1 {
+    font-size: 2.7em;
+    width: 60%;
+  }
+  #main {
+    height: auto;
+    min-height: 100%;
+  }
+  #main #hotels,
+  #main #agents {
+    height: auto;
+    min-height: 100%;
+    background-size: auto 100%;
+  }
+  #main #hotels section.icons div.part1,
+  #main #agents section.icons div.part1 {
+    font-size: 1.3em;
+    line-height: 2;
+    min-height: 140px;
+    padding-left: 3%;
+  }
+  #right p.title {
+    /* margin-top: 55%; */
+  }
+  #right p.dop, #right a.action {
+    /* margin-top: 55%; */
+  }
+  
+    
+  #partners h5 span.text {
+    font-size: 1.6em;
+  }
+  
+    
+  #mainpage #serv_slide ul li div.left p.title {
+    font-size: 2.6em;
+  }
+  #mainpage section.content div.head div.title_inside {
+    line-height: 4.3;
+  }      
+}
+
+
+@media screen and (max-width: 940px) and (min-width: 768px) {
+  .wrapper {
+    width:740px;   
+  }
+  #white nav ul li a span.icon.icon1,
+  #white nav ul li a span.icon.icon2,
+  #white nav ul li a span.icon.icon3,
+  #white nav ul li a span.icon.icon4,
+  #white nav ul li a span.icon.icon5,
+  #white nav ul li a span.icon.icon6 {
+    height: 25px;
+  }
+  #search{
+    /*height: 26px;*/
+  }
+}
+
+
+@media screen and (max-width: 850px) {
+  #mainpage section.content div.center div.row div.article div.title {
+    /*
+    float: none !important;
+    width: 60% !important;
+    margin: auto auto;
+    //*/    
+  }
+  #mainpage div.services aside ul li a {
+    padding: 10px 3px;
+  }
+}
+
+
+@media screen and (max-width: 845px) and (min-width: 755px) {
+  #mainpage section.content div.head div.title a {
+    line-height: 60px;
+  }
+  #mainpage section.content div.head div.title a span.caret {
+    margin-top: 27px;
+  }
+}
+
+
+@media screen and (min-width: 768px) {
+  #profile {
+    min-height: 100%;
+  }
+  #profile.fixed {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+  }
+  #login.hide {
+    display: block !important;
+    
+  }
+  
+  /* profile menu minimization*/
+  .minimized {
+    position: relative;
+    width: 60px;
+    /* width: 8.3333%; */
+    min-height: 1px; 
+  }
+  .minimized #profile .head .displace {
+    float: none;
+    width: 35px;
+    margin: auto;
+    transform: rotate(-180deg);
+    font-size: 0;
+  }
+  .minimized #profile div.head div.person {
+    display: none;
+  }
+  .minimized #profile nav ul li a,
+  .minimized #profile .help a {
+    font-size: 0;
+    text-align: center;
+    padding-right: 0;
+  }
+  .minimized #profile .help a {
+    display: block;
+  }
+  .minimized #profile .help a span.helpicon {
+    margin-right: 0;
+  }
+  .minimized #profile nav ul li a {
+    height: 50px;
+  }
+  .minimized #profile div.tabs ul.nav li span.icon {
+    height: 26px;  
+  }
+  .minimized #profile div.tabs ul.nav li a:not(span) {
+    font-size: 0;
+  }
+  .minimized #profile div.tabs ul.nav li a span.badge {
+    width: auto;
+    font-size: 10px;
+    padding: 1px 3px;
+    top: 3px;
+    right: 2px;
+    background: #777;
+  }
+  .minimized #profile div.help {
+    margin-top: 0;
+  }
+    
+  #mainpage.maximized { 
+    margin-right: 60px;
+    /* margin-right: 8.33333333%; */
+  }
+}
+
+
+@media screen and (max-width: 767px) and (min-width: 580px) {
+  #mainpage section.content div.head div.title_inside {
+    line-height: 5.5;
+  }
+}
+
+
+@media screen and (max-width: 767px) and (min-width: 480px) {
+
+  #page #automatization h1 {
+    font-size: 4em;
+  }
+  #statistika div.part p.title {
+    font-size: 2em;
+  }
+  #pay_services div.items div.item p.title {
+    font-size: 1.6em;
+  }
+  #partners h5 span.text {
+    font-size: 1.1em;
+  }
+}
+
+        
+@media screen and (max-width: 767px) {
+  body {
+    padding-top: 0;
+  }
+  html body {
+    font-size: 8px;
+  }
+  #search{
+    /*height: 26px;*/
+  }
+  
+  .btn-standard, .btn-standard-full {
+    padding-right: 1em;
+    padding-left: 1em;
+  }
+  
+   
+  #main #hotels header,
+  #main #hotels section.icons,
+  #main #agents header,
+  #main #agents section.icons {
+    max-width: 120px;
+  }
+  #main #agents header h1,
+  #main #hotels header h1 {
+    font-size: 2.7em;
+    float: none;
+    width: 100%;
+  }
+  #main #agents header h1 span,
+  #main #hotels header h1 span {
+    width: 30%;
+  }
+  #main #agents header a,
+  #main #hotels header a {
+    width: 100%;
+    margin-top: 5px;
+  }
+  #main {
+    height: auto;
+    min-height: 100%;
+  }
+  #main #hotels, #main #agents {
+    height: auto;
+    min-height: 100%;
+    background-size: auto 100%;
+  }
+  #main #hotels section.icons div.part1,
+  #main #agents section.icons div.part1 {
+    font-size: 1.9em;
+    line-height: 2.2;
+    width: 100%;
+    min-height: 140px;
+    padding-left: 3%;
+  }
+  #main #hotels section.icons div.icons,
+  #main #agents section.icons div.icons {
+    width: 100%;
+    margin-left: 0 !important;
+  }
+  #main #hotels section.icons div.icons p,
+  #main #agents section.icons div.icons p {
+    font-size: 2em;
+  }
+  #right {
+    padding-top: 125px;
+    max-width: inherit;
+  }
+  #right p.title {
+    font-size: 1.8em;
+    margin-top: 5%;
+  }
+  #right p.dop {
+    font-size: 1.6em;
+    margin-top: 5%;
+  }
+  #right a.action {
+    font-size: 1.2em;
+    margin-top: 5%;
+  }
+    
+  
+  #left{
+    height:auto !important;
+    max-width:100%;
+    width:100%;
+    min-height:100px !important;
+    transition: top .5s ease-in;  
+  }
+  #left #languages{
+    width:20%;
+    float:left; 
+  }
+  #languages .current::after {
+    left: 50%;
+    top: 70%;
+    -webkit-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    transform: rotate(90deg);
+  }
+  #left #languages div.list {
+    top: 100%;
+    left: 0;
+  }
+  #left #languages .list .nav li a:hover {
+    background-color: #ef0f55;
+  }
+  #left #logo{
+    width:20%;
+    float:left;
+    max-width:100px;
+    height:100px;
+    background:#EF0F55; 
+  }
+  #left #logo span{
+    display:none !important;  
+  }
+  .left-menu-logo-image{
+    position: absolute;
+    height: auto;
+    top: 0;
+    bottom: 0;
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+  #left div.options{
+    width:40%;
+    height:100px;
+    float:left;
+    margin-top:0; 
+  }
+  #left a.test{
+    display:none; 
+  }
+  #left div.options a{
+    width:50%;
+    float:left;
+    margin-bottom:0;
+    margin-top:25px;  
+  }
+  #left #show_menu{
+    float:left;
+    width:20%;
+    color:#06070E;
+    font-size:2em;
+    font-weight:600;
+    display:block !important;
+    text-align:center;
+    line-height:100px;
+  } 
+  /*#left #show_menu span*/.show-menu-icon{
+    color:#696773;
+    font-size:2em;
+    font-weight:600;
+  }
+  
+  
+  #page #automatization {
+    margin-top: 100px;
+  }      
+  #page #automatization h1 {
+    font-size: 4em;
+  }
+  #statistika div.part p.title {
+    font-size: 2em;
+  }
+  #pay_services div.items div.item p.title {
+    font-size: 1.6em;
+  }
+  #partners h5 span.text {
+    font-size: 1.1em;
+  }
+  #page {
+    margin:auto auto !important;
+    width:100% !important;  
+  }
+  #login {
+    display: block;
+    height:auto !important;
+    top:100px;
+    position:absolute;
+    z-index:1070;
+    width:200px;
+    transition: top .5s ease-in;
+  }
+  /* refistration height fix */
+  #login.fixed-height p.title {
+    padding-top: 7px;
+    padding-bottom: 7px;
+  }
+  #login.fixed-height div.new_account div.step div.step-row input {
+   height: 30px; 
+  }
+  #login.fixed-height div.new_account div.step div.work_type label {
+    line-height: 1.3em;
+  }
+  #login.fixed-height div.new_account div.step div.work_type ul {
+    margin-bottom: 0;
+  }
+  #login.fixed-height div.new_account div.step div.next {
+    padding-top: 7px;
+    padding-bottom: 7px;
+  }
+  
+  
+  
+  /* external */
+  body.hotel{
+    padding-top:0;  
+  }
+  .wrapper{
+    width: 100%;  
+    max-width:610px;   
+  }
+  #hotel_page header{
+    height:auto;  
+  }
+  #hotel_page header div.clear{
+    display:block !important;
+  }
+  #hotel_page header p.desc{
+    width:60%;
+    margin-top:25px;  
+  }
+  #hotel_page header div.lang{
+    width:20%;  
+  }
+  #hotel_page header nav{
+    float:left !important;  
+  }
+  #hotel_page header nav ul li:first-child{
+    margin-left:0;  
+  }
+  #hotel_page #head{
+    width:310px;  
+  }
+  #hotel_page #head div.likes div.like{
+    margin-bottom:15px; 
+  }
+          
+  #white #hotel_news ul li div.text div.likes div.like{
+    margin-right:10px;  
+  }
+  #white #options div.tabss ul li{
+    margin-left:10px; 
+  }
+  #white nav ul li a span.icon.icon1,
+  #white nav ul li a span.icon.icon2,
+  #white nav ul li a span.icon.icon3,
+  #white nav ul li a span.icon.icon4,
+  #white nav ul li a span.icon.icon5,
+  #white nav ul li a span.icon.icon6 {
+    height: 20px;
+  }
+  
+  /* main */
+  #mainpage #serv_slide ul li div.left p.title {
+    font-size: 2.6em;
+  }
+  #profile nav ul li a {
+    padding: 13px 7px;
+  }
+  #mainpage .page-header #logo {
+    width: 139px;
+    height: 35px;
+    background-size: 100% 100%;
+  }
+  #mainpage .page-header p.descr{
+    height: 35px;
+  }
+  #mainpage .page-header div.lang p span{
+    margin-top: 10px;
+  }
+  #teasers div.teaser p.title {
+    font-size: 1.6em;
+  }
+  #profile {
+    width: 100% !important;
+    min-width: 320px;
+    max-width: inherit;
+    height: auto !important;
+  }
+  #mainpage {
+    width: 100% !important;
+    min-width: 320px;
+    max-width: inherit;
+  }
+  #profile #float_block{
+    position:absolute;
+    left:0;
+    top:159px;
+    width:100%;
+    z-index:1080;
+    background:#ffffff;
+    display:none; 
+  }
+  #profile div.tabs ul.nav li{
+    width:25% !important; 
+  }
+  #profile div.tabs ul.nav li#show{
+    height:67px;
+    display:block;
+  } 
+  #profile div.call_friends p{
+    line-height:4.5;  
+  }
+  #mainpage section.content div.center div.row div.article {
+    height: 220px;
+    padding-top: 7%;
+  }
+  #mainpage section.content div.center div.row div.article div.list ul { 
+    /*
+    -webkit-column-count: 2;
+    -moz-column-count: 2;
+    column-count: 2;
+    */
+  }
+  #mainpage section.content div.center div.row div.article div.title h3 {
+    font-size: 3.5em;  
+  }
+  .profile-container {
+    width: 100% !important;
+    min-width: 320px;
+    max-width: inherit;
+    height: auto !important;
+  }
+
+  #profile div.head {
+    font-size: 10px;
+    line-height: 2.1em;
+  }
+
+  /* main menu minimize button */
+  #profile div.head div.displace {
+    display: none;
+  }
+  #profile div.head div.displace a {
+    transform: rotate(-90deg);
+  }
+
+  /*  letter  */
+  #letter{
+    width:310px;  
+  }
+  #letter header p.desc{
+    padding:0 0 0 10px;
+    margin:0 0 0 10px;  
+  }
+  #letter section.content #start_work div.steps div.step div.icon{
+    width:8%; 
+  }
+
+  .component.fixed-buttons-wrapper {
+    width: 480px;
+  }
+  .fixed-buttons-wrapper > .btn {
+    margin-left: 26%;
+    width: 25%;
+  }
+}
+
+
+@media screen and (max-width: 695px) {
+  #mainpage section.content div.head div.title a {
+    line-height: 60px;
+  }
+  #mainpage section.content div.head div.title a span.caret {
+    margin-top: 27px;
+  }
+}
+
+
+@media screen and (max-width: 579px) and (min-width: 200px) {
+  #mainpage section.content div.head div.title_inside {
+    line-height: 3.8;
+    padding: 18px 10px;
+  }
+  footer ul.soc_links { 
+    width: 100%;
+    border-top: 1px solid #dbdbdd;
+    margin-top: 10px; 
+  }
+  footer .banking-logo {
+    float: right;
+    margin-right: 1em;
+  }
+}
+
+@media screen and (max-width: 620px) {
+  .component.fixed-buttons-wrapper {
+    width: 270px;
+  }
+  .component.fixed-buttons-wrapper > .btn {
+    width: 14.5%;
+    margin-left: 36%;
+  }
+  .fixed-buttons-wrapper > .btn {
+    padding-left: 7px;
+    font-size: 0;
+    line-height: 0;
+  }
+  .fixed-buttons-wrapper > .btn > i,
+  .fixed-buttons-wrapper > .btn > span {
+    font-size: 16px;
+    display: inline-block;
+  }
+  .fixed-buttons-wrapper > .btn-standard {
+    padding-left: 10px;
+  }
+  .fixed-buttons-wrapper > .btn-standard > .icon-diskette {}
+  .fixed-buttons-wrapper > .btn-special {
+    padding-left: 4px;
+  }
+  .fixed-buttons-wrapper > .btn-special > .icon-eye {}
+  .fixed-buttons-wrapper > .btn-bright {
+    padding-left: 7px;
+  }
+  .fixed-buttons-wrapper > .btn-bright > .icon-external-link {}
+}
+
+
+@media screen and (max-width: 480px) {
+  #page #automatization h1 {
+    font-size: 2.6em;
+  }
+  #page #automatization div.items div.item p.title,
+  #page #work div.items div.item p.title {
+    font-size: 1.6em;
+    line-height: 1.4;
+  }
+  #page #automatization div.items div.item p,
+  #page #work div.items div.item p {
+    font-size: 1.4em;
+  }
+  #page #work h2 {
+    font-size: 2.6em;
+  }
+  #services h3 {
+    font-size: 3em;
+  }
+  #services p {
+    font-size: 1.5em;
+  }
+  #statistika div.part p.title {
+    font-size: 1.8em;
+  }
+  #statistika div.part p {
+    font-size: 1.6em;
+  }
+  #pay_services div.head h4 {
+    font-size: 3.4em;
+  }
+  #page #automatization div.items div.item,
+  #page #work div.items div.item,
+  #statistika div.part,
+  #pay_services div.items div.item,
+  #pay_services div.buttons div.button {
+    float: none !important;
+    width: 50% !important;
+    margin: auto auto 15px !important;
+  }
+  #partners h5 span.text {
+    width: 60%;
+  }
+  #partners ul li {
+    width: 45%;
+    height: 60px;
+  }
+  
+  
+  #mainpage .page-header #logo {
+    width: 97px;
+    height: 25px;
+    background-size: 100% 100%;
+  }
+  #mainpage #serv_slide ul li div.left p.title {
+    font-size: 2.6em; /* 1.6em */
+  }
+  #mainpage section.content div.head div.title {
+    padding: 0 10px;
+  }
+  #mainpage section.content div.head div.title a {
+    font-size: 1.8em; /* 1.2em */
+  }
+  #mainpage section.content div.center div.row div.article div.title p {
+    font-size: 1.6em;
+  }
+  #mainpage #finance div.add_operation div.bootstrap-select {
+    width: 100%;
+  }
+  #mainpage #finance #fin_filter div.column div.column_row div.one button.btn-blue {
+    margin-left: 0;
+  }
+  #mainpage section.content div.center div.row div.line a {
+    font-size: 1.6em;
+  }
+}

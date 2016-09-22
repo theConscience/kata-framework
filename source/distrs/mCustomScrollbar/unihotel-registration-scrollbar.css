@@ -1,0 +1,12 @@
+.mCSB_scrollTools {
+  width: 4px;
+}
+
+.mCSB_scrollTools > .mCSB_draggerContainer > .mCSB_dragger > .mCSB_dragger_bar {
+  width: 4px;
+  background-color: #4acdcd;
+}
+
+.mCSB_scrollTools > .mCSB_draggerContainer > .mCSB_draggerRail {
+  width: 4px;
+}

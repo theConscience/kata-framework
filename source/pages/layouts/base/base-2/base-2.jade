@@ -1,0 +1,23 @@
+include ./blocks/_mixins
+
+doctype html
+html(lang='ru')
+    head
+        include ./blocks/_head
+        block links
+            include ./blocks/_links
+
+    body(id=pageName ? pageName + '_page' : 'base-2_page', class=pageName ? pageName + '-page' : 'base-2-page')
+
+        block left_side
+
+        main(class=pageName ? pageName + '-page__content ' + pageName + '-content' : 'base-2-page__content base-2-content')
+
+            block content
+
+        block right_side
+        
+        block templates
+
+        block scripts
+            include ./blocks/_scripts

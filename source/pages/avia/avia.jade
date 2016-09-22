@@ -1,0 +1,473 @@
+extends ../layouts/sub/sub-2/sub-2
+
+include ./blocks/_mixins.jade
+
+
+block head
+    - var pageName = 'avia';
+    - var pageTitle = 'Avia page template';
+
+
+block append links
+    link(href='https://fonts.googleapis.com/css?family=Roboto:400,700,900&subset=cyrillic' rel='stylesheet')
+    link(href='./css/page_css.css' rel='stylesheet')
+    link(href='./css/page_style.css' rel='stylesheet')
+
+
+block append scripts
+    script(src='./js/page_js.js')
+
+
+block append content
+    header.avia-content__header.avia-content__header--primary
+        div#video-block.avia-content__video-block.video-block
+            span.video-block__play-button Смотреть видео
+        h1.avia-content__title.avia-content__title--main Авиакомпаниям
+        h1.avia-content__title.avia-content__title--secondary Представительствам авиакомпаний
+        span.additional-text Бесплатные сервисы
+    p.avia-content__mission.
+        Мы – <mark class="primary">Бесплатный Глобальный Туристический Справочник</mark>  для всех участников туристического
+        рынка – авиакомпаний и их представительств, отелей, туроператоров, агентств,  офисов по туризму,
+        объектов культуры, медицинского туризма и сервисных компаний из различных стран. Платформа
+        создана как эффективный инструмент вашего продвижения, а также для повышения охвата и
+        унификации туристического рынка во всех странах, для скоростного обмена информацией и
+        удобного доступа из любой точки мира в любой момент времени к базе самых свежих новостей – от
+        отелей, агентств, авиакомпаний и офисов по туризму. Большой туристический справочник на всех
+        языках мира!
+    section.media-block.avia-content__aircompanies-news
+        header.media-block__header
+            span.additional-text Блок
+            h2.media-block__title Новости авиакомпаний
+        .media-block__content
+            p.
+                Время рассылок по электронной почте, участия в выставках или печати дорогих буклетов / каталогов
+                стремительно  уступает место перед  более высокотехнологичными, удобными, быстрыми и
+                недорогими инструментами, такими как интернет и мгновенная  публикация новостей сразу по нескольким
+                каналам интернета – в системах, на сайте, в соцсетях. 
+            p.
+                Всего за один клик любую вашу новость могут забрать к себе на сайт и в соцсети все ваши партнеры
+                для активного продвижения ваших отелей или вашей представительской компании, страны,
+                региона, выступая автором этих новостей.
+    ul.features-list.features-list--rounded-icons.avia-content__news-features.text-center
+        li.feature-item.feature-item--instant-publication.features-list__item
+            h3.feature-item__title Мгновенная публикация
+            p.feature-item__content.
+                По всем вашим каналам 
+                маркетинга из нашей  плат-
+                формы: на ваш сайт, в вашу
+                RSS ленту, во все социальные
+                сети – Фейсбук, Инстаграм,
+                Твиттер, Вконтакте
+        li.feature-item.feature-item--no-spam.features-list__item
+            h3.feature-item__title Нет <span class="text-uppercase">спам</span>у
+            p.feature-item__content.
+                Новость не попадает в <span class="text-uppercase">спам</span>, ее
+                не только видят и читают, но и
+                могут ею поделиться за один
+                клик - на сайте, в своих соцсетях
+                и что важно для ваших партнеров
+                - под своим авторством
+        li.feature-item.feature-item--news-channels.features-list__item
+            h3.feature-item__title 2 канала новостей
+            p.feature-item__content.
+                Вы получаете сразу два канала
+                распространения новостей – для
+                рынка профессионалов B2B или
+                для рынка прямых
+                путешественников B2C.
+                Вы сами решаете, куда
+                отправить новость и сами
+                выступаете автором ваших новостей!
+        li.feature-item.feature-item--audience-coverage.features-list__item
+            h3.feature-item__title Охват аудитории
+            p.feature-item__content.
+                На базе охвата аудитории к
+                каждой вашей новости и по всем
+                социальным сетям – Фейсбук,
+                Инстаграм, ВКонтакте, Твиттер Вы
+                можете проанализировать, какая
+                ваша новость популярна и активно
+                распространяется вашими партнерами
+        li.feature-item.feature-item--carry-news.features-list__item
+            h3.feature-item__title Продающие новости
+            p.feature-item__content.
+                Новости внутри Unihotel и на
+                Travelinfo – это исключительно
+                «продающие» новости, которые
+                продвигают сервисы вашей
+                авиакомпании и ее направления
+                партнерам и клиентам. Вы сами
+                выступаете автором новостей.
+                Максимально эффективные
+                блоки информации на
+                любую тему
+        li.feature-item.feature-item--multilanguage.features-list__item
+            h3.feature-item__title Мультиязычность
+            p.feature-item__content.
+                Вы можете использовать любой
+                язык мира для ваших публикаций и
+                продвижения!
+    .custom-banner.custom-banner--v1.avia-content__news-categories
+        h2.custom-banner__title 
+            span.wrapped-in-braces Категории новостей
+        ul.custom-banner__content
+            li.custom-banner__item
+                a.custom-banner__link(href='#') Спецпредложения авиакомпаний 
+            li.custom-banner__item
+                a.custom-banner__link(href='#') Совместные акции и семинары с отелями и партнёрами
+            li.custom-banner__item
+                a.custom-banner__link(href='#') Новости направлений и полетов
+            li.custom-banner__item
+                a.custom-banner__link(href='#') Обзоры и детали: меню, униформа, самолеты, новинки, развлечения, сервисы на борту
+            li.custom-banner__item
+                a.custom-banner__link(href='#') Описания аэропортов и залов ожидания
+            li.custom-banner__item
+                a.custom-banner__link(href='#') Важно знать!
+
+    section.default-section.avia-content__search-and-promo-tools
+        header.default-section__header
+            span.additional-text Раздел
+            h2.default-section__title Инструменты поиска и<br> продвижения
+        section.default-section__content.media-block
+            header.media-block__header
+            .media-block__content
+                p.
+                    В век больших объемов информации, которые довлеют над любым сотрудником туристической
+                    компании важно, чтобы она была в одном месте и на нужном ему языке. 
+                p.
+                    Кроме того, необходимо быстро и качественно не только показать всю имеющуюся у Вас
+                    информацию о компании, но и иметь возможность мгновенно ее обновлять.
+        ul.features-list.avia-content__tools.text-center
+            li.feature-item.feature-item--big-icon.feature-item--fast-search.features-list__item
+                h3.feature-item__title Быстрый поиск
+                p.feature-item__content.
+                    Справочник  поможет найти
+                    Вас и ваши материалы из любой
+                    точки мира! Поиск ведется по
+                    имени компании,  по стране, по
+                    типу деятельности компании. Все
+                    внесенные Вами материалы сразу
+                    отображаются на профиле компании,
+                    который доступен всем
+                    нашим пользователям
+            li.feature-item.feature-item--big-icon.feature-item--representation.features-list__item
+                h3.feature-item__title Представительство
+                p.feature-item__content.
+                    Любая компания внутри
+                    Справочника представлена рядом
+                    разделов: профайл, новости,
+                    сервисы, файлы для работы и
+                    скачивания, коллекция публикаций, 
+                    рейтинг компании
+            li.feature-item.feature-item--big-icon.feature-item--usability.features-list__item
+                h3.feature-item__title Удобство
+                p.feature-item__content.
+                    Покажите вашим
+                    существующим и потенциальным
+                    партнерам все, чем бы Вы
+                    хотели с ними поделиться: вся
+                    информация представлена
+                    графически и наглядно! 
+            li.feature-item.feature-item--big-icon.feature-item--partnership.features-list__item
+                h3.feature-item__title Партнёрство
+                p.feature-item__content.
+                    Потенциальные партнеры 
+                    могут найти Вас внутри
+                    Справочника и выслать запрос на
+                    скачивание всех необходимых для работы
+                    материалов. Одобрите 
+                    запрос и поделитесь своими 
+                    материалами
+            li.feature-item.feature-item--big-icon.feature-item--privacy.features-list__item
+                h3.feature-item__title Приватность
+                p.feature-item__content.
+                    Три настройки видимости
+                    ваших материалов: приватные или
+                    для сотрудников, для выделенных
+                    партнеров и агентств, для всех
+                    (публичные). 
+            li.feature-item.feature-item--big-icon.feature-item--mediality.features-list__item
+                h3.feature-item__title Медийность
+                p.feature-item__content.
+                    Будьте еще ближе к вашим
+                    партнерам и новым
+                    потенциальным агентам!
+
+    section.default-section.avia-content__company-profile.text-center
+        header.default-section__header
+            h2.default-section__title Профайл компании
+        section.media-block
+            header.media-block__header.media-block__header--cover
+            .media-block__content
+                p.
+                    <b>Мини-сайт вашей компании</b> на трех языках: английском, русском и китайском. Страница, по
+                    которой вашу компанию могут легко найти внутри нашего Глобального Туристического Справочника и
+                    которая аккумулирует все сведения, помеченные в системе «для всех». 
+                p.
+                    А это и описание вашей компании, лого и главное фото, ваши сервисы на борту и в аэропортах мира, меню,
+                    ливреи и имена самолетов, форма стюардесс, правила и штрафы, рассадка и размеры кресел, описания
+                    бортов, карту полетов, новости, коллекцию публикаций, публичные контакты для связи, рабочие файлы для
+                    скачивания, пресс-релизы. Тем самым, профайл помогает Вам быстро обновлять информацию и показывать
+                    партнерам все самое свежее и актуальное. Профайл доступен любому пользователю интернета!
+        .bordered-box.bordered-box--v1
+            img.img-responsive(src='./images/img-logo-quatar-airways.jpg' alt='quatar airways')
+
+    section.avia-content__publications-collection.custom-banner.custom-banner--v2
+        header.custom-banner__header
+            span.custom-banner__help-text Блок
+            h2.custom-banner__title. 
+                <span class="primary-text">Коллекция публикаций</span> 
+                <span class="secondary-text">для совместного продвижения</span>
+        .custom-banner__content
+            p.
+                Создайте собственную коллекцию постов о вашей авиакомпании, ее особенностях и
+                «фишках» для максимально быстрого и эффективного  продвижения среди продающих
+                агентов. Любой пользователь интернета сможет не только прочитать ее на профайле
+                вашей компании, но и после регистрации настроить все ваши публикации для перепоста
+                на свой сайт и в свои социальные сети с помощью создания очереди публикаций.
+            a.btn.btn--v8(href='#') Подробнее
+
+    section.default-section.avia-content__aircompanies-questionnare
+        header.default-section__header
+            span.additional-text Блок
+            h2.default-section__title Опросник по авиакомпании
+            span.important-text для формирования рейтинга от профессионала
+        ul.features-list.features-list--bordered.default-section__content.text-center
+            li.feature-item.feature-item--bordered.feature-item--bordered--wide.feature-item--info-aggregation.features-list__item
+                p.feature-item__content.
+                    Профессиональный сбор
+                    информации с минимизаци-
+                    ей субъективных мнений,
+                    максимально детализированный
+                    по каждому аспекту
+                    путешествия на борту
+                    самолета/в стране/в лаунже - 
+            li.feature-item.feature-item--bordered.feature-item--bordered--wide.feature-item--novices-help.features-list__item
+                p.feature-item__content.
+                    Помогает новичкам из
+                    сферы туризма правильно
+                    выбрать авиакомпанию и
+                    услуги для своего клиента,
+                    ориентируясь на мнение
+                    опытных профессионалов туризма
+            li.feature-item.feature-item--bordered.feature-item--bordered--wide.feature-item--experienced-help.feature-item--thin-padding.features-list__item
+                p.feature-item__content.
+                    Помогает «бывалым»
+                    ориентироваться на мнение
+                    хорошо знакомого им
+                    профессионала из сферы
+                    туризма, налаживает контакт для
+                    получения дополнительной
+                    информации из «первых уст»
+                    по звонку/письму знакомому,
+                    кто написал этот отзыв
+            li.feature-item.feature-item--bordered.feature-item--bordered--wide.feature-item--incoming-operator-help.features-list__item
+                p.feature-item__content.
+                    Принимающий
+                    туроператор собирает
+                    ценную информацию, каких
+                    сервисов не хватает
+                    партнерам, что необходимо
+                    улучшить и доработать
+            li.feature-item.feature-item--bordered.feature-item--bordered--wide.feature-item--replies-rating.features-list__item
+                p.feature-item__content.
+                    Поисковик отзывов.
+                    Рейтинги по каждому
+                    разделу отдыха – от
+                    отеля до авиакомпании
+            li.feature-item.feature-item--bordered.feature-item--bordered--wide.feature-item--analisys-and-statictics.features-list__item
+                p.feature-item__content.
+                    Анализ и статистика по
+                    каждому разделу: графики и
+                    диаграммы
+
+    section.default-section.default-section--bright.avia-content__other-blocks
+        ul.features-list.features-list--inverted-color.text-center
+            li.feature-item.feature-item--inverted-color.feature-item--statictics.features-list__item
+                span.feature-item__help-text Блок
+                h2.feature-item__title Статистика
+                p.feature-item__content.
+                    Статистика по перепосту ваших
+                    новостей и публикаций на сайты и
+                    социальные сети ваших
+                    партнеров. Охват аудитории и
+                    лайки в Фейсбуке, Вконтакте,
+                    Инстаграмме, Твиттере
+            li.feature-item.feature-item--inverted-color.feature-item--working-files.features-list__item
+                span.feature-item__help-text Блок
+                h2.feature-item__title Рабочие файлы
+                p.feature-item__content.
+                    Облачное хранилище всех ваших
+                    материалов по странам, в которые
+                    Вы летаете, и по вашей
+                    авиакомпании и ее самолетам.
+                    Бесплатно загрузите в ваш Личный
+                    Кабинет на Unitravel.pro любое
+                    количество файлов, которые могут
+                    быть востребованы у ваших
+                    партнеров и агентств: фото, видео, 
+                    карту полетов, описание
+                    самолетов, рассадку кресел, меню,
+                    сервисы на борту, программу
+                    развлечений и пр. Используйте
+                    настройки видимости и тэги
+            li.feature-item.feature-item--inverted-color.feature-item--languages.features-list__item 
+                span.feature-item__help-text Блок
+                h2.feature-item__title Языки
+                p.feature-item__content.
+                    Сайт адаптирован и переведен под
+                    русский, английский, китайский
+                    языки. В будущем мы планируем его
+                    перевести на все основные языки.
+
+    section.avia-content__paid-services
+        header.avia-content__header.avia-content__header--secondary
+            h1.avia-content__title.avia-content__title--main Авиакомпаниям
+            h1.avia-content__title.avia-content__title--secondary Платные сервисы
+        ul.features-list.text-center
+            li.feature-item.feature-item--translates.features-list__item
+                span.feature-item__help-text Блок
+                h2.feature-item__title.feature-item__title--bright Переводы
+                p.feature-item__content.feature-item__content--lighten.
+                    Переведите вашу новость или любые
+                    необходимые Вам в работе материалы
+                    на любой язык мира. 
+                    Просто закажите из вашего Личного
+                    Кабинета на платформе Unitravel.pro
+                    перевод на нужный Вам язык.
+                a.btn.btn--v7.btn--narrow(href='#' title='Заказать перевод') Заказать
+
+    section#uploadable--our-partners.uploadable.uploadable--our-partners.avia-content__our-partners(data-collapsed='true')
+        b.uploadable__title.promo-text С нами уже более <span id="partners-count">300</span> партнёров
+        ul.uploadable__content.uploadable__list.uploadable__list--fixed-height.cards-list
+            li.cards-list__item.uploadable__list-item(data-ajax-load-status='none')
+                img.logo-card.cards-list__image(src='./images/img-logo-baltimore.jpg' alt='baltimore' width='120' height='46')
+            li.cards-list__item.uploadable__list-item(data-ajax-load-status='none')
+                img.logo-card.cards-list__image(src='./images/img-logo-houston.jpg' alt='houston' width='117' height='36')
+            li.cards-list__item.uploadable__list-item(data-ajax-load-status='none')
+                img.logo-card.cards-list__image(src='./images/img-logo-phoenix.jpg' alt='phoenix' width='131' height='63')
+            li.cards-list__item.uploadable__list-item(data-ajax-load-status='none')
+                img.logo-card.cards-list__image(src='./images/img-logo-rapid-city.jpg' alt='rapid city' width='140' height='76')
+            li.cards-list__item.uploadable__list-item(data-ajax-load-status='none')
+                img.logo-card.cards-list__image(src='./images/img-logo-salt-lake.jpg' alt='salt lake city' width='108' height='84')
+        a.uploadable__load-button.btn.btn--v9.btn--3d(href='#') <i class="uploadable__load-button-state-icon"></i> Показать еще
+
+    section#uploadable--clients-replies.uploadable.uploadable--clients-replies.default-section.avia-content__clients-replies
+        header.default-section__header
+            h2.default-section__title Клиенты о нас
+        ul.default-section__content.features-list.features-list--bordered.features-list--with-images.text-center.uploadable__list.uploadable__list--auto-height
+            li.feature-item.feature-item--bordered.feature-item--bordered--thin.feature-item--with-image.features-list__item.uploadable__list-item(data-ajax-load-status='none')
+                figure.feature-item__picture-wrapper.box--rounded.box--bordered.box--bordered--light
+                    img.feature-item__picture(src='./images/img-logo-chateau-monfort.jpg' alt='chateau monfort' width='97' height='97')
+                b.feature-item__title Михаил Григорьев
+                span.feature-item__sub-title (<span class="feature-item__sub-title-value">TopHotel</span>)
+                p.feature-item__content. 
+                    Угол курса поступательно
+                    учитывает периодический
+                    ротор.
+                    Степень свободы
+                    принципиально переворачивает
+                    дифференциальный гиротахометр. 
+            li.feature-item.feature-item--bordered.feature-item--bordered--thin.feature-item--with-image.features-list__item.uploadable__list-item(data-ajax-load-status='none')
+                figure.feature-item__picture-wrapper.box--rounded.box--bordered.box--bordered--dark
+                    img.feature-item__picture(src='./images/img-logo-como-shambala.jpg' alt='como shambala' width='148' height='99')
+                b.feature-item__title Григорий Успенский
+                span.feature-item__sub-title (<span class="feature-item__sub-title-value">Coral Travel</span>)
+                p.feature-item__content.
+                    Угол курса поступательно
+                    учитывает
+                    периодический ротор. 
+                    Степень свободы
+                    принципиально переворачивает
+                    дифференциальный гиротахометр.
+                    Время набора максимальной
+                    скорости, обобщая
+                    изложенное, колебательно
+                    даёт более простую
+                    систему дифференциальных
+            li.feature-item.feature-item--bordered.feature-item--bordered--thin.feature-item--with-image.features-list__item.uploadable__list-item(data-ajax-load-status='none')
+                figure.feature-item__picture-wrapper.box--rounded.box--bordered.box--bordered--dark
+                    img.feature-item__picture(src='./images/img-logo-wa.jpg' alt='w a' width='133' height='98')
+                b.feature-item__title Василий Уткин
+                span.feature-item__sub-title (<span class="feature-item__sub-title-value">Tez Tour</span>)
+                p.feature-item__content.
+                    Время набора максимальной
+                    скорости, обобщая изложенное,
+                    колебательно даёт 
+            li.feature-item.feature-item--bordered.feature-item--bordered--thin.feature-item--with-image.features-list__item.uploadable__list-item(data-ajax-load-status='none')
+                figure.feature-item__picture-wrapper.box--rounded.box--bordered.box--bordered--dark
+                    img.feature-item__picture(src='./images/img-logo-como-shambala.jpg' alt='como shambala' width='148' height='99')
+                b.feature-item__title Григорий Успенский
+                span.feature-item__sub-title (<span class="feature-item__sub-title-value">Coral Travel</span>)
+                p.feature-item__content.
+                    Угол курса поступательно
+                    учитывает
+                    периодический ротор. 
+                    Степень свободы
+                    принципиально переворачивает
+                    дифференциальный гиротахометр.
+                    Время набора максимальной
+                    скорости, обобщая
+                    изложенное, колебательно
+                    даёт более простую
+                    систему дифференциальных
+            li.feature-item.feature-item--bordered.feature-item--bordered--thin.feature-item--with-image.features-list__item.uploadable__list-item(data-ajax-load-status='none')
+                figure.feature-item__picture-wrapper.box--rounded.box--bordered.box--bordered--dark
+                    img.img-bordered.feature-item__picture(src='./images/img-logo-wa.jpg' alt='w a' width='133' height='98')
+                b.feature-item__title Василий Уткин
+                span.feature-item__sub-title (<span class="feature-item__sub-title-value">Tez Tour</span>)
+                p.feature-item__content.
+                    Время набора максимальной
+                    скорости, обобщая изложенное,
+                    колебательно даёт 
+            li.feature-item.feature-item--bordered.feature-item--bordered--thin.feature-item--with-image.features-list__item.uploadable__list-item(data-ajax-load-status='none')
+                figure.feature-item__picture-wrapper.box--rounded.box--bordered.box--bordered--light
+                    img.feature-item__picture(src='./images/img-logo-chateau-monfort.jpg' alt='chateau monfort' width='97' height='97')
+                b.feature-item__title Михаил Григорьев
+                span.feature-item__sub-title (<span class="feature-item__sub-title-value">TopHotel</span>)
+                p.feature-item__content.
+                    Угол курса поступательно
+                    учитывает периодический
+                    ротор.
+                    Степень свободы
+                    принципиально переворачивает
+                    дифференциальный гиротахометр.
+
+        a.uploadable__load-button.btn.btn--v10(href='#' title='показать ещё') Показать ещё
+
+    a#back-to-top.back-to-top(href="#avia_page")
+        span.icon.icon-arrow-up
+
+
+block templates
+    template#template--partner-logo
+        li.cards-list__item.uploadable__list-item(data-ajax-load-status='')
+            img.logo-card.cards-list__image(src='' alt='' width='' height='')
+    
+    template#template--client-reply
+        li.feature-item.feature-item--bordered.feature-item--bordered--thin.feature-item--with-image.features-list__item.uploadable__list-item(data-ajax-load-status='')
+            figure.feature-item__picture-wrapper.box--rounded.box--bordered
+                img.feature-item__picture(src='' alt='' width='' height='')
+            b.feature-item__title
+            span.feature-item__sub-title (<span class="feature-item__sub-title-value"></span>)
+            p.feature-item__content
+
+
+block right_side
+    aside#scrollable-panel--fixed.avia-page__company-type-menu.menu-company-type 
+        header.menu-company-type__header Начать работу <button class="menu-company-type__header-switch" type="button">Toggle menu</button>
+        ul.menu-company-type__content.company-types-list
+            li.company-types-list__item
+                a.company-types-list__link(href='#' title='Отелям') Отелям
+            li.company-types-list__item
+                a.company-types-list__link(href='#' title='Агенствам и туроператорам') Агенствам и туроператорам
+            li.company-types-list__item
+                a.company-types-list__link.company-types-list__link--current(title='Авиакомпаниям') Авиакомпаниям
+            li.company-types-list__item
+                a.company-types-list__link(href='#' title='Бюро по туризму') Бюро по туризму
+            li.company-types-list__item
+                a.company-types-list__link(href='#' title='Объектам культуры') Объектам культуры
+            li.company-types-list__item
+                a.company-types-list__link(href='#' title='Медицинскому туризму') Медицинскому туризму 
+            li.company-types-list__item
+                a.company-types-list__link(href='#' title='Сервисным компаниям') Сервисным компаниям

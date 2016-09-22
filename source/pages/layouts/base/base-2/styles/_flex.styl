@@ -1,0 +1,235 @@
+.flex
+    display flex !important
+
+.flex--to-md
+    @media (max-width: 991px)
+        display flex !important
+
+.flex-center
+    display flex !important
+    justify-content center !important
+    align-items center !important
+
+
+
+// for main-axis align
+
+.flex-main-start
+    justify-content flex-start !important
+
+.flex-main-center
+    justify-content center !important
+
+.flex-main-end
+    justify-content flex-end !important
+
+.flex-main-between
+    justify-content space-between !important
+
+.flex-main-around
+    justify-content space-around !important
+
+
+
+.flex-main-start--to-md
+    @media (max-width: 991px)
+        justify-content flex-start !important
+
+.flex-main-between--to-md
+    @media (max-width: 991px)
+        justify-content space-between !important
+
+
+.flex-main-between--to-sm
+    @media (max-width: 767px)
+        justify-content space-between !important
+
+
+// for cross-axis align
+
+.flex-cross-start
+  align-items flex-start !important
+
+.flex-cross-center
+    align-items center !important
+
+.flex-cross-end
+    align-items flex-end !important
+
+.flex-cross-stretch
+    align-items stretch !important
+
+.flex-cross-baseline
+    align-items baseline !important
+
+
+
+// for multiline blocks
+
+.flex-content-start
+    align-content flex-start !important
+
+.flex-content-center
+    align-content center !important
+
+.flex-content-end
+    align-content flex-end !important
+
+.flex-content-between
+    align-content space-between !important
+
+.flex-content-around
+    align-content space-around !important
+
+.flex-content-stretch
+    align-content stretch !important
+
+
+
+// for axis direction control
+.flex-column-reverse
+    flex-direction column-reverse !important
+
+.flex-column
+    flex-direction column !important
+
+.flex-column--md
+    @media (min-width: 992px)
+        flex-direction column !important
+
+.flex-column--sm
+    @media (min-width: 768px)
+        flex-direction column !important
+
+.flex-column--ssm
+    @media (min-width: 690px)
+        flex-direction column !important
+
+.flex-column--to-md
+    @media (max-width: 991px)
+        flex-direction column !important
+
+.flex-column--to-sm
+    @media (max-width: 767px)
+        flex-direction column !important
+
+.flex-column--to-ssm
+    @media (max-width: 689px)
+        flex-direction column !important
+
+.flex-column--to-xss
+    @media (max-width: 509px)
+        flex-direction column !important
+
+.flex-column--to-xs
+    @media (max-width: 379px)
+        flex-direction column !important
+
+
+.flex-row-reverse
+    flex-direction row-reverse !important
+
+.flex-row
+    flex-direction row !important
+
+
+
+.flex-no-wrap
+    flex-wrap nowrap !important
+
+.flex-wrap
+    flex-wrap wrap !important
+
+.flex-wrap--to-md
+    @media (max-width: 991px)
+        flex-wrap wrap !important
+
+
+
+// for flex items individual align control
+
+.flex-item-cross-start
+    align-self flex-start !important
+
+.flex-item-cross-center
+    align-self center !important
+
+.flex-item-cross-end
+    align-self flex-end !important
+
+.flex-item-cross-end--to-md
+    @media (max-width: 991px)
+        align-self flex-end !important
+
+.flex-item-cross-stretch
+    align-self stretch !important
+
+.flex-item-cross-baseline
+    align-self baseline !important
+
+
+.flex-item-order-0
+    order 0
+
+.flex-item-order-1
+    order 1
+
+.flex-item-order-2
+    order 2
+
+.flex-item-order-3
+    order 3
+
+.flex-item-order-4
+    order 4
+
+.flex-item-order-5
+    order 5
+
+.flex-item-std
+    flex 80px 1 1
+
+.flex-item-md
+    flex 90px 0 1
+
+.flex-item-big
+    flex 100px 3 1
+
+.flex-grow-1
+    flex-grow 1
+
+.flex-grow-1--md
+    @media (min-width: 992px)
+        flex-grow 1
+
+.flex-grow-1--to-ssm
+    @media (max-width: 689px)
+        flex-grow 1
+
+.flex-grow-2
+    flex-grow 2
+
+.flex-grow-3
+    flex-grow 3
+
+
+// .l-row-flex
+//     display flex
+//     align-items flex-start
+//     width 100%
+//
+// .l-col-flex
+//     display flex
+//     flex-wrap wrap
+//     align-items flex-start
+//     padding-right 22px
+//     padding-left 22px
+//
+//     &.l-inside
+//         padding-right 0
+//         padding-left 0
+
+// fixes for bootsrap styles in flexbox containers
+
+// .flex > .form-group
+//     margin 0

@@ -1,0 +1,79 @@
+// var stopScrollUp = function(viewportData, elementData, scrollInfo) {  // прокрутка вверх === опускаем блок вниз, за границу вьюпорта
+//   console.log('  stopScrollUp is called!');
+//
+//   if (elementData.innerOffsetTop > 0) {
+//     console.log('    * can not scroll up!\n  ** blocking scrolling UP...');
+//     return true;
+//   } else if (prevScrollInfo.fix) {
+//     console.log('    **** can not scroll up! Fixing offset...\n  ** blocking scrolling UP...');
+//     scrollInfo.fix = false;
+//     return true;
+//   }
+//   console.log('    * can scroll up! :)');
+//   return false;
+// };
+
+
+// var stopScrollDown = function(viewportData, elementData, scrollInfo) {  // прокрутка вниз === поднимаем блок вверх, за границу вьюпорта
+//   console.log('  stopScrollDown is called!');
+//   console.log('elementData.getLastChildBottom() ===', elementData.getLastChildBottom());
+//   console.log('viewportData.getBottom() ===', viewportData.getBottom());
+//   if (elementData.getLastChildBottom() <= viewportData.getBottom()) {
+//     if (!prevScrollInfo.fix) {
+//       console.log('    *** can scroll down! :) Fixing offset...');
+//       scrollInfo.fix = true;
+//       return false;
+//     }
+//     console.log('viewportData.getBottom() ===', viewportData.getBottom());
+//     console.log('elementData.getElementContentHeight() ===', elementData.getElementContentHeight());
+//     console.log('    * can not scroll down!\n  ** blocking scrolling DOWN...');
+//     return true;
+//   }
+//   console.log('    * can scroll down! :)');
+//   return false;
+// };
+
+
+// var initAdditionalInfoScroll = function() {
+//   console.log('initAdditionalInfoScroll was called!');
+//
+//   var additionalInfoPanel = document.querySelector('.enter-page__additional-info');
+//
+//   var onWindowScroll = function() {
+//     console.log('\n----- onWindowScroll callback is called!');
+//
+//     var viewportData = getViewportYPositionData();
+//     var elementData = getElementYPositionData(additionalInfoPanel, 'paddingTop');
+//     var scrollInfo = getScrollInfo(viewportData.top);
+//
+//     // if (isElementContentHeightMoreThanViewport(viewportData, elementData)) {
+//     if (scrollInfo.direction === 'down' &&
+//         stopScrollDown(viewportData, elementData, scrollInfo)) {
+//       console.log('-----');
+//       console.log('parseInt(additionalInfoPanel.style.paddingTop) ===', parseInt(additionalInfoPanel.style.paddingTop || 0, 10));
+//       console.log('scrollInfo.size ===', scrollInfo.size);
+//       additionalInfoPanel.style.paddingTop = parseInt(additionalInfoPanel.style.paddingTop || 0, 10) - scrollInfo.size + 'px';
+//       console.log('additionalInfoPanel.style.paddingTop ===', additionalInfoPanel.style.paddingTop);
+//     } else if (scrollInfo.direction === 'up' &&
+//         stopScrollUp(viewportData, elementData, scrollInfo)) {
+//       console.log('-----');
+//       console.log('parseInt(additionalInfoPanel.style.paddingTop) ===', parseInt(additionalInfoPanel.style.paddingTop || 0, 10));
+//       console.log('scrollInfo.size ===', scrollInfo.size);
+//       additionalInfoPanel.style.paddingTop = parseInt(additionalInfoPanel.style.paddingTop || 0, 10) - scrollInfo.size + 'px';
+//       console.log('additionalInfoPanel.style.paddingTop ===', additionalInfoPanel.style.paddingTop);
+//     }
+//     // }
+//
+//     prevScrollInfo = scrollInfo;  // запоминаем значения скролла внутри области видимости этого модуля
+//   };
+//
+//   window.addEventListener('scroll', onWindowScroll);
+//
+//   // document.documentElement.clientWidth
+//   // document.documentElement.clientHeight
+//   // var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+//   // window.pageYOffset
+//   // window.pageXOffset
+//   // window.scrollBy(x,y)
+//   // window.scrollTo(pageX,pageY).
+// };

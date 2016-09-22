@@ -1,0 +1,23 @@
+include ../../../base/base-2/blocks/_mixins.jade
+
+//- mixin custom_input(modification, type, id, addClass, name, required, pattern, value)
+//-     div(class='custom-input--' + modification)
+//-         input(id=id, class=addClass ? 'custom-input__field ' + addClass : 'custom-input__field', type=type, name=name||id, required=required ? '' : false, pattern=pattern ? pattern : false, value=value)
+//-         span.custom-input__validation-state
+//- 
+//- mixin custom_select
+//-     div(class='custom-select--' + attributes.mod)
+//-         select(id=attributes.id, class=attributes.addClass ? 'custom-select__field ' + attributes.addClass : 'custom-select__field', name=attributes.name||attributes.id, required=attributes.required ? '' : false) 
+//-             if block
+//-                 block
+//-         span.custom-select__validation-state
+//- 
+//- mixin custom_checkbox(type, label, id, name, checked, disabled)
+//-     div(class='custom-checkbox--' + type)
+//-         input(id=id, type='checkbox', name=name||id, checked=checked ? '' : false, disabled=disabled ? '' : false)
+//-         label(for=id)= label
+
+mixin custom_label
+    div(class='custom-label--' + attributes.mod)
+        if block
+            block

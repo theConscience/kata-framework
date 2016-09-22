@@ -1,0 +1,20 @@
+include ./blocks/_mixins
+
+doctype html
+html(lang="ru")
+    head
+        include ./blocks/_head
+        block links
+            include ./blocks/_links
+
+    body
+        block content
+            .container Hello world from base-1!
+
+        footer(id=pageName ? pageName + '_footer' : 'base-1_footer')
+                .container 
+                    block footer
+                        | This is a base-1 footer!
+        block scripts
+            include ./blocks/_scripts
+        

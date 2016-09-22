@@ -1,0 +1,1191 @@
+@import './helpers/_variables'
+@import './helpers/_mixins'
+@import './helpers/_block_mixins'
+
+
+/**--------------------------------*\
+ * .avia-page__content
+ **
+\*--------------------------------*/
+/*main*/.avia-content/*.avia-page__content*/
+    // position absolute
+    // top 0
+    // bottom 0
+    position relative
+    margin-right 300px
+    // padding-left 100px
+    background-color c_white
+
+    @media (max-width: xl) and (min-width: xs)
+        margin-right 250px
+
+    @media (max-width: lg)
+        flex-direction column
+
+    @media (max-width: xs)
+        order 2
+        margin-right 0
+
+.avia-content__header
+    text-align center
+
+    .additional-text
+        fontHvLight36_44()
+        color c_white
+        text-transform uppercase
+
+        @media (max-width: md)
+            font-size 26px
+
+.avia-content__header--primary
+    box-sizing border-box
+    min-height 509px
+    padding-top 116px
+    padding-bottom 46px
+    padding-left default_padding
+    padding-right default_padding
+    background-color #451c0d
+    background-repeat no-repeat
+    background-image url(../images/bg-avia-top.jpg)
+    background-position center
+    background-size cover
+
+    @media (max-width: xl)
+        padding-left lower_padding
+        padding-right lower_padding
+
+    @media (max-width: lg)
+        padding-left small_padding
+        padding-right small_padding
+
+    // @media ({bp_header})
+    //     background-size 100% auto
+
+.video-block
+    margin-bottom 28px
+
+.video-block__play-button
+    fontHvLight14_auto()
+    box-sizing border-box
+    display inline-block
+    min-width 130px
+    min-height 159px
+    padding-top 146px
+    color c_white
+    background-repeat no-repeat
+    background-image url(../images/i-play-video.png)
+    background-position center top
+
+    &:hover
+        cursor pointer
+
+.avia-content__title
+    text-transform uppercase
+
+.avia-content__title--main
+    color c_contrast
+
+    .avia-content__header--primary &
+        fontHvBold60_auto()
+        margin-top 0
+        margin-bottom -5px
+
+        @media (max-width: md)
+            font-size 40px
+
+    .avia-content__header--secondary &
+        fontHvBold55_auto()
+        margin-top 0
+        margin-bottom -5px
+
+        @media (max-width: md)
+            font-size 35px
+
+.avia-content__title--secondary
+    color c_white
+
+    .avia-content__header--primary &
+        fontHvRoman36_44()
+        margin-top 0
+        margin-bottom 0
+
+        @media (max-width: md)
+            font-size 26px
+
+    .avia-content__header--secondary &
+        fontHvBold44_auto()
+        margin-top 0
+        margin-bottom 0
+
+        @media (max-width: md)
+            font-size 30px
+
+.avia-content__mission
+    fontHvLight18_30()
+    padding-top 75px
+    padding-right default_padding
+    padding-bottom 113px
+    padding-left default_padding
+    color c_darkest-font
+    background-color c_white
+    text-align justify
+
+    @media (max-width: xl)
+        padding-left lower_padding
+        padding-right lower_padding
+
+    @media (max-width: lg)
+        padding-left small_padding
+        padding-right small_padding
+
+mark.primary
+    fontHvBold18_30()
+    color c_contrast
+    background-color inherit
+
+.additional-text
+    fontHvMedium18_30()
+    display block
+    color c_darkest-font
+    margin-bottom 7px
+
+.media-block__title
+.default-section__title
+    fontHvBold40_auto()
+    color c_contrast
+
+.media-block
+    .avia-content__company-profile &
+        padding-bottom 30px
+
+.media-block__title
+    margin-top 0
+    margin-bottom 0
+
+.media-block__header
+    text-align center
+
+
+
+.avia-content__aircompanies-news
+    > .media-block__header
+        min-height 168px
+        padding-top 41px
+        background-color #fff6d9
+        background-repeat no-repeat
+        background-image url(../images/bg-avia-news.jpg)
+        background-size cover
+        background-position 50% 100%
+
+.media-block__content
+    padding-top 34px
+    padding-bottom 42px
+    padding-left default_padding
+    padding-right default_padding
+    fontHvLight18_auto()
+    color c_white
+    background-color c_contrast
+
+    > p
+        margin-bottom 20px
+
+        &:last-of-type
+            margin-bottom 0
+
+    @media (max-width: xl)
+        padding-left lower_padding
+        padding-right lower_padding
+
+    @media (max-width: lg)
+        padding-left small_padding
+        padding-right small_padding
+
+
+.features-list
+    padding 0
+    margin 0
+    list-style-type none
+    font-size 0
+
+    display flex
+    flex-wrap wrap
+    justify-content center
+    align-items flex-start
+
+    .avia-content__paid-services &
+        padding-left default_padding
+        padding-right default_padding
+        padding-top 55px
+        padding-bottom 38px
+
+        @media (max-width: xl)
+            padding-left lower_padding
+            padding-right lower_padding
+
+        @media (max-width: lg)
+            padding-left small_padding
+            padding-right small_padding
+
+.features-list--bordered
+    margin-left -13px
+    margin-right -13px
+
+.features-list--chaotic::before
+.features-list--chaotic::after
+    display table
+    content ''
+
+.features-list--chaotic::after
+    clear both
+
+.features-list__item
+    fontHvMedium14_auto()
+    position relative
+    box-sizing border-box
+    display inline-block
+    vertical-align top
+    width 33.3333%
+    margin-bottom 40px
+
+    flex-basis 239px
+
+    &::before
+        position absolute
+        top 0
+        left 0
+        right 0
+        margin-left auto
+        margin-right auto
+        width 100%
+        height 116px
+        background-repeat no-repeat
+        background-position center top
+        content ''
+
+    .features-list--rounded-icons > &::before
+        width 108px
+        height 108px
+        border 1px solid c_seo-2
+        border-radius 50%
+        background-position center
+
+    .features-list--inverted-color > &
+        margin-bottom 0
+        color c_contrast-light
+
+    .features-list--bordered > &
+        width calc(33.3333% - 17.3333px)
+        margin-left 13px
+        margin-right 13px
+        margin-top 172px
+        margin-bottom 0
+
+        // &:nth-of-type(3n+1)
+        //     margin-left 0
+        //
+        // &:nth-of-type(3n+3)
+        //     margin-right 0
+
+    .features-list--with-images > &
+        margin-top 48px
+        margin-bottom 27px
+
+.feature-item
+    padding-top 128px
+
+.feature-item--big-icon
+    padding-top 136px
+
+.feature-item--bordered
+    min-height 206px
+    padding-top 30px
+    padding-bottom 10px
+    border 1px solid c_border-light
+
+    &::before
+    &::after
+        position absolute
+        content ''
+
+    &::before
+        top -126px
+        left 0
+        right 0
+        margin 0 auto
+        width 177px
+        height 110px
+        background-repeat no-repeat
+        background-position center
+
+    &::after
+        top -1px
+        left 0
+        right 0
+        margin-left auto
+        margin-right auto
+        width 55%
+        height 1px
+        background-color #fff
+
+.feature-item--bordered--wide
+    padding-left 23px
+    padding-right 23px
+
+    &::after
+        width 55%
+
+.feature-item--bordered--thin
+    padding-left 30px
+    padding-right 30px
+    padding-bottom 23px
+
+    &::after
+        width 47%
+
+.feature-item--with-image
+    padding-top 58px
+
+    &::before
+        content none
+
+.feature-item--thin-padding
+    padding-left 20px
+    padding-right 20px
+
+.feature-item__help-text
+    fontHvMedium18_30()
+    color c_darkest-font
+
+    .feature-item--inverted-color &
+        fontHvBold18_30()
+        color c_white
+
+.feature-item__title
+    fontRobotoBlack22_auto()
+    display block
+    margin-top 0
+    color c_darkest-font
+
+    .feature-item--inverted-color &
+        fontHvBold24_40()
+        color c_white
+        text-transform uppercase
+
+    .feature-item--with-image &
+        fontRobotoBold18_auto()
+        color c_darken-3-font
+
+.feature-item__title--bright
+    fontHvBold24_40()
+    color c_contrast
+    text-transform uppercase
+
+.feature-item__sub-title
+    display block
+    margin-bottom 23px
+
+    .feature-item--with-image &
+        fontRobotoRegular14_auto()
+        color c_darken-3-font
+
+.feature-item__content
+    fontHvMedium14_auto()
+    padding-left 10px
+    padding-right 10px
+    color c_darkest-font
+
+    .feature-item--inverted-color &
+        fontHvRoman14_18()
+        color c_contrast-light
+
+    .feature-item--with-image &
+        fontRobotoRegular14_auto()
+        color c_darken-3-font
+
+    .feature-item--bordered &
+        padding-left 0
+        padding-right 0
+        margin-bottom 0
+
+.feature-item__content--lighten
+    fontHvRoman14_24()
+    color c_darken-bg
+    margin-bottom 35px
+
+.feature-item__picture-wrapper
+    position absolute
+    z-index 10
+    top -49px
+    left 0
+    right 0
+    margin-left auto
+    margin-right auto
+    // display flex
+    // justify-content center
+    // align-items center
+    width 96px
+    height 96px
+
+.feature-item__picture
+    position absolute
+    left -9999px
+    right -9999px
+    top -9999px
+    bottom -9999px
+    margin auto
+
+.box--rounded
+    border-width 1px
+    border-style solid
+    border-radius 50%
+    overflow hidden
+
+.box--bordered--light
+    border-color c_white
+
+.box--bordered--dark
+    border-color c_border-dim
+
+// .avia-content__aircompanies-news
+//
+
+
+
+.avia-content__news-features/*.features-list*/
+    padding-top 45px
+    padding-right default_padding
+    padding-bottom 0
+    padding-left default_padding
+    background-color c_white
+
+    @media (max-width: xl)
+        padding-left lower_padding
+        padding-right lower_padding
+
+    @media (max-width: lg)
+        padding-left small_padding
+        padding-right small_padding
+
+.feature-item--instant-publication::before
+    background-image url(../images/i-recycle.png)
+
+.feature-item--no-spam::before
+    background-image url(../images/i-basket.png)
+
+.feature-item--news-channels::before
+    background-image url(../images/i-loupe.png)
+
+.feature-item--audience-coverage::before
+    background-image url(../images/i-thumbs-up.png)
+
+.feature-item--carry-news::before
+    background-image url(../images/i-money-graph.png)
+
+.feature-item--multilanguage::before
+    background-image url(../images/i-languages-icons.png)
+
+
+.custom-banner--v1
+    min-height 325px
+    padding-bottom 36px
+    text-align center
+
+
+
+.avia-content__news-categories/*.custom-banner--v1*/
+    background-color #021e3b
+    background-repeat no-repeat
+    background-image url(../images/bg-avia-news-categories.jpg)
+    background-size cover
+    background-position center
+
+.custom-banner__title
+    margin-top 0
+    margin-bottom 0
+    text-align center
+
+    .wrapped-in-braces
+        position relative
+        display inline-block
+        padding-left 35px
+        padding-right 42px
+
+        &::before
+        &::after
+            position absolute
+            top 0
+            width 10px
+            height 36px
+
+        &::before
+            left 0
+            content '['
+
+        &::after
+            right 0
+            content ']'
+
+    .custom-banner--v1 > &
+        fontHvBold30_auto()
+        padding-top 22px
+        padding-bottom 18px
+        margin-bottom 29px
+        color c_seo-2
+        background-color c_black-transparent-022
+
+.custom-banner__content
+    padding-left default_padding
+    padding-right default_padding
+
+    @media (max-width: xl)
+        padding-left lower_padding
+        padding-right lower_padding
+
+    @media (max-width: lg)
+        padding-left small_padding
+        padding-right small_padding
+
+    .custom-banner--v1 &
+        margin 0
+        list-style-type none
+
+    .custom-banner--v2 &
+        fontHvRoman18_24()
+        color c_white
+
+        & > p:last-of-type
+            margin-bottom 36px
+
+.custom-banner__link
+    .custom-banner--v1 &
+        fontHvLight18_30()
+        color c_white
+        text-decoration none
+
+        &:hover
+            text-decoration none
+
+
+.default-section
+    &--bright
+        color c_contrast-light
+        background-color c_contrast
+
+.default-section__content
+    .avia-content__clients-replies &
+        margin-bottom 33px
+
+.avia-content__search-and-promo-tools/*.default-section*/
+    background-color c_white
+
+.default-section__header
+    padding-left default_padding
+    padding-right default_padding
+    text-align center
+
+    @media (max-width: xl)
+        padding-left lower_padding
+        padding-right lower_padding
+
+    @media (max-width: lg)
+        padding-left small_padding
+        padding-right small_padding
+
+    .avia-content__search-and-promo-tools &
+        padding-top 48px
+
+    .avia-content__aircompanies-questionnare &
+        padding-left 0
+        padding-right 0
+        padding-bottom 39px
+
+.default-section__title
+    margin-top 0
+    margin-bottom 33px
+
+    .avia-content__aircompanies-questionnare &
+        margin-bottom 2px
+
+.media-block__header
+    .avia-content__search-and-promo-tools &
+        min-height 320px
+        background-color #e1baac
+        background-repeat no-repeat
+        background-image url(../images/bg-avia-instruments.jpg)
+        background-size cover
+        background-position center
+
+    .avia-content__company-profile &
+        min-height 157px
+        background-color #8e90a3
+        background-repeat no-repeat
+        background-image url(../images/bg-avia-profile.jpg)
+        background-size cover
+        background-position center
+
+.media-block__header--cover
+    position relative
+    box-shadow 0 3px 5px c_black-transparent-04
+
+
+
+.avia-content__tools/*ul.features-list*/
+    padding-left default_padding
+    padding-right default_padding
+    padding-top 53px
+    background-color c_white
+
+    @media (max-width: xl)
+        padding-left lower_padding
+        padding-right lower_padding
+
+    @media (max-width: lg)
+        padding-left small_padding
+        padding-right small_padding
+
+.feature-item--fast-search::before
+    background-image url(../images/i-globe-on-hand.png)
+
+.feature-item--representation::before
+    background-image url(../images/i-document-search.png)
+
+.feature-item--usability::before
+    background-image url(../images/i-user-gears.png)
+
+.feature-item--partnership::before
+    background-image url(../images/i-enter-arrow.png)
+    background-position 57% top
+
+.feature-item--privacy::before
+    background-image url(../images/i-linked-users.png)
+
+.feature-item--mediality::before
+    background-image url(../images/i-handshake.png)
+    background-position center
+
+
+
+.avia-content__company-profile
+    padding-top 22px
+    padding-bottom 74px
+    background-color c_white
+
+
+
+.avia-content__publications-collection/*.custom-banner--v2*/
+    min-height 435px
+    background-color #59422e
+    background-repeat no-repeat
+    background-image url(../images/bg-avia-publications-collection-2.jpg)
+    background-size cover
+    background-position center
+
+.bordered-box
+    position relative
+    display inline-block
+    vertical-align top
+    border 1px solid c_border-dim
+
+.bordered-box--v1
+    padding-left 55px
+    padding-right 55px
+    padding-top 13px
+    background-color c_white
+
+    &::before
+    &::after
+        position absolute
+        left 15.8333%
+        width 68.75%
+        height 1px
+        background-color c_white
+        content ''
+
+    &::before
+        top -1px
+
+    &::after
+        bottom -1px
+
+
+.custom-banner--v2
+    padding-top 26px
+    padding-bottom 26px
+    text-align center
+
+.custom-banner__header
+    .custom-banner--v2 &
+        margin-bottom 53px
+
+.custom-banner__help-text
+    .custom-banner--v2 &
+        fontHvMedium18_30()
+        display block
+        margin-bottom 7px
+        color c_seo-2
+
+.custom-banner__title
+    .custom-banner--v2 &
+        fontHvBold40_auto()
+        position relative
+        width 70.8653%
+        padding-left 1%
+        padding-right 1%
+        margin-left auto
+        margin-right auto
+        color c_white
+        text-transform uppercase
+
+        @media (max-width: md)
+            font-size 25px
+
+        &::before
+        &::after
+            fontHvThin80_62()
+            position absolute
+            top 0
+            width 28px
+            height 75px
+            color c_white
+
+        &::before
+            left 0
+            content '{'
+
+        &::after
+            right 0
+            content '}'
+
+        > .primary-text
+            display block
+            margin-bottom -5px
+
+        > .secondary-text
+            fontHvRoman24_30()
+            display block
+            text-transform lowercase
+
+
+
+.avia-content__aircompanies-questionnare
+    padding-left default_padding
+    padding-right default_padding
+    padding-top 58px
+    padding-bottom 81px
+    background-color c_white
+
+    @media (max-width: xl)
+        padding-left lower_padding
+        padding-right lower_padding
+
+    @media (max-width: lg)
+        padding-left small_padding
+        padding-right small_padding
+
+.feature-item--info-aggregation::before
+    background-image url(../images/i-user-message.png)
+
+.feature-item--novices-help::before
+    background-image url(../images/i-loupe-with-rating.png)
+
+.feature-item--experienced-help::before
+    background-image url(../images/i-handshake--big.png)
+
+.feature-item--incoming-operator-help::before
+    background-image url(../images/i-hands-gear.png)
+
+.feature-item--replies-rating::before
+    background-image url(../images/i-rating-stars.png)
+
+.feature-item--analisys-and-statictics::before
+    background-image url(../images/i-radial-diagramm.png)
+
+
+.important-text
+    .default-section__header &
+        fontHvMedium24_auto()
+        color c_contrast
+
+
+
+.avia-content__other-blocks
+    padding-left default_padding
+    padding-right default_padding
+    padding-top 60px
+    padding-bottom 60px
+    margin-bottom 28px
+
+    @media (max-width: xl)
+        padding-left lower_padding
+        padding-right lower_padding
+
+    @media (max-width: lg)
+        padding-left small_padding
+        padding-right small_padding
+
+.feature-item--statictics::before
+    background-image url(../images/i-stat-vertical.png)
+
+.feature-item--working-files::before
+    background-image url(../images/i-arrow-up-stroked.png)
+
+.feature-item--languages::before
+    background-image url(../images/i-language-bubbles.png)
+
+
+
+.avia-content__paid-services
+    background-color c_white
+
+.feature-item--translates::before
+    background-image url(../images/i-translate-bubbles.png)
+
+.avia-content__header--secondary
+    min-height 249px
+    padding-left default_padding
+    padding-right default_padding
+    padding-top 67px
+    padding-bottom 65px
+    background-color #934825
+    background-repeat no-repeat
+    background-image url(../images/bg-avia-paid-services.jpg)
+    background-size cover
+    background-position center
+
+    @media (max-width: xl)
+        padding-left lower_padding
+        padding-right lower_padding
+
+    @media (max-width: lg)
+        padding-left small_padding
+        padding-right small_padding
+
+
+
+.avia-content__our-partners
+    min-height 287px
+    padding-left default_padding
+    padding-right default_padding
+    padding-top 25px
+    padding-bottom 54px
+    text-align center
+    background-color #4bcdcd
+    background-repeat repeat
+    background-image url(../images/bg-with-us-pattern.jpg)
+    background-position 59% 96%
+
+    .promo-text/*.uploadable__title*/
+        fontHvBold36_43()
+        color c_darken-2-font
+
+    @media (max-width: xl)
+        padding-left lower_padding
+        padding-right lower_padding
+
+    @media (max-width: lg)
+        padding-left small_padding
+        padding-right small_padding
+
+.uploadable
+    position relative
+
+.uploadable--our-partners
+    display flex
+    flex-direction column
+    align-items center
+
+.uploadable__title
+    .uploadable--our-partners &
+        display block
+        margin-bottom 35px
+
+.uploadable__list
+    perspective 100px
+
+.uploadable__list-item
+    opacity 0
+    //transform rotateY(-90deg)
+    transition all 0.4s cubic-bezier(.36,-0.64,.34,1.76)
+
+    .uploadable--our-partners &
+        height 0
+
+    .uploadable--clients-replies &
+        max-height 0
+        min-height auto
+
+    &[data-ajax-load-status=none]
+    &[data-ajax-load-status=loaded]
+        opacity 1
+        transform none
+
+    .uploadable__list--fixed-height > &[data-ajax-load-status=none]
+    .uploadable__list--fixed-height > &[data-ajax-load-status=loaded]
+        height 110px
+        margin-bottom 20px
+
+    .uploadable__list--auto-height > &[data-ajax-load-status=none]
+    .uploadable__list--auto-height > &[data-ajax-load-status=loaded]
+        max-height 5000px
+        min-height 206px
+
+
+/*ul*/.cards-list/*.uploadable__content*/
+    padding 0
+    margin 0
+    list-style-type none
+    font-size 0
+    text-align center
+
+/*li*/.cards-list__item
+    position relative
+    list-style none
+    display inline-block
+    vertical-align top
+    overflow hidden
+    width 145px /*147px*/
+    margin-right 9px
+    margin-bottom 0
+    background-color c_white
+    font-size 1rem
+
+    // opacity 0
+    // //transform rotateY(-90deg)
+    // transition all 0.4s cubic-bezier(.36,-0.64,.34,1.76)
+    //
+    // &[data-ajax-load-status=none]
+    // &[data-ajax-load-status=loaded]
+    //     height 110px
+    //     margin-bottom 20px
+    //
+    //     opacity 1
+    //     transform none
+
+    &:nth-of-type(5n+5)
+        // margin-right 0
+
+.cards-list__image
+    position absolute
+    top 0
+    bottom 0
+    left 0
+    right 0
+    margin auto
+    display block
+
+.uploadable__load-button
+    .uploadable--our-partners &
+        position absolute
+        bottom -14px
+
+
+
+.avia-content__clients-replies
+    padding-left default_padding
+    padding-right default_padding
+    padding-top 74px
+    padding-bottom 107px
+    text-align center
+
+    @media (max-width: xl)
+        padding-left lower_padding
+        padding-right lower_padding
+
+    @media (max-width: lg)
+        padding-left small_padding
+        padding-right small_padding
+
+
+
+.back-to-top
+    display block
+    width 100%
+    height 58px
+    background-color c_seo-2
+    background-repeat no-repeat
+    background-image url(../images/i-arrow-up.png)
+    background-position center center
+    border 0
+    transition color .4s, background-color .4s, border .4s
+
+    &:hover
+    &:focus
+        background-color c_seo-4
+
+    &:active
+        background-color c_seo-3
+        box-shadow inset 0 0 6px -2px c_dark-transparent-bg
+
+
+
+
+
+/**--------------------------------*\
+ * .avia-page__company-type-menu
+ **
+\*--------------------------------*/
+.avia-page__company-type-menu/*.menu-company-type*/
+    position fixed
+    top 0
+    right 0
+    bottom 0
+    margin-top auto
+    margin-bottom auto
+    z-index 20
+    width 300px
+    min-width 300px
+    color c_black
+    background-color c_aside
+    box-shadow bxsh-default
+
+    @media (max-width: xl) and (min-width: xs)
+        width 250px
+        min-width 250px
+
+    @media (max-width: xs)
+        position relative
+        z-index 0
+        width 100%
+
+.menu-company-type__header
+    fontHvMedium18_24()
+    position: relative
+    z-index 10
+    padding-left 87px
+    padding-right 134px
+    padding-top 26px
+    padding-bottom 28px
+    border-bottom 1px solid #dc0e4d
+    color c_white
+    background-color c_contrast
+    background-repeat no-repeat
+    background-image url(../images/i-rocket.png)
+    background-position 22px 22px
+    text-transform uppercase
+
+    @media (max-width: xl) and (min-width: xs)
+        padding-right 84px
+
+/*button*/.menu-company-type__header-switch
+    position absolute
+    right 47px
+    top 26px
+    width 50px
+    height 25px
+    border none
+    font-size 0
+    background-color transparent
+
+    background -moz-linear-gradient(top,  rgba(255,255,255,1) 17%, rgba(255,255,255,1) 18%, rgba(255,255,255,1) 20%, rgba(255,255,255,0) 21%, rgba(255,255,255,0) 39%, rgba(255,255,255,1) 40%, rgba(255,255,255,1) 47%, rgba(255,255,255,0.99) 60%, rgba(255,255,255,0) 61%, rgba(255,255,255,0) 79%, rgba(255,255,255,1) 80%, rgba(255,255,255,1) 89%)
+    background -webkit-linear-gradient(top,  rgba(255,255,255,1) 17%,rgba(255,255,255,1) 18%,rgba(255,255,255,1) 20%,rgba(255,255,255,0) 21%,rgba(255,255,255,0) 39%,rgba(255,255,255,1) 40%,rgba(255,255,255,1) 47%,rgba(255,255,255,0.99) 60%,rgba(255,255,255,0) 61%,rgba(255,255,255,0) 79%,rgba(255,255,255,1) 80%,rgba(255,255,255,1) 89%)
+    background linear-gradient(to bottom,  rgba(255,255,255,1) 17%,rgba(255,255,255,1) 18%,rgba(255,255,255,1) 20%,rgba(255,255,255,0) 21%,rgba(255,255,255,0) 39%,rgba(255,255,255,1) 40%,rgba(255,255,255,1) 47%,rgba(255,255,255,0.99) 60%,rgba(255,255,255,0) 61%,rgba(255,255,255,0) 79%,rgba(255,255,255,1) 80%,rgba(255,255,255,1) 89%)
+
+    display none
+
+    transition transform .4s ease-in, height .4s ease-in, top .4s ease-in
+
+    &:focus
+        outline none
+        box-shadow none
+
+    @media (max-width: xs)
+        display block
+
+    .menu-company-type--opened &
+        transform rotate(-450deg)
+        height 40px
+        top 20px
+
+.menu-company-type__content/*.company-types-list*/
+    background-color c_contrast
+
+    @media (max-width: xs)
+        position absolute
+        width 100%
+        top -500px
+        transition top .4s ease-in
+
+        .menu-company-type--opened &
+            top 79px
+
+.company-types-list
+    padding-left 0
+    margin-bottom 0
+
+.company-types-list__item
+    list-style none
+
+    &:not(:first-child) > a:not(.company-types-list__link--current)
+        box-shadow inset 0 1px 3px rgba(0,0,0,.72)
+
+.company-types-list__link
+    fontHvMedium16_24()
+    position relative
+    display block
+    min-height 59px
+    padding-left 40px
+    padding-right 30px
+    padding-top 16px
+    padding-bottom 19px
+    color c_aside
+    background-color c_contrast
+    text-decoration none
+    transition color .4s, background-color .4s
+
+    @media (max-width: xl) and (min-width: xs)
+        padding-left 20px
+        padding-right 10px
+
+    &:hover
+    &:focus
+        color c_aside
+        background-color c_contrast-darken
+        text-decoration none
+
+    &:active
+        color c_aside-active
+
+.company-types-list__link--current
+    color c_aside-current
+    padding-left 50px
+    padding-top 18px
+    padding-bottom 17px
+    background-color c_seo-2
+
+    @media (max-width: xl) and (min-width: xs)
+        padding-left 30px
+
+    &:hover
+    &:focus
+        color c_aside-current
+        background-color c_seo-2
+
+    &:active
+        color c_aside-current
+
+    &::before
+        position absolute
+        left -13px
+        top 0
+        width 0
+        height 0
+        border-style solid
+        border-width 30px 13px 30px 0
+        border-color transparent c_seo-2 transparent transparent
+        content ''
+
+    &::after
+        position absolute
+        left 23px
+        top 24px
+        width 7px
+        height 13px
+        background-repeat no-repeat
+        background-image url(../images/i-arrow-right.png)
+        content ''
+
+        @media (max-width: xl) and (min-width: xs)
+            left 11px
+
+        @media (max-width: xs)
+            transform rotate(-90deg)

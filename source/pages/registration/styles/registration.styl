@@ -1,0 +1,277 @@
+@import './helpers/_variables'
+@import './helpers/_mixins'
+@import './helpers/_block_mixins'
+
+/*main*/.registration-content/*.registration-page__content*/
+    position relative
+    display flex
+    align-items stretch
+    overflow hidden
+    width 100%
+    color c_white
+    background-color c_darker-bg
+    background-repeat no-repeat
+    background-image url(../images/bg-registration.jpg)
+    background-position left top
+    background-size auto 100%
+
+/*article*/.content-registration
+    width 100%
+    padding-top 70px
+    padding-bottom 42px
+    margin-right 533px
+
+    @media (max-width: md)
+        margin-right 0
+
+.content-registration__title
+    // width 600px
+    padding-left 144px
+    margin-top 0
+    margin-bottom 54px
+    fontHvBold32()
+    color c_white
+    text-transform uppercase
+    background-repeat no-repeat
+    background-image url(../images/bg-new-user-registration.png)
+    background-position 62px 0
+    background-size 66px 61px
+
+    @media (max-width: xss)
+        padding-left 90px
+        background-position 15px 0
+
+.registration-form/*.content-registration__form*/
+    // width 100%
+
+    > .btn
+        margin-left 107px
+
+        @media (max-width: xss)
+            margin-left 62px
+
+.registration-form__inner
+    height 550px
+    overflow-x hidden
+    padding-right 35px
+    margin-right 54px
+    margin-bottom 34px
+
+    &::-webkit-scrollbar
+        width 4px
+        background-color c_black-transparent-05
+        border-left none
+        border-right none
+        border-radius 3px
+    &::-webkit-scrollbar-button
+        background-color none
+        width 4px
+        border-left none
+        border-right none
+        border-radius: 3px;
+    &::-webkit-scrollbar-thumb
+        background-color: c_seo-2
+        width 4px
+        border-radius 3px
+        transition background-color .2s
+        cursor pointer
+    &::-webkit-scrollbar-thumb:hover
+        background-color c_seo-3
+
+    @media (max-width: xss)
+        height auto
+        overflow-x visible
+        margin-right 0
+        padding-right 20px
+
+
+/*fieldset*/.registration-form__step
+    bottom 0
+    padding-bottom 47px
+    padding-left 109px
+    margin-bottom 27px
+
+    @media (max-width: xss)
+        padding-left 60px
+
+    &:not(:last-of-type)
+        border-bottom 1px solid rgba(255, 255, 255, 0.3)
+
+/*legend*/.registration-form__legend
+    position relative
+    border 0
+    fontHvRoman18_36()
+    color c_white
+
+    &::before
+        position absolute
+        left -47px
+        top 0
+        bottom 0
+        width 30px
+        height 30px
+        padding-left 9px
+        border-radius 50%
+        border 2px solid c_seo-2
+        margin-top auto
+        margin-bottom auto
+        fontHvRoman14_27()
+        color c_seo-2
+        content attr(data-step-number)
+
+
+.registration-form__label
+    width 200px
+    padding-right 27px
+    margin-bottom 0
+    fontHvLight16_36()
+    color c_seo-2
+
+    &:not(:first-of-type)
+        margin-top 3px
+
+.registration-form__input
+.registration-form__select
+    margin-bottom 11px
+
+.registration-form__captcha-image
+    margin-bottom 11px
+
+.registration-form__choose-package
+    position absolute
+    top 0
+    right 0
+    bottom 0
+    width 533px
+    padding-top 70px
+    padding-bottom 30px
+    margin auto
+    color c_white
+    background-color c_promo-2
+    box-shadow bxsh-default
+
+    @media (max-width: md)
+        position static
+        width 100%
+        margin-bottom 20px
+
+.package-choose__title
+    width 400px
+    min-height 72px
+    padding-left 152px
+    margin-top 0
+    margin-bottom 26px
+    fontHvBold32_36()
+    color c_seo-2
+    text-transform uppercase
+    background-repeat no-repeat
+    background-image url(../images/bg-services-packages.svg)
+    background-position 59px 0
+    background-size 63px 63px
+
+    @media (max-width: md)
+        width 100%
+
+.package-choose__description
+    padding-left 61px
+    padding-right 20px
+    fontHvLight15_24()
+    color c_white
+
+    & > p
+        margin-bottom 30px
+
+/*ul*/.package-choose__packages
+    width 100%
+    padding-left 61px
+    padding-right 54px
+    margin 0
+    list-style-type none
+
+/*li*/.package-choose__package
+    // width 100%
+
+    &:not(:last-child)
+        margin-bottom 15px
+
+    & > input[type=radio]:checked + .service-package
+        padding-left 27px
+        padding-top 17px
+        padding-bottom 21px
+        border 5px solid c_dark-border
+        outline none
+
+/*label*/.service-package
+    position relative
+    box-sizing border-box
+    display block
+    width: 100%;
+    min-width 260px
+    min-height 180px
+    padding-left 31px
+    padding-right 20px
+    padding-top 21px
+    padding-bottom 25px
+    border 1px dotted c_dark-border
+    border-radius 5px
+    cursor pointer
+
+    @media (max-width: md)
+        width 418px
+
+    &::after
+        position absolute
+        width 100%
+        top 0
+        right 0
+        bottom 0
+        left 0
+        margin auto
+        content ''
+
+    &:hover
+    &:focus
+        padding-left 27px
+        padding-top 17px
+        padding-bottom 21px
+        border 5px solid c_dark-border
+        outline none
+
+    &:active:hover
+    &:active:focus
+        border 5px solid c_dark-border-darken
+
+.service-package__title
+    margin-top 0
+    margin-bottom 20px
+    fontHvBold22_auto()
+    color c_seo-2
+    text-transform uppercase
+
+/*ul*/.service-package__features
+    display inline-block
+    vertical-align top
+    max-width 260px
+    padding 0
+    margin 0
+    margin-right 15px
+    list-style-type none
+
+.service-package__price
+    display inline-block
+    vertical-align top
+    min-width 79px
+    padding-left 10px
+    padding-right 10px
+    padding-top 6px
+    padding-bottom 6px
+    border-radius 5px
+    fontHvRoman12_auto()
+    color c_darker-font
+    text-align center
+    background-color c_seo-2
+
+/*b*/.service-package__price--value
+    display block
+    margin-bottom -5px
+    fontHvBold28_auto()

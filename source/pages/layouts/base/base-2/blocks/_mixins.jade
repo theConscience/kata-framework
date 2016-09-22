@@ -1,0 +1,4 @@
+mixin wrapped_checkbox(type, label, id, name, checked, disabled)
+    div(class='wrapped-checkbox--' + type)
+        input(id=id, type='checkbox', name=name||id, checked=checked ? '' : false, disabled=disabled ? '' : false)
+        label(for=id)= label
