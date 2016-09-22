@@ -111,7 +111,7 @@ var path = require('path'),
 
     gutil.log('\n>>> Stuff happened', 'Really it did', gutil.colors.yellow(filename));
 
-    var rel_generated_content = './generated_content/';
+    var rel_generated_content = './build/';
     var rel_source = './source/';
     var abs_generated_content = path.resolve(rel_generated_content);
     var abs_source = path.resolve(rel_source);

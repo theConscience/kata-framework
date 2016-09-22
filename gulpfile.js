@@ -112,50 +112,19 @@ console.log('envOptions.componentName = ' + envOptions.cn);
 
 
 /* Sources */
-var src_js = [
-    'sources/js/**/*.js',
-    '!sources/js/**/jquery-*.min.js',
-    '!sources/js/jquery.jscrollpane.min.js',
-    '!sources/js/bootstrap.min.js',
-    '!sources/js/bowser.js',
-    '!sources/js/modernizr-custom.js',
-    '!sources/js/jquery.mCustomScrollbar.concat.min.js'
-  ],
-  src_css = 'sources/css/**/*.css',
-  src_stylus = [
-    // 'sources/css/variables.styl',
-    // 'sources/css/mixins.styl',
-    'sources/css/main__basic.styl',
-    'sources/css/main__flex.styl',
-    'sources/css/main__grid.styl',
-    'sources/css/main__misc.styl',
-    'sources/css/main__bootstrap_rewrites.styl',
-    'sources/css/tours_packet_search.styl'
-  ],
-  src_all_stylus = 'sources/css/**/*.styl',
-  src_html = 'sources/html/**/*.html',
-  src_img = 'sources/img/**/*',
-  src_ico = 'sources/img/favicon/*.ico',
-  src_jade = 'sources/html/**/*.jade',
-  src_fonts = 'sources/fonts/**/*',
-  src_material = 'node_modules/material-design-lite/material.min.*';
-
-
-/* Source */
 var src_pages = 'source/pages',
-  src_bases = 'source/pages/layouts/base',
-  src_subs = 'source/pages/layouts/sub',
+  src_bases = 'source/layouts/base',
+  src_subs = 'source/layouts/sub',
   src_components = 'source/components';
 
 var src_js_pages = [
-    'source/pages/' + (envOptions.pageName || '**') + '/scripts/*.js',
-    '!source/pages/layouts/**/*'
+    'source/pages/' + (envOptions.pageName || '**') + '/scripts/*.js'
   ],
   src_js_bases = [
-    'source/pages/layouts/base/' + (envOptions.baseName || '**') + '/scripts/*.js'
+    'source/layouts/base/' + (envOptions.baseName || '**') + '/scripts/*.js'
   ],
   src_js_subs = [
-    'source/pages/layouts/sub/' + (envOptions.subName || '**') + '/scripts/*.js'
+    'source/layouts/sub/' + (envOptions.subName || '**') + '/scripts/*.js'
   ],
   src_js_components = [
     'source/components/' + (envOptions.componentName || '**') + '/scripts/*.js'
@@ -163,8 +132,7 @@ var src_js_pages = [
 
 var getJsPagesSrc = function(folder) {
     return [
-      path.join(src_pages, folder, '/scripts/*.js'),
-      '!source/pages/layouts/**/*'
+      path.join(src_pages, folder, '/scripts/*.js')
     ];
   },
   getJsBasesSrc = function(folder) {
@@ -184,14 +152,13 @@ var getJsPagesSrc = function(folder) {
   };
 
 var src_css_pages = [
-    'source/pages/' + (envOptions.pageName || '**') + '/styles/*.css',
-    '!source/pages/layouts/**/*'
+    'source/pages/' + (envOptions.pageName || '**') + '/styles/*.css'
   ],
   src_css_bases = [
-    'source/pages/layouts/base/' + (envOptions.baseName || '**') + '/styles/*.css'
+    'source/layouts/base/' + (envOptions.baseName || '**') + '/styles/*.css'
   ],
   src_css_subs = [
-    'source/pages/layouts/sub/' + (envOptions.subName || '**') + '/styles/*.css'
+    'source/layouts/sub/' + (envOptions.subName || '**') + '/styles/*.css'
   ],
   src_css_components = [
     'source/components/' + (envOptions.componentName || '**') + '/styles/*.css'
@@ -199,8 +166,7 @@ var src_css_pages = [
 
 var getCssPagesSrc = function(folder) {
     return [
-      path.join(src_pages, folder, '/styles/*.css'),
-      '!source/pages/layouts/**/*'
+      path.join(src_pages, folder, '/styles/*.css')
     ];
   },
   getCssBasesSrc = function(folder) {
@@ -221,16 +187,15 @@ var getCssPagesSrc = function(folder) {
 
 var src_stylus_pages = [
     'source/pages/' + (envOptions.pageName || '**') + '/styles/*.styl',
-    '!source/pages/layouts/**/*',
     '!source/pages/**/styles/_*.styl'
   ],
   src_stylus_bases = [
-    'source/pages/layouts/base/' + (envOptions.baseName || '**') + '/styles/*.styl',
-    '!source/pages/layouts/base/**/styles/_*.styl'
+    'source/layouts/base/' + (envOptions.baseName || '**') + '/styles/*.styl',
+    '!source/layouts/base/**/styles/_*.styl'
   ],
   src_stylus_subs = [
-    'source/pages/layouts/sub/' + (envOptions.subName || '**') + '/styles/*.styl',
-    '!source/pages/layouts/sub/**/styles/_*.styl'
+    'source/layouts/sub/' + (envOptions.subName || '**') + '/styles/*.styl',
+    '!source/layouts/sub/**/styles/_*.styl'
   ],
   src_stylus_components = [
     'source/components/' + (envOptions.componentName || '**') + '/styles/*.styl',
@@ -240,20 +205,19 @@ var src_stylus_pages = [
 var getStylusPagesSrc = function(folder) {
     return [
       path.join(src_pages, folder, '/styles/*.styl'),
-      '!source/pages/layouts/**/*',
       '!source/pages/**/styles/_*.styl'
     ];
   },
   getStylusBasesSrc = function(folder) {
     return [
       path.join(src_bases, folder, '/styles/*.styl'),
-      '!source/pages/layouts/base/**/styles/_*.styl'
+      '!source/layouts/base/**/styles/_*.styl'
     ];
   },
   getStylusSubsSrc = function(folder) {
     return [
       path.join(src_subs, folder, '/styles/*.styl'),
-      '!source/pages/layouts/sub/**/styles/_*.styl'
+      '!source/layouts/sub/**/styles/_*.styl'
     ];
   },
   getStylusComponentsSrc = function(folder) {
@@ -263,55 +227,39 @@ var getStylusPagesSrc = function(folder) {
     ];
   };
 
-  // console.log('src_stylus_pages =', src_stylus_pages);
-  // console.log('src_stylus_bases =', src_stylus_bases);
-  // console.log('src_stylus_subs =', src_stylus_subs);
-  // console.log('src_stylus_components =', src_stylus_components);
 
-var src_all_stylus_pages = [
-    'source/pages/**/styles/*.styl',
-    '!source/pages/layouts/**/*'
-  ],
-  src_all_stylus_bases = 'source/pages/layouts/base/**/styles/*.styl',
-  src_all_stylus_subs = 'source/pages/layouts/sub/**/styles/*.styl',
+var src_all_stylus_pages = ['source/pages/**/styles/*.styl'],
+  src_all_stylus_bases = 'source/layouts/base/**/styles/*.styl',
+  src_all_stylus_subs = 'source/layouts/sub/**/styles/*.styl',
   src_all_stylus_components = 'source/components/**/styles/*.styl';
 
-var src_html_pages = [
-    'source/pages/' + (envOptions.pageName || '**') + '/html/*.html',
-    '!source/pages/layouts/**/*'
-  ],
-  src_html_bases = 'source/pages/layouts/base/' + (envOptions.baseName || '**') + '/html/*.html',
-  src_html_subs = 'source/pages/layouts/sub/' + (envOptions.subName || '**') + '/html/*.html',
+var src_html_pages = ['source/pages/' + (envOptions.pageName || '**') + '/html/*.html'],
+  src_html_bases = 'source/layouts/base/' + (envOptions.baseName || '**') + '/html/*.html',
+  src_html_subs = 'source/layouts/sub/' + (envOptions.subName || '**') + '/html/*.html',
   src_html_components = 'source/components/' + (envOptions.componentName || '**') + '/html/*.html';
 
 var src_img_pages = [
-    'source/pages/' + (envOptions.pageName || '**') + '/images/**/*', //'source/pages/' + (envOptions.pageName || '**') + '/images/**/*',
-    '!source/pages/layouts/**/*'
+    'source/pages/' + (envOptions.pageName || '**') + '/images/**/*' //'source/pages/' + (envOptions.pageName || '**') + '/images/**/*'
   ],
   src_img_bases = [
-    'source/pages/layouts/base/' + (envOptions.baseName || '**') + '/images/**/*' //'source/pages/layouts/base/' + (envOptions.baseName || '**') + '/images/**/*'
+    'source/layouts/base/' + (envOptions.baseName || '**') + '/images/**/*' //'source/layouts/base/' + (envOptions.baseName || '**') + '/images/**/*'
   ],
   src_img_subs = [
-    'source/pages/layouts/sub/' + (envOptions.subName || '**') + '/images/**/*' //'source/pages/layouts/sub/' + (envOptions.subName || '**') + '/images/**/*'
+    'source/layouts/sub/' + (envOptions.subName || '**') + '/images/**/*' //'source/layouts/sub/' + (envOptions.subName || '**') + '/images/**/*'
   ],
   src_img_components = [
     'source/components/' + (envOptions.componentName || '**') + '/images/**/*' //'source/components/' + (envOptions.componentName || '**') + '/images/**/*'
   ];
 
-// console.log('src_img_pages =', src_img_pages);
-// console.log('src_img_bases =', src_img_bases);
-// console.log('src_img_subs =', src_img_subs);
-// console.log('src_img_components =', src_img_components);
 
 var src_ico_pages = [
-    'source/pages/' + (envOptions.pageName || '**') + '/images/favicon/*.ico', //'source/pages/' + (envOptions.pageName || '**') + '/images/favicon/*.ico',
-    '!source/pages/layouts/**/*'
+    'source/pages/' + (envOptions.pageName || '**') + '/images/favicon/*.ico', //'source/pages/' + (envOptions.pageName || '**') + '/images/favicon/*.ico'
   ],
   src_ico_bases = [
-    'source/pages/layouts/base/' + (envOptions.baseName || '**') + '/images/favicon/*.ico' //'source/pages/layouts/base/' + (envOptions.baseName || '**') + '/images/favicon/*.ico'
+    'source/layouts/base/' + (envOptions.baseName || '**') + '/images/favicon/*.ico' //'source/layouts/base/' + (envOptions.baseName || '**') + '/images/favicon/*.ico'
   ],
   src_ico_subs = [
-    'source/pages/layouts/sub/' + (envOptions.subName || '**') + '/images/favicon/*.ico' //'source/pages/layouts/sub/' + (envOptions.subName || '**') + '/images/favicon/*.ico'
+    'source/layouts/sub/' + (envOptions.subName || '**') + '/images/favicon/*.ico' //'source/layouts/sub/' + (envOptions.subName || '**') + '/images/favicon/*.ico'
   ],
   src_ico_components = [
     'source/components/' + (envOptions.componentName || '**') + '/images/favicon/*.ico' //'source/components/' + (envOptions.componentName || '**') + '/images/favicon/*.ico'
@@ -319,19 +267,18 @@ var src_ico_pages = [
 
 var src_jade_pages = [
     'source/pages/' + (envOptions.pageName || '**') + '/*.jade', //'source/pages/' + (envOptions.pageName || '**') + '/*.jade',
-    '!source/pages/**/layouts/**/*',  // папка с базовыми лэйаутами
     '!source/pages/**/blocks/**/*',  // папка с блоками jade, используемыми для сборки основного файла
     '!source/pages/**/_*.jade'
   ],
   src_jade_bases = [
-    'source/pages/layouts/base/' + (envOptions.baseName || '**') + '/*.jade', //'source/pages/layouts/base/' + (envOptions.baseName || '**') + '/*.jade',
-    '!source/pages/layouts/base/**/blocks/**/*',
-    '!source/pages/layouts/base/**/_*.jade'
+    'source/layouts/base/' + (envOptions.baseName || '**') + '/*.jade', //'source/layouts/base/' + (envOptions.baseName || '**') + '/*.jade',
+    '!source/layouts/base/**/blocks/**/*',
+    '!source/layouts/base/**/_*.jade'
   ],
   src_jade_subs = [
-    'source/pages/layouts/sub/' + (envOptions.subName || '**') + '/*.jade', //'source/pages/layouts/sub/' + (envOptions.subName || '**') + '/*.jade',
-    '!source/pages/layouts/sub/**/blocks/**/*',
-    '!source/pages/layouts/sub/**/_*.jade'
+    'source/layouts/sub/' + (envOptions.subName || '**') + '/*.jade', //'source/layouts/sub/' + (envOptions.subName || '**') + '/*.jade',
+    '!source/layouts/sub/**/blocks/**/*',
+    '!source/layouts/sub/**/_*.jade'
   ],
   src_jade_components = [
     'source/components/' + (envOptions.componentName || '**') + '/*.jade', //'source/components/' + (envOptions.componentName || '**') + '/*.jade',
@@ -339,29 +286,19 @@ var src_jade_pages = [
     '!source/components/**/_*.jade'
   ];
 
-// console.log('src_jade_pages =', src_jade_pages);
-// console.log('src_jade_bases =', src_jade_bases);
-// console.log('src_jade_subs =', src_jade_subs);
-// console.log('src_jade_components =', src_jade_components);
 
 var src_fonts_pages = [
-    'source/pages/' + (envOptions.pageName || '**') + '/fonts/**/*', //'source/pages/' + (envOptions.pageName || '**') + '/fonts/**/*',
-    '!source/pages/layouts/**/*'
+    'source/pages/' + (envOptions.pageName || '**') + '/fonts/**/*' //'source/pages/' + (envOptions.pageName || '**') + '/fonts/**/*'
   ],
   src_fonts_bases = [
-    'source/pages/layouts/base/' + (envOptions.baseName || '**') + '/fonts/**/*' //'source/pages/layouts/base/' + (envOptions.baseName || '**') + '/fonts/**/*'
+    'source/layouts/base/' + (envOptions.baseName || '**') + '/fonts/**/*' //'source/layouts/base/' + (envOptions.baseName || '**') + '/fonts/**/*'
   ],
   src_fonts_subs = [
-    'source/pages/layouts/sub/' + (envOptions.subName || '**') + '/fonts/**/*' //'source/pages/layouts/sub/' + (envOptions.subName || '**') + '/fonts/**/*'
+    'source/layouts/sub/' + (envOptions.subName || '**') + '/fonts/**/*' //'source/layouts/sub/' + (envOptions.subName || '**') + '/fonts/**/*'
   ],
   src_fonts_components = [
     'source/components/' + (envOptions.componentName || '**') + '/fonts/**/*' //'source/components/' + (envOptions.componentName || '**') + '/fonts/**/*'
   ];
-
-// console.log('src_fonts_pages =', src_fonts_pages);
-// console.log('src_fonts_bases =', src_fonts_bases);
-// console.log('src_fonts_subs =', src_fonts_subs);
-// console.log('src_fonts_components =', src_fonts_components);
 
 
 var src_js_assets = 'source/assets/scripts/**/*.js',
@@ -374,19 +311,33 @@ var src_js_assets = 'source/assets/scripts/**/*.js',
   src_js_distrs = 'source/distrs/**/*.js';
 
 
-/* Destination folder */
-var DEST = 'build/';
-var dest_html = DEST + ''; // '';
+// console.log('src_stylus_pages =', src_stylus_pages);
+// console.log('src_stylus_bases =', src_stylus_bases);
+// console.log('src_stylus_subs =', src_stylus_subs);
+// console.log('src_stylus_components =', src_stylus_components);
+// console.log('src_img_pages =', src_img_pages);
+// console.log('src_img_bases =', src_img_bases);
+// console.log('src_img_subs =', src_img_subs);
+// console.log('src_img_components =', src_img_components);
+// console.log('src_jade_pages =', src_jade_pages);
+// console.log('src_jade_bases =', src_jade_bases);
+// console.log('src_jade_subs =', src_jade_subs);
+// console.log('src_jade_components =', src_jade_components);
+// console.log('src_fonts_pages =', src_fonts_pages);
+// console.log('src_fonts_bases =', src_fonts_bases);
+// console.log('src_fonts_subs =', src_fonts_subs);
+// console.log('src_fonts_components =', src_fonts_components);
+
 
 
 /* Generated Destination folder */
-var GENERATED_DEST = 'generated_content/';
-var dest_pages = GENERATED_DEST + 'pages';
-var dest_bases = GENERATED_DEST + 'base_layouts';
-var dest_subs = GENERATED_DEST + 'sub_layouts';
-var dest_components = GENERATED_DEST + 'components';
-var dest_assets = GENERATED_DEST + 'assets';
-var dest_distrs = GENERATED_DEST + 'distrs';
+var BUILD_DEST = 'build/';
+var dest_pages = BUILD_DEST + 'pages';
+var dest_bases = BUILD_DEST + 'base_layouts';
+var dest_subs = BUILD_DEST + 'sub_layouts';
+var dest_components = BUILD_DEST + 'components';
+var dest_assets = BUILD_DEST + 'assets';
+var dest_distrs = BUILD_DEST + 'distrs';
 
 
 /* Other */
@@ -396,18 +347,8 @@ var browsers_ver = ['not ie <= 9', 'iOS > 7'];
 
 
 /* Tasks */
-gulp.task('default', ['build', 'watch']);
+gulp.task('default', ['buildPages', 'watchKata']);
 
-gulp.task('build', ['buildJs',
-  'buildCss',
-  'buildStylus',
-  'buildHtml',
-  'buildJade',
-  //'buildFonts',
-  'buildImg',
-  'buildFavicon',
-  'buildMaterial'
-]);
 
 gulp.task('buildBases', [
   'buildJsBases',
@@ -488,21 +429,6 @@ gulp.task('buildAssets', [
   'buildAssetsDistrsCss',
   'buildAssetsDistrsMinCss'
 ]);
-
-
-
-// Watch Files For Changes
-gulp.task('watch', function() {
-  livereload.listen(); //default web-server
-
-  gulp.watch(src_js, ['reloadJs']);
-  gulp.watch(src_css, ['reloadCss']);
-  gulp.watch(src_all_stylus, ['reloadStylus']);
-  gulp.watch(src_html, ['reloadHtml']);
-  gulp.watch(src_jade, ['reloadJade']);
-  gulp.watch(src_img, ['reloadImg']);
-  gulp.watch(src_fonts, ['reloadFonts']);
-});
 
 
 
@@ -600,12 +526,6 @@ gulp.task('watchKata', function() {
 
 
 /* -------------------- Dependencies */
-//Material
-gulp.task('buildMaterial', function() {
-  gulp.src(src_material)
-    .pipe(gulp.dest(DEST + 'material'))
-    .pipe(livereload());
-});
 
 //Assets js
 gulp.task('buildAssetsJs', function() {
@@ -671,14 +591,9 @@ gulp.task('buildAssetsDistrsMinCss', function() {
     .pipe(livereload());
 });
 
+
+
 /* -------------------- JS */
-//Reload
-gulp.task('reloadJs', function() {
-  gulp.src(src_js)
-    .pipe(gulpIf(envOptions.min, concat('js.min.js'), concat('js.js')))
-    .pipe(gulp.dest(DEST + 'js'))
-    .pipe(livereload());
-});
 
 //Reload bases
 gulp.task('reloadJsBases', function() {
@@ -753,24 +668,6 @@ gulp.task('reloadJsComponents', function() {
   return tasks;
 });
 
-
-
-//Build
-gulp.task('buildJs', function() {
-  gulp.src(src_js)
-    // .pipe(jsmin())
-    // .pipe(rename({
-    //   suffix: '.min'
-    // }))
-    // .pipe(concat('js.min.js'))
-    .pipe(gulpIf(envOptions.min, jsmin()))
-    .pipe(gulpIf(envOptions.min, rename({
-      suffix: '.min'
-    })))
-    .pipe(gulpIf(envOptions.min, concat('js.min.js'), concat('js.js')))
-    .pipe(gulp.dest(DEST + 'js'))
-    .pipe(livereload());
-});
 
 
 //Build bases
@@ -868,15 +765,6 @@ gulp.task('buildJsComponents', function() {
 
 
 /* -------------------- CSS */
-//Reload
-gulp.task('reloadCss', function() {
-  gulp.src(src_css)
-    .pipe(gulpIf(envOptions.srcmp && envOptions.min, sourcemaps.init()))
-      .pipe(gulpIf(envOptions.min, concat('css.min.css'), concat('css.css')))
-    .pipe(gulpIf(envOptions.srcmp && envOptions.min, sourcemaps.write('.')))
-    .pipe(gulp.dest(DEST + 'css'))
-    .pipe(livereload());
-});
 
 //Reload bases
 gulp.task('reloadCssBases', function() {
@@ -898,6 +786,7 @@ gulp.task('reloadCssBases', function() {
 
   return tasks;
 });
+
 //Reload subs
 gulp.task('reloadCssSubs', function() {
   var folders = envOptions.subName ? [envOptions.subName] : getFolders(src_subs);
@@ -918,6 +807,7 @@ gulp.task('reloadCssSubs', function() {
 
   return tasks;
 });
+
 //Reload pages
 gulp.task('reloadCssPages', function() {
   var folders = envOptions.pageName ? [envOptions.pageName] : getFolders(src_pages);
@@ -938,6 +828,7 @@ gulp.task('reloadCssPages', function() {
 
   return tasks;
 });
+
 //Reload components
 gulp.task('reloadCssComponents', function() {
   var folders = envOptions.componentName ? [envOptions.componentName] : getFolders(src_components);
@@ -959,23 +850,6 @@ gulp.task('reloadCssComponents', function() {
   return tasks;
 });
 
-
-//Build
-gulp.task('buildCss', function() {
-  gulp.src(src_css)
-    .pipe(gulpIf(envOptions.srcmp, sourcemaps.init()))
-      .pipe(autoprefixer({
-        browsers: browsers_ver,
-        cascade: false
-      }))
-      // .pipe(cssmin())
-      // .pipe(concat('css.min.css'))
-      .pipe(gulpIf(envOptions.min, cssmin()))
-      .pipe(gulpIf(envOptions.min, concat('css.min.css'), concat('css.css')))
-    .pipe(gulpIf(envOptions.srcmp, sourcemaps.write('.')))
-    .pipe(gulp.dest(DEST + 'css'))
-    .pipe(livereload());
-});
 
 
 //Build bases
@@ -1097,10 +971,7 @@ gulp.task('buildCssComponents', function() {
 
 
 
-
 /* -------------------- Stylus */
-//Reload
-gulp.task('reloadStylus', ['buildStylus']);
 
 //Reload bases
 gulp.task('reloadStylusBases', ['buildStylusBases']);
@@ -1111,26 +982,6 @@ gulp.task('reloadStylusPages', ['buildStylusPages']);
 //Reload components
 gulp.task('reloadStylusComponents', ['buildStylusComponents']);
 
-//Build
-gulp.task('buildStylus', function() {
-  gulp.src(src_stylus)
-    .pipe(gulpIf(envOptions.srcmp, sourcemaps.init()))
-      .pipe(stylus())
-      .pipe(autoprefixer({
-        browsers: browsers_ver,
-        cascade: false
-      }))
-      // .pipe(gulpIf(envOptions.dev, combineMq({  //не работает с sourcemaps
-      //   beautify: true
-      // })))
-      .pipe(gulpIf(envOptions.min, cssnano()))
-      .pipe(gulpIf(envOptions.min, concat('style.min.css'), concat('style.css')))
-      // .pipe(cssnano())
-      // .pipe(concat('style.min.css'))
-    .pipe(gulpIf(envOptions.srcmp, sourcemaps.write('.')))
-    .pipe(gulp.dest(DEST + 'css'))
-    .pipe(livereload());
-});
 
 
 //Build bases
@@ -1259,15 +1110,7 @@ gulp.task('buildStylusComponents', function() {
 
 
 
-
-/* -------------------- Html */
-//Reload
-gulp.task('reloadHtml', function() {
-  gulp.src(src_html)
-    .pipe(gulp.dest(dest_html))
-    .pipe(livereload());
-});
-
+/* -------------------- HTML */
 
 //Reload bases
 gulp.task('reloadHtmlBases', function() {
@@ -1322,9 +1165,8 @@ gulp.task('reloadHtmlComponents', function() {
 });
 
 
-//Build
-gulp.task('buildHtml', ['reloadHtml']);
-//see jade
+
+// see jade
 
 //Build bases
 gulp.task('buildHtmlBases', ['reloadHtmlBases']);
@@ -1339,22 +1181,11 @@ gulp.task('buildHtmlPages', ['reloadHtmlPages']);
 gulp.task('buildHtmlComponents', ['reloadHtmlComponents']);
 
 
-//see jade
+// see jade
 
 
 
-
-/* -------------------- Jade */
-//Reload
-gulp.task('reloadJade', function() {
-  gulp.src(src_jade)
-    .pipe(jade({
-      locals: YOUR_LOCALS,
-      pretty: true
-    }))
-    .pipe(gulp.dest(dest_html))
-    .pipe(livereload());
-});
+/* -------------------- JADE */
 
 //Reload bases
 gulp.task('reloadJadeBases', function() {
@@ -1368,6 +1199,7 @@ gulp.task('reloadJadeBases', function() {
     ))
     .pipe(livereload());
 });
+
 //Reload subs
 gulp.task('reloadJadeSubs', function() {
   gulp.src(src_jade_subs)
@@ -1383,6 +1215,7 @@ gulp.task('reloadJadeSubs', function() {
     ))
     .pipe(livereload());
 });
+
 //Reload pages
 gulp.task('reloadJadePages', function() {
   gulp.src(src_jade_pages)
@@ -1398,6 +1231,7 @@ gulp.task('reloadJadePages', function() {
     ))
     .pipe(livereload());
 });
+
 //Reload components
 gulp.task('reloadJadeComponents', function() {
   gulp.src(src_jade_components)
@@ -1411,17 +1245,6 @@ gulp.task('reloadJadeComponents', function() {
     .pipe(livereload());
 });
 
-
-
-//Build
-gulp.task('buildJade', function() {
-  gulp.src(src_jade)
-    .pipe(jade({
-      locals: YOUR_LOCALS
-    }))
-    .pipe(gulp.dest(dest_html))
-    .pipe(livereload());
-});
 
 
 //Build bases
@@ -1484,10 +1307,7 @@ gulp.task('buildJadeComponents', function() {
 
 
 
-
 /* -------------------- Images */
-//Reload
-gulp.task('reloadImg', ['buildImg']);
 
 //Reload bases
 gulp.task('reloadImgBases', ['buildImgBases']);
@@ -1498,20 +1318,6 @@ gulp.task('reloadImgPages', ['buildImgPages']);
 //Reload components
 gulp.task('reloadImgComponents', ['buildImgComponents']);
 
-
-//Build
-gulp.task('buildImg', function() {
-  gulp.src(src_img)
-    .pipe(imagemin({
-      progressive: true,
-      svgoPlugins: [{
-        removeViewBox: false
-      }],
-      use: [pngquant()]
-    }))
-    .pipe(gulp.dest(DEST + 'img'))
-    .pipe(livereload());
-});
 
 
 //Build bases
@@ -1605,19 +1411,7 @@ gulp.task('buildImgDummy', function() {
 
 
 
-//Build
-gulp.task('buildFavicon', function() {
-  gulp.src(src_ico)
-    .pipe(gulp.dest(dest_html))
-    .pipe(livereload());
-});
-
-
-
-
 /* -------------------- Fonts */
-//Reload
-gulp.task('reloadFonts', ['buildFonts']);
 
 //Reload bases
 gulp.task('reloadFontsBases', ['buildFontsBases']);
@@ -1628,13 +1422,6 @@ gulp.task('reloadFontsPages', ['buildFontsPages']);
 //Reload components
 gulp.task('reloadFontsComponents', ['buildFontsComponents']);
 
-
-//Build
-gulp.task('buildFonts', function() {
-  gulp.src(src_fonts)
-    .pipe(gulp.dest(DEST + 'fonts'))
-    .pipe(livereload());
-});
 
 
 //Build bases
@@ -1696,6 +1483,39 @@ gulp.task('buildFontsDummy', function() {
   } else {
     gutil.log('   buildFontsDummy task warning:', gutil.colors.bold.red('envOptions.noFonts is disabled(' + envOptions.noFonts + '), this task should not be started (check your gulpfile.js for logic errors).'));
   }
+});
+
+
+
+/* -------------------- Old sources */
+
+/* Destination folder */
+var DEST_OLD = 'build_old/';
+var dest_html = DEST_OLD + ''; // '';
+
+var src_ico = 'sources/img/favicon/*.ico';
+var src_material = 'node_modules/material-design-lite/material.min.*';
+
+
+
+/* -------------------- Icons (need to work on this!) */
+
+//Build icons
+gulp.task('buildFavicon', function() {
+  gulp.src(src_ico)
+    .pipe(gulp.dest(dest_html))
+    .pipe(livereload());
+});
+
+
+
+/* -------------------- Dependencies (need to think on how this works!) */
+
+//Build Material
+gulp.task('buildMaterial', function() {
+  gulp.src(src_material)
+    .pipe(gulp.dest(DEST_OLD + 'material'))
+    .pipe(livereload());
 });
 
 
