@@ -2,5 +2,426 @@
 @import './helpers/_mixins'
 @import './helpers/_block_mixins'
 
+
 .avia-publications-content
-    color c_seo-darken
+    position relative
+    width 100%
+
+.publications__header
+    min-height 174px
+    padding-top 54px
+    padding-bottom 42px
+    padding-left 104px
+    padding-right 120px
+    text-align center
+
+    @media (max-width: bp_publications)
+        padding-left 103px
+        padding-right 103px
+
+    @media (max-width: bp_publications_lower)
+        padding-left 40px
+        padding-right 40px
+
+
+/*button*/.avia-publications__back
+    position absolute
+    top 54px
+    right 43px
+    border 1px solid c_border-lighter
+    border-radius 1px
+    text-indent -9999px
+    overflow hidden
+    width 63px
+    height 63px
+    background-color c_white
+    background-repeat no-repeat
+    background-image url(../images/i-publications-arrow-left.svg)
+    background-position 50% 6px
+    transition background-color .4s, box-shadow .4s
+
+    @media (max-width: bp_publications)
+        right 20px
+
+    @media (max-width: bp_publications_lower)
+        right 10px
+        top 10px
+        width 43px
+        height 43px
+
+    &:hover
+    &:focus
+        background-color c_basic-bg
+
+    &:active
+        box-shadow inset 0 0 13px -4px c_black-transparent-05
+
+
+.publications
+    // cursor crosshair
+
+/*h2*/.publications__title
+    margin 0
+    color c_darken-5-font
+
+.publications__title-primary
+    fontHvBold40_auto()
+    display block
+    margin-bottom -4px
+    text-transform uppercase
+
+.publications__title-secondary
+    fontHvRoman24_30()
+    display block
+    text-transform lowercase
+
+/*ol*/.publications__features-list
+    padding 0
+    margin 0
+    counter-reset li
+
+/*li*/.publications__features-list-item/*.publications-feature*/
+    display block
+    list-style none
+
+
+.publications-feature
+    position relative
+    display flex
+    flex-direction column
+    justify-content flex-start
+    align-items flex-start
+    padding-left 104px
+    padding-right 120px
+    padding-top 87px
+    padding-bottom 44px
+    min-height 422px
+    background-color c_white
+    background-repeat no-repeat
+
+    @media (max-width: bp_publications)
+        &.publications-feature
+            padding-left 30px
+            padding-right 30px
+
+    @media (max-width: bp_publications_lower)
+        &.publications-feature
+            padding-left 15px
+            padding-right 15px
+            padding-top 60px
+
+    &::before
+        position absolute
+        z-index 10
+        background-repeat no-repeat
+        content ''
+
+.publications-feature--share
+    background-color c_seo-2
+
+    @media (max-width: md)
+        padding-right 60px
+
+    &::before
+        left 627px
+        top 152px
+        width 710px
+        height 210px
+        background-image url(../images/bg-publications-share.png)
+
+        @media (min-width: 1457px)
+            left auto
+            right 0
+
+.publications-feature--mini-reviews
+    align-items flex-end
+    padding-top 63px
+    background-color #ef1054
+
+    @media (max-width: md)
+        padding-right 60px
+
+    &::before
+        right 839px
+        bottom -15px
+        width 464px
+        height 283px
+        background-image url(../images/bg-publications-reviews.png)
+
+        @media (max-width: 1106px)
+            right auto
+            left -314px
+
+        @media (max-width: bp_publications_lower)
+            right 100%
+            left auto
+
+.publications-feature--settings-control
+    background-color #ffc498
+
+    @media (max-width: md)
+        padding-right 60px
+
+    &::before
+        left 658px
+        top 94px
+        width 682px
+        height 291px
+        background-image url(../images/bg-publications-settings.png)
+
+        @media (min-width: 1457px)
+            left auto
+            right 0
+
+.publications-feature--availability
+    align-items flex-end
+    background-color #002c3d
+
+    @media (max-width: 811px)
+        padding-right 60px
+
+    &::before
+        right 620px
+        top 68px
+        width 664px
+        height 353px
+        background-image url(../images/bg-publications-availability.png)
+
+        @media (max-width: 811px)
+            right auto
+            left -589px
+
+        @media (max-width: bp_publications_lower)
+            right 100%
+            left auto
+
+.publications-feature--auto-posting
+    background-color #daf4f8
+
+    @media (max-width: md)
+        padding-right 60px
+
+    &::before
+        left 641px
+        top 62px
+        width 603px
+        height 298px
+        background-image url(../images/bg-publications-auto-posting.png)
+
+.publications-feature--distribution
+    align-items flex-end
+    background-color #00bc9b
+
+    @media (max-width: 906px)
+        padding-right 60px
+
+    &::before
+        right 758px
+        top 56px
+        width 401px
+        height 365px
+        background-image url(../images/bg-publications-distribution.png)
+
+        @media (max-width: 906px)
+            right auto
+            left -371px
+
+        @media (max-width: bp_publications_lower)
+            right 100%
+            left auto
+
+
+.publications-feature__header
+    position relative
+    padding-left 96px
+    margin-bottom 28px
+
+    @media (max-width: bp_publications_lower)
+        padding-left 0
+        padding-top 7em
+
+    .publications-feature--share &
+        color c_white
+
+    .publications-feature--mini-reviews &
+        padding-right 394px
+        color c_white
+
+        @media (max-width: 1381px)
+            align-self flex-start
+            padding-right 0
+
+    .publications-feature--settings-control &
+        color #5c4e40
+
+    .publications-feature--availability &
+        padding-right 89px
+        color #db3d71
+
+        @media (max-width: 811px)
+            align-self flex-start
+            padding-right 0
+
+    .publications-feature--auto-posting &
+        color #0e303f
+
+    .publications-feature--distribution &
+        max-width 570px
+        color #385c44
+
+        @media (max-width: 906px)
+            align-self flex-start
+
+    &::before
+        fontHvThin36_40()
+        position absolute
+        z-index 20
+        left 0
+        top 6px
+        width 64px
+        height 64px
+        padding-top 12px
+        padding-left 4px
+        text-align center
+        color c_white
+        background-color gray
+        counter-increment li
+        content '0' counter(li)
+
+    &::after
+        position absolute
+        z-index 10
+        left 0
+        top 6px
+        width 64px
+        height 64px
+        background-color lighten(gray, 20%)
+        transform rotate(25deg)
+        content ''
+
+    .publications-feature--share &::before
+        background-color #199090
+
+    .publications-feature--share &::after
+        background-color #40bebe
+
+    .publications-feature--mini-reviews &::before
+        background-color #ab0c3d
+
+    .publications-feature--mini-reviews &::after
+        background-color #de0e4e
+
+    .publications-feature--settings-control &::before
+        background-color #614d3d
+
+    .publications-feature--settings-control &::after
+        background-color #d9a782
+
+    .publications-feature--availability &::before
+        background-color #ef1054
+
+    .publications-feature--availability &::after
+        background-color #422643
+
+    .publications-feature--auto-posting &::before
+        background-color #0096a6
+
+    .publications-feature--auto-posting &::after
+        background-color #94e4eb
+
+    .publications-feature--distribution &::before
+        background-color #155c41
+
+    .publications-feature--distribution &::after
+        background-color #00a585
+
+
+/*h3*/.publications-feature__title
+    margin 0
+    text-transform uppercase
+
+.publications-feature__title-primary
+    fontHvBold36_40()
+    display block
+
+.publications-feature__title-secondary
+    fontHvThin36_40()
+    display block
+
+
+.publications-feature__content
+    fontHvRoman16_24()
+    position relative
+
+    @media (max-width: bp_publications)
+        &&:not(.publications-feature__content--shifted)
+            padding-left 96px
+
+    @media (max-width: bp_publications_lower)
+        &&&
+            padding-left 0
+
+    & > p
+        margin-bottom 24px
+
+    & > p:last-of-type
+        margin-bottom 0
+
+    .publications-feature--share &
+        max-width 548px
+        color #273f3f
+
+    .publications-feature--mini-reviews &
+        z-index 20
+        max-width 763px
+        padding-right 137px
+        color c_white
+
+        @media (max-width: 1106px)
+            align-self flex-start
+            padding-right 0
+            max-width 626px
+
+    .publications-feature--settings-control &
+        max-width 490px
+        padding-left 0
+        color #0e303f
+
+    .publications-feature--availability &
+        max-width 468px
+        color #688490
+
+        @media (max-width: 811px)
+            align-self flex-start
+
+    .publications-feature--auto-posting &
+        max-width 559px
+        color #0e303f
+
+    .publications-feature--distribution &
+        max-width 566px
+        padding-right 114px
+        color #273b2e
+
+        @media (max-width: 906px)
+            align-self flex-start
+            padding-right 0
+
+.publications-feature__content--shifted
+    padding-left 96px
+
+
+.publications-feature__buttons
+    clear both
+    margin-top 27px
+
+    @media (max-width: bp_publications)
+        &&:not(.publications-feature__buttons--shifted)
+            padding-left 96px
+
+    @media (max-width: bp_publications_lower)
+        &&
+            padding-left 0
+
+.publications-feature__buttons--shifted
+    padding-left 96px
