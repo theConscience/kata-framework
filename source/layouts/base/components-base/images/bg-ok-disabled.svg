@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+        fill-rule: evenodd;
+        opacity: 0.61;
+      }
+    </style>
+  </defs>
+  <path id="Shape_1_копия_3" data-name="Shape 1 копия 3" class="cls-1" d="M875,596v16h16V596H875Zm6.855,11.249-3.089-3.089,0.746-.746,2.343,2.343,4.633-4.633,0.746,0.746Z" transform="translate(-875 -596)"/>
+</svg>

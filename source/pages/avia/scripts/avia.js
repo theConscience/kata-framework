@@ -463,10 +463,74 @@
   };
 
 
+  var initInnerModal = function() {
+    var page = document.body;
+    var mainMenu = document.querySelector('.nav-external');
+    var innerModal = document.querySelector('.modal--inner');
+    var innerModalOpenButton = document.querySelector('#modal__open--inner');
+    var innerModalCloseButton = innerModal.querySelector('.modal__close');
+
+    var openInnerModal = function() {
+      if (!innerModal.classList.contains('modal--open')) {
+        innerModal.classList.add('modal--open');
+      }
+      if (!page.classList.contains('no-y-scroll')) {
+        page.classList.add('no-y-scroll');
+      }
+      if (!mainMenu.classList.contains('nav-external--fixed')) {
+        mainMenu.classList.add('nav-external--fixed');
+      }
+    };
+
+    var closeInnerModal = function() {
+      if (innerModal.classList.contains('modal--open')) {
+        innerModal.classList.remove('modal--open');
+      }
+      if (page.classList.contains('no-y-scroll')) {
+        page.classList.remove('no-y-scroll');
+      }
+      if (mainMenu.classList.contains('nav-external--fixed')) {
+        mainMenu.classList.remove('nav-external--fixed');
+      }
+    };
+
+    var onInnerModalOpenButtonClick = function(evt) {
+      evt.preventDefault()
+      openInnerModal();
+    };
+
+    var onInnerModalOpenButtonKeyDown = function(evt) {
+      if ([13, 32].indexOf(evt.keyCode) > -1) {
+        evt.preventDefault();
+        openInnerModal();
+      }
+    };
+
+    var onInnerModalCloseButtonClick = function(evt) {
+      evt.preventDefault()
+      closeInnerModal();
+    };
+
+    var onInnerModalCloseButtonKeyDown = function(evt) {
+      if ([13, 32].indexOf(evt.keyCode) > -1) {
+        evt.preventDefault();
+        closeInnerModal();
+      }
+    };
+
+    innerModalOpenButton.addEventListener('click', onInnerModalOpenButtonClick);
+    innerModalOpenButton.addEventListener('keydown', onInnerModalOpenButtonKeyDown);
+
+    innerModalCloseButton.addEventListener('click', onInnerModalCloseButtonClick);
+    innerModalCloseButton.addEventListener('keydown', onInnerModalCloseButtonKeyDown);
+  };
+
+
   initUploadablePartners();
   initUploadableClientsReplies();
   initBackToTopButton();
   initCompanyTypeMenuToggle();
   initCompanyTypeMenuScroll();
+  initInnerModal();
 
 })();

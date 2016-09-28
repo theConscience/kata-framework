@@ -4,8 +4,13 @@ doctype html
 html(lang='ru')
     head
         include ./blocks/_head
+
         block links
             include ./blocks/_links
+            link(href='./css/base_css.css' rel='stylesheet')
+            link(href='./css/base_style.css' rel='stylesheet')
+            
+        block components_links
 
     body(id=pageName ? pageName + '_page' : 'base-2_page', class=pageName ? pageName + '-page' : 'base-2-page')
 
@@ -14,10 +19,18 @@ html(lang='ru')
         main(class=pageName ? pageName + '-page__content ' + pageName + '-content' : 'base-2-page__content base-2-content')
 
             block content
+            
+            block inner_modals
 
         block right_side
+        
+        block modals
         
         block templates
 
         block scripts
             include ./blocks/_scripts
+            script(src='./js/base_js.js')
+            
+        block components_scripts
+ 
