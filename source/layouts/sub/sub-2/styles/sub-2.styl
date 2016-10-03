@@ -85,6 +85,7 @@
 .nav-external__link--lang-selection
     fontHvMedium18_30()
     padding-top 36px
+    padding-right 10px
     text-align center
     text-transform uppercase
     color c_darkest-font
@@ -92,6 +93,7 @@
 
     @media (max-width: xs)
         padding-top 28px
+        padding-right 0
 
     &:hover
     &:focus
@@ -100,14 +102,35 @@
     &:hover ~ .lang-selection__popup-1
         left 100px
 
+        @media (max-width: xs)
+            left 0
+            top 80px
+
     // &:focus ~ .lang-selection__popup-2
     //     visibility visible
     //     opacity 1
 
-    @media (max-width: xs)
-        &:hover ~ .lang-selection__popup-1
+    &::before
+        position absolute
+        top 0
+        bottom 0
+        right 20px
+        margin-top auto
+        margin-bottom auto
+        width 6px
+        height 10px
+        background-repeat no-repeat
+        background-image url(../images/i-language-chevron-right.png)
+        content ''
+
+        @media (max-width: xs)
+            top auto
+            bottom 10px
             left 0
-            top 80px
+            right 0
+            margin-left auto
+            margin-right auto
+            transform rotate(90deg)
 
 /*ul*/.lang-selection__popup-1/*.lang-selection*/
     position absolute
