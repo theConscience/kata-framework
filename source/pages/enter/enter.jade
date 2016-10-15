@@ -6,7 +6,7 @@ block head
 
 
 block append links
-    link(href='./css/page_css.css' rel='stylesheet')
+    //- link(href='./css/page_css.css' rel='stylesheet')
     link(href='./css/page_style.css' rel='stylesheet')
 
 
@@ -20,7 +20,9 @@ block append content
             .l-left
                 h1.hotels-enter__for-hotels.for-hotels
                     | Отелям 
-                    span.for-hotels__info 3452 отеля уже с нами
+                    span.for-hotels__info
+                        span.for-hotels__hotels-count 3452 
+                        | отеля уже с нами
                 h1.hotels-enter__for-representatives Представитель<wbr>ствам
             .l-right.flex-item-cross-end
                 a#hotels-enter__know-more.btn.btn--v7 Узнать больше
@@ -56,12 +58,14 @@ block append content
                         | Календарь квот мест. Мероприятия и события.
                         | Вебинары
 
-    article.enter-content__agents.agents-enter
+    article.enter-content__agents.enter-content--movable.agents-enter
         header.agents-enter__header.flex.flex-main-between
             .l-left
                 h1.agents-enter__for-agents.for-agents
                     | Агентам 
-                    span.for-agents__info 1345 агента уже с нами
+                    span.for-agents__info
+                        span.for-agents__agents-count 1345 
+                        | агента уже с нами 
                 h1.agents-enter__for-operators Туропера<wbr>торам
             .l-right.flex-item-cross-end          
                 a#agents-enter__know-more.btn.btn--v7 Узнать больше

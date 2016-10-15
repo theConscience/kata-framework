@@ -1,0 +1,102 @@
+@import 'helpers/_variables'
+@import 'helpers/_block_mixins'
+
+.custom-input
+    position relative
+    width 100%
+
+.custom-input--dark
+    max-width 244px
+
+    & > .custom-input__field
+        box-sizing border-box
+        width 100%
+        border 1px solid c_seo-2
+        padding-top 1px
+        padding-right 20px
+        padding-bottom 2px
+        padding-left 20px
+        fontHvLight14_36()
+        color c_white
+        background-color transparent
+        outline none
+        transition box-shadow .4s
+
+        &:hover
+        &:focus
+            box-shadow 0 0 6px c_seo-2, inset 0 0 3px c_seo-2
+
+        // &:invalid:hover
+        &.is-invalid:hover
+        // &:invalid:focus
+        &.is-invalid:focus
+            box-shadow 0 0 6px c_error-1, inset 0 0 3px c_error-1
+
+    & > .custom-input__validation-state
+        position absolute
+        right -19px - 17px
+        width 17px
+        background-repeat no-repeat
+        background-position 0 0
+        display none
+
+    & > .custom-input__validation-text
+        position absolute
+        bottom 10px
+        right 15px
+        color c_error-1
+        font-size 11px
+        display none
+
+.custom-input__field:invalid + .custom-input__validation-state
+.custom-input__field:required + .custom-input__validation-state
+.custom-input__field:valid + .custom-input__validation-state
+.custom-input__field.is-invalid + .custom-input__validation-state
+.custom-input__field.is-invalid + .custom-input__validation-state
+    display block
+
+.custom-input__field:invalid + .custom-input__validation-state
+    top 11px
+    height 17px
+    background-image url(../images/bg-err-1.svg)
+    background-size 20px 23px
+
+.custom-input__field:required + .custom-input__validation-state
+    top 11px
+    height 17px
+    background-image url(../images/bg-req-1.svg)
+    background-size 20px 17px
+
+.custom-input__field:valid + .custom-input__validation-state
+    top 12px
+    height 14px
+    background-image url(../images/bg-ok-1.png)
+    background-size 17px 14px
+
+.custom-input__field.is-invalid + .custom-input__validation-state
+    top 11px
+    height 17px
+    background-image url(../images/bg-err-1.svg)
+    background-size 20px 23px
+
+.custom-input__field.is-invalid ~ .custom-input__validation-text
+    display block
+
+.custom-input__field.is-valid + .custom-input__validation-state
+    top 12px
+    height 14px
+    background-image url(../images/bg-ok-1.png)
+    background-size 17px 14px
+
+.custom-input__field.is-valid:invalid + .custom-input__validation-state
+    top 11px
+    height 17px
+    background-image url(../images/bg-err-1.svg)
+    background-size 20px 23px
+
+// .custom-input__field:invalid
+.custom-input__field.is-invalid
+    border-color c_error-1
+
+.custom-input__field.is-valid
+    border-color c_seo-2

@@ -2,6 +2,11 @@
 @import './helpers/_block_mixins'
 @import './helpers/_mixins'
 
+// Пока решил что стили и скрипты компонентов будут добавляться не
+// в финальный CSS а отдельными файлами(в идеале) а пока - инклудится в базу.
+// @import '../../../base/base-2/styles/components/_custom_label'
+
+
 /**--------------------------------*\
  * .external-page__navigation
  **
@@ -99,7 +104,8 @@
     &:focus
         color c_contrast
 
-    &:hover ~ .lang-selection__popup-1
+    &:hover ~ .lang-selection__form > .lang-selection__popup-1
+    &:focus ~ .lang-selection__form > .lang-selection__popup-1
         left 100px
 
         @media (max-width: xs)
@@ -132,6 +138,9 @@
             margin-right auto
             transform rotate(90deg)
 
+/*form*/.lang-selection__form
+    display block
+
 /*ul*/.lang-selection__popup-1/*.lang-selection*/
     position absolute
     top 0
@@ -146,7 +155,8 @@
     transition left .4s ease-in
 
     &:hover
-    &.is-active
+    &:focus
+    // &.is-active
         left 100px
 
     @media (max-width: xs)
@@ -156,7 +166,8 @@
         transition top .4s ease-in
 
         &:hover
-        &.is-active
+        &:focus
+        // &.is-active
             left 0
             top 80px
 
@@ -223,16 +234,16 @@
     background-color c_contrast
 
     &:hover ~ .logo__popup
-    // &:focus ~ .logo__popup
-    & ~ .logo__popup.is-active
+    &:focus ~ .logo__popup
+    // & ~ .logo__popup.is-active
         left 100px
 
     @media (max-width: xs)
         padding-top 0
 
         &:hover ~ .logo__popup
-        // &:focus ~ .logo__popup
-        & ~ .logo__popup.is-active
+        &:focus ~ .logo__popup
+        // & ~ .logo__popup.is-active
             left -100%
             top 80px
 
@@ -299,14 +310,14 @@
         transition left .4s ease-in, opacity .4s ease-in
         content ''
 
-    &:hover::after
-    // &:focus::after
-        left 100px
-        opacity 1
-
-    &:hover ~ .sign-in__popup
-    // &:focus ~ .sign-in__popup
-        left 100px
+    // &:hover::after
+    // // &:focus::after
+    //     left 100px
+    //     opacity 1
+    //
+    // &:hover ~ .sign-in__popup
+    // // &:focus ~ .sign-in__popup
+    //     left 100px
 
     @media (max-width: xs)
         padding-top 48px
@@ -315,14 +326,14 @@
         &::after
             display none
 
-        &:hover::after
-        // &:focus::after
-            left 0
-
-        &:hover ~ .sign-in__popup
-        // &:focus ~ .sign-in__popup
-            left 0
-            top 80px
+        // &:hover::after
+        // // &:focus::after
+        //     left 0
+        //
+        // &:hover ~ .sign-in__popup
+        // // &:focus ~ .sign-in__popup
+        //     left 0
+        //     top 80px
 
 .sign-in__popup
     position absolute
@@ -352,13 +363,13 @@
         opacity 0
         content ''
 
-    &:hover::before
-    &:focus::before
+    // &:hover::before
+    // &:focus::before
     &.is-active::before
         opacity 1
 
-    &:hover
-    &:focus
+    // &:hover
+    // &:focus
     &.is-active
         left 100px
 
@@ -377,8 +388,8 @@
         &::before
             display none
 
-        &:hover
-        &:focus
+        // &:hover
+        // &:focus
         &.is-active
             left 0
             top 80px
@@ -413,6 +424,10 @@
     color c_white
     border 1px solid c_medium-border
     background-color transparent
+
+    &.is-invalid
+    &:invalid
+        border-color red
 
 .sign-in__login
     margin-bottom 12px

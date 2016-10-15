@@ -1,5 +1,16 @@
 'use strict';
 
+(function(e) { // .closest polyfill
+  e.closest = e.closest || function(css) {
+    var node = this;
+    while (node) {
+      if (node.matches(css)) return node;
+      else node = node.parentElement;
+    }
+    return null;
+  };
+})(Element.prototype);
+
 (function() {
   var customLabelsV1 = document.querySelectorAll('.custom-label--v1');
   var customLabelInnerInputs = [];

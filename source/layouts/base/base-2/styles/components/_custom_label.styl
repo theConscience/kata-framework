@@ -1,0 +1,36 @@
+@import 'helpers/_variables'
+@import 'helpers/_block_mixins'
+
+.custom-label
+    position relative
+
+.custom-label--v1
+    position relative
+    fontHvRoman14_30()
+
+    & > input
+        position relative
+        z-index 20
+        box-sizing border-box
+        width 182px
+        padding-top 2px
+        padding-right 20px
+        padding-bottom 1px
+        padding-left 20px
+        color c_white
+        border 1px solid c_medium-border
+        background-color transparent
+
+        &:focus + label
+        &[data-input=true] + label
+            font-size 12px
+            left 2px
+            top -21px
+            color c_contrast
+
+    & > label
+        position absolute
+        left 20px
+        top 2px
+        color c_medium-font
+        transition top .4s, left .4s, font-size .4s

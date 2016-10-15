@@ -2,6 +2,12 @@
 @import 'helpers/_block_mixins'
 
 
+@import 'components/_custom_select'
+@import 'components/_custom_input'
+@import 'components/_custom_checkbox'
+@import 'components/_custom_label'
+
+
 .btn
     position relative
     border-radius 0
@@ -169,198 +175,317 @@
     text-transform lowercase
 
 
-
-.custom-label--v1
-    position relative
-    fontHvRoman14_30()
-
-    & > input
-        position relative
-        z-index 20
-        box-sizing border-box
-        width 182px
-        padding-top 2px
-        padding-right 20px
-        padding-bottom 1px
-        padding-left 20px
-        color c_white
-        border 1px solid c_medium-border
-        background-color transparent
-
-        &:focus + label
-        &[data-input=true] + label
-            font-size 12px
-            left 2px
-            top -21px
-            color c_contrast
-
-    & > label
-        position absolute
-        left 20px
-        top 2px
-        color c_medium-font
-        transition top .4s, left .4s, font-size .4s
-
-
-
-.custom-checkbox--dark
-    // font-size 10px
-
-.custom-checkbox--dark > input[type=checkbox]
-    display none
-    width 18px
-    height 18px
-    border 0
-    box-shadow none
-    outline none
-
-    &:checked + label::after
-        opacity 1
-
-.custom-checkbox--dark > label
-    position relative
-    padding-left 31px
-    fontHvLight14_26()
-    color c_light-font
-    cursor pointer
-
-    &::before
-    &::after
-        position absolute
-        top 2px
-        left 0
-        width 18px
-        height 18px
-        content ''
-
-    &::before
-        border-radius 2px
-        background-color c_seo-3
-
-    &::after
-        opacity 0
-        background-repeat no-repeat
-        background-image url(../images/bg-ok-white.svg)
-        background-position 4px 5px
-        transition opacity .4s
-
-.custom-checkbox--dark > input:disabled + label
-.custom-checkbox--dark > input.is-disabled + label
-.custom-checkbox--dark > input.disabled + label
-    fontHvLight14_20()
-    color c_white
-    cursor default
-
-    &::before
-        border-radius 0
-        background-color c_promo-dull-lighten
-
-    &::after
-        background-image url(../images/bg-ok-dark.svg)
-
-.custom-input--dark
-    position relative
-    max-width 244px
-    width 100%
-
-    & > .custom-input__field
-        box-sizing border-box
-        width 100%
-        border 1px solid c_seo-2
-        padding-top 1px
-        padding-right 20px
-        padding-bottom 2px
-        padding-left 20px
-        fontHvLight14_36()
-        color c_white
-        background-color transparent
-        outline none
-        transition box-shadow .4s
-
-        &:hover
-        &:focus
-            box-shadow 0 0 6px c_seo-2, inset 0 0 3px c_seo-2
-
-    & > .custom-input__validation-state
-        position absolute
-        background-repeat no-repeat
-        background-position 0 0
-        display none
-
-.custom-input__field:valid + .custom-input__validation-state
-.custom-input__field.is-valid + .custom-input__validation-state
-        right -19px - 17px
-        top 12px
-        display block
-        width 17px
-        height 14px
-        background-image url(../images/bg-ok-1.png)
-        background-size 17px 14px
-
-.custom-input__field:invalid + .custom-input__validation-state
-.custom-input__field.is-invalid + .custom-input__validation-state
-        right -19px - 17px
-        top 11px
-        display block
-        width 17px
-        height 17px
-        background-image url(../images/bg-err-1.png)
-        background-size 17px 14px
+// Перенёс в отдельныq файл _custom_label.styl
+// используется в sub-2 шаблоне
+//
+// .custom-label
+//     position relative
+//
+// .custom-label--v1
+//     position relative
+//     fontHvRoman14_30()
+//
+//     & > input
+//         position relative
+//         z-index 20
+//         box-sizing border-box
+//         width 182px
+//         padding-top 2px
+//         padding-right 20px
+//         padding-bottom 1px
+//         padding-left 20px
+//         color c_white
+//         border 1px solid c_medium-border
+//         background-color transparent
+//
+//         &:focus + label
+//         &[data-input=true] + label
+//             font-size 12px
+//             left 2px
+//             top -21px
+//             color c_contrast
+//
+//     & > label
+//         position absolute
+//         left 20px
+//         top 2px
+//         color c_medium-font
+//         transition top .4s, left .4s, font-size .4s
 
 
+// Перенёс в отдельные файлы _custom_input.styl, _custom_select.styl и _custom_checkbox.styl
+// осталась проблема с картинками - их всё равно приходится хранить в базовом шаблоне, и они всегда копируются с ним
+// хотя - если они на странице не нужны, то они и не будут подгружаться, так что это ничего криминального
+//
+// На джанго, где статика страниц лежит в отдельной папке от статики базы - возникают проблемы, картинки, указанные в css компонентов придётся
+// вручную копировать туда из папки базы. На одной чаше весов получается Загрузка меньшего Css, а на другой - ручная работа по копированию картинок
+//
+// .custom-checkbox
+//     // cursor crosshair
+//
+// .custom-checkbox--dark
+//     // cursor crosshair
+//
+// .custom-checkbox--dark > input[type=checkbox]
+//     display none
+//     width 18px
+//     height 18px
+//     border 0
+//     box-shadow none
+//     outline none
+//
+//     &:checked + label::after
+//         opacity 1
+//
+// .custom-checkbox--dark > label
+//     position relative
+//     padding-left 31px
+//     fontHvLight14_26()
+//     color c_light-font
+//     cursor pointer
+//
+//     &::before
+//     &::after
+//         position absolute
+//         top 2px
+//         left 0
+//         width 18px
+//         height 18px
+//         content ''
+//
+//     &::before
+//         border-radius 2px
+//         background-color c_seo-3
+//
+//     &::after
+//         opacity 0
+//         background-repeat no-repeat
+//         background-image url(../images/bg-ok-white.svg)
+//         background-position 4px 5px
+//         transition opacity .4s
+//
+// .custom-checkbox--dark > input:disabled + label
+// .custom-checkbox--dark > input.is-disabled + label
+// .custom-checkbox--dark > input.disabled + label
+//     fontHvLight14_20()
+//     color c_white
+//     cursor default
+//
+//     &::before
+//         border-radius 0
+//         background-color c_promo-dull-lighten
+//
+//     &::after
+//         background-image url(../images/bg-ok-dark.svg)
+//
+//
+//
+// .custom-input
+//     position relative
+//     width 100%
+//
+// .custom-input--dark
+//     max-width 244px
+//
+//     & > .custom-input__field
+//         box-sizing border-box
+//         width 100%
+//         border 1px solid c_seo-2
+//         padding-top 1px
+//         padding-right 20px
+//         padding-bottom 2px
+//         padding-left 20px
+//         fontHvLight14_36()
+//         color c_white
+//         background-color transparent
+//         outline none
+//         transition box-shadow .4s
+//
+//         &:hover
+//         &:focus
+//             box-shadow 0 0 6px c_seo-2, inset 0 0 3px c_seo-2
+//
+//         // &:invalid:hover
+//         &.is-invalid:hover
+//         // &:invalid:focus
+//         &.is-invalid:focus
+//             box-shadow 0 0 6px c_error-1, inset 0 0 3px c_error-1
+//
+//     & > .custom-input__validation-state
+//         position absolute
+//         right -19px - 17px
+//         width 17px
+//         background-repeat no-repeat
+//         background-position 0 0
+//         display none
+//
+//     & > .custom-input__validation-text
+//         position absolute
+//         bottom 10px
+//         right 15px
+//         color c_error-1
+//         font-size 11px
+//         display none
+//
+// .custom-input__field:invalid + .custom-input__validation-state
+// .custom-input__field:required + .custom-input__validation-state
+// .custom-input__field:valid + .custom-input__validation-state
+// .custom-input__field.is-invalid + .custom-input__validation-state
+// .custom-input__field.is-invalid + .custom-input__validation-state
+//     display block
+//
+// .custom-input__field:invalid + .custom-input__validation-state
+//     top 11px
+//     height 17px
+//     background-image url(../images/bg-err-1.svg)
+//     background-size 20px 23px
+//
+// .custom-input__field:required + .custom-input__validation-state
+//     top 11px
+//     height 17px
+//     background-image url(../images/bg-req-1.svg)
+//     background-size 20px 17px
+//
+// .custom-input__field:valid + .custom-input__validation-state
+//     top 12px
+//     height 14px
+//     background-image url(../images/bg-ok-1.png)
+//     background-size 17px 14px
+//
+// .custom-input__field.is-invalid + .custom-input__validation-state
+//     top 11px
+//     height 17px
+//     background-image url(../images/bg-err-1.svg)
+//     background-size 20px 23px
+//
+// .custom-input__field.is-invalid ~ .custom-input__validation-text
+//     display block
+//
+// .custom-input__field.is-valid + .custom-input__validation-state
+//     top 12px
+//     height 14px
+//     background-image url(../images/bg-ok-1.png)
+//     background-size 17px 14px
+//
+// .custom-input__field.is-valid:invalid + .custom-input__validation-state
+//     top 11px
+//     height 17px
+//     background-image url(../images/bg-err-1.svg)
+//     background-size 20px 23px
+//
+// // .custom-input__field:invalid
+// .custom-input__field.is-invalid
+//     border-color c_error-1
+//
+// .custom-input__field.is-valid
+//     border-color c_seo-2
+//
+//
+//
+// .custom-select
+//     position relative
+//     width 100%
+//
+// .custom-select--dark
+//     max-width 244px
+//
+//     & > .custom-select__field
+//         box-sizing border-box
+//         width 100%
+//         height: 39px;
+//         border 1px solid c_seo-2
+//         padding-top 1px
+//         padding-right 20px
+//         padding-bottom 2px
+//         padding-left 20px
+//         fontHvLight14_36()
+//         color c_white
+//         background-color transparent
+//         outline none
+//         transition box-shadow .4s
+//
+//         &:hover
+//         &:focus
+//             box-shadow 0 0 6px c_seo-2, inset 0 0 3px c_seo-2
+//
+//         // &:invalid:hover
+//         &.is-invalid:hover
+//         // &:invalid:focus
+//         &.is-invalid:focus
+//             box-shadow 0 0 6px c_error-1, inset 0 0 3px c_error-1
+//
+//         & > option
+//             color c_black
+//
+//     & > .custom-select__validation-state
+//         position absolute
+//         right -19px - 17px
+//         width 17px
+//         background-repeat no-repeat
+//         background-position 0 0
+//         display none
+//
+//     & > .custom-select__validation-text
+//         position absolute
+//         bottom 10px
+//         right 15px
+//         color c_error-1
+//         font-size 11px
+//         display none
+//
+// .custom-select__field:invalid + .custom-select__validation-state
+// .custom-select__field:required + .custom-select__validation-state
+// .custom-select__field:valid + .custom-select__validation-state
+// .custom-select__field.is-invalid + .custom-select__validation-state
+// .custom-select__field.is-invalid + .custom-select__validation-state
+//     display block
+//
+// .custom-select__field:invalid + .custom-select__validation-state
+//     top 11px
+//     height 17px
+//     background-image url(../images/bg-err-1.svg)
+//     background-size 20px 23px
+//
+// .custom-select__field:required + .custom-select__validation-state
+//     top 11px
+//     height 17px
+//     background-image url(../images/bg-req-1.svg)
+//     background-size 20px 17px
+//
+// .custom-select__field:valid + .custom-select__validation-state
+//     top 12px
+//     height 14px
+//     background-image url(../images/bg-ok-1.png)
+//     background-size 17px 14px
+//
+// .custom-select__field.is-invalid + .custom-select__validation-state
+//     top 11px
+//     height 17px
+//     background-image url(../images/bg-err-1.svg)
+//     background-size 20px 23px
+//
+// .custom-select__field.is-invalid ~ .custom-select__validation-text
+//     display block
+//
+// .custom-select__field.is-valid + .custom-select__validation-state
+//     top 12px
+//     height 14px
+//     background-image url(../images/bg-ok-1.png)
+//     background-size 17px 14px
+//
+// .custom-select__field.is-valid:invalid + .custom-select__validation-state
+//     top 11px
+//     height 17px
+//     background-image url(../images/bg-err-1.svg)
+//     background-size 20px 23px
+//
+// // .custom-select__field:invalid
+// .custom-select__field.is-invalid
+//     border-color c_error-1
+//
+// .custom-select__field.is-valid
+//     border-color c_seo-2
 
-.custom-select--dark
-    position relative
-    max-width 244px
-    width 100%
-
-    & > .custom-select__field
-        box-sizing border-box
-        width 100%
-        height: 39px;
-        border 1px solid c_seo-2
-        padding-top 1px
-        padding-right 20px
-        padding-bottom 2px
-        padding-left 20px
-        fontHvLight14_36()
-        color c_white
-        background-color transparent
-        outline none
-        transition box-shadow .4s
-
-        &:hover
-        &:focus
-            box-shadow 0 0 6px c_seo-2, inset 0 0 3px c_seo-2
-
-        & > option
-            color c_black
-
-    & > .custom-select__validation-state
-        position absolute
-        background-repeat no-repeat
-        background-position 0 0
-        display none
-
-.custom-select__field:valid + .custom-select__validation-state
-.custom-select__field.is-valid + .custom-select__validation-state
-        right -19px - 17px
-        top 12px
-        display block
-        width 17px
-        height 14px
-        background-image url(../images/bg-ok-1.png)
-        background-size 17px 14px
-
-.custom-select__field:invalid + .custom-select__validation-state
-.custom-select__field.is-invalid + .custom-select__validation-state
-        right -19px - 17px
-        top 11px
-        display block
-        width 17px
-        height 17px
-        background-image url(../images/bg-err-1.png)
-        background-size 17px 14px
 
 .img--bordered
     border 1px solid #d4d4d4

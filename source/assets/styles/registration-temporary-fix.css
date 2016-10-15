@@ -1,0 +1,13 @@
+@media screen and (min-width: 1570px) {
+  .registration-content {
+    background-size: 100%;
+  }
+}
+
+.content-registration {
+  margin-right: 0;
+}
+
+.registration-form__choose-package {
+  display: none;
+}

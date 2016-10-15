@@ -104,13 +104,10 @@
     margin-left 24px
     fontHvLight12_auto()
     color c_darken-font
+    text-transform lowercase
+
 
 /*article*/.enter-content__agents
-    position absolute
-    top 0
-    bottom 0
-    // left 55%
-    left 60%
     width 100%
     padding-top 42px
     padding-left 67px
@@ -121,6 +118,19 @@
     background-image url(../images/bg-agents.jpg)
     background-position left top
     background-size auto 100%
+
+    @media (max-width: lg)
+        border-bottom 7px solid c_seo
+
+    @media (max-width: xs)
+        padding-left 36px
+
+.enter-content--movable
+    position absolute
+    z-index 10
+    top 0
+    bottom 0
+    left 62% // left 55%
     transition left 1s
 
     @media (max-width: lg)
@@ -129,10 +139,6 @@
         bottom auto
         left auto
         width 100%
-        border-bottom 7px solid c_seo
-
-    @media (max-width: xs)
-        padding-left 36px
 
     &:hover
         left 25%
@@ -143,7 +149,7 @@
 .features-list
     // width 699px
     // width 48.5%
-    width 56%
+    width 62%
     padding 0
     margin 0
     list-style-type none

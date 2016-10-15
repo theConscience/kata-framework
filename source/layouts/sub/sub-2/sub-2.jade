@@ -9,54 +9,59 @@ block append links
 
 
 block append scripts
+    script(src='../../distrs/hammerJS/hammer.min.js')
+    script(src='../../distrs/hammerJS/hammer-time.min.js')
+    script(src='../../distrs/utils/debounce.js')
     script(src='./js/sub_js.js')
- 
+
 
 block left_side
     nav.external-page__navigation.nav-external
         ul.nav-external__list
+            li.nav-external__item.lang-selection
+                a.nav-external__link.nav-external__link--lang-selection(href='#' title='Выберите язык') Rus
+                form#language__form.lang-selection__form(method='post' action='')
+                    input#language__value(type='hidden' name='language')
+                    ul.lang-selection__popup-1
+                        li.lang-selection__item
+                            a.lang-selection__link(href='#' data-language-code='en' title='Английский') Eng
+                        li.lang-selection__item
+                            a.lang-selection__link(href='#' data-language-code='zh-cn' title='Китайский') Chi
+                        li.lang-selection__item
+                            a.lang-selection__link(href='#' data-language-code='it' title='Итальянский') Ita
+                    ul.lang-selection__popup-2.languages
+                        li.languages__item
+                            a.languages__link(href='#') Deutch
+                        li.languages__item
+                            a.languages__link(href='#') Espanol
+                        li.languages__item
+                            a.languages__link(href='#') Francais
             li.nav-external__item
-                a.nav-external__link.nav-external__link--lang-selection(href='#') Rus
-                ul.lang-selection__popup-1.lang-selection
-                    li.lang-selection__item
-                        a.lang-selection__link(href='#') Eng
-                    li.lang-selection__item
-                        a.lang-selection__link(href='#') Chi
-                    li.lang-selection__item
-                        a.lang-selection__link(href='#') Ita
-                ul.lang-selection__popup-2.languages
-                    li.languages__item
-                        a.languages__link(href='#') Deutch
-                    li.languages__item
-                        a.languages__link(href='#') Espanol
-                    li.languages__item
-                        a.languages__link(href='#') Francais
-            li.nav-external__item
-                a.nav-external__link.nav-external__link--logo(href='#')
+                a.nav-external__link.nav-external__link--logo(href='#' title='Главная страница')
                     img.logo--white-small.img-responsive(src='images/img-uh-logo.svg' width='100' height='81')
                 .logo__popup
                     | Бесплатный Международный
                     | Туристический Справочник для
                     | отелей и операторов
             li.nav-external__item.position-static
-                a.nav-external__link.nav-external__link--sign-in(href='#sign-in') Вход
+                a.nav-external__link.nav-external__link--sign-in(href='#sign-in' title='Вход') Вход
                 section#sign-in.sign-in__popup
                     form#sign-in_form(action='#', method='POST')
                         header.sign-in__header Войти
-                        .custom-label--v1
-                            input#sign-in__login.sign-in__login(type='text', name='login')
+                        .custom-label.custom-label--v1
+                            input#sign-in__login.sign-in__login(type='text', name='login', required='')
                             label.sign-in__label Логин
-                        .custom-label--v1
-                            input#sign-in__password.sign-in__password(type='password', name='password')
+                        .custom-label.custom-label--v1
+                            input#sign-in__password.sign-in__password(type='password', name='password', required='')
                             label.sign-in__label Пароль
-                        a.sign-in__forgot-password(href='#') Забыли пароль?
+                        a.sign-in__forgot-password(href='#' title='Сброс пароля') Забыли пароль?
                         button.btn.btn--v5(type='submit') Войти
-                    a.btn.btn--v6(href='#') Регистрация
+                    a.btn.btn--v6(href='#' title='Регистрация') Регистрация
                     
             li.nav-external__item.nav-external__item--special
-                a.nav-external__link.nav-external__link--about(href='#') О нас
+                a.nav-external__link.nav-external__link--about(href='#' title='О нас') О нас
             li.nav-external__item
-                a.nav-external__link.nav-external__link--xml-test(href='#') XML-тест
+                a.nav-external__link.nav-external__link--xml-test(href='#' title='XML-тест') XML-тест
 
 
 block right_side

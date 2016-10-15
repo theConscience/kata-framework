@@ -14,13 +14,15 @@ block append links
     //- link(href='./css/page_css.css' rel='stylesheet')  // к этому шаблону не присоединено чистых css файлов
     link(href='./css/page_style.css' rel='stylesheet')
 
+    link(href='../../assets/css/registration-temporary-fix.min.css' rel='stylesheet')
+
 
 block append scripts
     script(src='../../distrs/mCustomScrollbar/jquery.mCustomScrollbar.concat.min.js')
     script(src='./js/page_js.js')
 
 
-block append content
+block append content 
     article.content-registration
         h1.content-registration__title Регистрация<br> нового пользователя
         form#registration-form.content-registration__form.registration-form(method=POST)
@@ -77,24 +79,22 @@ block append content
                                     +custom_checkbox('dark', 'Аренда вертолетов', 'reg-specialization-rent-helicopter')
 
                 fieldset.registration-form__step.registration-form__step-3
+                    legend.registration-form__legend(data-step-number='3') Контактное лицо
                     .l-row.l-row-main-start.l-row-wrap
-                        .l-col-basis-600
-                            legend.registration-form__legend(data-step-number='3') Контактное лицо
                         .l-row.l-row-wrap.l-col-basis-500
                             .l-col-basis-200
                                 label.registration-form__label(for='reg-contact-full-name')  ФИО
                             .l-col-basis-300
-                                +custom_input('dark', 'text', 'reg-contact-full-name', 'registration-form__input', 'contact-full-name', true)
+                                +custom_input('dark', 'text', 'reg-contact-full-name', 'registration-form__input', 'contact-full-name', true, false, pattern='[A-Za-zА-Яа-яЁё]{6,}')
                         .l-row.l-row-wrap.l-col-basis-500
                             .l-col-basis-200
                                 label.registration-form__label(for='reg-contact-phone') Номер телефона
                             .l-col-basis-300
-                                +custom_input('dark', 'text', 'reg-contact-phone', 'registration-form__input', 'contact-phone', required=true, placeholder='+7 ( ___ ) ___ __ __', pattern='\\+7\\s\\([0-9]{3}\\)[0-9]{7}', value='+7 (')
+                                +custom_input('dark', 'text', 'reg-contact-phone', 'registration-form__input', 'contact-phone', required=true, placeholder='+7 ( ___ ) ___ __ __', pattern='\\+7\\s\\(\\s[0-9]{3}\\s\\)\\s[0-9]{3}\\s[0-9]{2}\\s[0-9]{2}', value='+7 (')
 
                 fieldset.registration-form__step.registration-form__step-4
+                    legend.registration-form__legend(data-step-number='4') Пароль
                     .l-row.l-row-main-start.l-row-wrap 
-                        .l-col-basis-600
-                            legend.registration-form__legend(data-step-number='4') Пароль
                         .l-row.l-row-wrap.l-col-basis-500
                             .l-col-basis-200
                                 label.registration-form__label(for='reg-user-password') Пароль
@@ -160,4 +160,3 @@ block append content
 
 block right_side
     //- обнуляем этот блок, иначе он унаследуется от sub-2.jade
- 
