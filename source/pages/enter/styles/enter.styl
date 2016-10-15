@@ -49,8 +49,6 @@
     display flex
     justify-content space-between
     flex-wrap wrap
-    width 45%
-    min-width 522px
     margin-bottom 66px
 
     @media (max-width: xs)
@@ -61,6 +59,14 @@
 .agents-enter__header > div:nth-child(2)
     // padding-left 20px
     margin-top 20px
+
+.hotels-enter__header
+    width 55%
+    min-width 522px
+
+.agents-enter__header
+    width 45%
+    min-width 500px
 
 /*h1*/.hotels-enter__for-hotels
 /*h1*/.hotels-enter__for-representatives
@@ -153,6 +159,40 @@
     padding 0
     margin 0
     list-style-type none
+    font-size 10px
+
+    @media (max-width 1595px) and (min-width 1370px)
+        font-size 9px
+
+    @media (max-width 1482px) and (min-width 1370px)
+        font-size 8px
+
+    // @media (max-width 1369px) and (min-width 1258px)
+    //     font-size 7px
+
+    @media (max-width 1219px) and (min-width 1070px)
+        font-size 9px
+
+    @media (max-width 1144px) and (min-width 1070px)
+        font-size 8px
+
+    // @media (max-width 1024px) and (min-width 958px)
+    //     font-size 7px
+
+    @media (max-width 933px) and (min-width 841px)
+        font-size 9px
+
+    @media (max-width 887px) and (min-width 841px)
+        font-size 8px
+
+    @media (max-width 751px) and (min-width 613px)
+        font-size 9px
+
+    @media (max-width 682px) and (min-width 613px)
+        font-size 8px
+
+    // @media (max-width 612px) and (min-width 543px)
+    //     font-size 7px
 
     @media (max-width: lg)
         width 100%
@@ -168,7 +208,6 @@
     min-height 184px
     background-repeat no-repeat
     background-position 30px 20px
-    padding-top 115px
 
     // &:nth-child(-n+3)
     //     background-position 30px 0px
@@ -185,6 +224,22 @@
         & > .smaller-title
             fontHvLight15_22()
 
+.features-list__item--stretchy
+    flex-basis 23.3em
+    max-width 23.3em
+    padding-top 11.5em
+    padding-left 3.2em
+    padding-right 3.2em
+    min-height 18.4em
+    background-position 3em 2em
+
+    > h2
+        fontHvBold15_22em()
+
+        & > .smaller-title
+            font-size 1em
+            line-height 1em
+
 .features-list__item--marked.features-list__item--marked /* хак - чтобы не наследовать padding-top 88px*/
     padding-top 14px
     padding-right 27px
@@ -200,50 +255,96 @@
         fontHvLight14_28()
         text-transform lowercase
 
+    &.features-list__item--stretchy
+        padding-top 1.4em
+        padding-right 2.7em
+        padding-bottom 1.8em
+        padding-left 2.7em
+        border-width .7em
+
+        > h2
+            fontHvBold16_28em()
+
+        > span
+            fontHvLight14_28em()
+
 .features-list__item--tourist-services
     background-image url(../images/bg-tourist-services.png)
     background-size 54px 64px
+
+    &.features-list__item--stretchy
+        background-size 5.4em 6.4em
 
 
 .features-list__item--hotel-page
     background-image url(../images/bg-hotel-page.png)
     background-size 78px 64px
 
+    &.features-list__item--stretchy
+        background-size 7.8em 6.4em
+
 .features-list__item--online-booking
     background-image url(../images/bg-share-services.png)
     background-size 45px 68px
+
+    &.features-list__item--stretchy
+        background-size 4.5em 6.8em
 
 .features-list__item--prices-spo
     background-image url(../images/bg-prices-spo.png)
     background-size 77px 66px
 
+    &.features-list__item--stretchy
+        background-size 7.7em 6.6em
+
 .features-list__item--news
     background-image url(../images/bg-news-social.png)
     background-size 79px 79px
+
+    &.features-list__item--stretchy
+        background-size 7.9em 7.9em
 
 .features-list__item-company-profile
     background-image url(../images/bg-profile.png)
     background-size 72px 57px
 
+    &.features-list__item--stretchy
+        background-size 7.2em 5.7em
+
 .features-list__item--hotel-replies
     background-image url(../images/bg-replies.png)
     background-size 72px 57px
+
+    &.features-list__item--stretchy
+        background-size 7.2em 5.7em
 
 .features-list__item--events-calendar
     background-image url(../images/bg-calend.png)
     background-size 78px 79px
 
+    &.features-list__item--stretchy
+        background-size 7.8em 7.9em
+
 .features-list__item--share-services
     background-image url(../images/bg-tourist-services.png)
     background-size 54px 64px
+
+    &.features-list__item--stretchy
+        background-size 5.4em 6.4em
 
 .features-list__item--tours-excursions
     background-image url(../images/bg-tours-excursions.png)
     background-size 79px 59px
 
+    &.features-list__item--stretchy
+        background-size 7.9em 5.9em
+
 .features-list__item--statistics-fincenters
     background-image url(../images/bg-stat.png)
     background-size 64px 64px
+
+    &.features-list__item--stretchy
+        background-size 6.4em 6.4em
 
 
 /**--------------------------------*\
