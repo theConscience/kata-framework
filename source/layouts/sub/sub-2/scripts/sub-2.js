@@ -98,6 +98,7 @@
 
 
   // Добавляю поддержку свайпов на всплывающее окно
+  delete Hammer.defaults.cssProps.userSelect;
   var signInHammer = new Hammer(signInPopup);
 
   signInHammer.on('swipe', function(evt) {

@@ -106,7 +106,7 @@ block append content
                                 +custom_input('dark', 'password', 'reg-user-password-check', 'registration-form__input', 'user-password-check', true, false, pattern='[\\w|\\W]{6,}')
                         .l-row.l-row-wrap.l-row-cross-end.l-col-basis-500 
                             .l-col-basis-200
-                                label.registration-form__label(for='reg-captcha') Введите код с картинки
+                                label.registration-form__label.registration-form__label--long(for='reg-captcha') Введите код с картинки
                                 img#reg-captcha__image.registration-form__captcha-image(alt='captcha image' src='images/bg-captcha.png' width='97' height='35')
                             .l-col-basis-300
                                 +custom_input('dark', 'text', 'reg-captcha', 'registration-form__input', 'captcha', true)

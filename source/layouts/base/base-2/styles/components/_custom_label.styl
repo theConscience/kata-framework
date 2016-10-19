@@ -20,8 +20,12 @@
         color c_white
         border 1px solid c_medium-border
         background-color transparent
+        // font-size 1em
+        // line-height 2.142857
+        height calc(30px + 2px + 1px + 1px + 1px) /* ie-fix 30 + 2 + 1 + 1 + 1 = 35px */
 
         &:focus + label
+        &:valid + label
         &[data-input=true] + label
             font-size 12px
             left 2px
@@ -34,3 +38,6 @@
         top 2px
         color c_medium-font
         transition top .4s, left .4s, font-size .4s
+        // font-size 1em
+        // line-height 2.142857
+        height calc(30px + 2px + 1px + 1px + 1px) /* ie-fix 30 + 2 + 1 + 1 + 1 = 35px */
