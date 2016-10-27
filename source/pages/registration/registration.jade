@@ -99,11 +99,11 @@ block append content
                             .l-col-basis-200
                                 label.registration-form__label(for='reg-user-password') Пароль
                             .l-col-basis-300
-                                +custom_input('dark', 'password', 'reg-user-password', 'registration-form__input', 'user-password', true, false, pattern='[\\w|\\W]{6,}')
+                                +custom_input('dark', 'password', 'reg-user-password', 'registration-form__input', 'user-password', true, placeholder='At least 6 symbols', pattern='[\\w|\\W]{6,}')
                             .l-col-basis-200
                                 label.registration-form__label(for='reg-user-password-check') Подтвердите пароль
                             .l-col-basis-300
-                                +custom_input('dark', 'password', 'reg-user-password-check', 'registration-form__input', 'user-password-check', true, false, pattern='[\\w|\\W]{6,}')
+                                +custom_input('dark', 'password', 'reg-user-password-check', 'registration-form__input', 'user-password-check', true, placeholder='At least 6 symbols', pattern='[\\w|\\W]{6,}')
                         .l-row.l-row-wrap.l-row-cross-end.l-col-basis-500 
                             .l-col-basis-200
                                 label.registration-form__label.registration-form__label--long(for='reg-captcha') Введите код с картинки

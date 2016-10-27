@@ -38,6 +38,31 @@
     background-position left top
     background-size auto 100%
 
+    @media (max-width 1369px) and (min-width 1353px)  /* rimma fix */
+        padding-left calc(67px - 17px)
+
+    @media (max-width 1352px) and (min-width 1343px)  /* rimma fix */
+        padding-left calc(67px - 27px)
+
+    @media (max-width 1342px) and (min-width 1333px)  /* rimma fix */
+        padding-left calc(67px - 37px)
+
+    @media (max-width 1332px) and (min-width 1323px)  /* rimma fix */
+        padding-left calc(67px - 47px)
+
+    @media (max-width 1024px) and (min-width 1011px)  /* rimma fix */
+        padding-left calc(67px - 17px)
+
+    @media (max-width 1010px) and (min-width 1001px)  /* rimma fix */
+        padding-left calc(67px - 27px)
+
+    @media (max-width 1000px) and (min-width 991px)  /* rimma fix */
+        padding-left calc(67px - 37px)
+
+    @media (max-width 990px) and (min-width 981px)  /* rimma fix */
+        padding-left calc(67px - 47px)
+
+
     @media (max-width: lg)
         border-bottom 7px solid c_seo
 
@@ -50,6 +75,27 @@
     justify-content space-between
     flex-wrap wrap
     margin-bottom 66px
+
+    &.hotels-enter__header--stretchy
+    &.agents-enter__header--stretchy
+        font-size 10px
+        line-height 1
+        margin-bottom 6.6em
+
+        // RIMMA FIX - not implemented yet
+        //
+        // @media (max-width 1595px) and (min-width 1483px)
+        //     font-size 9px
+        //
+        // @media (max-width 1482px) and (min-width 1322px)
+        //     font-size 8px
+
+    @media (max-height xs-y) and (min-width xs)
+        margin-bottom 16px
+
+        &.hotels-enter__header--stretchy
+        &.agents-enter__header--stretchy
+            margin-bottom 1.6em
 
     @media (max-width: xs)
         width 100%
@@ -64,9 +110,21 @@
     width 55%
     min-width 522px
 
+.hotels-enter__header--ru-fix
+    @media (min-width 1594px)
+        min-width 651px
+
 .agents-enter__header
     width 45%
     min-width 500px
+
+.agents-enter__header--eng-fix
+    @media (max-width 1499px) and (min-width 1024px)
+        min-width 456px
+
+    @media (max-width 1498px) and (min-width 1483px)
+        width 44%
+
 
 /*h1*/.hotels-enter__for-hotels
 /*h1*/.hotels-enter__for-representatives
@@ -77,31 +135,55 @@
     color c_white
     text-transform uppercase
 
+    .hotels-enter__header--stretchy &
+    .agents-enter__header--stretchy &
+        font-size 3.2em
+        line-height 1
+
 .hotels-enter__for-representatives
     padding-right 20px
 
+    .hotels-enter__header--stretchy &
+        padding-right 2em
+
     @media (max-width: 1140px)
         max-width 400px
+
+        .hotels-enter__header--stretchy &
+            max-width 40em
 
     @media (max-width: xs)
         max-width none
 
     @media (max-width: xss)
         max-width 400px
+
+        .hotels-enter__header--stretchy &
+            max-width 40em
 
 .agents-enter__for-operators
     @media (max-width: 1140px)
         max-width 285px
 
+        .agents-enter__header--stretchy &
+            max-width 28.5em
+
     @media (max-width: xs)
         max-width none
 
     @media (max-width: xss)
         max-width 285px
 
+        .agents-enter__header--stretchy &
+            max-width 28.5em
+
 /*h1*/.hotels-enter__for-hotels
 /*h1*/.agents-enter__for-agents
     margin-bottom 20px
+
+.hotels-enter__header--stretchy .hotels-enter__for-hotels
+.agents-enter__header--stretchy .agents-enter__for-agents
+    margin-bottom .625em
 
 .for-hotels__info
 .for-agents__info
@@ -128,6 +210,30 @@
     background-image url(../images/bg-agents.jpg)
     background-position left top
     background-size auto 100%
+
+    @media (max-width 1369px) and (min-width 1353px)  /* rimma fix */
+        padding-left calc(67px - 17px)
+
+    @media (max-width 1352px) and (min-width 1343px)  /* rimma fix */
+        padding-left calc(67px - 27px)
+
+    @media (max-width 1342px) and (min-width 1333px)  /* rimma fix */
+        padding-left calc(67px - 37px)
+
+    @media (max-width 1332px) and (min-width 1323px)  /* rimma fix */
+        padding-left calc(67px - 47px)
+
+    @media (max-width 1024px) and (min-width 1011px)  /* rimma fix */
+        padding-left calc(67px - 17px)
+
+    @media (max-width 1010px) and (min-width 1001px)  /* rimma fix */
+        padding-left calc(67px - 27px)
+
+    @media (max-width 1000px) and (min-width 991px)  /* rimma fix */
+        padding-left calc(67px - 37px)
+
+    @media (max-width 990px) and (min-width 981px)  /* rimma fix */
+        padding-left calc(67px - 47px)
 
     @media (max-width: lg)
         border-bottom 7px solid c_seo
@@ -165,10 +271,10 @@
     list-style-type none
     font-size 10px
 
-    @media (max-width 1595px) and (min-width 1370px)
+    @media (max-width 1595px) and (min-width 1322px)
         font-size 9px
 
-    @media (max-width 1482px) and (min-width 1370px)
+    @media (max-width 1482px) and (min-width 1322px)
         font-size 8px
 
     // @media (max-width 1369px) and (min-width 1258px)
@@ -178,6 +284,9 @@
         font-size 9px
 
     @media (max-width 1144px) and (min-width 1070px)
+        font-size 8px
+
+    @media (max-width 1024px) and (min-width 981px)
         font-size 8px
 
     // @media (max-width 1024px) and (min-width 958px)
@@ -393,6 +502,11 @@
     background-position center 68px
     background-size 105px 105px
     text-align center
+
+    @media (max-height xs-y) and (min-width xs)
+        min-height calc(327px - 60px)
+        padding-top calc(196px - 60px)
+        background-position center calc(68px - 45px)
 
 .info-additional__promo-banner
     position relative

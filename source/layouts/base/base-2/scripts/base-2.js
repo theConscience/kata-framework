@@ -1,5 +1,16 @@
 'use strict';
 
+
+(function(e) { // .closest polyfill
+  e.matches || (e.matches=e.matchesSelector||function(selector) {
+    var matches = document.querySelectorAll(selector), th = this;
+    return Array.prototype.some.call(matches, function(e) {
+       return e === th;
+    });
+  });
+})(Element.prototype);
+
+
 (function(e) { // .closest polyfill
   e.closest = e.closest || function(css) {
     var node = this;
@@ -10,6 +21,7 @@
     return null;
   };
 })(Element.prototype);
+
 
 (function() {
   var customLabelsV1 = document.querySelectorAll('.custom-label--v1');

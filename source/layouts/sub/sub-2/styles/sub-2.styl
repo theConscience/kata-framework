@@ -173,6 +173,7 @@
 
 .lang-selection__item
     width 100px
+    min-width 100px /* IE11 fix */
 
     &:nth-of-type(odd) > .lang-selection__link
         background-color c_darken-bg
@@ -228,8 +229,14 @@
 /* logo block *\
 \*------------*/
 
-.nav-external__link--logo
+
+.nav-external__link--logo-uh
     padding-top 22px
+
+.nav-external__link--logo-ut
+    padding-top 18px
+
+.nav-external__link--logo
     color #fff
     background-color c_contrast
 
@@ -246,6 +253,7 @@
         // & ~ .logo__popup.is-active
             left -100%
             top 80px
+
 
 /*img*/.logo--white-small
     width 80px
