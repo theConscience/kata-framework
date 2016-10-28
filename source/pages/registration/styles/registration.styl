@@ -18,7 +18,7 @@
     color c_white
     background-color c_darker-bg
     background-repeat no-repeat
-    background-image url(../images/bg-registration.jpg)
+    background-image url(../images/bg-registration-light.jpg)
     background-position left top
     background-size auto 100%
 
@@ -27,6 +27,8 @@
     padding-top 70px
     padding-bottom 42px
     margin-right 533px
+    background-color c_black-transparent-03
+    box-shadow 0 0 5px c_black
 
     @media (max-width: md)
         margin-right 0
@@ -103,6 +105,10 @@
 
     &:not(:last-of-type)
         border-bottom 1px solid rgba(255, 255, 255, 0.3)
+
+.registration-form__step--has-error .registration-form__legend::before
+    color c_contrast
+    border-color c_contrast
 
 /*legend*/.registration-form__legend
     position relative
