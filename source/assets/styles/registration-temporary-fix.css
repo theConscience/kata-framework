@@ -4,9 +4,10 @@
   }
 }
 
-/*.content-registration {
+.content-registration {
   margin-right: 0;
-}*/
+  width: 983px;
+}
 
 .registration-form__choose-package {
   display: none;

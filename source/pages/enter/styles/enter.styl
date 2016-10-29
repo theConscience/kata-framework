@@ -6,6 +6,29 @@
 //     body
 //         flex-direction column
 
+.is-scalable
+    font-size 10px
+
+    // scalability fixes
+
+    @media (max-width 1594px)
+        font-size 9px
+
+    @media (max-width 1447px)
+        font-size 8px
+
+    @media (max-width 1298px)
+        font-size 7px
+
+    @media (max-width 1023px)
+        font-size 8px
+
+    @media (max-width 939px)
+        font-size 7px
+
+    @media (max-width xs)
+        font-size 10px
+
 /**--------------------------------*\
  * .enter-page__content
  **
@@ -23,6 +46,24 @@
     // padding-left 100px
     background-color c_darker-bg
 
+    .is-scalable &
+    &.is-scalable
+        margin-right 28.4em
+
+    // scalability fixes
+    &.is-scalable
+        @media (max-width 750px)
+            font-size 9px
+
+        @media (max-width 677px)
+            font-size 8px
+
+        @media (max-width 603px)
+            font-size 7px
+
+        @media (max-width 530px)
+            font-size 10px
+
     @media (max-width: lg)
         flex-direction: column;
 
@@ -38,36 +79,30 @@
     background-position left top
     background-size auto 100%
 
-    @media (max-width 1369px) and (min-width 1353px)  /* rimma fix */
-        padding-left calc(67px - 17px)
+    .is-scalable &
+    &.is-scalable
+        padding-top 4.2em
+        padding-left 6.7em
+        padding-bottom 3em
 
-    @media (max-width 1352px) and (min-width 1343px)  /* rimma fix */
-        padding-left calc(67px - 27px)
+        @media (max-width 1150px) and (min-width 837px) // scalability fix
+            padding-left 4.7em
 
-    @media (max-width 1342px) and (min-width 1333px)  /* rimma fix */
-        padding-left calc(67px - 37px)
+        @media (max-width 836px) and (min-width 804px) // scalability fix
+            padding-left 2.7em
 
-    @media (max-width 1332px) and (min-width 1323px)  /* rimma fix */
-        padding-left calc(67px - 47px)
-
-    @media (max-width 1024px) and (min-width 1011px)  /* rimma fix */
-        padding-left calc(67px - 17px)
-
-    @media (max-width 1010px) and (min-width 1001px)  /* rimma fix */
-        padding-left calc(67px - 27px)
-
-    @media (max-width 1000px) and (min-width 991px)  /* rimma fix */
-        padding-left calc(67px - 37px)
-
-    @media (max-width 990px) and (min-width 981px)  /* rimma fix */
-        padding-left calc(67px - 47px)
-
+        @media (max-width 803px) and (min-width xs_plus_1) // scalability fix
+            padding-left 1.7em
 
     @media (max-width: lg)
         border-bottom 7px solid c_seo
 
     @media (max-width: xs)
         padding-left 36px
+
+        .is-scalable &
+        &.is-scalable
+            padding-left 3.6em
 
 .hotels-enter__header
 .agents-enter__header
@@ -76,10 +111,10 @@
     flex-wrap wrap
     margin-bottom 66px
 
-    &.hotels-enter__header--stretchy
-    &.agents-enter__header--stretchy
-        font-size 10px
-        line-height 1
+    .is-scalable &
+    &.is-scalable
+        // font-size 1em
+        // line-height 1
         margin-bottom 6.6em
 
         // RIMMA FIX - not implemented yet
@@ -93,24 +128,44 @@
     @media (max-height xs-y) and (min-width xs)
         margin-bottom 16px
 
-        &.hotels-enter__header--stretchy
-        &.agents-enter__header--stretchy
+        .is-scalable &
+        &.is-scalable
             margin-bottom 1.6em
 
-    @media (max-width: xs)
-        width 100%
-        padding-right 40px
+    // @media (max-width: xs)
+    //     width 100%
+    //     padding-right 40px
+    //
+    //     .is-scalable &
+    //     &.is-scalable
+    //         padding-right 4em
 
 .hotels-enter__header > div:nth-child(2)
 .agents-enter__header > div:nth-child(2)
     // padding-left 20px
     margin-top 20px
 
+    .is-scalable &
+    &.is-scalable
+        margin-top 2em
+
 .hotels-enter__header
     width 55%
     min-width 522px
 
-.hotels-enter__header--ru-fix
+    @media (max-width: xs)
+        width 100%
+        padding-right 40px
+
+    .is-scalable &
+    &.is-scalable
+        // min-width 52.2em
+        min-width 65.2em  // scalability fix
+
+        @media (max-width: xs)
+            padding-right 4em
+
+.hotels-enter__header--ru-fix.hotels-enter__header--ru-fix
     @media (min-width 1594px)
         min-width 651px
 
@@ -118,13 +173,30 @@
     width 45%
     min-width 500px
 
-.agents-enter__header--eng-fix
+    @media (max-width: xs)
+        width 100%
+        padding-right 40px
+
+    .is-scalable &
+    &.is-scalable
+        // min-width 50em
+        min-width 51em  // scalability fix
+
+        @media (max-width: xs)
+            padding-right 4em
+
+.agents-enter__header--eng-fix.agents-enter__header--eng-fix
     @media (max-width 1499px) and (min-width 1024px)
         min-width 456px
 
     @media (max-width 1498px) and (min-width 1483px)
         width 44%
 
+
+.hotels-enter__content // scalability fix
+.agents-enter__content
+    @media (max-width 836px) and (min-width xs_plus_1)
+        margin-right -22px
 
 /*h1*/.hotels-enter__for-hotels
 /*h1*/.hotels-enter__for-representatives
@@ -135,21 +207,23 @@
     color c_white
     text-transform uppercase
 
-    .hotels-enter__header--stretchy &
-    .agents-enter__header--stretchy &
+    .is-scalable &
+    &.is-scalable
         font-size 3.2em
         line-height 1
 
 .hotels-enter__for-representatives
     padding-right 20px
 
-    .hotels-enter__header--stretchy &
+    .is-scalable &
+    &.is-scalable
         padding-right 2em
 
     @media (max-width: 1140px)
         max-width 400px
 
-        .hotels-enter__header--stretchy &
+        .is-scalable &
+        &.is-scalable
             max-width 40em
 
     @media (max-width: xs)
@@ -158,14 +232,16 @@
     @media (max-width: xss)
         max-width 400px
 
-        .hotels-enter__header--stretchy &
+        .is-scalable &
+        &.is-scalable
             max-width 40em
 
 .agents-enter__for-operators
     @media (max-width: 1140px)
         max-width 285px
 
-        .agents-enter__header--stretchy &
+        .is-scalable &
+        &.is-scalable
             max-width 28.5em
 
     @media (max-width: xs)
@@ -174,15 +250,18 @@
     @media (max-width: xss)
         max-width 285px
 
-        .agents-enter__header--stretchy &
+        .is-scalable &
+        &.is-scalable
             max-width 28.5em
 
 /*h1*/.hotels-enter__for-hotels
 /*h1*/.agents-enter__for-agents
     margin-bottom 20px
 
-.hotels-enter__header--stretchy .hotels-enter__for-hotels
-.agents-enter__header--stretchy .agents-enter__for-agents
+.is-scalable .hotels-enter__for-hotels
+.is-scalable .agents-enter__for-agents
+.hotels-enter__for-hotels.is-scalable
+.agents-enter__for-agents.is-scalable
     margin-bottom .625em
 
 .for-hotels__info
@@ -192,6 +271,11 @@
     fontHvLight12_auto()
     color c_darken-font
     text-transform lowercase
+
+    .is-scalable &
+    &.is-scalable
+        margin-left 2em
+        font-size .375em
 
 .for-hotels__info
     width 21%
@@ -211,35 +295,34 @@
     background-position left top
     background-size auto 100%
 
-    @media (max-width 1369px) and (min-width 1353px)  /* rimma fix */
-        padding-left calc(67px - 17px)
+    .is-scalable &
+    &.is-scalable
+        padding-top 4.2em
+        padding-left 6.7em
+        padding-bottom 3em
 
-    @media (max-width 1352px) and (min-width 1343px)  /* rimma fix */
-        padding-left calc(67px - 27px)
+        @media (max-width 1150px) and (min-width 837px) // scalability fix
+            padding-left 4.7em
 
-    @media (max-width 1342px) and (min-width 1333px)  /* rimma fix */
-        padding-left calc(67px - 37px)
+        @media (max-width 836px) and (min-width 804px) // scalability fix
+            padding-left 2.7em
 
-    @media (max-width 1332px) and (min-width 1323px)  /* rimma fix */
-        padding-left calc(67px - 47px)
-
-    @media (max-width 1024px) and (min-width 1011px)  /* rimma fix */
-        padding-left calc(67px - 17px)
-
-    @media (max-width 1010px) and (min-width 1001px)  /* rimma fix */
-        padding-left calc(67px - 27px)
-
-    @media (max-width 1000px) and (min-width 991px)  /* rimma fix */
-        padding-left calc(67px - 37px)
-
-    @media (max-width 990px) and (min-width 981px)  /* rimma fix */
-        padding-left calc(67px - 47px)
+        @media (max-width 803px) and (min-width xs_plus_1) // scalability fix
+            padding-left 1.7em
 
     @media (max-width: lg)
         border-bottom 7px solid c_seo
 
+        .is-scalable &
+        &.is-scalable
+            border-bottom-width .7em
+
     @media (max-width: xs)
         padding-left 36px
+
+        .is-scalable &
+        &.is-scalable
+            padding-left 3.6em
 
 .enter-content--movable
     position absolute
@@ -248,6 +331,9 @@
     bottom 0
     left 62% // left 55%
     transition left 1s
+
+    @media (max-width 1150px)
+        left 72%
 
     @media (max-width: lg)
         position relative
@@ -269,43 +355,9 @@
     padding 0
     margin 0
     list-style-type none
-    font-size 10px
 
-    @media (max-width 1595px) and (min-width 1322px)
-        font-size 9px
-
-    @media (max-width 1482px) and (min-width 1322px)
-        font-size 8px
-
-    // @media (max-width 1369px) and (min-width 1258px)
-    //     font-size 7px
-
-    @media (max-width 1219px) and (min-width 1070px)
-        font-size 9px
-
-    @media (max-width 1144px) and (min-width 1070px)
-        font-size 8px
-
-    @media (max-width 1024px) and (min-width 981px)
-        font-size 8px
-
-    // @media (max-width 1024px) and (min-width 958px)
-    //     font-size 7px
-
-    @media (max-width 933px) and (min-width 841px)
-        font-size 9px
-
-    @media (max-width 887px) and (min-width 841px)
-        font-size 8px
-
-    @media (max-width 751px) and (min-width 613px)
-        font-size 9px
-
-    @media (max-width 682px) and (min-width 613px)
-        font-size 8px
-
-    // @media (max-width 612px) and (min-width 543px)
-    //     font-size 7px
+    @media (max-width 1150px)
+        width 73%
 
     @media (max-width: lg)
         width 100%
@@ -337,7 +389,8 @@
         & > .smaller-title
             fontHvLight15_22()
 
-.features-list__item--stretchy
+.is-scalable .features-list__item
+.features-list__item.is-scalable
     flex-basis 23.3em
     max-width 23.3em
     padding-top 11.5em
@@ -345,6 +398,11 @@
     padding-right 3.2em
     min-height 18.4em
     background-position 3em 2em
+
+    @media (max-width 793px) and (min-width xs_plus_1) // scalability fix
+        max-width 21.3em
+        padding-left 2.2em
+        padding-right 2.2em
 
     > h2
         fontHvBold15_22em()
@@ -368,12 +426,17 @@
         fontHvLight14_28()
         text-transform lowercase
 
-    &.features-list__item--stretchy
+    .is-scalable &
+    &.is-scalable
         padding-top 1.4em
         padding-right 2.7em
         padding-bottom 1.8em
         padding-left 2.7em
         border-width .7em
+
+        @media (max-width 793px) and (min-width xs_plus_1) // scalability fix
+            padding-left 1.7em
+            padding-right 1.7em
 
         > h2
             fontHvBold16_28em()
@@ -385,7 +448,8 @@
     background-image url(../images/bg-tourist-services.png)
     background-size 54px 64px
 
-    &.features-list__item--stretchy
+    .is-scalable &
+    &.is-scalable
         background-size 5.4em 6.4em
 
 
@@ -393,70 +457,80 @@
     background-image url(../images/bg-hotel-page.png)
     background-size 78px 64px
 
-    &.features-list__item--stretchy
+    .is-scalable &
+    &.is-scalable
         background-size 7.8em 6.4em
 
 .features-list__item--online-booking
     background-image url(../images/bg-share-services.png)
     background-size 45px 68px
 
-    &.features-list__item--stretchy
+    .is-scalable &
+    &.is-scalable
         background-size 4.5em 6.8em
 
 .features-list__item--prices-spo
     background-image url(../images/bg-prices-spo.png)
     background-size 77px 66px
 
-    &.features-list__item--stretchy
+    .is-scalable &
+    &.is-scalable
         background-size 7.7em 6.6em
 
 .features-list__item--news
     background-image url(../images/bg-news-social.png)
     background-size 79px 79px
 
-    &.features-list__item--stretchy
+    .is-scalable &
+    &.is-scalable
         background-size 7.9em 7.9em
 
 .features-list__item-company-profile
     background-image url(../images/bg-profile.png)
     background-size 72px 57px
 
-    &.features-list__item--stretchy
+    .is-scalable &
+    &.is-scalable
         background-size 7.2em 5.7em
 
 .features-list__item--hotel-replies
     background-image url(../images/bg-replies.png)
     background-size 72px 57px
 
-    &.features-list__item--stretchy
+    .is-scalable &
+    &.is-scalable
         background-size 7.2em 5.7em
 
 .features-list__item--events-calendar
     background-image url(../images/bg-calend.png)
     background-size 78px 79px
 
-    &.features-list__item--stretchy
+    .is-scalable &
+    &.is-scalable
         background-size 7.8em 7.9em
 
 .features-list__item--share-services
     background-image url(../images/bg-tourist-services.png)
     background-size 54px 64px
 
-    &.features-list__item--stretchy
+    .is-scalable &
+    &.is-scalable
         background-size 5.4em 6.4em
 
 .features-list__item--tours-excursions
     background-image url(../images/bg-tours-excursions.png)
     background-size 79px 59px
 
-    &.features-list__item--stretchy
+    .is-scalable &
+    &.is-scalable
         background-size 7.9em 5.9em
 
 .features-list__item--statistics-fincenters
     background-image url(../images/bg-stat.png)
     background-size 64px 64px
 
-    &.features-list__item--stretchy
+    .is-scalable &
+    &.is-scalable
         background-size 6.4em 6.4em
 
 
@@ -484,9 +558,18 @@
     background-color c_darken-bg
     box-shadow bxsh-default
 
+    .is-scalable &
+    &.is-scalable
+        width 28.4em
+        min-width 28.4em
+
     @media (max-width: xs)
         position relative
         width 100%
+
+        .is-scalable &
+        &.is-scalable
+            width 100%
 
 /*h2*/.info-additional__header
     min-height 327px
@@ -503,10 +586,27 @@
     background-size 105px 105px
     text-align center
 
+    .is-scalable &
+    &.is-scalable
+        min-height 18.1667em
+        padding-top 10.8889em
+        padding-left 1.8889em
+        padding-right 1.8333em
+        font-size 1.8em
+        line-height 1.3334em
+        background-position center 3.7778em
+        background-size 5.8333em 5.8333em
+
     @media (max-height xs-y) and (min-width xs)
         min-height calc(327px - 60px)
         padding-top calc(196px - 60px)
         background-position center calc(68px - 45px)
+
+        .is-scalable &
+        &.is-scalable
+            min-height calc(18.1667em - 3.3334em)
+            padding-top calc(10.8889em - 3.3334em)
+            background-position center calc(3.7778em - 2.5em)
 
 .info-additional__promo-banner
     position relative
@@ -519,8 +619,21 @@
     background-color c_contrast
     text-align center
 
+    .is-scalable &
+    &.is-scalable
+        font-size 1.4em
+        line-height 1.4286
+        min-height 7.1428em
+        padding-top 1.2857em
+        padding-right 3.8571em
+        padding-left 3.8571em
+
     @media (max-width: xs) and (min-width: xss)
         padding-top 37px
+
+        .is-scalable &
+        &.is-scalable
+            padding-top 2.6428em
 
     &::before
         position absolute
@@ -531,6 +644,13 @@
         color c_white-transparent-03
         content '{'
 
+    .is-scalable &::before
+    &.is-scalable::before
+        font-size 4.2857em
+        line-height 1
+        top .25em
+        left 0.3833em
+
     &::after
         position absolute
         top 15px
@@ -539,6 +659,13 @@
         fontHvThin60()
         color c_white-transparent-03
         content '}'
+
+    .is-scalable &::after
+    &.is-scalable::after
+        font-size 4.2857em
+        line-height 1
+        top .25em
+        right 0.3833em
 
 /*ul*/.info-additional__for-clients
     margin 0
@@ -562,6 +689,14 @@
     box-shadow inset 0 2px 5px rgba(0, 0, 0, .28)
     transition background-color .4s, color .4s
 
+    .is-scalable &
+    &.is-scalable
+        font-size 1.6em
+        line-height 1.5
+        padding-top .875em
+        padding-bottom .875em
+        padding-left 3.625em
+
     &:hover
     &:focus
         color c_white
@@ -583,6 +718,13 @@
             right auto
             z-index 30
 
+    .is-scalable &:hover + .for-clients__tooltip
+    &.is-scalable:hover + .for-clients__tooltip
+        right 21.4285em
+
+        @media (max-width: xs)
+            left 3em
+
 
 .for-clients__tooltip
     position absolute
@@ -602,11 +744,28 @@
     transition right .4s, opacity .4s
     opacity 0
 
+    .is-scalable &
+    &.is-scalable
+        font-size 1.4em
+        line-height 1.1428em
+        right -28.5714em
+        min-height 3.7142em
+        min-width 19.6428em
+        padding-top 0.6428em
+        padding-right 1.4285em
+        padding-bottom 0.6428em
+        padding-left 1.4285em
+
     @media (max-width: xs)
         top auto
         bottom 45px
         left 2000px
         transition left .4s, opacity .4s
+
+        .is-scalable &
+        &.is-scalable
+            bottom 3.2142em
+            left 142,8571em
 
     &::after
         position absolute
@@ -623,3 +782,10 @@
 
         @media (max-width: xs)
             display none
+
+    .is-scalable &::after
+    &.is-scalable::after
+        right -1.2857em
+        top 1.2142em
+        border-width 0.7143em
+        border-left-width 0.5714em

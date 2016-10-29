@@ -12,11 +12,11 @@ html(lang='ru' manifest='offline.manifest')
             
         block components_links
 
-    body(id=pageName ? pageName + '_page' : 'base-2_page', class=pageName ? pageName + '-page' : 'base-2-page')
+    body(id=pageName ? pageName + '_page' : 'base-2_page', class=pageName ? pageName + '-page' + (bodyClasses ? bodyClasses : '') : 'base-2-page' + (bodyClasses ? bodyClasses : ''))
 
         block left_side
 
-        main(class=pageName ? pageName + '-page__content ' + pageName + '-content' : 'base-2-page__content base-2-content')
+        main(class=pageName ? pageName + '-page__content ' + pageName + '-content' + (mainClasses ? mainClasses : '') : 'base-2-page__content base-2-content' + (mainClasses ? mainClasses : ''))
 
             block content
             
