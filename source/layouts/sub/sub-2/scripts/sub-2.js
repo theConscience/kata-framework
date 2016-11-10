@@ -98,15 +98,9 @@
 
 
   // Добавляю поддержку свайпов на всплывающее окно
-  delete Hammer.defaults.cssProps.userSelect;
   var signInHammer = new Hammer(signInPopup);
 
-  signInHammer.on('swipe', function(evt) {
-    console.log(evt, 'swipe horizontal');
-    elementToggleClass(signInPopup, 'is-active');
-  });
-
-  window.addEventListener('resize', debounce(function(evt) {
+  var setHammerSwipeSettings = function() {
     if (document.documentElement.clientWidth < 752) {
       // console.log('set vertical swipe');
       signInHammer.get('swipe').set({ direction: Hammer.DIRECTION_VERTICAL });
@@ -114,6 +108,21 @@
       // console.log('set horizontal swipe');
       signInHammer.get('swipe').set({ direction: Hammer.DIRECTION_HORIZONTAL });
     }
-  }, 350));
+  };
+
+  setHammerSwipeSettings();
+
+  signInHammer.on('swipe', function(evt) {
+    console.log(evt, 'swipe horizontal');
+    if (evt.target.tagName.toLowerCase() !== 'input') {
+      elementToggleClass(signInPopup, 'is-active');
+    } else {
+      console.log('Swipe was blocked on input!');
+    }
+  });
+
+  window.addEventListener('resize', debounce(function(evt) {
+    setHammerSwipeSettings();
+  }, 1000));
 
 })();
