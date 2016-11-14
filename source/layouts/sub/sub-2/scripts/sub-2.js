@@ -2,13 +2,15 @@
 
 (function() {
 
+  var ACTIVE_CLASS_NAME = 'is-active';
+
   var langButton = document.querySelector('.nav-external__link--lang-selection');
   var langPopup = document.querySelector('.lang-selection__popup-1');
 
   var langSelectionLinkNodes = document.querySelectorAll('.lang-selection__link');
 
-  // var logoButton = document.querySelector('.nav-external__link--logo');
-  // var logoPopup = document.querySelector('.logo__popup');
+  var logoButton = document.querySelector('.nav-external__link--logo');
+  var logoPopup = document.querySelector('.logo__popup');
 
   var signInButton = document.querySelector('.nav-external__link--sign-in');
   var signInPopup = document.querySelector('#sign-in');
@@ -25,14 +27,18 @@
 
   var onLangButtonClick = function(evt) {
     evt.preventDefault();
-    // elementToggleClass(langPopup, 'is-active');
+    elementToggleClass(langPopup, ACTIVE_CLASS_NAME);
+    logoPopup.classList.remove(ACTIVE_CLASS_NAME);
+    signInPopup.classList.remove(ACTIVE_CLASS_NAME);
   };
 
   var onLangButtonKeyDown = function(evt) {
     evt.preventDefault();
-    // if ([13, 32].indexOf(evt.keyCode) !== -1) {
-    //   elementToggleClass(langPopup, 'is-active');
-    // }
+    if ([13, 32].indexOf(evt.keyCode) !== -1) {
+      elementToggleClass(langPopup, ACTIVE_CLASS_NAME);
+      logoPopup.classList.remove(ACTIVE_CLASS_NAME);
+      signInPopup.classList.remove(ACTIVE_CLASS_NAME);
+    }
   };
 
 
@@ -57,28 +63,36 @@
   };
 
 
-  // var onLogoButtonClick = function(evt) {
-  //   evt.preventDefault();
-  //   elementToggleClass(logoPopup, 'is-active');
-  // };
-  //
-  // var onLogoButtonKeyDown = function(evt) {
-  //   evt.preventDefault();
-  //   if ([13, 32].indexOf(evt.keyCode) !== -1) {
-  //     elementToggleClass(logoPopup, 'is-active');
-  //   }
-  // };
+  var onLogoButtonClick = function(evt) {
+    evt.preventDefault();
+    elementToggleClass(logoPopup, ACTIVE_CLASS_NAME);
+    langPopup.classList.remove(ACTIVE_CLASS_NAME);
+    signInPopup.classList.remove(ACTIVE_CLASS_NAME);
+  };
+
+  var onLogoButtonKeyDown = function(evt) {
+    evt.preventDefault();
+    if ([13, 32].indexOf(evt.keyCode) !== -1) {
+      elementToggleClass(logoPopup, ACTIVE_CLASS_NAME);
+      langPopup.classList.remove(ACTIVE_CLASS_NAME);
+      signInPopup.classList.remove(ACTIVE_CLASS_NAME);
+    }
+  };
 
 
   var onSignInButtonClick = function(evt) {
     evt.preventDefault();
-    elementToggleClass(signInPopup, 'is-active');
+    elementToggleClass(signInPopup, ACTIVE_CLASS_NAME);
+    langPopup.classList.remove(ACTIVE_CLASS_NAME);
+    logoPopup.classList.remove(ACTIVE_CLASS_NAME);
   };
 
   var onSignInButtonKeyDown = function(evt) {
     evt.preventDefault();
     if ([13, 32].indexOf(evt.keyCode) !== -1) {
-      elementToggleClass(signInPopup, 'is-active');
+      elementToggleClass(signInPopup, ACTIVE_CLASS_NAME);
+      langPopup.classList.remove(ACTIVE_CLASS_NAME);
+      logoPopup.classList.remove(ACTIVE_CLASS_NAME);
     }
   };
 
@@ -90,8 +104,8 @@
     langSelectionLinkNodes[i].addEventListener('keyDown', onLangSelectionLinkKeyDown);
   }
 
-  // logoButton.addEventListener('click', onLogoButtonClick);
-  // logoButton.addEventListener('keydown', onLogoButtonKeyDown);
+  logoButton.addEventListener('click', onLogoButtonClick);
+  logoButton.addEventListener('keydown', onLogoButtonKeyDown);
 
   signInButton.addEventListener('click', onSignInButtonClick);
   signInButton.addEventListener('keydown', onSignInButtonKeyDown);
@@ -115,7 +129,7 @@
   signInHammer.on('swipe', function(evt) {
     console.log(evt, 'swipe horizontal');
     if (evt.target.tagName.toLowerCase() !== 'input') {
-      elementToggleClass(signInPopup, 'is-active');
+      elementToggleClass(signInPopup, ACTIVE_CLASS_NAME);
     } else {
       console.log('Swipe was blocked on input!');
     }

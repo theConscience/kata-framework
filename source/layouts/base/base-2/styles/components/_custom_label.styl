@@ -41,3 +41,81 @@
         // font-size 1em
         // line-height 2.142857
         height calc(30px + 2px + 1px + 1px + 1px) /* ie-fix 30 + 2 + 1 + 1 + 1 = 35px */
+
+    &::before
+        position absolute
+        left 9995px
+        top 12px
+        z-index -1
+        opacity 0
+        width 0
+        height 0
+        border-style solid
+        border-width 5px 4px 5px 0
+        border-color transparent c_contrast transparent transparent
+        transition opacity .4s ease-in, left .4s ease-in
+        content ''
+
+    &::after
+        fontHvRoman14_30()
+        position absolute
+        left 9999px
+        top 0
+        z-index -1
+        opacity 0
+        min-height 35px
+        min-width 228px
+        padding-top 2px
+        padding-bottom 3px
+        padding-left 16px
+        padding-right 16px
+        background-color c_contrast
+        color c_white
+        transition opacity .4s ease-in, left .4s ease-in
+        content attr(data-validation-message)
+
+    @media (max-width xs)
+        &::before  // подсказки сверху полей
+            top -6px
+            border-width 5px 4px 0 5px
+            border-color c_contrast transparent transparent transparent
+            border-width 4px 5px 0 5px
+
+        &::after // если содержимое не будет влезать в строку - подсказка вырастет вниз, закрыв часть поля
+            top -41px
+
+        // &::before  // подсказки снизу полей
+        //     top 37px
+        //     border-width 0 5px 4px 5px
+        //     border-color: transparent transparent c_contrast transparent
+        //
+        // &::after
+        //     top 41px
+
+    // &:invalid::before
+    // &:invalid::after
+    &.is-invalid::before
+    &.is-invalid::after
+    &[data-is-invalid=true]::before
+    &[data-is-invalid=true]::after
+        z-index 25
+        opacity 1
+
+    // &:invalid::before
+    &.is-invalid::before
+    &[data-is-invalid=true]::before
+        left 197px
+
+    // &:invalid::after
+    &.is-invalid::after
+    &[data-is-invalid=true]::after
+        left 201px
+
+    @media (max-width xs)
+        &.is-invalid::before
+        &[data-is-invalid=true]::before
+            left 91px
+
+        &.is-invalid::after
+        &[data-is-invalid=true]::after
+            left 0

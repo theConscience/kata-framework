@@ -48,10 +48,10 @@ block left_side
                 section#sign-in.sign-in__popup
                     form#sign-in_form(action='#', method='POST')
                         header.sign-in__header Войти
-                        .custom-label.custom-label--v1
+                        .custom-label.custom-label--v1(data-validation-message='Вы указали несуществующий логин пользователя')
                             input#sign-in__login.sign-in__login(type='text', name='login', required='')
                             label.sign-in__label Логин
-                        .custom-label.custom-label--v1
+                        .custom-label.custom-label--v1(data-validation-message='Вы ввели неверный пароль пользователя')
                             input#sign-in__password.sign-in__password(type='password', name='password', required='')
                             label.sign-in__label Пароль
                         a.sign-in__forgot-password(href='#' title='Сброс пароля') Забыли пароль?
