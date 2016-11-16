@@ -14,15 +14,17 @@ html(lang='ru' manifest='offline.manifest')
 
     body(id=pageName ? pageName + '_page' : 'base-2_page', class=pageName ? pageName + '-page' + (bodyClasses ? bodyClasses : '') : 'base-2-page' + (bodyClasses ? bodyClasses : ''))
 
-        block left_side
+        .body-inner
 
-        main(class=pageName ? pageName + '-page__content ' + pageName + '-content' + (mainClasses ? mainClasses : '') : 'base-2-page__content base-2-content' + (mainClasses ? mainClasses : ''))
+            block left_side
 
-            block content
-            
-            block inner_modals
+            main(class=pageName ? pageName + '-page__content ' + pageName + '-content' + (mainClasses ? mainClasses : '') : 'base-2-page__content base-2-content' + (mainClasses ? mainClasses : ''))
 
-        block right_side
+                block content
+                
+                block inner_modals
+
+            block right_side
         
         block modals
         

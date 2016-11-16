@@ -8,7 +8,10 @@
 @import '_components'
 
 
-body
+body.no-y-scroll
+    overflow-y hidden
+
+.body-inner
     display flex
     flex-wrap nowrap
     align-items stretch
@@ -17,6 +20,3 @@ body
 
     @media (max-width: xs)
         flex-direction column
-
-body.no-y-scroll
-    overflow-y hidden

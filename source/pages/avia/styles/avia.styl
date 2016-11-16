@@ -1144,7 +1144,7 @@ mark.primary
     //     padding-left lower_padding
     //     padding-right lower_padding
 
-    @media (max-width: lg)
+    @media (max-width lg)
         padding-left small_padding
         padding-right small_padding
 
@@ -1192,7 +1192,7 @@ mark.primary
     background-color c_white
     transition bottom .4s, opacity .4s
 
-    @media (max-width: xs)
+    @media (max-width xs)
         left 0
         height calc(100vh - 80px)
 
@@ -1213,11 +1213,11 @@ mark.primary
     padding-right 120px
     text-align center
 
-    @media (max-width: bp_publications)
+    @media (max-width bp_publications)
         padding-left 103px
         padding-right 103px
 
-    @media (max-width: bp_publications_lower)
+    @media (max-width bp_publications_lower)
         padding-left 40px
         padding-right 40px
 
@@ -1226,9 +1226,10 @@ mark.primary
     // cursor crosshair
 
 /*button*/.modal__close
-    position absolute
+    position fixed
     top 54px
     right 43px
+    z-index 10
     border 1px solid c_border-lighter
     border-radius 1px
     text-indent -9999px
@@ -1241,12 +1242,14 @@ mark.primary
     background-position center
     transition background-color .4s, box-shadow .4s
 
-    @media (max-width: bp_publications)
+    @media (max-width xs)
+        top 134px
+
+    @media (max-width bp_publications)
         right 20px
 
-    @media (max-width: bp_publications_lower)
-        right 10px
-        top 10px
+    @media (max-width bp_publications_lower)
+        top 90px
         width 43px
         height 43px
 

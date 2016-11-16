@@ -9,8 +9,8 @@
 
   var langSelectionLinkNodes = document.querySelectorAll('.lang-selection__link');
 
-  var logoButton = document.querySelector('.nav-external__link--logo');
-  var logoPopup = document.querySelector('.logo__popup');
+  // var logoButton = document.querySelector('.nav-external__link--logo');
+  // var logoPopup = document.querySelector('.logo__popup');
 
   var signInButton = document.querySelector('.nav-external__link--sign-in');
   var signInPopup = document.querySelector('#sign-in');
@@ -28,7 +28,7 @@
   var onLangButtonClick = function(evt) {
     evt.preventDefault();
     elementToggleClass(langPopup, ACTIVE_CLASS_NAME);
-    logoPopup.classList.remove(ACTIVE_CLASS_NAME);
+    // logoPopup.classList.remove(ACTIVE_CLASS_NAME);
     signInPopup.classList.remove(ACTIVE_CLASS_NAME);
   };
 
@@ -36,7 +36,7 @@
     evt.preventDefault();
     if ([13, 32].indexOf(evt.keyCode) !== -1) {
       elementToggleClass(langPopup, ACTIVE_CLASS_NAME);
-      logoPopup.classList.remove(ACTIVE_CLASS_NAME);
+      // logoPopup.classList.remove(ACTIVE_CLASS_NAME);
       signInPopup.classList.remove(ACTIVE_CLASS_NAME);
     }
   };
@@ -63,28 +63,28 @@
   };
 
 
-  var onLogoButtonClick = function(evt) {
-    evt.preventDefault();
-    elementToggleClass(logoPopup, ACTIVE_CLASS_NAME);
-    langPopup.classList.remove(ACTIVE_CLASS_NAME);
-    signInPopup.classList.remove(ACTIVE_CLASS_NAME);
-  };
-
-  var onLogoButtonKeyDown = function(evt) {
-    evt.preventDefault();
-    if ([13, 32].indexOf(evt.keyCode) !== -1) {
-      elementToggleClass(logoPopup, ACTIVE_CLASS_NAME);
-      langPopup.classList.remove(ACTIVE_CLASS_NAME);
-      signInPopup.classList.remove(ACTIVE_CLASS_NAME);
-    }
-  };
+  // var onLogoButtonClick = function(evt) {
+  //   evt.preventDefault();
+  //   elementToggleClass(logoPopup, ACTIVE_CLASS_NAME);
+  //   langPopup.classList.remove(ACTIVE_CLASS_NAME);
+  //   signInPopup.classList.remove(ACTIVE_CLASS_NAME);
+  // };
+  //
+  // var onLogoButtonKeyDown = function(evt) {
+  //   evt.preventDefault();
+  //   if ([13, 32].indexOf(evt.keyCode) !== -1) {
+  //     elementToggleClass(logoPopup, ACTIVE_CLASS_NAME);
+  //     langPopup.classList.remove(ACTIVE_CLASS_NAME);
+  //     signInPopup.classList.remove(ACTIVE_CLASS_NAME);
+  //   }
+  // };
 
 
   var onSignInButtonClick = function(evt) {
     evt.preventDefault();
     elementToggleClass(signInPopup, ACTIVE_CLASS_NAME);
     langPopup.classList.remove(ACTIVE_CLASS_NAME);
-    logoPopup.classList.remove(ACTIVE_CLASS_NAME);
+    // logoPopup.classList.remove(ACTIVE_CLASS_NAME);
   };
 
   var onSignInButtonKeyDown = function(evt) {
@@ -92,7 +92,7 @@
     if ([13, 32].indexOf(evt.keyCode) !== -1) {
       elementToggleClass(signInPopup, ACTIVE_CLASS_NAME);
       langPopup.classList.remove(ACTIVE_CLASS_NAME);
-      logoPopup.classList.remove(ACTIVE_CLASS_NAME);
+      // logoPopup.classList.remove(ACTIVE_CLASS_NAME);
     }
   };
 
@@ -104,8 +104,8 @@
     langSelectionLinkNodes[i].addEventListener('keyDown', onLangSelectionLinkKeyDown);
   }
 
-  logoButton.addEventListener('click', onLogoButtonClick);
-  logoButton.addEventListener('keydown', onLogoButtonKeyDown);
+  // logoButton.addEventListener('click', onLogoButtonClick);
+  // logoButton.addEventListener('keydown', onLogoButtonKeyDown);
 
   signInButton.addEventListener('click', onSignInButtonClick);
   signInButton.addEventListener('keydown', onSignInButtonKeyDown);

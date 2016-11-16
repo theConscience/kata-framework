@@ -248,8 +248,8 @@
     background-color c_contrast
 
     &:hover ~ .logo__popup
-    // &:focus ~ .logo__popup
-    & ~ .logo__popup.is-active
+    &:focus ~ .logo__popup
+    // & ~ .logo__popup.is-active
         left 100px
 
     &:focus
@@ -261,8 +261,8 @@
         padding-top 0
 
         &:hover ~ .logo__popup
-        // &:focus ~ .logo__popup
-        & ~ .logo__popup.is-active
+        &:focus ~ .logo__popup
+        // & ~ .logo__popup.is-active
             left -100%
             top 80px
 
