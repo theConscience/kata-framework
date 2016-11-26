@@ -3,6 +3,27 @@
 @import './helpers/_block_mixins'
 
 
+$base_fz = 10  // is-scalable font-size is our base_fz
+
+
+.is-scalable
+    font-size 10px
+
+    @media (max-width 1265px)
+        font-size 9px
+
+    @media (max-width 1212px)
+        font-size 8px
+
+    @media (max-width 1042px)
+        font-size 7px
+
+    @media (max-width xs)
+        font-size 8px
+
+    @media (max-width xss)
+        font-size 10px
+
 /**--------------------------------*\
  * .avia-page__content
 \*--------------------------------*/
@@ -27,16 +48,28 @@
         order 2
         margin-right 0
 
+
 .avia-content__header
     text-align center
+
+    @media (max-width xss)
+        font-size 8px
 
     .additional-text
         fontHvLight36_44()
         color c_white
         text-transform uppercase
 
+        .is-scalable &
+        &.is-scalable
+            fontHvLight36_44em()
+
         @media (max-width: md)
             font-size 26px
+
+            .is-scalable &
+            &.is-scalable
+                font-size 2.6em
 
 .avia-content__header--primary
     box-sizing border-box
@@ -51,9 +84,22 @@
     background-position center
     background-size cover
 
+    .is-scalable &
+    &.is-scalable
+        min-height 50.9em
+        padding-top 11.6em
+        padding-bottom 4.6em
+        padding-left default_padding_em
+        padding-right default_padding_em
+
     @media (max-width bp_reduced-x-padding)
         padding-left low_padding
         padding-right low_padding
+
+        .is-scalable &
+        &.is-scalable
+            padding-left low_padding_em
+            padding-right low_padding_em
 
     // @media (max-width: bp_header-fix)
     //     padding-left padding-fix-primary
@@ -63,6 +109,11 @@
         padding-left lower_padding
         padding-right lower_padding
 
+        .is-scalable &
+        &.is-scalable
+            padding-left lower_padding_em
+            padding-right lower_padding_em
+
     // @media (max-width: xl)
     //     padding-left lower_padding
     //     padding-right lower_padding
@@ -71,11 +122,23 @@
         padding-left small_padding
         padding-right small_padding
 
+        .is-scalable &
+        &.is-scalable
+            padding-left small_padding_em
+            padding-right small_padding_em
+
     // @media ({bp_header})
     //     background-size 100% auto
 
 .video-block
     margin-bottom 28px
+
+    .is-scalable &
+    &.is-scalable
+        margin-bottom 2.8em
+
+
+$play_button_fz_mod = 14 / $base_fz
 
 .video-block__play-button
     fontHvLight14_auto()
@@ -89,49 +152,95 @@
     background-image url(../images/i-play-video.png)
     background-position center top
 
+    .is-scalable &
+    &.is-scalable
+        fontHvLight14_autoEM($play_button_fz_mod)
+        min-width (13 / $play_button_fz_mod)em
+        min-height (15.9 / $play_button_fz_mod)em
+        padding-top (14.6 / $play_button_fz_mod)em
+        background-size contain
+
+        @media (max-width 1212px)
+            font-size 8px
+
     &:hover
         cursor pointer
 
 .avia-content__title
     text-transform uppercase
 
+
 .avia-content__title--main
     color c_contrast
 
+    $header_title_main_fz_mod = 60 / $base_fz
     .avia-content__header--primary &
         fontHvBold60_auto()
         margin-top 0
         margin-bottom -5px
 
-        @media (max-width: md)
+        @media (max-width md)
             font-size 40px
 
+    .is-scalable .avia-content__header--primary &
+    .is-scalable.avia-content__header--primary &
+    .avia-content__header--primary &.is-scalable
+        fontHvBold60_autoEM()
+        margin-bottom (-0.5 / $header_title_main_fz_mod)em
+
+        @media (max-width md)
+            $header_title_main_fz_mod = 40 / $base_fz
+            margin-bottom (-0.5 / $header_title_main_fz_mod)em
+
+    $header_title_main_fz_mod = 55 / $base_fz
     .avia-content__header--secondary &
         fontHvBold55_auto()
         margin-top 0
         margin-bottom -5px
 
-        @media (max-width: md)
+        @media (max-width md)
             font-size 35px
+
+    .is-scalable .avia-content__header--secondary &
+    .is-scalable.avia-content__header--secondary &
+    .avia-content__header--secondary &.is-scalable
+        fontHvBold55_autoEM()
+        margin-bottom (-0.5 / $header_title_main_fz_mod)em
+
+        @media (max-width md)
+            $header_title_main_fz_mod = 35 / $base_fz
+            margin-bottom (-0.5 / $header_title_main_fz_mod)em
 
 .avia-content__title--secondary
     color c_white
 
+    $header_title_secondary_fz_mod = 36 / $base_fz
     .avia-content__header--primary &
         fontHvRoman36_44()
         margin-top 0
         margin-bottom 0
 
-        @media (max-width: md)
+        @media (max-width md)
             font-size 26px
 
+    .is-scalable .avia-content__header--primary &
+    .is-scalable.avia-content__header--primary &
+    .avia-content__header--primary &.is-scalable
+        fontHvRoman36_44em()
+
+    $header_title_secondary_fz_mod = 44 / $base_fz
     .avia-content__header--secondary &
         fontHvBold44_auto()
         margin-top 0
         margin-bottom 0
 
-        @media (max-width: md)
+        @media (max-width md)
             font-size 30px
+
+    .is-scalable .avia-content__header--secondary &
+    .is-scalable.avia-content__header--secondary &
+    .avia-content__header--secondary &.is-scalable
+        fontHvBold44_autoEM()
 
 .avia-content__mission
     fontHvLight18_30()
@@ -234,7 +343,7 @@ mark.primary
     padding 0
     margin 0
     list-style-type none
-    font-size 0
+    // font-size 0
 
     display flex
     flex-wrap wrap
@@ -247,13 +356,30 @@ mark.primary
         padding-top 55px
         padding-bottom 38px
 
+        .is-scalable &
+        &.is-scalable
+            padding-left default_padding_em
+            padding-right default_padding_em
+            padding-top 5.5em
+            padding-bottom 3.8em
+
         @media (max-width bp_reduced-x-padding)
             padding-left reduced_padding
             padding-right reduced_padding
 
+            .is-scalable &
+            &.is-scalable
+                padding-left reduced_padding_em
+                padding-right reduced_padding_em
+
         @media (max-width bp_lower-x-padding)
             padding-left lower_padding
             padding-right lower_padding
+
+            .is-scalable &
+            &.is-scalable
+                padding-left lower_padding_em
+                padding-right lower_padding_em
 
         // @media (max-width: xl)
         //     padding-left lower_padding
@@ -263,9 +389,19 @@ mark.primary
             padding-left small_padding
             padding-right small_padding
 
+            .is-scalable &
+            &.is-scalable
+                padding-left small_padding_em
+                padding-right small_padding_em
+
 .features-list--bordered
     margin-left -13px
     margin-right -13px
+
+    .is-scalable &
+    &.is-scalable
+        margin-left -1.3em
+        margin-right -1.3em
 
 .features-list--chaotic::before
 .features-list--chaotic::after
@@ -275,8 +411,10 @@ mark.primary
 .features-list--chaotic::after
     clear both
 
+$feature_item_fz_mod = 14 / $base_fz
+
 .features-list__item
-    fontHvMedium14_auto()
+    fontHvMedium14_auto()  // здесь меняется размер шрифта
     position relative
     box-sizing border-box
     display inline-block
@@ -285,6 +423,12 @@ mark.primary
     margin-bottom 40px
 
     flex-basis 239px
+
+    .is-scalable &
+    &.is-scalable
+        fontHvMedium14_autoEM()
+        margin-bottom (4 / $feature_item_fz_mod)em
+        flex-basis (23.9 / $feature_item_fz_mod)em
 
     &::before
         position absolute
@@ -299,6 +443,10 @@ mark.primary
         background-position center top
         content ''
 
+    .is-scalable &::before
+    &.is-scalable::before
+        height (11.6 / $feature_item_fz_mod)em
+
     .features-list--rounded-icons > &::before
         width 108px
         height 108px
@@ -306,16 +454,32 @@ mark.primary
         border-radius 50%
         background-position center
 
+    .is-scalable .features-list--rounded-icons > &::before
+    .is-scalable.features-list--rounded-icons > &::before
+    .features-list--rounded-icons > &.is-scalable::before
+        width (10.8 / $feature_item_fz_mod)em
+        height (10.8 / $feature_item_fz_mod)em
+
     .features-list--inverted-color > &
         margin-bottom 0
         color c_contrast-light
 
     .features-list--bordered > &
         width calc(33.3333% - 17.3333px)
+        max-width 239px  // ie11 fix
         margin-left 13px
         margin-right 13px
         margin-top 172px
         margin-bottom 0
+
+    .is-scalable .features-list--bordered > &
+    .is-scalable.features-list--bordered > &
+    .features-list--bordered > &.is-scalable
+        width calc(33.3333% - 1.7333em)
+        max-width (23.9 / $feature_item_fz_mod)em  // ie11 fix
+        margin-left (1.3 / $feature_item_fz_mod)em
+        margin-right (1.3 / $feature_item_fz_mod)em
+        margin-top (17.2 / $feature_item_fz_mod)em
 
         // &:nth-of-type(3n+1)
         //     margin-left 0
@@ -327,17 +491,41 @@ mark.primary
         margin-top 48px
         margin-bottom 27px
 
+    .is-scalable .features-list--with-images > &
+    .is-scalable.features-list--with-images > &
+    .features-list--with-images > &.is-scalable
+        margin-top (4.8 / $feature_item_fz_mod)em
+        margin-bottom (2.7 / $feature_item_fz_mod)em
+
 .feature-item
     padding-top 128px
 
+    .is-scalable &
+    &.is-scalable
+        padding-top (12.8 / $feature_item_fz_mod)em
+
 .feature-item--big-icon
     padding-top 136px
+
+    .is-scalable &
+    &.is-scalable
+        padding-top (13.6 / $feature_item_fz_mod)em
+
+    .is-scalable &::before
+    &.is-scalable::before
+        background-size contain
 
 .feature-item--bordered
     min-height 206px
     padding-top 30px
     padding-bottom 10px
     border 1px solid c_border-light
+
+    .is-scalable &
+    &.is-scalable
+        min-height (20.6 / $feature_item_fz_mod)em
+        padding-top (3 / $feature_item_fz_mod)em
+        padding-bottom (1 / $feature_item_fz_mod)em
 
     &::before
     &::after
@@ -354,6 +542,13 @@ mark.primary
         background-repeat no-repeat
         background-position center
 
+    .is-scalable &::before
+    &.is-scalable::before
+        top (-12.6 / $feature_item_fz_mod)em
+        width (17.7 / $feature_item_fz_mod)em
+        height (11 / $feature_item_fz_mod)em
+        background-size contain
+
     &::after
         top -1px
         left 0
@@ -364,9 +559,19 @@ mark.primary
         height 1px
         background-color #fff
 
+    .is-scalable &::after
+    &.is-scalable::after
+        top (-0.1 / $feature_item_fz_mod)em
+        height (0.1 / $feature_item_fz_mod)em
+
 .feature-item--bordered--wide
     padding-left 23px
     padding-right 23px
+
+    .is-scalable &
+    &.is-scalable
+        padding-left (2.3 / $feature_item_fz_mod)em
+        padding-right (2.3 / $feature_item_fz_mod)em
 
     &::after
         width 55%
@@ -376,11 +581,21 @@ mark.primary
     padding-right 30px
     padding-bottom 23px
 
+    .is-scalable &
+    &.is-scalable
+        padding-left (3 / $feature_item_fz_mod)em
+        padding-right (3 / $feature_item_fz_mod)em
+        padding-bottom (2.3 / $feature_item_fz_mod)em
+
     &::after
         width 47%
 
 .feature-item--with-image
     padding-top 58px
+
+    .is-scalable &
+    &.is-scalable
+        padding-top (5.8 / $feature_item_fz_mod)em
 
     &::before
         content none
@@ -389,13 +604,28 @@ mark.primary
     padding-left 20px
     padding-right 20px
 
+    .is-scalable &
+    &.is-scalable
+        padding-left (2 / $feature_item_fz_mod)em
+        padding-right (2 / $feature_item_fz_mod)em
+
+
 .feature-item__help-text
     fontHvMedium18_30()
     color c_darkest-font
 
+    .is-scalable &
+    &.is-scalable
+        fontHvMedium18_30em($feature_item_fz_mod)
+
     .feature-item--inverted-color &
         fontHvBold18_30()
         color c_white
+
+    .is-scalable .feature-item--inverted-color &
+    .is-scalable.feature-item--inverted-color &
+    .feature-item--inverted-color &.is-scalable
+        fontHvBold18_30em($feature_item_fz_mod)
 
 .feature-item__title
     fontRobotoBlack22_auto()
@@ -403,27 +633,54 @@ mark.primary
     margin-top 0
     color c_darkest-font
 
+    .is-scalable &
+    &.is-scalable
+        fontRobotoBlack22_autoEM($feature_item_fz_mod)
+
     .feature-item--inverted-color &
         fontHvBold24_40()
         color c_white
         text-transform uppercase
 
+    .is-scalable .feature-item--inverted-color &
+    .is-scalable.feature-item--inverted-color &
+    .feature-item--inverted-color &.is-scalable
+        fontHvBold24_40em($feature_item_fz_mod)
+
     .feature-item--with-image &
         fontRobotoBold18_auto()
         color c_darken-3-font
+
+    .is-scalable .feature-item--with-image &
+    .is-scalable.feature-item--with-image &
+    .feature-item--with-image &.is-scalable
+        fontRobotoBold18_autoEM($feature_item_fz_mod)
 
 .feature-item__title--bright
     fontHvBold24_40()
     color c_contrast
     text-transform uppercase
 
+    .is-scalable &
+    &.is-scalable
+        fontHvBold24_40em($feature_item_fz_mod)
+
 .feature-item__sub-title
     display block
     margin-bottom 23px
 
+    .is-scalable &
+    &.is-scalable
+        margin-bottom (2.3 / $feature_item_fz_mod)em
+
     .feature-item--with-image &
         fontRobotoRegular14_auto()
         color c_darken-3-font
+
+    .is-scalable .feature-item--with-image &
+    .is-scalable.feature-item--with-image &
+    .feature-item--with-image &.is-scalable
+        fontRobotoRegular14_autoEM($feature_item_fz_mod)
 
 .feature-item__content
     fontHvMedium14_auto()
@@ -431,13 +688,29 @@ mark.primary
     padding-right 10px
     color c_darkest-font
 
+    .is-scalable &
+    &.is-scalable
+        fontHvMedium14_autoEM($feature_item_fz_mod)
+        padding-left (1 / $feature_item_fz_mod)em
+        padding-right (1 / $feature_item_fz_mod)em
+
     .feature-item--inverted-color &
         fontHvRoman14_18()
         color c_contrast-light
 
+    .is-scalable .feature-item--inverted-color &
+    .is-scalable.feature-item--inverted-color &
+    .feature-item--inverted-color &.is-scalable
+        fontHvRoman14_18em($feature_item_fz_mod)
+
     .feature-item--with-image &
         fontRobotoRegular14_auto()
         color c_darken-3-font
+
+    .is-scalable .feature-item--with-image &
+    .is-scalable.feature-item--with-image &
+    .feature-item--with-image &.is-scalable
+        fontRobotoRegular14_autoEM($feature_item_fz_mod)
 
     .feature-item--bordered &
         padding-left 0
@@ -448,6 +721,11 @@ mark.primary
     fontHvRoman14_24()
     color c_darken-bg
     margin-bottom 35px
+
+    .is-scalable &
+    &.is-scalable
+        fontHvRoman14_24em($feature_item_fz_mod)
+        margin-bottom (3.5 / $feature_item_fz_mod)em
 
 .feature-item__picture-wrapper
     position absolute
@@ -462,6 +740,12 @@ mark.primary
     // align-items center
     width 96px
     height 96px
+
+    .is-scalable &
+    &.is-scalable
+        top (-4.9 / $feature_item_fz_mod)em
+        width (9.6 / $feature_item_fz_mod)em
+        height (9.6 / $feature_item_fz_mod)em
 
 .feature-item__picture
     position absolute
@@ -495,13 +779,29 @@ mark.primary
     padding-left default_padding
     background-color c_white
 
+    .is-scalable &
+    &.is-scalable
+        padding-top 4.5em
+        padding-right default_padding_em
+        padding-left default_padding_em
+
     @media (max-width bp_reduced-x-padding)
         padding-left reduced_padding
         padding-right reduced_padding
 
+        .is-scalable &
+        &.is-scalable
+            padding-left reduced_padding_em
+            padding-right reduced_padding_em
+
     @media (max-width bp_lower-x-padding)
         padding-left lower_padding
         padding-right lower_padding
+
+        .is-scalable &
+        &.is-scalable
+            padding-left lower_padding_em
+            padding-right lower_padding_em
 
     // @media (max-width: xl)
     //     padding-left lower_padding
@@ -510,6 +810,11 @@ mark.primary
     @media (max-width: lg)
         padding-left small_padding
         padding-right small_padding
+
+        .is-scalable &
+        &.is-scalable
+            padding-left small_padding_em
+            padding-right small_padding_em
 
 .feature-item--instant-publication::before
     background-image url(../images/i-recycle.png)
@@ -732,6 +1037,10 @@ mark.primary
     background-image url(../images/i-handshake.png)
     background-position center
 
+.is-scalable .feature-item--mediality::before
+.is-scalable.feature-item--mediality::before
+    width 70%
+
 
 
 .avia-content__company-profile
@@ -843,19 +1152,27 @@ mark.primary
     padding-bottom 81px
     background-color c_white
 
+    @media (max-width bp_medium-x-padding)
+        padding-left reduced_padding_2
+        padding-right reduced_padding_2
+
     @media (max-width bp_reduced-x-padding)
         padding-left low_padding
         padding-right low_padding
 
-    @media (max-width bp_lower-x-padding)
-        padding-left lower_padding
-        padding-right lower_padding
+    @media (max-width bp_low-x-padding)
+        padding-left small_padding
+        padding-right small_padding
+
+    // @media (max-width bp_lower-x-padding)
+    //     padding-left lower_padding
+    //     padding-right lower_padding
 
     // @media (max-width: xl)
     //     padding-left lower_padding
     //     padding-right lower_padding
 
-    @media (max-width: lg)
+    @media (max-width lg)
         padding-left small_padding
         padding-right small_padding
 
@@ -882,7 +1199,6 @@ mark.primary
     .default-section__header &
         fontHvMedium24_auto()
         color c_contrast
-
 
 
 .avia-content__other-blocks
@@ -971,13 +1287,39 @@ mark.primary
     background-image url(../images/bg-with-us-pattern.jpg)
     background-position 59% 96%
 
+    .is-scalable &
+    &.is-scalable
+        min-height 28.7em
+        padding-left default_padding_em
+        padding-right default_padding_em
+        padding-top 2.5em
+        padding-bottom 5.4em
+
     .promo-text/*.uploadable__title*/
         fontHvBold36_43()
         color c_darken-2-font
 
+        .is-scalable &
+        &.is-scalable
+            fontHvBold36_43em()
+
+    @media (max-width bp_medium-x-padding)
+        padding-left reduced_padding_2
+        padding-right reduced_padding_2
+
+        .is-scalable &
+        &.is-scalable
+            padding-left reduced_padding_2em
+            padding-right reduced_padding_2em
+
     @media (max-width bp_reduced-x-padding)
         padding-left lower_padding
         padding-right lower_padding
+
+        .is-scalable &
+        &.is-scalable
+            padding-left lower_padding_em
+            padding-right lower_padding_em
 
     // @media (max-width bp_lower-x-padding)
     //     padding-left lower_padding
@@ -987,9 +1329,23 @@ mark.primary
     //     padding-left lower_padding
     //     padding-right lower_padding
 
-    @media (max-width: lg)
+    @media (max-width bp_smallest-x-padding)
         padding-left small_padding
         padding-right small_padding
+
+        .is-scalable &
+        &.is-scalable
+            padding-left small_padding_em
+            padding-right small_padding_em
+
+    // @media (max-width lg)
+    //     padding-left small_padding
+    //     padding-right small_padding
+    //
+    //     .is-scalable &
+    //     &.is-scalable
+    //         padding-left small_padding_em
+    //         padding-right small_padding_em
 
 .uploadable
     position relative
@@ -1004,8 +1360,18 @@ mark.primary
         display block
         margin-bottom 35px
 
+    .is-scalable .uploadable--our-partners &
+    .is-scalable.uploadable--our-partners &
+    .uploadable--our-partners &.is-scalable
+        margin-bottom 3.5em
+
 .uploadable__list
     perspective 100px
+    width 100%
+
+    .is-scalable &
+    &.is-scalable
+        perspective 10em
 
 .uploadable__list-item
     opacity 0
@@ -1029,17 +1395,34 @@ mark.primary
         height 110px
         margin-bottom 20px
 
+    .is-scalable .uploadable__list--fixed-height >  &[data-ajax-load-status=none]
+    .is-scalable .uploadable__list--fixed-height >  &[data-ajax-load-status=loaded]
+    .is-scalable.uploadable__list--fixed-height >  &[data-ajax-load-status=none]
+    .is-scalable.uploadable__list--fixed-height >  &[data-ajax-load-status=loaded]
+    .uploadable__list--fixed-height > &.is-scalable[data-ajax-load-status=none]
+    .uploadable__list--fixed-height > &.is-scalable[data-ajax-load-status=loaded]
+        height 11em
+        margin-bottom 2em
+
     .uploadable__list--auto-height > &[data-ajax-load-status=none]
     .uploadable__list--auto-height > &[data-ajax-load-status=loaded]
         max-height 5000px
         min-height 206px
 
+    .is-scalable .uploadable__list--auto-height >  &[data-ajax-load-status=none]
+    .is-scalable .uploadable__list--auto-height >  &[data-ajax-load-status=loaded]
+    .is-scalable.uploadable__list--auto-height >  &[data-ajax-load-status=none]
+    .is-scalable.uploadable__list--auto-height >  &[data-ajax-load-status=loaded]
+    .uploadable__list--auto-height > &.is-scalable[data-ajax-load-status=none]
+    .uploadable__list--auto-height > &.is-scalable[data-ajax-load-status=loaded]
+        max-height 500em
+        min-height 20.6em
 
 /*ul*/.cards-list/*.uploadable__content*/
     padding 0
     margin 0
     list-style-type none
-    font-size 0
+    // font-size 0
     text-align center
 
 /*li*/.cards-list__item
@@ -1053,6 +1436,12 @@ mark.primary
     margin-bottom 0
     background-color c_white
     font-size 1rem
+
+    .is-scalable &
+    &.is-scalable
+        width 14.5em
+        margin-right 0.9em
+        font-size 1em
 
     // opacity 0
     // //transform rotateY(-90deg)
@@ -1119,10 +1508,9 @@ mark.primary
 .uploadable__load-button
     .uploadable--our-partners &
         position absolute
-        bottom -14px
+        bottom -14px // это значение фиксировано, даже при .is-scalable
         left 50%
         transform translateX(-50%)
-
 
 
 .avia-content__clients-replies
@@ -1132,13 +1520,21 @@ mark.primary
     padding-bottom 107px
     text-align center
 
+    @media (max-width bp_medium-x-padding)
+        padding-left reduced_padding_2
+        padding-right reduced_padding_2
+
     @media (max-width bp_reduced-x-padding)
         padding-left low_padding
         padding-right low_padding
 
-    @media (max-width bp_lower-x-padding)
-        padding-left lower_padding
-        padding-right lower_padding
+    @media (max-width bp_low-x-padding)
+        padding-left small_padding
+        padding-right small_padding
+
+    // @media (max-width bp_lower-x-padding)
+    //     padding-left lower_padding
+    //     padding-right lower_padding
 
     // @media (max-width: xl)
     //     padding-left lower_padding
@@ -1442,7 +1838,7 @@ mark.primary
 
     @media (max-width: bp_publications_lower)
         padding-left 0
-        padding-top 7em
+        padding-top 90px
 
     .publications-feature--share &
         color c_white

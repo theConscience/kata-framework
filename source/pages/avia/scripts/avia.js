@@ -1,10 +1,14 @@
+/* global GLOBAL_SETTINGS, AVIA_UTILS_MODULE */
+
 'use strict';
 
-(function() {
+(function(settings, avia_utils) {
 
-  function supportsTemplate() {
-    return 'content' in document.createElement('template');
-  }
+  // function supportsTemplate() {
+  //   return 'content' in document.createElement('template');
+  // }
+
+  var pageBody = document.body;
 
   function scrollTo(element, to, duration) {
     if (duration <= 0) return;
@@ -21,10 +25,13 @@
 
   var initUploadablePartners = function() {
     var uploadablePartners = document.querySelector('#uploadable--our-partners');
+    var uploadablePartnersLoadItemsCount = parseInt(uploadablePartners.getAttribute('data-load-items-count'), 10);
+    var uploadablePartnersLoadUrl = uploadablePartners.getAttribute('data-load-url');
     var uploadablePartnersList = uploadablePartners.querySelector('.uploadable__list');
     var uploadablePartnersLoadButton = uploadablePartners.querySelector('.uploadable__load-button');
     var t_partnerLogo = document.querySelector('#template--partner-logo');
 
+    /*
     var uploadablePartnersLoad = function() {
       if (supportsTemplate) {
         var t_partnerLogo_item = t_partnerLogo.content.querySelector('.cards-list__item');
@@ -92,16 +99,29 @@
         }, 10);
       });
     };
+    */
 
     var onUploadablePartnersLoadButtonClick = function(evt) {
       evt.preventDefault();
-      uploadablePartnersLoad();
+      // uploadablePartnersLoad
+      avia_utils.$uploadablePartnersLoad(uploadablePartners,
+                                              uploadablePartnersLoadItemsCount,
+                                              uploadablePartnersLoadUrl,
+                                              uploadablePartnersList,
+                                              uploadablePartnersLoadButton,
+                                              t_partnerLogo);
     };
 
     var onUploadablePartnersLoadButtonKeyDown = function(evt) {
       if ([13, 32].indexOf(evt.keyCode) > -1) {
         evt.prefentDefault();
-        uploadablePartnersLoad();
+        // uploadablePartnersLoad();
+        avia_utils.$uploadablePartnersLoad(uploadablePartners,
+                                                uploadablePartnersLoadItemsCount,
+                                                uploadablePartnersLoadUrl,
+                                                uploadablePartnersList,
+                                                uploadablePartnersLoadButton,
+                                                t_partnerLogo);
       }
     };
 
@@ -112,10 +132,13 @@
 
   var initUploadableClientsReplies = function() {
     var uploadableClientsReplies = document.querySelector('#uploadable--clients-replies');
+    var uploadableClientsRepliesLoadItemsCount = parseInt(uploadableClientsReplies.getAttribute('data-load-items-count'), 10);
+    var uploadableClientsRepliesLoadUrl = uploadableClientsReplies.getAttribute('data-load-url');
     var uploadableClientsRepliesList = uploadableClientsReplies.querySelector('.uploadable__list');
     var uploadableClientsRepliesLoadButton = uploadableClientsReplies.querySelector('.uploadable__load-button');
     var t_clientReply = document.querySelector('#template--client-reply');
 
+    /*
     var uploadableClientsRepliesLoad = function() {
       if (supportsTemplate) {
         var t_clientReply_item = t_clientReply.content.querySelector('.feature-item');
@@ -221,16 +244,29 @@
         }, 10);
       });
     };
+    */
 
     var onUploadableClientsRepliesLoadButtonClick = function(evt) {
       evt.preventDefault();
-      uploadableClientsRepliesLoad();
+      // uploadableClientsRepliesLoad();
+      avia_utils.$uploadableClientsRepliesLoad(uploadableClientsReplies,
+                                                    uploadableClientsRepliesLoadItemsCount,
+                                                    uploadableClientsRepliesLoadUrl,
+                                                    uploadableClientsRepliesList,
+                                                    uploadableClientsRepliesLoadButton,
+                                                    t_clientReply);
     };
 
     var onUploadableClientsRepliesLoadButtonKeyDown = function(evt) {
       if ([13, 32].indexOf(evt.keyCode) > -1) {
         evt.prefentDefault();
-        uploadableClientsRepliesLoad();
+        // uploadableClientsRepliesLoad();
+        avia_utils.$uploadableClientsRepliesLoad(uploadableClientsReplies,
+                                                    uploadableClientsRepliesLoadItemsCount,
+                                                    uploadableClientsRepliesLoadUrl,
+                                                    uploadableClientsRepliesList,
+                                                    uploadableClientsRepliesLoadButton,
+                                                    t_clientReply);
       }
     };
 
@@ -245,7 +281,13 @@
     var elementToScroll = document.querySelector(backToTopButtonAnchor);
 
     var backToTop = function() {
-      scrollTo(document.body, elementToScroll.offsetTop, 600);
+      // console.log('backToTop');
+      var pageElement = document.body;
+      // ie11 fix
+      var isIE11 = !!window.MSInputMethodContext && !!document.documentMode;
+      if (isIE11) pageElement = document.documentElement;
+
+      scrollTo(pageElement, elementToScroll.offsetTop, 600);
     };
 
     var onBackToTopButtonClick = function(evt) {
@@ -442,14 +484,14 @@
       var scrollInfo = getScrollInfo(viewportData.top);
 
       if (window.innerWidth <= 767 && !isXsViewport) {
-        console.log('removing scroll listener');
-        console.log('window width =', window.innerWidth);
+        // console.log('removing scroll listener');
+        // console.log('window width =', window.innerWidth);
         window.removeEventListener('scroll', onWindowScroll);
         companyTypeMenuPanel.style.marginTop = '';
         isXsViewport = true;
       } else if (window.innerWidth > 767 && isXsViewport) {
-        console.log('adding scroll listener');
-        console.log('window width =', window.innerWidth);
+        // console.log('adding scroll listener');
+        // console.log('window width =', window.innerWidth);
         window.addEventListener('scroll', onWindowScroll);
         companyTypeMenuPanel.style.marginTop = '';
         isXsViewport = false;
@@ -495,7 +537,7 @@
     };
 
     var onInnerModalOpenButtonClick = function(evt) {
-      evt.preventDefault()
+      evt.preventDefault();
       openInnerModal();
     };
 
@@ -507,7 +549,7 @@
     };
 
     var onInnerModalCloseButtonClick = function(evt) {
-      evt.preventDefault()
+      evt.preventDefault();
       closeInnerModal();
     };
 
@@ -533,4 +575,4 @@
   initCompanyTypeMenuScroll();
   initInnerModal();
 
-})();
+})(GLOBAL_SETTINGS, AVIA_UTILS_MODULE);

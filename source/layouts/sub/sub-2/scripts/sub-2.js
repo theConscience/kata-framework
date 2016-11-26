@@ -1,8 +1,8 @@
+/* global GLOBAL_SETTINGS, debounce, Hammer */
+
 'use strict';
 
-(function() {
-
-  var ACTIVE_CLASS_NAME = 'is-active';
+(function(settings) {
 
   var langButton = document.querySelector('.nav-external__link--lang-selection');
   var langPopup = document.querySelector('.lang-selection__popup-1');
@@ -27,17 +27,17 @@
 
   var onLangButtonClick = function(evt) {
     evt.preventDefault();
-    elementToggleClass(langPopup, ACTIVE_CLASS_NAME);
-    // logoPopup.classList.remove(ACTIVE_CLASS_NAME);
-    signInPopup.classList.remove(ACTIVE_CLASS_NAME);
+    elementToggleClass(langPopup, settings.getActiveClass());
+    // logoPopup.classList.remove(settings.getActiveClass());
+    signInPopup.classList.remove(settings.getActiveClass());
   };
 
   var onLangButtonKeyDown = function(evt) {
     evt.preventDefault();
     if ([13, 32].indexOf(evt.keyCode) !== -1) {
-      elementToggleClass(langPopup, ACTIVE_CLASS_NAME);
-      // logoPopup.classList.remove(ACTIVE_CLASS_NAME);
-      signInPopup.classList.remove(ACTIVE_CLASS_NAME);
+      elementToggleClass(langPopup, settings.getActiveClass());
+      // logoPopup.classList.remove(settings.getActiveClass());
+      signInPopup.classList.remove(settings.getActiveClass());
     }
   };
 
@@ -65,34 +65,34 @@
 
   // var onLogoButtonClick = function(evt) {
   //   evt.preventDefault();
-  //   elementToggleClass(logoPopup, ACTIVE_CLASS_NAME);
-  //   langPopup.classList.remove(ACTIVE_CLASS_NAME);
-  //   signInPopup.classList.remove(ACTIVE_CLASS_NAME);
+  //   elementToggleClass(logoPopup, settings.getActiveClass());
+  //   langPopup.classList.remove(settings.getActiveClass());
+  //   signInPopup.classList.remove(settings.getActiveClass());
   // };
   //
   // var onLogoButtonKeyDown = function(evt) {
   //   evt.preventDefault();
   //   if ([13, 32].indexOf(evt.keyCode) !== -1) {
-  //     elementToggleClass(logoPopup, ACTIVE_CLASS_NAME);
-  //     langPopup.classList.remove(ACTIVE_CLASS_NAME);
-  //     signInPopup.classList.remove(ACTIVE_CLASS_NAME);
+  //     elementToggleClass(logoPopup, settings.getActiveClass());
+  //     langPopup.classList.remove(settings.getActiveClass());
+  //     signInPopup.classList.remove(settings.getActiveClass());
   //   }
   // };
 
 
   var onSignInButtonClick = function(evt) {
     evt.preventDefault();
-    elementToggleClass(signInPopup, ACTIVE_CLASS_NAME);
-    langPopup.classList.remove(ACTIVE_CLASS_NAME);
-    // logoPopup.classList.remove(ACTIVE_CLASS_NAME);
+    elementToggleClass(signInPopup, settings.getActiveClass());
+    langPopup.classList.remove(settings.getActiveClass());
+    // logoPopup.classList.remove(settings.getActiveClass());
   };
 
   var onSignInButtonKeyDown = function(evt) {
     evt.preventDefault();
     if ([13, 32].indexOf(evt.keyCode) !== -1) {
-      elementToggleClass(signInPopup, ACTIVE_CLASS_NAME);
-      langPopup.classList.remove(ACTIVE_CLASS_NAME);
-      // logoPopup.classList.remove(ACTIVE_CLASS_NAME);
+      elementToggleClass(signInPopup, settings.getActiveClass());
+      langPopup.classList.remove(settings.getActiveClass());
+      // logoPopup.classList.remove(settings.getActiveClass());
     }
   };
 
@@ -129,14 +129,14 @@
   signInHammer.on('swipe', function(evt) {
     console.log(evt, 'swipe horizontal');
     if (evt.target.tagName.toLowerCase() !== 'input') {
-      elementToggleClass(signInPopup, ACTIVE_CLASS_NAME);
+      elementToggleClass(signInPopup, settings.getActiveClass());
     } else {
       console.log('Swipe was blocked on input!');
     }
   });
 
-  window.addEventListener('resize', debounce(function(evt) {
+  window.addEventListener('resize', debounce(function() {
     setHammerSwipeSettings();
   }, 1000));
 
-})();
+})(GLOBAL_SETTINGS);

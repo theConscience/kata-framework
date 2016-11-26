@@ -1,6 +1,8 @@
+/* global GLOBAL_SETTINGS */
+
 'use strict';
 
-(function() {
+(function(settings) {
 
   var isXsViewport = false;
 
@@ -203,4 +205,4 @@
 
   initAdditionalInfoScroll();
 
-})();
+})(GLOBAL_SETTINGS);

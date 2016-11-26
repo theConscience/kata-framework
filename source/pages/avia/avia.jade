@@ -6,6 +6,8 @@ include ./blocks/_mixins.jade
 block head
     - var pageName = 'avia';
     - var pageTitle = 'Avia page template';
+    - var bodyClasses = '';
+    - var mainClasses = ' is-scalable';
 
 
 block append links
@@ -15,6 +17,7 @@ block append links
 
 
 block append scripts
+    script(src='./js/page_jq.js')
     script(src='./js/page_js.js')
 
 
