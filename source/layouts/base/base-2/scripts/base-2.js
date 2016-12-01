@@ -48,7 +48,7 @@ var GLOBAL_SETTINGS = (function() {
 })();
 
 
-(function(e) { // .closest polyfill
+(function(e) { // .matches polyfill
   e.matches || (e.matches=e.matchesSelector||function(selector) {
     var matches = document.querySelectorAll(selector), th = this;
     return Array.prototype.some.call(matches, function(e) {

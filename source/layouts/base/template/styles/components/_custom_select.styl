@@ -1,0 +1,114 @@
+@import 'helpers/_variables'
+@import 'helpers/_block_mixins'
+
+.custom-select
+    position relative
+    width 100%
+
+.custom-select--dark
+    max-width 244px
+
+    & > .custom-select__field
+        box-sizing border-box
+        width 100%
+        height: 39px;
+        border 1px solid c_seo-2
+        padding-top 1px
+        padding-right 20px
+        padding-bottom 2px
+        padding-left 20px
+        fontHvLight14_36()
+        height calc(36px + 2px + 1px + 1px + 1px) /* ie-fix 36 + 2 + 1 + 1 + 1 = 35px */
+        color c_white
+        background-color transparent
+        outline none
+        transition box-shadow .4s
+
+        &:hover
+        &:focus
+            box-shadow 0 0 6px c_seo-2, inset 0 0 3px c_seo-2
+
+        // &:invalid:hover
+        &.is-invalid:hover
+        // &:invalid:focus
+        &.is-invalid:focus
+            box-shadow 0 0 6px c_error-1, inset 0 0 3px c_error-1
+
+        & > option
+            color c_black
+
+    & > .custom-select__validation-state
+        position absolute
+        right -19px - 17px
+        width 17px
+        background-repeat no-repeat
+        background-position 0 0
+        display none
+
+    & > .custom-select__validation-text
+        position absolute
+        bottom 10px
+        right 15px
+        color c_error-1
+        font-size 11px
+        display none
+
+.custom-select__field:invalid + .custom-select__validation-state
+.custom-select__field:required + .custom-select__validation-state
+.custom-select__field:valid + .custom-select__validation-state
+.custom-select__field.is-invalid + .custom-select__validation-state
+.custom-select__field.is-invalid + .custom-select__validation-state
+    display block
+
+.custom-select__field:invalid + .custom-select__validation-state
+    top 11px
+    height 17px
+    // background-image url(../images/bg-err-1.svg)
+    // background-size 20px 23px
+    background-image url(../images/bg-err-2.svg)
+    background-size auto
+
+.custom-select__field:required + .custom-select__validation-state
+    top 11px
+    height 17px
+    background-image url(../images/bg-req-1.svg)
+    background-size 20px 17px
+
+.custom-select__field:valid + .custom-select__validation-state
+    top 12px
+    height 14px
+    background-image url(../images/bg-ok-1.png)
+    background-size 17px 14px
+
+.custom-select__field.is-invalid + .custom-select__validation-state
+    top 11px
+    height 17px
+    // background-image url(../images/bg-err-1.svg)
+    // background-size 20px 23px
+    background-image url(../images/bg-err-2.svg)
+    background-size auto
+    background-position 3px 3px
+
+.custom-select__field.is-invalid ~ .custom-select__validation-text
+    display block
+
+.custom-select__field.is-valid + .custom-select__validation-state
+    top 12px
+    height 14px
+    background-image url(../images/bg-ok-1.png)
+    background-size 17px 14px
+
+.custom-select__field.is-valid:invalid + .custom-select__validation-state
+    top 11px
+    height 17px
+    // background-image url(../images/bg-err-1.svg)
+    // background-size 20px 23px
+    background-image url(../images/bg-err-2.svg)
+    background-size auto
+
+// .custom-select__field:invalid
+.custom-select__field.is-invalid
+    border-color c_error-1
+
+.custom-select__field.is-valid
+    border-color c_seo-2

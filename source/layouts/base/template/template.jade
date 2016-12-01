@@ -1,0 +1,37 @@
+include ./blocks/_mixins
+
+doctype html
+html(lang='ru' manifest='offline.manifest')
+    head
+        include ./blocks/_head
+
+        block links
+            include ./blocks/_links
+            link(href='./css/base_css.css' rel='stylesheet')
+            link(href='./css/base_style.css' rel='stylesheet')
+
+        block components_links
+
+    body(id=pageName ? pageName + '_page' : '<BASE_NAME>_page', class=pageName ? pageName + '-page' + (bodyClasses ? bodyClasses : '') : '<BASE_NAME>-page' + (bodyClasses ? bodyClasses : ''))
+
+        .body-inner
+
+            block left_side
+
+            main(class=pageName ? pageName + '-page__content ' + pageName + '-content' + (mainClasses ? mainClasses : '') : '<BASE_NAME>-page__content <BASE_NAME>-content' + (mainClasses ? mainClasses : ''))
+
+                block content
+
+                block inner_modals
+
+            block right_side
+
+        block modals
+
+        block templates
+
+        block scripts
+            include ./blocks/_scripts
+            script(src='./js/base_js.js')
+
+        block components_scripts

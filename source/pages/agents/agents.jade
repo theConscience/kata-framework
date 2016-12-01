@@ -1,0 +1,131 @@
+extends ../../layouts/sub/sub-2/sub-2
+
+include ./blocks/_mixins.jade
+
+
+block head
+    - var pageName = 'agents';
+    - var pageTitle = 'Agents page template';
+    - var bodyClasses = '';
+    - var mainClasses = ' is-scalable';
+
+
+block append links
+    link(href='https://fonts.googleapis.com/css?family=Roboto:400,700,900&subset=cyrillic' rel='stylesheet')
+    //- link(href='./css/page_css.css' rel='stylesheet')
+    link(href='./css/page_style.css' rel='stylesheet')
+    //- link(href='./css/page_css.min.css' rel='stylesheet')
+    //- link(href='./css/page_style.min.css' rel='stylesheet')
+
+block append scripts
+    script(src='./js/page_js.js')
+    //- script(src='./js/page_js.min.js')
+
+
+block append content
+    article.template-content
+
+
+block append inner_modals
+    section#modal--publications--avia.modal.modal--inner.modal--publications--avia.publications.avia-page__modal--inner
+        header.modal__header.publications__header
+            h2.publications__title 
+                span.publications__title-primary Коллекция публикаций 
+                span.publications__title-secondary для совместного продвижения
+        ol.publications__features-list.modal__content
+            li.publications-feature.publications-feature--share.publications__features-list-item.modal__content-part
+                header.publications-feature__header
+                    h3.publications-feature__title
+                        span.publications-feature__title-primary Делитесь накопленными 
+                        span.publications-feature__title-secondary материалами
+                .publications-feature__content.publications-feature__content--shifted
+                    p.
+                        Создайте собственную коллекцию постов о вашей
+                        авиакомпании, ее особенностях и «фишках» для
+                        максимально быстрого и эффективного  продвижения
+                        среди продающих агентов. Любой пользователь интернета
+                        сможет не только прочитать ее на профайле вашей 
+                .publications-feature__buttons.publications-feature__buttons--shifted 
+                    a.btn.btn--v7.btn--small(href='#' title='Подробнее') Подробнее
+            li.publications-feature.publications-feature--mini-reviews.publications__features-list-item.modal__content-part
+                header.publications-feature__header
+                    h3.publications-feature__title
+                        span.publications-feature__title-primary Создавайте мини-обзоры 
+                        span.publications-feature__title-secondary по вашей авиакомпании
+                .publications-feature__content.publications-feature__content--shifted
+                    p.
+                        Создайте такие мини-обзоры по вашей авиакомпании. Это
+                        будет текст из 1-2-х абзацев и красочное фото.
+                    p.
+                        Ваша персональная Коллекция Публикаций может состоять из 20-50
+                        обзоров и более (оптимально – от 100 постов, чтобы сформировать
+                        Ваш уникальный контент). 
+                    p.
+                        Положите их под облаком тэгов внутри Unitravel Pro.
+            li.publications-feature.publications-feature--settings-control.publications__features-list-item.modal__content-part
+                header.publications-feature__header
+                    h3.publications-feature__title
+                        span.publications-feature__title-primary Управляйте настройками 
+                        span.publications-feature__title-secondary своих публикаций
+                .publications-feature__content
+                    p.
+                        Используйте настройки видимости и использования публикаций
+                        – сначала для меня, а потом для всех пользователей или для
+                        определенных агентств
+            li.publications-feature.publications-feature--availability.publications__features-list-item.modal__content-part
+                header.publications-feature__header
+                    h3.publications-feature__title
+                        span.publications-feature__title-primary Ваши обзоры 
+                        span.publications-feature__title-secondary читают все
+                .publications-feature__content
+                    p.
+                        Публикации будут доступны на Профайле ваших отелей. Любой
+                        пользователь нашего Справочника или интернета может их
+                        забрать на свой сайт или наполнить ими социальные сети
+            li.publications-feature.publications-feature--auto-posting.publications__features-list-item.modal__content-par
+                header.publications-feature__header
+                    h3.publications-feature__title
+                        span.publications-feature__title-primary Автоматический 
+                        span.publications-feature__title-secondary постинг
+                .publications-feature__content
+                    p.
+                        Оформив подписку на вашу Коллекцию публикаций, любой
+                        потенциальный продавец вашего отеля сможет настроить из них очередь
+                        автоматической публикации – отобрать посты, которые ему кажется
+                        наиболее удачными и продающими, указать количество публикаций в
+                        неделю/месяц/год. Ваша Коллекция будет настроена в автоматическую
+                        ротацию на сайтах партнеров и в их социальных сетях
+            li.publications-feature.publications-feature--distribution.publications__features-list-item.modal__content-part
+                header.publications-feature__header
+                    h3.publications-feature__title
+                        span.publications-feature__title-primary Запускайте рассылку 
+                        span.publications-feature__title-secondary Поделитесь со всеми вашей коллекцией
+                .publications-feature__content
+                    p.
+                        Ваши продавцы скажут Вам СПАСИБО за такую помощь в
+                        автоматическом наполнении их сайтов и страниц соцсетей!
+        button.modal__close(type='button' title='Закрыть модальное окно') Закрыть модальное окно
+
+
+block modals
+    section Modal
+
+
+block right_side
+    aside#scrollable-panel--fixed.avia-page__company-type-menu.menu-company-type 
+        header.menu-company-type__header Начать работу <button class="menu-company-type__header-switch" type="button">Toggle menu</button>
+        ul.menu-company-type__content.company-types-list
+            li.company-types-list__item
+                a.company-types-list__link(href='#' title='Отелям') Отелям
+            li.company-types-list__item
+                a.company-types-list__link.company-types-list__link--current(href='#' title='Агенствам и туроператорам') Агенствам и туроператорам
+            li.company-types-list__item
+                a.company-types-list__link(title='Авиакомпаниям') Авиакомпаниям
+            li.company-types-list__item
+                a.company-types-list__link(href='#' title='Бюро по туризму') Бюро по туризму
+            li.company-types-list__item
+                a.company-types-list__link(href='#' title='Объектам культуры') Объектам культуры
+            li.company-types-list__item
+                a.company-types-list__link(href='#' title='Медицинскому туризму') Медицинскому туризму 
+            li.company-types-list__item
+                a.company-types-list__link(href='#' title='Сервисным компаниям') Сервисным компаниям

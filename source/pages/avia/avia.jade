@@ -18,6 +18,7 @@ block append links
 
 block append scripts
     script(src='./js/page_jq.js')
+    //- script(src='https://www.youtube.com/iframe_api')  // нужен для управления ютуб-проигрывателем
     script(src='./js/page_js.js')
 
 
@@ -521,6 +522,14 @@ block append inner_modals
                         Ваши продавцы скажут Вам СПАСИБО за такую помощь в
                         автоматическом наполнении их сайтов и страниц соцсетей!
         button.modal__close(type='button' title='Закрыть модальное окно') Закрыть модальное окно
+
+
+block modals
+    section#modal--avia-video.modal.modal--avia-video
+        .modal__content
+            iframe#promo_video.avia-promo-video.embed-responsive-item(src='https://www.youtube.com/embed/FT0tESjQpjw?enablejsapi=1' frameborder='0' allowfullscreen)
+        button.modal__close(type='button' title='Закрыть модальное окно') Закрыть модальное окно
+
 
 block templates
     template#template--partner-logo

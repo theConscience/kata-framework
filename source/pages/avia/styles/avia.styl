@@ -151,10 +151,11 @@ $play_button_fz_mod = 14 / $base_fz
     background-repeat no-repeat
     background-image url(../images/i-play-video.png)
     background-position center top
+    transition opacity .3s linear
 
     .is-scalable &
     &.is-scalable
-        fontHvLight14_autoEM($play_button_fz_mod)
+        fontHvLight14_autoEM()
         min-width (13 / $play_button_fz_mod)em
         min-height (15.9 / $play_button_fz_mod)em
         padding-top (14.6 / $play_button_fz_mod)em
@@ -165,6 +166,7 @@ $play_button_fz_mod = 14 / $base_fz
 
     &:hover
         cursor pointer
+        opacity 0.5
 
 .avia-content__title
     text-transform uppercase
@@ -1592,10 +1594,10 @@ $feature_item_fz_mod = 14 / $base_fz
         left 0
         height calc(100vh - 80px)
 
-.modal--open
-    // display block
-    bottom 0
-    opacity 1
+    &.modal--open
+        // display block
+        bottom 0
+        opacity 1
 
 .modal--publications--avia
     // cursor crosshair
@@ -1656,6 +1658,65 @@ $feature_item_fz_mod = 14 / $base_fz
     &:active
         box-shadow inset 0 0 13px -4px c_black-transparent-05
 
+
+
+
+
+/**--------------------------------*\
+ * .modal--avia-video
+\*--------------------------------*/
+
+.modal--avia-video
+    position fixed
+    // display block
+    width 100%
+    height 100%
+    top 0
+    bottom 0
+    left 0
+    right 0
+    margin auto
+    background-color c_dark-transparent-bg
+
+    &.modal--open
+        display block
+
+    .modal__header
+        font-size 15px
+        color c_white
+
+    .modal__content
+        position absolute
+        padding-bottom 28.125% // 56.25% /* 16:9 */
+        // padding-top 25px
+        padding-top 28.125%
+        height 0
+        width 100%
+        top 0
+        bottom 0
+        left 0
+        right 0
+        margin auto
+
+
+.embed-responsive-item
+    position absolute
+    top 0
+    bottom 0
+    left 0
+    right 0
+    margin auto
+    width 90%
+    height 90%
+
+    @media (min-width 1287px)
+        height 90vh
+
+
+
+/**--------------------------------*\
+ * .publications
+\*--------------------------------*/
 
 .publications
     // cursor crosshair

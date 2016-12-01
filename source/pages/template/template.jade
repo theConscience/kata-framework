@@ -1,11 +1,11 @@
-extends ../../layouts/sub/sub-2/sub-2
+extends ../../layouts/sub/<SUB_FOLDER>/<SUB_FILE>
 
 include ./blocks/_mixins.jade
 
 
 block head
-    - var pageName = 'template';
-    - var pageTitle = 'Template page template';
+    - var pageName = '<PAGE_NAME>';
+    - var pageTitle = '<PAGE_NAME> page template';
 
 
 block append links
@@ -20,4 +20,4 @@ block append scripts
 
 
 block append content
-    article.template-content
+    article.<PAGE_NAME>-content

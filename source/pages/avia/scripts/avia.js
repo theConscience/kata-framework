@@ -2,6 +2,65 @@
 
 'use strict';
 
+// Youtube API - создаёт объект YT, который затем используется. Адрес: https://www.youtube.com/iframe_api
+if (!window['YT']) {var YT = {loading: 0,loaded: 0};}if (!window['YTConfig']) {var YTConfig = {'host': 'http://www.youtube.com'};}if (!YT.loading) {YT.loading = 1;(function(){var l = [];YT.ready = function(f) {if (YT.loaded) {f();} else {l.push(f);}};window.onYTReady = function() {YT.loaded = 1;for (var i = 0; i < l.length; i++) {try {l[i]();} catch (e) {}}};YT.setConfig = function(c) {for (var k in c) {if (c.hasOwnProperty(k)) {YTConfig[k] = c[k];}}};var a = document.createElement('script');a.type = 'text/javascript';a.id = 'www-widgetapi-script';a.src = 'https:' + '//s.ytimg.com/yts/jsbin/www-widgetapi-vflS50iB-/www-widgetapi.js';a.async = true;var b = document.getElementsByTagName('script')[0];b.parentNode.insertBefore(a, b);})();}
+
+
+///////////////////////////////
+// youtube iframe-API calls //
+//////////////////////////////
+var player, stopVideo, playVideo, pauseVideo;
+
+// 4. The API will call this function when the video player is ready.
+var onPlayerReady = function(event) {
+  // console.log('onPlayerReady called!');
+  event.target.playVideo();
+};
+
+// 5. The API calls this function when the player's state changes.
+//    The function indicates that when playing a video (state=1),
+//    the player should play for six seconds and then stop.
+var done = false;
+
+var onPlayerStateChange = function(event) {
+  // console.log('onPlayerStateChange called!');
+  if (event.data == YT.PlayerState.PLAYING && !done) {
+    setTimeout(stopVideo, 6000);
+    done = true;
+  }
+};
+
+
+var onYouTubeIframeAPIReady = function() {
+  // console.log('onYouTubeIframeAPIReady called!');
+  player = new YT.Player('promo_video', {
+    events: {
+      // 'onReady': onPlayerReady,
+      // 'onStateChange': onPlayerStateChange
+    }
+  });
+};
+
+stopVideo = function() {
+  // console.log('stopVideo called!');
+  player.stopVideo();
+};
+
+playVideo = function() {
+  // console.log('playVideo called!');
+  player.playVideo();
+};
+
+pauseVideo = function() {
+  // console.log('pauseVideo called!');
+  player.pauseVideo();
+};
+
+/////////////////////////////////////
+// youtube iframe-API calls ended //
+////////////////////////////////////
+
+
 (function(settings, avia_utils) {
 
   // function supportsTemplate() {
@@ -282,7 +341,7 @@
 
     var backToTop = function() {
       // console.log('backToTop');
-      var pageElement = document.body;
+      var pageElement = pageBody;
       // ie11 fix
       var isIE11 = !!window.MSInputMethodContext && !!document.documentMode;
       if (isIE11) pageElement = document.documentElement;
@@ -506,7 +565,7 @@
 
 
   var initInnerModal = function() {
-    var page = document.body;
+    var page = pageBody;
     var mainMenu = document.querySelector('.nav-external');
     var innerModal = document.querySelector('.modal--inner');
     var innerModalOpenButton = document.querySelector('#modal__open--inner');
@@ -568,11 +627,70 @@
   };
 
 
+  var initVideoModal = function() {
+    var videoModal = document.querySelector('.modal--avia-video');
+    var videoModalOpenButton = document.querySelector('.video-block__play-button');
+    var videoModalCloseButton = videoModal.querySelector('.modal__close');
+
+    var openVideoModal = function() {
+      if (!videoModal.classList.contains('modal--open')) {
+        videoModal.classList.add('modal--open');
+      }
+      if (player) {
+        // ytPlayer.playVideo();
+        playVideo();
+      }
+    };
+
+    var closeVideoModal = function() {
+      if (videoModal.classList.contains('modal--open')) {
+        videoModal.classList.remove('modal--open');
+      }
+      if (player) {
+        // ytPlayer.pauseVideo();
+        pauseVideo();
+      }
+    };
+
+    var onVideoModalOpenButtonClick = function(evt) {
+      evt.preventDefault();
+      openVideoModal();
+    };
+
+    var onVideoModalOpenButtonKeyDown = function(evt) {
+      if ([13, 32].indexOf(evt.keyCode) > -1) {
+        evt.preventDefault();
+        openVideoModal();
+      }
+    };
+
+    var onVideoModalCloseButtonClick = function(evt) {
+      evt.preventDefault();
+      closeVideoModal();
+    };
+
+    var onVideoModalCloseButtonKeyDown = function(evt) {
+      if ([13, 32].indexOf(evt.keyCode) > -1) {
+        evt.preventDefault();
+        closeVideoModal();
+      }
+    };
+
+    videoModalOpenButton.addEventListener('click', onVideoModalOpenButtonClick);
+    videoModalOpenButton.addEventListener('keydown', onVideoModalOpenButtonKeyDown);
+
+    videoModalCloseButton.addEventListener('click', onVideoModalCloseButtonClick);
+    videoModalCloseButton.addEventListener('keydown', onVideoModalCloseButtonKeyDown);
+  };
+
+
+
   initUploadablePartners();
   initUploadableClientsReplies();
   initBackToTopButton();
   initCompanyTypeMenuToggle();
   initCompanyTypeMenuScroll();
   initInnerModal();
+  initVideoModal();
 
 })(GLOBAL_SETTINGS, AVIA_UTILS_MODULE);
