@@ -1,5 +1,6 @@
 /* Vars */
 var path = require('path'),
+  fs = require('fs'),
   through = require('through2'),
   runSequence = require('run-sequence'),
   merge = require('merge-stream'),
@@ -33,6 +34,7 @@ var gulp = require('gulp'),
 var getFolders = require('./gulp/getFolders');
 var harvestBoundedAssets = require('./gulp/harvestBoundedAssets');
 var smartDestRename = require('./gulp/smartDestRename');
+var getSubTemplateDepthLvl = require('./gulp/getSubTemplateDepthLvl');
 
 var knownOptions = {
   // закомментированные - пока не используются!
@@ -343,6 +345,8 @@ var dest_distrs = BUILD_DEST + 'distrs';
 /* Other */
 var YOUR_LOCALS = {}; //for jade
 
+var SUB_TEMPLATE_DEPTH_FILE = '_sub_depth_level';
+
 var browsers_ver = ['not ie <= 9', 'iOS > 7'];
 
 
@@ -619,8 +623,9 @@ gulp.task('reloadJsSubs', function() {
   console.log('***reloadJsSubs*** FOLDERS = getFolders(src_subs) ===', folders);
 
   var tasks = folders.map(function(folder) {
+    var subDepthLvl = getSubTemplateDepthLvl(folder, SUB_TEMPLATE_DEPTH_FILE, src_subs);
     return gulp.src(getJsSubsSrc(folder))  // src_js_subs
-      .pipe(gulpIf(envOptions.min, concat('sub_js.min.js'), concat('sub_js.js')))
+      .pipe(gulpIf(envOptions.min, concat('sub' + subDepthLvl + '_js.min.js'), concat('sub' + subDepthLvl + '_js.js')))
       .pipe(smartDestRename({
         folderType: 'sub',
         destination: '/js'
@@ -699,12 +704,13 @@ gulp.task('buildJsSubs', function() {
   console.log('***buildJsSubs*** FOLDERS = getFolders(src_subs) ===', folders);
 
   var tasks = folders.map(function(folder) {
+    var subDepthLvl = getSubTemplateDepthLvl(folder, SUB_TEMPLATE_DEPTH_FILE, src_subs);
     return gulp.src(getJsSubsSrc(folder))  // src_js_subs
       .pipe(gulpIf(envOptions.min, jsmin()))
       .pipe(gulpIf(envOptions.min, rename({
         suffix: '.min'
       })))
-      .pipe(gulpIf(envOptions.min, concat('sub_js.min.js'), concat('sub_js.js')))
+      .pipe(gulpIf(envOptions.min, concat('sub' + subDepthLvl + '_js.min.js'), concat('sub' + subDepthLvl + '_js.js')))
       .pipe(smartDestRename({
         folderType: 'sub',
         destination: '/js'
@@ -793,9 +799,10 @@ gulp.task('reloadCssSubs', function() {
   console.log('***reloadCssSubs*** FOLDERS = getFolders(src_subs) ===', folders);
 
   var tasks = folders.map(function(folder) {
+    var subDepthLvl = getSubTemplateDepthLvl(folder, SUB_TEMPLATE_DEPTH_FILE, src_subs);
     return gulp.src(getCssSubsSrc(folder))  // src_css_subs
       .pipe(gulpIf(envOptions.srcmp && envOptions.min, sourcemaps.init()))
-        .pipe(gulpIf(envOptions.min, concat('sub_css.min.css'), concat('sub_css.css')))
+        .pipe(gulpIf(envOptions.min, concat('sub' + subDepthLvl + '_css.min.css'), concat('sub' + subDepthLvl + '_css.css')))
       .pipe(gulpIf(envOptions.srcmp && envOptions.min, sourcemaps.write('.')))
       .pipe(smartDestRename({
         folderType: 'sub',
@@ -888,6 +895,7 @@ gulp.task('buildCssSubs', function() {
 
 
   var tasks = folders.map(function(folder) {
+    var subDepthLvl = getSubTemplateDepthLvl(folder, SUB_TEMPLATE_DEPTH_FILE, src_subs);
     return gulp.src(getCssSubsSrc(folder))  // src_css_subs
       .pipe(gulpIf(envOptions.srcmp, sourcemaps.init()))
         .pipe(autoprefixer({
@@ -898,7 +906,7 @@ gulp.task('buildCssSubs', function() {
           beautify: true
         })))
         .pipe(gulpIf(envOptions.min, cssmin()))
-        .pipe(gulpIf(envOptions.min, concat('sub_css.min.css'), concat('sub_css.css')))
+        .pipe(gulpIf(envOptions.min, concat('sub' + subDepthLvl + '_css.min.css'), concat('sub' + subDepthLvl + '_css.css')))
       .pipe(gulpIf(envOptions.srcmp, sourcemaps.write('.')))
       .pipe(smartDestRename({
         folderType: 'sub',
@@ -1024,6 +1032,7 @@ gulp.task('buildStylusSubs', function() {
   console.log('***buildStylusSubs*** FOLDERS = getFolders(src_subs) ===', folders);
 
   var tasks = folders.map(function(folder) {
+    var subDepthLvl = getSubTemplateDepthLvl(folder, SUB_TEMPLATE_DEPTH_FILE, src_subs);
     return gulp.src(getStylusSubsSrc(folder))  // src_stylus_subs
       .pipe(gulpIf(envOptions.srcmp, sourcemaps.init()))
         .pipe(stylus())
@@ -1035,7 +1044,7 @@ gulp.task('buildStylusSubs', function() {
           beautify: true
         })))
         .pipe(gulpIf(envOptions.min, cssnano()))
-        .pipe(gulpIf(envOptions.min, concat('sub_style.min.css'), concat('sub_style.css')))
+        .pipe(gulpIf(envOptions.min, concat('sub' + subDepthLvl + '_style.min.css'), concat('sub' + subDepthLvl + '_style.css')))
       .pipe(gulpIf(envOptions.srcmp, sourcemaps.write('.')))
       .pipe(smartDestRename({
         destination: '/css',
