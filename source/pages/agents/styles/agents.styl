@@ -15,17 +15,9 @@
         text-transform uppercase
         scalabilityMixin(false, 10, fontHvLight36_44)
 
-        // .is-scalable &
-        // &.is-scalable
-        //     fontHvLight36_44EM()
-
         @media (max-width md)
             font-size 26px
             scalabilityMixin({ font-size: 26px })
-
-            // .is-scalable &
-            // &.is-scalable
-            //     font-size 2.6em
 
 .agents-content__header--primary
     box-sizing border-box
@@ -49,14 +41,6 @@
     }
     scalabilityMixin($scalable_props)
 
-    // .is-scalable &
-    // &.is-scalable
-    //     min-height 50.9em
-    //     padding-top 11.6em
-    //     padding-bottom 4.6em
-    //     padding-left default_padding_em
-    //     padding-right default_padding_em
-
     @media (max-width bp_reduced-x-padding)
         padding-left low_padding
         padding-right low_padding
@@ -66,15 +50,6 @@
             padding-right: low_padding
         }
         scalabilityMixin($scalable_props)
-
-        // .is-scalable &
-        // &.is-scalable
-        //     padding-left low_padding_em
-        //     padding-right low_padding_em
-
-    // @media (max-width: bp_header-fix)
-    //     padding-left padding-fix-primary
-    //     padding-right padding-fix-primary
 
     @media (max-width bp_lower-x-padding)
         padding-left lower_padding
@@ -86,15 +61,6 @@
         }
         scalabilityMixin($scalable_props)
 
-        // .is-scalable &
-        // &.is-scalable
-        //     padding-left lower_padding_em
-        //     padding-right lower_padding_em
-
-    // @media (max-width: xl)
-    //     padding-left lower_padding
-    //     padding-right lower_padding
-
     @media (max-width lg)
         padding-left small_padding
         padding-right small_padding
@@ -105,13 +71,6 @@
         }
         scalabilityMixin($scalable_props)
 
-        // .is-scalable &
-        // &.is-scalable
-        //     padding-left small_padding_em
-        //     padding-right small_padding_em
-
-    // @media ({bp_header})
-    //     background-size 100% auto
 
 .agents-content__header--secondary
     min-height 249px
@@ -155,16 +114,6 @@
             font-size 35px
             scalabilityMixin({ margin-bottom: -5px}, 35)
 
-    // .is-scalable .agents-content__header--primary &
-    // .is-scalable.agents-content__header--primary &
-    // .agents-content__header--primary &.is-scalable
-    //     fontHvBold50_autoEM()
-    //     margin-bottom (-0.5 / $header_title_main_fz_mod)em
-    //
-    //     @media (max-width md)
-    //         $header_title_main_fz_mod = 35 / $base_fz
-    //         margin-bottom (-0.5 / $header_title_main_fz_mod)em
-
     $header_title_main_fz_mod = 40 / $base_fz
     .agents-content__header--secondary &
         fontHvBold40_auto()
@@ -177,15 +126,6 @@
             font-size 35px
             scalabilityMixin({ margin-bottom: -5px}, 35)
 
-    // .is-scalable .agents-content__header--secondary &
-    // .is-scalable.agents-content__header--secondary &
-    // .agents-content__header--secondary &.is-scalable
-    //     fontHvBold55_autoEM()
-    //     margin-bottom (-0.5 / $header_title_main_fz_mod)em
-    //
-    //     @media (max-width md)
-    //         $header_title_main_fz_mod = 35 / $base_fz
-    //         margin-bottom (-0.5 / $header_title_main_fz_mod)em
 
 .agents-content__title--secondary
     color c_white
@@ -200,11 +140,6 @@
         @media (max-width md)
             font-size 28px
 
-    // .is-scalable .agents-content__header--primary &
-    // .is-scalable.agents-content__header--primary &
-    // .agents-content__header--primary &.is-scalable
-    //     fontHvBold42_44EM()
-
     $header_title_secondary_fz_mod = 40 / $base_fz
     .agents-content__header--secondary &
         fontHvBold40_auto()
@@ -216,11 +151,6 @@
 
         @media (max-width md)
             font-size 30px
-
-    // .is-scalable .agents-content__header--secondary &
-    // .is-scalable.agents-content__header--secondary &
-    // .agents-content__header--secondary &.is-scalable
-    //     fontHvBold44_autoEM()
 
 
 .presentation-content__mission
@@ -361,12 +291,6 @@
             }
             scalabilityMixin($scalable_props)
 
-            // .is-scalable.agents-content__prices-and-contacts &
-            // .is-scalable .agents-content__prices-and-contacts &
-            // .agents-content__prices-and-contacts &.is-scalable
-            //     padding-left reduced_padding_em
-            //     padding-right reduced_padding_em
-
         @media (max-width bp_low-x-padding)
             padding-left low_padding
             padding-right low_padding
@@ -387,12 +311,6 @@
             }
             scalabilityMixin($scalable_props)
 
-            // .is-scalable.agents-content__prices-and-contacts &
-            // .is-scalable .agents-content__prices-and-contacts &
-            // .agents-content__prices-and-contacts &.is-scalable
-            //     padding-left lower_padding_em
-            //     padding-right lower_padding_em
-
         @media (max-width lg)
             padding-left small_padding
             padding-right small_padding
@@ -403,17 +321,6 @@
             }
             scalabilityMixin($scalable_props)
 
-            // .is-scalable.agents-content__prices-and-contacts &
-            // .is-scalable .agents-content__prices-and-contacts &
-            // .agents-content__prices-and-contacts &.is-scalable
-            //     padding-left small_padding_em
-            //     padding-right small_padding_em
-
-    // .is-scalable.agents-content__prices-and-contacts &
-    // .is-scalable .agents-content__prices-and-contacts &
-    // .agents-content__prices-and-contacts &.is-scalable
-    //     padding-right default_padding_em
-    //     padding-left default_padding_em
 
 .feature-item--easy-prices-filling::before
     background-image url(../images/i-document-starred.png)

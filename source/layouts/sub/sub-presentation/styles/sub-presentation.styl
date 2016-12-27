@@ -76,10 +76,6 @@ $bp-upper_scale-fz-reset = xss  // 10px
     margin-bottom 28px
     scalabilityMixin({margin-bottom: 28px})
 
-    // .is-scalable &
-    // &.is-scalable
-    //     margin-bottom 2.8em
-
 $play_button_fz_mod = 14 / $base_fz
 
 .video-block__play-button
@@ -105,17 +101,6 @@ $play_button_fz_mod = 14 / $base_fz
 
     @media (max-width 1212px)
         scalabilityMixin({font-size: 8px}, 0)
-
-    // .is-scalable &
-    // &.is-scalable
-    //     fontHvLight14_autoEM()
-    //     min-width (13 / $play_button_fz_mod)em
-    //     min-height (15.9 / $play_button_fz_mod)em
-    //     padding-top (14.6 / $play_button_fz_mod)em
-    //     background-size contain
-    //
-    //     @media (max-width 1212px)
-    //         font-size 8px
 
     &:hover
         cursor pointer
@@ -379,10 +364,6 @@ mark.primary
             }
             scalabilityMixin($scalable_props)
 
-        // @media (max-width: xl)
-        //     padding-left lower_padding
-        //     padding-right lower_padding
-
         @media (max-width: lg)
             padding-left small_padding
             padding-right small_padding
@@ -393,26 +374,6 @@ mark.primary
             }
             scalabilityMixin($scalable_props)
 
-    // .is-scalable .avia-content__paid-services &
-    // .is-scalable.avia-content__paid-services &
-    // .avia-content__paid-services&.is-scalable
-    //     padding-left default_padding_em
-    //     padding-right default_padding_em
-    //     padding-top 5.5em
-    //     padding-bottom 3.8em
-    //
-    //     @media (max-width bp_reduced-x-padding)
-    //         padding-left reduced_padding_em
-    //         padding-right reduced_padding_em
-    //
-    //     @media (max-width bp_lower-x-padding)
-    //         padding-left lower_padding_em
-    //         padding-right lower_padding_em
-    //
-    //     @media (max-width: lg)
-    //         padding-left small_padding_em
-    //         padding-right small_padding_em
-
 .features-list--bordered
     margin-left -13px
     margin-right -13px
@@ -422,11 +383,6 @@ mark.primary
         margin-right: -13px
     }
     scalabilityMixin($scalable_props)
-
-    // .is-scalable &
-    // &.is-scalable
-    //     margin-left -1.3em
-    //     margin-right -1.3em
 
 .features-list--chaotic::before
 .features-list--chaotic::after
@@ -448,13 +404,6 @@ mark.primary
     }
     scalabilityMixin($scalable_props)
 
-    // .is-scalable &
-    // &.is-scalable
-    //     // padding-top 7em  // using margin-bottom of previous cibling element or padding-top of parent element
-    //     margin-left -1.8em
-    //     margin-right -1.8em
-    //     // margin-bottom -7em  // if negative margin on the end of page - layout brokens
-
 .features-list--loose
     margin-left -18px
     margin-right -18px
@@ -464,11 +413,6 @@ mark.primary
         margin-right: -18px
     }
     scalabilityMixin($scalable_props)
-
-    // .is-scalable &
-    // &.is-scalable
-    //     margin-left -1.8em
-    //     margin-right -1.8em
 
 /*ol*/.features-list--diamond
     counter-reset li
@@ -502,12 +446,6 @@ $feature_item_fz_mod = 14 / $base_fz
     }
     scalabilityMixin($scalable_props, 14, fontHvMedium14_auto)
 
-    // .is-scalable &
-    // &.is-scalable
-    //     fontHvMedium14_autoEM()
-    //     margin-bottom (4 / $feature_item_fz_mod)em
-    //     flex-basis (23.9 / $feature_item_fz_mod)em
-
     &::before
         position absolute
         top 0
@@ -524,10 +462,6 @@ $feature_item_fz_mod = 14 / $base_fz
         $scalable_props = {height: 116px}
         scalabilityMixin($scalable_props, 14)
 
-    // .is-scalable &::before
-    // &.is-scalable::before
-    //     height (11.6 / $feature_item_fz_mod)em
-
     .features-list--rounded-icons > &::before
         width 108px
         height 108px
@@ -540,12 +474,6 @@ $feature_item_fz_mod = 14 / $base_fz
             height: 108px
         }
         scalabilityMixin($scalable_props, 14)
-
-    // .is-scalable .features-list--rounded-icons > &::before
-    // .is-scalable.features-list--rounded-icons > &::before
-    // .features-list--rounded-icons > &.is-scalable::before
-    //     width (10.8 / $feature_item_fz_mod)em
-    //     height (10.8 / $feature_item_fz_mod)em
 
     .features-list--inverted-color > &
         margin-bottom 0
@@ -577,22 +505,6 @@ $feature_item_fz_mod = 14 / $base_fz
         }
         scalabilityMixin($scalable_props, 14)
 
-    // .is-scalable .features-list--bordered > &
-    // .is-scalable.features-list--bordered > &
-    // .features-list--bordered > &.is-scalable
-    //     width calc(33.3333% - 1.7333em)
-    //     flex-basis (23.9 / $feature_item_fz_mod)em
-    //     max-width (23.9 / $feature_item_fz_mod)em  // ie11 fix
-    //     margin-left (1.3 / $feature_item_fz_mod)em
-    //     margin-right (1.3 / $feature_item_fz_mod)em
-    //     margin-top (17.2 / $feature_item_fz_mod)em
-    //
-    //     // &:nth-of-type(3n+1)
-    //     //     margin-left 0
-    //     //
-    //     // &:nth-of-type(3n+3)
-    //     //     margin-right 0
-
     .features-list--with-images > &
         margin-top 48px
         margin-bottom 27px
@@ -602,12 +514,6 @@ $feature_item_fz_mod = 14 / $base_fz
             margin-bottom: 27px
         }
         scalabilityMixin($scalable_props, 14)
-
-    // .is-scalable .features-list--with-images > &
-    // .is-scalable.features-list--with-images > &
-    // .features-list--with-images > &.is-scalable
-    //     margin-top (4.8 / $feature_item_fz_mod)em
-    //     margin-bottom (2.7 / $feature_item_fz_mod)em
 
     .features-list--accurate > &
         width calc(33.3333% - 24px)
@@ -635,16 +541,6 @@ $feature_item_fz_mod = 14 / $base_fz
         }
         scalabilityMixin($scalable_props, 14)
 
-    // .is-scalable .features-list--accurate > &
-    // .is-scalable.features-list--accurate > &
-    // .features-list--accurate > &.is-scalable
-    //     width calc(33.3333% - 2.4em)
-    //     flex-basis (22.9 / $feature_item_fz_mod)em
-    //     max-width (22.9 / $feature_item_fz_mod)em  // ie11 fix
-    //     margin-left (1.8 / $feature_item_fz_mod)em
-    //     margin-right (1.8 / $feature_item_fz_mod)em
-    //     margin-bottom (7 / $feature_item_fz_mod)em
-
     .features-list--loose > &
         width calc(50% - 36px)
         flex-basis 369px
@@ -671,26 +567,11 @@ $feature_item_fz_mod = 14 / $base_fz
         }
         scalabilityMixin($scalable_props, 14)
 
-    // .is-scalable .features-list--loose > &
-    // .is-scalable.features-list--loose > &
-    // .features-list--loose > &.is-scalable
-    //     width calc(50% - 3.6em)
-    //     flex-basis (36.9 / $feature_item_fz_mod)em
-    //     max-width (36.9 / $feature_item_fz_mod)em  // ie11 fix
-    //     margin-left (1.8 / $feature_item_fz_mod)em
-    //     margin-right (1.8 / $feature_item_fz_mod)em
-    //     margin-bottom (7 / $feature_item_fz_mod)em
-
     .features-list--diamond > &
         padding-top 97px
         list-style none
         $scalable_props = {padding-top: 97px}
         scalabilityMixin($scalable_props, 14)
-
-    // .is-scalable .features-list--diamond > &
-    // .is-scalable.features-list--diamond > &
-    // .features-list--diamond > &.is-scalable
-    //     padding-top (9.7 / $feature_item_fz_mod)em
 
     // у псевдоэлемента коэффициент для рассчёта EM изменяется, поскольку меняется базовый размер шрифта
     $feature_item_diamond_pseudo_fz_mod = 30 / $base_fz
@@ -715,21 +596,11 @@ $feature_item_fz_mod = 14 / $base_fz
             @media (max-width $bp-upper_scale-fz-7)
                 scalabilityMixin({font-size: 0.9em})
 
-    // .is-scalable .features-list--diamond > &::before
-    // .is-scalable.features-list--diamond > &::before
-    // .features-list--diamond > &.is-scalable::before
-    //     fontHvLight30_autoEM($feature_item_fz_mod)
-    //     height (8 / $feature_item_diamond_pseudo_fz_mod)em
-
 .feature-item
     padding-top 128px
 
     $scalable_props = {padding-top: 128px}
     scalabilityMixin($scalable_props, 14)
-
-    // .is-scalable &
-    // &.is-scalable
-    //     padding-top (12.8 / $feature_item_fz_mod)em
 
 .feature-item--big-icon
     padding-top 136px
@@ -737,17 +608,9 @@ $feature_item_fz_mod = 14 / $base_fz
     $scalable_props = {padding-top: 136px}
     scalabilityMixin($scalable_props, 14)
 
-    // .is-scalable &
-    // &.is-scalable
-    //     padding-top (13.6 / $feature_item_fz_mod)em
-
     &::before
         $scalable_props = {background-size: contain}
         scalabilityMixin($scalable_props)
-
-    // .is-scalable &::before
-    // &.is-scalable::before
-    //     background-size contain
 
 .feature-item--bordered
     min-height 206px
@@ -761,12 +624,6 @@ $feature_item_fz_mod = 14 / $base_fz
         padding-bottom: 10px
     }
     scalabilityMixin($scalable_props, 14)
-
-    // .is-scalable &
-    // &.is-scalable
-    //     min-height (20.6 / $feature_item_fz_mod)em
-    //     padding-top (3 / $feature_item_fz_mod)em
-    //     padding-bottom (1 / $feature_item_fz_mod)em
 
     &::before
     &::after
@@ -791,13 +648,6 @@ $feature_item_fz_mod = 14 / $base_fz
         }
         scalabilityMixin($scalable_props, 14)
 
-    // .is-scalable &::before
-    // &.is-scalable::before
-    //     top (-12.6 / $feature_item_fz_mod)em
-    //     width (17.7 / $feature_item_fz_mod)em
-    //     height (11 / $feature_item_fz_mod)em
-    //     background-size contain
-
     &::after
         top -1px
         left 0
@@ -814,11 +664,6 @@ $feature_item_fz_mod = 14 / $base_fz
         }
         scalabilityMixin($scalable_props, 14)
 
-    // .is-scalable &::after
-    // &.is-scalable::after
-    //     top (-0.1 / $feature_item_fz_mod)em
-    //     height (0.1 / $feature_item_fz_mod)em
-
 .feature-item--bordered--wide
     padding-left 23px
     padding-right 23px
@@ -828,11 +673,6 @@ $feature_item_fz_mod = 14 / $base_fz
         padding-right: 23px
     }
     scalabilityMixin($scalable_props, 14)
-
-    // .is-scalable &
-    // &.is-scalable
-    //     padding-left (2.3 / $feature_item_fz_mod)em
-    //     padding-right (2.3 / $feature_item_fz_mod)em
 
     &::after
         width 55%
@@ -849,12 +689,6 @@ $feature_item_fz_mod = 14 / $base_fz
     }
     scalabilityMixin($scalable_props, 14)
 
-    // .is-scalable &
-    // &.is-scalable
-    //     padding-left (3 / $feature_item_fz_mod)em
-    //     padding-right (3 / $feature_item_fz_mod)em
-    //     padding-bottom (2.3 / $feature_item_fz_mod)em
-
     &::after
         width 47%
 
@@ -863,10 +697,6 @@ $feature_item_fz_mod = 14 / $base_fz
 
     $scalable_props = { padding-top: 58px }
     scalabilityMixin($scalable_props, 14)
-
-    // .is-scalable &
-    // &.is-scalable
-    //     padding-top (5.8 / $feature_item_fz_mod)em
 
     &::before
         content none
@@ -881,11 +711,6 @@ $feature_item_fz_mod = 14 / $base_fz
     }
     scalabilityMixin($scalable_props, 14)
 
-    // .is-scalable &
-    // &.is-scalable
-    //     padding-left (2 / $feature_item_fz_mod)em
-    //     padding-right (2 / $feature_item_fz_mod)em
-
 .feature-item--accurate
     &::before
         height 85px
@@ -893,10 +718,6 @@ $feature_item_fz_mod = 14 / $base_fz
 
         $scalable_props = { height: 85px }
         scalabilityMixin($scalable_props, 14)
-
-    // .is-scalable &::before
-    // &.is-scalable::before
-    //     height (8.5 / $feature_item_fz_mod)em
 
 .feature-item--loose
     //
@@ -980,10 +801,6 @@ $feature_item_diamond_pseudo_fz_mod = 30 / $base_fz
     $scalable_props = { padding-top: 25px }
     scalabilityMixin($scalable_props, 30)
 
-// .is-scalable [class*='feature-item--diamond--']::before
-// [class*='feature-item--diamond--'].is-scalable::before
-//     padding-top (2.5 / $feature_item_diamond_pseudo_fz_mod)em
-
 .feature-item--diamond--primary
     .features-list--diamond > &::before
         background-image url(../images/bg-diamond-primary.svg)
@@ -1009,20 +826,11 @@ $feature_item_diamond_pseudo_fz_mod = 30 / $base_fz
 
     scalabilityMixin(false, 14, fontHvMedium18_30, 14)
 
-    // .is-scalable &
-    // &.is-scalable
-    //     fontHvMedium18_30EM($feature_item_fz_mod)
-
     .feature-item--inverted-color &
         fontHvBold18_30()
         color c_white
 
         scalabilityMixin(false, 14, fontHvBold18_30, 14)
-
-    // .is-scalable .feature-item--inverted-color &
-    // .is-scalable.feature-item--inverted-color &
-    // .feature-item--inverted-color &.is-scalable
-    //     fontHvBold18_30EM($feature_item_fz_mod)
 
 .feature-item__help-text--additional-offset
     margin-bottom 8px
@@ -1036,10 +844,6 @@ $feature_item_diamond_pseudo_fz_mod = 30 / $base_fz
 
     scalabilityMixin(false, 14, fontRobotoBlack22_auto, 14)
 
-    // .is-scalable &
-    // &.is-scalable
-    //     fontRobotoBlack22_autoEM($feature_item_fz_mod)
-
     .feature-item--inverted-color &
         fontHvBold24_40()
         color c_white
@@ -1047,21 +851,11 @@ $feature_item_diamond_pseudo_fz_mod = 30 / $base_fz
 
         scalabilityMixin(false, 14, fontHvBold24_40, 14)
 
-    // .is-scalable .feature-item--inverted-color &
-    // .is-scalable.feature-item--inverted-color &
-    // .feature-item--inverted-color &.is-scalable
-    //     fontHvBold24_40EM($feature_item_fz_mod)
-
     .feature-item--with-image &
         fontRobotoBold18_auto()
         color c_darken-3-font
 
         scalabilityMixin(false, 14, fontRobotoBold18_auto, 14)
-
-    // .is-scalable .feature-item--with-image &
-    // .is-scalable.feature-item--with-image &
-    // .feature-item--with-image &.is-scalable
-    //     fontRobotoBold18_autoEM($feature_item_fz_mod)
 
     .feature-item--accurate &
         fontHvRoman18_30()
@@ -1069,21 +863,11 @@ $feature_item_diamond_pseudo_fz_mod = 30 / $base_fz
 
         scalabilityMixin(false, 14, fontHvRoman18_30, 14)
 
-    // .is-scalable .feature-item--accurate &
-    // .is-scalable.feature-item--accurate &
-    // .feature-item--accurate &.is-scalable
-    //     fontHvRoman18_30EM($feature_item_fz_mod)
-
     .feature-item--loose &
         fontHvBold30()
         color c_darken-4-font
 
         scalabilityMixin(false, 14, fontHvBold30, 14)
-
-    // .is-scalable .feature-item--loose &
-    // .is-scalable.feature-item--loose &
-    // .feature-item--loose &.is-scalable
-    //     fontHvBold30EM($feature_item_fz_mod)
 
     .feature-item--flex &
         width 100%  // IE11 fix
@@ -1094,10 +878,6 @@ $feature_item_diamond_pseudo_fz_mod = 30 / $base_fz
     text-transform uppercase
 
     scalabilityMixin(false, 14, fontHvBold24_40, 14)
-
-    // .is-scalable &
-    // &.is-scalable
-    //     fontHvBold24_40EM($feature_item_fz_mod)
 
 .feature-item__title--condensed
     line-height 1.2
@@ -1110,20 +890,11 @@ $feature_item_diamond_pseudo_fz_mod = 30 / $base_fz
     $scalable_props = { margin-bottom: 23px }
     scalabilityMixin($scalable_props, 14)
 
-    // .is-scalable &
-    // &.is-scalable
-    //     margin-bottom (2.3 / $feature_item_fz_mod)em
-
     .feature-item--with-image &
         fontRobotoRegular14_auto()
         color c_darken-3-font
 
         scalabilityMixin(false, 14, fontRobotoRegular14_auto, 14)
-
-    // .is-scalable .feature-item--with-image &
-    // .is-scalable.feature-item--with-image &
-    // .feature-item--with-image &.is-scalable
-    //     fontRobotoRegular14_autoEM($feature_item_fz_mod)
 
     .feature-item--flex &
         width 100%  // IE11 fix
@@ -1140,33 +911,17 @@ $feature_item_diamond_pseudo_fz_mod = 30 / $base_fz
     }
     scalabilityMixin($scalable_props, 14, fontHvMedium14_auto, 14)
 
-    // .is-scalable &
-    // &.is-scalable
-    //     fontHvMedium14_autoEM($feature_item_fz_mod)
-    //     padding-left (1 / $feature_item_fz_mod)em
-    //     padding-right (1 / $feature_item_fz_mod)em
-
     .feature-item--inverted-color &
         fontHvRoman14_18()
         color c_contrast-light
 
         scalabilityMixin(false, 14, fontHvRoman14_18, 14)
 
-    // .is-scalable .feature-item--inverted-color &
-    // .is-scalable.feature-item--inverted-color &
-    // .feature-item--inverted-color &.is-scalable
-    //     fontHvRoman14_18EM($feature_item_fz_mod)
-
     .feature-item--with-image &
         fontRobotoRegular14_auto()
         color c_darken-3-font
 
         scalabilityMixin(false, 14, fontRobotoRegular14_auto, 14)
-
-    // .is-scalable .feature-item--with-image &
-    // .is-scalable.feature-item--with-image &
-    // .feature-item--with-image &.is-scalable
-    //     fontRobotoRegular14_autoEM($feature_item_fz_mod)
 
     .feature-item--bordered &
         padding-left 0
@@ -1181,21 +936,11 @@ $feature_item_diamond_pseudo_fz_mod = 30 / $base_fz
 
         scalabilityMixin(false, 14, fontHvRoman14_24, 14)
 
-    // .is-scalable .feature-item--accurate &
-    // .is-scalable.feature-item--accurate &
-    // .feature-item--accurate &.is-scalable
-    //     fontHvRoman14_24EM($feature_item_fz_mod)
-
     .feature-item--loose &
         fontHvLight18_auto()
         color c_darken-4-font
 
         scalabilityMixin(false, 14, fontHvLight18_auto, 14)
-
-    // .is-scalable .feature-item--loose &
-    // .is-scalable.feature-item--loose &
-    // .feature-item--loose &.is-scalable
-    //     fontHvLight18_autoEM($feature_item_fz_mod)
 
     .feature-item--complex-icon &
         fontHvRoman16_24()
@@ -1212,11 +957,6 @@ $feature_item_diamond_pseudo_fz_mod = 30 / $base_fz
 
     $scalable_props = { margin-bottom: 35px }
     scalabilityMixin($scalable_props, 14, fontHvRoman14_24, 14)
-
-    // .is-scalable &
-    // &.is-scalable
-    //     fontHvRoman14_24EM($feature_item_fz_mod)
-    //     margin-bottom (3.5 / $feature_item_fz_mod)em
 
 .feature-item__picture-wrapper
     position absolute
@@ -1238,12 +978,6 @@ $feature_item_diamond_pseudo_fz_mod = 30 / $base_fz
         height: 96px
     }
     scalabilityMixin($scalable_props, 14)
-
-    // .is-scalable &
-    // &.is-scalable
-    //     top (-4.9 / $feature_item_fz_mod)em
-    //     width (9.6 / $feature_item_fz_mod)em
-    //     height (9.6 / $feature_item_fz_mod)em
 
 .feature-item__picture
     position absolute
@@ -1293,12 +1027,6 @@ $feature_item_diamond_pseudo_fz_mod = 30 / $base_fz
     }
     scalabilityMixin($scalable_props)
 
-    // .is-scalable &
-    // &.is-scalable
-    //     padding-top 4.5em
-    //     padding-right default_padding_em
-    //     padding-left default_padding_em
-
     @media (max-width bp_reduced-x-padding)
         padding-left reduced_padding
         padding-right reduced_padding
@@ -1308,11 +1036,6 @@ $feature_item_diamond_pseudo_fz_mod = 30 / $base_fz
             padding-right: reduced_padding
         }
         scalabilityMixin($scalable_props)
-
-        // .is-scalable &
-        // &.is-scalable
-        //     padding-left reduced_padding_em
-        //     padding-right reduced_padding_em
 
     @media (max-width bp_lower-x-padding)
         padding-left lower_padding
@@ -1324,15 +1047,6 @@ $feature_item_diamond_pseudo_fz_mod = 30 / $base_fz
         }
         scalabilityMixin($scalable_props)
 
-        // .is-scalable &
-        // &.is-scalable
-        //     padding-left lower_padding_em
-        //     padding-right lower_padding_em
-
-    // @media (max-width: xl)
-    //     padding-left lower_padding
-    //     padding-right lower_padding
-
     @media (max-width lg)
         padding-left small_padding
         padding-right small_padding
@@ -1342,11 +1056,6 @@ $feature_item_diamond_pseudo_fz_mod = 30 / $base_fz
             padding-right: small_padding
         }
         scalabilityMixin($scalable_props)
-
-        // .is-scalable &
-        // &.is-scalable
-        //     padding-left small_padding_em
-        //     padding-right small_padding_em
 
 .feature-item--instant-publication::before
     background-image url(../images/i-recycle.png)
@@ -1907,10 +1616,6 @@ $feature_item_diamond_pseudo_fz_mod = 30 / $base_fz
     }
     scalabilityMixin($scalable_props)
 
-// .is-scalable .feature-item--mediality::before
-// .is-scalable.feature-item--mediality::before
-//     width 70%
-
 
 .presentation-content__company-profile /*section.default-section*/
     padding-top 22px
@@ -1971,10 +1676,6 @@ $feature_item_diamond_pseudo_fz_mod = 30 / $base_fz
     @media (max-width 925px) and (min-width xs)
         padding-left low_padding
         padding-right low_padding
-
-    // @media (max-width: lg)
-    //     padding-left small_padding
-    //     padding-right small_padding
 
 .box-list__item
     margin-left 6px
@@ -2489,10 +2190,6 @@ $feature_item_diamond_pseudo_fz_mod = 30 / $base_fz
         padding-left lower_padding
         padding-right lower_padding
 
-    // @media (max-width: xl)
-    //     padding-left lower_padding
-    //     padding-right lower_padding
-
     @media (max-width: lg)
         padding-left small_padding
         padding-right small_padding
@@ -2532,23 +2229,11 @@ $feature_item_diamond_pseudo_fz_mod = 30 / $base_fz
     }
     scalabilityMixin($scalable_props)
 
-    // .is-scalable &
-    // &.is-scalable
-    //     min-height 28.7em
-    //     padding-left default_padding_em
-    //     padding-right default_padding_em
-    //     padding-top 2.5em
-    //     padding-bottom 5.4em
-
     .promo-text/*.uploadable__title*/
         fontHvBold36_43()
         color c_darken-2-font
 
         scalabilityMixin(false, 14, fontHvBold36_43)
-
-        // .is-scalable &
-        // &.is-scalable
-        //     fontHvBold36_43EM()
 
     @media (max-width bp_medium-x-padding)
         padding-left reduced_padding_2
@@ -2560,11 +2245,6 @@ $feature_item_diamond_pseudo_fz_mod = 30 / $base_fz
         }
         scalabilityMixin($scalable_props)
 
-        // .is-scalable &
-        // &.is-scalable
-        //     padding-left reduced_padding_2em
-        //     padding-right reduced_padding_2em
-
     @media (max-width bp_reduced-x-padding)
         padding-left lower_padding
         padding-right lower_padding
@@ -2575,19 +2255,6 @@ $feature_item_diamond_pseudo_fz_mod = 30 / $base_fz
         }
         scalabilityMixin($scalable_props)
 
-        // .is-scalable &
-        // &.is-scalable
-        //     padding-left lower_padding_em
-        //     padding-right lower_padding_em
-
-    // @media (max-width bp_lower-x-padding)
-    //     padding-left lower_padding
-    //     padding-right lower_padding
-
-    // @media (max-width: xl)
-    //     padding-left lower_padding
-    //     padding-right lower_padding
-
     @media (max-width bp_smallest-x-padding)
         padding-left small_padding
         padding-right small_padding
@@ -2597,20 +2264,6 @@ $feature_item_diamond_pseudo_fz_mod = 30 / $base_fz
             padding-right: small_padding
         }
         scalabilityMixin($scalable_props)
-
-        // .is-scalable &
-        // &.is-scalable
-        //     padding-left small_padding_em
-        //     padding-right small_padding_em
-
-    // @media (max-width lg)
-    //     padding-left small_padding
-    //     padding-right small_padding
-    //
-    //     .is-scalable &
-    //     &.is-scalable
-    //         padding-left small_padding_em
-    //         padding-right small_padding_em
 
 .uploadable
     position relative
@@ -2628,21 +2281,12 @@ $feature_item_diamond_pseudo_fz_mod = 30 / $base_fz
         $scalable_props = { margin-bottom: 35px }
         scalabilityMixin($scalable_props, 36)
 
-    // .is-scalable .uploadable--our-partners &
-    // .is-scalable.uploadable--our-partners &
-    // .uploadable--our-partners &.is-scalable
-    //     margin-bottom 3.5em
-
 .uploadable__list
     perspective 100px
     width 100%
 
     $scalable_props = { perspective: 100px }
     scalabilityMixin($scalable_props)
-
-    // .is-scalable &
-    // &.is-scalable
-    //     perspective 10em
 
 .uploadable__list-item
     opacity 0
@@ -2672,15 +2316,6 @@ $feature_item_diamond_pseudo_fz_mod = 30 / $base_fz
         }
         scalabilityMixin($scalable_props)
 
-    // .is-scalable .uploadable__list--fixed-height >  &[data-ajax-load-status=none]
-    // .is-scalable .uploadable__list--fixed-height >  &[data-ajax-load-status=loaded]
-    // .is-scalable.uploadable__list--fixed-height >  &[data-ajax-load-status=none]
-    // .is-scalable.uploadable__list--fixed-height >  &[data-ajax-load-status=loaded]
-    // .uploadable__list--fixed-height > &.is-scalable[data-ajax-load-status=none]
-    // .uploadable__list--fixed-height > &.is-scalable[data-ajax-load-status=loaded]
-    //     height 11em
-    //     margin-bottom 2em
-
     .uploadable__list--auto-height > &[data-ajax-load-status=none]
     .uploadable__list--auto-height > &[data-ajax-load-status=loaded]
         max-height 5000px
@@ -2692,14 +2327,6 @@ $feature_item_diamond_pseudo_fz_mod = 30 / $base_fz
         }
         scalabilityMixin($scalable_props)
 
-    // .is-scalable .uploadable__list--auto-height >  &[data-ajax-load-status=none]
-    // .is-scalable .uploadable__list--auto-height >  &[data-ajax-load-status=loaded]
-    // .is-scalable.uploadable__list--auto-height >  &[data-ajax-load-status=none]
-    // .is-scalable.uploadable__list--auto-height >  &[data-ajax-load-status=loaded]
-    // .uploadable__list--auto-height > &.is-scalable[data-ajax-load-status=none]
-    // .uploadable__list--auto-height > &.is-scalable[data-ajax-load-status=loaded]
-    //     max-height 500em
-    //     min-height 20.6em
 
 /*ul*/.cards-list/*.uploadable__content*/
     padding 0
@@ -2726,12 +2353,6 @@ $feature_item_diamond_pseudo_fz_mod = 30 / $base_fz
         font-size: 1em
     }
     scalabilityMixin($scalable_props)
-
-    // .is-scalable &
-    // &.is-scalable
-    //     width 14.5em
-    //     margin-right 0.9em
-    //     font-size 1em
 
     // opacity 0
     // //transform rotateY(-90deg)
@@ -2825,14 +2446,6 @@ $feature_item_diamond_pseudo_fz_mod = 30 / $base_fz
     @media (max-width bp_low-x-padding)
         padding-left small_padding
         padding-right small_padding
-
-    // @media (max-width bp_lower-x-padding)
-    //     padding-left lower_padding
-    //     padding-right lower_padding
-
-    // @media (max-width: xl)
-    //     padding-left lower_padding
-    //     padding-right lower_padding
 
     @media (max-width lg)
         padding-left small_padding
