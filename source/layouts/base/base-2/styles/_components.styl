@@ -53,15 +53,15 @@
         color c_white-darken
         background-color c_contrast-darken
 
-    .is-scalable &
-    &.is-scalable
-            font-size 1.8em
-            padding-top .55556em
-            padding-right 1.77778em
-            padding-bottom .5em
-            padding-left 1.77778em
-            line-height 1.6667
-            min-width 10.3333em
+    // .is-scalable &
+    // &.is-scalable
+    //         font-size 1.8em
+    //         padding-top .55556em
+    //         padding-right 1.77778em
+    //         padding-bottom .5em
+    //         padding-left 1.77778em
+    //         line-height 1.6667
+    //         min-width 10.3333em
 
 .btn--v8
     fontHvRoman18_40()
@@ -512,3 +512,71 @@
 
 .img--rounded
     border-radius 50%
+
+
+.underlined-important
+    position relative
+
+.underlined-important::before
+    position absolute
+    bottom -14px
+    left 0
+    right 0
+    width 70%
+    height 1px
+    margin-left auto
+    margin-right auto
+    background-color c_contrast
+    content ''
+
+
+/* стили для красивых плейсхолдеров компонента. В Mozilla пока работает криво */
+input.has-dynamic-placeholder::-webkit-input-placeholder
+    color #4e4e4e
+    text-align left
+    text-overflow ellipsis
+    text-indent 0
+    transition text-indent 0.3s ease
+
+input.has-dynamic-placeholder::-moz-placeholder
+    color #4e4e4e
+    text-align left
+    text-overflow ellipsis
+    text-indent 0
+    transition text-indent 0.3s ease
+
+input.has-dynamic-placeholder:-moz-placeholder
+    color #4e4e4e
+    text-align left
+    text-overflow ellipsis
+    text-indent 0
+    transition text-indent 0.3s ease
+
+input.has-dynamic-placeholder[type='number']
+    color #4e4e4e
+    text-align left
+
+input.has-dynamic-placeholder:-ms-input-placeholder
+    color #4e4e4e
+    text-align left
+    text-overflow ellipsis
+    text-indent 0
+    transition text-indent 0.3s ease
+
+input.has-dynamic-placeholder:focus::-webkit-input-placeholder
+    text-indent 600px
+    transition text-indent 0.3s ease
+
+input.has-dynamic-placeholder:focus::-moz-placeholder
+    text-indent 600px
+    transition text-indent 0.3s ease
+
+input.has-dynamic-placeholder:focus:-moz-placeholder
+    text-indent 600px
+    transition text-indent 0.3s ease
+
+input.has-dynamic-placeholder:focus:-ms-input-placeholder
+    text-indent 600px
+    transition text-indent 0.3s ease
+
+/* END OF: стили для красивых плейсхолдеров. В Mozilla пока работает криво */

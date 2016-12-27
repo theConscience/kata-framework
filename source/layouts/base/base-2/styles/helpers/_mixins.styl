@@ -10,3 +10,298 @@ transform()
   -moz-transform arguments
   -ms-transform arguments
   transform arguments
+
+
+-get-combinator($index = -1)
+  return split('', replace('[^+>~]', '', selectors()[$index]))
+
+
+-composeCSSFunc(sizeMod, name, args)
+  if name == 'calc'
+    if unit(args.a1) == 'px'
+      $a1 = (unit(args.a1, '')/sizeMod)em
+    else
+      $a1 = args.a1
+    $a2 = args.a2
+    if unit(args.a3) == 'px'
+      $a3 = (unit(args.a3, '')/sizeMod)em
+    else
+      $a3 = args.a3
+    $temp = join('', $a1, ' ', $a2, ' ',$a3,)
+
+  else
+    $temp = ''
+    for key, value in args
+      $temp = $temp + value + ', '
+    $temp = slice($temp, 0, -2)  // убираем запятую и пробел
+
+  return unquote(join('', name, '(', $temp, ')'))
+
+
+-has-parent-selector-real()
+  result = false
+  for el in selectors()
+    $check = match('&', el)
+    if $check
+      result = true
+
+  return result
+
+-has-parent-selector($index = -1)
+  $check = match('&', selectors()[$index])
+  return $check[0]
+
+-has-attr-selector($index = -1)
+  $check = match('&\[.+\]', selectors()[$index])
+  return $check[0]
+
+-has-pseudo-element($index = -1)
+  $check = match('&::', selectors()[$index])
+  return $check[0]
+
+-has-pseudo-class($index = -1)
+  $check = match('&:[^:]', selectors()[$index])
+  return $check[0]
+
+-has-spaces-in-selector($index = -1)
+    $check = match('\s', selectors()[$index])
+    return $check[0]
+
+
+-without-attr-selector($index = -1)
+  return replace('&(\[([\d\w\=\|\~\^\*\+]+)\]+([_\-\(\)\:\d\w]+))?', '', selectors()[$index])
+
+-get-attr-selector($index = -1)
+  return match('&(\[[\d\w\=\|\~\^\*\+\_\-]+\]+[_\-\(\)\:\d\w]+)', selectors()[$index])
+
+-without-pseudo-classes($index = -1)
+  return replace('&(:[^:]([_\-\(\)\:\d\w]+))?', '', selectors()[$index])
+
+-get-pseudo-classes($index = -1)
+  return match('&(:[^:][_\-\(\)\:\d\w]+)', selectors()[$index])
+
+-without-pseudo-elements($index = -1)
+  return replace('&(::(\w+))?', '', selectors()[$index])
+
+-get-pseudo-elements($index = -1)
+  return match('&(::\w+)', selectors()[$index])
+
+
+-without-last-selector()
+  result = replace('\s([\S]+)$', '', selectors())
+  // warn(result)
+  return result
+
+-get-last-selector()
+  result = match('([\S]+)$', selectors())
+  // warn(result)
+  return result
+
+-get-without-last-selector()
+  temp = match('([(\S)\s]+)[^\S]', selectors())
+  result = replace('\s$', '', temp)
+  // warn(result)
+  return result
+
+
+-warn-selector-data()
+  warn('        ' + length(selectors()) + ' ' + typeof(selectors()) + ' ' + selectors())
+  warn('        ' + length(selector()) + ' ' + typeof(selector()) + ' ' + selector())
+
+
+-get-splitted-by-parent-selector-ruleset()
+  $selectors = split('&', join('', selectors()))
+  for el,i in $selectors
+    el = replace('^\s', '', el)  // убираем пробел в начале
+    el = replace('\s$', '', el)  // убираем пробел в конце
+    $selectors[i] = el
+  $ending = pop($selectors)
+  $beginning = $selectors
+  result = {beginning: $beginning, ending: $ending}
+  return result
+
+-get-splitted-ruleset()
+  // -warn-selector-data()
+  if match(',', selector())  // если у нас идёт несколько правил через запятую
+    $selectors = split(',', selector())
+    $rules = ()
+    for s in $selectors
+      $selector = split(' ', s)
+      for el,i in $selector
+        el = replace('^\s', '', el)  // убираем пробел в начале
+        el = replace('\s$', '', el)  // убираем пробел в конце
+        $selector[i] = el
+      $ending = pop($selector)
+      $beginning = join(' ', $selector)
+      $temp_result = {beginning: $beginning, ending: $ending}
+      // $selectors[s] = $temp_result
+      push($rules, $temp_result)
+    $result = {many: true, rules: $rules}
+    // warn('---')
+    // warn('$selectors: ' + typeof($selectors) + ' ' + length($selectors))
+    // warn('$rules: ' + typeof($rules) + ' ' + length($rules))
+    // warn('$result: ' + typeof($result) + ' ' + length($result))
+    // warn('$result[rules]: ' + typeof($result.rules) + ' ' + length($result.rules))
+    // warn('---')
+  else
+    $selector = split(' ', selector())  // если у нас только одно правило
+    for el,i in $selector
+      el = replace('^\s', '', el)  // убираем пробел в начале
+      el = replace('\s$', '', el)  // убираем пробел в конце
+      $selector[i] = el
+    $ending = pop($selector)
+    $beginning = join(' ', $selector)
+    $result = {many: false, rules: {beginning: $beginning, ending: $ending}}
+  // warn('' + $result)
+  return $result
+
+
+-generate-scalable-selectors(rule, scalable_class_name)
+  $result = ''
+  $scalable_class_name = '.' + scalable_class_name
+  $mq-offset = '' // костыльное решение, для сохранения отступов внутри @media-queries
+  if current-media()  // если есть медиа-выражение, то добавляем 2-х пробельный отступ
+    $mq-offset = '  '
+  $ending-tag-start = match('^[\w][^\:\[\s]*', rule.ending) || ''
+  $ending-tag-end = replace('^[\w][^\:\[\s]*', '', rule.ending)
+
+  if not rule.beginning  // если правило состоит из 1 селектора
+    // /.{scalable_class_name} {rule[ending]}
+    // /.{scalable_class_name}{rule[ending]}
+    $result += $scalable_class_name + ' ' + $ending-tag-start + $ending-tag-end + ',\n'
+    $result += $mq-offset + $ending-tag-start + $scalable_class_name + $ending-tag-end + ',\n'
+  else  // если правило состоит более чем из 1 селектора
+    // /.{scalable_class_name} {rule[beginning]} {rule[ending]}
+    // /.{scalable_class_name}{rule[beginning]} {rule[ending]}
+    // /{rule[beginning]} .{scalable_class_name}{rule[ending]}
+    // /{rule[beginning]} .{scalable_class_name}{rule[ending]}
+    $beginning-tag-start = match('^[\w][^\:\[\s]*', rule.beginning) || ''
+    $beginning-tag-end = replace('^[\w][^\:\[\s]*', '', rule.beginning)
+    $beginning-tag-end-stripped  = replace('^\s', '', $beginning-tag-end )  // убираем пробел в начале
+    $beginning-tag-end-stripped   = replace('\s$', '', $beginning-tag-end-stripped )  // убираем пробел в конце
+    $result += $beginning-tag-start + $scalable_class_name + ' ' + $beginning-tag-end-stripped + ' ' + $ending-tag-start + $ending-tag-end + ',\n'
+    $result += $mq-offset + $beginning-tag-start + $scalable_class_name + $beginning-tag-end + ' ' + $ending-tag-start + $ending-tag-end + ',\n'
+    $result += $mq-offset + $beginning-tag-start + $beginning-tag-end + ' ' + $scalable_class_name + ' ' + $ending-tag-start + $ending-tag-end + ',\n'
+    $result += $mq-offset + $beginning-tag-start + $beginning-tag-end + ' ' + $ending-tag-start + $scalable_class_name + $ending-tag-end + ',\n'
+  // стайлус каким-то волшебным образом срезает последнюю запятую в результирующем селекторе
+  // это конечно круто, но лучше бы делать это явно. Но пока я не понял как это сделать - будет немного магии.
+  return $result
+
+
+-scale-values(hash, sizeMod, fontBlockMixin, fontMod)
+  if sizeMod > 0
+    if fontBlockMixin
+      {fontBlockMixin}EM (fontMod/10)
+    for key, value in hash
+      if typeof(value)  == 'unit'
+        if unit(value) == 'px'
+          {key}: (unit(value, '')/sizeMod)em
+        if unit(value) == '%'
+          {key}: value
+        if unit(value) == 'em'
+          {key}: value
+        if unit(value) == ''
+          if key
+            {key}: value
+      else
+        if typeof(value) == 'object'
+          {key}: -composeCSSFunc(sizeMod, value.name, value.args)
+        else
+          {key}: value
+  else
+    fontBlockMixin()
+    for key, value in hash
+      {key}: value
+
+
+scalabilityMixin(hash, sizeMod=10, fontBlockMixin=false, fontMod=10, scalable_class_name='is-scalable')
+  $ruleset = -get-splitted-ruleset()
+  $selector = ''
+  if $ruleset.many
+    $ruleset-rules = $ruleset.rules
+    for $rule in $ruleset-rules
+      $selector += -generate-scalable-selectors($rule, scalable_class_name)
+  else
+    $rule = $ruleset.rules
+    $selector += -generate-scalable-selectors($rule, scalable_class_name)
+  // warn('\n' + $selector)
+
+  /{$selector}
+    -scale-values(hash, sizeMod, fontBlockMixin, fontMod)
+
+  // if -has-parent-selector()  // когда в селекторе есть ссылка на родительский: &
+  //   warn('\nhas parent selector')
+  //   if -has-pseudo-element()  // когда в селекторе есть &::before* или &::after* в общем - &::*
+  //     warn('    has pseudo element')
+  //     if !!-without-pseudo-elements()[0]
+  //       .{scalable_class_name} {-without-pseudo-elements()} ^[0]{-get-pseudo-elements()[-1]}
+  //       .{scalable_class_name}{-without-pseudo-elements()} ^[0]{-get-pseudo-elements()[-1]}
+  //       {-without-pseudo-elements()} .{scalable_class_name}^[0]{-get-pseudo-elements()[-1]}
+  //         -scale-values(hash, sizeMod, fontBlockMixin, fontMod)
+  //     else
+  //       .{scalable_class_name} ^[0]{-get-pseudo-elements()[-1]}
+  //       .{scalable_class_name}^[0]{-get-pseudo-elements()[-1]}
+  //         -scale-values(hash, sizeMod, fontBlockMixin, fontMod)
+  //   else if -has-pseudo-class()  // когда в селекторе есть &:*
+  //     warn('    has pseudo class')
+  //     if !!-without-pseudo-classes()[0]
+  //       warn('        has some selectors before parent selector')
+  //       -warn-selector-data()
+  //       .{scalable_class_name} {-without-pseudo-classes()} ^[0]{-get-pseudo-classes()[-1]}
+  //       .{scalable_class_name}{-without-pseudo-classes()} ^[0]{-get-pseudo-classes()[-1]}
+  //       {-without-pseudo-classes()} .{scalable_class_name}^[0]{-get-pseudo-classes()[-1]}
+  //         -scale-values(hash, sizeMod, fontBlockMixin, fontMod)
+  //     else
+  //       warn('        has no selectors before parent selector')
+  //       -warn-selector-data()
+  //       .{scalable_class_name} ^[0]{-get-pseudo-classes()[-1]}
+  //       .{scalable_class_name}^[0]{-get-pseudo-classes()[-1]}
+  //         -scale-values(hash, sizeMod, fontBlockMixin, fontMod)
+  //   else if -has-attr-selector()  // когда в селекторе есть &[*]*
+  //     warn('    has attr selector')
+  //     if !!-without-attr-selector()[0]
+  //       warn('        has some selectors before parent selector')
+  //       -warn-selector-data()
+  //       .{scalable_class_name} {-without-attr-selector()} ^[0]{-get-attr-selector()[-1]}
+  //       .{scalable_class_name}{-without-attr-selector()} ^[0]{-get-attr-selector()[-1]}
+  //       {-without-attr-selector()} .{scalable_class_name}^[0]{-get-attr-selector()[-1]}
+  //         -scale-values(hash, sizeMod, fontBlockMixin, fontMod)
+  //     else
+  //       warn('        has no selectors before parent selector')
+  //       -warn-selector-data()
+  //       .{scalable_class_name} ^[0]{-get-attr-selector()[-1]}
+  //       .{scalable_class_name}^[0]{-get-attr-selector()[-1]}
+  //         -scale-values(hash, sizeMod, fontBlockMixin, fontMod)
+  //   else  // когда в селекторе чистая &
+  //     warn('    has no pseudo class or pseudo element or attr selectors (maybe just clean &)')
+  //     -warn-selector-data()
+  //     .{scalable_class_name} ^[-1..-1] ^[0]
+  //     .{scalable_class_name}^[-1..-1] ^[0]
+  //     ^[-1..-1] .{scalable_class_name}^[0]
+  //       -scale-values(hash, sizeMod, fontBlockMixin, fontMod)
+  //
+  // else  // когда в селекторе нет &
+  //   warn('\nhas no parent selector')
+  //   if -has-spaces-in-selector()  // селектор не вложен в другой, но состоит из нескольких частей
+  //     warn('    has spaces in selector')
+  //     -warn-selector-data()
+  //     .{scalable_class_name} &
+  //     .{scalable_class_name}&
+  //     /{-get-without-last-selector()} .{scalable_class_name}{-get-last-selector()}
+  //       -scale-values(hash, sizeMod, fontBlockMixin, fontMod)
+  //   else  // селектор не вложен в другой, и состоит только из одной части
+  //     warn('    has no spaces in selector')
+  //     -warn-selector-data()
+  //     .{scalable_class_name} &
+  //     .{scalable_class_name}&
+  //       -scale-values(hash, sizeMod, fontBlockMixin, fontMod)
+
+
+not-ie10-11()  // not ie 10-11 block mixin, for conditional css
+    @media not all and (-ms-high-contrast active) and (-ms-high-contrast none)  // не уверен что это корректно работающее медиа-выражение
+        {block}
+
+
+ie10-11-only()  // ie 10-11 only block mixin, for conditional css
+    @media screen and (-ms-high-contrast active), (-ms-high-contrast none)
+        {block}

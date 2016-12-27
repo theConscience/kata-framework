@@ -3,51 +3,48 @@
 @import './helpers/_block_mixins'
 
 
-$base_fz = 10  // is-scalable font-size is our base_fz
+// .is-scalable
+//     font-size ($base_fz)px
+//
+//     @media (max-width 1265px)
+//         font-size ($base_fz - 1)px
+//
+//     @media (max-width 1212px)
+//         font-size ($base_fz - 2)px
+//
+//     @media (max-width 1042px)
+//         font-size ($base_fz - 3)px
+//
+//     @media (max-width xs)
+//         font-size ($base_fz - 2)px
+//
+//     @media (max-width xss)
+//         font-size ($base_fz)px
 
 
-.is-scalable
-    font-size 10px
-
-    @media (max-width 1265px)
-        font-size 9px
-
-    @media (max-width 1212px)
-        font-size 8px
-
-    @media (max-width 1042px)
-        font-size 7px
-
-    @media (max-width xs)
-        font-size 8px
-
-    @media (max-width xss)
-        font-size 10px
-
-/**--------------------------------*\
- * .avia-page__content
-\*--------------------------------*/
-
-/*main*/.avia-content/*.avia-page__content*/
-    // position absolute
-    // top 0
-    // bottom 0
-    position relative
-    margin-right 300px
-    // padding-left 100px
-    background-color c_white
-    width 100%
-
-    @media (max-width: xl) and (min-width: xs)
-        margin-right 250px
-
-    @media (max-width: lg)
-        flex-direction column
-
-    @media (max-width: xs)
-        order 2
-        margin-right 0
-
+// /**--------------------------------*\
+//  * .avia-page__content
+// \*--------------------------------*/
+//
+// /*main*/.avia-content/*.avia-page__content*/
+//     // position absolute
+//     // top 0
+//     // bottom 0
+//     position relative
+//     margin-right 300px
+//     // padding-left 100px
+//     background-color c_white
+//     width 100%
+//
+//     @media (max-width: xl) and (min-width: xs)
+//         margin-right 250px
+//
+//     @media (max-width: lg)
+//         flex-direction column
+//
+//     @media (max-width: xs)
+//         order 2
+//         margin-right 0
 
 .avia-content__header
     text-align center
@@ -59,17 +56,19 @@ $base_fz = 10  // is-scalable font-size is our base_fz
         fontHvLight36_44()
         color c_white
         text-transform uppercase
+        scalabilityMixin(false, 10, fontHvLight36_44)
 
-        .is-scalable &
-        &.is-scalable
-            fontHvLight36_44em()
+        // .is-scalable &
+        // &.is-scalable
+        //     fontHvLight36_44EM()
 
-        @media (max-width: md)
+        @media (max-width md)
             font-size 26px
+            scalabilityMixin({font-size: 26px})
 
-            .is-scalable &
-            &.is-scalable
-                font-size 2.6em
+            // .is-scalable &
+            // &.is-scalable
+            //     font-size 2.6em
 
 .avia-content__header--primary
     box-sizing border-box
@@ -84,22 +83,37 @@ $base_fz = 10  // is-scalable font-size is our base_fz
     background-position center
     background-size cover
 
-    .is-scalable &
-    &.is-scalable
-        min-height 50.9em
-        padding-top 11.6em
-        padding-bottom 4.6em
-        padding-left default_padding_em
-        padding-right default_padding_em
+    $scalable_props = {
+        min-height: 509px
+        padding-top: 116px
+        padding-bottom: 46px
+        padding-left: default_padding
+        padding-right: default_padding
+    }
+    scalabilityMixin($scalable_props)
+
+    // .is-scalable &
+    // &.is-scalable
+    //     min-height 50.9em
+    //     padding-top 11.6em
+    //     padding-bottom 4.6em
+    //     padding-left default_padding_em
+    //     padding-right default_padding_em
 
     @media (max-width bp_reduced-x-padding)
         padding-left low_padding
         padding-right low_padding
 
-        .is-scalable &
-        &.is-scalable
-            padding-left low_padding_em
-            padding-right low_padding_em
+        $scalable_props = {
+            padding-left: low_padding
+            padding-right: low_padding
+        }
+        scalabilityMixin($scalable_props)
+
+        // .is-scalable &
+        // &.is-scalable
+        //     padding-left low_padding_em
+        //     padding-right low_padding_em
 
     // @media (max-width: bp_header-fix)
     //     padding-left padding-fix-primary
@@ -109,64 +123,78 @@ $base_fz = 10  // is-scalable font-size is our base_fz
         padding-left lower_padding
         padding-right lower_padding
 
-        .is-scalable &
-        &.is-scalable
-            padding-left lower_padding_em
-            padding-right lower_padding_em
+        $scalable_props = {
+            padding-left: lower_padding
+            padding-right: lower_padding
+        }
+        scalabilityMixin($scalable_props)
+
+        // .is-scalable &
+        // &.is-scalable
+        //     padding-left lower_padding_em
+        //     padding-right lower_padding_em
 
     // @media (max-width: xl)
     //     padding-left lower_padding
     //     padding-right lower_padding
 
-    @media (max-width: lg)
+    @media (max-width lg)
         padding-left small_padding
         padding-right small_padding
 
-        .is-scalable &
-        &.is-scalable
-            padding-left small_padding_em
-            padding-right small_padding_em
+        $scalable_props = {
+            padding-left: small_padding
+            padding-right: small_padding
+        }
+        scalabilityMixin($scalable_props)
+
+        // .is-scalable &
+        // &.is-scalable
+        //     padding-left small_padding_em
+        //     padding-right small_padding_em
 
     // @media ({bp_header})
     //     background-size 100% auto
 
-.video-block
-    margin-bottom 28px
 
-    .is-scalable &
-    &.is-scalable
-        margin-bottom 2.8em
+// .video-block
+//     margin-bottom 28px
+//
+//     .is-scalable &
+//     &.is-scalable
+//         margin-bottom 2.8em
+//
+//
+// $play_button_fz_mod = 14 / $base_fz
+//
+// .video-block__play-button
+//     fontHvLight14_auto()
+//     box-sizing border-box
+//     display inline-block
+//     min-width 130px
+//     min-height 159px
+//     padding-top 146px
+//     color c_white
+//     background-repeat no-repeat
+//     background-image url(../images/i-play-video.png)
+//     background-position center top
+//     transition opacity .3s linear
+//
+//     .is-scalable &
+//     &.is-scalable
+//         fontHvLight14_autoEM()
+//         min-width (13 / $play_button_fz_mod)em
+//         min-height (15.9 / $play_button_fz_mod)em
+//         padding-top (14.6 / $play_button_fz_mod)em
+//         background-size contain
+//
+//         @media (max-width 1212px)
+//             font-size 8px
+//
+//     &:hover
+//         cursor pointer
+//         opacity 0.5
 
-
-$play_button_fz_mod = 14 / $base_fz
-
-.video-block__play-button
-    fontHvLight14_auto()
-    box-sizing border-box
-    display inline-block
-    min-width 130px
-    min-height 159px
-    padding-top 146px
-    color c_white
-    background-repeat no-repeat
-    background-image url(../images/i-play-video.png)
-    background-position center top
-    transition opacity .3s linear
-
-    .is-scalable &
-    &.is-scalable
-        fontHvLight14_autoEM()
-        min-width (13 / $play_button_fz_mod)em
-        min-height (15.9 / $play_button_fz_mod)em
-        padding-top (14.6 / $play_button_fz_mod)em
-        background-size contain
-
-        @media (max-width 1212px)
-            font-size 8px
-
-    &:hover
-        cursor pointer
-        opacity 0.5
 
 .avia-content__title
     text-transform uppercase
@@ -180,38 +208,44 @@ $play_button_fz_mod = 14 / $base_fz
         fontHvBold60_auto()
         margin-top 0
         margin-bottom -5px
+        scalabilityMixin({ margin-bottom: -5px }, 60, fontHvBold60_auto)
 
         @media (max-width md)
-            font-size 40px
+            font-size 45px
+            scalabilityMixin({ font-size: 45px})
+            scalabilityMixin({ margin-bottom: -5px }, 45)
 
-    .is-scalable .avia-content__header--primary &
-    .is-scalable.avia-content__header--primary &
-    .avia-content__header--primary &.is-scalable
-        fontHvBold60_autoEM()
-        margin-bottom (-0.5 / $header_title_main_fz_mod)em
 
-        @media (max-width md)
-            $header_title_main_fz_mod = 40 / $base_fz
-            margin-bottom (-0.5 / $header_title_main_fz_mod)em
+    // .is-scalable .avia-content__header--primary &
+    // .is-scalable.avia-content__header--primary &
+    // .avia-content__header--primary &.is-scalable
+    //     fontHvBold60_autoEM()
+    //     margin-bottom (-0.5 / $header_title_main_fz_mod)em
+    //
+    //     @media (max-width md)
+    //         $header_title_main_fz_mod = 40 / $base_fz
+    //         margin-bottom (-0.5 / $header_title_main_fz_mod)em
 
     $header_title_main_fz_mod = 55 / $base_fz
     .avia-content__header--secondary &
         fontHvBold55_auto()
         margin-top 0
         margin-bottom -5px
+        scalabilityMixin({ margin-bottom: -5px }, 55, fontHvBold55_auto)
 
         @media (max-width md)
             font-size 35px
+            scalabilityMixin({ margin-bottom: -5px }, 35)
 
-    .is-scalable .avia-content__header--secondary &
-    .is-scalable.avia-content__header--secondary &
-    .avia-content__header--secondary &.is-scalable
-        fontHvBold55_autoEM()
-        margin-bottom (-0.5 / $header_title_main_fz_mod)em
-
-        @media (max-width md)
-            $header_title_main_fz_mod = 35 / $base_fz
-            margin-bottom (-0.5 / $header_title_main_fz_mod)em
+    // .is-scalable .avia-content__header--secondary &
+    // .is-scalable.avia-content__header--secondary &
+    // .avia-content__header--secondary &.is-scalable
+    //     fontHvBold55_autoEM()
+    //     margin-bottom (-0.5 / $header_title_main_fz_mod)em
+    //
+    //     @media (max-width md)
+    //         $header_title_main_fz_mod = 35 / $base_fz
+    //         margin-bottom (-0.5 / $header_title_main_fz_mod)em
 
 .avia-content__title--secondary
     color c_white
@@ -219,83 +253,94 @@ $play_button_fz_mod = 14 / $base_fz
     $header_title_secondary_fz_mod = 36 / $base_fz
     .avia-content__header--primary &
         fontHvRoman36_44()
+        font-weight 600  // fix - need to add it to fontHvRoman36_44 if no more used
         margin-top 0
         margin-bottom 0
+
+        $scalable_props = { font-weight: 600 }  // fix - need to add it to fontHvRoman36_44 if no more used
+        scalabilityMixin($scalable_props, 55, fontHvRoman36_44)
 
         @media (max-width md)
             font-size 26px
 
-    .is-scalable .avia-content__header--primary &
-    .is-scalable.avia-content__header--primary &
-    .avia-content__header--primary &.is-scalable
-        fontHvRoman36_44em()
+    // .is-scalable .avia-content__header--primary &
+    // .is-scalable.avia-content__header--primary &
+    // .avia-content__header--primary &.is-scalable
+    //     fontHvRoman36_44EM()
+    //     font-weight 600  // fix - need to add it to fontHvRoman36_44 if no more used
 
     $header_title_secondary_fz_mod = 44 / $base_fz
     .avia-content__header--secondary &
         fontHvBold44_auto()
         margin-top 0
         margin-bottom 0
+        scalabilityMixin(false, 10, fontHvBold44_auto)
 
         @media (max-width md)
             font-size 30px
 
-    .is-scalable .avia-content__header--secondary &
-    .is-scalable.avia-content__header--secondary &
-    .avia-content__header--secondary &.is-scalable
-        fontHvBold44_autoEM()
+    // .is-scalable .avia-content__header--secondary &
+    // .is-scalable.avia-content__header--secondary &
+    // .avia-content__header--secondary &.is-scalable
+    //     fontHvBold44_autoEM()
 
-.avia-content__mission
-    fontHvLight18_30()
-    padding-top 75px
-    padding-right default_padding
-    padding-bottom 113px
-    padding-left default_padding
-    color c_darkest-font
-    background-color c_white
-    text-align justify
+// .avia-content__mission
+//     fontHvLight18_30()
+//     padding-top 75px
+//     padding-right default_padding
+//     padding-bottom 113px
+//     padding-left default_padding
+//     color c_darkest-font
+//     background-color c_white
+//     text-align justify
+//
+//     @media (max-width bp_reduced-x-padding)
+//         padding-left reduced_padding
+//         padding-right reduced_padding
+//
+//     @media (max-width bp_lower-x-padding)
+//         padding-left lower_padding
+//         padding-right lower_padding
+//
+//     // @media (max-width: xl)
+//     //     padding-left lower_padding
+//     //     padding-right lower_padding
+//
+//     @media (max-width: lg)
+//         padding-left small_padding
+//         padding-right small_padding
 
-    @media (max-width bp_reduced-x-padding)
-        padding-left reduced_padding
-        padding-right reduced_padding
+// mark.primary
+//     fontHvBold18_30()
+//     color c_contrast
+//     background-color inherit
+//
+// .additional-text
+//     fontHvMedium18_30()
+//     display block
+//     color c_darkest-font
+//     margin-bottom 7px
+//
+// .media-block__title
+// .default-section__title
+//     fontHvBold40_auto()
+//     color c_contrast
+//
+// .media-block
+//     .avia-content__company-profile &
+//         padding-bottom 30px
+//
+// .media-block__title
+//     margin-top 0
+//     margin-bottom 0
+//
+// .media-block__header
+//     text-align center
 
-    @media (max-width bp_lower-x-padding)
-        padding-left lower_padding
-        padding-right lower_padding
-
-    // @media (max-width: xl)
-    //     padding-left lower_padding
-    //     padding-right lower_padding
-
-    @media (max-width: lg)
-        padding-left small_padding
-        padding-right small_padding
-
-mark.primary
-    fontHvBold18_30()
-    color c_contrast
-    background-color inherit
-
-.additional-text
-    fontHvMedium18_30()
-    display block
-    color c_darkest-font
-    margin-bottom 7px
-
-.media-block__title
-.default-section__title
-    fontHvBold40_auto()
-    color c_contrast
-
-.media-block
-    .avia-content__company-profile &
-        padding-bottom 30px
-
-.media-block__title
-    margin-top 0
-    margin-bottom 0
 
 .media-block__header
-    text-align center
+    .presentation-content__company-profile &
+        background-image url(../images/bg-avia-profile.jpg)
 
 
 
@@ -309,538 +354,544 @@ mark.primary
         background-size cover
         background-position 50% 100%
 
-.media-block__content
-    padding-top 34px
-    padding-bottom 42px
-    padding-left default_padding
-    padding-right default_padding
-    fontHvLight18_auto()
-    color c_white
-    background-color c_contrast
-
-    > p
-        margin-bottom 20px
-
-        &:last-of-type
-            margin-bottom 0
-
-    @media (max-width bp_reduced-x-padding)
-        padding-left reduced_padding
-        padding-right reduced_padding
-
-    @media (max-width bp_lower-x-padding)
-        padding-left lower_padding
-        padding-right lower_padding
-
-    // @media (max-width: xl)
-    //     padding-left lower_padding
-    //     padding-right lower_padding
-
-    @media (max-width: lg)
-        padding-left small_padding
-        padding-right small_padding
-
-
-.features-list
-    padding 0
-    margin 0
-    list-style-type none
-    // font-size 0
-
-    display flex
-    flex-wrap wrap
-    justify-content center
-    align-items flex-start
-
-    .avia-content__paid-services &
-        padding-left default_padding
-        padding-right default_padding
-        padding-top 55px
-        padding-bottom 38px
-
-        .is-scalable &
-        &.is-scalable
-            padding-left default_padding_em
-            padding-right default_padding_em
-            padding-top 5.5em
-            padding-bottom 3.8em
-
-        @media (max-width bp_reduced-x-padding)
-            padding-left reduced_padding
-            padding-right reduced_padding
-
-            .is-scalable &
-            &.is-scalable
-                padding-left reduced_padding_em
-                padding-right reduced_padding_em
-
-        @media (max-width bp_lower-x-padding)
-            padding-left lower_padding
-            padding-right lower_padding
-
-            .is-scalable &
-            &.is-scalable
-                padding-left lower_padding_em
-                padding-right lower_padding_em
-
-        // @media (max-width: xl)
-        //     padding-left lower_padding
-        //     padding-right lower_padding
-
-        @media (max-width: lg)
-            padding-left small_padding
-            padding-right small_padding
-
-            .is-scalable &
-            &.is-scalable
-                padding-left small_padding_em
-                padding-right small_padding_em
-
-.features-list--bordered
-    margin-left -13px
-    margin-right -13px
-
-    .is-scalable &
-    &.is-scalable
-        margin-left -1.3em
-        margin-right -1.3em
-
-.features-list--chaotic::before
-.features-list--chaotic::after
-    display table
-    content ''
-
-.features-list--chaotic::after
-    clear both
-
-$feature_item_fz_mod = 14 / $base_fz
-
-.features-list__item
-    fontHvMedium14_auto()  // здесь меняется размер шрифта
-    position relative
-    box-sizing border-box
-    display inline-block
-    vertical-align top
-    width 33.3333%
-    margin-bottom 40px
-
-    flex-basis 239px
-
-    .is-scalable &
-    &.is-scalable
-        fontHvMedium14_autoEM()
-        margin-bottom (4 / $feature_item_fz_mod)em
-        flex-basis (23.9 / $feature_item_fz_mod)em
-
-    &::before
-        position absolute
-        top 0
-        left 0
-        right 0
-        margin-left auto
-        margin-right auto
-        width 100%
-        height 116px
-        background-repeat no-repeat
-        background-position center top
-        content ''
-
-    .is-scalable &::before
-    &.is-scalable::before
-        height (11.6 / $feature_item_fz_mod)em
-
-    .features-list--rounded-icons > &::before
-        width 108px
-        height 108px
-        border 1px solid c_seo-2
-        border-radius 50%
-        background-position center
-
-    .is-scalable .features-list--rounded-icons > &::before
-    .is-scalable.features-list--rounded-icons > &::before
-    .features-list--rounded-icons > &.is-scalable::before
-        width (10.8 / $feature_item_fz_mod)em
-        height (10.8 / $feature_item_fz_mod)em
-
-    .features-list--inverted-color > &
-        margin-bottom 0
-        color c_contrast-light
-
-    .features-list--bordered > &
-        width calc(33.3333% - 17.3333px)
-        max-width 239px  // ie11 fix
-        margin-left 13px
-        margin-right 13px
-        margin-top 172px
-        margin-bottom 0
-
-    .is-scalable .features-list--bordered > &
-    .is-scalable.features-list--bordered > &
-    .features-list--bordered > &.is-scalable
-        width calc(33.3333% - 1.7333em)
-        max-width (23.9 / $feature_item_fz_mod)em  // ie11 fix
-        margin-left (1.3 / $feature_item_fz_mod)em
-        margin-right (1.3 / $feature_item_fz_mod)em
-        margin-top (17.2 / $feature_item_fz_mod)em
-
-        // &:nth-of-type(3n+1)
-        //     margin-left 0
-        //
-        // &:nth-of-type(3n+3)
-        //     margin-right 0
-
-    .features-list--with-images > &
-        margin-top 48px
-        margin-bottom 27px
-
-    .is-scalable .features-list--with-images > &
-    .is-scalable.features-list--with-images > &
-    .features-list--with-images > &.is-scalable
-        margin-top (4.8 / $feature_item_fz_mod)em
-        margin-bottom (2.7 / $feature_item_fz_mod)em
-
-.feature-item
-    padding-top 128px
-
-    .is-scalable &
-    &.is-scalable
-        padding-top (12.8 / $feature_item_fz_mod)em
-
-.feature-item--big-icon
-    padding-top 136px
-
-    .is-scalable &
-    &.is-scalable
-        padding-top (13.6 / $feature_item_fz_mod)em
-
-    .is-scalable &::before
-    &.is-scalable::before
-        background-size contain
-
-.feature-item--bordered
-    min-height 206px
-    padding-top 30px
-    padding-bottom 10px
-    border 1px solid c_border-light
-
-    .is-scalable &
-    &.is-scalable
-        min-height (20.6 / $feature_item_fz_mod)em
-        padding-top (3 / $feature_item_fz_mod)em
-        padding-bottom (1 / $feature_item_fz_mod)em
-
-    &::before
-    &::after
-        position absolute
-        content ''
-
-    &::before
-        top -126px
-        left 0
-        right 0
-        margin 0 auto
-        width 177px
-        height 110px
-        background-repeat no-repeat
-        background-position center
-
-    .is-scalable &::before
-    &.is-scalable::before
-        top (-12.6 / $feature_item_fz_mod)em
-        width (17.7 / $feature_item_fz_mod)em
-        height (11 / $feature_item_fz_mod)em
-        background-size contain
-
-    &::after
-        top -1px
-        left 0
-        right 0
-        margin-left auto
-        margin-right auto
-        width 55%
-        height 1px
-        background-color #fff
-
-    .is-scalable &::after
-    &.is-scalable::after
-        top (-0.1 / $feature_item_fz_mod)em
-        height (0.1 / $feature_item_fz_mod)em
-
-.feature-item--bordered--wide
-    padding-left 23px
-    padding-right 23px
-
-    .is-scalable &
-    &.is-scalable
-        padding-left (2.3 / $feature_item_fz_mod)em
-        padding-right (2.3 / $feature_item_fz_mod)em
-
-    &::after
-        width 55%
-
-.feature-item--bordered--thin
-    padding-left 30px
-    padding-right 30px
-    padding-bottom 23px
-
-    .is-scalable &
-    &.is-scalable
-        padding-left (3 / $feature_item_fz_mod)em
-        padding-right (3 / $feature_item_fz_mod)em
-        padding-bottom (2.3 / $feature_item_fz_mod)em
-
-    &::after
-        width 47%
-
-.feature-item--with-image
-    padding-top 58px
-
-    .is-scalable &
-    &.is-scalable
-        padding-top (5.8 / $feature_item_fz_mod)em
-
-    &::before
-        content none
-
-.feature-item--thin-padding
-    padding-left 20px
-    padding-right 20px
-
-    .is-scalable &
-    &.is-scalable
-        padding-left (2 / $feature_item_fz_mod)em
-        padding-right (2 / $feature_item_fz_mod)em
-
-
-.feature-item__help-text
-    fontHvMedium18_30()
-    color c_darkest-font
-
-    .is-scalable &
-    &.is-scalable
-        fontHvMedium18_30em($feature_item_fz_mod)
-
-    .feature-item--inverted-color &
-        fontHvBold18_30()
-        color c_white
-
-    .is-scalable .feature-item--inverted-color &
-    .is-scalable.feature-item--inverted-color &
-    .feature-item--inverted-color &.is-scalable
-        fontHvBold18_30em($feature_item_fz_mod)
-
-.feature-item__title
-    fontRobotoBlack22_auto()
-    display block
-    margin-top 0
-    color c_darkest-font
-
-    .is-scalable &
-    &.is-scalable
-        fontRobotoBlack22_autoEM($feature_item_fz_mod)
-
-    .feature-item--inverted-color &
-        fontHvBold24_40()
-        color c_white
-        text-transform uppercase
-
-    .is-scalable .feature-item--inverted-color &
-    .is-scalable.feature-item--inverted-color &
-    .feature-item--inverted-color &.is-scalable
-        fontHvBold24_40em($feature_item_fz_mod)
-
-    .feature-item--with-image &
-        fontRobotoBold18_auto()
-        color c_darken-3-font
-
-    .is-scalable .feature-item--with-image &
-    .is-scalable.feature-item--with-image &
-    .feature-item--with-image &.is-scalable
-        fontRobotoBold18_autoEM($feature_item_fz_mod)
-
-.feature-item__title--bright
-    fontHvBold24_40()
-    color c_contrast
-    text-transform uppercase
-
-    .is-scalable &
-    &.is-scalable
-        fontHvBold24_40em($feature_item_fz_mod)
-
-.feature-item__sub-title
-    display block
-    margin-bottom 23px
-
-    .is-scalable &
-    &.is-scalable
-        margin-bottom (2.3 / $feature_item_fz_mod)em
-
-    .feature-item--with-image &
-        fontRobotoRegular14_auto()
-        color c_darken-3-font
-
-    .is-scalable .feature-item--with-image &
-    .is-scalable.feature-item--with-image &
-    .feature-item--with-image &.is-scalable
-        fontRobotoRegular14_autoEM($feature_item_fz_mod)
-
-.feature-item__content
-    fontHvMedium14_auto()
-    padding-left 10px
-    padding-right 10px
-    color c_darkest-font
-
-    .is-scalable &
-    &.is-scalable
-        fontHvMedium14_autoEM($feature_item_fz_mod)
-        padding-left (1 / $feature_item_fz_mod)em
-        padding-right (1 / $feature_item_fz_mod)em
-
-    .feature-item--inverted-color &
-        fontHvRoman14_18()
-        color c_contrast-light
-
-    .is-scalable .feature-item--inverted-color &
-    .is-scalable.feature-item--inverted-color &
-    .feature-item--inverted-color &.is-scalable
-        fontHvRoman14_18em($feature_item_fz_mod)
-
-    .feature-item--with-image &
-        fontRobotoRegular14_auto()
-        color c_darken-3-font
-
-    .is-scalable .feature-item--with-image &
-    .is-scalable.feature-item--with-image &
-    .feature-item--with-image &.is-scalable
-        fontRobotoRegular14_autoEM($feature_item_fz_mod)
-
-    .feature-item--bordered &
-        padding-left 0
-        padding-right 0
-        margin-bottom 0
-
-.feature-item__content--lighten
-    fontHvRoman14_24()
-    color c_darken-bg
-    margin-bottom 35px
-
-    .is-scalable &
-    &.is-scalable
-        fontHvRoman14_24em($feature_item_fz_mod)
-        margin-bottom (3.5 / $feature_item_fz_mod)em
-
-.feature-item__picture-wrapper
-    position absolute
-    z-index 10
-    top -49px
-    left 0
-    right 0
-    margin-left auto
-    margin-right auto
-    // display flex
-    // justify-content center
-    // align-items center
-    width 96px
-    height 96px
-
-    .is-scalable &
-    &.is-scalable
-        top (-4.9 / $feature_item_fz_mod)em
-        width (9.6 / $feature_item_fz_mod)em
-        height (9.6 / $feature_item_fz_mod)em
-
-.feature-item__picture
-    position absolute
-    left -9999px
-    right -9999px
-    top -9999px
-    bottom -9999px
-    margin auto
-
-.box--rounded
-    border-width 1px
-    border-style solid
-    border-radius 50%
-    overflow hidden
-
-.box--bordered--light
-    border-color c_white
-
-.box--bordered--dark
-    border-color c_border-dim
+        $scalable_props = {
+            min-height: 168px
+            padding-top: 41px
+        }
+        scalabilityMixin($scalable_props)
+
+// .media-block__content
+//     padding-top 34px
+//     padding-bottom 42px
+//     padding-left default_padding
+//     padding-right default_padding
+//     fontHvLight18_auto()
+//     color c_white
+//     background-color c_contrast
+//
+//     > p
+//         margin-bottom 20px
+//
+//         &:last-of-type
+//             margin-bottom 0
+//
+//     @media (max-width bp_reduced-x-padding)
+//         padding-left reduced_padding
+//         padding-right reduced_padding
+//
+//     @media (max-width bp_lower-x-padding)
+//         padding-left lower_padding
+//         padding-right lower_padding
+//
+//     // @media (max-width: xl)
+//     //     padding-left lower_padding
+//     //     padding-right lower_padding
+//
+//     @media (max-width: lg)
+//         padding-left small_padding
+//         padding-right small_padding
+
+
+// .features-list
+//     padding 0
+//     margin 0
+//     list-style-type none
+//     // font-size 0
+//
+//     display flex
+//     flex-wrap wrap
+//     justify-content center
+//     align-items flex-start
+//
+//     .avia-content__paid-services &
+//         padding-left default_padding
+//         padding-right default_padding
+//         padding-top 55px
+//         padding-bottom 38px
+//
+//         .is-scalable &
+//         &.is-scalable
+//             padding-left default_padding_em
+//             padding-right default_padding_em
+//             padding-top 5.5em
+//             padding-bottom 3.8em
+//
+//         @media (max-width bp_reduced-x-padding)
+//             padding-left reduced_padding
+//             padding-right reduced_padding
+//
+//             .is-scalable &
+//             &.is-scalable
+//                 padding-left reduced_padding_em
+//                 padding-right reduced_padding_em
+//
+//         @media (max-width bp_lower-x-padding)
+//             padding-left lower_padding
+//             padding-right lower_padding
+//
+//             .is-scalable &
+//             &.is-scalable
+//                 padding-left lower_padding_em
+//                 padding-right lower_padding_em
+//
+//         // @media (max-width: xl)
+//         //     padding-left lower_padding
+//         //     padding-right lower_padding
+//
+//         @media (max-width: lg)
+//             padding-left small_padding
+//             padding-right small_padding
+//
+//             .is-scalable &
+//             &.is-scalable
+//                 padding-left small_padding_em
+//                 padding-right small_padding_em
+//
+// .features-list--bordered
+//     margin-left -13px
+//     margin-right -13px
+//
+//     .is-scalable &
+//     &.is-scalable
+//         margin-left -1.3em
+//         margin-right -1.3em
+//
+// .features-list--chaotic::before
+// .features-list--chaotic::after
+//     display table
+//     content ''
+//
+// .features-list--chaotic::after
+//     clear both
+//
+// $feature_item_fz_mod = 14 / $base_fz
+//
+// .features-list__item
+//     fontHvMedium14_auto()  // здесь меняется размер шрифта
+//     position relative
+//     box-sizing border-box
+//     display inline-block
+//     vertical-align top
+//     width 33.3333%
+//     margin-bottom 40px
+//
+//     flex-basis 239px
+//
+//     .is-scalable &
+//     &.is-scalable
+//         fontHvMedium14_autoEM()
+//         margin-bottom (4 / $feature_item_fz_mod)em
+//         flex-basis (23.9 / $feature_item_fz_mod)em
+//
+//     &::before
+//         position absolute
+//         top 0
+//         left 0
+//         right 0
+//         margin-left auto
+//         margin-right auto
+//         width 100%
+//         height 116px
+//         background-repeat no-repeat
+//         background-position center top
+//         content ''
+//
+//     .is-scalable &::before
+//     &.is-scalable::before
+//         height (11.6 / $feature_item_fz_mod)em
+//
+//     .features-list--rounded-icons > &::before
+//         width 108px
+//         height 108px
+//         border 1px solid c_seo-2
+//         border-radius 50%
+//         background-position center
+//
+//     .is-scalable .features-list--rounded-icons > &::before
+//     .is-scalable.features-list--rounded-icons > &::before
+//     .features-list--rounded-icons > &.is-scalable::before
+//         width (10.8 / $feature_item_fz_mod)em
+//         height (10.8 / $feature_item_fz_mod)em
+//
+//     .features-list--inverted-color > &
+//         margin-bottom 0
+//         color c_contrast-light
+//
+//     .features-list--bordered > &
+//         width calc(33.3333% - 17.3333px)
+//         max-width 239px  // ie11 fix
+//         margin-left 13px
+//         margin-right 13px
+//         margin-top 172px
+//         margin-bottom 0
+//
+//     .is-scalable .features-list--bordered > &
+//     .is-scalable.features-list--bordered > &
+//     .features-list--bordered > &.is-scalable
+//         width calc(33.3333% - 1.7333em)
+//         max-width (23.9 / $feature_item_fz_mod)em  // ie11 fix
+//         margin-left (1.3 / $feature_item_fz_mod)em
+//         margin-right (1.3 / $feature_item_fz_mod)em
+//         margin-top (17.2 / $feature_item_fz_mod)em
+//
+//         // &:nth-of-type(3n+1)
+//         //     margin-left 0
+//         //
+//         // &:nth-of-type(3n+3)
+//         //     margin-right 0
+//
+//     .features-list--with-images > &
+//         margin-top 48px
+//         margin-bottom 27px
+//
+//     .is-scalable .features-list--with-images > &
+//     .is-scalable.features-list--with-images > &
+//     .features-list--with-images > &.is-scalable
+//         margin-top (4.8 / $feature_item_fz_mod)em
+//         margin-bottom (2.7 / $feature_item_fz_mod)em
+//
+// .feature-item
+//     padding-top 128px
+//
+//     .is-scalable &
+//     &.is-scalable
+//         padding-top (12.8 / $feature_item_fz_mod)em
+//
+// .feature-item--big-icon
+//     padding-top 136px
+//
+//     .is-scalable &
+//     &.is-scalable
+//         padding-top (13.6 / $feature_item_fz_mod)em
+//
+//     .is-scalable &::before
+//     &.is-scalable::before
+//         background-size contain
+//
+// .feature-item--bordered
+//     min-height 206px
+//     padding-top 30px
+//     padding-bottom 10px
+//     border 1px solid c_border-light
+//
+//     .is-scalable &
+//     &.is-scalable
+//         min-height (20.6 / $feature_item_fz_mod)em
+//         padding-top (3 / $feature_item_fz_mod)em
+//         padding-bottom (1 / $feature_item_fz_mod)em
+//
+//     &::before
+//     &::after
+//         position absolute
+//         content ''
+//
+//     &::before
+//         top -126px
+//         left 0
+//         right 0
+//         margin 0 auto
+//         width 177px
+//         height 110px
+//         background-repeat no-repeat
+//         background-position center
+//
+//     .is-scalable &::before
+//     &.is-scalable::before
+//         top (-12.6 / $feature_item_fz_mod)em
+//         width (17.7 / $feature_item_fz_mod)em
+//         height (11 / $feature_item_fz_mod)em
+//         background-size contain
+//
+//     &::after
+//         top -1px
+//         left 0
+//         right 0
+//         margin-left auto
+//         margin-right auto
+//         width 55%
+//         height 1px
+//         background-color #fff
+//
+//     .is-scalable &::after
+//     &.is-scalable::after
+//         top (-0.1 / $feature_item_fz_mod)em
+//         height (0.1 / $feature_item_fz_mod)em
+//
+// .feature-item--bordered--wide
+//     padding-left 23px
+//     padding-right 23px
+//
+//     .is-scalable &
+//     &.is-scalable
+//         padding-left (2.3 / $feature_item_fz_mod)em
+//         padding-right (2.3 / $feature_item_fz_mod)em
+//
+//     &::after
+//         width 55%
+//
+// .feature-item--bordered--thin
+//     padding-left 30px
+//     padding-right 30px
+//     padding-bottom 23px
+//
+//     .is-scalable &
+//     &.is-scalable
+//         padding-left (3 / $feature_item_fz_mod)em
+//         padding-right (3 / $feature_item_fz_mod)em
+//         padding-bottom (2.3 / $feature_item_fz_mod)em
+//
+//     &::after
+//         width 47%
+//
+// .feature-item--with-image
+//     padding-top 58px
+//
+//     .is-scalable &
+//     &.is-scalable
+//         padding-top (5.8 / $feature_item_fz_mod)em
+//
+//     &::before
+//         content none
+//
+// .feature-item--thin-padding
+//     padding-left 20px
+//     padding-right 20px
+//
+//     .is-scalable &
+//     &.is-scalable
+//         padding-left (2 / $feature_item_fz_mod)em
+//         padding-right (2 / $feature_item_fz_mod)em
+//
+//
+// .feature-item__help-text
+//     fontHvMedium18_30()
+//     color c_darkest-font
+//
+//     .is-scalable &
+//     &.is-scalable
+//         fontHvMedium18_30EM($feature_item_fz_mod)
+//
+//     .feature-item--inverted-color &
+//         fontHvBold18_30()
+//         color c_white
+//
+//     .is-scalable .feature-item--inverted-color &
+//     .is-scalable.feature-item--inverted-color &
+//     .feature-item--inverted-color &.is-scalable
+//         fontHvBold18_30em($feature_item_fz_mod)
+//
+// .feature-item__title
+//     fontRobotoBlack22_auto()
+//     display block
+//     margin-top 0
+//     color c_darkest-font
+//
+//     .is-scalable &
+//     &.is-scalable
+//         fontRobotoBlack22_autoEM($feature_item_fz_mod)
+//
+//     .feature-item--inverted-color &
+//         fontHvBold24_40()
+//         color c_white
+//         text-transform uppercase
+//
+//     .is-scalable .feature-item--inverted-color &
+//     .is-scalable.feature-item--inverted-color &
+//     .feature-item--inverted-color &.is-scalable
+//         fontHvBold24_40EM($feature_item_fz_mod)
+//
+//     .feature-item--with-image &
+//         fontRobotoBold18_auto()
+//         color c_darken-3-font
+//
+//     .is-scalable .feature-item--with-image &
+//     .is-scalable.feature-item--with-image &
+//     .feature-item--with-image &.is-scalable
+//         fontRobotoBold18_autoEM($feature_item_fz_mod)
+//
+// .feature-item__title--bright
+//     fontHvBold24_40()
+//     color c_contrast
+//     text-transform uppercase
+//
+//     .is-scalable &
+//     &.is-scalable
+//         fontHvBold24_40EM($feature_item_fz_mod)
+//
+// .feature-item__sub-title
+//     display block
+//     margin-bottom 23px
+//
+//     .is-scalable &
+//     &.is-scalable
+//         margin-bottom (2.3 / $feature_item_fz_mod)em
+//
+//     .feature-item--with-image &
+//         fontRobotoRegular14_auto()
+//         color c_darken-3-font
+//
+//     .is-scalable .feature-item--with-image &
+//     .is-scalable.feature-item--with-image &
+//     .feature-item--with-image &.is-scalable
+//         fontRobotoRegular14_autoEM($feature_item_fz_mod)
+//
+// .feature-item__content
+//     fontHvMedium14_auto()
+//     padding-left 10px
+//     padding-right 10px
+//     color c_darkest-font
+//
+//     .is-scalable &
+//     &.is-scalable
+//         fontHvMedium14_autoEM($feature_item_fz_mod)
+//         padding-left (1 / $feature_item_fz_mod)em
+//         padding-right (1 / $feature_item_fz_mod)em
+//
+//     .feature-item--inverted-color &
+//         fontHvRoman14_18()
+//         color c_contrast-light
+//
+//     .is-scalable .feature-item--inverted-color &
+//     .is-scalable.feature-item--inverted-color &
+//     .feature-item--inverted-color &.is-scalable
+//         fontHvRoman14_18EM($feature_item_fz_mod)
+//
+//     .feature-item--with-image &
+//         fontRobotoRegular14_auto()
+//         color c_darken-3-font
+//
+//     .is-scalable .feature-item--with-image &
+//     .is-scalable.feature-item--with-image &
+//     .feature-item--with-image &.is-scalable
+//         fontRobotoRegular14_autoEM($feature_item_fz_mod)
+//
+//     .feature-item--bordered &
+//         padding-left 0
+//         padding-right 0
+//         margin-bottom 0
+//
+// .feature-item__content--lighten
+//     fontHvRoman14_24()
+//     color c_darken-bg
+//     margin-bottom 35px
+//
+//     .is-scalable &
+//     &.is-scalable
+//         fontHvRoman14_24EM($feature_item_fz_mod)
+//         margin-bottom (3.5 / $feature_item_fz_mod)em
+//
+// .feature-item__picture-wrapper
+//     position absolute
+//     z-index 10
+//     top -49px
+//     left 0
+//     right 0
+//     margin-left auto
+//     margin-right auto
+//     // display flex
+//     // justify-content center
+//     // align-items center
+//     width 96px
+//     height 96px
+//
+//     .is-scalable &
+//     &.is-scalable
+//         top (-4.9 / $feature_item_fz_mod)em
+//         width (9.6 / $feature_item_fz_mod)em
+//         height (9.6 / $feature_item_fz_mod)em
+//
+// .feature-item__picture
+//     position absolute
+//     left -9999px
+//     right -9999px
+//     top -9999px
+//     bottom -9999px
+//     margin auto
+//
+// .box--rounded
+//     border-width 1px
+//     border-style solid
+//     border-radius 50%
+//     overflow hidden
+//
+// .box--bordered--light
+//     border-color c_white
+//
+// .box--bordered--dark
+//     border-color c_border-dim
 
 // .avia-content__aircompanies-news
 //
 
 
 
-.avia-content__news-features/*.features-list*/
-    padding-top 45px
-    padding-right default_padding
-    padding-bottom 0
-    padding-left default_padding
-    background-color c_white
-
-    .is-scalable &
-    &.is-scalable
-        padding-top 4.5em
-        padding-right default_padding_em
-        padding-left default_padding_em
-
-    @media (max-width bp_reduced-x-padding)
-        padding-left reduced_padding
-        padding-right reduced_padding
-
-        .is-scalable &
-        &.is-scalable
-            padding-left reduced_padding_em
-            padding-right reduced_padding_em
-
-    @media (max-width bp_lower-x-padding)
-        padding-left lower_padding
-        padding-right lower_padding
-
-        .is-scalable &
-        &.is-scalable
-            padding-left lower_padding_em
-            padding-right lower_padding_em
-
-    // @media (max-width: xl)
-    //     padding-left lower_padding
-    //     padding-right lower_padding
-
-    @media (max-width: lg)
-        padding-left small_padding
-        padding-right small_padding
-
-        .is-scalable &
-        &.is-scalable
-            padding-left small_padding_em
-            padding-right small_padding_em
-
-.feature-item--instant-publication::before
-    background-image url(../images/i-recycle.png)
-
-.feature-item--no-spam::before
-    background-image url(../images/i-basket.png)
-
-.feature-item--news-channels::before
-    background-image url(../images/i-loupe.png)
-
-.feature-item--audience-coverage::before
-    background-image url(../images/i-thumbs-up.png)
-
-.feature-item--carry-news::before
-    background-image url(../images/i-money-graph.png)
-
-.feature-item--multilanguage::before
-    background-image url(../images/i-languages-icons.png)
-
-
-.custom-banner--v1
-    min-height 325px
-    padding-bottom 36px
-    text-align center
+// .avia-content__news-features/*.features-list*/
+//     padding-top 45px
+//     padding-right default_padding
+//     padding-bottom 0
+//     padding-left default_padding
+//     background-color c_white
+//
+//     .is-scalable &
+//     &.is-scalable
+//         padding-top 4.5em
+//         padding-right default_padding_em
+//         padding-left default_padding_em
+//
+//     @media (max-width bp_reduced-x-padding)
+//         padding-left reduced_padding
+//         padding-right reduced_padding
+//
+//         .is-scalable &
+//         &.is-scalable
+//             padding-left reduced_padding_em
+//             padding-right reduced_padding_em
+//
+//     @media (max-width bp_lower-x-padding)
+//         padding-left lower_padding
+//         padding-right lower_padding
+//
+//         .is-scalable &
+//         &.is-scalable
+//             padding-left lower_padding_em
+//             padding-right lower_padding_em
+//
+//     // @media (max-width: xl)
+//     //     padding-left lower_padding
+//     //     padding-right lower_padding
+//
+//     @media (max-width: lg)
+//         padding-left small_padding
+//         padding-right small_padding
+//
+//         .is-scalable &
+//         &.is-scalable
+//             padding-left small_padding_em
+//             padding-right small_padding_em
+//
+// .feature-item--instant-publication::before
+//     background-image url(../images/i-recycle.png)
+//
+// .feature-item--no-spam::before
+//     background-image url(../images/i-basket.png)
+//
+// .feature-item--news-channels::before
+//     background-image url(../images/i-loupe.png)
+//
+// .feature-item--audience-coverage::before
+//     background-image url(../images/i-thumbs-up.png)
+//
+// .feature-item--carry-news::before
+//     background-image url(../images/i-money-graph.png)
+//
+// .feature-item--multilanguage::before
+//     background-image url(../images/i-languages-icons.png)
+//
+//
+// .custom-banner--v1
+//     min-height 325px
+//     padding-bottom 36px
+//     text-align center
 
 
 
@@ -851,389 +902,424 @@ $feature_item_fz_mod = 14 / $base_fz
     background-size cover
     background-position center
 
-.custom-banner__title
-    margin-top 0
-    margin-bottom 0
-    text-align center
+// .custom-banner__title
+//     margin-top 0
+//     margin-bottom 0
+//     text-align center
+//
+//     .wrapped-in-braces
+//         position relative
+//         display inline-block
+//         padding-left 35px
+//         padding-right 42px
+//
+//         &::before
+//         &::after
+//             position absolute
+//             top 0
+//             width 10px
+//             height 36px
+//
+//         &::before
+//             left 0
+//             content '['
+//
+//         &::after
+//             right 0
+//             content ']'
+//
+//     .custom-banner--v1 > &
+//         fontHvBold30_auto()
+//         padding-top 22px
+//         padding-bottom 18px
+//         margin-bottom 29px
+//         color c_seo-2
+//         background-color c_black-transparent-022
+//
+// .custom-banner__content
+//     padding-left default_padding
+//     padding-right default_padding
+//
+//     @media (max-width bp_reduced-x-padding)
+//         padding-left reduced_padding
+//         padding-right reduced_padding
+//
+//     @media (max-width bp_lower-x-padding)
+//         padding-left lower_padding
+//         padding-right lower_padding
+//
+//     // @media (max-width: xl)
+//     //     padding-left lower_padding
+//     //     padding-right lower_padding
+//
+//     @media (max-width: lg)
+//         padding-left small_padding
+//         padding-right small_padding
+//
+//     .custom-banner--v1 &
+//         margin 0
+//         list-style-type none
+//
+//     .custom-banner--v2 &
+//         fontHvRoman18_24()
+//         color c_white
+//
+//         & > p:last-of-type
+//             margin-bottom 36px
+//
+// .custom-banner__link
+//     .custom-banner--v1 &
+//         fontHvLight18_30()
+//         color c_white
+//         text-decoration none
+//
+//         &:hover
+//             text-decoration none
 
-    .wrapped-in-braces
-        position relative
-        display inline-block
-        padding-left 35px
-        padding-right 42px
 
-        &::before
-        &::after
-            position absolute
-            top 0
-            width 10px
-            height 36px
-
-        &::before
-            left 0
-            content '['
-
-        &::after
-            right 0
-            content ']'
-
-    .custom-banner--v1 > &
-        fontHvBold30_auto()
-        padding-top 22px
-        padding-bottom 18px
-        margin-bottom 29px
-        color c_seo-2
-        background-color c_black-transparent-022
-
-.custom-banner__content
-    padding-left default_padding
-    padding-right default_padding
-
-    @media (max-width bp_reduced-x-padding)
-        padding-left reduced_padding
-        padding-right reduced_padding
-
-    @media (max-width bp_lower-x-padding)
-        padding-left lower_padding
-        padding-right lower_padding
-
-    // @media (max-width: xl)
-    //     padding-left lower_padding
-    //     padding-right lower_padding
-
-    @media (max-width: lg)
-        padding-left small_padding
-        padding-right small_padding
-
-    .custom-banner--v1 &
-        margin 0
-        list-style-type none
-
-    .custom-banner--v2 &
-        fontHvRoman18_24()
-        color c_white
-
-        & > p:last-of-type
-            margin-bottom 36px
-
-.custom-banner__link
-    .custom-banner--v1 &
-        fontHvLight18_30()
-        color c_white
-        text-decoration none
-
-        &:hover
-            text-decoration none
-
-
-.default-section
-    &--bright
-        color c_contrast-light
-        background-color c_contrast
-
-.default-section__content
-    .avia-content__clients-replies &
-        margin-bottom 33px
-
-.avia-content__search-and-promo-tools/*.default-section*/
-    background-color c_white
+// .default-section
+//     &--bright
+//         color c_contrast-light
+//         background-color c_contrast
+//
+// .default-section__content
+//     .avia-content__clients-replies &
+//         margin-bottom 33px
+//
+// .avia-content__search-and-promo-tools/*.default-section*/
+//     background-color c_white
+//
+// .default-section__header
+//     padding-left default_padding
+//     padding-right default_padding
+//     text-align center
+//
+//     @media (max-width bp_reduced-x-padding)
+//         padding-left reduced_padding
+//         padding-right reduced_padding
+//
+//     @media (max-width bp_lower-x-padding)
+//         padding-left lower_padding
+//         padding-right lower_padding
+//
+//     // @media (max-width: xl)
+//     //     padding-left lower_padding
+//     //     padding-right lower_padding
+//
+//     @media (max-width: lg)
+//         padding-left small_padding
+//         padding-right small_padding
+//
+//     .avia-content__search-and-promo-tools &
+//         padding-top 48px
+//
+//     .avia-content__aircompanies-questionnare &
+//         padding-left 0
+//         padding-right 0
+//         padding-bottom 39px
 
 .default-section__header
-    padding-left default_padding
-    padding-right default_padding
-    text-align center
-
-    @media (max-width bp_reduced-x-padding)
-        padding-left reduced_padding
-        padding-right reduced_padding
-
-    @media (max-width bp_lower-x-padding)
-        padding-left lower_padding
-        padding-right lower_padding
-
-    // @media (max-width: xl)
-    //     padding-left lower_padding
-    //     padding-right lower_padding
-
-    @media (max-width: lg)
-        padding-left small_padding
-        padding-right small_padding
-
-    .avia-content__search-and-promo-tools &
-        padding-top 48px
-
     .avia-content__aircompanies-questionnare &
-        padding-left 0
-        padding-right 0
+        padding-left default_padding
+        padding-right default_padding
         padding-bottom 39px
+        scalabilityMixin({ padding-bottom: 39px })
+
+        @media (max-width bp_medium-x-padding)
+            padding-left reduced_padding_2
+            padding-right reduced_padding_2
+
+        @media (max-width bp_reduced-x-padding)
+            padding-left low_padding
+            padding-right low_padding
+
+        @media (max-width bp_low-x-padding)
+            padding-left small_padding
+            padding-right small_padding
+
+        @media (max-width lg)
+            padding-left small_padding
+            padding-right small_padding
+
+// .default-section__title
+//     margin-top 0
+//     margin-bottom 33px
+//
+//     .avia-content__aircompanies-questionnare &
+//         margin-bottom 2px
 
 .default-section__title
-    margin-top 0
-    margin-bottom 33px
-
     .avia-content__aircompanies-questionnare &
         margin-bottom 2px
+        scalabilityMixin({ margin-bottom: 2px })
 
-.media-block__header
-    .avia-content__search-and-promo-tools &
-        min-height 320px
-        background-color #e1baac
-        background-repeat no-repeat
-        background-image url(../images/bg-avia-instruments.jpg)
-        background-size cover
-        background-position center
-
-    .avia-content__company-profile &
-        min-height 157px
-        background-color #8e90a3
-        background-repeat no-repeat
-        background-image url(../images/bg-avia-profile.jpg)
-        background-size cover
-        background-position center
-
-.media-block__header--cover
-    position relative
-    box-shadow 0 3px 5px c_black-transparent-04
-
-
-
-.avia-content__tools/*ul.features-list*/
-    padding-left default_padding
-    padding-right default_padding
-    padding-top 53px
-    background-color c_white
-
-    @media (max-width bp_reduced-x-padding)
-        padding-left reduced_padding
-        padding-right reduced_padding
-
-    @media (max-width bp_lower-x-padding)
-        padding-left lower_padding
-        padding-right lower_padding
-
-    @media (max-width: xl)
-        padding-left lower_padding
-        padding-right lower_padding
-
-    @media (max-width: lg)
-        padding-left small_padding
-        padding-right small_padding
-
-.feature-item--fast-search::before
-    background-image url(../images/i-globe-on-hand.png)
-
-.feature-item--representation::before
-    background-image url(../images/i-document-search.png)
-
-.feature-item--usability::before
-    background-image url(../images/i-user-gears.png)
-
-.feature-item--partnership::before
-    background-image url(../images/i-enter-arrow.png)
-    background-position 57% top
-
-.feature-item--privacy::before
-    background-image url(../images/i-linked-users.png)
-
-.feature-item--mediality::before
-    background-image url(../images/i-handshake.png)
-    background-position center
-
-.is-scalable .feature-item--mediality::before
-.is-scalable.feature-item--mediality::before
-    width 70%
+// .media-block__header
+//     .avia-content__search-and-promo-tools &
+//         min-height 320px
+//         background-color #e1baac
+//         background-repeat no-repeat
+//         background-image url(../images/bg-avia-instruments.jpg)
+//         background-size cover
+//         background-position center
+//
+//     .avia-content__company-profile &
+//         min-height 157px
+//         background-color #8e90a3
+//         background-repeat no-repeat
+//         background-image url(../images/bg-avia-profile.jpg)
+//         background-size cover
+//         background-position center
+//
+// .media-block__header--cover
+//     position relative
+//     box-shadow 0 3px 5px c_black-transparent-04
 
 
 
-.avia-content__company-profile
-    padding-top 22px
-    padding-bottom 74px
-    background-color c_white
+// .avia-content__tools/*ul.features-list*/
+//     padding-left default_padding
+//     padding-right default_padding
+//     padding-top 53px
+//     background-color c_white
+//
+//     @media (max-width bp_reduced-x-padding)
+//         padding-left reduced_padding
+//         padding-right reduced_padding
+//
+//     @media (max-width bp_lower-x-padding)
+//         padding-left lower_padding
+//         padding-right lower_padding
+//
+//     @media (max-width: xl)
+//         padding-left lower_padding
+//         padding-right lower_padding
+//
+//     @media (max-width: lg)
+//         padding-left small_padding
+//         padding-right small_padding
+//
+// .feature-item--fast-search::before
+//     background-image url(../images/i-globe-on-hand.png)
+//
+// .feature-item--representation::before
+//     background-image url(../images/i-document-search.png)
+//
+// .feature-item--usability::before
+//     background-image url(../images/i-user-gears.png)
+//
+// .feature-item--partnership::before
+//     background-image url(../images/i-enter-arrow.png)
+//     background-position 57% top
+//
+// .feature-item--privacy::before
+//     background-image url(../images/i-linked-users.png)
+//
+// .feature-item--mediality::before
+//     background-image url(../images/i-handshake.png)
+//     background-position center
+//
+// .is-scalable .feature-item--mediality::before
+// .is-scalable.feature-item--mediality::before
+//     width 70%
+//
+//
+//
+// .avia-content__company-profile
+//     padding-top 22px
+//     padding-bottom 74px
+//     background-color c_white
 
 
 
-.avia-content__publications-collection/*.custom-banner--v2*/
-    min-height 435px
-    background-color #59422e
-    background-repeat no-repeat
+// .avia-content__publications-collection/*.custom-banner--v2*/
+//     min-height 435px
+//     background-color #59422e
+//     background-repeat no-repeat
+//     background-image url(../images/bg-avia-publications-collection-2.jpg)
+//     background-size cover
+//     background-position center
+
+.avia-content__publications-collection
     background-image url(../images/bg-avia-publications-collection-2.jpg)
-    background-size cover
-    background-position center
 
-.bordered-box
-    position relative
-    display inline-block
-    vertical-align top
-    border 1px solid c_border-dim
-
-.bordered-box--v1
-    padding-left 55px
-    padding-right 55px
-    padding-top 13px
-    background-color c_white
-
-    &::before
-    &::after
-        position absolute
-        left 15.8333%
-        width 68.75%
-        height 1px
-        background-color c_white
-        content ''
-
-    &::before
-        top -1px
-
-    &::after
-        bottom -1px
-
-
-.custom-banner--v2
-    padding-top 26px
-    padding-bottom 26px
-    text-align center
-
-.custom-banner__header
-    .custom-banner--v2 &
-        margin-bottom 53px
-
-.custom-banner__help-text
-    .custom-banner--v2 &
-        fontHvMedium18_30()
-        display block
-        margin-bottom 7px
-        color c_seo-2
-
-.custom-banner__title
-    .custom-banner--v2 &
-        fontHvBold40_auto()
-        position relative
-        width 70.8653%
-        padding-left 1%
-        padding-right 1%
-        margin-left auto
-        margin-right auto
-        color c_white
-        text-transform uppercase
-
-        @media (max-width: md)
-            font-size 25px
-
-        &::before
-        &::after
-            fontHvThin80_62()
-            position absolute
-            top 0
-            width 28px
-            height 75px
-            color c_white
-
-        &::before
-            left 0
-            content '{'
-
-        &::after
-            right 0
-            content '}'
-
-        > .primary-text
-            display block
-            margin-bottom -5px
-
-        > .secondary-text
-            fontHvRoman24_30()
-            display block
-            text-transform lowercase
+// .bordered-box
+//     position relative
+//     display inline-block
+//     vertical-align top
+//     border 1px solid c_border-dim
+//
+// .bordered-box--v1
+//     padding-left 55px
+//     padding-right 55px
+//     padding-top 13px
+//     background-color c_white
+//
+//     &::before
+//     &::after
+//         position absolute
+//         left 15.8333%
+//         width 68.75%
+//         height 1px
+//         background-color c_white
+//         content ''
+//
+//     &::before
+//         top -1px
+//
+//     &::after
+//         bottom -1px
+//
+//
+// .custom-banner--v2
+//     padding-top 26px
+//     padding-bottom 26px
+//     text-align center
+//
+// .custom-banner__header
+//     .custom-banner--v2 &
+//         margin-bottom 53px
+//
+// .custom-banner__help-text
+//     .custom-banner--v2 &
+//         fontHvMedium18_30()
+//         display block
+//         margin-bottom 7px
+//         color c_seo-2
+//
+// .custom-banner__title
+//     .custom-banner--v2 &
+//         fontHvBold40_auto()
+//         position relative
+//         width 70.8653%
+//         padding-left 1%
+//         padding-right 1%
+//         margin-left auto
+//         margin-right auto
+//         color c_white
+//         text-transform uppercase
+//
+//         @media (max-width: md)
+//             font-size 25px
+//
+//         &::before
+//         &::after
+//             fontHvThin80_62()
+//             position absolute
+//             top 0
+//             width 28px
+//             height 75px
+//             color c_white
+//
+//         &::before
+//             left 0
+//             content '{'
+//
+//         &::after
+//             right 0
+//             content '}'
+//
+//         > .primary-text
+//             display block
+//             margin-bottom -5px
+//
+//         > .secondary-text
+//             fontHvRoman24_30()
+//             display block
+//             text-transform lowercase
 
 
 
-.avia-content__aircompanies-questionnare
-    padding-left default_padding
-    padding-right default_padding
+.avia-content__aircompanies-questionnare /*section.default-section*/
     padding-top 58px
     padding-bottom 81px
     background-color c_white
 
-    @media (max-width bp_medium-x-padding)
-        padding-left reduced_padding_2
-        padding-right reduced_padding_2
+    $scalable_props = {
+        padding-top: 58px
+        padding-bottom: 81px
+    }
+    scalabilityMixin($scalable_props)
+    //
+    // @media (max-width bp_medium-x-padding)
+    //     padding-left reduced_padding_2
+    //     padding-right reduced_padding_2
+    //
+    // @media (max-width bp_reduced-x-padding)
+    //     padding-left low_padding
+    //     padding-right low_padding
+    //
+    // @media (max-width bp_low-x-padding)
+    //     padding-left small_padding
+    //     padding-right small_padding
+    //
+    // // @media (max-width bp_lower-x-padding)
+    // //     padding-left lower_padding
+    // //     padding-right lower_padding
+    //
+    // // @media (max-width: xl)
+    // //     padding-left lower_padding
+    // //     padding-right lower_padding
+    //
+    // @media (max-width lg)
+    //     padding-left small_padding
+    //     padding-right small_padding
 
-    @media (max-width bp_reduced-x-padding)
-        padding-left low_padding
-        padding-right low_padding
-
-    @media (max-width bp_low-x-padding)
-        padding-left small_padding
-        padding-right small_padding
-
-    // @media (max-width bp_lower-x-padding)
-    //     padding-left lower_padding
-    //     padding-right lower_padding
-
-    // @media (max-width: xl)
-    //     padding-left lower_padding
-    //     padding-right lower_padding
-
-    @media (max-width lg)
-        padding-left small_padding
-        padding-right small_padding
-
-.feature-item--info-aggregation::before
-    background-image url(../images/i-user-message.png)
-
-.feature-item--novices-help::before
-    background-image url(../images/i-loupe-with-rating.png)
-
-.feature-item--experienced-help::before
-    background-image url(../images/i-handshake--big.png)
-
-.feature-item--incoming-operator-help::before
-    background-image url(../images/i-hands-gear.png)
-
-.feature-item--replies-rating::before
-    background-image url(../images/i-rating-stars.png)
-
-.feature-item--analisys-and-statictics::before
-    background-image url(../images/i-radial-diagramm.png)
+// .feature-item--info-aggregation::before
+//     background-image url(../images/i-user-message.png)
+//
+// .feature-item--novices-help::before
+//     background-image url(../images/i-loupe-with-rating.png)
+//
+// .feature-item--experienced-help::before
+//     background-image url(../images/i-handshake--big.png)
+//
+// .feature-item--incoming-operator-help::before
+//     background-image url(../images/i-hands-gear.png)
+//
+// .feature-item--replies-rating::before
+//     background-image url(../images/i-rating-stars.png)
+//
+// .feature-item--analisys-and-statictics::before
+//     background-image url(../images/i-radial-diagramm.png)
 
 
-.important-text
-    .default-section__header &
-        fontHvMedium24_auto()
-        color c_contrast
-
-
-.avia-content__other-blocks
-    padding-left default_padding
-    padding-right default_padding
-    padding-top 60px
-    padding-bottom 60px
-    margin-bottom 28px
-
-    @media (max-width bp_reduced-x-padding)
-        padding-left reduced_padding
-        padding-right reduced_padding
-
-    @media (max-width bp_lower-x-padding)
-        padding-left lower_padding
-        padding-right lower_padding
-
-    // @media (max-width: xl)
-    //     padding-left lower_padding
-    //     padding-right lower_padding
-
-    @media (max-width: lg)
-        padding-left small_padding
-        padding-right small_padding
-
-.feature-item--statictics::before
-    background-image url(../images/i-stat-vertical.png)
-
-.feature-item--working-files::before
-    background-image url(../images/i-arrow-up-stroked.png)
-
-.feature-item--languages::before
-    background-image url(../images/i-language-bubbles.png)
+// .important-text
+//     .default-section__header &
+//         fontHvMedium24_auto()
+//         color c_contrast
+//
+//
+// .avia-content__other-blocks
+//     padding-left default_padding
+//     padding-right default_padding
+//     padding-top 60px
+//     padding-bottom 60px
+//     margin-bottom 28px
+//
+//     @media (max-width bp_reduced-x-padding)
+//         padding-left reduced_padding
+//         padding-right reduced_padding
+//
+//     @media (max-width bp_lower-x-padding)
+//         padding-left lower_padding
+//         padding-right lower_padding
+//
+//     // @media (max-width: xl)
+//     //     padding-left lower_padding
+//     //     padding-right lower_padding
+//
+//     @media (max-width: lg)
+//         padding-left small_padding
+//         padding-right small_padding
+//
+// .feature-item--statictics::before
+//     background-image url(../images/i-stat-vertical.png)
+//
+// .feature-item--working-files::before
+//     background-image url(../images/i-arrow-up-stroked.png)
+//
+// .feature-item--languages::before
+//     background-image url(../images/i-language-bubbles.png)
 
 
 
@@ -1254,6 +1340,13 @@ $feature_item_fz_mod = 14 / $base_fz
     background-image url(../images/bg-avia-paid-services.jpg)
     background-size cover
     background-position center
+
+    $scalable_props = {
+        min-height: 249px
+        padding-top: 67px
+        padding-bottom: 65px
+    }
+    scalabilityMixin($scalable_props)
 
     @media (max-width bp_reduced-x-padding)
         padding-left low_padding
@@ -1277,505 +1370,704 @@ $feature_item_fz_mod = 14 / $base_fz
 
 
 
-.avia-content__our-partners
-    min-height 287px
-    padding-left default_padding
-    padding-right default_padding
-    padding-top 25px
-    padding-bottom 54px
-    text-align center
-    background-color #4bcdcd
-    background-repeat repeat
-    background-image url(../images/bg-with-us-pattern.jpg)
-    background-position 59% 96%
-
-    .is-scalable &
-    &.is-scalable
-        min-height 28.7em
-        padding-left default_padding_em
-        padding-right default_padding_em
-        padding-top 2.5em
-        padding-bottom 5.4em
-
-    .promo-text/*.uploadable__title*/
-        fontHvBold36_43()
-        color c_darken-2-font
-
-        .is-scalable &
-        &.is-scalable
-            fontHvBold36_43em()
-
-    @media (max-width bp_medium-x-padding)
-        padding-left reduced_padding_2
-        padding-right reduced_padding_2
-
-        .is-scalable &
-        &.is-scalable
-            padding-left reduced_padding_2em
-            padding-right reduced_padding_2em
-
-    @media (max-width bp_reduced-x-padding)
-        padding-left lower_padding
-        padding-right lower_padding
-
-        .is-scalable &
-        &.is-scalable
-            padding-left lower_padding_em
-            padding-right lower_padding_em
-
-    // @media (max-width bp_lower-x-padding)
-    //     padding-left lower_padding
-    //     padding-right lower_padding
-
-    // @media (max-width: xl)
-    //     padding-left lower_padding
-    //     padding-right lower_padding
-
-    @media (max-width bp_smallest-x-padding)
-        padding-left small_padding
-        padding-right small_padding
-
-        .is-scalable &
-        &.is-scalable
-            padding-left small_padding_em
-            padding-right small_padding_em
-
-    // @media (max-width lg)
-    //     padding-left small_padding
-    //     padding-right small_padding
-    //
-    //     .is-scalable &
-    //     &.is-scalable
-    //         padding-left small_padding_em
-    //         padding-right small_padding_em
-
-.uploadable
-    position relative
-
-.uploadable--our-partners
-    display flex
-    flex-direction column
-    align-items center
-
-.uploadable__title
-    .uploadable--our-partners &
-        display block
-        margin-bottom 35px
-
-    .is-scalable .uploadable--our-partners &
-    .is-scalable.uploadable--our-partners &
-    .uploadable--our-partners &.is-scalable
-        margin-bottom 3.5em
-
-.uploadable__list
-    perspective 100px
-    width 100%
-
-    .is-scalable &
-    &.is-scalable
-        perspective 10em
-
-.uploadable__list-item
-    opacity 0
-    //transform rotateY(-90deg)
-    transition all 0.4s cubic-bezier(.36,-0.64,.34,1.76)
-
-    .uploadable--our-partners &
-        height 0
-
-    .uploadable--clients-replies &
-        max-height 0
-        min-height auto
-
-    &[data-ajax-load-status=none]
-    &[data-ajax-load-status=loaded]
-        opacity 1
-        transform none
-
-    .uploadable__list--fixed-height > &[data-ajax-load-status=none]
-    .uploadable__list--fixed-height > &[data-ajax-load-status=loaded]
-        height 110px
-        margin-bottom 20px
-
-    .is-scalable .uploadable__list--fixed-height >  &[data-ajax-load-status=none]
-    .is-scalable .uploadable__list--fixed-height >  &[data-ajax-load-status=loaded]
-    .is-scalable.uploadable__list--fixed-height >  &[data-ajax-load-status=none]
-    .is-scalable.uploadable__list--fixed-height >  &[data-ajax-load-status=loaded]
-    .uploadable__list--fixed-height > &.is-scalable[data-ajax-load-status=none]
-    .uploadable__list--fixed-height > &.is-scalable[data-ajax-load-status=loaded]
-        height 11em
-        margin-bottom 2em
-
-    .uploadable__list--auto-height > &[data-ajax-load-status=none]
-    .uploadable__list--auto-height > &[data-ajax-load-status=loaded]
-        max-height 5000px
-        min-height 206px
-
-    .is-scalable .uploadable__list--auto-height >  &[data-ajax-load-status=none]
-    .is-scalable .uploadable__list--auto-height >  &[data-ajax-load-status=loaded]
-    .is-scalable.uploadable__list--auto-height >  &[data-ajax-load-status=none]
-    .is-scalable.uploadable__list--auto-height >  &[data-ajax-load-status=loaded]
-    .uploadable__list--auto-height > &.is-scalable[data-ajax-load-status=none]
-    .uploadable__list--auto-height > &.is-scalable[data-ajax-load-status=loaded]
-        max-height 500em
-        min-height 20.6em
-
-/*ul*/.cards-list/*.uploadable__content*/
-    padding 0
-    margin 0
-    list-style-type none
-    // font-size 0
-    text-align center
-
-/*li*/.cards-list__item
-    position relative
-    list-style none
-    display inline-block
-    vertical-align top
-    overflow hidden
-    width 145px /*147px*/
-    margin-right 9px
-    margin-bottom 0
-    background-color c_white
-    font-size 1rem
-
-    .is-scalable &
-    &.is-scalable
-        width 14.5em
-        margin-right 0.9em
-        font-size 1em
-
-    // opacity 0
-    // //transform rotateY(-90deg)
-    // transition all 0.4s cubic-bezier(.36,-0.64,.34,1.76)
-    //
-    // &[data-ajax-load-status=none]
-    // &[data-ajax-load-status=loaded]
-    //     height 110px
-    //     margin-bottom 20px
-    //
-    //     opacity 1
-    //     transform none
-
-    &:nth-of-type(5n+5)
-        // margin-right 0
-
-    // &::before
-    //   position absolute
-    //   display block
-    //   top 0
-    //   left 0
-    //   height calc(100%)
-    //   width 65px
-    //   background-color #fff
-    //   content ''
-
-.cards-list__image
-    position absolute
-    top 0
-    bottom 0
-    left 0
-    right 0
-    margin auto
-    display block
-
-    // &::before
-    //   position absolute
-    //   z-index 5
-    //   display block
-    //   top 0
-    //   left 0
-    //   height calc(100%)
-    //   width 100%
-    //   background-color rgb(245, 245, 245)
-    //   border 2px dotted rgb(200, 200, 200)
-    //   font-size 0 // скрываем текст атрибута Alt
-    //   content ''
-    //
-    // &::after
-    //   position absolute
-    //   top 25px
-    //   left 0
-    //   z-index 6
-    //   display block
-    //   width 100%
-    //   font-size 16px
-    //   font-style italic
-    //   font-family 'FontAwesome'
-    //   text-align center
-    //   color rgb(100, 100, 100)
-    //   content '\f127'
-
-
-.uploadable__load-button
-    .uploadable--our-partners &
-        position absolute
-        bottom -14px // это значение фиксировано, даже при .is-scalable
-        left 50%
-        transform translateX(-50%)
-
-
-.avia-content__clients-replies
-    padding-left default_padding
-    padding-right default_padding
-    padding-top 74px
-    padding-bottom 107px
-    text-align center
-
-    @media (max-width bp_medium-x-padding)
-        padding-left reduced_padding_2
-        padding-right reduced_padding_2
-
-    @media (max-width bp_reduced-x-padding)
-        padding-left low_padding
-        padding-right low_padding
-
-    @media (max-width bp_low-x-padding)
-        padding-left small_padding
-        padding-right small_padding
-
-    // @media (max-width bp_lower-x-padding)
-    //     padding-left lower_padding
-    //     padding-right lower_padding
-
-    // @media (max-width: xl)
-    //     padding-left lower_padding
-    //     padding-right lower_padding
-
-    @media (max-width lg)
-        padding-left small_padding
-        padding-right small_padding
-
-
-
-.back-to-top
-    display block
-    width 100%
-    height 58px
-    background-color c_seo-2
-    background-repeat no-repeat
-    background-image url(../images/i-arrow-up.png)
-    background-position center center
-    border 0
-    transition color .4s, background-color .4s, border .4s
-
-    &:hover
-    &:focus
-        background-color c_seo-4
-
-    &:active
-        background-color c_seo-3
-        box-shadow inset 0 0 6px -2px c_dark-transparent-bg
-
-
-
-
-
-/**--------------------------------*\
- * .avia-page__modal--inner
-\*--------------------------------*/
-
-.modal/*.publictaions*/
-    position fixed
-
-.modal--inner
-    z-index 30
-    left 100px
-    top auto
-    bottom 100%
-    display block
-    height 100vh
-    overflow-y scroll
-    opacity 0
-    background-color c_white
-    transition bottom .4s, opacity .4s
-
-    @media (max-width xs)
-        left 0
-        height calc(100vh - 80px)
-
-    &.modal--open
-        // display block
-        bottom 0
-        opacity 1
-
-.modal--publications--avia
-    // cursor crosshair
-
-.modal__header
-.publications__header
-    min-height 174px
-    padding-top 54px
-    padding-bottom 42px
-    padding-left 104px
-    padding-right 120px
-    text-align center
-
-    @media (max-width bp_publications)
-        padding-left 103px
-        padding-right 103px
-
-    @media (max-width bp_publications_lower)
-        padding-left 40px
-        padding-right 40px
-
-.modal__content/*.publications__features-list*/
-.modal__content-part/*.publications__features-list-item*/
-    // cursor crosshair
-
-/*button*/.modal__close
-    position fixed
-    top 54px
-    right 43px
-    z-index 10
-    border 1px solid c_border-lighter
-    border-radius 1px
-    text-indent -9999px
-    overflow hidden
-    width 63px
-    height 63px
-    background-color c_white
-    background-repeat no-repeat
-    background-image url(../images/i-publications-close-cross.svg)
-    background-position center
-    transition background-color .4s, box-shadow .4s
-
-    @media (max-width xs)
-        top 134px
-
-    @media (max-width bp_publications)
-        right 20px
-
-    @media (max-width bp_publications_lower)
-        top 90px
-        width 43px
-        height 43px
-
-    &:hover
-    &:focus
-        background-color c_basic-bg
-
-    &:active
-        box-shadow inset 0 0 13px -4px c_black-transparent-05
-
-
-
-
-
-/**--------------------------------*\
- * .modal--avia-video
-\*--------------------------------*/
-
-.modal--avia-video
-    position fixed
-    // display block
-    width 100%
-    height 100%
-    top 0
-    bottom 0
-    left 0
-    right 0
-    margin auto
-    background-color c_dark-transparent-bg
-
-    &.modal--open
-        display block
-
-    .modal__header
-        font-size 15px
-        color c_white
-
-    .modal__content
-        position absolute
-        padding-bottom 28.125% // 56.25% /* 16:9 */
-        // padding-top 25px
-        padding-top 28.125%
-        height 0
-        width 100%
-        top 0
-        bottom 0
-        left 0
-        right 0
-        margin auto
-
-
-.embed-responsive-item
-    position absolute
-    top 0
-    bottom 0
-    left 0
-    right 0
-    margin auto
-    width 90%
-    height 90%
-
-    @media (min-width 1287px)
-        height 90vh
-
-
-
-/**--------------------------------*\
- * .publications
-\*--------------------------------*/
-
-.publications
-    // cursor crosshair
-
-/*h2*/.publications__title
-    margin 0
-    color c_darken-5-font
-
-.publications__title-primary
-    fontHvBold40_auto()
-    display block
-    margin-bottom -4px
-    text-transform uppercase
-
-.publications__title-secondary
-    fontHvRoman24_30()
-    display block
-    text-transform lowercase
-
-/*ol*/.publications__features-list
-    padding 0
-    margin 0
-    counter-reset li
-
-/*li*/.publications__features-list-item/*.publications-feature*/
-    display block
-    list-style none
-
-
-.publications-feature
-    position relative
-    display flex
-    flex-direction column
-    justify-content flex-start
-    align-items flex-start
-    padding-left 104px
-    padding-right 120px
-    padding-top 87px
-    padding-bottom 44px
-    min-height 422px
-    background-color c_white
-    background-repeat no-repeat
-
-    @media (max-width: bp_publications)
-        &.publications-feature
-            padding-left 30px
-            padding-right 30px
-
-    @media (max-width: bp_publications_lower)
-        &.publications-feature
-            padding-left 15px
-            padding-right 15px
-            padding-top 60px
-
-    &::before
-        position absolute
-        z-index 10
-        background-repeat no-repeat
-        content ''
+// .avia-content__our-partners
+//     min-height 287px
+//     padding-left default_padding
+//     padding-right default_padding
+//     padding-top 25px
+//     padding-bottom 54px
+//     text-align center
+//     background-color #4bcdcd
+//     background-repeat repeat
+//     background-image url(../images/bg-with-us-pattern.jpg)
+//     background-position 59% 96%
+//
+//     .is-scalable &
+//     &.is-scalable
+//         min-height 28.7em
+//         padding-left default_padding_em
+//         padding-right default_padding_em
+//         padding-top 2.5em
+//         padding-bottom 5.4em
+//
+//     .promo-text/*.uploadable__title*/
+//         fontHvBold36_43()
+//         color c_darken-2-font
+//
+//         .is-scalable &
+//         &.is-scalable
+//             fontHvBold36_43EM()
+//
+//     @media (max-width bp_medium-x-padding)
+//         padding-left reduced_padding_2
+//         padding-right reduced_padding_2
+//
+//         .is-scalable &
+//         &.is-scalable
+//             padding-left reduced_padding_2em
+//             padding-right reduced_padding_2em
+//
+//     @media (max-width bp_reduced-x-padding)
+//         padding-left lower_padding
+//         padding-right lower_padding
+//
+//         .is-scalable &
+//         &.is-scalable
+//             padding-left lower_padding_em
+//             padding-right lower_padding_em
+//
+//     // @media (max-width bp_lower-x-padding)
+//     //     padding-left lower_padding
+//     //     padding-right lower_padding
+//
+//     // @media (max-width: xl)
+//     //     padding-left lower_padding
+//     //     padding-right lower_padding
+//
+//     @media (max-width bp_smallest-x-padding)
+//         padding-left small_padding
+//         padding-right small_padding
+//
+//         .is-scalable &
+//         &.is-scalable
+//             padding-left small_padding_em
+//             padding-right small_padding_em
+//
+//     // @media (max-width lg)
+//     //     padding-left small_padding
+//     //     padding-right small_padding
+//     //
+//     //     .is-scalable &
+//     //     &.is-scalable
+//     //         padding-left small_padding_em
+//     //         padding-right small_padding_em
+//
+// .uploadable
+//     position relative
+//
+// .uploadable--our-partners
+//     display flex
+//     flex-direction column
+//     align-items center
+//
+// .uploadable__title
+//     .uploadable--our-partners &
+//         display block
+//         margin-bottom 35px
+//
+//     .is-scalable .uploadable--our-partners &
+//     .is-scalable.uploadable--our-partners &
+//     .uploadable--our-partners &.is-scalable
+//         margin-bottom 3.5em
+//
+// .uploadable__list
+//     perspective 100px
+//     width 100%
+//
+//     .is-scalable &
+//     &.is-scalable
+//         perspective 10em
+//
+// .uploadable__list-item
+//     opacity 0
+//     //transform rotateY(-90deg)
+//     transition all 0.4s cubic-bezier(.36,-0.64,.34,1.76)
+//
+//     .uploadable--our-partners &
+//         height 0
+//
+//     .uploadable--clients-replies &
+//         max-height 0
+//         min-height auto
+//
+//     &[data-ajax-load-status=none]
+//     &[data-ajax-load-status=loaded]
+//         opacity 1
+//         transform none
+//
+//     .uploadable__list--fixed-height > &[data-ajax-load-status=none]
+//     .uploadable__list--fixed-height > &[data-ajax-load-status=loaded]
+//         height 110px
+//         margin-bottom 20px
+//
+//     .is-scalable .uploadable__list--fixed-height >  &[data-ajax-load-status=none]
+//     .is-scalable .uploadable__list--fixed-height >  &[data-ajax-load-status=loaded]
+//     .is-scalable.uploadable__list--fixed-height >  &[data-ajax-load-status=none]
+//     .is-scalable.uploadable__list--fixed-height >  &[data-ajax-load-status=loaded]
+//     .uploadable__list--fixed-height > &.is-scalable[data-ajax-load-status=none]
+//     .uploadable__list--fixed-height > &.is-scalable[data-ajax-load-status=loaded]
+//         height 11em
+//         margin-bottom 2em
+//
+//     .uploadable__list--auto-height > &[data-ajax-load-status=none]
+//     .uploadable__list--auto-height > &[data-ajax-load-status=loaded]
+//         max-height 5000px
+//         min-height 206px
+//
+//     .is-scalable .uploadable__list--auto-height >  &[data-ajax-load-status=none]
+//     .is-scalable .uploadable__list--auto-height >  &[data-ajax-load-status=loaded]
+//     .is-scalable.uploadable__list--auto-height >  &[data-ajax-load-status=none]
+//     .is-scalable.uploadable__list--auto-height >  &[data-ajax-load-status=loaded]
+//     .uploadable__list--auto-height > &.is-scalable[data-ajax-load-status=none]
+//     .uploadable__list--auto-height > &.is-scalable[data-ajax-load-status=loaded]
+//         max-height 500em
+//         min-height 20.6em
+//
+// /*ul*/.cards-list/*.uploadable__content*/
+//     padding 0
+//     margin 0
+//     list-style-type none
+//     // font-size 0
+//     text-align center
+//
+// /*li*/.cards-list__item
+//     position relative
+//     list-style none
+//     display inline-block
+//     vertical-align top
+//     overflow hidden
+//     width 145px /*147px*/
+//     margin-right 9px
+//     margin-bottom 0
+//     background-color c_white
+//     font-size 1rem
+//
+//     .is-scalable &
+//     &.is-scalable
+//         width 14.5em
+//         margin-right 0.9em
+//         font-size 1em
+//
+//     // opacity 0
+//     // //transform rotateY(-90deg)
+//     // transition all 0.4s cubic-bezier(.36,-0.64,.34,1.76)
+//     //
+//     // &[data-ajax-load-status=none]
+//     // &[data-ajax-load-status=loaded]
+//     //     height 110px
+//     //     margin-bottom 20px
+//     //
+//     //     opacity 1
+//     //     transform none
+//
+//     &:nth-of-type(5n+5)
+//         // margin-right 0
+//
+//     // &::before
+//     //   position absolute
+//     //   display block
+//     //   top 0
+//     //   left 0
+//     //   height calc(100%)
+//     //   width 65px
+//     //   background-color #fff
+//     //   content ''
+//
+// .cards-list__image
+//     position absolute
+//     top 0
+//     bottom 0
+//     left 0
+//     right 0
+//     margin auto
+//     display block
+//
+//     // &::before
+//     //   position absolute
+//     //   z-index 5
+//     //   display block
+//     //   top 0
+//     //   left 0
+//     //   height calc(100%)
+//     //   width 100%
+//     //   background-color rgb(245, 245, 245)
+//     //   border 2px dotted rgb(200, 200, 200)
+//     //   font-size 0 // скрываем текст атрибута Alt
+//     //   content ''
+//     //
+//     // &::after
+//     //   position absolute
+//     //   top 25px
+//     //   left 0
+//     //   z-index 6
+//     //   display block
+//     //   width 100%
+//     //   font-size 16px
+//     //   font-style italic
+//     //   font-family 'FontAwesome'
+//     //   text-align center
+//     //   color rgb(100, 100, 100)
+//     //   content '\f127'
+//
+//
+// .uploadable__load-button
+//     .uploadable--our-partners &
+//         position absolute
+//         bottom -14px // это значение фиксировано, даже при .is-scalable
+//         left 50%
+//         transform translateX(-50%)
+//
+//
+// .avia-content__clients-replies
+//     padding-left default_padding
+//     padding-right default_padding
+//     padding-top 74px
+//     padding-bottom 107px
+//     text-align center
+//
+//     @media (max-width bp_medium-x-padding)
+//         padding-left reduced_padding_2
+//         padding-right reduced_padding_2
+//
+//     @media (max-width bp_reduced-x-padding)
+//         padding-left low_padding
+//         padding-right low_padding
+//
+//     @media (max-width bp_low-x-padding)
+//         padding-left small_padding
+//         padding-right small_padding
+//
+//     // @media (max-width bp_lower-x-padding)
+//     //     padding-left lower_padding
+//     //     padding-right lower_padding
+//
+//     // @media (max-width: xl)
+//     //     padding-left lower_padding
+//     //     padding-right lower_padding
+//
+//     @media (max-width lg)
+//         padding-left small_padding
+//         padding-right small_padding
+//
+//
+//
+// .back-to-top
+//     display block
+//     width 100%
+//     height 58px
+//     background-color c_seo-2
+//     background-repeat no-repeat
+//     background-image url(../images/i-arrow-up.png)
+//     background-position center center
+//     border 0
+//     transition color .4s, background-color .4s, border .4s
+//
+//     &:hover
+//     &:focus
+//         background-color c_seo-4
+//
+//     &:active
+//         background-color c_seo-3
+//         box-shadow inset 0 0 6px -2px c_dark-transparent-bg
+
+
+
+
+
+// /**--------------------------------*\
+//  * .avia-page__modal--inner
+// \*--------------------------------*/
+//
+// .modal/*.publictaions*/
+//     position fixed
+//
+// .modal--inner
+//     z-index 30
+//     left 100px
+//     top auto
+//     bottom 100%
+//     display block
+//     height 100vh
+//     overflow-y scroll
+//     opacity 0
+//     background-color c_white
+//     transition bottom .4s, opacity .4s
+//
+//     @media (max-width xs)
+//         left 0
+//         height calc(100vh - 80px)
+//
+//     &.modal--open
+//         // display block
+//         bottom 0
+//         opacity 1
+//
+// .modal--publications--avia
+//     // cursor crosshair
+//
+// .modal__header
+// .publications__header
+//     min-height 174px
+//     padding-top 54px
+//     padding-bottom 42px
+//     padding-left 104px
+//     padding-right 120px
+//     text-align center
+//
+//     @media (max-width bp_publications)
+//         padding-left 103px
+//         padding-right 103px
+//
+//     @media (max-width bp_publications_lower)
+//         padding-left 40px
+//         padding-right 40px
+//
+// .modal__content/*.publications__features-list*/
+// .modal__content-part/*.publications__features-list-item*/
+//     // cursor crosshair
+//
+// /*button*/.modal__close
+//     position fixed
+//     top 54px
+//     right 43px
+//     z-index 10
+//     border 1px solid c_border-lighter
+//     border-radius 1px
+//     text-indent -9999px
+//     overflow hidden
+//     width 63px
+//     height 63px
+//     background-color c_white
+//     background-repeat no-repeat
+//     background-image url(../images/i-publications-close-cross.svg)
+//     background-position center
+//     transition background-color .4s, box-shadow .4s
+//
+//     @media (max-width xs)
+//         top 134px
+//
+//     @media (max-width bp_publications)
+//         right 20px
+//
+//     @media (max-width bp_publications_lower)
+//         top 90px
+//         width 43px
+//         height 43px
+//
+//     &:hover
+//     &:focus
+//         background-color c_basic-bg
+//
+//     &:active
+//         box-shadow inset 0 0 13px -4px c_black-transparent-05
+
+
+
+
+
+// /**--------------------------------*\
+//  * .modal--avia-video
+// \*--------------------------------*/
+//
+// .modal--avia-video
+//     position fixed
+//     // display block
+//     width 100%
+//     height 100%
+//     top 0
+//     bottom 0
+//     left 0
+//     right 0
+//     margin auto
+//     background-color c_dark-transparent-bg
+//
+//     &.modal--open
+//         display block
+//
+//     .modal__header
+//         font-size 15px
+//         color c_white
+//
+//     .modal__content
+//         position absolute
+//         padding-bottom 28.125% // 56.25% /* 16:9 */
+//         // padding-top 25px
+//         padding-top 28.125%
+//         height 0
+//         width 100%
+//         top 0
+//         bottom 0
+//         left 0
+//         right 0
+//         margin auto
+//
+//
+// .embed-responsive-item
+//     position absolute
+//     top 0
+//     bottom 0
+//     left 0
+//     right 0
+//     margin auto
+//     width 90%
+//     height 90%
+//
+//     @media (min-width 1287px)
+//         height 90vh
+
+
+
+
+
+// /**--------------------------------*\
+//  * .publications
+// \*--------------------------------*/
+//
+// .publications
+//     // cursor crosshair
+//
+// /*h2*/.publications__title
+//     margin 0
+//     color c_darken-5-font
+//
+// .publications__title-primary
+//     fontHvBold40_auto()
+//     display block
+//     margin-bottom -4px
+//     text-transform uppercase
+//
+// .publications__title-secondary
+//     fontHvRoman24_30()
+//     display block
+//     text-transform lowercase
+//
+// /*ol*/.publications__features-list
+//     padding 0
+//     margin 0
+//     counter-reset li
+//
+// /*li*/.publications__features-list-item/*.publications-feature*/
+//     display block
+//     list-style none
+//
+//
+// .publications-feature
+//     position relative
+//     display flex
+//     flex-direction column
+//     justify-content flex-start
+//     align-items flex-start
+//     padding-left 104px
+//     padding-right 120px
+//     padding-top 87px
+//     padding-bottom 44px
+//     min-height 422px
+//     background-color c_white
+//     background-repeat no-repeat
+//
+//     @media (max-width: bp_publications)
+//         &.publications-feature
+//             padding-left 30px
+//             padding-right 30px
+//
+//     @media (max-width: bp_publications_lower)
+//         &.publications-feature
+//             padding-left 15px
+//             padding-right 15px
+//             padding-top 60px
+//
+//     &::before
+//         position absolute
+//         z-index 10
+//         background-repeat no-repeat
+//         content ''
+//
+//
+// .publications-feature__header
+//     position relative
+//     padding-left 96px
+//     margin-bottom 28px
+//
+//     @media (max-width: bp_publications_lower)
+//         padding-left 0
+//         padding-top 90px
+//
+//     .publications-feature--share &
+//         color c_white
+//
+//     .publications-feature--mini-reviews &
+//         padding-right 394px
+//         color c_white
+//
+//         @media (max-width: 1381px)
+//             align-self flex-start
+//             padding-right 0
+//
+//     .publications-feature--settings-control &
+//         color #5c4e40
+//
+//     .publications-feature--availability &
+//         padding-right 89px
+//         color #db3d71
+//
+//         @media (max-width: 811px)
+//             align-self flex-start
+//             padding-right 0
+//
+//     .publications-feature--auto-posting &
+//         color #0e303f
+//
+//     .publications-feature--distribution &
+//         max-width 570px
+//         color #385c44
+//
+//         @media (max-width: 906px)
+//             align-self flex-start
+//
+//     &::before
+//         fontHvThin36_40()
+//         position absolute
+//         z-index 20
+//         left 0
+//         top 6px
+//         width 64px
+//         height 64px
+//         padding-top 12px
+//         padding-left 4px
+//         text-align center
+//         color c_white
+//         background-color gray
+//         counter-increment li
+//         content '0' counter(li)
+//
+//     &::after
+//         position absolute
+//         z-index 10
+//         left 0
+//         top 6px
+//         width 64px
+//         height 64px
+//         background-color lighten(gray, 20%)
+//         transform rotate(25deg)
+//         content ''
+//
+//     .publications-feature--share &::before
+//         background-color #199090
+//
+//     .publications-feature--share &::after
+//         background-color #40bebe
+//
+//     .publications-feature--mini-reviews &::before
+//         background-color #ab0c3d
+//
+//     .publications-feature--mini-reviews &::after
+//         background-color #de0e4e
+//
+//     .publications-feature--settings-control &::before
+//         background-color #614d3d
+//
+//     .publications-feature--settings-control &::after
+//         background-color #d9a782
+//
+//     .publications-feature--availability &::before
+//         background-color #ef1054
+//
+//     .publications-feature--availability &::after
+//         background-color #422643
+//
+//     .publications-feature--auto-posting &::before
+//         background-color #0096a6
+//
+//     .publications-feature--auto-posting &::after
+//         background-color #94e4eb
+//
+//     .publications-feature--distribution &::before
+//         background-color #155c41
+//
+//     .publications-feature--distribution &::after
+//         background-color #00a585
+//
+//
+// /*h3*/.publications-feature__title
+//     margin 0
+//     text-transform uppercase
+//
+// .publications-feature__title-primary
+//     fontHvBold36_40()
+//     display block
+//
+// .publications-feature__title-secondary
+//     fontHvThin36_40()
+//     display block
+//
+//
+// .publications-feature__content
+//     fontHvRoman16_24()
+//     position relative
+//
+//     @media (max-width: bp_publications)
+//         &&:not(.publications-feature__content--shifted)
+//             padding-left 96px
+//
+//     @media (max-width: bp_publications_lower)
+//         &&&
+//             padding-left 0
+//
+//     & > p
+//         margin-bottom 24px
+//
+//     & > p:last-of-type
+//         margin-bottom 0
+//
+//     .publications-feature--share &
+//         max-width 548px
+//         color #273f3f
+//
+//     .publications-feature--mini-reviews &
+//         z-index 20
+//         max-width 763px
+//         padding-right 137px
+//         color c_white
+//
+//         @media (max-width: 1106px)
+//             align-self flex-start
+//             padding-right 0
+//             max-width 626px
+//
+//     .publications-feature--settings-control &
+//         max-width 490px
+//         padding-left 0
+//         color #0e303f
+//
+//     .publications-feature--availability &
+//         max-width 468px
+//         color #688490
+//
+//         @media (max-width: 811px)
+//             align-self flex-start
+//
+//     .publications-feature--auto-posting &
+//         max-width 559px
+//         color #0e303f
+//
+//     .publications-feature--distribution &
+//         max-width 566px
+//         padding-right 114px
+//         color #273b2e
+//
+//         @media (max-width: 906px)
+//             align-self flex-start
+//             padding-right 0
+//
+// .publications-feature__content--shifted
+//     padding-left 96px
+//
+//
+// .publications-feature__buttons
+//     clear both
+//     margin-top 27px
+//
+//     @media (max-width: bp_publications)
+//         &&:not(.publications-feature__buttons--shifted)
+//             padding-left 96px
+//
+//     @media (max-width: bp_publications_lower)
+//         &&
+//             padding-left 0
+//
+// .publications-feature__buttons--shifted
+//     padding-left 96px
+
 
 .publications-feature--share
     background-color c_seo-2
@@ -1893,14 +2185,6 @@ $feature_item_fz_mod = 14 / $base_fz
 
 
 .publications-feature__header
-    position relative
-    padding-left 96px
-    margin-bottom 28px
-
-    @media (max-width: bp_publications_lower)
-        padding-left 0
-        padding-top 90px
-
     .publications-feature--share &
         color c_white
 
@@ -1932,33 +2216,6 @@ $feature_item_fz_mod = 14 / $base_fz
 
         @media (max-width: 906px)
             align-self flex-start
-
-    &::before
-        fontHvThin36_40()
-        position absolute
-        z-index 20
-        left 0
-        top 6px
-        width 64px
-        height 64px
-        padding-top 12px
-        padding-left 4px
-        text-align center
-        color c_white
-        background-color gray
-        counter-increment li
-        content '0' counter(li)
-
-    &::after
-        position absolute
-        z-index 10
-        left 0
-        top 6px
-        width 64px
-        height 64px
-        background-color lighten(gray, 20%)
-        transform rotate(25deg)
-        content ''
 
     .publications-feature--share &::before
         background-color #199090
@@ -1997,37 +2254,7 @@ $feature_item_fz_mod = 14 / $base_fz
         background-color #00a585
 
 
-/*h3*/.publications-feature__title
-    margin 0
-    text-transform uppercase
-
-.publications-feature__title-primary
-    fontHvBold36_40()
-    display block
-
-.publications-feature__title-secondary
-    fontHvThin36_40()
-    display block
-
-
 .publications-feature__content
-    fontHvRoman16_24()
-    position relative
-
-    @media (max-width: bp_publications)
-        &&:not(.publications-feature__content--shifted)
-            padding-left 96px
-
-    @media (max-width: bp_publications_lower)
-        &&&
-            padding-left 0
-
-    & > p
-        margin-bottom 24px
-
-    & > p:last-of-type
-        margin-bottom 0
-
     .publications-feature--share &
         max-width 548px
         color #273f3f
@@ -2068,193 +2295,173 @@ $feature_item_fz_mod = 14 / $base_fz
             align-self flex-start
             padding-right 0
 
-.publications-feature__content--shifted
-    padding-left 96px
 
-
-.publications-feature__buttons
-    clear both
-    margin-top 27px
-
-    @media (max-width: bp_publications)
-        &&:not(.publications-feature__buttons--shifted)
-            padding-left 96px
-
-    @media (max-width: bp_publications_lower)
-        &&
-            padding-left 0
-
-.publications-feature__buttons--shifted
-    padding-left 96px
-
-
-
-/**--------------------------------*\
- * .avia-page__company-type-menu
-\*--------------------------------*/
-
-.avia-page__company-type-menu/*.menu-company-type*/
-    position fixed
-    top 0
-    right 0
-    bottom 0
-    margin-top auto
-    margin-bottom auto
-    z-index 20
-    width 300px
-    min-width 300px
-    color c_black
-    background-color c_aside
-    box-shadow bxsh-default
-
-    @media (max-width: xl) and (min-width: xs)
-        width 250px
-        min-width 250px
-
-    @media (max-width: xs)
-        position relative
-        z-index 0
-        width 100%
-
-.menu-company-type__header
-    fontHvMedium18_24()
-    position: relative
-    z-index 10
-    padding-left 87px
-    padding-right 134px
-    padding-top 26px
-    padding-bottom 28px
-    border-bottom 1px solid #dc0e4d
-    color c_white
-    background-color c_contrast
-    background-repeat no-repeat
-    background-image url(../images/i-rocket.png)
-    background-position 22px 22px
-    text-transform uppercase
-
-    @media (max-width: xl) and (min-width: xs)
-        padding-right 84px
-
-/*button*/.menu-company-type__header-switch
-    position absolute
-    right 47px
-    top 26px
-    width 50px
-    height 25px
-    border none
-    font-size 0
-    background-color transparent
-
-    background -moz-linear-gradient(top,  rgba(255,255,255,1) 17%, rgba(255,255,255,1) 18%, rgba(255,255,255,1) 20%, rgba(255,255,255,0) 21%, rgba(255,255,255,0) 39%, rgba(255,255,255,1) 40%, rgba(255,255,255,1) 47%, rgba(255,255,255,0.99) 60%, rgba(255,255,255,0) 61%, rgba(255,255,255,0) 79%, rgba(255,255,255,1) 80%, rgba(255,255,255,1) 89%)
-    background -webkit-linear-gradient(top,  rgba(255,255,255,1) 17%,rgba(255,255,255,1) 18%,rgba(255,255,255,1) 20%,rgba(255,255,255,0) 21%,rgba(255,255,255,0) 39%,rgba(255,255,255,1) 40%,rgba(255,255,255,1) 47%,rgba(255,255,255,0.99) 60%,rgba(255,255,255,0) 61%,rgba(255,255,255,0) 79%,rgba(255,255,255,1) 80%,rgba(255,255,255,1) 89%)
-    background linear-gradient(to bottom,  rgba(255,255,255,1) 17%,rgba(255,255,255,1) 18%,rgba(255,255,255,1) 20%,rgba(255,255,255,0) 21%,rgba(255,255,255,0) 39%,rgba(255,255,255,1) 40%,rgba(255,255,255,1) 47%,rgba(255,255,255,0.99) 60%,rgba(255,255,255,0) 61%,rgba(255,255,255,0) 79%,rgba(255,255,255,1) 80%,rgba(255,255,255,1) 89%)
-
-    display none
-
-    transition transform .4s ease-in, height .4s ease-in, top .4s ease-in
-
-    &:focus
-        outline none
-        box-shadow none
-
-    @media (max-width: xs)
-        display block
-
-    .menu-company-type--opened &
-        transform rotate(-450deg)
-        height 40px
-        top 20px
-
-.menu-company-type__content/*.company-types-list*/
-    background-color c_contrast
-
-    @media (max-width: xs)
-        position absolute
-        width 100%
-        top -500px
-        transition top .4s ease-in
-
-        .menu-company-type--opened &
-            top 79px
-
-.company-types-list
-    padding-left 0
-    margin-bottom 0
-
-.company-types-list__item
-    list-style none
-
-    &:not(:first-child) > a:not(.company-types-list__link--current)
-        box-shadow inset 0 1px 3px rgba(0,0,0,.72)
-
-.company-types-list__link
-    fontHvMedium16_24()
-    position relative
-    display block
-    min-height 59px
-    padding-left 40px
-    padding-right 30px
-    padding-top 16px
-    padding-bottom 19px
-    color c_aside
-    background-color c_contrast
-    text-decoration none
-    transition color .4s, background-color .4s
-
-    @media (max-width: xl) and (min-width: xs)
-        padding-left 20px
-        padding-right 10px
-
-    &:hover
-    &:focus
-        color c_aside
-        background-color c_contrast-darken
-        text-decoration none
-
-    &:active
-        color c_aside-active
-
-.company-types-list__link--current
-    color c_aside-current
-    padding-left 50px
-    padding-top 18px
-    padding-bottom 17px
-    background-color c_seo-2
-
-    @media (max-width: xl) and (min-width: xs)
-        padding-left 30px
-
-    &:hover
-    &:focus
-        color c_aside-current
-        background-color c_seo-2
-
-    &:active
-        color c_aside-current
-
-    &::before
-        position absolute
-        left -13px
-        top 0
-        width 0
-        height 0
-        border-style solid
-        border-width 30px 13px 30px 0
-        border-color transparent c_seo-2 transparent transparent
-        content ''
-
-    &::after
-        position absolute
-        left 23px
-        top 24px
-        width 7px
-        height 13px
-        background-repeat no-repeat
-        background-image url(../images/i-arrow-right.png)
-        content ''
-
-        @media (max-width: xl) and (min-width: xs)
-            left 11px
-
-        @media (max-width: xs)
-            transform rotate(-90deg)
+// /**--------------------------------*\
+//  * .avia-page__company-type-menu
+// \*--------------------------------*/
+//
+// .avia-page__company-type-menu/*.menu-company-type*/
+//     position fixed
+//     top 0
+//     right 0
+//     bottom 0
+//     margin-top auto
+//     margin-bottom auto
+//     z-index 20
+//     width 300px
+//     min-width 300px
+//     color c_black
+//     background-color c_aside
+//     box-shadow bxsh-default
+//
+//     @media (max-width: xl) and (min-width: xs)
+//         width 250px
+//         min-width 250px
+//
+//     @media (max-width: xs)
+//         position relative
+//         z-index 0
+//         width 100%
+//
+// .menu-company-type__header
+//     fontHvMedium18_24()
+//     position: relative
+//     z-index 10
+//     padding-left 87px
+//     padding-right 134px
+//     padding-top 26px
+//     padding-bottom 28px
+//     border-bottom 1px solid #dc0e4d
+//     color c_white
+//     background-color c_contrast
+//     background-repeat no-repeat
+//     background-image url(../images/i-rocket.png)
+//     background-position 22px 22px
+//     text-transform uppercase
+//
+//     @media (max-width: xl) and (min-width: xs)
+//         padding-right 84px
+//
+// /*button*/.menu-company-type__header-switch
+//     position absolute
+//     right 47px
+//     top 26px
+//     width 50px
+//     height 25px
+//     border none
+//     font-size 0
+//     background-color transparent
+//
+//     background -moz-linear-gradient(top,  rgba(255,255,255,1) 17%, rgba(255,255,255,1) 18%, rgba(255,255,255,1) 20%, rgba(255,255,255,0) 21%, rgba(255,255,255,0) 39%, rgba(255,255,255,1) 40%, rgba(255,255,255,1) 47%, rgba(255,255,255,0.99) 60%, rgba(255,255,255,0) 61%, rgba(255,255,255,0) 79%, rgba(255,255,255,1) 80%, rgba(255,255,255,1) 89%)
+//     background -webkit-linear-gradient(top,  rgba(255,255,255,1) 17%,rgba(255,255,255,1) 18%,rgba(255,255,255,1) 20%,rgba(255,255,255,0) 21%,rgba(255,255,255,0) 39%,rgba(255,255,255,1) 40%,rgba(255,255,255,1) 47%,rgba(255,255,255,0.99) 60%,rgba(255,255,255,0) 61%,rgba(255,255,255,0) 79%,rgba(255,255,255,1) 80%,rgba(255,255,255,1) 89%)
+//     background linear-gradient(to bottom,  rgba(255,255,255,1) 17%,rgba(255,255,255,1) 18%,rgba(255,255,255,1) 20%,rgba(255,255,255,0) 21%,rgba(255,255,255,0) 39%,rgba(255,255,255,1) 40%,rgba(255,255,255,1) 47%,rgba(255,255,255,0.99) 60%,rgba(255,255,255,0) 61%,rgba(255,255,255,0) 79%,rgba(255,255,255,1) 80%,rgba(255,255,255,1) 89%)
+//
+//     display none
+//
+//     transition transform .4s ease-in, height .4s ease-in, top .4s ease-in
+//
+//     &:focus
+//         outline none
+//         box-shadow none
+//
+//     @media (max-width: xs)
+//         display block
+//
+//     .menu-company-type--opened &
+//         transform rotate(-450deg)
+//         height 40px
+//         top 20px
+//
+// .menu-company-type__content/*.company-types-list*/
+//     background-color c_contrast
+//
+//     @media (max-width: xs)
+//         position absolute
+//         width 100%
+//         top -500px
+//         transition top .4s ease-in
+//
+//         .menu-company-type--opened &
+//             top 79px
+//
+// .company-types-list
+//     padding-left 0
+//     margin-bottom 0
+//
+// .company-types-list__item
+//     list-style none
+//
+//     &:not(:first-child) > a:not(.company-types-list__link--current)
+//         box-shadow inset 0 1px 3px rgba(0,0,0,.72)
+//
+// .company-types-list__link
+//     fontHvMedium16_24()
+//     position relative
+//     display block
+//     min-height 59px
+//     padding-left 40px
+//     padding-right 30px
+//     padding-top 16px
+//     padding-bottom 19px
+//     color c_aside
+//     background-color c_contrast
+//     text-decoration none
+//     transition color .4s, background-color .4s
+//
+//     @media (max-width: xl) and (min-width: xs)
+//         padding-left 20px
+//         padding-right 10px
+//
+//     &:hover
+//     &:focus
+//         color c_aside
+//         background-color c_contrast-darken
+//         text-decoration none
+//
+//     &:active
+//         color c_aside-active
+//
+// .company-types-list__link--current
+//     color c_aside-current
+//     padding-left 50px
+//     padding-top 18px
+//     padding-bottom 17px
+//     background-color c_seo-2
+//
+//     @media (max-width: xl) and (min-width: xs)
+//         padding-left 30px
+//
+//     &:hover
+//     &:focus
+//         color c_aside-current
+//         background-color c_seo-2
+//
+//     &:active
+//         color c_aside-current
+//
+//     &::before
+//         position absolute
+//         left -13px
+//         top 0
+//         width 0
+//         height 0
+//         border-style solid
+//         border-width 30px 13px 30px 0
+//         border-color transparent c_seo-2 transparent transparent
+//         content ''
+//
+//     &::after
+//         position absolute
+//         left 23px
+//         top 24px
+//         width 7px
+//         height 13px
+//         background-repeat no-repeat
+//         background-image url(../images/i-arrow-right.png)
+//         content ''
+//
+//         @media (max-width: xl) and (min-width: xs)
+//             left 11px
+//
+//         @media (max-width: xs)
+//             transform rotate(-90deg)

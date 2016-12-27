@@ -92,6 +92,11 @@ fontHvLight18_30()
     font-size 18px
     line-height 30px
 
+fontHvLight18_30EM($base_mod = 1)
+    fontHvLight()
+    font-size (1.8 / $base_mod)em
+    line-height 1.6667
+
 fontHvLight30_52()
     fontHvLight()
     font-size 30px
@@ -101,6 +106,16 @@ fontHvLight30_52()
 fontHvRoman12_auto()
     fontHvRoman()
     font-size 12px
+    line-height 1.2
+
+fontHvRoman14_auto()
+    fontHvRoman()
+    font-size 14px
+    line-height 1.2
+
+fontHvRoman14_autoEM($base_mod = 1)
+    fontHvRoman()
+    font-size (1.4 / $base_mod)em
     line-height 1.2
 
 fontHvRoman14_16()
@@ -122,6 +137,16 @@ fontHvRoman14_30()
     fontHvRoman()
     font-size 14px
     line-height 30px
+
+fontHvRoman16_24()
+    fontHvRoman()
+    font-size 16px
+    line-height 24px
+
+fontHvRoman16_24EM($base_mod = 1)
+    fontHvRoman()
+    font-size (1.6 / $base_mod)em
+    line-height 1.5
 
 fontHvRoman18_36()
     fontHvRoman()
@@ -159,7 +184,7 @@ fontHvMedium18_30()
     font-size 18px
     line-height 30px
 
-fontHvMedium18_30em($base_mod = 1)
+fontHvMedium18_30EM($base_mod = 1)
     fontHvMedium()
     font-size (1.8 / $base_mod)em
     line-height 1.6667
@@ -233,6 +258,10 @@ fontRobotoBold()
     fontRoboto()
     font-weight 700
 
+fontRobotoMedium()
+    fontRoboto()
+    font-weight 500
+
 fontRobotoRegular()
     fontRoboto()
     font-weight 400
@@ -242,3 +271,8 @@ fontRobotoBold13_30()
     fontRobotoBold()
     font-size 13px
     line-height 30px
+
+fontRobotoMedium16_24()
+    fontRobotoMedium()
+    font-size 16px
+    line-height 24px

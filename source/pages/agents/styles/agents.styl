@@ -1,3 +1,754 @@
 @import './helpers/_variables'
 @import './helpers/_mixins'
 @import './helpers/_block_mixins'
+
+
+.agents-content__header
+    text-align center
+
+    @media (max-width xss)
+        font-size 8px
+
+    .additional-text
+        fontHvLight36_44()
+        color c_white
+        text-transform uppercase
+        scalabilityMixin(false, 10, fontHvLight36_44)
+
+        // .is-scalable &
+        // &.is-scalable
+        //     fontHvLight36_44EM()
+
+        @media (max-width md)
+            font-size 26px
+            scalabilityMixin({ font-size: 26px })
+
+            // .is-scalable &
+            // &.is-scalable
+            //     font-size 2.6em
+
+.agents-content__header--primary
+    box-sizing border-box
+    min-height 509px
+    padding-top 116px
+    padding-bottom 46px
+    padding-left default_padding
+    padding-right default_padding
+    background-color #451c0d
+    background-repeat no-repeat
+    background-image url(../images/bg-agents-top.jpg)
+    background-position center
+    background-size cover
+
+    $scalable_props = {
+        min-height: 509px
+        padding-top: 116px
+        padding-bottom: 46px
+        padding-left: default_padding
+        padding-right: default_padding
+    }
+    scalabilityMixin($scalable_props)
+
+    // .is-scalable &
+    // &.is-scalable
+    //     min-height 50.9em
+    //     padding-top 11.6em
+    //     padding-bottom 4.6em
+    //     padding-left default_padding_em
+    //     padding-right default_padding_em
+
+    @media (max-width bp_reduced-x-padding)
+        padding-left low_padding
+        padding-right low_padding
+
+        $scalable_props = {
+            padding-left: low_padding
+            padding-right: low_padding
+        }
+        scalabilityMixin($scalable_props)
+
+        // .is-scalable &
+        // &.is-scalable
+        //     padding-left low_padding_em
+        //     padding-right low_padding_em
+
+    // @media (max-width: bp_header-fix)
+    //     padding-left padding-fix-primary
+    //     padding-right padding-fix-primary
+
+    @media (max-width bp_lower-x-padding)
+        padding-left lower_padding
+        padding-right lower_padding
+
+        $scalable_props = {
+            padding-left: lower_padding
+            padding-right: lower_padding
+        }
+        scalabilityMixin($scalable_props)
+
+        // .is-scalable &
+        // &.is-scalable
+        //     padding-left lower_padding_em
+        //     padding-right lower_padding_em
+
+    // @media (max-width: xl)
+    //     padding-left lower_padding
+    //     padding-right lower_padding
+
+    @media (max-width lg)
+        padding-left small_padding
+        padding-right small_padding
+
+        $scalable_props = {
+            padding-left: small_padding
+            padding-right: small_padding
+        }
+        scalabilityMixin($scalable_props)
+
+        // .is-scalable &
+        // &.is-scalable
+        //     padding-left small_padding_em
+        //     padding-right small_padding_em
+
+    // @media ({bp_header})
+    //     background-size 100% auto
+
+.agents-content__header--secondary
+    min-height 249px
+    padding-left default_padding
+    padding-right default_padding
+    padding-top 80px
+    padding-bottom 60px
+    background-color #857b88
+    background-repeat no-repeat
+    background-image url(../images/bg-agents-header-secondary.jpg)
+    background-size cover
+    background-position bottom center
+
+    @media (max-width bp_reduced-x-padding)
+        padding-left low_padding
+        padding-right low_padding
+
+    @media (max-width bp_lower-x-padding)
+        padding-left lower_padding
+        padding-right lower_padding
+
+    @media (max-width: lg)
+        padding-left small_padding
+        padding-right small_padding
+
+.agents-content__title
+    text-transform uppercase
+
+
+.agents-content__title--main
+    color c_contrast
+
+    $header_title_main_fz_mod = 50 / $base_fz
+    .agents-content__header--primary &
+        fontHvBold50_auto()
+        margin-top 0
+        margin-bottom -5px
+        scalabilityMixin({ margin-bottom: -5px}, 50, fontHvBold50_auto)
+
+        @media (max-width md)
+            font-size 35px
+            scalabilityMixin({ margin-bottom: -5px}, 35)
+
+    // .is-scalable .agents-content__header--primary &
+    // .is-scalable.agents-content__header--primary &
+    // .agents-content__header--primary &.is-scalable
+    //     fontHvBold50_autoEM()
+    //     margin-bottom (-0.5 / $header_title_main_fz_mod)em
+    //
+    //     @media (max-width md)
+    //         $header_title_main_fz_mod = 35 / $base_fz
+    //         margin-bottom (-0.5 / $header_title_main_fz_mod)em
+
+    $header_title_main_fz_mod = 40 / $base_fz
+    .agents-content__header--secondary &
+        fontHvBold40_auto()
+        margin-top 0
+        margin-bottom -5px
+        text-transform none
+        scalabilityMixin({ margin-bottom: -5px}, 40, fontHvBold40_auto)
+
+        @media (max-width md)
+            font-size 35px
+            scalabilityMixin({ margin-bottom: -5px}, 35)
+
+    // .is-scalable .agents-content__header--secondary &
+    // .is-scalable.agents-content__header--secondary &
+    // .agents-content__header--secondary &.is-scalable
+    //     fontHvBold55_autoEM()
+    //     margin-bottom (-0.5 / $header_title_main_fz_mod)em
+    //
+    //     @media (max-width md)
+    //         $header_title_main_fz_mod = 35 / $base_fz
+    //         margin-bottom (-0.5 / $header_title_main_fz_mod)em
+
+.agents-content__title--secondary
+    color c_white
+
+    $header_title_secondary_fz_mod = 36 / $base_fz
+    .agents-content__header--primary &
+        fontHvBold42_44()
+        margin-top 0
+        margin-bottom 0
+        scalabilityMixin(false, 10, fontHvBold42_44)
+
+        @media (max-width md)
+            font-size 28px
+
+    // .is-scalable .agents-content__header--primary &
+    // .is-scalable.agents-content__header--primary &
+    // .agents-content__header--primary &.is-scalable
+    //     fontHvBold42_44EM()
+
+    $header_title_secondary_fz_mod = 40 / $base_fz
+    .agents-content__header--secondary &
+        fontHvBold40_auto()
+        margin-top 0
+        margin-bottom 0
+        color c_darkest-font
+        text-transform none
+        scalabilityMixin(false, 10, fontHvBold40_auto)
+
+        @media (max-width md)
+            font-size 30px
+
+    // .is-scalable .agents-content__header--secondary &
+    // .is-scalable.agents-content__header--secondary &
+    // .agents-content__header--secondary &.is-scalable
+    //     fontHvBold44_autoEM()
+
+
+.presentation-content__mission
+    padding-bottom 55px
+    scalabilityMixin({ padding-bottom: 55px }, 18)
+
+
+.default-section__header
+    .agents-content__prices-and-contacts &
+        margin-bottom 70px
+        scalabilityMixin({ margin-bottom: 70px })
+
+    .agents-content__automation &
+        margin-bottom 30px
+        scalabilityMixin({ margin-bottom: 30px })
+
+    .agents-content__replies &
+        padding-left 0
+        padding-right 0
+        padding-bottom 39px
+        scalabilityMixin({ padding-bottom: 39px })
+
+.default-section__header--decorated
+    background-size cover
+    background-position center
+
+    .presentation-content__search-and-promo-tools &
+        min-height 320px
+        padding-top 80px
+        background-color antiquewhite
+        background-image url(../images/bg-presentation-instruments--light.jpg)
+
+        $scalable_props = {
+            min-height: 320px
+            padding-top: 80px
+        }
+        scalabilityMixin($scalable_props)
+
+    .agents-content__prices-and-contacts &
+        min-height 226px
+        padding-top 43px
+        background-color #edeaec
+        background-image url(../images/bg-prices-and-contacts.jpg)
+
+        $scalable_props = {
+            min-height: 226px
+            padding-top: 43px
+        }
+        scalabilityMixin($scalable_props)
+
+.default-section__title
+    .agents-content__replies &
+        margin-bottom 2px
+        scalabilityMixin({ margin-bottom: 2px })
+
+
+.media-block__header
+    .presentation-content__company-profile &
+        background-image url(../images/bg-agents-profile.jpg)
+
+    .agents-content__services &
+        min-height 161px
+        background-color #f3d66c
+        background-repeat no-repeat
+        background-size cover
+        background-position center
+        background-image url(../images/bg-services-media-block-header.jpg)
+        scalabilityMixin({ min-height: 161px })
+
+.media-block__content
+    .agents-content__services &
+        fontHvRoman18_30()
+        scalabilityMixin(false, 18, fontHvRoman18_30)
+
+
+.agents-content__company-news
+    > .media-block__header
+        min-height 168px
+        padding-top 41px
+        background-color #fff6d9
+        background-repeat no-repeat
+        background-image url(../images/bg-agents-news.jpg)
+        background-size cover
+        background-position 50% 100%
+
+        $scalable_props = {
+            min-height: 168px
+            padding-top: 41px
+        }
+        scalabilityMixin($scalable_props)
+
+
+.agents-content__company-profile
+    padding-top 64px
+    scalabilityMixin({ padding-top: 64px })
+
+
+.agents-content__publications-collection
+    background-image url(../images/bg-agents-publications-collection.jpg)
+
+
+.agents-content__bids-and-booking
+    margin-bottom 40px
+    scalabilityMixin({ margin-bottom: 40px })
+
+
+.agents-content__hotel-prices-transfers-excursions-tours
+    margin-bottom 0 //43px
+
+.features-list
+    .agents-content__prices-and-contacts &
+        padding-left default_padding
+        padding-right default_padding
+
+        $scalable_props = {
+            padding-left: default_padding
+            padding-right: default_padding
+        }
+        scalabilityMixin($scalable_props)
+
+        @media (max-width bp_sub-medium-x-padding)
+            padding-left medium_padding
+            padding-right medium_padding
+
+            $scalable_props = {
+                padding-left: medium_padding
+                padding-right: medium_padding
+            }
+            scalabilityMixin($scalable_props)
+
+        @media (max-width bp_reduced-x-padding)
+            padding-left reduced_padding
+            padding-right reduced_padding
+
+            $scalable_props = {
+                padding-left: reduced_padding
+                padding-right: reduced_padding
+            }
+            scalabilityMixin($scalable_props)
+
+            // .is-scalable.agents-content__prices-and-contacts &
+            // .is-scalable .agents-content__prices-and-contacts &
+            // .agents-content__prices-and-contacts &.is-scalable
+            //     padding-left reduced_padding_em
+            //     padding-right reduced_padding_em
+
+        @media (max-width bp_low-x-padding)
+            padding-left low_padding
+            padding-right low_padding
+
+            $scalable_props = {
+                padding-left: low_padding
+                padding-right: low_padding
+            }
+            scalabilityMixin($scalable_props)
+
+        @media (max-width bp_lower-x-padding)
+            padding-left lower_padding
+            padding-right lower_padding
+
+            $scalable_props = {
+                padding-left: lower_padding
+                padding-right: lower_padding
+            }
+            scalabilityMixin($scalable_props)
+
+            // .is-scalable.agents-content__prices-and-contacts &
+            // .is-scalable .agents-content__prices-and-contacts &
+            // .agents-content__prices-and-contacts &.is-scalable
+            //     padding-left lower_padding_em
+            //     padding-right lower_padding_em
+
+        @media (max-width lg)
+            padding-left small_padding
+            padding-right small_padding
+
+            $scalable_props = {
+                padding-left: small_padding
+                padding-right: small_padding
+            }
+            scalabilityMixin($scalable_props)
+
+            // .is-scalable.agents-content__prices-and-contacts &
+            // .is-scalable .agents-content__prices-and-contacts &
+            // .agents-content__prices-and-contacts &.is-scalable
+            //     padding-left small_padding_em
+            //     padding-right small_padding_em
+
+    // .is-scalable.agents-content__prices-and-contacts &
+    // .is-scalable .agents-content__prices-and-contacts &
+    // .agents-content__prices-and-contacts &.is-scalable
+    //     padding-right default_padding_em
+    //     padding-left default_padding_em
+
+.feature-item--easy-prices-filling::before
+    background-image url(../images/i-document-starred.png)
+
+.feature-item--pricings::before
+    background-image url(../images/i-documents-pencil.png)
+
+.feature-item--instant-online-calculation::before
+    background-image url(../images/i-calculations.png)
+
+.feature-item--multicurrency-rates::before
+    background-image url(../images/i-currencies-exchange.png)
+
+.feature-item--partners-informing::before
+    background-image url(../images/i-flying-envelope.png)
+
+.feature-item--automatic-check::before
+    background-image url(../images/i-checklist-crossed.png)
+
+
+.feature-item--automation::before
+    background-image url(../images/i-calend-with-clock.png)
+
+.feature-item--access-rights-control::before
+    background-image url(../images/i-add-female.png)
+
+.feature-item--clients-database::before
+    background-image url(../images/i-linked-trio.png)
+
+
+.agents-content__services
+    background-color c_white
+    background-repeat no-repeat
+    background-position left 128px
+    background-size contain
+    background-image url(../images/bg-lines-mask.png)
+
+.paired-comparison
+    .agents-content__replies &
+        background-repeat repeat
+        background-color #fff
+        background-image url(../images/bg-default-pattern.jpg)
+        background-position -101px 178px
+
+.paired-comparison__element--first
+    .agents-content__replies &
+        color c_white
+        background-color rgba(237, 0, 58, 0.8)
+
+.paired-comparison__element--second
+    .agents-content__replies &
+        color c_darken-7-font
+        background-color rgba(47, 198, 198, 0.8)
+
+
+.agents-content__paid-services/*ul.features-list*/
+    padding-top 60px
+    padding-bottom 124px
+    padding-left low_padding
+    padding-right low_padding
+    background-color c_white
+
+    $scalable_props = {
+        padding-top: 60px
+        padding-bottom: 124px
+        padding-left: low_padding
+        padding-right: low_padding
+    }
+    scalabilityMixin($scalable_props)
+
+    @media (max-width bp_small-x-padding)
+        padding-left lower_padding
+        padding-right lower_padding
+
+        $scalable_props = {
+            padding-left: lower_padding
+            padding-right: lower_padding
+        }
+        scalabilityMixin($scalable_props)
+
+    /**----------------------*\
+     * Components overriding
+    \*-----------------------*/
+    .btn--v7
+        min-width 160px
+        max-width 160px
+        text-align center
+        padding-left 5px
+        padding-right 5px
+
+        $scalable_props = {
+            padding-top: 10px
+            padding-right: 5px
+            padding-bottom: 9px
+            padding-left: 5px
+            min-width: 160px
+            max-width: 160px
+        }
+        scalabilityMixin($scalable_props, 18, fontHvLight18_30, 14)
+
+.feature-item--online-booking::before
+    background-image url(../images/i-media-slats-red.png)
+
+.feature-item--share-services::before
+    background-image url(../images/i-share-services-red.png)
+
+.feature-item--tripservice-club-app::before
+    background-image url(../images/i-app-tapped-red.png)
+
+
+/**--------------------------------*\
+ * .publications
+\*--------------------------------*/
+.publications-feature--share
+    background-color c_seo-2
+
+    @media (max-width: md)
+        padding-right 60px
+
+    &::before
+        right 0
+        bottom 0
+        width 583px
+        height 333px
+        background-image url(../images/bg-share-map.png)
+
+        @media (max-width: 1456px)
+            right auto
+            left 757px
+
+.publications-feature--mini-reviews
+    align-items flex-end
+    padding-top 63px
+    background-color #ef1054
+
+    @media (max-width: md)
+        padding-right 60px
+
+    &::before
+        right 839px
+        bottom 35px
+        width 468px
+        height 225px
+        background-image url(../images/bg-publications-reviews-planet.png)
+
+        @media (max-width: 1106px)
+            right auto
+            left -314px
+
+        @media (max-width: bp_publications_lower)
+            right 100%
+            left auto
+
+.publications-feature--settings-control
+    background-color #ffc498
+
+    @media (max-width: md)
+        padding-right 60px
+
+    &::before
+        left 658px
+        top 94px
+        width 682px
+        height 291px
+        background-image url(../images/bg-publications-settings.png)
+
+        @media (min-width: 1457px)
+            left auto
+            right 0
+
+.publications-feature--availability
+    align-items flex-end
+    background-color #002c3d
+
+    @media (max-width: 811px)
+        padding-right 60px
+
+    &::before
+        right 620px
+        top 68px
+        width 664px
+        height 353px
+        background-image url(../images/bg-publications-availability.png)
+
+        @media (max-width: 811px)
+            right auto
+            left -589px
+
+        @media (max-width: bp_publications_lower)
+            right 100%
+            left auto
+
+.publications-feature--auto-posting
+    background-color #daf4f8
+
+    @media (max-width: md)
+        padding-right 60px
+
+    &::before
+        left 641px
+        top 62px
+        width 603px
+        height 298px
+        background-image url(../images/bg-publications-auto-posting.png)
+
+.publications-feature--distribution
+    align-items flex-end
+    background-color #00bc9b
+
+    @media (max-width: 906px)
+        padding-right 60px
+
+    &::before
+        right 758px
+        top 56px
+        width 401px
+        height 365px
+        background-image url(../images/bg-publications-distribution.png)
+
+        @media (max-width: 906px)
+            right auto
+            left -371px
+
+        @media (max-width: bp_publications_lower)
+            right 100%
+            left auto
+
+
+.publications-feature__header
+    .publications-feature--share &
+        color c_white
+
+    .publications-feature--mini-reviews &
+        padding-right 394px
+        color c_white
+
+        @media (max-width: 1381px)
+            align-self flex-start
+            padding-right 0
+
+    .publications-feature--settings-control &
+        color #5c4e40
+
+    .publications-feature--availability &
+        padding-right 89px
+        color #db3d71
+
+        @media (max-width: 811px)
+            align-self flex-start
+            padding-right 0
+
+    .publications-feature--auto-posting &
+        color #0e303f
+
+    .publications-feature--distribution &
+        max-width 570px
+        color #385c44
+
+        @media (max-width: 906px)
+            align-self flex-start
+
+    .publications-feature--share &::before
+        background-color #199090
+
+    .publications-feature--share &::after
+        background-color #40bebe
+
+    .publications-feature--mini-reviews &::before
+        background-color #ab0c3d
+
+    .publications-feature--mini-reviews &::after
+        background-color #de0e4e
+
+    .publications-feature--settings-control &::before
+        background-color #614d3d
+
+    .publications-feature--settings-control &::after
+        background-color #d9a782
+
+    .publications-feature--availability &::before
+        background-color #ef1054
+
+    .publications-feature--availability &::after
+        background-color #422643
+
+    .publications-feature--auto-posting &::before
+        background-color #0096a6
+
+    .publications-feature--auto-posting &::after
+        background-color #94e4eb
+
+    .publications-feature--distribution &::before
+        background-color #155c41
+
+    .publications-feature--distribution &::after
+        background-color #00a585
+
+
+.publications-feature__content
+    .publications-feature--share &
+        max-width 548px
+        color #273f3f
+
+    .publications-feature--mini-reviews &
+        z-index 20
+        max-width 763px
+        padding-right 137px
+        color c_white
+
+        @media (max-width: 1106px)
+            align-self flex-start
+            padding-right 0
+            max-width 626px
+
+    .publications-feature--settings-control &
+        max-width 490px
+        padding-left 0
+        color #0e303f
+
+    .publications-feature--availability &
+        max-width 468px
+        color #688490
+
+        @media (max-width: 811px)
+            align-self flex-start
+
+    .publications-feature--auto-posting &
+        max-width 559px
+        color #0e303f
+
+    .publications-feature--distribution &
+        max-width 566px
+        padding-right 114px
+        color #273b2e
+
+        @media (max-width: 906px)
+            align-self flex-start
+            padding-right 0

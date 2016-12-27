@@ -3,7 +3,7 @@ extends ../../layouts/sub/sub-presentation/sub-presentation
 include ./blocks/_mixins.jade
 
 
-block head
+block append head
     - var pageName = 'avia';
     - var pageTitle = 'Avia page template';
     - var bodyClasses = '';
@@ -11,7 +11,7 @@ block head
 
 
 block append links
-    link(href='https://fonts.googleapis.com/css?family=Roboto:400,700,900&subset=cyrillic' rel='stylesheet')
+    //- link(href='https://fonts.googleapis.com/css?family=Roboto:400,500,700,900&subset=cyrillic' rel='stylesheet')
     //- link(href='./css/page_css.css' rel='stylesheet')
     link(href='./css/page_style.css' rel='stylesheet')
 
@@ -24,12 +24,12 @@ block append scripts
 
 block append content
     header.avia-content__header.avia-content__header--primary
-        div#video-block.avia-content__video-block.video-block
+        div#video-block.presentation-content__video-block.video-block
             span.video-block__play-button Смотреть видео
         h1.avia-content__title.avia-content__title--main Авиакомпаниям
         h1.avia-content__title.avia-content__title--secondary Представительствам авиакомпаний
         span.additional-text Бесплатные сервисы
-    p.avia-content__mission.
+    p.presentation-content__mission.
         Мы – <mark class="primary">Бесплатный Глобальный Туристический Справочник</mark>  для всех участников туристического
         рынка – авиакомпаний и их представительств, отелей, туроператоров, агентств,  офисов по туризму,
         объектов культуры, медицинского туризма и сервисных компаний из различных стран. Платформа
@@ -52,7 +52,7 @@ block append content
                 Всего за один клик любую вашу новость могут забрать к себе на сайт и в соцсети все ваши партнеры
                 для активного продвижения ваших отелей или вашей представительской компании, страны,
                 региона, выступая автором этих новостей.
-    ul.features-list.features-list--rounded-icons.avia-content__news-features.text-center
+    ul.features-list.features-list--rounded-icons.presentation-content__news-features.text-center
         li.feature-item.feature-item--instant-publication.features-list__item
             h3.feature-item__title Мгновенная публикация
             p.feature-item__content.
@@ -128,7 +128,7 @@ block append content
             li.custom-banner__item
                 a.custom-banner__link(href='#') Важно знать!
 
-    section.default-section.avia-content__search-and-promo-tools
+    section.default-section.presentation-content__search-and-promo-tools
         header.default-section__header
             span.additional-text Раздел
             h2.default-section__title Инструменты поиска и<br> продвижения
@@ -141,7 +141,7 @@ block append content
                 p.
                     Кроме того, необходимо быстро и качественно не только показать всю имеющуюся у Вас
                     информацию о компании, но и иметь возможность мгновенно ее обновлять.
-        ul.features-list.avia-content__tools.text-center
+        ul.features-list.presentation-content__tools.text-center
             li.feature-item.feature-item--big-icon.feature-item--fast-search.features-list__item
                 h3.feature-item__title Быстрый поиск
                 p.feature-item__content.
@@ -197,7 +197,7 @@ block append content
                     партнерам и новым
                     потенциальным агентам!
 
-    section.default-section.avia-content__company-profile.text-center
+    section.default-section.presentation-content__company-profile.avia-content__company-profile.text-center
         header.default-section__header
             h2.default-section__title Профайл компании
         section.media-block.default-section__content.text-left
@@ -213,10 +213,11 @@ block append content
                     бортов, карту полетов, новости, коллекцию публикаций, публичные контакты для связи, рабочие файлы для
                     скачивания, пресс-релизы. Тем самым, профайл помогает Вам быстро обновлять информацию и показывать
                     партнерам все самое свежее и актуальное. Профайл доступен любому пользователю интернета!
-        .bordered-box.bordered-box--v1
-            img.img-responsive(src='./images/img-logo-quatar-airways.jpg' alt='quatar airways')
+        ul.box-list
+            li.box-list__item.bordered-box.bordered-box--v1
+                img.bordered-box__image.img-responsive(src='./images/img-logo-quatar-airways.jpg' alt='quatar airways')
 
-    section.avia-content__publications-collection.custom-banner.custom-banner--v2
+    section.presentation-content__publications-collection.avia-content__publications-collection.custom-banner.custom-banner--v2
         header.custom-banner__header
             span.custom-banner__help-text Блок
             h2.custom-banner__title.
@@ -236,7 +237,7 @@ block append content
             span.additional-text Блок
             h2.default-section__title Опросник по авиакомпании
             span.important-text для формирования рейтинга от профессионала
-        ul.features-list.features-list--bordered.default-section__content.text-center
+        ul.features-list.features-list--bordered.default-section__content.text-center.presentation-content__questionnare
             li.feature-item.feature-item--bordered.feature-item--bordered--wide.feature-item--info-aggregation.features-list__item
                 p.feature-item__content.
                     Профессиональный сбор
@@ -285,7 +286,7 @@ block append content
                     каждому разделу: графики и
                     диаграммы
 
-    section.default-section.default-section--bright.avia-content__other-blocks
+    section.default-section.default-section--bright.presentation-content__other-blocks
         ul.features-list.features-list--inverted-color.default-section__content.text-center
             li.feature-item.feature-item--inverted-color.feature-item--statictics.features-list__item
                 span.feature-item__help-text Блок
@@ -328,11 +329,11 @@ block append content
         header.avia-content__header.avia-content__header--secondary.default-section__header
             h1.avia-content__title.avia-content__title--main Авиакомпаниям
             h1.avia-content__title.avia-content__title--secondary Платные сервисы
-        ul.features-list.default-section__content.text-center
-            li.feature-item.feature-item--translates.features-list__item
-                span.feature-item__help-text Блок
-                h2.feature-item__title.feature-item__title--bright Переводы
-                p.feature-item__content.feature-item__content--lighten.
+        ul.features-list.features-list--align-stretch.default-section__content.text-center
+            li.feature-item.feature-item--flex.feature-item--translates.features-list__item
+                span.feature-item__help-text.feature-item__help-text--additional-offset Блок
+                h2.feature-item__title.feature-item__title--bright.feature-item__title--condensed Переводы
+                p.feature-item__content.feature-item__content--lighten.flex-grow-1.
                     Переведите вашу новость или любые
                     необходимые Вам в работе материалы
                     на любой язык мира.
@@ -341,7 +342,7 @@ block append content
                     перевод на нужный Вам язык.
                 a.btn.btn--v7.btn--narrow(href='#' title='Заказать перевод') Заказать
 
-    section#uploadable--our-partners.uploadable.uploadable--our-partners.avia-content__our-partners(data-collapsed='true')
+    section#uploadable--our-partners.uploadable.uploadable--our-partners.presentation-content__our-partners(data-collapsed='true')
         b.uploadable__title.promo-text С нами уже более <span id="partners-count">300</span> партнёров
         ul.uploadable__content.uploadable__list.uploadable__list--fixed-height.cards-list
             li.cards-list__item.uploadable__list-item(data-ajax-load-status='none')
@@ -356,7 +357,7 @@ block append content
                 img.logo-card.cards-list__image(src='./images/img-logo-salt-lake.jpg' alt='salt lake city' width='108' height='84')
         a.uploadable__load-button.btn.btn--v9.btn--3d(href='#') <i class="uploadable__load-button-state-icon"></i> Показать еще
 
-    section#uploadable--clients-replies.uploadable.uploadable--clients-replies.default-section.avia-content__clients-replies
+    section#uploadable--clients-replies.uploadable.uploadable--clients-replies.default-section.presentation-content__clients-replies
         header.default-section__header
             h2.default-section__title Клиенты о нас
         ul.default-section__content.features-list.features-list--bordered.features-list--with-images.text-center.uploadable__list.uploadable__list--auto-height
@@ -444,7 +445,7 @@ block append content
 
 
 block append inner_modals
-    section#modal--publications--avia.modal.modal--inner.modal--publications--avia.publications.avia-page__modal--inner
+    section#modal--publications--presentation.modal.modal--inner.modal--publications--presentation.publications.presentation-page__modal--inner
         header.modal__header.publications__header
             h2.publications__title
                 span.publications__title-primary Коллекция публикаций
@@ -524,10 +525,10 @@ block append inner_modals
         button.modal__close(type='button' title='Закрыть модальное окно') Закрыть модальное окно
 
 
-block modals
-    section#modal--avia-video.modal.modal--avia-video
+block append modals
+    section#modal--presentation-video.modal.modal--presentation-video
         .modal__content
-            iframe#promo_video.avia-promo-video.embed-responsive-item(src='https://www.youtube.com/embed/FT0tESjQpjw?enablejsapi=1' frameborder='0' allowfullscreen)
+            iframe#promo_video.presentation-promo-video.embed-responsive-item(src='https://www.youtube.com/embed/FT0tESjQpjw?enablejsapi=1' frameborder='0' allowfullscreen)
         button.modal__close(type='button' title='Закрыть модальное окно') Закрыть модальное окно
 
 
@@ -546,7 +547,7 @@ block templates
 
 
 block right_side
-    aside#scrollable-panel--fixed.avia-page__company-type-menu.menu-company-type
+    aside#scrollable-panel--fixed.presentation-page__company-type-menu.menu-company-type
         header.menu-company-type__header Начать работу <button class="menu-company-type__header-switch" type="button">Toggle menu</button>
         ul.menu-company-type__content.company-types-list
             li.company-types-list__item

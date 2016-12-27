@@ -49,6 +49,37 @@
         font-size 11px
         display none
 
+
+.custom-input--with-button
+    display flex
+    justify-content flex-start
+    overflow hidden
+    max-width 259px
+    min-height 41px
+    height 41px  // IE11 fix
+    border-radius 5px
+    background-color c_white
+
+    > .custom-input__field
+        fontHvRoman16_24()
+        flex-grow 1
+        padding-left 20px
+        border none
+        border-radius 5px 0 0 5px
+        outline none
+        color c_darker-2-font
+
+    > .custom-input__button
+        fontRobotoMedium16_24()
+        min-width 47px
+        flex-basis 47px
+        padding 0
+        border none
+        border-radius 5px
+        background-color c_black
+        color c_white
+
+
 .custom-input__field:invalid + .custom-input__validation-state
 .custom-input__field:required + .custom-input__validation-state
 .custom-input__field:valid + .custom-input__validation-state

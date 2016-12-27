@@ -9,30 +9,34 @@ html(lang='ru' manifest='offline.manifest')
             include ./blocks/_links
             link(href='./css/base_css.css' rel='stylesheet')
             link(href='./css/base_style.css' rel='stylesheet')
-            
+
         block components_links
 
-    body(id=pageName ? pageName + '_page' : 'base-2_page', class=pageName ? pageName + '-page' + (bodyClasses ? bodyClasses : '') : 'base-2-page' + (bodyClasses ? bodyClasses : ''))
+    body(id=pageName ? pageName + '_page' : subTemplateName ? subTemplateName + '_page' : 'base-2_page',
+         class=pageName ? pageName + '_page' + (subTemplateName ? ' ' + subTemplateName + '_page' : '') + (bodyClasses ? ' ' + bodyClasses : '') :
+               subTemplateName ? subTemplateName + '_page' + (bodyClasses ? ' ' + bodyClasses : '') :
+               'base-2-page ' + (bodyClasses ? bodyClasses : ''))
 
         .body-inner
 
             block left_side
 
-            main(class=pageName ? pageName + '-page__content ' + pageName + '-content' + (mainClasses ? mainClasses : '') : 'base-2-page__content base-2-content' + (mainClasses ? mainClasses : ''))
+            main(class=pageName ? pageName + '-page__content ' + pageName + '-content' + (subTemplateName ? ' ' + subTemplateName + '-page__content ' + subTemplateName + '-content ' : '')  + (mainClasses ? mainClasses : '') :
+                       subTemplateName ? ' ' + subTemplateName + '-page__content ' + subTemplateName + '-content ' + (mainClasses ? mainClasses : '') :
+                       'base-2-page__content base-2-content' + (mainClasses ? mainClasses : ''))
 
                 block content
-                
+
                 block inner_modals
 
             block right_side
-        
+
         block modals
-        
+
         block templates
 
         block scripts
             include ./blocks/_scripts
             script(src='./js/base_js.js')
-            
+
         block components_scripts
- 
