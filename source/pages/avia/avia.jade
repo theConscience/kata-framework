@@ -215,7 +215,8 @@ block append content
                     партнерам все самое свежее и актуальное. Профайл доступен любому пользователю интернета!
         ul.box-list
             li.box-list__item.bordered-box.bordered-box--v1
-                img.bordered-box__image.img-responsive(src='./images/img-logo-quatar-airways.jpg' alt='quatar airways')
+                a.box-list__item-link(href='#')
+                    img.bordered-box__image.img-responsive(src='./images/img-logo-quatar-airways.jpg' alt='quatar airways')
 
     section.presentation-content__publications-collection.avia-content__publications-collection.custom-banner.custom-banner--v2
         header.custom-banner__header
@@ -345,15 +346,15 @@ block append content
     section#uploadable--our-partners.uploadable.uploadable--our-partners.presentation-content__our-partners(data-collapsed='true')
         b.uploadable__title.promo-text С нами уже более <span id="partners-count">300</span> партнёров
         ul.uploadable__content.uploadable__list.uploadable__list--fixed-height.cards-list
-            li.cards-list__item.uploadable__list-item(data-ajax-load-status='none')
+            li.cards-list__item.uploadable__list-item.cards-list__image-wrapper(data-ajax-load-status='none')
                 img.logo-card.cards-list__image(src='./images/img-logo-baltimore.jpg' alt='baltimore' width='120' height='46')
-            li.cards-list__item.uploadable__list-item(data-ajax-load-status='none')
+            li.cards-list__item.uploadable__list-item.cards-list__image-wrapper(data-ajax-load-status='none')
                 img.logo-card.cards-list__image(src='./images/img-logo-houston.jpg' alt='houston' width='117' height='36')
-            li.cards-list__item.uploadable__list-item(data-ajax-load-status='none')
+            li.cards-list__item.uploadable__list-item.cards-list__image-wrapper(data-ajax-load-status='none')
                 img.logo-card.cards-list__image(src='./images/img-logo-phoenix.jpg' alt='phoenix' width='131' height='63')
-            li.cards-list__item.uploadable__list-item(data-ajax-load-status='none')
+            li.cards-list__item.uploadable__list-item.cards-list__image-wrapper(data-ajax-load-status='none')
                 img.logo-card.cards-list__image(src='./images/img-logo-rapid-city.jpg' alt='rapid city' width='140' height='76')
-            li.cards-list__item.uploadable__list-item(data-ajax-load-status='none')
+            li.cards-list__item.uploadable__list-item.cards-list__image-wrapper(data-ajax-load-status='none')
                 img.logo-card.cards-list__image(src='./images/img-logo-salt-lake.jpg' alt='salt lake city' width='108' height='84')
         a.uploadable__load-button.btn.btn--v9.btn--3d(href='#') <i class="uploadable__load-button-state-icon"></i> Показать еще
 
@@ -534,7 +535,7 @@ block append modals
 
 block templates
     template#template--partner-logo
-        li.cards-list__item.uploadable__list-item(data-ajax-load-status='')
+        li.cards-list__item.uploadable__list-item.cards-list__image-wrapper(data-ajax-load-status='')
             img.logo-card.cards-list__image(src='' alt='' width='' height='')
 
     template#template--client-reply

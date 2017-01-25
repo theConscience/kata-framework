@@ -1400,6 +1400,22 @@ $feature_item_diamond_pseudo_fz_mod = 30 / $base_fz
 .default-section__header--diamond--secondary::before
     background-image url(../images/bg-diamond-secondary.svg)
 
+.default-section__header--decorated
+    background-size cover
+    background-position center
+
+    .presentation-content__search-and-promo-tools &
+        min-height 320px
+        padding-top 80px
+        background-color antiquewhite
+        background-image url(../images/bg-presentation-instruments--light.jpg)
+
+        $scalable_props = {
+            min-height: 320px
+            padding-top: 80px
+        }
+        scalabilityMixin($scalable_props)
+
 .default-section__title
     fontHvBold40_auto()
     color c_contrast
@@ -1682,6 +1698,8 @@ $feature_item_diamond_pseudo_fz_mod = 30 / $base_fz
     margin-right 6px
     margin-bottom 3em
 
+.box-list__item-link
+    display block
 
 .bordered-box
     position relative
@@ -2414,6 +2432,9 @@ $feature_item_diamond_pseudo_fz_mod = 30 / $base_fz
     //   text-align center
     //   color rgb(100, 100, 100)
     //   content '\f127'
+
+.cards-list__image-wrapper
+    //
 
 
 .uploadable__load-button
