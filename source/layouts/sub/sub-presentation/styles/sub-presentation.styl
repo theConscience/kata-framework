@@ -374,6 +374,70 @@ mark.primary
             }
             scalabilityMixin($scalable_props)
 
+    .tourism-boards-content__paid-services &
+        padding-left default_padding
+        padding-right default_padding
+        padding-top 55px
+        padding-bottom 38px
+
+        $scalable_props = {
+            padding-left: default_padding
+            padding-right: default_padding
+            padding-top: 55px
+            padding-bottom: 38px
+        }
+        scalabilityMixin($scalable_props)
+
+        @media (max-width bp_reduced-x-padding)
+            padding-left reduced_padding
+            padding-right reduced_padding
+
+            $scalable_props = {
+                padding-left: reduced_padding
+                padding-right: reduced_padding
+            }
+            scalabilityMixin($scalable_props)
+
+        @media (max-width bp_lower-x-padding)
+            padding-left lower_padding
+            padding-right lower_padding
+
+            $scalable_props = {
+                padding-left: lower_padding
+                padding-right: lower_padding
+            }
+            scalabilityMixin($scalable_props)
+
+        @media (max-width: lg)
+            padding-left small_padding
+            padding-right small_padding
+
+            $scalable_props = {
+                padding-left: small_padding
+                padding-right: small_padding
+            }
+            scalabilityMixin($scalable_props)
+
+        /**----------------------*\
+         * Components overriding
+        \*-----------------------*/
+        .btn--v7
+            min-width 160px
+            max-width 160px
+            text-align center
+            padding-left 5px
+            padding-right 5px
+
+            $scalable_props = {
+                padding-top: 10px
+                padding-right: 5px
+                padding-bottom: 9px
+                padding-left: 5px
+                min-width: 160px
+                max-width: 160px
+            }
+            scalabilityMixin($scalable_props, 18, fontHvLight18_30, 14)
+
 .features-list--bordered
     margin-left -13px
     margin-right -13px

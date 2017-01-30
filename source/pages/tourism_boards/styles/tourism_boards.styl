@@ -3,7 +3,7 @@
 @import './helpers/_block_mixins'
 
 
-.agents-content__header
+.tourism-boards-content__header
     text-align center
 
     @media (max-width xss)
@@ -19,16 +19,16 @@
             font-size 26px
             scalabilityMixin({ font-size: 26px })
 
-.agents-content__header--primary
+.tourism-boards-content__header--primary
     box-sizing border-box
     min-height 509px
     padding-top 116px
     padding-bottom 46px
-    padding-left default_padding
-    padding-right default_padding
+    padding-left medium_padding
+    padding-right medium_padding
     background-color #451c0d
     background-repeat no-repeat
-    background-image url(../images/bg-agents-top.jpg)
+    background-image url(../images/bg-tourism-boards-header.jpg)
     background-position center
     background-size cover
 
@@ -36,8 +36,8 @@
         min-height: 509px
         padding-top: 116px
         padding-bottom: 46px
-        padding-left: default_padding
-        padding-right: default_padding
+        padding-left: medium_padding
+        padding-right: medium_padding
     }
     scalabilityMixin($scalable_props)
 
@@ -72,7 +72,7 @@
         scalabilityMixin($scalable_props)
 
 
-.agents-content__header--secondary
+.tourism-boards-content__header--secondary
     min-height 249px
     padding-left default_padding
     padding-right default_padding
@@ -80,7 +80,7 @@
     padding-bottom 60px
     background-color #857b88
     background-repeat no-repeat
-    background-image url(../images/bg-agents-header-secondary.jpg)
+    background-image url(../images/bg-tourism-boards-header-2.jpg)
     background-size cover
     background-position bottom center
 
@@ -96,15 +96,15 @@
         padding-left small_padding
         padding-right small_padding
 
-.agents-content__title
+.tourism-boards-content__title
     text-transform uppercase
 
 
-.agents-content__title--main
+.tourism-boards-content__title--main
     color c_contrast
 
     $header_title_main_fz_mod = 50 / $base_fz
-    .agents-content__header--primary &
+    .tourism-boards-content__header--primary &
         fontHvBold50_auto()
         margin-top 0
         margin-bottom -5px
@@ -114,24 +114,23 @@
             font-size 35px
             scalabilityMixin({ margin-bottom: -5px}, 35)
 
-    $header_title_main_fz_mod = 40 / $base_fz
-    .agents-content__header--secondary &
-        fontHvBold40_auto()
+    $header_title_main_fz_mod = 55 / $base_fz
+    .tourism-boards-content__header--secondary &
+        fontHvBold55_auto()
         margin-top 0
         margin-bottom -5px
-        text-transform none
-        scalabilityMixin({ margin-bottom: -5px}, 40, fontHvBold40_auto)
+        scalabilityMixin({ margin-bottom: -5px }, 55, fontHvBold55_auto)
 
         @media (max-width md)
             font-size 35px
-            scalabilityMixin({ margin-bottom: -5px}, 35)
+            scalabilityMixin({ margin-bottom: -5px }, 35)
 
 
-.agents-content__title--secondary
+.tourism-boards-content__title--secondary
     color c_white
 
     $header_title_secondary_fz_mod = 36 / $base_fz
-    .agents-content__header--primary &
+    .tourism-boards-content__header--primary &
         fontHvBold42_44()
         margin-top 0
         margin-bottom 0
@@ -140,14 +139,12 @@
         @media (max-width md)
             font-size 28px
 
-    $header_title_secondary_fz_mod = 40 / $base_fz
-    .agents-content__header--secondary &
-        fontHvBold40_auto()
+    $header_title_secondary_fz_mod = 44 / $base_fz
+    .tourism-boards-content__header--secondary &
+        fontHvBold44_auto()
         margin-top 0
         margin-bottom 0
-        color c_darkest-font
-        text-transform none
-        scalabilityMixin(false, 10, fontHvBold40_auto)
+        scalabilityMixin(false, 10, fontHvBold44_auto)
 
         @media (max-width md)
             font-size 30px
@@ -158,66 +155,13 @@
     scalabilityMixin({ padding-bottom: 55px }, 18)
 
 
-.default-section__header
-    .agents-content__prices-and-contacts &
-        margin-bottom 70px
-        scalabilityMixin({ margin-bottom: 70px })
-
-    .agents-content__automation &
-        margin-bottom 30px
-        scalabilityMixin({ margin-bottom: 30px })
-
-    .agents-content__replies &
-        padding-left 0
-        padding-right 0
-        padding-bottom 39px
-        scalabilityMixin({ padding-bottom: 39px })
-
-.default-section__header--decorated
-    .agents-content__prices-and-contacts &
-        min-height 226px
-        padding-top 43px
-        background-color #edeaec
-        background-image url(../images/bg-prices-and-contacts.jpg)
-
-        $scalable_props = {
-            min-height: 226px
-            padding-top: 43px
-        }
-        scalabilityMixin($scalable_props)
-
-.default-section__title
-    .agents-content__replies &
-        margin-bottom 2px
-        scalabilityMixin({ margin-bottom: 2px })
-
-
-.media-block__header
-    .presentation-content__company-profile &
-        background-image url(../images/bg-agents-profile.jpg)
-
-    .agents-content__services &
-        min-height 161px
-        background-color #f3d66c
-        background-repeat no-repeat
-        background-size cover
-        background-position center
-        background-image url(../images/bg-services-media-block-header.jpg)
-        scalabilityMixin({ min-height: 161px })
-
-.media-block__content
-    .agents-content__services &
-        fontHvRoman18_30()
-        scalabilityMixin(false, 18, fontHvRoman18_30)
-
-
-.agents-content__company-news
+.tourism-boards-content__company-news
     > .media-block__header
         min-height 168px
         padding-top 41px
         background-color #fff6d9
         background-repeat no-repeat
-        background-image url(../images/bg-agents-news.jpg)
+        background-image url(../images/bg-tourism-boards-news.jpg)
         background-size cover
         background-position 50% 100%
 
@@ -228,197 +172,47 @@
         scalabilityMixin($scalable_props)
 
 
-.agents-content__company-profile
+.tourism-boards-content__publications-collection
+    background-image url(../images/bg-tourism-boards-publications-collection.jpg)
+
+
+.default-section__header
+    .tourism-boards-content__search-and-promo-tools &
+        padding-top 48px
+        scalabilityMixin({ padding-top: 48px })
+
+
+.tourism-boards-content__company-profile
     padding-top 64px
     scalabilityMixin({ padding-top: 64px })
 
 
-.agents-content__publications-collection
-    background-image url(../images/bg-agents-publications-collection.jpg)
+.media-block__header
+    .tourism-boards-content__search-and-promo-tools &
+        min-height 320px
+        background-color #e1baac
+        background-repeat no-repeat
+        background-image url(../images/bg-tourism-boards-promo-tools.jpg)
+        background-size cover
+        background-position center
+        scalabilityMixin({ min-height: 320px })
+
+    .presentation-content__company-profile &
+        background-image url(../images/bg-tourism-boards-profile.jpg)
 
 
-.agents-content__bids-and-booking
-    margin-bottom 40px
-    scalabilityMixin({ margin-bottom: 40px })
-
-
-.agents-content__hotel-prices-transfers-excursions-tours
-    margin-bottom 0 //43px
-
-.features-list
-    .agents-content__prices-and-contacts &
-        padding-left default_padding
-        padding-right default_padding
-
-        $scalable_props = {
-            padding-left: default_padding
-            padding-right: default_padding
-        }
-        scalabilityMixin($scalable_props)
-
-        @media (max-width bp_sub-medium-x-padding)
-            padding-left medium_padding
-            padding-right medium_padding
-
-            $scalable_props = {
-                padding-left: medium_padding
-                padding-right: medium_padding
-            }
-            scalabilityMixin($scalable_props)
-
-        @media (max-width bp_reduced-x-padding)
-            padding-left reduced_padding
-            padding-right reduced_padding
-
-            $scalable_props = {
-                padding-left: reduced_padding
-                padding-right: reduced_padding
-            }
-            scalabilityMixin($scalable_props)
-
-        @media (max-width bp_low-x-padding)
-            padding-left low_padding
-            padding-right low_padding
-
-            $scalable_props = {
-                padding-left: low_padding
-                padding-right: low_padding
-            }
-            scalabilityMixin($scalable_props)
-
-        @media (max-width bp_lower-x-padding)
-            padding-left lower_padding
-            padding-right lower_padding
-
-            $scalable_props = {
-                padding-left: lower_padding
-                padding-right: lower_padding
-            }
-            scalabilityMixin($scalable_props)
-
-        @media (max-width lg)
-            padding-left small_padding
-            padding-right small_padding
-
-            $scalable_props = {
-                padding-left: small_padding
-                padding-right: small_padding
-            }
-            scalabilityMixin($scalable_props)
-
-
-.feature-item--easy-prices-filling::before
-    background-image url(../images/i-document-starred.png)
-
-.feature-item--pricings::before
-    background-image url(../images/i-documents-pencil.png)
-
-.feature-item--instant-online-calculation::before
-    background-image url(../images/i-calculations.png)
-
-.feature-item--multicurrency-rates::before
-    background-image url(../images/i-currencies-exchange.png)
-
-.feature-item--partners-informing::before
-    background-image url(../images/i-flying-envelope.png)
-
-.feature-item--automatic-check::before
-    background-image url(../images/i-checklist-crossed.png)
-
-
-.feature-item--automation::before
-    background-image url(../images/i-calend-with-clock.png)
-
-.feature-item--access-rights-control::before
-    background-image url(../images/i-add-female.png)
-
-.feature-item--clients-database::before
-    background-image url(../images/i-linked-trio.png)
-
-
-.agents-content__services
-    background-color c_white
+.tourism-boards-content__news-categories/*.custom-banner--v1*/
+    background-color #021e3b
     background-repeat no-repeat
-    background-position left 128px
-    background-size contain
-    background-image url(../images/bg-lines-mask.png)
-
-.paired-comparison
-    .agents-content__replies &
-        background-repeat repeat
-        background-color #fff
-        background-image url(../images/bg-default-pattern.jpg)
-        background-position -101px 178px
-
-.paired-comparison__element--first
-    .agents-content__replies &
-        color c_white
-        background-color rgba(237, 0, 58, 0.8)
-
-.paired-comparison__element--second
-    .agents-content__replies &
-        color c_darken-7-font
-        background-color rgba(47, 198, 198, 0.8)
+    background-image url(../images/bg-tourism-boards-news-categories.jpg)
+    background-size cover
+    background-position center
 
 
-.agents-content__paid-services/*ul.features-list*/
-    padding-top 60px
-    padding-bottom 124px
-    padding-left low_padding
-    padding-right low_padding
-    background-color c_white
-
-    $scalable_props = {
-        padding-top: 60px
-        padding-bottom: 124px
-        padding-left: low_padding
-        padding-right: low_padding
-    }
-    scalabilityMixin($scalable_props)
-
-    @media (max-width bp_small-x-padding)
-        padding-left lower_padding
-        padding-right lower_padding
-
-        $scalable_props = {
-            padding-left: lower_padding
-            padding-right: lower_padding
-        }
-        scalabilityMixin($scalable_props)
-
-    /**----------------------*\
-     * Components overriding
-    \*-----------------------*/
-    .btn--v7
-        min-width 160px
-        max-width 160px
-        text-align center
-        padding-left 5px
-        padding-right 5px
-
-        $scalable_props = {
-            padding-top: 10px
-            padding-right: 5px
-            padding-bottom: 9px
-            padding-left: 5px
-            min-width: 160px
-            max-width: 160px
-        }
-        scalabilityMixin($scalable_props, 18, fontHvLight18_30, 14)
-
-.feature-item--online-booking::before
-    background-image url(../images/i-media-slats-red.png)
-
-.feature-item--share-services::before
-    background-image url(../images/i-share-services-red.png)
-
-.feature-item--tripservice-club-app::before
-    background-image url(../images/i-app-tapped-red.png)
+.feature-item--translates::before
+    background-image url(../images/i-translate-bubbles.png)
 
 
-/**--------------------------------*\
- * .publications
-\*--------------------------------*/
 .publications-feature--share
     background-color c_seo-2
 
@@ -426,30 +220,31 @@
         padding-right 60px
 
     &::before
-        right 0
-        bottom 0
-        width 583px
-        height 333px
-        background-image url(../images/bg-share-map.png)
+        left 768px
+        top 95px
+        width 517px
+        height 267px
+        background-image url(../images/bg-publications-share-materials.png)
 
-        @media (max-width: 1456px)
-            right auto
-            left 757px
+        @media (min-width: 1457px)
+            left auto
+            right 0
 
 .publications-feature--mini-reviews
     align-items flex-end
     padding-top 63px
+    padding-left 120px
     background-color #ef1054
 
     @media (max-width: md)
         padding-right 60px
 
     &::before
-        right 839px
-        bottom 35px
-        width 468px
-        height 225px
-        background-image url(../images/bg-publications-reviews-planet.png)
+        right 875px
+        bottom 39px
+        width 405px
+        height 213px
+        background-image url(../images/bg-publications-reviews.png)
 
         @media (max-width: 1106px)
             right auto
@@ -539,7 +334,7 @@
         color c_white
 
     .publications-feature--mini-reviews &
-        padding-right 394px
+        padding-right 305px
         color c_white
 
         @media (max-width: 1381px)
