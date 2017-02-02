@@ -72,6 +72,106 @@ $bp-upper_scale-fz-reset = xss  // 10px
         margin-right 0
 
 
+.presentation-content__header
+    text-align center
+
+    @media (max-width xss)
+        font-size 8px
+
+    .additional-text
+        fontHvLight36_44()
+        color c_white
+        text-transform uppercase
+        scalabilityMixin(false, 10, fontHvLight36_44)
+
+        @media (max-width md)
+            font-size 26px
+            scalabilityMixin({font-size: 26px})
+
+.presentation-content__header--primary
+    box-sizing border-box
+    min-height 509px
+    padding-top 116px
+    padding-bottom 46px
+    padding-left default_padding
+    padding-right default_padding
+    background-color #cccccc
+    background-repeat no-repeat
+    background-position center
+    background-size cover
+
+    $scalable_props = {
+        min-height: 509px
+        padding-top: 116px
+        padding-bottom: 46px
+        padding-left: default_padding
+        padding-right: default_padding
+    }
+    scalabilityMixin($scalable_props)
+
+    @media (max-width bp_reduced-x-padding)
+        padding-left low_padding
+        padding-right low_padding
+
+        $scalable_props = {
+            padding-left: low_padding
+            padding-right: low_padding
+        }
+        scalabilityMixin($scalable_props)
+
+    @media (max-width bp_lower-x-padding)
+        padding-left lower_padding
+        padding-right lower_padding
+
+        $scalable_props = {
+            padding-left: lower_padding
+            padding-right: lower_padding
+        }
+        scalabilityMixin($scalable_props)
+
+    @media (max-width lg)
+        padding-left small_padding
+        padding-right small_padding
+
+        $scalable_props = {
+            padding-left: small_padding
+            padding-right: small_padding
+        }
+        scalabilityMixin($scalable_props)
+
+.presentation-content__header--secondary
+    min-height 249px
+    padding-left default_padding
+    padding-right default_padding
+    padding-top 80px
+    padding-bottom 60px
+    background-color #cccccc
+    background-repeat no-repeat
+    background-size cover
+
+    @media (max-width bp_reduced-x-padding)
+        padding-left low_padding
+        padding-right low_padding
+
+    @media (max-width bp_lower-x-padding)
+        padding-left lower_padding
+        padding-right lower_padding
+
+    @media (max-width: lg)
+        padding-left small_padding
+        padding-right small_padding
+
+
+.presentation-content__title
+    text-transform uppercase
+
+.presentation-content__title--main
+    color c_contrast
+
+.presentation-content__title--secondary
+    color c_white
+
+
 .video-block
     margin-bottom 28px
     scalabilityMixin({margin-bottom: 28px})

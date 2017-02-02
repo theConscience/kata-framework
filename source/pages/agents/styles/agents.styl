@@ -3,106 +3,20 @@
 @import './helpers/_block_mixins'
 
 
-.agents-content__header
-    text-align center
-
-    @media (max-width xss)
-        font-size 8px
-
-    .additional-text
-        fontHvLight36_44()
-        color c_white
-        text-transform uppercase
-        scalabilityMixin(false, 10, fontHvLight36_44)
-
-        @media (max-width md)
-            font-size 26px
-            scalabilityMixin({ font-size: 26px })
-
 .agents-content__header--primary
-    box-sizing border-box
-    min-height 509px
-    padding-top 116px
-    padding-bottom 46px
     padding-left default_padding
     padding-right default_padding
     background-color #451c0d
-    background-repeat no-repeat
     background-image url(../images/bg-agents-top.jpg)
-    background-position center
-    background-size cover
-
-    $scalable_props = {
-        min-height: 509px
-        padding-top: 116px
-        padding-bottom: 46px
-        padding-left: default_padding
-        padding-right: default_padding
-    }
-    scalabilityMixin($scalable_props)
-
-    @media (max-width bp_reduced-x-padding)
-        padding-left low_padding
-        padding-right low_padding
-
-        $scalable_props = {
-            padding-left: low_padding
-            padding-right: low_padding
-        }
-        scalabilityMixin($scalable_props)
-
-    @media (max-width bp_lower-x-padding)
-        padding-left lower_padding
-        padding-right lower_padding
-
-        $scalable_props = {
-            padding-left: lower_padding
-            padding-right: lower_padding
-        }
-        scalabilityMixin($scalable_props)
-
-    @media (max-width lg)
-        padding-left small_padding
-        padding-right small_padding
-
-        $scalable_props = {
-            padding-left: small_padding
-            padding-right: small_padding
-        }
-        scalabilityMixin($scalable_props)
 
 
 .agents-content__header--secondary
-    min-height 249px
-    padding-left default_padding
-    padding-right default_padding
-    padding-top 80px
-    padding-bottom 60px
     background-color #857b88
-    background-repeat no-repeat
     background-image url(../images/bg-agents-header-secondary.jpg)
-    background-size cover
     background-position bottom center
 
-    @media (max-width bp_reduced-x-padding)
-        padding-left low_padding
-        padding-right low_padding
 
-    @media (max-width bp_lower-x-padding)
-        padding-left lower_padding
-        padding-right lower_padding
-
-    @media (max-width: lg)
-        padding-left small_padding
-        padding-right small_padding
-
-.agents-content__title
-    text-transform uppercase
-
-
-.agents-content__title--main
-    color c_contrast
-
+.presentation-content__title--main
     $header_title_main_fz_mod = 50 / $base_fz
     .agents-content__header--primary &
         fontHvBold50_auto()
@@ -127,9 +41,7 @@
             scalabilityMixin({ margin-bottom: -5px}, 35)
 
 
-.agents-content__title--secondary
-    color c_white
-
+.presentation-content__title--secondary
     $header_title_secondary_fz_mod = 36 / $base_fz
     .agents-content__header--primary &
         fontHvBold42_44()

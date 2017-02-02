@@ -46,85 +46,33 @@
 //         order 2
 //         margin-right 0
 
-.avia-content__header
-    text-align center
-
-    @media (max-width xss)
-        font-size 8px
-
-    .additional-text
-        fontHvLight36_44()
-        color c_white
-        text-transform uppercase
-        scalabilityMixin(false, 10, fontHvLight36_44)
-
-        @media (max-width md)
-            font-size 26px
-            scalabilityMixin({font-size: 26px})
 
 .avia-content__header--primary
-    box-sizing border-box
-    min-height 509px
-    padding-top 116px
-    padding-bottom 46px
     padding-left default_padding
     padding-right default_padding
     background-color #451c0d
-    background-repeat no-repeat
     background-image url(../images/bg-avia-top.jpg)
-    background-position center
-    background-size cover
-
-    $scalable_props = {
-        min-height: 509px
-        padding-top: 116px
-        padding-bottom: 46px
-        padding-left: default_padding
-        padding-right: default_padding
-    }
-    scalabilityMixin($scalable_props)
-
-    @media (max-width bp_reduced-x-padding)
-        padding-left low_padding
-        padding-right low_padding
-
-        $scalable_props = {
-            padding-left: low_padding
-            padding-right: low_padding
-        }
-        scalabilityMixin($scalable_props)
-
-    @media (max-width bp_lower-x-padding)
-        padding-left lower_padding
-        padding-right lower_padding
-
-        $scalable_props = {
-            padding-left: lower_padding
-            padding-right: lower_padding
-        }
-        scalabilityMixin($scalable_props)
-
-    @media (max-width lg)
-        padding-left small_padding
-        padding-right small_padding
-
-        $scalable_props = {
-            padding-left: small_padding
-            padding-right: small_padding
-        }
-        scalabilityMixin($scalable_props)
 
     // @media ({bp_header})
     //     background-size 100% auto
 
 
-.avia-content__title
-    text-transform uppercase
+.avia-content__header--secondary
+    padding-top 67px
+    padding-bottom 65px
+    background-color #934825
+    background-image url(../images/bg-avia-paid-services.jpg)
+    background-position center
+
+    $scalable_props = {
+        min-height: 249px
+        padding-top: 67px
+        padding-bottom: 65px
+    }
+    scalabilityMixin($scalable_props)
 
 
-.avia-content__title--main
-    color c_contrast
-
+.presentation-content__title--main
     $header_title_main_fz_mod = 60 / $base_fz
     .avia-content__header--primary &
         fontHvBold60_auto()
@@ -148,9 +96,8 @@
             font-size 35px
             scalabilityMixin({ margin-bottom: -5px }, 35)
 
-.avia-content__title--secondary
-    color c_white
 
+.presentation-content__title--secondary
     $header_title_secondary_fz_mod = 36 / $base_fz
     .avia-content__header--primary &
         fontHvRoman36_44()
@@ -178,7 +125,6 @@
 .media-block__header
     .presentation-content__company-profile &
         background-image url(../images/bg-avia-profile.jpg)
-
 
 
 .avia-content__aircompanies-news
@@ -281,37 +227,6 @@
 
 .feature-item--translates::before
     background-image url(../images/i-translate-bubbles.png)
-
-.avia-content__header--secondary
-    min-height 249px
-    padding-left default_padding
-    padding-right default_padding
-    padding-top 67px
-    padding-bottom 65px
-    background-color #934825
-    background-repeat no-repeat
-    background-image url(../images/bg-avia-paid-services.jpg)
-    background-size cover
-    background-position center
-
-    $scalable_props = {
-        min-height: 249px
-        padding-top: 67px
-        padding-bottom: 65px
-    }
-    scalabilityMixin($scalable_props)
-
-    @media (max-width bp_reduced-x-padding)
-        padding-left low_padding
-        padding-right low_padding
-
-    @media (max-width bp_lower-x-padding)
-        padding-left lower_padding
-        padding-right lower_padding
-
-    @media (max-width: lg)
-        padding-left small_padding
-        padding-right small_padding
 
 
 .publications-feature--share
@@ -501,7 +416,7 @@
 
 .publications-feature__title
     .publications-feature--mini-reviews &
-        max-width 552px
+        min-width 552px
 
     .publications-feature--availability &
         max-width calc(468px - 89px)
