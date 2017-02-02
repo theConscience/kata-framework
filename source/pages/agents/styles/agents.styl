@@ -550,7 +550,7 @@
         color #5c4e40
 
     .publications-feature--availability &
-        // padding-right 89px
+        padding-right 89px
         color #db3d71
 
         @media (max-width: 811px)
@@ -605,8 +605,11 @@
 
 
 .publications-feature__title
+    .publications-feature--mini-reviews &
+        max-width 552px
+
     .publications-feature--availability &
-        max-width 468px
+        max-width calc(468px - 89px)
 
 
 .publications-feature__content
