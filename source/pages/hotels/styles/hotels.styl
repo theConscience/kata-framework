@@ -1,3 +1,118 @@
 @import './helpers/_variables'
 @import './helpers/_mixins'
 @import './helpers/_block_mixins'
+
+
+.hotels-content__header--primary
+    padding-left default_padding
+    padding-right default_padding
+    background-color #451c0d
+    background-image url(../images/bg-hotels-top.jpg)
+
+.hotels-content__header--secondary
+    padding-top 67px
+    padding-bottom 65px
+    background-color #934825
+    background-image url(../images/.jpg)
+    background-position center
+
+    $scalable_props = {
+        min-height: 249px
+        padding-top: 67px
+        padding-bottom: 65px
+    }
+    scalabilityMixin($scalable_props)
+
+
+.presentation-content__title--main
+    $header_title_main_fz_mod = 60 / $base_fz
+    .hotels-content__header--primary &
+        fontHvBold60_auto()
+        margin-top 0
+        margin-bottom -5px
+        scalabilityMixin({ margin-bottom: -5px }, 60, fontHvBold60_auto)
+
+        @media (max-width md)
+            font-size 45px
+            scalabilityMixin({ font-size: 45px})
+            scalabilityMixin({ margin-bottom: -5px }, 45)
+
+    $header_title_main_fz_mod = 55 / $base_fz
+    .hotels-content__header--secondary &
+        fontHvBold55_auto()
+        margin-top 0
+        margin-bottom -5px
+        scalabilityMixin({ margin-bottom: -5px }, 55, fontHvBold55_auto)
+
+        @media (max-width md)
+            font-size 35px
+            scalabilityMixin({ margin-bottom: -5px }, 35)
+
+.presentation-content__title--secondary
+    $header_title_secondary_fz_mod = 36 / $base_fz
+    .hotels-content__header--primary &
+        fontHvRoman36_44()
+        font-weight 600  // fix - need to add it to fontHvRoman36_44 if no more used
+        margin-top 0
+        margin-bottom 0
+
+        $scalable_props = { font-weight: 600 }  // fix - need to add it to fontHvRoman36_44 if no more used
+        scalabilityMixin($scalable_props, 55, fontHvRoman36_44)
+
+        @media (max-width md)
+            font-size 26px
+
+    $header_title_secondary_fz_mod = 44 / $base_fz
+    .hotels-content__header--secondary &
+        fontHvBold44_auto()
+        margin-top 0
+        margin-bottom 0
+        scalabilityMixin(false, 10, fontHvBold44_auto)
+
+        @media (max-width md)
+            font-size 30px
+
+.media-block__content--with-wallpaper
+    .hotels-content__hotel-public-page &
+        background-color #f12c6f
+        background-image url(../images/bg-hotel-public-page-media-block-content.jpg)
+
+
+.default-section__header
+    .hotels-content__hotel-questionnare &
+        padding-left default_padding
+        padding-right default_padding
+        padding-bottom 39px
+        scalabilityMixin({ padding-bottom: 39px })
+
+        @media (max-width bp_medium-x-padding)
+            padding-left reduced_padding_2
+            padding-right reduced_padding_2
+
+        @media (max-width bp_reduced-x-padding)
+            padding-left low_padding
+            padding-right low_padding
+
+        @media (max-width bp_low-x-padding)
+            padding-left small_padding
+            padding-right small_padding
+
+        @media (max-width lg)
+            padding-left small_padding
+            padding-right small_padding
+
+.default-section__title
+    .hotels-content__aircompanies-questionnare &
+        margin-bottom 2px
+        scalabilityMixin({ margin-bottom: 2px })
+
+.hotels-content__hotel-questionnare
+    padding-top 58px
+    padding-bottom 81px
+    background-color #fff
+
+    $scalable_props = {
+        padding-top: 58px
+        padding-bottom: 81px
+    }
+    scalabilityMixin($scalable_props)

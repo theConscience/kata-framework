@@ -379,6 +379,21 @@ mark.primary
         background-color #002839
         background-image url(../images/bg-tripservice-media-block-content.jpg)
 
+.media-block__content--loose
+    fontHvLight18_30()
+    padding-top 40px
+    padding-bottom 40px
+
+    $scalable_props = {
+        padding-top: 40px
+        padding-bottom: 40px
+    }
+    scalabilityMixin($scalable_props, 18, fontHvLight18_30)
+
+    > p
+        margin-bottom 31px
+        scalabilityMixin({ margin-bottom: 31px }, 18)
+
 .media-block__footer
     padding-top 34px
     padding-bottom 62px
@@ -1446,6 +1461,9 @@ $feature_item_diamond_pseudo_fz_mod = 30 / $base_fz
         &:hover
             text-decoration none
 
+.custom-banner--with-gradient
+    background-image linear-gradient(to bottom, rgba(153,153,153,0) 0%, rgba(214,214,214,0.31) 38%, rgba(74,205,205,0.32) 39%,rgba(74,205,205,0.32) 100%), url()
+
 
 .default-section
     &--bright
@@ -1606,6 +1624,15 @@ $feature_item_diamond_pseudo_fz_mod = 30 / $base_fz
         margin-bottom: 44px
     }
     scalabilityMixin($scalable_props, 30, fontHvBold30_auto)
+
+.default-section__title-alternate
+    fontHvBold37_auto()
+    color c_darken-8-font
+    text-align center
+
+.default-section__description
+    fontHvRoman16_auto()
+    color c_darken-8-font
 
 
 .unique-article
