@@ -305,3 +305,14 @@ not-ie10-11()  // not ie 10-11 block mixin, for conditional css
 ie10-11-only()  // ie 10-11 only block mixin, for conditional css
     @media screen and (-ms-high-contrast active), (-ms-high-contrast none)
         {block}
+
+
+staged-list-generator(stagesCount, prop, startValue, stageValue)
+    for stage in range(1, stagesCount)
+        $tempStage = stagesCount - stage + 1
+        &:nth-of-type({$tempStage})
+        &:nth-last-of-type({$tempStage})
+            if $tempStage > 1
+                {prop}: stageValue * ($tempStage - 1)
+            else
+                {prop}: startValue

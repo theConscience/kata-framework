@@ -7,13 +7,13 @@
     padding-left default_padding
     padding-right default_padding
     background-color #451c0d
-    background-image url(../images/bg-hotels-top.jpg)
+    background-image url(../images/bg-hotels-header-1.jpg)
 
 .hotels-content__header--secondary
     padding-top 67px
     padding-bottom 65px
     background-color #934825
-    background-image url(../images/.jpg)
+    background-image url(../images/bg-hotels-header-2.jpg)
     background-position center
 
     $scalable_props = {
@@ -72,10 +72,28 @@
         @media (max-width md)
             font-size 30px
 
+
+.feature-item--mini-site::before
+    background-image url(../images/i-arrow-up-stroked-colored.png)
+
+.feature-item--hotel-page-link::before
+    background-image url(../images/i-chain-link-diagonal-colored.png)
+
+.feature-item--international::before
+    background-image url(../images/i-language-bubbles-colored.png)
+
+
 .media-block__content--with-wallpaper
     .hotels-content__hotel-public-page &
         background-color #f12c6f
         background-image url(../images/bg-hotel-public-page-media-block-content.jpg)
+
+
+.default-section__content-inner
+    .hotels-content__hotel-public-page &
+        background-position 8px -93px
+        background-size contain
+        background-image url(../images/bg-public-page-content-inner.jpg)
 
 
 .default-section__header
@@ -106,13 +124,96 @@
         margin-bottom 2px
         scalabilityMixin({ margin-bottom: 2px })
 
+.default-section__title-alternate
+    .hotels-content__hotel-public-page &
+        margin-bottom 70px
+        scalabilityMixin({ margin-bottom: 70px }, 37)
+
+
+.stage-list
+    .hotels-content__hotel-public-page &
+        margin-bottom 100px
+        scalabilityMixin({ margin-bottom: 100px })
+
+
+.cards-list--condensed
+    .hotels-content__hotel-public-page &
+        margin-bottom 54px
+        padding-left medium_padding
+        padding-right medium_padding
+
+        $scalable_props = {
+            margin-bottom: 54px
+            padding-left: medium_padding
+            padding-right: medium_padding
+        }
+        scalabilityMixin($scalable_props)
+
+        @media (max-width bp_medium-x-padding)
+            padding-left reduced_padding_2
+            padding-right reduced_padding_2
+
+            $scalable_props = {
+                padding-left: reduced_padding_2
+                padding-right: reduced_padding_2
+            }
+            scalabilityMixin($scalable_props)
+
+        @media (max-width bp_reduced-x-padding)
+            padding-left lower_padding
+            padding-right lower_padding
+
+            $scalable_props = {
+                padding-left: lower_padding
+                padding-right: lower_padding
+            }
+            scalabilityMixin($scalable_props)
+
+        @media (max-width bp_smallest-x-padding)
+            padding-left small_padding
+            padding-right small_padding
+
+            $scalable_props = {
+                padding-left: small_padding
+                padding-right: small_padding
+            }
+            scalabilityMixin($scalable_props)
+
+
 .hotels-content__hotel-questionnare
     padding-top 58px
-    padding-bottom 81px
+    padding-bottom 28px
     background-color #fff
 
     $scalable_props = {
         padding-top: 58px
-        padding-bottom: 81px
+        padding-bottom: 28px
     }
     scalabilityMixin($scalable_props)
+
+
+.default-section__title
+    .hotels-content__hotel-questionnare &
+        margin-bottom 2px
+        scalabilityMixin({ margin-bottom: 2px })
+
+
+.hotels-content__hotel-news/*.media-block*/
+    > .media-block__header
+        min-height 168px
+        padding-top 41px
+        background-color #fff6d9
+        background-repeat no-repeat
+        background-image url(../images/bg-hotel-news-media-block-header.jpg)
+        background-size cover
+        background-position 50% 100%
+
+        $scalable_props = {
+            min-height: 168px
+            padding-top: 41px
+        }
+        scalabilityMixin($scalable_props)
+
+
+.hotels-content__publications-collection
+    background-image url(../images/bg-hotels-publications-banner.jpg)
