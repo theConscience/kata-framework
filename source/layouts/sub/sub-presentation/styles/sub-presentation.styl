@@ -1354,6 +1354,9 @@ $feature_item_diamond_pseudo_fz_mod = 30 / $base_fz
         padding-left small_padding
         padding-right small_padding
 
+    .avia-content__aircompanies-questionnare &
+        padding-bottom 0
+
 .feature-item--info-aggregation::before
     background-image url(../images/i-user-message.png)
 
@@ -1492,18 +1495,52 @@ $feature_item_diamond_pseudo_fz_mod = 30 / $base_fz
 
 .custom-banner__content--faded-bg
     background-image linear-gradient(to bottom, rgba(74,205,205,0.68) 0%, rgba(74,205,205,0.68) 100%)
+    box-shadow 0 60px rgba(74,205,205,0.68)
 
     .custom-banner--v2 &
-        bottom 26px
+        padding-left default_padding
+        padding-right default_padding
         padding-top 30px
         padding-bottom 26px
         margin-bottom -26px
         $scalable_props = {
+            padding-left: default_padding
+            padding-right: default_padding
             padding-top: 30px
             padding-bottom: 26px
             margin-bottom: -26px
         }
         scalabilityMixin($scalable_props, 18)
+
+        @media (max-width bp_reduced-x-padding)
+            padding-left reduced_padding
+            padding-right reduced_padding
+
+            $scalable_props = {
+                padding-left: reduced_padding
+                padding-right: reduced_padding
+            }
+            scalabilityMixin($scalable_props)
+
+        @media (max-width bp_lower-x-padding)
+            padding-left lower_padding
+            padding-right lower_padding
+
+            $scalable_props = {
+                padding-left: lower_padding
+                padding-right: lower_padding
+            }
+            scalabilityMixin($scalable_props)
+
+        @media (max-width: lg)
+            padding-left small_padding
+            padding-right small_padding
+
+            $scalable_props = {
+                padding-left: small_padding
+                padding-right: small_padding
+            }
+            scalabilityMixin($scalable_props)
 
 .custom-banner__link
     .custom-banner--v1 &
@@ -2316,6 +2353,7 @@ $feature_item_diamond_pseudo_fz_mod = 30 / $base_fz
 
 .custom-banner--v2
     position relative
+    overflow hidden
     padding-top 26px
     padding-bottom 26px
     text-align center
@@ -2337,13 +2375,13 @@ $feature_item_diamond_pseudo_fz_mod = 30 / $base_fz
     .custom-banner--v2 &
         padding-top 26px
         margin-top -26px
-        padding-bottom 23px
+        padding-bottom 30px
         margin-bottom 0
 
         $scalable_props = {
             padding-top: 26px
             margin-top: -26px
-            padding-bottom: 23px
+            padding-bottom: 30px
             margin-bottom: 0px
         }
         scalabilityMixin($scalable_props)
