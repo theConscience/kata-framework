@@ -29,6 +29,10 @@ $bp-upper_scale-fz-reset = xss  // 10px
         font-size ($base_fz)px
 
 
+.faded-topside
+    box-shadow inset 0 3px 3px #ebebeb, 0 3px 3px #ebebeb
+
+
 /**----------------------*\
  * Components overriding
 \*-----------------------*/
@@ -271,6 +275,39 @@ mark.primary
     .default-section__header--diamond--secondary &
         position relative
 
+
+.striped-block
+    display block
+    overflow hidden
+    padding-left 11.1688%
+    padding-right 11.1688%
+    text-align center
+    color #000
+
+    & > *
+        position relative
+        display inline-block
+        padding-left 21px
+        padding-right 21px
+
+    & > *::before
+    & > *::after
+        content ''
+        position absolute
+        top 50%
+        height 1px
+        width 9999px
+        margin-top -2px
+        background-color c_contrast
+
+    & > *::before
+        right 100%
+
+    & > *::after
+        left 100%
+
+
+
 // .media-block__title
 // .default-section__title
 //     fontHvBold40_auto()
@@ -438,6 +475,112 @@ mark.primary
     scalabilityMixin({ margin-bottom: 32px }, 22, fontRobotoRegular22_24)
 
 
+/*section*/.media-object
+    display flex
+    flex-direction row
+
+.media-object--t1
+    padding-left medium_padding
+    padding-right default_padding
+    padding-bottom 80px
+
+    $scalable_props = {
+        padding-left: medium_padding
+        padding-right: default_padding
+        padding-bottom: 80px
+    }
+    scalabilityMixin($scalable_props)
+
+    @media (max-width bp_reduced-x-padding)
+        padding-left reduced_padding_2
+        padding-right reduced_padding
+
+        $scalable_props = {
+            padding-left: reduced_padding_2
+            padding-right: reduced_padding
+        }
+        scalabilityMixin($scalable_props)
+
+    @media (max-width bp_lower-x-padding)
+        padding-left lower_padding
+        padding-right lower_padding
+
+        $scalable_props = {
+            padding-left: lower_padding
+            padding-right: lower_padding
+        }
+        scalabilityMixin($scalable_props)
+
+    @media (max-width smm) and (min-width xs_plus_1), (max-width bp_publications)
+        flex-direction column
+
+/*figure*/.media-object__item
+    width 50%
+
+    .media-object--t1 &
+        width 49%
+
+        @media (max-width smm) and (min-width xs_plus_1), (max-width bp_publications)
+            width 100%
+
+.media-object__item--decorative-image  // для случаев, когда медиа блок используется не с контентным img а с декоративным фоном
+    .media-object--t1 &
+        min-height 398px
+        background-repeat no-repeat
+        background-size: 92% auto;
+        background-position 1.015% 0
+        scalabilityMixin({ min-height: 398px })
+
+        @media (max-width smm) and (min-width xs_plus_1), (max-width bp_publications)
+            background-size contain
+            background-position center
+
+/*img*/.media-object__picture
+    display block
+
+.media-object__body
+    width 50%
+
+    .media-object--t1 &
+        width 51%
+
+        @media (max-width smm) and (min-width xs_plus_1), (max-width bp_publications)
+            width 100%
+
+/*header*/.media-object__header
+    //
+
+/*h2*/.media-object__title
+    //
+    .media-object--t1 &
+        fontHvBold40_auto()
+        margin-top 12px
+        margin-bottom 25px
+        color c_contrast
+
+        $scalable_props = {
+            margin-top: 12px
+            margin-bottom: 25px
+        }
+        scalabilityMixin($scalable_props, 40, fontHvBold40_auto)
+
+        @media (max-width smm) and (min-width xs_plus_1), (max-width bp_publications)
+            text-align center
+
+.media-object__content
+    fontHvLight18_auto()
+    color c_darken-5-font
+    scalabilityMixin(false, 18, fontHvLight18_auto)
+
+    > p
+        margin-bottom 20px
+        scalabilityMixin({ margin-bottom: 20px }, 18)
+
+        &:last-of-type
+            margin-bottom 0
+            scalabilityMixin({ margin-bottom: 0 }, 18)
+
+
 .features-list
     padding 0
     margin 0
@@ -450,50 +593,8 @@ mark.primary
     align-items flex-start
 
     .avia-content__paid-services &
-        padding-left default_padding
-        padding-right default_padding
-        padding-top 55px
-        padding-bottom 38px
-
-        $scalable_props = {
-            padding-left: default_padding
-            padding-right: default_padding
-            padding-top: 55px
-            padding-bottom: 38px
-        }
-        scalabilityMixin($scalable_props)
-
-        @media (max-width bp_reduced-x-padding)
-            padding-left reduced_padding
-            padding-right reduced_padding
-
-            $scalable_props = {
-                padding-left: reduced_padding
-                padding-right: reduced_padding
-            }
-            scalabilityMixin($scalable_props)
-
-        @media (max-width bp_lower-x-padding)
-            padding-left lower_padding
-            padding-right lower_padding
-
-            $scalable_props = {
-                padding-left: lower_padding
-                padding-right: lower_padding
-            }
-            scalabilityMixin($scalable_props)
-
-        @media (max-width: lg)
-            padding-left small_padding
-            padding-right small_padding
-
-            $scalable_props = {
-                padding-left: small_padding
-                padding-right: small_padding
-            }
-            scalabilityMixin($scalable_props)
-
     .tourism-boards-content__paid-services &
+    .hotels-content__paid-services &
         padding-left default_padding
         padding-right default_padding
         padding-top 55px
@@ -556,6 +657,66 @@ mark.primary
                 max-width: 160px
             }
             scalabilityMixin($scalable_props, 18, fontHvLight18_30, 14)
+
+    .presentation-content__prices-and-contacts &
+        padding-left default_padding
+        padding-right default_padding
+
+        $scalable_props = {
+            padding-left: default_padding
+            padding-right: default_padding
+        }
+        scalabilityMixin($scalable_props)
+
+        @media (max-width bp_sub-medium-x-padding)
+            padding-left medium_padding
+            padding-right medium_padding
+
+            $scalable_props = {
+                padding-left: medium_padding
+                padding-right: medium_padding
+            }
+            scalabilityMixin($scalable_props)
+
+        @media (max-width bp_reduced-x-padding)
+            padding-left reduced_padding
+            padding-right reduced_padding
+
+            $scalable_props = {
+                padding-left: reduced_padding
+                padding-right: reduced_padding
+            }
+            scalabilityMixin($scalable_props)
+
+        @media (max-width bp_low-x-padding)
+            padding-left low_padding
+            padding-right low_padding
+
+            $scalable_props = {
+                padding-left: low_padding
+                padding-right: low_padding
+            }
+            scalabilityMixin($scalable_props)
+
+        @media (max-width bp_lower-x-padding)
+            padding-left lower_padding
+            padding-right lower_padding
+
+            $scalable_props = {
+                padding-left: lower_padding
+                padding-right: lower_padding
+            }
+            scalabilityMixin($scalable_props)
+
+        @media (max-width lg)
+            padding-left small_padding
+            padding-right small_padding
+
+            $scalable_props = {
+                padding-left: small_padding
+                padding-right: small_padding
+            }
+            scalabilityMixin($scalable_props)
 
 .features-list--bordered
     margin-left -13px
@@ -1046,41 +1207,45 @@ $feature_item_diamond_pseudo_fz_mod = 30 / $base_fz
     margin-top 0
     color c_darkest-font
 
-    scalabilityMixin(false, 14, fontRobotoBlack22_auto, 14)
+    scalabilityMixin(false, 22, fontRobotoBlack22_auto, 14)
 
     .feature-item--inverted-color &
         fontHvBold24_40()
         color c_white
         text-transform uppercase
 
-        scalabilityMixin(false, 14, fontHvBold24_40, 14)
+        scalabilityMixin(false, 24, fontHvBold24_40, 14)
 
     .feature-item--with-image &
         fontRobotoBold18_auto()
         color c_darken-3-font
 
-        scalabilityMixin(false, 14, fontRobotoBold18_auto, 14)
+        scalabilityMixin(false, 18, fontRobotoBold18_auto, 14)
 
     .feature-item--accurate &
         fontHvRoman18_30()
         color c_darkest-font
 
-        scalabilityMixin(false, 14, fontHvRoman18_30, 14)
+        scalabilityMixin(false, 18, fontHvRoman18_30, 14)
 
     .feature-item--accurate-bold &
         fontHvBold18_30()
         color c_darkest-font
 
-        scalabilityMixin(false, 14, fontHvBold18_30, 14)
+        scalabilityMixin(false, 18, fontHvBold18_30, 14)
 
     .feature-item--loose &
         fontHvBold30()
         color c_darken-4-font
 
-        scalabilityMixin(false, 14, fontHvBold30, 14)
+        scalabilityMixin(false, 30, fontHvBold30, 14)
 
     .feature-item--flex &
         width 100%  // IE11 fix
+
+    .feature-item--loose[class*='feature-item--diamond--'] &
+        margin-bottom 40px
+        scalabilityMixin({ margin-bottom: 40px }, 30)
 
 .feature-item__title--bright
     fontHvBold24_40()
@@ -1175,6 +1340,13 @@ $feature_item_diamond_pseudo_fz_mod = 30 / $base_fz
 
     $scalable_props = { margin-bottom: 35px }
     scalabilityMixin($scalable_props, 14, fontHvRoman14_24, 14)
+
+.feature-item__content--loose
+    scalabilityMixin($false, 14, fontHvMedium14_24, 14)
+
+    .feature-item--inverted-color &
+        fontHvRoman14_24()
+        scalabilityMixin(false, 14, fontHvRoman14_24, 14)
 
 .feature-item__picture-wrapper
     position absolute
@@ -1376,6 +1548,51 @@ $feature_item_diamond_pseudo_fz_mod = 30 / $base_fz
     background-image url(../images/i-radial-diagramm.png)
 
 
+.presentation-content__prices-and-contacts
+    //
+
+.feature-item--easy-prices-filling::before
+    background-image url(../images/i-document-starred.png)
+
+.feature-item--pricings::before
+    background-image url(../images/i-documents-pencil.png)
+
+.feature-item--instant-online-calculation::before
+    background-image url(../images/i-calculations.png)
+
+.feature-item--multicurrency-rates::before
+    background-image url(../images/i-currencies-exchange.png)
+
+.feature-item--partners-informing::before
+    background-image url(../images/i-flying-envelope.png)
+
+.feature-item--automatic-check::before
+    background-image url(../images/i-checklist-crossed.png)
+
+
+.avia-content__paid-services
+.tourism-boards-content__paid-services
+.hotels-content__paid-services
+    //
+
+.feature-item--translates::before
+    background-image url(../images/i-translate-bubbles.png)
+
+
+.agents-content__paid-services
+.hotels-content__paid-services
+    //
+
+.feature-item--online-booking::before
+    background-image url(../images/i-media-slats-red.png)
+
+.feature-item--share-services::before
+    background-image url(../images/i-share-services-red.png)
+
+.feature-item--tripservice-club-app::before
+    background-image url(../images/i-app-tapped-red.png)
+
+
 .custom-banner--v1
     min-height 325px
     padding-bottom 36px
@@ -1493,6 +1710,46 @@ $feature_item_diamond_pseudo_fz_mod = 30 / $base_fz
             margin-bottom 36px
             scalabilityMixin({ margin-bottom: 36px }, 18)
 
+    .custom-banner--v3 &
+        fontHvLight18_30()
+        position relative
+        margin-bottom 35px
+        padding-top 35px
+        padding-bottom 40px
+        padding-left 30px
+        padding-right 30px
+        border-bottom 1px solid c_contrast
+        border-left 1px solid c_contrast
+        border-right 1px solid c_contrast
+        color c_darken-10-font
+        text-align center
+        background-image linear-gradient(to bottom, rgba(0,0,0,0) 6%, rgba(0,0,0,0.53) 6%, rgba(0,0,0,0.53) 90%, rgba(0,0,0,0) 90%)
+
+        $scalable_props = {
+            margin-bottom: 35px
+            padding-top: 35px
+            padding-bottom: 40px
+            padding-left: 30px
+            padding-right: 30px
+        }
+        scalabilityMixin($scalable_props, 18, fontHvLight18_30)
+
+        &::before
+        &::after
+            position absolute
+            top 6%
+            height 84%
+            width 9999px
+            background-color rgba(0,0,0,0.53)
+            content ''
+
+        &::before
+            left -9999px
+
+        &::after
+            right -9999px
+
+
 .custom-banner__content--faded-bg
     background-image linear-gradient(to bottom, rgba(74,205,205,0.68) 0%, rgba(74,205,205,0.68) 100%)
     box-shadow 0 60px rgba(74,205,205,0.68)
@@ -1551,6 +1808,21 @@ $feature_item_diamond_pseudo_fz_mod = 30 / $base_fz
 
         &:hover
             text-decoration none
+
+.custom-banner__controls
+    //
+    .custom-banner--v3 &
+        text-align center
+
+        .btn--v7
+            $scalable_props = {
+                padding-top: 10px
+                padding-right: 32px
+                padding-bottom: 9px
+                padding-left: 32px
+                min-width: 186px
+            }
+            scalabilityMixin($scalable_props, 18, fontHvLight18_30)
 
 
 .default-section
@@ -1619,6 +1891,10 @@ $feature_item_diamond_pseudo_fz_mod = 30 / $base_fz
         padding-top 48px
         scalabilityMixin({ padding-top: 48px })
 
+    .presentation-content__prices-and-contacts &
+        margin-bottom 70px
+        scalabilityMixin({ margin-bottom: 70px })
+
 [class*=default-section__header--diamond--]
     position relative
     min-height 275px
@@ -1676,6 +1952,20 @@ $feature_item_diamond_pseudo_fz_mod = 30 / $base_fz
 .default-section__header--diamond--secondary::before
     background-image url(../images/bg-diamond-secondary.svg)
 
+.default-section__header--diamond-repositioned
+    min-height auto
+    padding-top 69px
+
+    $scalable_props = {
+        min-height: auto
+        padding-top: 69px
+    }
+    scalabilityMixin($scalable_props)
+
+    &::before
+        top 30px
+        scalabilityMixin({ top: 30px })
+
 .default-section__header--decorated
     background-size cover
     background-position center
@@ -1729,6 +2019,11 @@ $feature_item_diamond_pseudo_fz_mod = 30 / $base_fz
     text-align center
     scalabilityMixin(false, 37, fontHvBold37_auto)
 
+.default-section__title-cheap
+    fontHvLight30_32()
+    color c_darkest-font
+    scalabilityMixin(false, 30, fontHvLight30_32)
+
 .default-section__description
     fontHvRoman16_auto()
     width 74.038%
@@ -1740,14 +2035,14 @@ $feature_item_diamond_pseudo_fz_mod = 30 / $base_fz
 
 .default-section__description--large
     fontHvLight20_30()
+    margin-bottom 30px
     color c_darken-9-font
-    scalabilityMixin(false, 20, fontHvLight20_30)
+    scalabilityMixin({ margin-bottom: 30px }, 20, fontHvLight20_30)
 
 
 .unique-article
     position relative
     box-shadow inset 0 3px 3px #ebebeb, 0 3px 3px #ebebeb
-    margin-bottom 52px
 
     &::before
         position absolute
@@ -1864,6 +2159,10 @@ $feature_item_diamond_pseudo_fz_mod = 30 / $base_fz
                 scalabilityMixin({ font-size: 0.21em })
             @media (max-width $bp-upper_scale-fz-reset)
                 scalabilityMixin({ font-size: 0.25em })
+
+
+.presentation-content__tripservice-club-app/*.custom-banner--v3*/
+    background-image url(../images/bg-tripservice-club-banner.jpg)
 
 
 /*span*/.diamond
@@ -1999,7 +2298,12 @@ $feature_item_diamond_pseudo_fz_mod = 30 / $base_fz
     margin-bottom 3em
 
 .box-list__item-link
-    display block
+    position absolute
+    top 0
+    bottom 0
+    left 0
+    right 0
+    margin auto
 
 .bordered-box
     position relative
@@ -2044,6 +2348,21 @@ $feature_item_diamond_pseudo_fz_mod = 30 / $base_fz
     &::after
         bottom -1px
 
+
+/* The animation code */
+// $keyframe-name = scale-bounce
+// @keyframes {$keyframe-name}
+@keyframes scale-bounce
+  for i in 0..10
+    {10% * i}
+      if i < 3
+        transform scale(1 + i/10)
+      else if i < 8
+        transform scale(1 + (5 - i)/10)
+      else
+        transform scale(1 + (i - 10)/10)
+
+
 .bordered-box__image
     position absolute
     left 0
@@ -2051,6 +2370,10 @@ $feature_item_diamond_pseudo_fz_mod = 30 / $base_fz
     top 0
     bottom 0
     margin auto
+
+    .box-list__item-link:hover &
+    .box-list__item-link:focus &
+        animation scale-bounce .4s ease-in  // animation usage
 
     .bordered-box--v1 &
         max-height 100px
@@ -2282,6 +2605,13 @@ $feature_item_diamond_pseudo_fz_mod = 30 / $base_fz
     }
     scalabilityMixin($scalable_props, 18)
 
+.text-slat--clean
+    padding-top 56px
+    text-align justify
+    background-color c_white
+    scalabilityMixin({ padding-top: 56px }, 18)
+
+
 /*p*/.text-slat__content
     fontHvRoman18_30()
     margin-bottom 36px
@@ -2294,6 +2624,10 @@ $feature_item_diamond_pseudo_fz_mod = 30 / $base_fz
     .text-slat--alternate &
         margin-bottom 0
         text-align justify
+
+    .text-slat--clean &
+        fontHvLight18_30()
+        color c_darkest-font
 
 
 /*ul*/.icons-list
@@ -2364,10 +2698,61 @@ $feature_item_diamond_pseudo_fz_mod = 30 / $base_fz
     }
     scalabilityMixin($scalable_props)
 
+.custom-banner--v3
+    padding-top 47px  // 10%
+    padding-bottom 27px  // 5.579%
+    padding-left default_padding
+    padding-right default_padding
+    background-color #666
+    background-repeat no-repeat
+    background-size cover
+    background-position center
+
+    $scalable_props = {
+        padding-top: 47px
+        padding-bottom: 27px
+        padding-left: default_padding
+        padding-right: default_padding
+    }
+    scalabilityMixin($scalable_props)
+
+    @media (max-width xss)
+        padding-left smallest_padding
+        padding-right smallest_padding
+
+        $scalable_props = {
+            padding-left: smallest_padding
+            padding-right: smallest_padding
+        }
+        scalabilityMixin($scalable_props)
+
 .custom-banner__header
     .custom-banner--v2 &
         margin-bottom 53px
         scalabilityMixin({ margin-bottom: 53px })
+
+    .custom-banner--v3 &
+        display block
+        position relative
+        overflow hidden
+        padding-left 10%
+        padding-right 10%
+        text-align center
+
+        &::before
+        &::after
+            position absolute
+            top 50%
+            height 50%
+            width 1px
+            background-color c_contrast
+            content ''
+
+        &::before
+            left 0
+
+        &::after
+            right 0
 
 .custom-banner__header--darken
     background-color rgba(0,0,0,0.42)
@@ -2458,6 +2843,40 @@ $feature_item_diamond_pseudo_fz_mod = 30 / $base_fz
             display block
             text-transform lowercase
             scalabilityMixin(false, 40, fontHvRoman24_30, 40)
+
+    .custom-banner--v3 &
+        fontHvBold40()
+        position relative
+        padding-top 9px
+        padding-bottom 8px
+        padding-left 15px
+        padding-right 15px
+        text-transform capitalize
+        color c_white
+        background-color c_contrast
+
+        $scalable_props = {
+            padding-top: 9px
+            padding-bottom: 8px
+            padding-left: 15px
+            padding-right: 15px
+        }
+        scalabilityMixin($scalable_props, 40, fontHvBold40)
+
+        &::before
+        &::after
+            position absolute
+            width 9999px
+            height 1px
+            top 50%
+            background-color c_contrast
+            content ''
+
+        &::before
+            left -21px - 9999px
+
+        &::after
+            right -21px - 9999px
 
 
 .important-text
@@ -2722,6 +3141,9 @@ $feature_item_diamond_pseudo_fz_mod = 30 / $base_fz
 .feature-item--languages::before
     background-image url(../images/i-language-bubbles.png)
 
+.feature-item--representative-offices::before
+    background-image url(../images/i-representative-offices.png)
+
 
 /**--------------------------------*\
  * .uploadable--our-partners
@@ -2801,11 +3223,11 @@ $feature_item_diamond_pseudo_fz_mod = 30 / $base_fz
         scalabilityMixin($scalable_props, 36)
 
 .uploadable__list
-    perspective 100px
-    width 100%
-
-    $scalable_props = { perspective: 100px }
-    scalabilityMixin($scalable_props)
+    // perspective 100px
+    // width 100%
+    //
+    // $scalable_props = { perspective: 100px }
+    // scalabilityMixin($scalable_props)
 
 .uploadable__list-item
     opacity 0
@@ -2995,6 +3417,9 @@ $feature_item_diamond_pseudo_fz_mod = 30 / $base_fz
     .card-list__link--hover-effect:focus &
         top 0
         opacity 1
+
+.card-list__label--contrast
+    background-color c_btn--v9_bg
 
 
 .uploadable__load-button

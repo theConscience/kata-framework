@@ -287,7 +287,7 @@ block append content
                 li.icons-list__item.icons-list__item--transfers
                     a.icons-list__item-link(href='#' title='link to ') Трансферы
 
-    section.default-section.agents-content__prices-and-contacts
+    section.default-section.presentation-content__prices-and-contacts
         header.default-section__header.default-section__header--decorated
             span.additional-text Блок
             h2.default-section__title Работа с прайсами и<br> контактами
@@ -713,15 +713,25 @@ block append content
         b.uploadable__title.promo-text С нами уже более <span id="partners-count">300</span> партнёров
         ul.uploadable__content.uploadable__list.uploadable__list--fixed-height.cards-list
             li.cards-list__item.uploadable__list-item.cards-list__image-wrapper(data-ajax-load-status='none')
-                img.logo-card.cards-list__image(src='./images/img-logo-baltimore.jpg' alt='baltimore' width='120' height='46')
+                a.card-list__link.card-list__link--hover-effect(href='#')
+                    img.logo-card.cards-list__image(src='./images/img-logo-baltimore.jpg' alt='baltimore' width='120' height='46')
+                    span.cards-list__label.card-list__label--contrast baltimore
             li.cards-list__item.uploadable__list-item.cards-list__image-wrapper(data-ajax-load-status='none')
-                img.logo-card.cards-list__image(src='./images/img-logo-houston.jpg' alt='houston' width='117' height='36')
+                a.card-list__link.card-list__link--hover-effect(href='#')
+                    img.logo-card.cards-list__image(src='./images/img-logo-houston.jpg' alt='houston' width='117' height='36')
+                    span.cards-list__label.card-list__label--contrast houston
             li.cards-list__item.uploadable__list-item.cards-list__image-wrapper(data-ajax-load-status='none')
-                img.logo-card.cards-list__image(src='./images/img-logo-phoenix.jpg' alt='phoenix' width='131' height='63')
+                a.card-list__link.card-list__link--hover-effect(href='#')
+                    img.logo-card.cards-list__image(src='./images/img-logo-phoenix.jpg' alt='phoenix' width='131' height='63')
+                    span.cards-list__label.card-list__label--contrast phoenix
             li.cards-list__item.uploadable__list-item.cards-list__image-wrapper(data-ajax-load-status='none')
-                img.logo-card.cards-list__image(src='./images/img-logo-rapid-city.jpg' alt='rapid city' width='140' height='76')
+                a.card-list__link.card-list__link--hover-effect(href='#')
+                    img.logo-card.cards-list__image(src='./images/img-logo-rapid-city.jpg' alt='rapid city' width='140' height='76')
+                    span.cards-list__label.card-list__label--contrast rapid city
             li.cards-list__item.uploadable__list-item.cards-list__image-wrapper(data-ajax-load-status='none')
-                img.logo-card.cards-list__image(src='./images/img-logo-salt-lake.jpg' alt='salt lake city' width='108' height='84')
+                a.card-list__link.card-list__link--hover-effect(href='#')
+                    img.logo-card.cards-list__image(src='./images/img-logo-salt-lake.jpg' alt='salt lake city' width='108' height='84')
+                    span.cards-list__label.card-list__label--contrast salt lake city
         a.uploadable__load-button.btn.btn--v9.btn--3d(href='#') <i class="uploadable__load-button-state-icon"></i> Показать еще
 
     section#uploadable--clients-replies.uploadable.uploadable--clients-replies.default-section.presentation-content__clients-replies
@@ -902,7 +912,9 @@ block append modals
 block templates
     template#template--partner-logo
         li.cards-list__item.uploadable__list-item.cards-list__image-wrapper(data-ajax-load-status='')
-            img.logo-card.cards-list__image(src='' alt='' width='' height='')
+            a.card-list__link.card-list__link--hover-effect(href='')
+                img.logo-card.cards-list__image(src='' alt='' width='' height='')
+                span.cards-list__label
 
     template#template--client-reply
         li.feature-item.feature-item--bordered.feature-item--bordered--thin.feature-item--with-image.features-list__item.uploadable__list-item(data-ajax-load-status='')

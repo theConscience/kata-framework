@@ -68,11 +68,11 @@
     scalabilityMixin({ padding-bottom: 55px }, 18)
 
 
-.default-section__header
-    .agents-content__prices-and-contacts &
-        margin-bottom 70px
-        scalabilityMixin({ margin-bottom: 70px })
+.agents-content__replies/* .default-section */
+    padding-top 50px
 
+
+.default-section__header
     .agents-content__automation &
         margin-bottom 30px
         scalabilityMixin({ margin-bottom: 30px })
@@ -84,7 +84,7 @@
         scalabilityMixin({ padding-bottom: 39px })
 
 .default-section__header--decorated
-    .agents-content__prices-and-contacts &
+    .presentation-content__prices-and-contacts &
         min-height 226px
         padding-top 43px
         background-color #edeaec
@@ -155,86 +155,9 @@
 .agents-content__hotel-prices-transfers-excursions-tours
     margin-bottom 0 //43px
 
-.features-list
-    .agents-content__prices-and-contacts &
-        padding-left default_padding
-        padding-right default_padding
 
-        $scalable_props = {
-            padding-left: default_padding
-            padding-right: default_padding
-        }
-        scalabilityMixin($scalable_props)
-
-        @media (max-width bp_sub-medium-x-padding)
-            padding-left medium_padding
-            padding-right medium_padding
-
-            $scalable_props = {
-                padding-left: medium_padding
-                padding-right: medium_padding
-            }
-            scalabilityMixin($scalable_props)
-
-        @media (max-width bp_reduced-x-padding)
-            padding-left reduced_padding
-            padding-right reduced_padding
-
-            $scalable_props = {
-                padding-left: reduced_padding
-                padding-right: reduced_padding
-            }
-            scalabilityMixin($scalable_props)
-
-        @media (max-width bp_low-x-padding)
-            padding-left low_padding
-            padding-right low_padding
-
-            $scalable_props = {
-                padding-left: low_padding
-                padding-right: low_padding
-            }
-            scalabilityMixin($scalable_props)
-
-        @media (max-width bp_lower-x-padding)
-            padding-left lower_padding
-            padding-right lower_padding
-
-            $scalable_props = {
-                padding-left: lower_padding
-                padding-right: lower_padding
-            }
-            scalabilityMixin($scalable_props)
-
-        @media (max-width lg)
-            padding-left small_padding
-            padding-right small_padding
-
-            $scalable_props = {
-                padding-left: small_padding
-                padding-right: small_padding
-            }
-            scalabilityMixin($scalable_props)
-
-
-.feature-item--easy-prices-filling::before
-    background-image url(../images/i-document-starred.png)
-
-.feature-item--pricings::before
-    background-image url(../images/i-documents-pencil.png)
-
-.feature-item--instant-online-calculation::before
-    background-image url(../images/i-calculations.png)
-
-.feature-item--multicurrency-rates::before
-    background-image url(../images/i-currencies-exchange.png)
-
-.feature-item--partners-informing::before
-    background-image url(../images/i-flying-envelope.png)
-
-.feature-item--automatic-check::before
-    background-image url(../images/i-checklist-crossed.png)
-
+.agents-content__automation
+    //
 
 .feature-item--automation::before
     background-image url(../images/i-calend-with-clock.png)
@@ -315,15 +238,6 @@
             max-width: 160px
         }
         scalabilityMixin($scalable_props, 18, fontHvLight18_30, 14)
-
-.feature-item--online-booking::before
-    background-image url(../images/i-media-slats-red.png)
-
-.feature-item--share-services::before
-    background-image url(../images/i-share-services-red.png)
-
-.feature-item--tripservice-club-app::before
-    background-image url(../images/i-app-tapped-red.png)
 
 
 /**--------------------------------*\

@@ -38,7 +38,7 @@ block append content
         отелей, агентств, авиакомпаний и офисов по туризму. Большой туристический справочник на всех
         языках мира!
 
-    section.default-section.hotels-content__hotel-public-page
+    section.default-section.hotels-content__hotel-public-page.faded-topside
         header.default-section__header
             span.additional-text Блок
             h2.default-section__title.default-section__title--increased-offset-bottom Публичная страница отеля
@@ -169,15 +169,25 @@ block append content
         b.uploadable__title.promo-text С нами уже более <span id="partners-count">300</span> партнёров
         ul.uploadable__content.uploadable__list.uploadable__list--fixed-height.cards-list
             li.cards-list__item.uploadable__list-item.cards-list__image-wrapper(data-ajax-load-status='none')
-                img.logo-card.cards-list__image(src='./images/img-logo-baltimore.jpg' alt='baltimore' width='120' height='46')
+                a.card-list__link.card-list__link--hover-effect(href='#')
+                    img.logo-card.cards-list__image(src='./images/img-logo-baltimore.jpg' alt='baltimore' width='120' height='46')
+                    span.cards-list__label.card-list__label--contrast baltimore
             li.cards-list__item.uploadable__list-item.cards-list__image-wrapper(data-ajax-load-status='none')
-                img.logo-card.cards-list__image(src='./images/img-logo-houston.jpg' alt='houston' width='117' height='36')
+                a.card-list__link.card-list__link--hover-effect(href='#')
+                    img.logo-card.cards-list__image(src='./images/img-logo-houston.jpg' alt='houston' width='117' height='36')
+                    span.cards-list__label.card-list__label--contrast houston
             li.cards-list__item.uploadable__list-item.cards-list__image-wrapper(data-ajax-load-status='none')
-                img.logo-card.cards-list__image(src='./images/img-logo-phoenix.jpg' alt='phoenix' width='131' height='63')
+                a.card-list__link.card-list__link--hover-effect(href='#')
+                    img.logo-card.cards-list__image(src='./images/img-logo-phoenix.jpg' alt='phoenix' width='131' height='63')
+                    span.cards-list__label.card-list__label--contrast phoenix
             li.cards-list__item.uploadable__list-item.cards-list__image-wrapper(data-ajax-load-status='none')
-                img.logo-card.cards-list__image(src='./images/img-logo-rapid-city.jpg' alt='rapid city' width='140' height='76')
+                a.card-list__link.card-list__link--hover-effect(href='#')
+                    img.logo-card.cards-list__image(src='./images/img-logo-rapid-city.jpg' alt='rapid city' width='140' height='76')
+                    span.cards-list__label.card-list__label--contrast rapid city
             li.cards-list__item.uploadable__list-item.cards-list__image-wrapper(data-ajax-load-status='none')
-                img.logo-card.cards-list__image(src='./images/img-logo-salt-lake.jpg' alt='salt lake city' width='108' height='84')
+                a.card-list__link.card-list__link--hover-effect(href='#')
+                    img.logo-card.cards-list__image(src='./images/img-logo-salt-lake.jpg' alt='salt lake city' width='108' height='84')
+                    span.cards-list__label.card-list__label--contrast salt lake city
         a.uploadable__load-button.btn.btn--v9.btn--3d(href='#') <i class="uploadable__load-button-state-icon"></i> Показать еще
 
     section.default-section.hotels-content__hotel-questionnare
@@ -330,7 +340,7 @@ block append content
             a#modal__open--inner.btn.btn--v8(href='#') Подробнее
 
     section.default-section.hotels-content__services
-        header.default-section__header.default-section__header--diamond--primary
+        header.default-section__header.default-section__header--diamond--primary.default-section__header--diamond-repositioned
             span.additional-text Блок
             h2.default-section__title.text-uppercase Сервисы
         .default-section__content
@@ -341,17 +351,15 @@ block append content
                 так и у прямых клиентов.
             section.media-block.text-center
                 header.media-block__header.media-block__header--cover
-                .media-block__content
+                .media-block__content.media-block__content--loose
                     p.
-                        Ваши партнёры не всегда знают возможности каждой страны, региона или вашей
-                        компании. Расскажите им, какие актуальные сервисы будущий клиент сможет приобрести
-                        по приезду или во время своего отдыха – будь то заказ букета цветов или СПА для двоих,
-                        романтическое оформление номера, торт или завтрак в постель… список может быть
-                        самым обширным! Важно донести до всех ваших партнеров и заказчиков, какие сервисы
-                        Вы можете предоставить в вашей стране, чтобы клиент смог с ними ознакомиться через
-                        вашего партнёра и забронировать их заранее или на месте, задать Вам нужные вопросы
-                        и обсудить детали выбора тех или иных услуг
-            h2.default-section__title-secondary Если Вы – принимающее туристическое агентство
+                        Ваши партнёры не всегда знают возможности каждого конкретного отеля, и какие<br>
+                        актуальные сервисы будущий клиент сможет приобрести в вашем отеле – будь то заказ<br>
+                        букета цветов или СПА для двоих, романтическое оформление номера, торт или завтрак<br>
+                        в постель… список может быть самым обширным! Важно донести до всех ваших<br>
+                        партнеров и заказчиков, какие сервисы ВЫ можете предоставить на территории отеля,<br>
+                        чтобы клиент смог с ними ознакомиться через вашего<br>
+                        партнера и забронировать заранее, либо сразу по приезду отель.
             ol.features-list.features-list--loose.features-list--diamond
                 li.features-list__item.feature-item.feature-item--loose.feature-item--diamond--secondary
                     h3.feature-item__title.
@@ -479,7 +487,7 @@ block append content
             li.feature-item.feature-item--inverted-color.feature-item--statictics.features-list__item
                 span.feature-item__help-text Блок
                 h2.feature-item__title Статистика
-                p.feature-item__content.
+                p.feature-item__content.feature-item__content--loose.
                     Статистика по перепосту ваших
                     новостей и публикаций на сайты и
                     социальные сети ваших
@@ -489,7 +497,7 @@ block append content
             li.feature-item.feature-item--inverted-color.feature-item--languages.features-list__item
                 span.feature-item__help-text Блок
                 h2.feature-item__title Языки
-                p.feature-item__content.
+                p.feature-item__content.feature-item__content--loose.
                     Сайт адаптирован и переведен под
                     русский, английский, китайский
                     языки. В будущем мы планируем его
@@ -497,7 +505,7 @@ block append content
             li.feature-item.feature-item--inverted-color.feature-item--representative-offices.features-list__item
                 span.feature-item__help-text Блок
                 h2.feature-item__title Представительства
-                p.feature-item__content.
+                p.feature-item__content.feature-item__content--loose.
                     Делегирование полномочий по
                     внесению текстовой информации и
                     публикации новостей от имени
@@ -510,9 +518,9 @@ block append content
 
     section.default-section.presentation-content__company-profile
         .default-section__content
-            section.media-object
-                figure.media-object__item
-                    img.media-object__picture(src='#' alt='' title='')
+            section.media-object.media-object--t1
+                figure.media-object__item.media-object__item--decorative-image
+                    img.media-object__picture.img-responsive(alt='' title='')
                 .media-object__body
                     header.media-object__header
                         h2.media-object__title Профайл представительства отелей
@@ -542,7 +550,7 @@ block append content
                     a.box-list__item-link(href='#')
                         img.bordered-box__image.img-responsive(src='./images/img-logo-lux.jpg' alt='lux resorts and hotels')
 
-    section.default-section.hotels-content__prices-and-contacts
+    section.default-section.presentation-content__prices-and-contacts
         header.default-section__header.default-section__header--decorated
             span.additional-text Блок
             h2.default-section__title Работа с прайсами и<br> контактами
@@ -604,8 +612,8 @@ block append content
                     клиентами/субагентами.
 
     section.default-section.hotels-content__standartised-hotel-id
-        header.default-section__header
-            h2.default-section__title.default-section__title-cheap Публичная страница отеля
+        header.default-section__header.default-section__header--decorated
+            h2.default-section__title.default-section__title-cheap Стандартизированный <span class="text-uppercase">id-номер отеля</span>, доступный для всех поисковых систем и каталогов
         .default-section__content
             .text-slat.text-slat--clean.text-center
                 p.text-slat__content.
@@ -667,7 +675,7 @@ block append content
                     стандартном виде автоматически.
                 a.btn.btn--v7.btn--narrow(href='#' title='Заказать перевод') Как загрузить?
 
-    section.presentation-content__tripservice-club-app.hotels-content__publications-collection.custom-banner.custom-banner--v3
+    section.presentation-content__tripservice-club-app.custom-banner.custom-banner--v3
         header.custom-banner__header
             h2.custom-banner__title Приложение Trip Service Club
         .custom-banner__content
@@ -678,6 +686,7 @@ block append content
                 тематического ужина, СПА-процедуры, круиза, прогулки, экскурсии, декора
                 комнаты, подарка или сувернира прямо в номер!
                 Интерфейс на родном языке. Оплата по карте
+        .custom-banner__controls
             a.btn.btn--v7(href='#') Загрузить
 
     section#uploadable--clients-replies.uploadable.uploadable--clients-replies.default-section.presentation-content__clients-replies
@@ -781,28 +790,23 @@ block append inner_modals
                         span.publications-feature__title-secondary материалами
                 .publications-feature__content.publications-feature__content--shifted
                     p.
-                        Создайте собственную коллекцию постов о вашей
-                        авиакомпании, ее особенностях и «фишках» для
-                        максимально быстрого и эффективного  продвижения
-                        среди продающих агентов. Любой пользователь интернета
-                        сможет не только прочитать ее на профайле вашей
+                        Ваши отели обладают накопленными материалами, которые актуальны
+                        в любое время – это детали и нюансы по любому сервису в отеле
                 .publications-feature__buttons.publications-feature__buttons--shifted
                     a.btn.btn--v7.btn--small(href='#' title='Подробнее') Подробнее
             li.publications-feature.publications-feature--mini-reviews.publications__features-list-item.modal__content-part
                 header.publications-feature__header
                     h3.publications-feature__title
                         span.publications-feature__title-primary Создавайте мини-обзоры
-                        span.publications-feature__title-secondary по вашей авиакомпании
+                        span.publications-feature__title-secondary на ваши отели
                 .publications-feature__content.publications-feature__content--shifted
                     p.
-                        Создайте такие мини-обзоры по вашей авиакомпании. Это
-                        будет текст из 1-2-х абзацев и красочное фото.
-                    p.
-                        Ваша персональная Коллекция Публикаций может состоять из 20-50
+                        Это будет текст из 1-2-х абзацев и красочное фото. Ваша
+                        персональная Коллекция Публикаций может состоять из 20-50
                         обзоров и более (оптимально – от 100 постов, чтобы сформировать
                         Ваш уникальный контент).
                     p.
-                        Положите их под облаком тэгов внутри Unitravel Pro.
+                        Положите их под облаком тэгов внутри Unihotel Org
             li.publications-feature.publications-feature--settings-control.publications__features-list-item.modal__content-part
                 header.publications-feature__header
                     h3.publications-feature__title
@@ -858,7 +862,9 @@ block append modals
 block templates
     template#template--partner-logo
         li.cards-list__item.uploadable__list-item.cards-list__image-wrapper(data-ajax-load-status='')
-            img.logo-card.cards-list__image(src='' alt='' width='' height='')
+            a.card-list__link.card-list__link--hover-effect(href='')
+                img.logo-card.cards-list__image(src='' alt='' width='' height='')
+                span.cards-list__label
 
     template#template--client-reply
         li.feature-item.feature-item--bordered.feature-item--bordered--thin.feature-item--with-image.features-list__item.uploadable__list-item(data-ajax-load-status='')

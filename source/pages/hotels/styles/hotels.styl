@@ -73,6 +73,16 @@
             font-size 30px
 
 
+.presentation-content__mission
+    padding-bottom 55px
+    scalabilityMixin({ padding-bottom: 55px }, 18)
+
+
+.hotels-content__hotel-public-page/* .default-section */
+    padding-top 58
+    scalabilityMixin({ padding-top: 58px })
+
+
 .feature-item--mini-site::before
     background-image url(../images/i-arrow-up-stroked-colored.png)
 
@@ -217,3 +227,310 @@
 
 .hotels-content__publications-collection
     background-image url(../images/bg-hotels-publications-banner.jpg)
+
+
+.hotels-content__services
+    background-color c_white
+    background-repeat no-repeat
+    background-position -15px 205px;
+    background-size contain
+    background-image url(../images/bg-public-page-content-inner.jpg)
+
+
+.media-block__header
+    .hotels-content__services &
+        min-height 161px
+        background-color #f3d66c
+        background-repeat no-repeat
+        background-size cover
+        background-position center
+        background-image url(../images/bg-services-media-block-header.jpg)
+        scalabilityMixin({ min-height: 161px })
+
+
+.features-list--diamond
+    .hotels-content__services &
+        padding-top 50px
+        scalabilityMixin({ padding-top: 50px })
+
+
+.presentation-content__company-profile
+    padding-top 66px
+    scalabilityMixin({ padding-top: 66px })
+
+    .media-object--t1
+        //
+
+    .media-object__item--decorative-image
+        background-image url(../images/img-hotel-representatives.png)
+
+
+.default-section__header--decorated
+    .presentation-content__prices-and-contacts &
+        min-height 226px
+        padding-top 43px
+        background-color #cdd3dd
+        background-image url(../images/bg-prices-and-contacts.jpg)
+
+        $scalable_props = {
+            min-height: 226px
+            padding-top: 43px
+        }
+        scalabilityMixin($scalable_props)
+
+    .hotels-content__standartised-hotel-id &
+        min-height 497px
+        padding-top 75px
+        background-position left center
+        background-image url(../images/bg-standartised-hotel-section-header.jpg)
+
+        $scalable_props = {
+            min-height: 497px
+            padding-top: 75px
+        }
+        scalabilityMixin($scalable_props)
+
+
+.hotels-content__paid-services
+    @media (min-width smm) and (max-width xs_plus_1), (min-width 622px)
+        .feature-item
+            margin-bottom 0
+            scalabilityMixin({ margin-bottom: 0 })
+
+
+/**--------------------------------*\
+ * .publications
+\*--------------------------------*/
+.publications-feature--share
+    background-color c_seo-2
+
+    @media (max-width: md)
+        padding-right 60px
+
+    &::before
+        right 0
+        bottom -5px
+        width 562px
+        height 247px
+        background-image url(../images/bg-publications-shared-materials.png)
+
+        @media (max-width: 1456px)
+            right auto
+            left 757px
+
+.publications-feature--mini-reviews
+    align-items flex-end
+    padding-top 63px
+    background-color #ef1054
+
+    @media (max-width: md)
+        padding-right 60px
+
+    &::before
+        right 0
+        bottom -4px
+        width 1422px
+        height 366px
+        background-image url(../images/bg-publications-mini-reviews.png)
+
+        @media (max-width: 1106px)
+            right auto
+            left -436px
+
+        @media (max-width: bp_publications)
+            right 100%
+            left auto
+
+.publications-feature--settings-control
+    background-color #ffc498
+
+    @media (max-width: md)
+        padding-right 60px
+
+    &::before
+        left 658px
+        top 94px
+        width 682px
+        height 291px
+        background-image url(../images/bg-publications-settings.png)
+
+        @media (min-width: 1457px)
+            left auto
+            right 0
+
+.publications-feature--availability
+    align-items flex-end
+    background-color #002c3d
+
+    @media (max-width: 811px)
+        padding-right 60px
+
+    &::before
+        right 620px
+        top 68px
+        width 664px
+        height 353px
+        background-image url(../images/bg-publications-availability.png)
+
+        @media (max-width: 811px)
+            right auto
+            left -589px
+
+        @media (max-width: bp_publications_lower)
+            right 100%
+            left auto
+
+.publications-feature--auto-posting
+    background-color #daf4f8
+
+    @media (max-width: md)
+        padding-right 60px
+
+    &::before
+        left 641px
+        top 62px
+        width 603px
+        height 298px
+        background-image url(../images/bg-publications-auto-posting.png)
+
+.publications-feature--distribution
+    align-items flex-end
+    background-color #00bc9b
+
+    @media (max-width: 906px)
+        padding-right 60px
+
+    &::before
+        right 758px
+        top 56px
+        width 401px
+        height 365px
+        background-image url(../images/bg-publications-distribution.png)
+
+        @media (max-width: 906px)
+            right auto
+            left -371px
+
+        @media (max-width: bp_publications_lower)
+            right 100%
+            left auto
+
+
+.publications-feature__header
+    .publications-feature--share &
+        color c_white
+
+    .publications-feature--mini-reviews &
+        padding-right 394px
+        color c_white
+
+        @media (max-width: 1381px)
+            align-self flex-start
+            padding-right 0
+
+    .publications-feature--settings-control &
+        color #5c4e40
+
+    .publications-feature--availability &
+        padding-right 89px
+        color #db3d71
+
+        @media (max-width: 811px)
+            align-self flex-start
+            padding-right 0
+
+    .publications-feature--auto-posting &
+        color #0e303f
+
+    .publications-feature--distribution &
+        max-width 570px
+        color #385c44
+
+        @media (max-width: 906px)
+            align-self flex-start
+
+    .publications-feature--share &::before
+        background-color #199090
+
+    .publications-feature--share &::after
+        background-color #40bebe
+
+    .publications-feature--mini-reviews &::before
+        background-color #ab0c3d
+
+    .publications-feature--mini-reviews &::after
+        background-color #de0e4e
+
+    .publications-feature--settings-control &::before
+        background-color #614d3d
+
+    .publications-feature--settings-control &::after
+        background-color #d9a782
+
+    .publications-feature--availability &::before
+        background-color #ef1054
+
+    .publications-feature--availability &::after
+        background-color #422643
+
+    .publications-feature--auto-posting &::before
+        background-color #0096a6
+
+    .publications-feature--auto-posting &::after
+        background-color #94e4eb
+
+    .publications-feature--distribution &::before
+        background-color #155c41
+
+    .publications-feature--distribution &::after
+        background-color #00a585
+
+
+.publications-feature__title
+    .publications-feature--mini-reviews &
+        max-width 552px
+
+    .publications-feature--availability &
+        max-width calc(468px - 89px)
+
+
+.publications-feature__content
+    .publications-feature--share &
+        max-width 548px
+        color #273f3f
+
+    .publications-feature--mini-reviews &
+        z-index 20
+        max-width 763px
+        padding-right 137px
+        color c_white
+
+        @media (max-width: 1106px)
+            align-self flex-start
+            padding-right 0
+            max-width 626px
+
+    .publications-feature--settings-control &
+        max-width 490px
+        padding-left 0
+        color #0e303f
+
+    .publications-feature--availability &
+        max-width 468px
+        color #688490
+
+        @media (max-width: 811px)
+            align-self flex-start
+
+    .publications-feature--auto-posting &
+        max-width 559px
+        color #0e303f
+
+    .publications-feature--distribution &
+        max-width 566px
+        padding-right 114px
+        color #273b2e
+
+        @media (max-width: 906px)
+            align-self flex-start
+            padding-right 0
