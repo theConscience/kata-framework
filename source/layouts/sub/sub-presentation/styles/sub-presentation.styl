@@ -531,6 +531,10 @@ mark.primary
         background-position 1.015% 0
         scalabilityMixin({ min-height: 398px })
 
+        @media (min-width 1540px)
+            background-size contain
+            background-position center
+
         @media (max-width smm) and (min-width xs_plus_1), (max-width bp_publications)
             background-size contain
             background-position center
@@ -1744,10 +1748,10 @@ $feature_item_diamond_pseudo_fz_mod = 30 / $base_fz
             content ''
 
         &::before
-            left -9999px
+            left -10000px
 
         &::after
-            right -9999px
+            right -10000px
 
 
 .custom-banner__content--faded-bg
