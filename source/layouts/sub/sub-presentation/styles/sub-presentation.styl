@@ -2028,6 +2028,73 @@ $feature_item_diamond_pseudo_fz_mod = 30 / $base_fz
     color c_darkest-font
     scalabilityMixin(false, 30, fontHvLight30_32)
 
+.default-section__braced-title
+.braced-title
+    fontHvBold40_auto()
+    display inline-block
+    position relative
+    margin-top 0
+    margin-bottom 50px
+    margin-left auto
+    margin-right auto
+    padding-left 76px
+    padding-right 76px
+    text-align center
+
+    $scalable_props = {
+        margin-bottom: 50px
+        padding-left: 76px
+        padding-right: 76px
+    }
+    scalabilityMixin($scalable_props, 40, fontHvBold40_auto)
+
+    @media (max-width sm) and (min-width xs_plus_1), (max-width xss)
+        font-size 30px
+        margin-bottom 50px
+        scalabilityMixin({ font-size: 30px })
+        scalabilityMixin({ margin-bottom: 50px }, 30)
+
+    @media (max-width xss)
+        font-size 24px
+        margin-bottom 50px
+        scalabilityMixin({ font-size: 24px })
+        scalabilityMixin({ margin-bottom: 50px }, 24)
+
+    &::before
+    &::after
+        fontHvThin80_62()
+        position absolute
+        top 0
+        bottom 0
+        width 26px
+        height 73px
+        margin-top auto
+        margin-bottom auto
+
+        @media (max-width sm) and (min-width xs_plus_1),  (max-width xss)
+            font-size 70px
+            $scalable_props = {
+                width: 20px
+                height: 1em
+            }
+            scalabilityMixin($scalable_props, 35px)
+
+    &::before
+        left 0
+        content '{'
+
+    &::after
+        right 0
+        content '}'
+
+.default-section__braced-title--default
+.braced-title--default
+    color c_seo-6
+
+    &::before
+    &::after
+        color c_seo-6
+
 .default-section__description
     fontHvRoman16_auto()
     width 74.038%
@@ -3043,72 +3110,6 @@ $feature_item_diamond_pseudo_fz_mod = 30 / $base_fz
             width: auto
         }
         scalabilityMixin($scalable_props)
-
-
-.braced-title
-    fontHvBold40_auto()
-    display inline-block
-    position relative
-    margin-top 0
-    margin-bottom 50px
-    margin-left auto
-    margin-right auto
-    padding-left 76px
-    padding-right 76px
-    text-align center
-
-    $scalable_props = {
-        margin-bottom: 50px
-        padding-left: 76px
-        padding-right: 76px
-    }
-    scalabilityMixin($scalable_props, 40, fontHvBold40_auto)
-
-    @media (max-width sm) and (min-width xs_plus_1), (max-width xss)
-        font-size 30px
-        margin-bottom 50px
-        scalabilityMixin({ font-size: 30px })
-        scalabilityMixin({ margin-bottom: 50px }, 30)
-
-    @media (max-width xss)
-        font-size 24px
-        margin-bottom 50px
-        scalabilityMixin({ font-size: 24px })
-        scalabilityMixin({ margin-bottom: 50px }, 24)
-
-    &::before
-    &::after
-        fontHvThin80_62()
-        position absolute
-        top 0
-        bottom 0
-        width 26px
-        height 73px
-        margin-top auto
-        margin-bottom auto
-
-        @media (max-width sm) and (min-width xs_plus_1),  (max-width xss)
-            font-size 70px
-            $scalable_props = {
-                width: 20px
-                height: 1em
-            }
-            scalabilityMixin($scalable_props, 35px)
-
-    &::before
-        left 0
-        content '{'
-
-    &::after
-        right 0
-        content '}'
-
-.braced-title--default
-    color c_seo-6
-
-    &::before
-    &::after
-        color c_seo-6
 
 
 .presentation-content__other-blocks /*section.default-section*/
