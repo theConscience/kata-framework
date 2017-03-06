@@ -1,0 +1,40 @@
+.info-block
+.info-block--t1
+  .info-block__header
+  .info-block__content
+  .info-block__content--decorated
+
+-.lists-wrapper
+-.lists-wrapper--t1
+-.lists-wrapper--curly-braced
+
+ul.decorative-list
+ul.decorative-list--t1
+  li.decorative-list__item
+
+ul.alternatives-list
+  li.alternatives-list__item
+
+#.custom-banner
+  .custom-banner__description
+  -.custom-banner__content--light
+
+#.media-block
+  -.media-block__content--condensed-paragraphs
+    -p.important-text
+
+#.default-section
+  .default-section__title--medium
+    -.light-text
+    -.smaller-text
+  .default-section__title-simple
+    -.light-text
+
+-.buttons-list
+  -.buttons-list__item
+
+.promo-button
+  -.promo-button--medium
+  -.promo-button--big
+  -.promo-button--contrast
+  -.promo-button--bright

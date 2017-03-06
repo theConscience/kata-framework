@@ -375,9 +375,13 @@ mark.primary
             margin-bottom 0
             scalabilityMixin({ margin-bottom: 0 })
 
+        &.important-text
+            fontHvBold30_42()
+            scalabilityMixin(false, 10, fontHvBold30_42, 18)
+
         & > .important-text
-            fontHvBold18_30()
-            scalabilityMixin(false, 10, fontHvBold18_30, 18)
+            fontHvBold18_auto()
+            scalabilityMixin(false, 10, fontHvBold18_auto, 18)
 
     @media (max-width bp_reduced-x-padding)
         padding-left reduced_padding
@@ -434,6 +438,15 @@ mark.primary
     > p
         margin-bottom 31px
         scalabilityMixin({ margin-bottom: 31px }, 18)
+
+        & > .important-text
+            fontHvBold18_30()
+            scalabilityMixin(false, 10, fontHvBold18_30, 18)
+
+.media-block__content--condensed-paragraphs
+    > p
+        margin-bottom 5px
+        scalabilityMixin({ margin-bottom: 5px }, 18)
 
 .media-block__footer
     padding-top 34px
@@ -957,8 +970,9 @@ $feature_item_fz_mod = 14 / $base_fz
     scalabilityMixin($scalable_props, 14)
 
     &::before
-        $scalable_props = {background-size: contain}
-        scalabilityMixin($scalable_props)
+        @media (max-width $bp-upper_scale-fz-8)
+            $scalable_props = {background-size: contain}
+            scalabilityMixin($scalable_props)
 
 .feature-item--bordered
     min-height 206px
@@ -1661,6 +1675,50 @@ $feature_item_diamond_pseudo_fz_mod = 30 / $base_fz
         }
         scalabilityMixin($scalable_props, 30, fontHvBold30_auto)
 
+.custom-banner__description
+    fontHvBold18_24()
+    color c_white
+    padding-left default_padding
+    padding-right default_padding
+    margin-bottom 20px
+
+    $scalable_props = {
+        padding-left: default_padding
+        padding-right: default_padding
+        margin-bottom: 20px
+    }
+    scalabilityMixin($scalable_props, 18, fontHvBold18_24)
+
+    @media (max-width bp_reduced-x-padding)
+        padding-left reduced_padding
+        padding-right reduced_padding
+
+        $scalable_props = {
+            padding-left: reduced_padding
+            padding-right: reduced_padding
+        }
+        scalabilityMixin($scalable_props, 18, fontHvBold18_24)
+
+    @media (max-width bp_lower-x-padding)
+        padding-left lower_padding
+        padding-right lower_padding
+
+        $scalable_props = {
+            padding-left: lower_padding
+            padding-right: lower_padding
+        }
+        scalabilityMixin($scalable_props, 18, fontHvBold18_24)
+
+    @media (max-width: lg)
+        padding-left small_padding
+        padding-right small_padding
+
+        $scalable_props = {
+            padding-left: small_padding
+            padding-right: small_padding
+        }
+        scalabilityMixin($scalable_props, 18, fontHvBold18_24)
+
 .custom-banner__content
     padding-left default_padding
     padding-right default_padding
@@ -1708,7 +1766,42 @@ $feature_item_diamond_pseudo_fz_mod = 30 / $base_fz
     .custom-banner--v2 &
         fontHvRoman18_24()
         color c_white
-        scalabilityMixin(false, 18, fontHvRoman18_24)
+
+        $scalable_props = {
+            padding-left: default_padding
+            padding-right: default_padding
+        }
+        scalabilityMixin($scalable_props, 18, fontHvRoman18_24)
+
+        @media (max-width bp_reduced-x-padding)
+            padding-left reduced_padding
+            padding-right reduced_padding
+
+            $scalable_props = {
+                padding-left: reduced_padding
+                padding-right: reduced_padding
+            }
+            scalabilityMixin($scalable_props, 18, fontHvRoman18_24)
+
+        @media (max-width bp_lower-x-padding)
+            padding-left lower_padding
+            padding-right lower_padding
+
+            $scalable_props = {
+                padding-left: lower_padding
+                padding-right: lower_padding
+            }
+            scalabilityMixin($scalable_props, 18, fontHvRoman18_24)
+
+        @media (max-width: lg)
+            padding-left small_padding
+            padding-right small_padding
+
+            $scalable_props = {
+                padding-left: small_padding
+                padding-right: small_padding
+            }
+            scalabilityMixin($scalable_props, 18, fontHvRoman18_24)
 
         & > p:last-of-type
             margin-bottom 36px
@@ -1764,6 +1857,7 @@ $feature_item_diamond_pseudo_fz_mod = 30 / $base_fz
         padding-top 30px
         padding-bottom 26px
         margin-bottom -26px
+
         $scalable_props = {
             padding-left: default_padding
             padding-right: default_padding
@@ -1802,6 +1896,49 @@ $feature_item_diamond_pseudo_fz_mod = 30 / $base_fz
                 padding-right: small_padding
             }
             scalabilityMixin($scalable_props)
+
+.custom-banner__content--light
+    fontHvLight18_24()
+
+    .custom-banner--v2 &
+        fontHvLight18_24()
+        color c_white
+
+        $scalable_props = {
+            padding-left: default_padding
+            padding-right: default_padding
+        }
+        scalabilityMixin($scalable_props, 18, fontHvLight18_24)
+
+        @media (max-width bp_reduced-x-padding)
+            padding-left reduced_padding
+            padding-right reduced_padding
+
+            $scalable_props = {
+                padding-left: reduced_padding
+                padding-right: reduced_padding
+            }
+            scalabilityMixin($scalable_props, 18, fontHvLight18_24)
+
+        @media (max-width bp_lower-x-padding)
+            padding-left lower_padding
+            padding-right lower_padding
+
+            $scalable_props = {
+                padding-left: lower_padding
+                padding-right: lower_padding
+            }
+            scalabilityMixin($scalable_props, 18, fontHvLight18_24)
+
+        @media (max-width: lg)
+            padding-left small_padding
+            padding-right small_padding
+
+            $scalable_props = {
+                padding-left: small_padding
+                padding-right: small_padding
+            }
+            scalabilityMixin($scalable_props, 18, fontHvLight18_24)
 
 .custom-banner__link
     .custom-banner--v1 &
@@ -1988,6 +2125,7 @@ $feature_item_diamond_pseudo_fz_mod = 30 / $base_fz
 
 .default-section__title
     fontHvBold40_auto()
+    display block
     color c_contrast
     margin-top 0
     margin-bottom 33px
@@ -2000,9 +2138,32 @@ $feature_item_diamond_pseudo_fz_mod = 30 / $base_fz
         color c_white
         scalabilityMixin(false, 30, fontHvBold30_auto)
 
+    > .light-text
+        fontHvRoman36()
+        display block
+        margin-top -5px
+        scalabilityMixin({ margin-top: -5px }, 36, fontHvRoman36, 40)
+
 .default-section__title--increased-offset-bottom
     margin-bottom 64px
     scalabilityMixin({ margin-bottom: 64px }, 40)
+
+.default-section__title--medium
+    text-align center
+
+    & > .light-text
+        fontHvLight()
+        scalabilityMixin(false, 40, fontHvLight)
+
+    & > .smaller-text
+        font-size 30px
+        line-height 1
+
+        $scalable_props = {
+            font-size: 30px
+            line-height: 1
+        }
+        scalabilityMixin($scalable_props, 40)
 
 .default-section__title-secondary
     fontHvBold30_auto()
@@ -2028,7 +2189,25 @@ $feature_item_diamond_pseudo_fz_mod = 30 / $base_fz
     color c_darkest-font
     scalabilityMixin(false, 30, fontHvLight30_32)
 
-.default-section__braced-title
+.default-section__title-simple
+    fontHvBold36_30()
+    display block
+    padding-top 36px
+    margin-top 0
+    margin-bottom 30px
+    color c_darken-5-font
+
+    $scalable_props = {
+        padding-top: 36px
+        margin-top: 0
+        margin-bottom: 30px
+    }
+    scalabilityMixin($scalable_props, 36, fontHvBold36_30)
+
+    > .light-text
+        fontHvLight36()
+        scalabilityMixin(false, 36, fontHvLight36, 36)
+
 .braced-title
     fontHvBold40_auto()
     display inline-block
@@ -2087,13 +2266,18 @@ $feature_item_diamond_pseudo_fz_mod = 30 / $base_fz
         right 0
         content '}'
 
-.default-section__braced-title--default
 .braced-title--default
     color c_seo-6
 
     &::before
     &::after
         color c_seo-6
+
+.default-section__braced-title
+    @extend .braced-title
+
+.default-section__braced-title--default
+    @extend .braced-title--default
 
 .default-section__description
     fontHvRoman16_auto()
@@ -2109,6 +2293,53 @@ $feature_item_diamond_pseudo_fz_mod = 30 / $base_fz
     margin-bottom 30px
     color c_darken-9-font
     scalabilityMixin({ margin-bottom: 30px }, 20, fontHvLight20_30)
+
+.default-section__description--medium
+    fontHvLight18_30()
+    width auto
+    padding-top 20px
+    padding-left default_padding
+    padding-right default_padding
+    margin-bottom 50px
+    color c_darkest-font
+
+    $scalable_props = {
+        padding-top: 20px
+        padding-left: default_padding
+        padding-right: default_padding
+        margin-bottom: 50px
+    }
+    scalabilityMixin($scalable_props, 18, fontHvLight18_30)
+
+    @media (max-width bp_reduced-x-padding)
+        padding-left reduced_padding
+        padding-right reduced_padding
+
+        $scalable_props = {
+            padding-left: reduced_padding
+            padding-right: reduced_padding
+        }
+        scalabilityMixin($scalable_props)
+
+    @media (max-width bp_lower-x-padding)
+        padding-left lower_padding
+        padding-right lower_padding
+
+        $scalable_props = {
+            padding-left: lower_padding
+            padding-right: lower_padding
+        }
+        scalabilityMixin($scalable_props)
+
+    @media (max-width: lg)
+        padding-left small_padding
+        padding-right small_padding
+
+        $scalable_props = {
+            padding-left: small_padding
+            padding-right: small_padding
+        }
+        scalabilityMixin($scalable_props)
 
 
 .unique-article
@@ -2302,6 +2533,9 @@ $feature_item_diamond_pseudo_fz_mod = 30 / $base_fz
     }
     scalabilityMixin($scalable_props)
 
+.feature-item--profile::before
+    background-image url(../images/i-loading-circle.png)
+
 
 .presentation-content__company-profile /*section.default-section*/
     padding-top 22px
@@ -2362,6 +2596,9 @@ $feature_item_diamond_pseudo_fz_mod = 30 / $base_fz
     @media (max-width 925px) and (min-width xs)
         padding-left low_padding
         padding-right low_padding
+
+.box-list--big
+    font-size 1.2em
 
 .box-list__item
     margin-left 6px
@@ -2432,6 +2669,12 @@ $feature_item_diamond_pseudo_fz_mod = 30 / $base_fz
         transform scale(1 + (5 - i)/10)
       else
         transform scale(1 + (i - 10)/10)
+
+
+@keyframes shake
+  0%, 100% { transform: translateX(0); }
+  33% { transform: translateX(10px); }
+  66% { transform: translateX(-10px); }
 
 
 .bordered-box__image
@@ -2909,6 +3152,9 @@ $feature_item_diamond_pseudo_fz_mod = 30 / $base_fz
             margin-bottom -5px
             scalabilityMixin({ margin-bottom: -5px }, 40)
 
+        > .primary-text--bright
+            color c_contrast
+
         > .secondary-text
             fontHvRoman24_30()
             display block
@@ -3110,6 +3356,457 @@ $feature_item_diamond_pseudo_fz_mod = 30 / $base_fz
             width: auto
         }
         scalabilityMixin($scalable_props)
+
+
+.info-block
+    text-align center
+
+.info-block--t1
+    //
+
+.info-block__header /*header*/
+    fontHvLight48()
+    position relative
+    padding-top 14px
+    padding-bottom 13px
+    box-shadow 0 5px 6px -5px c_seo-8
+
+    $scalable_props = {
+        padding-top: 14px
+        padding-bottom: 13px
+    }
+    scalabilityMixin($scalable_props, 48, fontHvLight48)
+
+    .info-block--t1 &
+        color c_seo-7
+        background-color c_seo-2
+
+.info-block__content  // важно что тут не должен задаваться Font-Size а то все вложенные блоки поломаются при масштабировании
+    .info-block--t1 &
+        padding-top 50px
+        padding-bottom 35px
+        padding-left 223px
+        padding-right 200px
+        background-repeat repeat
+        background-color #8bdfdf
+
+        $scalable_props = {
+            padding-top: 50px
+            padding-bottom: 35px
+            padding-left: 223px
+            padding-right: 200px
+        }
+        scalabilityMixin($scalable_props)
+
+        @media (max-width bp_sub-medium-x-padding)
+            padding-left larger_paddding
+            padding-right larger_paddding
+
+            $scalable_props = {
+                padding-left: larger_paddding
+                padding-right: larger_paddding
+            }
+            scalabilityMixin($scalable_props)
+
+        @media (max-width bp_reduced-x-padding)
+            padding-left large_padding
+            padding-right large_padding
+
+            $scalable_props = {
+                padding-left: large_padding
+                padding-right: large_padding
+            }
+            scalabilityMixin($scalable_props)
+
+        @media (max-width bp_lower-x-padding)
+            padding-left default_padding
+            padding-right default_padding
+
+            $scalable_props = {
+                padding-left: default_padding
+                padding-right: default_padding
+            }
+            scalabilityMixin($scalable_props)
+
+        @media (max-width bp_small-x-padding)
+            padding-left medium_padding
+            padding-right medium_padding
+
+            $scalable_props = {
+                padding-left: medium_padding
+                padding-right: medium_padding
+            }
+            scalabilityMixin($scalable_props)
+
+        @media (max-width bp_publications_lower)
+            padding-left lower_padding
+            padding-right lower_padding
+
+            $scalable_props = {
+                padding-left: lower_padding
+                padding-right: lower_padding
+            }
+            scalabilityMixin($scalable_props)
+
+.info-block__content--decorated
+    .info-block--t1 &
+        background-image url(../images/bg-info-block-t1-texture-2.png)
+        background-position -99px -14px
+
+
+.lists-wrapper
+    display flex
+    flex-wrap wrap
+    justify-content space-between
+    align-content center
+    +ie10-11-only()
+        justify-content flex-start
+
+    > ul
+    > ol
+    > dl
+        flex-grow 0
+        flex-shrink 1
+
+.lists-wrapper--t1
+    color c_seo-9
+
+.lists-wrapper--curly-braced
+    position relative
+
+    &::before
+    &::after
+        fontHvThin90_72()
+        position absolute
+        top 0
+        bottom 0
+        width 30px
+        height 85px
+        margin-top auto
+        margin-bottom auto
+        position absolute
+
+        $scalable_props = {
+            width: 30px
+            height: 85px
+        }
+        scalabilityMixin($scalable_props, 90, fontHvThin90_72)
+        +ie10-11-only()  // ie 10-11 only styles, hack / адовые костыли для IE 11
+            scalabilityMixin(false, 90, fontHvThin90_72, 90 * 9)  // IE11 fix
+
+    &::before
+        left -100px
+        content '{'
+        scalabilityMixin({ left: -100px }, 90)
+
+    &::after
+        right -100px
+        content '}'
+        scalabilityMixin({ right: -100px }, 90)
+
+
+.decorative-list /*ul*/
+    // list-style-type none
+    padding-left 0
+    margin-bottom 0
+
+.decorative-list--t1
+    text-align left
+
+.decorative-list__item /*li*/
+    fontHvRoman18_30()
+    position relative
+    list-style none
+    padding-left 45px
+    scalabilityMixin({ padding-left: 45px}, 18, fontHvRoman18_30)
+
+    .decorative-list--t1 &
+        color c_darken-11-font
+
+        &::before
+            position absolute
+            left 0
+            top 5px
+            width 20px
+            height 20px
+            background-repeat no-repeat
+            background-size contain
+            background-image url(../images/i-list-marker-ok-t1.svg)
+            content ''
+
+            $scalable_props = {
+                top: 5px
+                width: 20px
+                height: 20px
+            }
+            scalabilityMixin($scalable_props, 18)
+
+
+.alternatives-list /*ul*/
+    display flex
+    flex-wrap wrap
+    justify-content center
+    padding-left 0
+    padding-bottom 46px
+    scalabilityMixin({ padding-bottom: 46px})
+
+.alternatives-list__item /*li*/
+    fontHvBold18_30()
+    position relative
+    z-index 1
+    list-style none
+    width 50%
+    flex-basis 305px
+    min-width 305px
+    padding-left 5px
+    padding-right 5px
+    padding-top 59px
+    padding-bottom 59px
+    margin-bottom 20px
+    text-align center
+    color c_darken-4-font
+
+    $scalable_props = {
+        flex-basis: 305px
+        min-width: 305px
+        padding-left: 5px
+        padding-right: 5px
+        padding-top: 59px
+        padding-bottom: 59px
+        margin-bottom: 20px
+    }
+    scalabilityMixin($scalable_props, 18, fontHvBold18_30)
+
+    &:nth-of-type(odd)
+        margin-right 80px
+        scalabilityMixin({ margin-right: 80px }, 18)
+
+    &:nth-of-type(even)
+        margin-left 80px
+        scalabilityMixin({ margin-left: 80px }, 18)
+
+    &::before
+    &::after
+        position absolute
+        z-index -1
+        background-repeat no-repeat
+        content ''
+
+    &::before
+        top 0
+        left 0
+        right 0
+        margin-left auto
+        margin-right auto
+        width 204px
+        height 215px
+
+        $scalable_props = {
+            width: 204px
+            height: 215px
+        }
+        scalabilityMixin($scalable_props, 18)
+        // +ie10-11-only()  // ie 10-11 only styles, hack / адовые костыли для IE 11
+        //     scalabilityMixin({ font-size: 1/1.8em })  // IE11 fix
+
+    &::after
+        width 54px
+        height 146px
+
+        $scalable_props = {
+            width: 54px
+            height: 146px
+        }
+        scalabilityMixin($scalable_props, 18)
+        // +ie10-11-only()  // ie 10-11 only styles, hack / адовые костыли для IE 11
+        //     scalabilityMixin({ font-size: 1/1.8em })  // IE11 fix
+
+    &:nth-of-type(odd)::before
+        background-image url(../images/i-double-diamonds-bright.svg)
+
+    &:nth-of-type(even)::before
+        background-image url(../images/i-double-diamonds-contrast.svg)
+
+    &:nth-of-type(odd)::after
+        background-image url(../images/i-bended-arrow-left.svg)
+        top 25px
+        right -63px
+
+        $scalable_props = {
+            top: 25px
+            right: -63px
+        }
+        scalabilityMixin($scalable_props, 18)
+        // +ie10-11-only()  // ie 10-11 only styles, hack / адовые костыли для IE 11
+        //     scalabilityMixin({ font-size: 1/1.8em })  // IE11 fix
+
+    &:nth-of-type(even)::after
+        background-image url(../images/i-bended-arrow-right.svg)
+        top 5px
+        left -63px
+
+        $scalable_props = {
+            top: 5px
+            left: -63px
+        }
+        scalabilityMixin($scalable_props, 18)
+        // +ie10-11-only()  // ie 10-11 only styles, hack / адовые костыли для IE 11
+        //     scalabilityMixin({ font-size: 1/1.8em })  // IE11 fix
+
+
+.buttons-list /*ul*/
+    display flex
+    justify-content space-between
+    align-items flex-start
+    flex-wrap wrap
+    max-width 550px
+    margin-left auto
+    margin-right auto
+    padding 0
+    list-style-type none
+    scalabilityMixin({ max-width: 550px })
+
+.buttons-list__item /*li*/
+    margin-left 7px
+    margin-right 7px
+    margin-bottom 20px
+
+    $scalable_props = {
+        margin-left: 7px
+        margin-right: 7px
+        margin-bottom: 20px
+    }
+    scalabilityMixin($scalable_props)
+
+
+.promo-button
+    position relative
+    top 0
+    left 0
+    display inline-block
+    vertical-align top
+    box-shadow 3px 3px 0 #ccc
+    color c_white
+    text-transform uppercase
+    transition background-color .4s ease-in, top .2s ease-in, left .2s ease-in, box-shadow .2s ease-in
+
+    &:hover
+    &:focus
+        background-color #aaa
+        color c_white
+        text-decoration none
+
+    &:active
+        top 3px
+        left 3px
+        box-shadow 0 0 0 #ccc
+
+    &::after
+        position absolute
+        background-repeat no-repeat
+        background-image url(../images/i-arrow-small-right-down.svg)
+        content ''
+
+    &:active::after
+        animation scale-bounce .4s ease-out
+
+    > .small-text
+        position absolute
+        text-transform lowercase
+
+    &:hover > .small-text
+    &:focus > .small-text
+        animation shake .6s ease-out
+
+.promo-button--medium
+    fontHvBold36_30()
+    padding-left 32px
+    padding-right 32px
+    padding-top 23px
+    padding-bottom 51px
+
+    $scalable_props = {
+        padding-left: 32px
+        padding-right: 32px
+        padding-top: 23px
+        padding-bottom: 51px
+    }
+    scalabilityMixin($scalable_props, 36, fontHvBold36_30)
+
+    &::after
+        right 11px
+        bottom 10px
+        width 15px
+        height 16px
+
+        $scalable_props = {
+            right: 11px
+            bottom: 10px
+            width: 15px
+            height: 16px
+        }
+        scalabilityMixin($scalable_props, 36)
+
+    > .small-text
+        fontHvLight18_30()
+        top 55px
+        scalabilityMixin({ top: 55px }, 18, fontHvLight18_30, 36)
+
+.promo-button--big
+    fontHvBold62()
+    padding-left 36px
+    padding-right 36px
+    padding-top 30px
+    padding-bottom 58px
+
+    $scalable_props = {
+        padding-left: 36px
+        padding-right: 36px
+        padding-top: 30px
+        padding-bottom: 58px
+    }
+    scalabilityMixin($scalable_props, 62, fontHvBold62)
+
+    &::after
+        right 12px
+        bottom 12px
+        width 24px
+        height 25px
+
+        $scalable_props = {
+            right: 12px
+            bottom: 12px
+            width: 24px
+            height: 25px
+        }
+        scalabilityMixin($scalable_props, 62)
+
+    > .small-text
+        fontHvLight31()
+        top 91px
+        scalabilityMixin({ top: 91px }, 31, fontHvLight31, 62)
+
+.promo-button--contrast
+    background-color c_seo-2
+    box-shadow 3px 3px 0 c_seo-10
+
+    &:hover
+    &:focus
+        background-color c_seo-10
+
+    &:active
+        box-shadow 0 0 0 c_seo-10
+
+.promo-button--bright
+    background-color c_contrast
+    box-shadow 3px 3px 0 c_contrast-2
+
+    &:hover
+    &:focus
+        background-color c_contrast-2
+
+    &:active
+        box-shadow 0 0 0 c_contrast-2
 
 
 .presentation-content__other-blocks /*section.default-section*/

@@ -1,0 +1,444 @@
+@import './helpers/_variables'
+@import './helpers/_mixins'
+@import './helpers/_block_mixins'
+
+
+.cultural-facilities-content__header--primary
+    padding-left default_padding
+    padding-right default_padding
+    background-color #554021
+    background-image url(../images/bg-cultural-facilities-top.jpg)
+
+.cultural-facilities-content__header--secondary
+    background-color #87572B
+    background-image url(../images/bg-cultural-facilities-header-secondary.jpg)
+    background-position bottom center
+
+
+.presentation-content__title--main
+    $header_title_main_fz_mod = 50 / $base_fz
+    .cultural-facilities-content__header--primary &
+        fontHvBold50_auto()
+        margin-top 0
+        margin-bottom -5px
+        scalabilityMixin({ margin-bottom: -5px}, 50, fontHvBold50_auto)
+
+        @media (max-width md)
+            font-size 35px
+            scalabilityMixin({ margin-bottom: -5px}, 35)
+
+    $header_title_main_fz_mod = 48 / $base_fz
+    .cultural-facilities-content__header--secondary &
+        fontHvBold48_auto()
+        margin-top 0
+        margin-bottom -5px
+        text-transform uppercase
+        color c_white
+        scalabilityMixin({ margin-bottom: -5px}, 48, fontHvBold48_auto)
+
+        @media (max-width md)
+            font-size 35px
+            scalabilityMixin({ margin-bottom: -5px}, 35)
+
+.presentation-content__title--secondary
+    $header_title_secondary_fz_mod = 36 / $base_fz
+    .cultural-facilities-content__header--primary &
+        fontHvBold42_44()
+        margin-top 0
+        margin-bottom 0
+        scalabilityMixin(false, 10, fontHvBold42_44)
+
+        @media (max-width md)
+            font-size 28px
+
+    $header_title_secondary_fz_mod = 44 / $base_fz
+    .cultural-facilities-content__header--secondary &
+        fontHvLight44_auto()
+        margin-top 0
+        margin-bottom 0
+        color c_darkest-font
+        text-transform uppercase
+        color c_white
+        scalabilityMixin(false, 44, fontHvLight44_auto)
+
+        @media (max-width md)
+            font-size 30px
+
+
+.presentation-content__mission
+    padding-bottom 55px
+    scalabilityMixin({ padding-bottom: 55px }, 18)
+
+
+.cultural-facilities-content__services-promo /*.default-section*/
+    .default-section__content
+        background-repeat no-repeat
+        background-position -39px 185px
+        background-image url(../images/bg-cultural-facilities-services-promo.png)
+
+    .info-block__content
+        //
+
+    .alternatives-list
+        //
+
+
+.cultural-facilities-content__company-news
+    > .media-block__header
+        min-height 168px
+        padding-top 41px
+        background-color #fff6d9
+        background-repeat no-repeat
+        background-image url(../images/bg-cultural-facilities-news.jpg)
+        background-size cover
+        background-position 50% 100%
+
+        $scalable_props = {
+            min-height: 168px
+            padding-top: 41px
+        }
+        scalabilityMixin($scalable_props)
+
+        .additional-text
+            color c_white
+
+
+.cultural-facilities-content__news-categories/*.custom-banner--v1*/
+    background-color #021e3b
+    background-repeat no-repeat
+    background-image url(../images/bg-cultural-facilities-news-categories.jpg)
+    background-size cover
+    background-position center
+
+
+.cultural-facilities-content__publications-collection
+    background-image url(../images/bg-cultural-facilities-publications-collection.jpg)
+
+
+.cultural-facilities-content__publication-pricing /*.default-section*/
+    padding-top 39px
+    scalabilityMixin({ padding-top: 39px })
+
+    .media-block__header
+        min-height 252px
+        background-color #a81c02
+        background-repeat no-repeat
+        background-image url(../images/bg-publications-pricing.jpg)
+        background-size cover
+        background-position center
+        scalabilityMixin({ min-height: 252px })
+
+
+.cultural-facilities-content__facility-profile /*.default-section*/
+    padding-bottom 20px
+    scalabilityMixin({ padding-bottom: 20px })
+
+    .media-block
+        padding-bottom 0
+        margin-bottom 40px
+
+        $scalable_props = {
+            padding-bottom: 0
+            margin-bottom: 40px
+        }
+        scalabilityMixin($scalable_props)
+
+    .media-block__header
+        background-image url(../images/bg-cultural-facility-profile.jpg)
+
+    .media-block__content
+        padding-left medium_padding - 5px
+        padding-right medium_padding - 5px
+
+        $scalable_props = {
+            padding-left: medium_padding - 5px
+            padding-right: medium_padding - 5px
+        }
+        scalabilityMixin($scalable_props, 18)
+
+        @media (max-width bp_reduced-x-padding)
+            padding-left reduced_padding
+            padding-right reduced_padding
+
+            $scalable_props = {
+                padding-left: reduced_padding
+                padding-right: reduced_padding
+            }
+            scalabilityMixin($scalable_props, 18)
+
+        @media (max-width bp_lower-x-padding)
+            padding-left lower_padding
+            padding-right lower_padding
+
+            $scalable_props = {
+                padding-left: lower_padding
+                padding-right: lower_padding
+            }
+            scalabilityMixin($scalable_props, 18)
+
+        @media (max-width: lg)
+            padding-left small_padding
+            padding-right small_padding
+
+            $scalable_props = {
+                padding-left: small_padding
+                padding-right: small_padding
+            }
+            scalabilityMixin($scalable_props, 18)
+
+        p.important-text > .inline-block:first-of-type
+            margin-right 15px
+            scalabilityMixin({ margin-right: 15px }, 30)
+
+
+.presentation-content__search-and-promo-tools /*.default-section*/
+    .media-block__header
+        background-image url(../images/bg-facilities-presentation-instruments.jpg)
+
+
+.cultural-facilities-content__header--secondary /*header*/
+    margin-bottom 55px
+    scalabilityMixin({ margin-bottom: 55px})
+
+
+.cultural-facilities-content__contacts-and-chat /*.default-section*/
+    padding-top 40px
+    scalabilityMixin({padding-top: 40px})
+
+
+/**--------------------------------*\
+ * .publications
+\*--------------------------------*/
+.publications-feature--share
+    background-color c_seo-2
+
+    @media (max-width: md)
+        padding-right 60px
+
+    &::before
+        right 0
+        bottom 0
+        width 622px
+        height 333px
+        background-image url(../images/bg-publications-share-smartphone.png)
+
+        @media (max-width: 1456px)
+            right auto
+            left 757px
+
+.publications-feature--mini-reviews
+    align-items flex-end
+    padding-top 63px
+    background-color #ef1054
+
+    @media (max-width: md)
+        padding-right 60px
+
+    &::before
+        right 839px
+        bottom 24px
+        width 463px
+        height 278px
+        background-image url(../images/bg-publications-reviews-cultural.png)
+
+        @media (max-width: 1106px)
+            right auto
+            left -314px
+
+        @media (max-width: bp_publications_lower)
+            right 100%
+            left auto
+
+.publications-feature--settings-control
+    background-color #ffc498
+
+    @media (max-width: md)
+        padding-right 60px
+
+    &::before
+        left 658px
+        top 94px
+        width 682px
+        height 291px
+        background-image url(../images/bg-publications-settings.png)
+
+        @media (min-width: 1457px)
+            left auto
+            right 0
+
+.publications-feature--availability
+    align-items flex-end
+    background-color #002c3d
+
+    @media (max-width: 811px)
+        padding-right 60px
+
+    &::before
+        right 620px
+        top 68px
+        width 664px
+        height 353px
+        background-image url(../images/bg-publications-availability.png)
+
+        @media (max-width: 811px)
+            right auto
+            left -589px
+
+        @media (max-width: bp_publications_lower)
+            right 100%
+            left auto
+
+.publications-feature--auto-posting
+    background-color #daf4f8
+
+    @media (max-width: md)
+        padding-right 60px
+
+    &::before
+        left 641px
+        top 62px
+        width 603px
+        height 298px
+        background-image url(../images/bg-publications-auto-posting.png)
+
+.publications-feature--distribution
+    align-items flex-end
+    background-color #00bc9b
+
+    @media (max-width: 906px)
+        padding-right 60px
+
+    &::before
+        right 758px
+        top 56px
+        width 401px
+        height 365px
+        background-image url(../images/bg-publications-distribution.png)
+
+        @media (max-width: 906px)
+            right auto
+            left -371px
+
+        @media (max-width: bp_publications_lower)
+            right 100%
+            left auto
+
+
+.publications-feature__header
+    .publications-feature--share &
+        color c_white
+
+    .publications-feature--mini-reviews &
+        padding-right 394px
+        color c_white
+
+        @media (max-width: 1381px)
+            align-self flex-start
+            padding-right 0
+
+    .publications-feature--settings-control &
+        color #5c4e40
+
+    .publications-feature--availability &
+        padding-right 89px
+        color #db3d71
+
+        @media (max-width: 811px)
+            align-self flex-start
+            padding-right 0
+
+    .publications-feature--auto-posting &
+        color #0e303f
+
+    .publications-feature--distribution &
+        max-width 570px
+        color #385c44
+
+        @media (max-width: 906px)
+            align-self flex-start
+
+    .publications-feature--share &::before
+        background-color #199090
+
+    .publications-feature--share &::after
+        background-color #40bebe
+
+    .publications-feature--mini-reviews &::before
+        background-color #ab0c3d
+
+    .publications-feature--mini-reviews &::after
+        background-color #de0e4e
+
+    .publications-feature--settings-control &::before
+        background-color #614d3d
+
+    .publications-feature--settings-control &::after
+        background-color #d9a782
+
+    .publications-feature--availability &::before
+        background-color #ef1054
+
+    .publications-feature--availability &::after
+        background-color #422643
+
+    .publications-feature--auto-posting &::before
+        background-color #0096a6
+
+    .publications-feature--auto-posting &::after
+        background-color #94e4eb
+
+    .publications-feature--distribution &::before
+        background-color #155c41
+
+    .publications-feature--distribution &::after
+        background-color #00a585
+
+
+.publications-feature__title
+    .publications-feature--mini-reviews &
+        max-width 552px
+
+    .publications-feature--availability &
+        max-width calc(468px - 89px)
+
+
+.publications-feature__content
+    .publications-feature--share &
+        max-width 595px
+        color #273f3f
+
+    .publications-feature--mini-reviews &
+        z-index 20
+        max-width 763px
+        padding-right 137px
+        color c_white
+
+        @media (max-width: 1106px)
+            align-self flex-start
+            padding-right 0
+            max-width 626px
+
+    .publications-feature--settings-control &
+        max-width 490px
+        padding-left 0
+        color #0e303f
+
+    .publications-feature--availability &
+        max-width 468px
+        color #688490
+
+        @media (max-width: 811px)
+            align-self flex-start
+
+    .publications-feature--auto-posting &
+        max-width 559px
+        color #0e303f
+
+    .publications-feature--distribution &
+        max-width 566px
+        padding-right 114px
+        color #273b2e
+
+        @media (max-width: 906px)
+            align-self flex-start
+            padding-right 0
