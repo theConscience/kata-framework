@@ -1846,11 +1846,8 @@ $feature_item_diamond_pseudo_fz_mod = 30 / $base_fz
         &::after
             right -10000px
 
-
+.custom-banner__content--darkened-bg
 .custom-banner__content--faded-bg
-    background-image linear-gradient(to bottom, rgba(74,205,205,0.68) 0%, rgba(74,205,205,0.68) 100%)
-    box-shadow 0 60px rgba(74,205,205,0.68)
-
     .custom-banner--v2 &
         padding-left default_padding
         padding-right default_padding
@@ -1896,6 +1893,14 @@ $feature_item_diamond_pseudo_fz_mod = 30 / $base_fz
                 padding-right: small_padding
             }
             scalabilityMixin($scalable_props)
+
+.custom-banner__content--darkened-bg
+    background-image linear-gradient(to bottom, rgba(0,0,0,0.53) 0%, rgba(0,0,0,0.53) 100%)
+    box-shadow 0 60px rgba(0,0,0,0.53)
+
+.custom-banner__content--faded-bg
+    background-image linear-gradient(to bottom, rgba(74,205,205,0.68) 0%, rgba(74,205,205,0.68) 100%)
+    box-shadow 0 60px rgba(74,205,205,0.68)
 
 .custom-banner__content--light
     fontHvLight18_24()
@@ -3068,9 +3073,8 @@ $feature_item_diamond_pseudo_fz_mod = 30 / $base_fz
         &::after
             right 0
 
+.custom-banner__header--narrowed
 .custom-banner__header--darken
-    background-color rgba(0,0,0,0.42)
-
     .custom-banner--v2 &
         padding-top 26px
         margin-top -26px
@@ -3085,6 +3089,9 @@ $feature_item_diamond_pseudo_fz_mod = 30 / $base_fz
         }
         scalabilityMixin($scalable_props)
 
+.custom-banner__header--darken
+    background-color rgba(0,0,0,0.42)
+
 .custom-banner__help-text
     .custom-banner--v2 &
         fontHvMedium18_30()
@@ -3092,6 +3099,10 @@ $feature_item_diamond_pseudo_fz_mod = 30 / $base_fz
         margin-bottom 7px
         color c_seo-2
         scalabilityMixin({ margin-bottom: 7px }, 18, fontHvMedium18_30)
+
+.custom-banner__help-text--darkened
+    .custom-banner--v2 &
+        color c_darkest-bg-2
 
 .custom-banner__title
     .custom-banner--v2 &
@@ -3194,6 +3205,20 @@ $feature_item_diamond_pseudo_fz_mod = 30 / $base_fz
 
         &::after
             right -21px - 9999px
+
+.custom-banner__title--darkened
+    .custom-banner--v2 &
+        color c_darkest-bg-2
+
+        &::before
+        &::after
+            color c_contrast
+
+        > .primary-text--bright
+            color c_contrast
+
+        > .secondary-text
+            color c_darkest-bg-2
 
 
 .important-text
