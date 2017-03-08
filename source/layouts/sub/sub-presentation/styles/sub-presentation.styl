@@ -1675,6 +1675,13 @@ $feature_item_diamond_pseudo_fz_mod = 30 / $base_fz
         }
         scalabilityMixin($scalable_props, 30, fontHvBold30_auto)
 
+.custom-banner__decorative-module
+    background-repeat no-repeat
+    background-position center
+    background-size cover
+    min-height 270px
+    scalabilityMixin({ min-height: 270px })
+
 .custom-banner__description
     fontHvBold18_24()
     color c_white
@@ -1803,9 +1810,36 @@ $feature_item_diamond_pseudo_fz_mod = 30 / $base_fz
             }
             scalabilityMixin($scalable_props, 18, fontHvRoman18_24)
 
-        & > p:last-of-type
+        > p:last-of-type
             margin-bottom 36px
             scalabilityMixin({ margin-bottom: 36px }, 18)
+
+        > .important-text
+            fontHvBold18_24()
+            scalableMixin(false, 18, fontHvBold18_24, 18)
+
+        .btn--v11
+            $scalable_props = {
+                min-width: 160px
+                min-height: 53px
+                padding-left: 33px
+                padding-right: 33px
+                padding-top: 7px
+                padding-bottom: 2px
+                border-bottom-width: 3px
+            }
+            scalabilityMixin($scalable_props, 18, fontHvRoman18_40, 18)
+
+        .btn--v12
+            $scalable_props = {
+                min-width: 160px
+                min-height: 53px
+                padding-left: 33px
+                padding-right: 33px
+                padding-top: 7px
+                padding-bottom: 2px
+            }
+            scalabilityMixin($scalable_props, 18, fontHvRoman18_40, 18)
 
     .custom-banner--v3 &
         fontHvLight18_30()
@@ -1846,8 +1880,10 @@ $feature_item_diamond_pseudo_fz_mod = 30 / $base_fz
         &::after
             right -10000px
 
+
 .custom-banner__content--darkened-bg
 .custom-banner__content--faded-bg
+.custom-banner__content--bright
     .custom-banner--v2 &
         padding-left default_padding
         padding-right default_padding
@@ -1893,6 +1929,9 @@ $feature_item_diamond_pseudo_fz_mod = 30 / $base_fz
                 padding-right: small_padding
             }
             scalabilityMixin($scalable_props)
+
+.custom-banner__content--bright
+    background-color c_contrast
 
 .custom-banner__content--darkened-bg
     background-image linear-gradient(to bottom, rgba(0,0,0,0.53) 0%, rgba(0,0,0,0.53) 100%)
@@ -1944,6 +1983,17 @@ $feature_item_diamond_pseudo_fz_mod = 30 / $base_fz
                 padding-right: small_padding
             }
             scalabilityMixin($scalable_props, 18, fontHvLight18_24)
+
+.custom-banner__content--loose
+    > p
+        padding-top 10px
+        margin-bottom 20px
+
+        $scalable_props = {
+            padding-top: 10px
+            margin-bottom: 20px
+        }
+        scalabilityMixin($scalable_props, 18)
 
 .custom-banner__link
     .custom-banner--v1 &
@@ -3172,6 +3222,12 @@ $feature_item_diamond_pseudo_fz_mod = 30 / $base_fz
             text-transform lowercase
             scalabilityMixin(false, 40, fontHvRoman24_30, 40)
 
+        > .secondary-text--darkened
+            color c_darkest-bg-2
+
+        > .secondary-text--bright
+            color c_contrast
+
     .custom-banner--v3 &
         fontHvBold40()
         position relative
@@ -3206,19 +3262,14 @@ $feature_item_diamond_pseudo_fz_mod = 30 / $base_fz
         &::after
             right -21px - 9999px
 
-.custom-banner__title--darkened
+
+.custom-banner__title--bright
     .custom-banner--v2 &
         color c_darkest-bg-2
 
         &::before
         &::after
             color c_contrast
-
-        > .primary-text--bright
-            color c_contrast
-
-        > .secondary-text
-            color c_darkest-bg-2
 
 
 .important-text
@@ -4499,7 +4550,7 @@ $feature_item_diamond_pseudo_fz_mod = 30 / $base_fz
             padding-left 96px
 
     @media (max-width: bp_publications_lower)
-        &&
+        &&&
             padding-left 0
 
 .publications-feature__buttons--shifted

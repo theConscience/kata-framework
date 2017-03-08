@@ -3,23 +3,21 @@
 @import './helpers/_block_mixins'
 
 
-.medical-content__header--primary
+.service-companies-content__header--primary
     padding-left default_padding
     padding-right default_padding
     background-color #5e7b9b
-    background-image url(../images/bg-medical-top.jpg)
+    background-image url(../images/bg-service-companies-top.jpg)
 
-.medical-content__header--secondary
-    margin-bottom 55px
+.service-companies-content__header--secondary
     background-color #87572B
-    background-image url(../images/bg-medical-header-secondary.jpg)
+    background-image url(../images/bg-service-companies-header-secondary.jpg)
     background-position bottom center
-    scalabilityMixin({ margin-bottom: 55px})
 
 
 .presentation-content__title--main
     $header_title_main_fz_mod = 50 / $base_fz
-    .medical-content__header--primary &
+    .service-companies-content__header--primary &
         fontHvBold50_auto()
         margin-top 0
         margin-bottom -5px
@@ -30,12 +28,12 @@
             scalabilityMixin({ margin-bottom: -5px}, 35)
 
     $header_title_main_fz_mod = 48 / $base_fz
-    .medical-content__header--secondary &
+    .service-companies-content__header--secondary &
         fontHvBold48_auto()
         margin-top 0
         margin-bottom -5px
         text-transform uppercase
-        color c_seo-2
+        color c_white
         scalabilityMixin({ margin-bottom: -5px}, 48, fontHvBold48_auto)
 
         @media (max-width md)
@@ -44,7 +42,7 @@
 
 .presentation-content__title--secondary
     $header_title_secondary_fz_mod = 36 / $base_fz
-    .medical-content__header--primary &
+    .service-companies-content__header--primary &
         fontHvBold42_44()
         margin-top 0
         margin-bottom 0
@@ -54,7 +52,7 @@
             font-size 28px
 
     $header_title_secondary_fz_mod = 44 / $base_fz
-    .medical-content__header--secondary &
+    .service-companies-content__header--secondary &
         fontHvLight44_auto()
         margin-top 0
         margin-bottom 0
@@ -71,11 +69,11 @@
     scalabilityMixin({ padding-bottom: 55px }, 18)
 
 
-.medical-content__services-promo /*.default-section*/
+.service-companies-content__services-promo /*.default-section*/
     .default-section__content
         background-repeat no-repeat
         background-position -39px 185px
-        background-image url(../images/bg-medical-services-promo.png)
+        background-image url(../images/bg-service-companies-services-promo.png)
 
     .info-block__content
         //
@@ -84,13 +82,13 @@
         //
 
 
-.medical-content__company-news
+.service-companies-content__company-news
     > .media-block__header
         min-height 168px
         padding-top 41px
         background-color #fff6d9
         background-repeat no-repeat
-        background-image url(../images/bg-medical-news.jpg)
+        background-image url(../images/bg-service-companies-news.jpg)
         background-size cover
         background-position 50% 100%
 
@@ -101,20 +99,22 @@
         scalabilityMixin($scalable_props)
 
 
-.medical-content__news-categories/*.custom-banner--v1*/
+.service-companies-content__news-categories/*.custom-banner--v1*/
     background-color #021e3b
     background-repeat no-repeat
-    background-image url(../images/bg-medical-news-categories.jpg)
+    background-image url(../images/bg-service-companies-news-categories.jpg)
     background-size cover
     background-position center
 
 
-.medical-content__publications-collection
-    background-color #fad5de
-    background-image url(../images/bg-medical-publications-collection.jpg)
+.service-companies-content__publications-collection
+    background-color #ffffff
+
+    .custom-banner__decorative-module
+        background-image url(../images/bg-service-companies-publications-collection.jpg)
 
 
-.medical-content__publication-pricing /*.default-section*/
+.service-companies-content__publication-pricing /*.default-section*/
     padding-top 39px
     scalabilityMixin({ padding-top: 39px })
 
@@ -128,7 +128,7 @@
         scalabilityMixin({ min-height: 252px })
 
 
-.medical-content__company-profile /*.default-section*/
+.service-companies-content__company-profile /*.default-section*/
     padding-top 50px
     padding-bottom 20px
 
@@ -149,9 +149,8 @@
         scalabilityMixin($scalable_props)
 
     .media-block__header
-        height 258px
-        background-image url(../images/bg-medical-company-profile.jpg)
-        scalableMixin({ height: 258px })
+        background-image url(../images/bg-service-companies-company-profile.jpg)
+
 
     .media-block__content
         padding-left medium_padding - 5px
@@ -201,29 +200,27 @@
 
 .presentation-content__search-and-promo-tools /*.default-section*/
     .media-block__header
-        background-image url(../images/bg-medical-presentation-instruments.jpg)
+        background-color #3a679a
+        background-image url(../images/bg-service-companies-presentation-instruments.jpg)
 
 
-.medical-content__contacts-and-chat /*.default-section*/
+.service-companies-content__header--secondary /*header*/
+    margin-bottom 55px
+    scalabilityMixin({ margin-bottom: 55px})
+
+
+.service-companies-content__contacts-and-chat /*.default-section*/
     padding-top 40px
     scalabilityMixin({padding-top: 40px})
 
     .media-block__header
-        min-height 215px
-        padding-left original_padding
-        padding-right original_padding
-        padding-top 30px
-        padding-bottom 30px
+        min-height 300px
         background-repeat no-repeat
         background-size cover
-        background-image url(../images/bg-medical-contacts-and-chat.jpg)
+        background-image url(../images/bg-service-companies-contacts-and-chat.jpg)
 
         $scalable_props = {
-            min-height: 215px
-            padding-left: original_padding
-            padding-right: original_padding
-            padding-top: 30px
-            padding-bottom: 30px
+            min-height: 300px
         }
         scalabilityMixin($scalable_props)
 
@@ -240,9 +237,9 @@
     &::before
         right 0
         bottom 40px
-        width 596px
-        height 326px
-        background-image url(../images/bg-publications-share-medical.png)
+        width 503px
+        height 333px
+        background-image url(../images/bg-publications-share-service-companies.png)
 
         @media (max-width: 1456px)
             right auto
@@ -258,14 +255,14 @@
 
     &::before
         right 839px
-        bottom 0
-        width 523px
-        height 272px
-        background-image url(../images/bg-publications-reviews-medical.png)
+        bottom 45px
+        width 616px
+        height 241px
+        background-image url(../images/bg-publications-reviews-service-companies.png)
 
         @media (max-width: 1106px)
             right auto
-            left -390px
+            left -474px
 
         @media (max-width: bp_publications_lower)
             right 100%

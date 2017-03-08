@@ -4,8 +4,8 @@ include ./blocks/_mixins.jade
 
 
 block append head
-    - var pageName = 'tourism-boards';
-    - var pageTitle = 'Tourism boards page template';
+    - var pageName = 'service-companies';
+    - var pageTitle = 'Service companies page template';
     - var bodyClasses = '';
     - var mainClasses = ' is-scalable';
 
@@ -23,25 +23,55 @@ block append scripts
 
 
 block append content
-    header.presentation-content__header.presentation-content__header--primary.tourism-boards-content__header.tourism-boards-content__header--primary
+    article.service-companies-content
+    header.presentation-content__header.presentation-content__header--primary.service-companies-content__header.service-companies-content__header--primary
         div#video-block.presentation-content__video-block.video-block
             span.video-block__play-button Смотреть видео
-        h1.presentation-content__title.presentation-content__title--main Офисам и бюро по туризму
-        h1.presentation-content__title.presentation-content__title--secondary Бесплатные сервисы
+        h1.presentation-content__title.presentation-content__title--main Сервисным компаниям
+        h1.presentation-content__title.presentation-content__title--secondary рабочие инструменты
     p.presentation-content__mission.
-        Мы – <mark class="primary">Бесплатный Глобальный Туристический Справочник</mark>  для всех участников туристического
-        рынка – авиакомпаний и их представительств, отелей, туроператоров, агентств,  офисов по туризму,
-        объектов культуры, медицинского туризма и сервисных компаний из различных стран. Платформа
-        создана как эффективный инструмент вашего продвижения, а также для повышения охвата и
-        унификации туристического рынка во всех странах, для скоростного обмена информацией и
-        удобного доступа из любой точки мира в любой момент времени к базе самых свежих новостей – от
-        отелей, агентств, авиакомпаний и офисов по туризму. Большой туристический справочник на всех
-        языках мира!
+        Мы – <mark class="primary">Глобальный Туристический Справочник</mark> для всех участников туристического рынка
+        – компаний медицинской направленности,сервисной направленности, объектов культуры, а
+        также основных игроков туристического рынка - авиакомпаний, отелей, туроператоров,
+        агентств из различных стран. Платформа создана как эффективный инструмент вашего
+        продвижения, а также для скоростного обмена информацией и удобного доступа из любой
+        точки мира в любой момент времени к базе самых свежих новостей – от турагентства до
+        прямого клиента. Большой туристический справочник на всех языках мира!
 
-    section.media-block.tourism-boards-content__company-news
+    section.default-section.service-companies-content__services-promo
+        .default-section__header
+        .default-section__content
+            section.info-block.info-block--t1
+                header.info-block__header
+                    b Если вы — компания:
+                .info-block__content.info-block__content--decorated
+                    .lists-wrapper.lists-wrapper--t1.lists-wrapper--curly-braced
+                        ul.decorative-list.decorative-list--t1.l-col-1-2.l-col-padding-right.min-width-200
+                            li.decorative-list__item По аренде частных вилл,
+                            li.decorative-list__item По фрахту самолетов/ вертолетов/яхт/воздушных шаров,
+                            li.decorative-list__item По организации морских и речных круизов,
+                            li.decorative-list__item По спортивному отдыху
+                        ul.decorative-list.decorative-list--t1.l-col-1-2.min-width-200
+                            li.decorative-list__item Тематический парк,
+                            li.decorative-list__item Аттракцион,
+                            li.decorative-list__item Знаменитый Ресторан/кафе/бар,
+                            li.decorative-list__item … или любая другая компания сервисной направленности
+            p.default-section__description.default-section__description--medium.
+                То Вы знаете, что вашими клиентами являются не только самостоятельные путешественники,
+                но и туристические агентства по всему миру, которые отправляют к Вам своих клиентов из
+                разных уголков нашей планеты. Разместите информацию о Вас внутри туристического
+                справочника Unitravel. Pro на любом языке и продвигайтесь еще эффективнее!
+            b.default-section__title.default-section__title--medium.
+                Мы предоставляем Вам<br>
+                <span class="light-text smaller-text">2 канала продвижения</span>
+            ul.alternatives-list
+                li.alternatives-list__item Для турагентств и профессионалов туристической сферы – B2B рынок
+                li.alternatives-list__item Для прямых<br> путешественников – B2С рынок
+
+    section.media-block.service-companies-content__company-news
         header.media-block__header
             span.additional-text Блок
-            h2.media-block__title Новости вашего офиса по туризму
+            h2.media-block__title Новости вашей компании
         .media-block__content
             p.
                 Время рассылок по электронной почте, участия в выставках или печати дорогих буклетов / каталогов
@@ -113,24 +143,104 @@ block append content
                 язык мира для ваших публикаций и
                 продвижения!
 
-    .custom-banner.custom-banner--v1.tourism-boards-content__news-categories
+    .custom-banner.custom-banner--v1.service-companies-content__news-categories
         h2.custom-banner__title
             span.wrapped-in-braces Категории новостей
         ul.custom-banner__content
             li.custom-banner__item
-                a.custom-banner__link(href='#') События и мероприятия в стране
+                a.custom-banner__link(href='#') Новинки вашей компании
             li.custom-banner__item
-                a.custom-banner__link(href='#') Страна в кино
+                a.custom-banner__link(href='#') Билеты и купоны
             li.custom-banner__item
-                a.custom-banner__link(href='#') Семинары, воркшопы, выставки и вебинары по стране и её курортам
+                a.custom-banner__link(href='#') Специальные предложения и акции
             li.custom-banner__item
-                a.custom-banner__link(href='#') Новинки сервисов в стране: открытие новых парков, ресторанов, музеев, маршрутов
+                a.custom-banner__link(href='#') События и мероприятия
             li.custom-banner__item
-                a.custom-banner__link(href='#') Визовые новости
+                a.custom-banner__link(href='#') Обзоры ваших лучших мест или деталей
             li.custom-banner__item
-                a.custom-banner__link(href='#') Это важно! Напоминания туристам и оповещения
+                a.custom-banner__link(href='#') Интерьеры, факты, история, награды
 
-    section.default-section.tourism-boards-content__search-and-promo-tools
+    section.presentation-content__publications-collection.service-companies-content__publications-collection.custom-banner.custom-banner--v2
+        header.custom-banner__header
+            span.custom-banner__help-text Блок
+            h2.custom-banner__title.custom-banner__title--bright
+                <span class="primary-text primary-text--bright">Коллекция постов</span>
+                <span class="secondary-text secondary-text--bright">для совместного продвижения</span>
+        .custom-banner__decorative-module
+        .custom-banner__content.custom-banner__content--light.custom-banner__content--loose.custom-banner__content--bright
+            p.
+                <b class="important-text">Создайте коллекцию ваших собственных заметок о деталях и особенностях вашего
+                сервиса или услуги, которые актуальны в любое время или по сезона</b>
+            p.
+                Напишите небольшой очерк из 5-10 предложений, прикрепите к нему качественное фото и
+                поместите его внутри туристической платформы для всех или только для ряда ваших
+                партнеров, и их смогут разместить на страницах соцсетей и сайте все желающие агентства
+                по всему миру, используя их  в качестве базовых новостных наполнений<br>
+                по клинике/сервису/услуге.<br>
+            p.
+                Тем самым Вы сможете продвигать ваши объекты, услуги и мероприятия еще эффективнее
+                 и для большого круга публики! Создайте свою аудиторию сами!
+            a#modal__open--inner.btn.btn--v12(href='#') Подробнее
+
+    section.default-section.service-companies-content__publication-pricing
+        header.default-section__header
+            span.additional-text Блок
+            h4.default-section__title.
+                Стоимость публикации<br>
+                <span class="light-text">по новостям и коллекциям публикаций</span>
+        section.default-section__content.media-block
+            header.media-block__header
+            .media-block__content.media-block__content--loose.media-block__content--condensed-paragraphs.text-center
+                p.
+                    Мы открываем Вам <b class="important-text">сквозной канал</b> для показа ваших новостей и коллекции<br>
+                    публикаций для всех категорий наших пользователей
+                p.important-text 6 месяцев — бесплатно!
+                p.
+                    За это время Вы можете протестировать удобство и инструменты нашего Справочника,<br>
+                    проанализировать охват аудитории и распространения ваших новостей и принять<br>
+                    решение о дальнейшем сотрудничестве
+        h4.default-section__title-simple.text-center.
+            Стоимость безлимитной публикации<br>
+            <span class="light-text">на Unitravel.pro  +  Travelinfo.pro</span>
+        ul.buttons-list
+            li.buttons-list__item
+                a.promo-button.promo-button--medium.promo-button--contrast(href='#' title='подписка на месячную безлимитную публикацию').
+                    30 USD<br>
+                    <span class="small-text">в месяц</span>
+            li.buttons-list__item
+                a.promo-button.promo-button--big.promo-button--bright(href='#' title='подписка на годовую безлимитную публикацию').
+                    250 USD<br>
+                    <span class="small-text">в год</span>
+
+    section.default-section.presentation-content__company-profile.service-companies-content__company-profile.text-center
+        header.default-section__header
+            h2.default-section__title Профайл вашей компании
+        .default-section__content
+            section.media-block.text-left
+                header.media-block__header.media-block__header--cover
+                .media-block__content
+                    p.
+                        <b class="important-text">Мини-сайт на трех языках:</b> английском, русском и китайском. Страница, по
+                        которой вашу компанию и услугу cмогут легко найти внутри нашего Глобального Туристического Справочника и
+                        которая аккумулирует все сведения, помеченные в системе «для всех».
+                    p.
+                        А это такие полезные сведения для продажи ваших сервисов как: фотографии, видео-файлы,
+                        описания курортов, медицинских и СПА процедур, программ оздоровления и туров, путёвки,
+                        заявки, счета, цены, контракты, а также информацию о спец. предложениях вашей компании, совместных
+                        акциях и многое другое. Тем самым, профайл помогает Вам быстро обновлять информацию и показывать
+                        партнерам и будущим клиентам все самое свежее и актуальное. Ваш профайл доступен любому
+                         пользователю интернета!
+                    p.no-margin.text-center.
+                        <b class="important-text">Мы списываем только абонентскую плату за техническое сопровождение<br>
+                        вашего мини-сайта:</b>
+                    p.important-text.text-center.
+                        <span class="inline-block">1 месяц – 40 USD</span> <span class="inline-block">1 год – 300 USD</span>
+            ul.box-list.box-list--big
+                li.box-list__item.bordered-box.bordered-box--v1
+                    a.box-list__item-link(href='#')
+                        img.bordered-box__image.img-responsive(src='./images/img-logo-garage.jpg' alt='garage')
+
+    section.default-section.presentation-content__search-and-promo-tools
         header.default-section__header
             span.additional-text Раздел
             h2.default-section__title Инструменты поиска и<br> продвижения
@@ -198,45 +308,14 @@ block append content
                     Будьте еще ближе к вашим
                     партнерам и новым
                     потенциальным агентам!
-
-    section.presentation-content__publications-collection.tourism-boards-content__publications-collection.custom-banner.custom-banner--v2
-        header.custom-banner__header
-            span.custom-banner__help-text Блок
-            h2.custom-banner__title.
-                <span class="primary-text">Коллекция публикаций</span>
-                <span class="secondary-text">для совместного продвижения</span>
-        .custom-banner__content
-            p.
-                Создайте собственную коллекцию постов о вашей авиакомпании, ее особенностях и
-                «фишках» для максимально быстрого и эффективного  продвижения среди продающих
-                агентов. Любой пользователь интернета сможет не только прочитать ее на профайле
-                вашей компании, но и после регистрации настроить все ваши публикации для перепоста
-                на свой сайт и в свои социальные сети с помощью создания очереди публикаций.
-            a#modal__open--inner.btn.btn--v8(href='#') Подробнее
-
-    section.default-section.presentation-content__company-profile.tourism-boards-content__company-profile.text-center
-        header.default-section__header
-            h2.default-section__title Профайл Офиса по туризму
-        section.media-block.default-section__content.text-left
-            header.media-block__header.media-block__header--cover
-            .media-block__content
-                p.
-                    <b>Мини-сайт вашей компании</b> на трех языках: английском, русском и китайском. Страница, по
-                    которой вашу компанию могут легко найти внутри нашего Глобального Туристического Справочника и
-                    которая аккумулирует все сведения, помеченные в системе «для всех».
-                p.
-                    А это и описание вашей компании, лого и главное фото, ваши сервисы на борту и в аэропортах мира, меню,
-                    ливреи и имена самолетов, форма стюардесс, правила и штрафы, рассадка и размеры кресел, описания
-                    бортов, карту полетов, новости, коллекцию публикаций, публичные контакты для связи, рабочие файлы для
-                    скачивания, пресс-релизы. Тем самым, профайл помогает Вам быстро обновлять информацию и показывать
-                    партнерам все самое свежее и актуальное. Профайл доступен любому пользователю интернета!
-        ul.box-list
-            li.box-list__item.bordered-box.bordered-box--v1
-                a.box-list__item-link(href='#')
-                    img.bordered-box__image.img-responsive(src='./images/img-logo-seychelles.jpg' alt='seychelles')
-            li.box-list__item.bordered-box.bordered-box--v1
-                a.box-list__item-link(href='#')
-                    img.bordered-box__image.img-responsive(src='./images/img-logo-guam-vb.jpg' alt='guam visitors bureau')
+            li.feature-item.feature-item--big-icon.feature-item--profile.features-list__item
+                h3.feature-item__title Профиль
+                p.feature-item__content.
+                    Регулярно пополняйте свой
+                    профиль и смотрите, как он
+                    выглядит для других в системе.
+                    Следите за появлением новых
+                    инструментов!
 
     section.default-section.default-section--bright.presentation-content__other-blocks
         ul.features-list.features-list--inverted-color.default-section__content.text-center
@@ -253,33 +332,28 @@ block append content
             li.feature-item.feature-item--inverted-color.feature-item--working-files.features-list__item
                 span.feature-item__help-text Блок
                 h2.feature-item__title Рабочие файлы
-                p.feature-item__content.
-                    Облачное хранилище всех ваших
-                    материалов по странам, в которые
-                    Вы летаете, и по вашей
-                    авиакомпании и ее самолетам.
-                    Бесплатно загрузите в ваш Личный
-                    Кабинет на Unitravel.pro любое
-                    количество файлов, которые могут
-                    быть востребованы у ваших
-                    партнеров и агентств: фото, видео,
-                    карту полетов, описание
-                    самолетов, рассадку кресел, меню,
-                    сервисы на борту, программу
-                    развлечений и пр. Используйте
-                    настройки видимости и тэги
+                p.feature-item__content.feature-item__content--loose.
+                    Загрузите файлы, которые нужны
+                    вашим партнерам и агентствам для
+                    работы:  фотографии,
+                    видео-файлы, описания курортов и
+                    клиник, медицинских и СПА
+                    процедур, программ оздоровления
+                    и туров.
             li.feature-item.feature-item--inverted-color.feature-item--languages.features-list__item
                 span.feature-item__help-text Блок
                 h2.feature-item__title Языки
-                p.feature-item__content.
-                    Сайт адаптирован и переведен под
-                    русский, английский, китайский
-                    языки. В будущем мы планируем его
-                    перевести на все основные языки.
+                p.feature-item__content.feature-item__content--loose.
+                    Сайт адаптирован и переведен
+                    под русский, английский,
+                    китайский языки. В будущем мы
+                    планируем его перевести на все
+                    основные языки.
 
-    section.default-section.tourism-boards-content__paid-services
-        header.presentation-content__header.presentation-content__header--secondary.tourism-boards-content__header.tourism-boards-content__header--secondary.default-section__header
-            h1.presentation-content__title.presentation-content__title--main Офисам по туризму
+
+    section.default-section.service-companies-content__paid-services
+        header.presentation-content__header.presentation-content__header--secondary.service-companies-content__header.service-companies-content__header--secondary.default-section__header
+            h1.presentation-content__title.presentation-content__title--main Для вашей компании
             h1.presentation-content__title.presentation-content__title--secondary Платные сервисы
         ul.features-list.features-list--align-stretch.default-section__content.text-center
             li.feature-item.feature-item--flex.feature-item--translates.features-list__item
@@ -293,6 +367,23 @@ block append content
                     Кабинета на платформе Unitravel.pro
                     перевод на нужный Вам язык.
                 a.btn.btn--v7.btn--narrow(href='#' title='Заказать перевод') Заказать
+
+    section.default-section.service-companies-content__contacts-and-chat.text-center
+        header.default-section__header
+            h2.default-section__title Работа с контактами и чат
+        section.media-block.default-section__content.text-left
+            header.media-block__header.media-block__header--cover
+            .media-block__content
+                p.
+                    Внесите в список контактов всех ваших партнеров и клиентов, чтобы информация всегда была под
+                    рукой и доступной всем вашим сотрудникам.
+                    Под одним аккаунтом в вашем Личном Кабинете может работать любое количество ваших
+                    сотрудников,
+                p.
+                    назначьте им разные права администрирования. Сделайте некоторые контакты публичными, чтобы
+                    каждый пользователь внутри Unitravel.pro мог с ним связаться через удобный чат, минуя почту
+                    и многочисленные ICQ/SKYPE.  Все сообщения будут поступать сразу в систему сообщений в чате,
+                     для этого не нужно знать ваш мейл или номера ICQ/SKYPE.
 
     section#uploadable--our-partners.uploadable.uploadable--our-partners.presentation-content__our-partners(data-collapsed='true')
         b.uploadable__title.promo-text С нами уже более <span id="partners-count">300</span> партнёров
@@ -402,7 +493,7 @@ block append content
 
         a.uploadable__load-button.btn.btn--v10(href='#' title='показать ещё') Показать ещё
 
-    a#back-to-top.back-to-top(href="#tourism-boards_page")
+    a#back-to-top.back-to-top(href="#service-companies_page")
         span.icon.icon-arrow-up
 
 
@@ -418,28 +509,24 @@ block append inner_modals
                     h3.publications-feature__title
                         span.publications-feature__title-primary Делитесь накопленными
                         span.publications-feature__title-secondary материалами
-                .publications-feature__content.publications-feature__content--shifted
+                .publications-feature__content
                     p.
-                        Ваша компания обладает накопленными материалами и
-                        опытом, которые актуальны в любое время – это детали и
-                        нюансы по любому вашему сервису, услуге или
-                        туру/экскурсии; особенностях  места или города, в которых
-                        они проходят; истории страны/курорта и ее
-                .publications-feature__buttons.publications-feature__buttons--shifted
+                        Ваша компания обладает накопленными материалами и опытом, которые
+                        актуальны в любое время – это детали и нюансы по любому Вашему сервису
+                        или услуге; описания Ваших медицинских программ и авторских курсов;
+                .publications-feature__buttons
                     a.btn.btn--v7.btn--small(href='#' title='Подробнее') Подробнее
             li.publications-feature.publications-feature--mini-reviews.publications__features-list-item.modal__content-part
                 header.publications-feature__header
                     h3.publications-feature__title
                         span.publications-feature__title-primary Создавайте мини-обзоры
-                        span.publications-feature__title-secondary по вашей стране
+                        span.publications-feature__title-secondary на ваши сервисы
                 .publications-feature__content.publications-feature__content--shifted
                     p.
-                        Создайте такие мини-обзоры по вашей стране и по вашей компании. Это будет
-                        текст из 1-2-х абзацев и красочное фото.
-                    p.
-                        Ваша персональная Коллекция Публикаций может состоять из 20-50
-                        обзоров и более (оптимально – от 100 постов, чтобы сформировать
-                        Ваш уникальный контент).
+                        Создайте такие мини-обзоры по вашему объекту. Это будет текст из
+                        1-2-х абзацев и красочное фото. Ваша персональная Коллекция
+                        Публикаций может состоять из 20-50 обзоров и более (оптимально –
+                        от 100 постов, чтобы сформировать Ваш уникальный контент).
                     p.
                         Положите их под облаком тэгов внутри Unitravel Pro.
             li.publications-feature.publications-feature--settings-control.publications__features-list-item.modal__content-part
@@ -515,13 +602,13 @@ block right_side
         header.menu-company-type__header Начать работу <button class="menu-company-type__header-switch" type="button">Toggle menu</button>
         ul.menu-company-type__content.company-types-list
             li.company-types-list__item
-                a.company-types-list__link(href='#' title='Отелям') Отелям
+                a.company-types-list__link.company-types-list__link--current(title='Отелям') Отелям
             li.company-types-list__item
-                a.company-types-list__link(href='#' title='Агенствам и туроператорам') Агенствам и<br> туроператорам
+                a.company-types-list__link(href='#' title='Агенствам и туроператорам') Агенствам и туроператорам
             li.company-types-list__item
                 a.company-types-list__link(href='#' title='Авиакомпаниям') Авиакомпаниям
             li.company-types-list__item
-                a.company-types-list__link.company-types-list__link--current(title='Бюро по туризму') Бюро по туризму
+                a.company-types-list__link(href='#' title='Бюро по туризму') Бюро по туризму
             li.company-types-list__item
                 a.company-types-list__link(href='#' title='Объектам культуры') Объектам культуры
             li.company-types-list__item
