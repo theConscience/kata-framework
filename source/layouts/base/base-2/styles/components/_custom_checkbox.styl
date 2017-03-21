@@ -4,8 +4,13 @@
 .custom-checkbox
     // cursor crosshair
 
+
 .custom-checkbox--dark
     // cursor crosshair
+
+.custom-checkbox--bright
+    // cursor crosshair
+
 
 .custom-checkbox--dark > input[type=checkbox]
     display none
@@ -58,3 +63,56 @@
 
     &::after
         background-image url(../images/bg-ok-dark.svg)
+
+
+.custom-checkbox--bright > input[type=checkbox]
+    display none
+    width 18px
+    height 18px
+    border 0
+    box-shadow none
+    outline none
+
+    &:checked + label::after
+        opacity 1
+
+.custom-checkbox--bright > label
+    position relative
+    padding-left 31px
+    fontHvLight14_26()
+    color c_light-font
+    cursor pointer
+
+    &::before
+    &::after
+        position absolute
+        top 4px
+        left 0
+        width 18px
+        height 18px
+        content ''
+
+    &::before
+        border-radius 0
+        background-color c_contrast
+
+    &::after
+        opacity 0
+        background-repeat no-repeat
+        background-image url(../images/bg-ok-dark.svg)
+        background-position 4px 5px
+        transition opacity .4s
+
+.custom-checkbox--bright > input:disabled + label
+.custom-checkbox--bright > input.is-disabled + label
+.custom-checkbox--bright > input.disabled + label
+    fontHvLight14_20()
+    color c_white
+    cursor default
+
+    &::before
+        border-radius 0
+        background-color c_promo-dull
+
+    &::after
+        background-image url(../images/bg-ok-white.svg)

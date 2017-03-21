@@ -54,6 +54,9 @@ block left_side
                         .custom-label.custom-label--v1(data-validation-message='Вы ввели неверный пароль пользователя')
                             input#sign-in__password.sign-in__password(type='password', name='password', required='')
                             label.sign-in__label Пароль
+                        .custom-checkbox.custom-checkbox--bright.sign-in__label
+                            input#sign-in__stay-logged(name='auth-never-expire' type='checkbox')
+                            label(for='sign-in__stay-logged' tabindex='5') Оставаться в сети
                         a.sign-in__forgot-password(href='#' title='Сброс пароля') Забыли пароль?
                         button.btn.btn--v5(type='submit') Войти
                     a.btn.btn--v6(href='#' title='Регистрация') Регистрация
