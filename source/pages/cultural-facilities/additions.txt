@@ -1,15 +1,16 @@
 .info-block
-.info-block--t1
-  .info-block__header
+-.info-block--t1
+  -.info-block__header
+  .info-block__title
   .info-block__content
-  .info-block__content--decorated
+  -.info-block__content--decorated
 
 -.lists-wrapper
 -.lists-wrapper--t1
 -.lists-wrapper--curly-braced
 
 ul.decorative-list
-ul.decorative-list--t1
+-ul.decorative-list--t1
   li.decorative-list__item
 
 ul.alternatives-list
