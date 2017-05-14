@@ -1,0 +1,145 @@
+include ./blocks/_mixins
+
+doctype html
+html(lang='ru' manifest='offline.manifest')
+    head
+        include ./blocks/_head
+
+        block links
+            include ./blocks/_links
+            // в base_css лежит весь сконкатенированный .css, в данном случае - декларации @font-face
+            // которые теряются при попытке писать их в stylus'е
+            link(href='./css/base_css.css' rel='stylesheet')
+            // тут лежат все остальные стили базового шаблона, скомпиленные из стайлуса
+            link(href='./css/base_style.css' rel='stylesheet')
+
+        block components_links
+
+    body.page(id=pageName ? pageName + '_page' : subTemplateName ? subTemplateName + '_page' : 'uh-inner_page',
+         class=pageName ? pageName + '_page' + (subTemplateName ? ' ' + subTemplateName + '_page' : '') + (bodyClasses ? ' ' + bodyClasses : '') :
+               subTemplateName ? subTemplateName + '_page' + (bodyClasses ? ' ' + bodyClasses : '') :
+               'uh-inner-page ' + (bodyClasses ? bodyClasses : ''))
+
+        .body-inner
+            header.page-header(class=pageName ? pageName + '-page__header ' + pageName + '-header' + (subTemplateName ? ' ' + subTemplateName + '-page__header ' + subTemplateName + '-header ' : '')  + (mainClasses ? mainClasses : '') :
+                                     subTemplateName ? ' ' + subTemplateName + '-page__header ' + subTemplateName + '-header ' + (headerClasses ? headerClasses : '') :
+                                     'uh-inner-page__header uh-inner-header' + (headerClasses ? headerClasses : ''))
+
+                .page-header__top
+                    block header
+                        // default header
+                        nav.to-homepage-nav
+                            a.site-logo.site-logo--uh(href='#', title='Главная страница')
+                                img.site-logo__image(src='#' width='' height='' alt='Логотип Unihotel')
+                        h1.site-title Бесплатный международный туристический справочник
+                        .site-language
+                            form#site-language__form.site-language__form(method='POST' action="{% url 'language' %}")
+                                csrf_token
+                                input(type='hidden' name='next' value='{{ request.path }}')
+                                input#site-language__value(type='hidden' name='language')
+                                ul.site-language__menu
+                                    each language in ['русский', 'english', 'chineese']
+                                        li.site-language__menu-item
+                                            a.site-language__menu-link(data-language-code='{{ language.code }}')= language
+
+                .page-header__bottom
+                    block search_panel
+                        // default search panel
+                        section.site-search
+                            form#site-search__form.site-search__form(method='GET' action="{% url 'companies_search' %}")
+                                csrf_token
+                                input#site-search__query.site-search__query(type='text' placeholder='Введите поисковый запрос')
+                                select#site-search__company-type.site-search__company-type
+                                    option(value='') Тип компании
+                                    each label, value in {aircompany: 'Авиакомпания', hotel: 'Отель', 'tourism-bureau': 'Бюро по туризму'}
+                                        option(value=value)= label
+                                select#site-search__country.site-search__country
+                                    option(value='') Страна
+                                    each label, value in {russia: 'Россия', thailand: 'Тайланд', 'new-zealand': 'Новая зеландия'}
+                                        option(value=value)= label
+                                input#site-search__company-id.site-search__company-id(type='text' placeholder='ID Компании')
+                                button#site-search__form-submit.site-search__form-submit.btn.btn--type--3(type='submit') Поиск
+
+            aside.page-aside(class=pageName ? pageName + '-page__aside ' + pageName + '-aside' + (subTemplateName ? ' ' + subTemplateName + '-page__aside ' + subTemplateName + '-aside ' : '')  + (mainClasses ? mainClasses : '') :
+                             subTemplateName ? ' ' + subTemplateName + '-page__aside ' + subTemplateName + '-aside ' + (asideClasses ? asideClasses : '') :
+                             'uh-inner-page__aside uh-inner-aside' + (asideClasses ? asideClasses : ''))
+
+                block right_side
+                    // default right-side aside content
+                    nav.main-nav
+                        ul.main-nav__menu
+                            li.main-nav__item
+                                a.main-nav__link.main-nav__link--hotels(href='#', title='Мои отели') Мои отели
+                            li.main-nav__item
+                                a.main-nav__link.main-nav__link--documents(href='#', title='Документы') Документы
+                            li.main-nav__item
+                                a.main-nav__link.main-nav__link--instruments(href='#', title='Инструменты') Инструменты
+                            li.main-nav__item
+                                a.main-nav__link.main-nav__link--avia(href='#', title='Авиа') Авиа
+                            li.main-nav__item
+                                a.main-nav__link.main-nav__link--news(href='#', title='Новости') Новости
+
+                            block additional_main_nav
+                                // additional main navigation content
+
+                    nav.actions-nav
+                        ul.actions-nav__menu
+                            li.actions-nav__item.actions-nav__item--big
+                                a.actions-nav__link.actions-nav__link--invite-partners(href='#', title='Приграсите всех ваших партнёров для совместной работы') Приграсите всех ваших партнёров для совместной работы
+                            li.actions-nav__item.actions-nav__item--small
+                                a.actions-nav__link.actions-nav__link--messages(href='#', title='Сообщения') Сообщения
+                            li.actions-nav__item.actions-nav__item--small
+                                a.actions-nav__link.actions-nav__link--orders(href='#', title='Заявки') Заявки
+                            li.actions-nav__item.actions-nav__item--small.actions-nav__item--offset-bottom
+                                a.actions-nav__link.actions-nav__link--bills(href='#', title='Счета') Счета
+                            li.actions-nav__item.actions-nav__item--bright
+                                a.actions-nav__link.actions-nav__link--help(href='#', title='Помощь') Помощь
+
+                            block additional_actions_nav
+                                // additional actions navigation content
+
+            main(class=pageName ? pageName + '-page__main ' + (subTemplateName ? ' ' + subTemplateName + '-page__main ' : '')  + (mainClasses ? mainClasses : '') :
+                       subTemplateName ? ' ' + subTemplateName + '-page__main ' + (mainClasses ? mainClasses : '') :
+                       'uh-inner-page__main uh-inner-main' + (mainClasses ? mainClasses : ''))
+
+                block content_left_side
+                    // default left-side block
+                    nav.page-nav
+                        ul.page-nav__menu
+                            li.page-nav__menu-item
+                                a.page-nav__menu-link(href='#', title='Ссылка 1') Ссылка 1
+                            li.page-nav__menu-item
+                                a.page-nav__menu-link(href='#', title='Ссылка 2') Ссылка 2
+
+                            block additional_page_nav
+                                // default page additional navigation
+
+                block content
+                    // default page content
+                    article.page-content(class=pageName ? pageName + '-page__content ' + pageName + '-content' + (subTemplateName ? ' ' + subTemplateName + '-page__content ' + subTemplateName + '-content ' : '')  + (contentClasses ? contentClasses : '') :
+                                               subTemplateName ? ' ' + subTemplateName + '-page__content ' + subTemplateName + '-content ' + (contentClasses ? contentClasses : '') :
+                                               'uh-inner-page__content uh-inner-content' + (contentClasses ? contentClasses : ''))
+                        p Default page content
+
+                        block additional_content
+                            // additional default page content
+
+            footer.page-footer(class=pageName ? pageName + '-page__footer ' + pageName + '-footer' + (subTemplateName ? ' ' + subTemplateName + '-page__footer ' + subTemplateName + '-footer ' : '')  + (mainClasses ? mainClasses : '') :
+                                     subTemplateName ? ' ' + subTemplateName + '-page__footer ' + subTemplateName + '-footer ' + (footerClasses ? footerClasses : '') :
+                                     'uh-inner-page__footer uh-inner-footer' + (footerClasses ? footerClasses : ''))
+
+                block footer
+                    // default footer content
+                    p Default unihotel inner page footer
+
+            block inner_modals
+
+        block modals
+
+        block templates
+
+        block scripts
+            include ./blocks/_scripts
+            script(src='./js/base_js.js')
+
+        block components_scripts

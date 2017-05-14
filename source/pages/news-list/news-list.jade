@@ -1,0 +1,635 @@
+extends ../../layouts/sub/sub-3/sub-3
+
+include ./blocks/_mixins.jade
+
+
+block append head
+    //- var pageName = 'news-list';  // закомментил, иначе она будет влиять на классы body, header, main, aside и footer
+    - var pageTitle = 'News-list page template';
+
+
+block append links
+    link(href='./css/page_css.css' rel='stylesheet')
+    link(href='./css/page_style.css' rel='stylesheet')
+    //- link(href='./css/page_css.min.css' rel='stylesheet')
+    //- link(href='./css/page_style.min.css' rel='stylesheet')
+
+
+block append scripts
+    // Скрипт для расстановки переносов, добавляет метод $(<selector>).hyphens(<lang-code>) в jQuery
+    script(src='../../distrs/jquery/plugins/hypher/jquery.hypher.js')
+    // Скрипт с паттернами переносов для английского языка, <lang-code> = 'en-us'
+    script(src='../../distrs/jquery/plugins/hypher/patterns/en-us.js')
+    // Скрипт с паттернами переносов для русского языка, <lang-code> = 'ru'
+    script(src='../../distrs/jquery/plugins/hypher/patterns/ru.js')
+    // Скрипты страницы
+    script(src='./js/page_js.js')
+    //- script(src='./js/page_js.min.js')
+
+
+block content_left_side
+    // news-list page navigation
+    nav.page-nav
+        ul.page-nav__menu
+            li.page-nav__menu-item
+                a#page-nav__filter-reset.page-nav__menu-link(href='#', title='Сбросить фильтры')
+            li.page-nav__menu-item
+                a#page-nav__filter-hotels.page-nav__menu-link(href='#', title='Новости отелей')
+                section#filter-hotels.page-nav__togglable-panel
+                    h3.page-nav__togglable-panel-title Новости отелей
+                    ul.page-nav__submenu
+                        li.page-nav__submenu-item
+                            a#filter-hotels__all.page-nav__submenu-link(href='#', title='Все новости') Все новости
+                        li.page-nav__submenu-item
+                            a#filter-hotels__celebrities.page-nav__submenu-link(href='#', title='Знаменитости в отеле') Знаменитости в отеле
+                        li.page-nav__submenu-item
+                            a#filter-hotels__events.page-nav__submenu-link(href='#', title='Мероприятия/события') Мероприятия/события
+                        li.page-nav__submenu-item
+                            a#filter-hotels__review.page-nav__submenu-link(href='#', title='Обзор') Обзор
+                        li.page-nav__submenu-item
+                            a#filter-hotels__in-movies.page-nav__submenu-link(href='#', title='Отель в кино') Отель в кино
+                        li.page-nav__submenu-item
+                            a#filter-hotels__promotions.page-nav__submenu-link(href='#', title='Промо-акции отелей') Промо-акции отелей
+                        li.page-nav__submenu-item
+                            a#filter-hotels__renovations.page-nav__submenu-link(href='#', title='Реновации') Реновации
+                        li.page-nav__submenu-item
+                            a#filter-hotels__special-offers.page-nav__submenu-link(href='#', title='Специальные предложения') Специальные<br> предложения
+            li.page-nav__menu-item
+                a#page-nav__filter-aircompanies.page-nav__menu-link(href='#', title='Новости авиакомпаний')
+                section#filter-aircompanies.page-nav__togglable-panel
+                    h3.page-nav__togglable-panel-title Новости авиакомпаний
+                    ul.page-nav__submenu
+                        li.page-nav__submenu-item
+                            a#filter-aircompanies__all.page-nav__submenu-link(href='#', title='Все новости') Все новости
+                        li.page-nav__submenu-item
+                            a#filter-aircompanies__comfort.page-nav__submenu-link(href='#', title='Комфорт на борту и в аэропорту') Комфорт на борту и в аэропорту
+            li.page-nav__menu-item
+                a#page-nav__filter-tourism-boards.page-nav__menu-link(href='#', title='Новости офисов и департаментов по туризму')
+                section#filter-tourism-boards.page-nav__togglable-panel
+                    h3.page-nav__togglable-panel-title Новости офисов и департаментов по туризму
+                    ul.page-nav__submenu
+                        li.page-nav__submenu-item
+                            a#filter-tourism-boards__all.page-nav__submenu-link(href='#', title='Все новости') Все новости
+                        li.page-nav__submenu-item
+                            a#filter-tourism-boards__new-services.page-nav__submenu-link(href='#', title='Новинки сервисов места/страны') Новинки сервисов места/страны
+                        li.page-nav__submenu-item
+                            a#filter-tourism-boards__country-facts.page-nav__submenu-link(href='#', title='Интересные факты о стране') Интересные факты о стране
+            li.page-nav__menu-item
+                a#page-nav__filter-tour-operators.page-nav__menu-link(href='#', title='Новости принимающих компаний')
+                section#filter-tour-operators.page-nav__togglable-panel
+                    h3.page-nav__togglable-panel-title Новости принимающих компаний
+                    ul.page-nav__submenu
+                        li.page-nav__submenu-item
+                            a#filter-tour-operstors__all.page-nav__submenu-link(href='#', title='Все новости') Все новости
+                        li.page-nav__submenu-item
+                            a#filter-tour-operators__events.page-nav__submenu-link(href='#', title='События и мероприятия от туроператоров') События и мероприятия от туроператоров
+                        li.page-nav__submenu-item
+                            a#filter-tour-operators__country-facts.page-nav__submenu-link(href='#', title='Интересные факты о стране') Интересные факты о стране
+            li.page-nav__menu-item
+                a#page-nav__filter-medical-tourism.page-nav__menu-link(href='#', title='Новости медицинского туризма')
+                    section#filter-medical-tourism.page-nav__togglable-panel
+                    h3.page-nav__togglable-panel-title Новости медицинского туризма
+                    ul.page-nav__submenu
+                        li.page-nav__submenu-item
+                            a#filter-medical-tourism__all.page-nav__submenu-link(href='#', title='Все новости') Все новости
+                        li.page-nav__submenu-item
+                            a#filter-medical-tourism__news.page-nav__submenu-link(href='#', title='Новости медицинского туризма') Новости медицинского туризма
+                        li.page-nav__submenu-item
+                            a#filter-medical-tourism__unique-programs.page-nav__submenu-link(href='#', title='Уникальные программы лечения/оздоровления') Уникальные программы лечения/оздоровления
+            li.page-nav__menu-item
+                a#page-nav__filter-cultural-sites.page-nav__menu-link(href='#', title='Новости объектов культуры')
+                    section#filter-cultural-sites.page-nav__togglable-panel
+                    h3.page-nav__togglable-panel-title Новости объектов культуры
+                    ul.page-nav__submenu
+                        li.page-nav__submenu-item
+                            a#filter-cultural-sites__all.page-nav__submenu-link(href='#', title='Все новости') Все новости
+                        li.page-nav__submenu-item
+                            a#filter-cultural-sites__history.page-nav__submenu-link(href='#', title='Исторические факты и детали') Исторические факты и детали
+                        li.page-nav__submenu-item
+                            a#filter-cultural-sites__announcements.page-nav__submenu-link(href='#', title='Анонсы событий') Анонсы событий
+            li.page-nav__menu-item
+                a#page-nav__filter-services.page-nav__menu-link(href='#', title='Новости сервисных компаний')
+                    section#filter-services.page-nav__togglable-panel
+                    h3.page-nav__togglable-panel-title Новости сервисных компаний
+                    ul.page-nav__submenu
+                        li.page-nav__submenu-item
+                            a#filter-services__all.page-nav__submenu-link(href='#', title='Все новости') Все новости
+                        li.page-nav__submenu-item
+                            a#filter-services__best-services-reviews.page-nav__submenu-link(href='#', title='Обзоры лучших мест и деталий сервисов') Обзоры лучших мест и деталий сервисов
+                        li.page-nav__submenu-item
+                            a#filter-services__tickets-coupons.page-nav__submenu-link(href='#', title='Билеты и купоны') Билеты и купоны
+            li.page-nav__menu-item
+                a.page-nav__menu-link(href='#', title='Видео обзоры')
+            li.page-nav__menu-item
+                a#page-nav__filter-exhibitions-events.page-nav__menu-link(href='#', title='Новости выставок и событий')
+                    section#filter-exhibitions-events.page-nav__togglable-panel
+                    h3.page-nav__togglable-panel-title Новости выставок и событий
+                    ul.page-nav__submenu
+                        li.page-nav__submenu-item
+                            a#filter-exhibitions-events__all.page-nav__submenu-link(href='#', title='Все новости') Все новости
+                        li.page-nav__submenu-item
+                            a#filter-exhibitions-events__seminars-exhibitions.page-nav__submenu-link(href='#', title='События: участие в семинарах, выставках') События: участие в семинарах, выставках
+                        li.page-nav__submenu-item
+                            a#filter-exhibitions-events__country-events.page-nav__submenu-link(href='#', title='Мероприятия в стране') Мероприятия в стране
+            li.page-nav__menu-item
+                a#page-nav__filter-mass-media-pr.page-nav__menu-link(href='#', title='Новости СМИ, PR–агентств')
+                    section#filter-mass-media-pr.page-nav__togglable-panel
+                    h3.page-nav__togglable-panel-title Новости СМИ, PR–агентств
+                    ul.page-nav__submenu
+                        li.page-nav__submenu-item
+                            a#filter-mass-media-pr__all.page-nav__submenu-link(href='#', title='Все новости') Все новости
+                        li.page-nav__submenu-item
+                            a#filter-mass-media-pr__seminars-exhibitions.page-nav__submenu-link(href='#', title='События: участие в семинарах, выставках') События: участие в семинарах, выставках
+                        li.page-nav__submenu-item
+                            a#filter-mass-media-pr__country-events.page-nav__submenu-link(href='#', title='Мероприятия в стране') Мероприятия в стране
+            li.page-nav__menu-item
+                a#page-nav__filter-shops-restaurants.page-nav__menu-link(href='#', title='Новости ресторанов и магазинов')
+                    section#filter-shops-restaurants.page-nav__togglable-panel
+                    h3.page-nav__togglable-panel-title Новости ресторанов и магазинов
+                    ul.page-nav__submenu
+                        li.page-nav__submenu-item
+                            a#filter-shops-restaurants__all.page-nav__submenu-link(href='#', title='Все новости') Все новости
+                        li.page-nav__submenu-item
+                            a#filter-shops-restaurants__promotions.page-nav__submenu-link(href='#', title='Акции и промо') Акции и промо
+                        li.page-nav__submenu-item
+                            a#filter-shops-restaurants__awards.page-nav__submenu-link(href='#', title='Награды, премии, заслуги') Награды, премии, заслуги
+            li.page-nav__menu-item
+                a.page-nav__menu-link(href='#', title='Фото обзоры')
+
+
+block additional_page_nav
+    //
+
+
+block content
+    section.page-content.uh-inner-page__content.news-list-content
+
+        section#news-slider.news-list-content__slider.slider.slider--type--1
+            input#slider__to-slide-1.slider__radio-control(type='radio' name='slider__radio-control' value='to-slide-1')
+            input#slider__to-slide-2.slider__radio-control(type='radio' name='slider__radio-control' value='to-slide-2')
+            input#slider__to-slide-3.slider__radio-control(type='radio' name='slider__radio-control' value='to-slide-3')
+            input#slider__to-slide-4.slider__radio-control(type='radio' name='slider__radio-control' value='to-slide-4')
+            .slider__inner
+                header.slider__header
+                    h1.slider__title
+                        span.slider__title-primary LUX
+                        span.slider__title-secondary Resorts & Hotels
+                .slider__content
+                    h2.slider__promo-text Более лёгкий и яркий отдых
+                    p.slider__description.
+                        Чтобы предоставить нашим гостям возможность насладиться жизнью и
+                        сделать их отдых легче и ярче, мы создали новый подход к роскоши
+                        и предлагаем поистине уникальный отдых
+                ul.slider__controls
+                    li.slider__controls-item
+                        label(for='slider__to-slide-1')
+                            img.slider__controls-image(src='', alt='', title='')
+                    li.slider__controls-item
+                        label(for='slider__to-slide-2')
+                            img.slider__controls-image(src='', alt='', title='')
+                    li.slider__controls-item
+                        label(for='slider__to-slide-3')
+                            img.slider__controls-image(src='', alt='', title='')
+                    li.slider__controls-item
+                        label(for='slider__to-slide-4')
+                            img.slider__controls-image(src='', alt='', title='')
+                .slider__additional-info Мальдивы
+
+        section.news-list-content__nav.news-nav
+            a#news-nav__add-news.news-nav__add-news(href='#' title='Добавить новость') Добавить новость
+            ul.news-nav__menu
+                li.news-nav__menu-item
+                    a.news-nav__menu-link(href='#', title='Настройка ленты') Настройка ленты
+                li.news-nav__menu-item
+                    a.news-nav__menu-link(href='#', title='Публикации') Публикации
+                li.news-nav__menu-item
+                    a.news-nav__menu-link(href='#', title='Переводы') Переводы
+                li.news-nav__menu-item
+                    a.news-nav__menu-link(href='#', title='Выгрузки') Выгрузки
+            .news-nav__dropdown-social-menu.dropdown-social
+                label.dropdown-social__button(for='dropdown-social__open' title='open social dropdown') open
+                    ul.dropdown-social__inner-list
+                        li.dropdown-social__inner-item.dropdown-social__inner-item--vk
+                        li.dropdown-social__inner-item.dropdown-social__inner-item--fb
+                        li.dropdown-social__inner-item.dropdown-social__inner-item--inst
+                    .dropdown-social__state-indicator
+                input#dropdown-social__open.dropdown-social__open(type='checkbox' name='dropdown-social')
+                ul.dropdown-social__submenu.dropdown-social__submenu--centered
+                    li.dropdown-social__submenu-item
+                        a.dropdown-social__submenu-link(href='#' title='Управление') Управление
+                    li.dropdown-social__submenu-item
+                        a.dropdown-social__submenu-link(href='#' title='Статистика') Статистика
+            .news-nav__country-selection.dropdown-simple.dropdown-simple--type--1.dropdown-simple--align--right
+                label.dropdown-simple__button(for='filter-by-country-1')
+                    span.dropdown-simple__active-item Маврикий
+                input#filter-by-country-1.dropdown-simple__open(type='checkbox' name='dropdown-simple')
+                ul.dropdown-simple__list
+                    li.dropdown-simple__list-item
+                        a#country-selection__us.dropdown-simple__link(href='#', title='Соединённые штаты') Соединённые штаты
+                    li.dropdown-simple__list-item
+                        a#country-selection__gb.dropdown-simple__link(href='#', title='Великобритания') Великобритания
+                    li.dropdown-simple__list-item
+                        a#country-selection__nw.dropdown-simple__link(href='#', title='Норвегия') Норвегия
+                    li.dropdown-simple__list-item
+                        a#country-selection__rf.dropdown-simple__link(href='#', title='Российская Федерация') Российская Федерация
+
+        section.news-list-content__filters.news-filters
+            .news-filters__top
+                button.news-filters__to-left
+                ul.news-filters__popular-countries.filters-list.filters-list--theme--dull
+                    li.filters-list__item.filters-list__item--active
+                        a.filters-list__filter(href='#', title='Все страны') Все страны
+                    li.filters-list__item
+                        a.filters-list__filter(href='#', title='Маврикий') Маврикий
+                    li.filters-list__item
+                        a.filters-list__filter(href='#', title='Остров реюньон') Остров реюньон
+                    li.filters-list__item
+                        a.filters-list__filter(href='#', title='Мальдивы') Мальдивы
+                    li.filters-list__item
+                        a.filters-list__filter(href='#', title='Китай') Китай
+                    li.filters-list__item
+                        a.filters-list__filter(href='#', title='О.А.Э.') О.А.Э.
+                    li.filters-list__item
+                        a.filters-list__filter(href='#', title='Турция') Турция
+                    li.filters-list__item
+                        a.filters-list__filter(href='#', title='Вьетнам') Вьетнам
+                    li.filters-list__item
+                        a.filters-list__filter(href='#', title='Италия') Италия
+                button.news-filters__to-right
+            .news-filters__bottom
+                ul.news-filters__categories.filters-list.filters-list--theme--bright
+                    li.filters-list__item.filters-list__item--active
+                        a.filters-list__filter(href='#', title='Со всего мира') Со всего мира
+                    li.filters-list__item
+                        a.filters-list__filter(href='#', title='Партнерские') Партнерские
+                    li.filters-list__item
+                        a.filters-list__filter(href='#', title='Мои') Мои
+                    li.filters-list__item
+                        a.filters-list__filter(href='#', title='Отложенные') Отложенные
+                .news-filters__controls.news-controls
+
+                    //- form#news-controls__language-form.news-controls__language-form(method='POST' action="{% url 'language' %}")
+                    //-     csrf_token
+                    //-     input(type='hidden' name='next-2' value='{{ request.path }}')
+                    //-     input#news-controls__language-value(type='hidden' name='language-2')
+
+                    .news-controls__languages.dropdown-simple.dropdown-simple--type--2.dropdown-simple--align--right
+                        label.dropdown-simple__button(for='news-controls__languages-open')
+                            span.dropdown-simple__active-item RUS
+                        input#news-controls__languages-open.dropdown-simple__open(type='checkbox' name='dropdown-simple')
+                        ul.news-controls__languages-list.dropdown-simple__list
+                            each language in ['RUS', 'ENG', 'CH']
+                                li.dropdown-simple__list-item
+                                    a.dropdown-simple__link(data-language-code='{{ language.code }}' title=language)= language
+                    a#news-controls__add-news.news-controls__add-news.btn.btn--type--1(href='#' title='Добавить новость') Добавить новость
+
+        section.news-list-content__news
+            ul#puzzled-list.news.condensed-list
+                li.condensed-list__item
+                    article.news__article.media-card(data-news-id='1' data-news-video='false')
+                        header.media-card__header
+                            h1.media-card__title На гуаме проходит Летний Пляжный Фестиваль
+                            span.media-card__date 23.08.2016
+                        .media-card__item
+                            img.media-card__image(src='' srcset='' sizes='' alt='news article 1 image' width='' height='')
+                            .media-card__details
+                                .media-card__details-content
+                                    ul.media-card__social
+                                        li.media-card__social-item.media-card__social-item--vk
+                                            span.news__article-vk-likes(title='likes count') 24
+                                            |/
+                                            span.news__article-vk-reposts(title='reposts count') 8
+                                            |/
+                                            span.news__article-vk-user-cover(title='user cover') 3118
+                                        li.media-card__social-item.media-card__social-item--fb
+                                            span.news__article-fb-likes(title='likes count') 12
+                                            |/
+                                            span.news__article-fb-reposts(title='reposts count') 3
+                                            |/
+                                            span.news__article-fb-user-cover(title='user cover') 2440
+                                        li.media-card__social-item.media-card__social-item--inst
+                                            span.news__article-inst-likes(title='likes count') 12
+                                            |/
+                                            span.news__article-inst-reposts(title='reposts count') 3
+                                            |/
+                                            span.news__article-inst-user-cover(title='user cover') 2440
+                                ul.media-card__controls
+                                    li.media-card__controls-item
+                                        a.news__article-more.media-card__controls-button.media-card__controls-button--dark(href='#' title='Читать далее') Читать далее
+                                    li.media-card__controls-item
+                                        a.news__article-repost.media-card__controls-button.media-card__controls-button--light(href='#' title='Перепост') Перепост
+                        .media-card__body
+                            p.
+                                White Summer – фестиваль,
+                                объединивший концерты,
+                                шопинг, гастрономию, мастер-
+                                классы,конференции и обширную
+                        footer.media-card__footer
+                            ul.media-card__options-list.card-options
+                                li.card-options__item.card-options__item--comments(title='comments') 7
+                                li.card-options__item.card-options__item--likes(title='likes') 18
+                li.condensed-list__item
+                    article.news__article.media-card(data-news-id='1' data-news-video='true')
+                        header.media-card__header
+                            h1.media-card__title Сервис высшего уровня
+                            span.media-card__date 23.08.2016
+                        .media-card__item.media-card__item--video
+                            img.media-card__image(src='' srcset='' sizes='' alt='news article 2 image' width='' height='')
+                            .media-card__details
+                                .media-card__details-content
+                                    ul.media-card__social
+                                        li.media-card__social-item.media-card__social-item--vk
+                                            span(title='likes count') 24
+                                            |/
+                                            span.news__article-vk-reposts(title='reposts count') 8
+                                            |/
+                                            span.news__article-vk-user-cover(title='user cover') 3118
+                                        li.media-card__social-item.media-card__social-item--fb
+                                            span.news__article-fb-likes(title='likes count') 12
+                                            |/
+                                            span.news__article-fb-reposts(title='reposts count') 3
+                                            |/
+                                            span.news__article-fb-user-cover(title='user cover') 2440
+                                        li.media-card__social-item.media-card__social-item--inst
+                                            span.news__article-inst-likes(title='likes count') 12
+                                            |/
+                                            span.news__article-inst-reposts(title='reposts count') 3
+                                            |/
+                                            span.news__article-inst-user-cover(title='user cover') 2440
+                                ul.media-card__controls
+                                    li.media-card__controls-item
+                                        a.news__article-more.media-card__controls-button.media-card__controls-button--dark(href='#' title='Читать далее') Смотреть далее
+                                    li.media-card__controls-item
+                                        a.news__article-repost.media-card__controls-button.media-card__controls-button--light(href='#' title='Перепост') Перепост
+                        .media-card__body
+                            p.
+                                Искренние. Полные энтузиазма.
+                                Предугадывающие ваши желания.
+                                Члены нашей команды подарят
+                                вам возможность насладиться жизнью
+                        footer.media-card__footer
+                            ul.media-card__options-list.card-options
+                                li.card-options__item.card-options__item--comments(title='comments') 7
+                                li.card-options__item.card-options__item--likes(title='likes') 18
+                li.condensed-list__item
+                    article.news__article.media-card(data-news-id='3' data-news-video='false')
+                        header.media-card__header
+                            h1.media-card__title По древнему чайному пути
+                            span.media-card__date 23.08.2016
+                        .media-card__item
+                            img.media-card__image(src='' srcset='' sizes='' alt='news article 3 image' width='' height='')
+                            .media-card__details
+                                .media-card__details-content
+                                    ul.media-card__social
+                                        li.media-card__social-item.media-card__social-item--vk
+                                            span(title='likes count') 24
+                                            |/
+                                            span(title='reposts count') 8
+                                            |/
+                                            span.news__article-vk-user-cover(title='user cover') 3118
+                                        li.media-card__social-item.media-card__social-item--fb
+                                            span.news__article-fb-likes(title='likes count') 12
+                                            |/
+                                            span.news__article-fb-reposts(title='reposts count') 3
+                                            |/
+                                            span.news__article-fb-user-cover(title='user cover') 2440
+                                        li.media-card__social-item.media-card__social-item--inst
+                                            span.news__article-inst-likes(title='likes count') 12
+                                            |/
+                                            span.news__article-inst-reposts(title='reposts count') 3
+                                            |/
+                                            span.news__article-inst-user-cover(title='user cover') 2440
+                                ul.media-card__controls
+                                    li.media-card__controls-item
+                                        a.news__article-more.media-card__controls-button.media-card__controls-button--dark(href='#' title='Читать далее') Читать далее
+                                    li.media-card__controls-item
+                                        a.news__article-repost.media-card__controls-button.media-card__controls-button--light(href='#' title='Перепост') Перепост
+                        .media-card__body
+                            p.
+                                Заинтригованный южным
+                                «Шелковым путем», Ник
+                                Булос путешествует по
+                                древнему торговому маршруту,
+                                который простирается по
+                                южному Китаю, Тибету, Бутану
+                                и Бирме, в поисках лучших
+                                сортов чая…
+                        footer.media-card__footer
+                            ul.media-card__options-list.card-options
+                                li.card-options__item.card-options__item--comments(title='comments') 7
+                                li.card-options__item.card-options__item--likes(title='likes') 18
+                li.condensed-list__item
+                    article.news__article.media-card(data-news-id='4' data-news-video='false')
+                        header.media-card__header
+                            h1.media-card__title Беззаботный и яркий отдых не обязательно
+                            span.media-card__date 23.08.2016
+                        .media-card__item
+                            img.media-card__image(src='' srcset='' sizes='' alt='news article 4 image' width='' height='')
+                            .media-card__details
+                                .media-card__details-content
+                                    ul.media-card__social
+                                        li.media-card__social-item.media-card__social-item--vk
+                                            span(title='likes count') 24
+                                            |/
+                                            span(title='reposts count') 8
+                                            |/
+                                            span.news__article-vk-user-cover(title='user cover') 3118
+                                        li.media-card__social-item.media-card__social-item--fb
+                                            span.news__article-fb-likes(title='likes count') 12
+                                            |/
+                                            span.news__article-fb-reposts(title='reposts count') 3
+                                            |/
+                                            span.news__article-fb-user-cover(title='user cover') 2440
+                                        li.media-card__social-item.media-card__social-item--inst
+                                            span.news__article-inst-likes(title='likes count') 12
+                                            |/
+                                            span.news__article-inst-reposts(title='reposts count') 3
+                                            |/
+                                            span.news__article-inst-user-cover(title='user cover') 2440
+                                ul.media-card__controls
+                                    li.media-card__controls-item
+                                        a.news__article-more.media-card__controls-button.media-card__controls-button--dark(href='#' title='Читать далее') Читать далее
+                                    li.media-card__controls-item
+                                        a.news__article-repost.media-card__controls-button.media-card__controls-button--light(href='#' title='Перепост') Перепост
+                        .media-card__body
+                            p.
+                                Искренние. Полные энтузиазма.
+                                Предугадывающие ваши
+                                желания
+                        footer.media-card__footer
+                            ul.media-card__options-list.card-options
+                                li.card-options__item.card-options__item--comments(title='comments') 7
+                                li.card-options__item.card-options__item--likes(title='likes') 18
+                li.condensed-list__item
+                    article.news__article.media-card(data-news-id='5' data-news-video='false')
+                        header.media-card__header
+                            h1.media-card__title Беззаботный и яркий отдых не обязательно
+                            span.media-card__date 23.08.2016
+                        .media-card__item
+                            img.media-card__image(src='' srcset='' sizes='' alt='news article 5 image' width='' height='')
+                            .media-card__details
+                                .media-card__details-content
+                                    ul.media-card__social
+                                        li.media-card__social-item.media-card__social-item--vk
+                                            span(title='likes count') 24
+                                            |/
+                                            span(title='reposts count') 8
+                                            |/
+                                            span.news__article-vk-user-cover(title='user cover') 3118
+                                        li.media-card__social-item.media-card__social-item--fb
+                                            span.news__article-fb-likes(title='likes count') 12
+                                            |/
+                                            span.news__article-fb-reposts(title='reposts count') 3
+                                            |/
+                                            span.news__article-fb-user-cover(title='user cover') 2440
+                                        li.media-card__social-item.media-card__social-item--inst
+                                            span.news__article-inst-likes(title='likes count') 12
+                                            |/
+                                            span.news__article-inst-reposts(title='reposts count') 3
+                                            |/
+                                            span.news__article-inst-user-cover(title='user cover') 2440
+                                ul.media-card__controls
+                                    li.media-card__controls-item
+                                        a.news__article-more.media-card__controls-button.media-card__controls-button--dark(href='#' title='Читать далее') Читать далее
+                                    li.media-card__controls-item
+                                        a.news__article-repost.media-card__controls-button.media-card__controls-button--light(href='#' title='Перепост') Перепост
+                        .media-card__body
+                            p.
+                                Искренние. Полные энтузиазма.
+                                Предугадывающие ваши
+                                желания
+                        footer.media-card__footer
+                            ul.media-card__options-list.card-options
+                                li.card-options__item.card-options__item--comments(title='comments') 7
+                                li.card-options__item.card-options__item--likes(title='likes') 18
+                li.condensed-list__item
+                    article.news__article.media-card(data-news-id='6' data-news-video='false')
+                        header.media-card__header
+                            h1.media-card__title На Гуаме проходит Летний Пляжный Фестиваль
+                            span.media-card__date 23.08.2016
+                        .media-card__item
+                            img.media-card__image(src='' srcset='' sizes='' alt='news article 6 image' width='' height='')
+                            .media-card__details
+                                .media-card__details-content
+                                    ul.media-card__social
+                                        li.media-card__social-item.media-card__social-item--vk
+                                            span(title='likes count') 24
+                                            |/
+                                            span(title='reposts count') 8
+                                            |/
+                                            span.news__article-vk-user-cover(title='user cover') 3118
+                                        li.media-card__social-item.media-card__social-item--fb
+                                            span.news__article-fb-likes(title='likes count') 12
+                                            |/
+                                            span.news__article-fb-reposts(title='reposts count') 3
+                                            |/
+                                            span.news__article-fb-user-cover(title='user cover') 2440
+                                        li.media-card__social-item.media-card__social-item--inst
+                                            span.news__article-inst-likes(title='likes count') 12
+                                            |/
+                                            span.news__article-inst-reposts(title='reposts count') 3
+                                            |/
+                                            span.news__article-inst-user-cover(title='user cover') 2440
+                                ul.media-card__controls
+                                    li.media-card__controls-item
+                                        a.news__article-more.media-card__controls-button.media-card__controls-button--dark(href='#' title='Читать далее') Читать далее
+                                    li.media-card__controls-item
+                                        a.news__article-repost.media-card__controls-button.media-card__controls-button--light(href='#' title='Перепост') Перепост
+                        .media-card__body
+                            p.
+                                White Summer – фестиваль,
+                                объединивший концерты,
+                                шопинг, гастрономию,
+                                мастер-классы, конференции и
+                                обширную
+                        footer.media-card__footer
+                            ul.media-card__options-list.card-options
+                                li.card-options__item.card-options__item--comments(title='comments') 7
+                                li.card-options__item.card-options__item--likes(title='likes') 18
+                li.condensed-list__item
+                    article.news__article.media-card(data-news-id='7' data-news-video='false')
+                        header.media-card__header
+                            h1.media-card__title Беззаботный и яркий отдых не обязательно
+                            span.media-card__date 23.08.2016
+                        .media-card__item
+                            img.media-card__image(src='' srcset='' sizes='' alt='news article 7 image' width='' height='')
+                            .media-card__details
+                                .media-card__details-content
+                                    ul.media-card__social
+                                        li.media-card__social-item.media-card__social-item--vk
+                                            span(title='likes count') 24
+                                            |/
+                                            span(title='reposts count') 8
+                                            |/
+                                            span(title='user cover') 3118
+                                        li.media-card__social-item.media-card__social-item--fb
+                                            span.news__article-fb-likes(title='likes count') 12
+                                            |/
+                                            span.news__article-fb-reposts(title='reposts count') 3
+                                            |/
+                                            span.news__article-fb-user-cover(title='user cover') 2440
+                                        li.media-card__social-item.media-card__social-item--inst
+                                            span.news__article-inst-likes(title='likes count') 12
+                                            |/
+                                            span.news__article-inst-reposts(title='reposts count') 3
+                                            |/
+                                            span.news__article-inst-user-cover(title='user cover') 2440
+                                ul.media-card__controls
+                                    li.media-card__controls-item
+                                        a.news__article-more.media-card__controls-button.media-card__controls-button--dark(href='#' title='Читать далее') Читать далее
+                                    li.media-card__controls-item
+                                        a.news__article-repost.media-card__controls-button.media-card__controls-button--light(href='#' title='Перепост') Перепост
+                        .media-card__body
+                            p.
+                                Искренние. Полные энтузиазма.
+                                Предугадывающие ваши
+                                желания
+                        footer.media-card__footer
+                            ul.media-card__options-list.card-options
+                                li.card-options__item.card-options__item--comments(title='comments') 7
+                                li.card-options__item.card-options__item--likes(title='likes') 18
+                li.condensed-list__item
+                    article.news__article.media-card(data-news-id='8' data-news-video='false')
+                        header.media-card__header
+                            h1.media-card__title Сервис высшего уровня
+                            span.media-card__date 23.08.2016
+                        .media-card__item
+                            img.media-card__image(src='' srcset='' sizes='' alt='news article 8 image' width='' height='')
+                            .media-card__details
+                                .media-card__details-content
+                                    ul.media-card__social
+                                        li.media-card__social-item.media-card__social-item--vk
+                                            span(title='likes count') 24
+                                            |/
+                                            span(title='reposts count') 8
+                                            |/
+                                            span.news__article-vk-user-cover(title='user cover') 3118
+                                        li.media-card__social-item.media-card__social-item--fb
+                                            span.news__article-fb-likes(title='likes count') 12
+                                            |/
+                                            span.news__article-fb-reposts(title='reposts count') 3
+                                            |/
+                                            span.news__article-fb-user-cover(title='user cover') 2440
+                                        li.media-card__social-item.media-card__social-item--inst
+                                            span.news__article-inst-likes(title='likes count') 12
+                                            |/
+                                            span.news__article-inst-reposts(title='reposts count') 3
+                                            |/
+                                            span.news__article-inst-user-cover(title='user cover') 2440
+                                ul.media-card__controls
+                                    li.media-card__controls-item
+                                        a.news__article-more.media-card__controls-button.media-card__controls-button--dark(href='#' title='Читать далее') Читать далее
+                                    li.media-card__controls-item
+                                        a.news__article-repost.media-card__controls-button.media-card__controls-button--light(href='#' title='Перепост') Перепост
+                        .media-card__body
+                            p.
+                                Искренние. Полные энтузиазма.
+                                Предугадывающие ваши
+                                желания. Члены нашей команды
+                                подарят вам возможность
+                                насладиться жизнью
+                        footer.media-card__footer
+                            ul.media-card__options-list.card-options
+                                li.card-options__item.card-options__item--comments(title='comments') 7
+                                li.card-options__item.card-options__item--likes(title='likes') 18
+            a#load-more-news.news-list-content__news-load-button.btn.btn--type--2(href='' title='Загрузить ещё') Загрузить ещё

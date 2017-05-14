@@ -1,0 +1,53 @@
+@import 'helpers/_variables'
+@import 'helpers/_block_mixins'
+
+.dropdown-social
+    position relative
+    background-color #578789
+
+.dropdown-social__button
+    position relative
+    z-index 2
+    cursor pointer
+    color #fff
+    background-color #578789
+
+.dropdown-social__inner-list
+    //
+
+.dropdown-social__inner-item
+    //
+
+.dropdown-social__inner-item--vk
+.dropdown-social__inner-item--fb
+.dropdown-social__inner-item--inst
+    //
+
+.dropdown-social__inner-item--vk
+    //
+
+.dropdown-social__inner-item--fb
+    //
+
+.dropdown-social__inner-item--inst
+    //
+
+.dropdown-social__state-indicator
+    //
+
+.dropdown-social__open
+    display none
+
+.dropdown-social__submenu
+    position absolute
+    z-index -1
+    opacity 0
+    top -200%
+    color #fff
+    background-color #366363
+    transition top .4s ease-in, opacity .4s ease-in
+
+.dropdown-social__open:checked + .dropdown-social__submenu
+    bottom auto
+    top 100%
+    opacity 1

@@ -7,18 +7,26 @@ html(lang='ru' manifest='offline.manifest')
 
         block links
             include ./blocks/_links
+            // тут лежит весь сконкатенированный .css, в данном случае - декларации @font-face
+            // которые теряются при попытке писать их в stylus'е
             link(href='./css/base_css.css' rel='stylesheet')
+            // тут лежат все остальные стили базового шаблона, скомпиленные из стайлуса
             link(href='./css/base_style.css' rel='stylesheet')
 
         block components_links
 
-    body(id=pageName ? pageName + '_page' : '<BASE_NAME>_page', class=pageName ? pageName + '-page' + (bodyClasses ? bodyClasses : '') : '<BASE_NAME>-page' + (bodyClasses ? bodyClasses : ''))
+    body(id=pageName ? pageName + '_page' : subTemplateName ? subTemplateName + '_page' : '<BASE_NAME>_page',
+         class=pageName ? pageName + '_page' + (subTemplateName ? ' ' + subTemplateName + '_page' : '') + (bodyClasses ? ' ' + bodyClasses : '') :
+               subTemplateName ? subTemplateName + '_page' + (bodyClasses ? ' ' + bodyClasses : '') :
+               '<BASE_NAME>-page ' + (bodyClasses ? bodyClasses : ''))
 
         .body-inner
 
             block left_side
 
-            main(class=pageName ? pageName + '-page__content ' + pageName + '-content' + (mainClasses ? mainClasses : '') : '<BASE_NAME>-page__content <BASE_NAME>-content' + (mainClasses ? mainClasses : ''))
+            main(class=pageName ? pageName + '-page__content ' + pageName + '-content' + (subTemplateName ? ' ' + subTemplateName + '-page__content ' + subTemplateName + '-content ' : '')  + (mainClasses ? mainClasses : '') :
+                       subTemplateName ? ' ' + subTemplateName + '-page__content ' + subTemplateName + '-content ' + (mainClasses ? mainClasses : '') :
+                       '<BASE_NAME>-page__content <BASE_NAME>-content' + (mainClasses ? mainClasses : ''))
 
                 block content
 

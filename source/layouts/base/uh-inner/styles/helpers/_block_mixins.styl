@@ -1,0 +1,132 @@
+@import '_variables';
+
+/*
+  Стайлгайд для стайлуса:
+    — переменные именуем в нижнем регистре через подчёркивания, начиная с  $  ,
+      например: $my_super_var
+    — плейсхолдеры (встроенный тип в стайлусе) именуем в нижнем регистре через дефисы, начиная с  $$  ,
+      например: $$some-placeholder-class
+    — миксины именуются обычным кэмел-кейсом, начиная с доллара,
+      например: $myCoolMixin()
+    — блочные (которые добавляют блок правил) миксины именуем обычным кэмел-кейсом,
+      например: mySuperBlockMixin()
+    — транзитные (которые меняют только селектор) миксины именуем в нижнем регистре через подчёркивание,
+      например: my_super_transition_mixin()
+    — функции именуем в нижнем регистре через подчёркивания, начиная с  _  ,
+      например: -my-nice-function()
+    — параметры внутри функций и миксинов именуем в нижнем регистре через нижнее подчёркивание,
+      например: my_awesome_param
+    — локальные переменные внутри области видимости функций и миксинов именуем в нижнем регистре через нижнее подчёркивание, начиная с $
+      например: $my_scoped_inner_variable
+*/
+
+fontHvThin()
+    font-family 'helveticaneuecyrthin', tahoma, sans-serif
+    font-weight normal
+
+fontHvLight()
+    font-family 'helveticaneuecyrlight', tahoma, sans-serif
+    font-weight normal
+
+fontHvRoman()
+    font-family 'helveticaneuecyrroman', tahoma, sans-serif
+    font-weight normal
+
+fontHvMedium()
+    font-family 'helveticaneuecyrmedium', tahoma, sans-serif
+    font-weight normal
+
+fontHvBold()
+    font-family 'helveticaneuecyrbold', tahoma, sans-serif
+    font-weight normal
+
+
+fontHvLight10_21()
+    fontHvThin()
+    font-size 10px
+    line-height (21/10)
+
+
+fontHvRoman14_18()
+    fontHvRoman()
+    font-size 14px
+    line-height (18/14)
+
+
+fontHvBold14_18()
+    fontHvBold()
+    font-size 14px
+    line-height (18/14)
+
+
+fontHvThin60()
+    fontHvThin()
+    font-size 60px
+    line-height 60px
+
+
+fontHvLight12_auto()
+    fontHvLight()
+    font-size 12px
+    line-height 1.2
+
+fontHvLight13_30()
+    fontHvLight()
+    font-size 13px
+    line-height 30px
+
+fontHvLight15_22()
+    fontHvLight()
+    font-size 15px
+    line-height 22px
+
+fontHvLight15_22em()
+    fontHvLight()
+    font-size 1.5em
+    line-height 1.4667
+
+
+fontHvMedium18_30()
+    fontHvMedium()
+    font-size 18px
+    line-height 30px
+
+fontHvMedium18_30em($base_mod = 1)
+    fontHvMedium()
+    font-size (1.8 / $base_mod)em
+    line-height 1.6667
+
+fontHvBold14_18()
+    fontHvBold()
+    font-size 14px
+    line-height 18px
+
+fontHvBold14_18em($base_mod = 1)
+    fontHvBold()
+    font-size (1.4 / $base_mod)em
+    line-height 1.2857
+
+
+
+
+fontRoboto()
+    font-family 'Roboto', sans-serif
+
+
+fontRobotoBlack()
+    fontRoboto()
+    font-weight 900
+
+fontRobotoBold()
+    fontRoboto()
+    font-weight 700
+
+fontRobotoRegular()
+    fontRoboto()
+    font-weight 400
+
+
+fontRobotoBold13_30()
+    fontRobotoBold()
+    font-size 13px
+    line-height 30px

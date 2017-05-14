@@ -15,7 +15,7 @@
       например: $$some-placeholder-class
     — миксины именуются обычным кэмел-кейсом, начиная с доллара,
       например: $myCoolMixin()
-    — блочные (которые добавляют блок правил) миксины именуем кэмэл кейсом
+    — блочные (которые добавляют блок правил) миксины именуем обычным кэмел-кейсом,
       например: mySuperBlockMixin()
     — транзитные (которые меняют только селектор) миксины именуем в нижнем регистре через подчёркивание,
       например: my_super_transition_mixin()
@@ -26,3 +26,28 @@
     — локальные переменные внутри области видимости функций и миксинов именуем в нижнем регистре через нижнее подчёркивание, начиная с $
       например: $my_scoped_inner_variable
 */
+
+.site-title
+    fontHvLight10_21()
+    color $c_dark
+    text-transform capitalize
+
+
+$$site-search-font
+    fontHvRoman14_18()
+    color $c_dark-2
+
+.site-search
+    //
+
+.site-search__query
+    @extend $$site-search-font
+
+.site-search__company-type
+    @extend $$site-search-font
+
+.site-search__country
+    @extend $$site-search-font
+
+.site-search__company-id
+    @extend $$site-search-font

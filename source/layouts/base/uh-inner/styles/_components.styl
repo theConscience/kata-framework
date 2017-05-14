@@ -1,0 +1,218 @@
+@import 'helpers/_variables'
+@import 'helpers/_block_mixins'
+
+
+@import 'components/_custom_select'
+@import 'components/_custom_input'
+@import 'components/_custom_checkbox'
+@import 'components/_custom_label'
+@import 'components/_dropdown_simple'
+@import 'components/_dropdown_social'
+
+
+.btn
+    position relative
+    border-radius 0
+    transition color .4s, background-color .4s, border .4s
+
+.btn--type--3
+    fontHvBold14_18()
+    border none
+    border-radius 3px
+    color $c_white
+    background-color #3c3c3c
+    text-transform uppercase
+
+
+///////////////////////
+
+/*
+.btn--v5
+    width 100%
+    fontHvMedium14_20()
+    color c_white
+    background-color c_contrast
+
+    &:hover
+    &:focus
+        color c_white-darken
+        background-color c_contrast-darken
+
+.btn--v6
+    width 100%
+    border 1px solid c_contrast
+    fontHvMedium14_20()
+    color c_contrast
+    background-color transparent
+
+    &:hover
+    &:focus
+        color c_contrast-darken
+        background-color c_dark-transparent-bg
+
+.btn--v7
+    fontHvLight18_30()
+    padding-top 10px
+    padding-right 32px
+    padding-bottom 9px
+    padding-left 32px
+    min-width 186px
+    border 0
+    border-radius 0
+    background-color c_contrast
+    color c_white
+
+    &:hover
+    &:focus
+        color c_white-darken
+        background-color c_contrast-darken
+
+    .is-scalable &
+    &.is-scalable
+            font-size 1.8em
+            padding-top .55556em
+            padding-right 1.77778em
+            padding-bottom .5em
+            padding-left 1.77778em
+            line-height 1.6667
+            min-width 10.3333em
+
+.btn--v8
+    fontHvRoman18_40()
+    box-sizing border-box
+    min-width 160px
+    min-height 53px
+    padding-left 33px
+    padding-right 33px
+    padding-top 7px
+    padding-bottom 2px
+    border none
+    border-bottom 3px solid c_border_btn--v8
+    color c_white
+    background-color c_btn--v8_bg
+    text-align center
+    vertical-align middle
+
+    &:hover
+    &:focus
+        color c_white
+        background-color c_btn--v8_bg--hover
+
+    &:active
+        color c_medium-font
+        background-color c_btn--v8_bg--active
+        box-shadow inset 0 0 6px -2px c_black-transparent-05
+
+.btn--v9
+    fontHvBold14_18()
+    min-width 160px
+    min-height 44px
+    padding-left 24px
+    padding-right 24px
+    padding-top 13px
+    padding-bottom 13px
+    border none
+    color c_btn--v9
+    background-color c_btn--v9_bg
+    text-transform lowercase
+
+    // .is-scalable &
+    // &.is-scalable
+    //     fontHvBold14_18em()
+    //     min-width 16em
+    //     min-height 4.4em
+    //     padding-left 2.4em
+    //     padding-right 2.4em
+    //     padding-top 1.3em
+    //     padding-bottom 1.3em
+
+    &:hover
+    &:focus
+        color c_btn--v9
+        background-color c_btn--v9_bg--hover
+
+    &:active
+        color c_btn--v9--active
+        background-color c_btn--v9_bg--active
+
+.btn--v10
+    fontRobotoBold13_30()
+    box-sizing border-box
+    min-height 38px
+    border 1px solid c_contrast
+    padding-left 20px
+    padding-right 20px
+    padding-top 4px
+    padding-bottom 2px
+    color c_contrast
+
+    &:hover
+    &:focus
+        color c_white
+        background-color c_contrast
+
+    &:active
+        color c_white-transparent-05
+
+
+.collapsable__button
+    padding-left 38px
+
+    .collapsable__button-state-icon
+        position absolute
+        left 20px
+        top 21px
+        width 10px
+        height 6px
+        background-repeat no-repeat
+        background-image url(../images/i-arrow-down.svg)
+        transform rotate(180deg)
+
+    .collapsable[data-collapsed=true] & .collapsable__button-state-icon
+        transform rotate(0deg)
+
+
+.btn--3d
+    position relative
+
+    &::before
+    &::after
+        position absolute
+        bottom 0
+        width 0
+        height 0
+        border-style solid
+        content ''
+
+    &::before
+        left -6px
+        border-width 0 6px 14px 0
+        border-color transparent #181818 transparent transparent
+
+    &::after
+        right -6px
+        border-width 14px 6px 0 0
+        border-color #181818 transparent transparent transparent
+
+
+.btn--narrow
+    min-width 160px
+
+
+.btn--small
+    fontHvMedium14_24()
+    min-width 119px
+    padding-left 22px
+    padding-right 22px
+    padding-top 5px
+    padding-bottom 6px
+    text-transform lowercase
+
+
+.img--bordered
+    border 1px solid #d4d4d4
+
+.img--rounded
+    border-radius 50%
+
+*/

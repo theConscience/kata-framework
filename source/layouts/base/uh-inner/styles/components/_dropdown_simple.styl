@@ -1,0 +1,32 @@
+@import 'helpers/_variables'
+@import 'helpers/_block_mixins'
+
+.dropdown-simple
+    position relative
+
+.dropdown-simple--by-right
+    //
+
+.dropdown-simple__button
+    position relative
+    z-index 2
+    cursor pointer
+    color #fff
+    background-color #578789
+
+.dropdown-simple__open
+    display none
+
+.dropdown-simple__list
+    position absolute
+    z-index 1
+    opacity 0
+    top -200%
+    color #fff
+    background-color #366363
+    transition top .4s ease-in, opacity .4s ease-in
+
+.dropdown-simple__open:checked + .dropdown-simple__list
+    bottom auto
+    top 100%
+    opacity 1

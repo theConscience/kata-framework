@@ -1,0 +1,113 @@
+//- mixin custom_input(modification, type, id, addClass, name, required, pattern, value)
+//-     div(class='custom-input custom-input--' + modification)
+//-         input(id=id, class=addClass ? 'custom-input__field ' + addClass : 'custom-input__field', type=type, name=name||id, required=required ? '' : false, pattern=pattern ? pattern : false, value=value)
+//-         span.custom-input__validation-state
+//- 
+//- mixin custom_select
+//-     div(class='custom-select custom-select--' + attributes.mod)
+//-         select(id=attributes.id, class=attributes.addClass ? 'custom-select__field ' + attributes.addClass : 'custom-select__field', name=attributes.name||attributes.id, required=attributes.required ? '' : false) 
+//-             if block
+//-                 block
+//-         span.custom-select__validation-state
+//- 
+//- mixin custom_checkbox(type, label, id, name, checked, disabled)
+//-     div(class='custom-checkbox custom-checkbox--' + type)
+//-         input(id=id, type='checkbox', name=name||id, checked=checked ? '' : false, disabled=disabled ? '' : false)
+//-         label(for=id)= label
+
+mixin custom_input(mod, type, id, addClass, name, required, placeholder, pattern, value)
+    div(class='custom-input custom-input--' + mod)
+        input(id=id, class=addClass ? 'custom-input__field ' + addClass : 'custom-input__field', type=type, name=name||id, required=required ? '' : false, placeholder=placeholder ? placeholder : false, pattern=pattern ? pattern : false, value=value)
+        span.custom-input__validation-state
+        span.custom-input__validation-text
+
+mixin custom_select
+    div(class='custom-select custom-select--' + attributes.mod)
+        select(id=attributes.id, class=attributes.addClass ? 'custom-select__field ' + attributes.addClass : 'custom-select__field', name=attributes.name||attributes.id, required=attributes.required ? '' : false) 
+            if block
+                block
+        span.custom-select__validation-state
+        span.custom-select__validation-text
+
+mixin custom_checkbox(type, label, id, name, checked, disabled)
+    div(class='custom-checkbox custom-checkbox--' + type)
+        input(id=id, type='checkbox', name=name||id, checked=checked ? '' : false, disabled=disabled ? '' : false)
+        label(for=id)= label
+
+mixin custom_label
+    div(class='custom-label custom-label--' + attributes.mod)
+        if block
+            block
+
+
+
+//- mixin wrapped_checkbox(label, id, checked)
+//-     .wrapped-checkbox.wrapped-checkbox--light
+//-         input(id=id, type="checkbox", name="", checked=checked)
+//-         label(for=id)= label
+
+mixin wrapped_checkbox(type, label, id, name, checked, disabled)
+    div(class='wrapped-checkbox wrapped-checkbox--' + type)
+        input(id=id, type='checkbox', name=name||id, checked=checked ? '' : false, disabled=disabled ? '' : false)
+        label(for=id)= label
+
+mixin wrapped_input(label, id, addClass, name, value)
+    .wrapped-input.wrapped-input--light
+        input(id=id, class='input--light ' + addClass, type='text', name=name, value=value)
+        label(for=id)= label
+
+mixin wrapped_radio(label, id, name, value, checked)
+    .wrapped-radio.wrapped-radio--light
+        input(id=id, type='radio', name=name, value=value, checked=checked)
+        label(for=id)= label
+
+mixin table_row(priceNew, priceOld, icons, rowClass)
+    tr(class=rowClass)
+        td
+            .data-table__departure-to
+                span#tour1__date-departure-to 20.12.16, пт.
+                span#tour1__time-departure-to.data-table__departure-time
+                    span.glyphicon.glyphicon-time(aria-hidden='true')
+                    |02.45
+            .data-table__departure-from
+                span#tour1__date-departure-from 22.12.16, вс.
+        td
+            .data-table__tour-info
+                a.link--dark-underlined(href='#') Burgus Moscow
+                br
+                .custom-badge--1.custom-badge--bright Discount 
+        td.text-center 
+            span.tour__nights-count 2
+        td
+            .data-table__hotel-info
+                a.link--bright-underlined(href='#') Palazzo-3 3*
+                span#tour1__resort-name.data-table__resort-name Солнечный берег
+                .custom-badge--1.custom-badge--alternate Early booking
+        td
+            .data-table__room-info
+                span#tour1__room-type Студия
+                span#tour1__room-size DBL
+        td
+            span#tour1__feed-type BB
+        td
+            .data-table__options
+                if icons
+                    i.custom-icon.custom-icon--pig
+                    i.custom-icon.custom-icon--ball
+        td
+            .data-table__flight.clearfix
+                .data-table__flight-to.text-right
+                    #tour1__flight-type.custom-badge--2.custom-badge--flight-to Y
+                    br
+                    span N4
+                .data-table__flight-back
+                    #tour1__flight-type.custom-badge--2.custom-badge--flight-back Y
+                    br
+                    span N4
+        td.text-right
+            .data-table__tour-pricing
+                #tour1__price.marker--bright= priceNew
+                    span.glyphicon.glyphicon-rub(aria-hidden='true')
+                #tour1__price--old.text-linethrough= priceOld
+                    |руб.
+        td 
