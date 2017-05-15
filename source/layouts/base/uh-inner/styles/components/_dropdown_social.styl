@@ -38,14 +38,36 @@
 .dropdown-social__open
     display none
 
-.dropdown-social__submenu
+/*ul*/.dropdown-social__submenu
     position absolute
-    z-index -1
-    opacity 0
     top -200%
-    color #fff
-    background-color #366363
+    z-index 0
+    padding 0
+    margin 0
+    opacity 0
+    color $c_white
+    background-color $c_dull-darkened
     transition top .4s ease-in, opacity .4s ease-in
+
+.dropdown-social__submenu--centered
+    //
+
+/*li*/.dropdown-social__submenu-item
+    list-style none
+    background-color $c_dull-darkened
+
+/*a*/.dropdown-social__submenu-link
+    fontHvRoman14_30()
+    color $c_white
+    text-decoration none
+    transition color 0.4s ease, background-color 0.4s ease
+
+    &:hover
+    &:focus
+        background-color $c_dull-darker
+    
+    &:active
+        background-color $c_dull-darkest
 
 .dropdown-social__open:checked + .dropdown-social__submenu
     bottom auto

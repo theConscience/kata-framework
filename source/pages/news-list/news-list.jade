@@ -29,14 +29,14 @@ block append scripts
 
 block content_left_side
     // news-list page navigation
-    nav.page-nav
+    nav.page-nav.uh-inner-page__nav
         ul.page-nav__menu
             li.page-nav__menu-item
                 a#page-nav__filter-reset.page-nav__menu-link(href='#', title='Сбросить фильтры')
             li.page-nav__menu-item
                 a#page-nav__filter-hotels.page-nav__menu-link(href='#', title='Новости отелей')
                 section#filter-hotels.page-nav__togglable-panel
-                    h3.page-nav__togglable-panel-title Новости отелей
+                    h3.page-nav__togglable-panel-title Новости отелей 
                     ul.page-nav__submenu
                         li.page-nav__submenu-item
                             a#filter-hotels__all.page-nav__submenu-link(href='#', title='Все новости') Все новости
@@ -87,7 +87,7 @@ block content_left_side
                             a#filter-tour-operators__country-facts.page-nav__submenu-link(href='#', title='Интересные факты о стране') Интересные факты о стране
             li.page-nav__menu-item
                 a#page-nav__filter-medical-tourism.page-nav__menu-link(href='#', title='Новости медицинского туризма')
-                    section#filter-medical-tourism.page-nav__togglable-panel
+                section#filter-medical-tourism.page-nav__togglable-panel
                     h3.page-nav__togglable-panel-title Новости медицинского туризма
                     ul.page-nav__submenu
                         li.page-nav__submenu-item
@@ -98,7 +98,7 @@ block content_left_side
                             a#filter-medical-tourism__unique-programs.page-nav__submenu-link(href='#', title='Уникальные программы лечения/оздоровления') Уникальные программы лечения/оздоровления
             li.page-nav__menu-item
                 a#page-nav__filter-cultural-sites.page-nav__menu-link(href='#', title='Новости объектов культуры')
-                    section#filter-cultural-sites.page-nav__togglable-panel
+                section#filter-cultural-sites.page-nav__togglable-panel
                     h3.page-nav__togglable-panel-title Новости объектов культуры
                     ul.page-nav__submenu
                         li.page-nav__submenu-item
@@ -109,7 +109,7 @@ block content_left_side
                             a#filter-cultural-sites__announcements.page-nav__submenu-link(href='#', title='Анонсы событий') Анонсы событий
             li.page-nav__menu-item
                 a#page-nav__filter-services.page-nav__menu-link(href='#', title='Новости сервисных компаний')
-                    section#filter-services.page-nav__togglable-panel
+                section#filter-services.page-nav__togglable-panel
                     h3.page-nav__togglable-panel-title Новости сервисных компаний
                     ul.page-nav__submenu
                         li.page-nav__submenu-item
@@ -122,7 +122,7 @@ block content_left_side
                 a.page-nav__menu-link(href='#', title='Видео обзоры')
             li.page-nav__menu-item
                 a#page-nav__filter-exhibitions-events.page-nav__menu-link(href='#', title='Новости выставок и событий')
-                    section#filter-exhibitions-events.page-nav__togglable-panel
+                section#filter-exhibitions-events.page-nav__togglable-panel
                     h3.page-nav__togglable-panel-title Новости выставок и событий
                     ul.page-nav__submenu
                         li.page-nav__submenu-item
@@ -133,7 +133,7 @@ block content_left_side
                             a#filter-exhibitions-events__country-events.page-nav__submenu-link(href='#', title='Мероприятия в стране') Мероприятия в стране
             li.page-nav__menu-item
                 a#page-nav__filter-mass-media-pr.page-nav__menu-link(href='#', title='Новости СМИ, PR–агентств')
-                    section#filter-mass-media-pr.page-nav__togglable-panel
+                section#filter-mass-media-pr.page-nav__togglable-panel
                     h3.page-nav__togglable-panel-title Новости СМИ, PR–агентств
                     ul.page-nav__submenu
                         li.page-nav__submenu-item
@@ -144,7 +144,7 @@ block content_left_side
                             a#filter-mass-media-pr__country-events.page-nav__submenu-link(href='#', title='Мероприятия в стране') Мероприятия в стране
             li.page-nav__menu-item
                 a#page-nav__filter-shops-restaurants.page-nav__menu-link(href='#', title='Новости ресторанов и магазинов')
-                    section#filter-shops-restaurants.page-nav__togglable-panel
+                section#filter-shops-restaurants.page-nav__togglable-panel
                     h3.page-nav__togglable-panel-title Новости ресторанов и магазинов
                     ul.page-nav__submenu
                         li.page-nav__submenu-item
@@ -172,8 +172,12 @@ block content
             .slider__inner
                 header.slider__header
                     h1.slider__title
-                        span.slider__title-primary LUX
-                        span.slider__title-secondary Resorts & Hotels
+                        a.slider__title-link(href='#' title='LUX resorts & hotels')
+                            span.slider__title-primary LUX
+                            span.slider__title-secondary Resorts & Hotels
+                    .slider__logo
+                        a.slider__logo-link(href='#' title='LUX resorts & hotels')
+                            img.slider__logo-image(src='' alt='LUX resorts & hotels' width='' height='')
                 .slider__content
                     h2.slider__promo-text Более лёгкий и яркий отдых
                     p.slider__description.
@@ -214,7 +218,7 @@ block content
                         li.dropdown-social__inner-item.dropdown-social__inner-item--inst
                     .dropdown-social__state-indicator
                 input#dropdown-social__open.dropdown-social__open(type='checkbox' name='dropdown-social')
-                ul.dropdown-social__submenu.dropdown-social__submenu--centered
+                ul.dropdown-social__submenu.dropdown-social__submenu--centered 
                     li.dropdown-social__submenu-item
                         a.dropdown-social__submenu-link(href='#' title='Управление') Управление
                     li.dropdown-social__submenu-item
@@ -281,7 +285,7 @@ block content
                             each language in ['RUS', 'ENG', 'CH']
                                 li.dropdown-simple__list-item
                                     a.dropdown-simple__link(data-language-code='{{ language.code }}' title=language)= language
-                    a#news-controls__add-news.news-controls__add-news.btn.btn--type--1(href='#' title='Добавить новость') Добавить новость
+                    a#news-controls__add-news.news-controls__add-news.btn.btn--type--1(href='#' title='Добавить новость') Добавить новость 
 
         section.news-list-content__news
             ul#puzzled-list.news.condensed-list

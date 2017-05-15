@@ -2,3 +2,173 @@
 @import './helpers/_mixins'
 @import './helpers/_block_mixins'
 
+
+
+
+.news-list-content
+    //
+
+.news-list-content__slider
+    //
+
+.news-list-content__nav
+    //
+
+.news-list-content__filters
+    //
+
+.news-list-content__news
+    //
+
+.news-list-content__news-load-button
+    //
+
+
+
+
+.page-nav
+    background-color $c_black-transparent-09 
+
+.page-nav__menu  // ul
+    padding 0
+    margin 0
+
+.page-nav__menu-item  // li
+    list-style none
+
+.page-nav__togglable-panel
+    //
+
+.page-nav__togglable-panel-title  // h
+    fontHvRoman24_auto()
+    color $c_bright
+
+.page-nav__submenu  // ul
+    padding 0
+    margin 0
+
+.page-nav__submenu-item  // li
+    list-style none
+
+.page-nav__submenu-link  // a
+    fontHvRoman15_30()
+    color $c_white
+    text-decoration none
+    transition background-color 0.4s ease 
+
+    &:hover
+    &:focus
+        background-color $c_dark-2
+    
+    &:active
+        color $c_light-3 
+        background-color $c_dark-3
+
+
+
+
+.news-nav  // section.news-list-content__nav
+    background-color $c_dull
+
+.news-nav__add-news  // a
+    fontHvMedium18_30()
+    color $c_white
+    text-decoration none
+
+.news-nav__menu  // ul
+    padding 0
+    margin 0
+    list-style-type none
+
+.news-nav__menu-item
+    //
+
+.news-nav__menu-link
+    fontHvMedium18_30()
+    color $c_white
+
+
+
+
+.news-filters  // section.news-list-content__filters
+    //
+
+.news-filters__top
+    //
+
+.news-filters__bottom
+    //
+
+.news-filters__to-left  // button
+    //
+
+.news-filters__popular-countries  // ul
+    //
+
+.news-filters__to-right  // button
+    //
+
+.news-filters__bottom
+    //
+
+.news-filters__categories  // ul
+    //
+
+.news-filters__controls
+    //
+
+
+
+
+.filters-list  // ul
+    padding 0
+    margin 0
+
+.filters-list--theme--dull
+    //
+
+.filters-list--theme--bright
+    //
+
+.filters-list__item  // li
+    list-style none
+
+.filters-list__item--active
+    border-width 1px
+    border-style solid
+    
+    .filters-list--theme--dull &
+        border-color $c_dull-light
+
+    .filters-list--theme--bright &
+        border-color $c_bright
+
+.filters-list__filter  // a
+    fontHvRoman14_30()
+    text-decoration none
+    text-transform uppercase 
+    cursor pointer
+
+    .filters-list--theme--dull &
+        color $c_dull-dark
+
+    .filters-list--theme--bright &
+        color $c_bright
+
+    .filters-list__item--active &
+        fontHvMedium14_30()
+
+
+
+
+.news-controls  // .news-filters__controls
+    //
+
+.news-controls__languages
+    //
+
+.news-controls__languages-list  // ul
+    //
+
+.news-controls__add-news  // a
+    //

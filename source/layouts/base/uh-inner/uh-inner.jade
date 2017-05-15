@@ -32,15 +32,15 @@ html(lang='ru' manifest='offline.manifest')
                             a.site-logo.site-logo--uh(href='#', title='Главная страница')
                                 img.site-logo__image(src='#' width='' height='' alt='Логотип Unihotel')
                         h1.site-title Бесплатный международный туристический справочник
-                        .site-language
+                        .site-language(tabindex=0)
                             form#site-language__form.site-language__form(method='POST' action="{% url 'language' %}")
                                 csrf_token
                                 input(type='hidden' name='next' value='{{ request.path }}')
                                 input#site-language__value(type='hidden' name='language')
                                 ul.site-language__menu
-                                    each language in ['русский', 'english', 'chineese']
-                                        li.site-language__menu-item
-                                            a.site-language__menu-link(data-language-code='{{ language.code }}')= language
+                                    each language, index in ['русский', 'english', 'chineese']
+                                        li.site-language__menu-item(class=(index === 0) ? 'site-language__menu-item--active' : '')
+                                            a.site-language__menu-link(data-language-code='{{ language.code }}' tabindex=0)= language
 
                 .page-header__bottom
                     block search_panel
@@ -104,7 +104,9 @@ html(lang='ru' manifest='offline.manifest')
 
                 block content_left_side
                     // default left-side block
-                    nav.page-nav
+                    nav.page-nav(class=pageName ? pageName + '-page__nav ' + (subTemplateName ? ' ' + subTemplateName + '-page__nav ' : '')  + (pageNavClasses ? pageNavClasses : '') :
+                       subTemplateName ? ' ' + subTemplateName + '-nav ' + (pageNavClasses ? pageNavClasses : '') :
+                       'uh-inner-page__nav uh-inner-nav' + (pageNavClasses ? pageNavClasses : ''))
                         ul.page-nav__menu
                             li.page-nav__menu-item
                                 a.page-nav__menu-link(href='#', title='Ссылка 1') Ссылка 1

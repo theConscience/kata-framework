@@ -48,7 +48,72 @@ var GLOBAL_SETTINGS = (function() {
 })();
 
 
+(function(e) { // .matches polyfill
+  e.matches || (e.matches=e.matchesSelector||function(selector) {
+    var matches = document.querySelectorAll(selector), th = this;
+    return Array.prototype.some.call(matches, function(e) {
+      return e === th;
+    });
+  });
+})(Element.prototype);
+
+
+(function(e) { // .closest polyfill
+  e.closest = e.closest || function(css) {
+    var node = this;
+    while (node) {
+      if (node.matches(css)) return node;
+      else node = node.parentElement;
+    }
+    return null;
+  };
+})(Element.prototype);
+
+
 (function(settings) {
   console.log('Global settings:', settings);
   // some uh-inner scripts content
+  var USED_CLASS_NAMES = {
+    siteLanguage: {
+      OPEN: 'site-language--open'
+    }
+  };
+
+
+  // site-language component scripts
+  var siteLanguage = document.querySelector('.site-language');
+  var siteLanguageActiveLanguageItem = siteLanguage.querySelector('.site-language__menu-item--active');
+  var siteLanguageActiveLanguageLink = siteLanguageActiveLanguageItem.querySelector('.site-language__menu-link');
+
+  siteLanguageActiveLanguageLink.addEventListener('click', siteLanguageClickHandler);
+  siteLanguage.addEventListener('keydown', siteLanguageKeydownHandler);
+
+  function siteLanguageClickHandler(evt) {
+    console.log('siteLanguageClickHandler is called!');
+    toggleSiteLanguage(evt);
+  }
+
+  function siteLanguageKeydownHandler(evt) {
+    console.log('siteLanguageKeydownHandler is called!');
+    if ([13, 32].indexOf(evt.keyCode) > -1) {
+      toggleSiteLanguage(evt);
+    }
+  }
+
+  function toggleSiteLanguage(evt) {
+    console.log('toggleSiteLanguage is called!');
+    evt.preventDefault();
+    var dispatchingComponent = evt.target.closest('.site-language');
+    console.log('dispatchingComponent:', dispatchingComponent);
+    var siteLanguageIsOpen = dispatchingComponent.classList.contains(USED_CLASS_NAMES.siteLanguage.OPEN);
+
+    if (siteLanguageIsOpen) {
+      dispatchingComponent.classList.remove(USED_CLASS_NAMES.siteLanguage.OPEN);
+    } else {
+      dispatchingComponent.classList.add(USED_CLASS_NAMES.siteLanguage.OPEN);
+    }
+  }
+  // end of site-language component scripts
+
+
 })(GLOBAL_SETTINGS);
