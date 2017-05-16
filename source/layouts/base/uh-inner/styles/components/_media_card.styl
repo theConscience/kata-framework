@@ -1,0 +1,164 @@
+@import 'helpers/_variables'
+@import 'helpers/_block_mixins'
+
+
+
+
+.media-card
+    //
+
+
+.media-card__header
+    //
+
+.media-card__title
+    fontHvMedium16_auto()
+    color $c_dark-4
+
+.media-card__date
+    fontHvRoman12_24()
+    color $c_light-4
+    text-transform uppercase
+
+
+.media-card__item
+    //
+
+.media-card__image
+    //
+
+
+.media-card__details
+    //
+
+.media-card__details-content
+    background-color $c_contrast-3-transparent
+
+
+.media-card__social  // ul
+    width 61.18%
+    max-width 156px
+    padding 0
+    margin 0 auto
+
+.media-card__social-item  // li
+    fontHvBold16_24()
+    list-style none
+    border 1px solid $c_white
+    border-radius 3px
+    padding-top 2px
+    padding-bottom 2px
+    padding-left 40px
+    padding-right 11px
+    text-align right
+    color $c_white
+    text-transform uppercase
+
+    &:not(:last-of-type)
+        margin-bottom 5px
+
+.media-card__social-item--vk
+    //
+
+.media-card__social-item--fb
+    //
+
+.media-card__social-item--inst
+    //
+
+
+.media-card__controls  // ul
+    display flex
+    justify-content space-between
+    flex-wrap wrap
+    padding 0
+    margin 0
+    margin-left -2.5px
+    margin-right -2.5px
+
+.media-card__controls-item  // li
+    list-style none
+    text-align center
+    flex-grow 1
+    margin-right 2.5px
+    margin-left 2.5px
+
+
+.media-card__controls-button  // a
+    fontHvBold11_19()
+    display block
+    padding-top 4px
+    padding-bottom 5px
+    text-decoration none
+    text-transform uppercase
+    transition color 0.4s ease, background-color 0.4s ease
+
+    &.media-card__controls-button--dark
+        padding-left 11.6%
+        padding-right 11.6%
+        background-color $c_dark-6
+        color $c_white
+
+        &:hover
+        &:focus
+            background-color $c_light-5
+
+        &:active
+            background-color $c_dark-5
+            color $c_white-darkened
+
+    &.media-card__controls-button--light
+        padding-left 16.84%
+        padding-right 16.79%
+        background-color $c_white
+        color $c_dark-6
+
+        &:hover
+        &:focus
+            background-color $c_light-2
+
+        &:active
+            color $c_dark
+            background-color $c_light
+
+
+.media-card__body
+    //
+
+.media-card__body > p
+    fontHvLight15_22()
+    color $c_dark-5
+
+
+.media-card__footer
+    //
+
+.media-card__options-list  // ul
+    fontHvLight12_30()
+    padding 0
+    margin 0
+    color $c_light-5
+    text-transform uppercase
+
+
+
+
+// sub-component
+
+.card-options  // ul.media-card__options-list
+    fontHvLight12_30()
+    padding 0
+    margin 0
+    color $c_light-5
+    text-transform uppercase
+
+.card-options__item  // li
+    list-style none
+    display inline-block
+    vertical-align top
+
+.card-options__item--comments
+    //
+
+.card-options__item--likes
+    //

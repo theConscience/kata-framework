@@ -36,7 +36,7 @@ block content_left_side
             li.page-nav__menu-item
                 a#page-nav__filter-hotels.page-nav__menu-link(href='#', title='Новости отелей')
                 section#filter-hotels.page-nav__togglable-panel
-                    h3.page-nav__togglable-panel-title Новости отелей 
+                    h3.page-nav__togglable-panel-title Новости отелей
                     ul.page-nav__submenu
                         li.page-nav__submenu-item
                             a#filter-hotels__all.page-nav__submenu-link(href='#', title='Все новости') Все новости
@@ -186,16 +186,16 @@ block content
                         и предлагаем поистине уникальный отдых
                 ul.slider__controls
                     li.slider__controls-item
-                        label(for='slider__to-slide-1')
+                        label.slider__controls-label(for='slider__to-slide-1')
                             img.slider__controls-image(src='', alt='', title='')
                     li.slider__controls-item
-                        label(for='slider__to-slide-2')
+                        label.slider__controls-label(for='slider__to-slide-2')
                             img.slider__controls-image(src='', alt='', title='')
                     li.slider__controls-item
-                        label(for='slider__to-slide-3')
+                        label.slider__controls-label(for='slider__to-slide-3')
                             img.slider__controls-image(src='', alt='', title='')
                     li.slider__controls-item
-                        label(for='slider__to-slide-4')
+                        label.slider__controls-label(for='slider__to-slide-4')
                             img.slider__controls-image(src='', alt='', title='')
                 .slider__additional-info Мальдивы
 
@@ -218,7 +218,7 @@ block content
                         li.dropdown-social__inner-item.dropdown-social__inner-item--inst
                     .dropdown-social__state-indicator
                 input#dropdown-social__open.dropdown-social__open(type='checkbox' name='dropdown-social')
-                ul.dropdown-social__submenu.dropdown-social__submenu--centered 
+                ul.dropdown-social__submenu.dropdown-social__submenu--centered
                     li.dropdown-social__submenu-item
                         a.dropdown-social__submenu-link(href='#' title='Управление') Управление
                     li.dropdown-social__submenu-item
@@ -282,10 +282,10 @@ block content
                             span.dropdown-simple__active-item RUS
                         input#news-controls__languages-open.dropdown-simple__open(type='checkbox' name='dropdown-simple')
                         ul.news-controls__languages-list.dropdown-simple__list
-                            each language in ['RUS', 'ENG', 'CH']
+                            each language, index in ['RUS', 'ENG', 'CH']
                                 li.dropdown-simple__list-item
                                     a.dropdown-simple__link(data-language-code='{{ language.code }}' title=language)= language
-                    a#news-controls__add-news.news-controls__add-news.btn.btn--type--1(href='#' title='Добавить новость') Добавить новость 
+                    a#news-controls__add-news.news-controls__add-news.btn.btn--type--1(href='#' title='Добавить новость') Добавить новость
 
         section.news-list-content__news
             ul#puzzled-list.news.condensed-list
@@ -319,7 +319,7 @@ block content
                                             span.news__article-inst-user-cover(title='user cover') 2440
                                 ul.media-card__controls
                                     li.media-card__controls-item
-                                        a.news__article-more.media-card__controls-button.media-card__controls-button--dark(href='#' title='Читать далее') Читать далее
+                                        a.news__article-more.media-card__controls-button.media-card__controls-button--dark(href='#' title='Читать подробнее') Читать подробнее
                                     li.media-card__controls-item
                                         a.news__article-repost.media-card__controls-button.media-card__controls-button--light(href='#' title='Перепост') Перепост
                         .media-card__body
@@ -362,7 +362,7 @@ block content
                                             span.news__article-inst-user-cover(title='user cover') 2440
                                 ul.media-card__controls
                                     li.media-card__controls-item
-                                        a.news__article-more.media-card__controls-button.media-card__controls-button--dark(href='#' title='Читать далее') Смотреть далее
+                                        a.news__article-more.media-card__controls-button.media-card__controls-button--dark(href='#' title='Читать подробнее') Смотреть далее
                                     li.media-card__controls-item
                                         a.news__article-repost.media-card__controls-button.media-card__controls-button--light(href='#' title='Перепост') Перепост
                         .media-card__body
@@ -405,7 +405,7 @@ block content
                                             span.news__article-inst-user-cover(title='user cover') 2440
                                 ul.media-card__controls
                                     li.media-card__controls-item
-                                        a.news__article-more.media-card__controls-button.media-card__controls-button--dark(href='#' title='Читать далее') Читать далее
+                                        a.news__article-more.media-card__controls-button.media-card__controls-button--dark(href='#' title='Читать подробнее') Читать подробнее
                                     li.media-card__controls-item
                                         a.news__article-repost.media-card__controls-button.media-card__controls-button--light(href='#' title='Перепост') Перепост
                         .media-card__body
@@ -452,7 +452,7 @@ block content
                                             span.news__article-inst-user-cover(title='user cover') 2440
                                 ul.media-card__controls
                                     li.media-card__controls-item
-                                        a.news__article-more.media-card__controls-button.media-card__controls-button--dark(href='#' title='Читать далее') Читать далее
+                                        a.news__article-more.media-card__controls-button.media-card__controls-button--dark(href='#' title='Читать подробнее') Читать подробнее
                                     li.media-card__controls-item
                                         a.news__article-repost.media-card__controls-button.media-card__controls-button--light(href='#' title='Перепост') Перепост
                         .media-card__body
@@ -494,7 +494,7 @@ block content
                                             span.news__article-inst-user-cover(title='user cover') 2440
                                 ul.media-card__controls
                                     li.media-card__controls-item
-                                        a.news__article-more.media-card__controls-button.media-card__controls-button--dark(href='#' title='Читать далее') Читать далее
+                                        a.news__article-more.media-card__controls-button.media-card__controls-button--dark(href='#' title='Читать подробнее') Читать подробнее
                                     li.media-card__controls-item
                                         a.news__article-repost.media-card__controls-button.media-card__controls-button--light(href='#' title='Перепост') Перепост
                         .media-card__body
@@ -536,7 +536,7 @@ block content
                                             span.news__article-inst-user-cover(title='user cover') 2440
                                 ul.media-card__controls
                                     li.media-card__controls-item
-                                        a.news__article-more.media-card__controls-button.media-card__controls-button--dark(href='#' title='Читать далее') Читать далее
+                                        a.news__article-more.media-card__controls-button.media-card__controls-button--dark(href='#' title='Читать подробнее') Читать подробнее
                                     li.media-card__controls-item
                                         a.news__article-repost.media-card__controls-button.media-card__controls-button--light(href='#' title='Перепост') Перепост
                         .media-card__body
@@ -580,7 +580,7 @@ block content
                                             span.news__article-inst-user-cover(title='user cover') 2440
                                 ul.media-card__controls
                                     li.media-card__controls-item
-                                        a.news__article-more.media-card__controls-button.media-card__controls-button--dark(href='#' title='Читать далее') Читать далее
+                                        a.news__article-more.media-card__controls-button.media-card__controls-button--dark(href='#' title='Читать подробнее') Читать подробнее
                                     li.media-card__controls-item
                                         a.news__article-repost.media-card__controls-button.media-card__controls-button--light(href='#' title='Перепост') Перепост
                         .media-card__body
@@ -622,7 +622,7 @@ block content
                                             span.news__article-inst-user-cover(title='user cover') 2440
                                 ul.media-card__controls
                                     li.media-card__controls-item
-                                        a.news__article-more.media-card__controls-button.media-card__controls-button--dark(href='#' title='Читать далее') Читать далее
+                                        a.news__article-more.media-card__controls-button.media-card__controls-button--dark(href='#' title='Читать подробнее') Читать подробнее
                                     li.media-card__controls-item
                                         a.news__article-repost.media-card__controls-button.media-card__controls-button--light(href='#' title='Перепост') Перепост
                         .media-card__body

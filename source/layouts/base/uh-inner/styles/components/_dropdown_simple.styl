@@ -3,30 +3,90 @@
 
 .dropdown-simple
     position relative
+    display inline-block
+
+.dropdown-simple--type--1
+    //
+
+.dropdown-simple--type--2
+    //
 
 .dropdown-simple--by-right
     //
 
-.dropdown-simple__button
+.dropdown-simple__button  // label
+    fontHvMedium12_26()
     position relative
     z-index 2
+    display inline-block
+    vertical-align top
     cursor pointer
-    color #fff
-    background-color #578789
 
-.dropdown-simple__open
+    .dropdown-simple--type--1 &
+        padding-top 9px
+        padding-right 27px
+        padding-bottom 10px
+        padding-left 10px
+
+    .dropdown-simple--type--2 &
+        padding-top 1px
+        padding-left 12px
+        padding-right 22px
+        text-transform uppercase
+
+    &::after
+        position absolute
+        width 0
+        height 0
+        border-style solid
+        content ''
+
+        .dropdown-simple--type--1 &
+            top 23px
+            right 26px
+            border-width 6px 4px 0 4px
+            border-color $c_dull-lightened transparent transparent transparent
+
+        .dropdown-simple--type--2 &
+            top 12px
+            right 10px
+            border-width 5px 3.5px 0 3.5px
+            border-color $c_dull transparent transparent transparent
+
+    .dropdown-simple--type--1 &
+        color $c_white
+        background-color $c_dull
+
+    .dropdown-simple--type--2 &
+        border 1px solid $c_dull
+        color $c_dull
+        background-color transparent
+
+.dropdown-simple__active-item  // span
+    //
+
+.dropdown-simple__open  // input[type=checkbox]
     display none
 
-.dropdown-simple__list
+.dropdown-simple__list  // ul
     position absolute
     z-index 1
-    opacity 0
+    padding 0
+    margin 0
     top -200%
     color #fff
     background-color #366363
+    opacity 0
     transition top .4s ease-in, opacity .4s ease-in
 
 .dropdown-simple__open:checked + .dropdown-simple__list
     bottom auto
     top 100%
     opacity 1
+
+.dropdown-simple__list-item  // li
+    list-style none
+
+.dropdown-simple__link  // a
+    text-decoration none
+

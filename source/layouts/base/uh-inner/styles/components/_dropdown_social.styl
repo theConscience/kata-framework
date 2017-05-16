@@ -3,14 +3,17 @@
 
 .dropdown-social
     position relative
-    background-color #578789
+    display inline-block
+    background-color $c_dull
 
-.dropdown-social__button
+.dropdown-social__button  // label
     position relative
+    display inline-block
+    vertical-align top
     z-index 2
     cursor pointer
     color #fff
-    background-color #578789
+    background-color $c_dull
 
 .dropdown-social__inner-list
     //
@@ -65,7 +68,7 @@
     &:hover
     &:focus
         background-color $c_dull-darker
-    
+
     &:active
         background-color $c_dull-darkest
 

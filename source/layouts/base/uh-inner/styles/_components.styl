@@ -8,12 +8,37 @@
 @import 'components/_custom_label'
 @import 'components/_dropdown_simple'
 @import 'components/_dropdown_social'
+@import 'components/_slider'
+@import 'components/_condensed_list'
+@import 'components/_media_card'
 
 
 .btn
     position relative
+    display inline-block
+    vertical-align top
     border-radius 0
+    cursor pointer
     transition color .4s, background-color .4s, border .4s
+
+.btn--type--1
+    fontHvBold11_21()
+    padding-top 5px
+    padding-right 15px
+    padding-bottom 5px
+    padding-left 15px
+    color $c_white
+    background-color $c_bright
+    text-transform uppercase
+    text-decoration none
+
+    &:hover
+    &:focus
+        background-color $c_bright-light
+
+    &:active
+        color $c_white-darkened
+        background-color $c_bright-dark
 
 .btn--type--3
     fontHvBold14_18()
