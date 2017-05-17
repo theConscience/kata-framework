@@ -30,31 +30,39 @@
 
 
 
-.uh-inner-page
-    //
-
-.uh-inner-page__content
-    //
-
-.uh-inner-page__header
-    //
-
-.uh-inner-page__aside
-    //
-
-.uh-inner-page__main
-    //
-
-.uh-inner-page__nav
-    //
-
-.uh-inner-page__footer
+.uh-inner-page  // body
     //
 
 
+.uh-inner-page__header  // header
+    //
+
+.uh-inner-page__aside  // aside
+    //
+
+.uh-inner-page__site-nav  // nav
+    //
+
+.uh-inner-page__main  // main
+    //
+
+.uh-inner-page__page-nav  // nav
+    //
+
+.uh-inner-page__content  // article
+    //
+
+.uh-inner-page__footer  // footer
+    //
 
 
-.page-header
+
+
+////////////////////////////
+// .uh-inner-page__header //
+////////////////////////////
+
+.page-header  // header.uh-inner-page__header
     //
 
 .page-header__top
@@ -62,8 +70,6 @@
 
 .page-header__bottom
     //
-
-
 
 
 .site-title
@@ -151,7 +157,6 @@
         //
 
 
-
 $$site-search-font
     fontHvRoman14_18()
     color $c_dark-2
@@ -170,3 +175,269 @@ $$site-search-font
 
 .site-search__company-id
     @extend $$site-search-font
+
+
+
+
+///////////////////////////
+// .uh-inner-page__aside //
+///////////////////////////
+
+
+.uh-inner-aside  // aside.uh-inner-page__aside
+    //
+
+.uh-inner-aside--collapsed
+    //
+
+.uh-inner-aside__header  // header
+    background-color $c_contrast-5
+
+.uh-inner-aside__toggle  // button
+    fontHvLight12_21()
+    position relative
+    color $c_contrast-4-transparent-05
+
+    &:hover
+    &:focus
+        text-decoration underline
+
+    &:active
+        //
+
+.uh-inner-aside__user-controls  // nav
+    //
+
+
+// mix
+.user-controls  // nav.uh-inner-aside__user-controls
+    //
+
+.user-controls__menu  // ul
+    padding 0
+    margin 0
+
+.user-controls__item  // li
+    list-style none
+
+.user-controls__user-name  // a
+    fontHvBold14_21()
+    color $c_white
+
+    &:hover
+    &:focus
+        text-decoration underline
+
+    &:active
+        //
+
+.user-controls__user-company  // a
+    fontHvLight12_21()
+    color $c_white
+
+    &:hover
+    &:focus
+        text-decoration underline
+
+    &:active
+        //
+
+.user-controls__company-id  // span
+    //
+
+.user-controls__change-company  // a
+    //
+
+    &:hover
+    &:focus
+        //
+
+    &:active
+        //
+
+.user-controls__logout  // a
+    fontHvLight12_21()
+    color $c_contrast-4-transparent-05
+// end of mix
+
+
+    //////////////////////////////
+    // .uh-inner-page__site-nav //
+    //////////////////////////////
+
+
+.main-nav  // nav.uh-inner-page__site-nav
+    //
+
+.main-nav__menu  // ul
+    padding 0
+    margin 0
+
+.main-nav__item  // li
+    list-style none
+
+.main-nav__link  // a
+    fontHvLight16_24()
+    display block
+    color $c_dark
+    text-decoration none
+    transition color 0.4s ease, background-color 0.4s ease
+
+    &:hover
+    &:focus
+        text-decoration none
+
+    &:active
+        //
+
+.main-nav__link--active
+    //
+
+
+
+.actions-nav  // nav
+    //
+
+.actions-nav__menu  // ul
+    padding 0
+    margin 0
+
+.actions-nav__item  // li
+    list-style none
+
+.actions-nav__item--big
+    //
+
+.actions-nav__item--small
+    //
+
+.actions-nav__item--bright
+    background-color $c_bright
+
+.actions-nav__link  // a
+    fontHvMedium12_17()
+    display block
+    color $c_black
+    text-decoration none
+
+    .actions-nav__item--big &
+        fontHvLight16_24()
+        color $c_dark
+
+    .actions-nav__item--small &
+        fontHvMedium12_17()
+        color $c_black
+
+    .actions-nav__item--bright &
+        fontHvLight16_21()
+        color $c_white
+
+.actions-nav__link--invite-partners
+    //
+
+.actions-nav__link--messages
+    //
+
+.actions-nav__link--orders
+    //
+
+.actions-nav__link--bills
+    //
+
+.actions-nav__link--help
+    //
+
+
+
+
+//////////////////////////
+// .uh-inner-page__main //
+//////////////////////////
+
+    //////////////////////////////
+    // .uh-inner-page__page-nav //
+    //////////////////////////////
+
+.page-nav  // nav.uh-inner-page__page-nav
+    //
+
+
+
+
+    /////////////////////////////
+    // .uh-inner-page__content //
+    /////////////////////////////
+
+.page-content  // article.uh-inner-page__content
+    //
+
+
+
+////////////////////////////
+// .uh-inner-page__footer //
+////////////////////////////
+
+
+.uh-inner-footer  // footer.uh-inner-page__footer
+    //
+
+.uh-inner-footer__copyright
+    fontHvLight14_21()
+    color $c_dark
+
+
+.uh-inner-footer__nav  // ul
+    padding 0
+    margin 0
+
+.uh-inner-footer__nav-item  // li
+    list-style none
+
+.uh-inner-footer__nav-link  // a
+    fontHvLight14_21()
+    display block
+    color $c_bright
+    text-decoration underline
+    transition text-decoration 0.4s ease, color 0.4s ease
+
+    &:hover
+    &:focus
+        text-decoration none
+
+    &:active
+        color $c_bright-dark
+
+
+.uh-inner-footer__payments  // ul
+    //
+
+.uh-inner-footer__payments-item  // li
+    //
+
+.uh-inner-footer__payments-link  // a
+    //
+
+.uh-inner-footer__payments-image  // img
+    //
+
+
+.uh-inner-footer__social  // ul
+    //
+
+.uh-inner-footer__social-item  // li
+    //
+
+.uh-inner-footer__social-link // a
+    //
+
+.uh-inner-footer__social-link--fb
+    //
+
+.uh-inner-footer__social-link--li
+    //
+
+.uh-inner-footer__social-link--ytb
+    //
+
+.uh-inner-footer__social-link--inst
+    //

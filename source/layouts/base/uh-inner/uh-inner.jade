@@ -66,7 +66,24 @@ html(lang='ru' manifest='offline.manifest')
 
                 block right_side
                     // default right-side aside content
-                    nav.main-nav
+
+                    header.uh-inner-aside__header
+                        button.uh-inner-aside__toggle
+                        nav.uh-inner-aside__user-controls.user-controls
+                            ul.user-controls__menu
+                                li.user-controls__item
+                                    a.user-controls__user-name(href='#' title='User name') Джонни Депп
+                                li.user-controls__item
+                                    a.user-controls__user-company(href='#' title='Active user company').
+                                        Unihotel administration account
+                                        (ID: <span class="user-controls__company-id">515</span>)
+                                    a.user-controls__change-company(href='#' title='Change user company')
+                                li.user-controls__item
+                                    a.user-controls__logout(href='#' title='Logout') Выход
+
+                    nav.main-nav(class=pageName ? pageName + '-page__site-nav ' + (subTemplateName ? ' ' + subTemplateName + '-page__site-nav ' : '')  + (siteNavClasses ? siteNavClasses : '') :
+                                 subTemplateName ? ' ' + subTemplateName + '-site-nav ' + (siteNavClasses ? siteNavClasses : '') :
+                                'uh-inner-page__site-nav uh-inner-site-nav' + (siteNavClasses ? siteNavClasses : ''))
                         ul.main-nav__menu
                             li.main-nav__item
                                 a.main-nav__link.main-nav__link--hotels(href='#', title='Мои отели') Мои отели
@@ -104,9 +121,9 @@ html(lang='ru' manifest='offline.manifest')
 
                 block content_left_side
                     // default left-side block
-                    nav.page-nav(class=pageName ? pageName + '-page__nav ' + (subTemplateName ? ' ' + subTemplateName + '-page__nav ' : '')  + (pageNavClasses ? pageNavClasses : '') :
-                       subTemplateName ? ' ' + subTemplateName + '-nav ' + (pageNavClasses ? pageNavClasses : '') :
-                       'uh-inner-page__nav uh-inner-nav' + (pageNavClasses ? pageNavClasses : ''))
+                    nav.page-nav(class=pageName ? pageName + '-page__page-nav ' + (subTemplateName ? ' ' + subTemplateName + '-page__page-nav ' : '')  + (pageNavClasses ? pageNavClasses : '') :
+                       subTemplateName ? ' ' + subTemplateName + '-page-nav ' + (pageNavClasses ? pageNavClasses : '') :
+                       'uh-inner-page__page-nav uh-inner-page-nav' + (pageNavClasses ? pageNavClasses : ''))
                         ul.page-nav__menu
                             li.page-nav__menu-item
                                 a.page-nav__menu-link(href='#', title='Ссылка 1') Ссылка 1
@@ -132,7 +149,30 @@ html(lang='ru' manifest='offline.manifest')
 
                 block footer
                     // default footer content
-                    p Default unihotel inner page footer
+                    .uh-inner-footer__copyright.
+                        Unihotel 2017<br>
+                        Все права защищены
+                    ul.uh-inner-footer__nav
+                        li.uh-inner-footer__nav-item
+                            a.uh-inner-footer__nav-link(href='#' title='Связаться с нами') Связаться с нами
+                        li.uh-inner-footer__nav-item
+                            a.uh-inner-footer__nav-link(href='#' title='Условия предоставления услуг') Условия предоставления услуг
+                    ul.uh-inner-footer__payments
+                        li.uh-inner-footer__payments-item
+                            a.uh-inner-footer__payments-link(href='#' title='visa / mastercard')
+                                img.uh-inner-footer__payments-image(src='' alt='visa / mastercard' width='' height='')
+                    ul.uh-inner-footer__social
+                        li.uh-inner-footer__social-item
+                            a.uh-inner-footer__social-link.uh-inner-footer__social-link--fb(href='#' title='facebook') facebook
+                        li.uh-inner-footer__social-item
+                            a.uh-inner-footer__social-link.uh-inner-footer__social-link--li(href='#' title='linked in') linked in
+                        li.uh-inner-footer__social-item
+                            a.uh-inner-footer__social-link.uh-inner-footer__social-link--ytb(href='#' title='youtube') youtube
+                        li.uh-inner-footer__social-item
+                            a.uh-inner-footer__social-link.uh-inner-footer__social-link--inst(href='#' title='instagram') instagram
+
+
+
 
             block inner_modals
 
