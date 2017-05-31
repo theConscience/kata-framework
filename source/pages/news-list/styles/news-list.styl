@@ -1,12 +1,11 @@
 @import './helpers/_variables'
 @import './helpers/_mixins'
 @import './helpers/_block_mixins'
-
-
+@import './helpers/_placeholders'
 
 
 .news-list-content
-    //
+    // padding-left 72px
 
 .news-list-content__slider
     //
@@ -18,7 +17,7 @@
     //
 
 .news-list-content__news
-    //
+    text-align center 
 
 .news-list-content__news-load-button
     //
@@ -27,20 +26,312 @@
 
 
 .page-nav
-    background-color $c_black-transparent-09
+    position relative
+    z-index 3
+    width 72px
+    min-width 72px
+    flex-basis 72px
+    box-shadow 9px 0 36px 0 rgba(0, 0, 0, 0.2)
+
+
+    @media (min-width $xsm+1)
+        &::after  // заглушка для того, чтобы togglable-panel не перекрывали .page-nav под кнопками меню
+            position absolute
+            z-index 1
+            width 100%
+            height 100%
+            background-color $c_white
+            content ''
+
+    @media (max-width $xsm)
+        min-width 100%
+        min-height 79px
+        flex-basis 100%
 
 .page-nav__menu  // ul
+    position relative
+    z-index 1
     padding 0
     margin 0
+    background-color $c_white
+
+    @media (max-width $xsm)
+        display flex
+        flex-wrap wrap
 
 .page-nav__menu-item  // li
     list-style none
 
+    @media (max-width $xsm)
+        flex-basis 81px
+        flex-grow 1
+
+.page-nav__menu-link  // a
+    position relative
+    z-index 1
+    display block
+    min-height 57px
+    border-bottom 1px solid $c_light
+    color $c_dark-6
+    background-color $c_white
+    cursor pointer
+    outline none
+    text-decoration none
+    transition color 0.4s ease, background-color 0.4s ease, border-color 0.4s ease
+
+    @media (max-width $xsm)
+        min-height 65px
+        max-height 65px
+        border-bottom none
+        border-top 1px solid $c_light
+
+    &:hover
+    &:focus
+        color $c_dark-6
+        background-color $c_light-2
+
+    &:active
+        color $c_white
+        background-color $c_bright-dark
+        border-bottom-color $c_bright-dark
+
+    &::before
+        position absolute
+        top 0
+        bottom 0
+        left 0
+        right 0
+        margin auto
+        text-align center
+        background-repeat no-repeat
+        background-size contain
+        background-position center
+        transition background-image 0.4s ease
+        content ''
+
+    .page-nav__menu-item:first-of-type &
+        border-top 1px solid $c_light
+
+        &:active
+            border-top-color $c_bright-dark
+
+.page-nav__menu-link--active
+    color $c_white
+    background-color $c_bright
+    border-bottom-color $c_bright
+    // cursor default
+
+    &:hover
+    &:focus
+        color $c_white
+        background-color $c_bright-dark
+        border-bottom-color $c_bright-dark
+
+    &:active
+        background-color $c_bright-dark
+        border-bottom-color $c_bright-dark
+        border-top-color $c_bright-dark
+
+    @media (max-width $xsm)
+        border-bottom-color transparent
+        border-top-color $c_bright
+
+        &:hover
+        &:focus
+            border-bottom-color $c_bright-dark
+
+        &:active
+            border-bottom-color transparent
+            border-top-color $c_bright-dark
+
+.page-nav__menu-link--filter-reset
+    height 77px
+
+    &::before
+        width 25px
+        height 25px
+        background-image url(../images/bg-page-nav-filter-reset.png)
+
+    &:active::before
+    &.page-nav__menu-link--active::before
+        background-image url(../images/bg-page-nav-filter-reset--active.png)
+
+.page-nav__menu-link--hotels
+    height 68px
+
+    &::before
+        width 32px
+        height 35px
+        background-image url(../images/bg-page-nav-filter-hotels.svg)
+
+    &:active::before
+    &.page-nav__menu-link--active::before
+        background-image url(../images/bg-page-nav-filter-hotels--active.svg)
+
+
+.page-nav__menu-link--aircompanies
+    height 66px
+
+    &::before
+        @extend $$icomoon-additional
+        top 14px
+        font-size 50px
+        content $ima_plane
+
+.page-nav__menu-link--tourism-boards
+    height 68px
+
+    &::before
+        @extend $$icomoon-additional
+        top 14px
+        right 3px
+        font-size 40px
+        content $ima_travel-list
+
+.page-nav__menu-link--tour-operators
+    height 65px
+
+    &::before
+        @extend $$icomoon-additional
+        top 14px
+        font-size 40px
+        content $ima_island
+
+.page-nav__menu-link--medical-tourism
+    height 58px
+
+    &::before
+        @extend $$icomoon-additional
+        top 12px
+        font-size 40px
+        content $ima_heart
+
+.page-nav__menu-link--cultural-sites
+    height 64px
+
+    &::before
+        @extend $$icomoon-additional
+        top 14px
+        font-size 40px
+        content $ima_masks
+
+.page-nav__menu-link--service-companies
+    height 63px
+
+    &::before
+        @extend $$icomoon-additional
+        top 2px
+        font-size 60px
+        content $ima_helicopter
+
+.page-nav__menu-link--video-reviews
+    height 63px
+
+    &::before
+        width 30px
+        height 29px
+        background-image url(../images/bg-page-nav-video-reviews.png)
+
+    &:active::before
+    &.page-nav__menu-link--active::before
+        background-image url(../images/bg-page-nav-video-reviews--active.png)
+
+.page-nav__menu-link--exhibitions-events
+    height 63px
+
+    &::before
+        width 30px
+        height 29px
+        background-image url(../images/bg-page-nav-exhibitions-events.png)
+
+    &:active::before
+    &.page-nav__menu-link--active::before
+        background-image url(../images/bg-page-nav-exhibitions-events--active.png)
+
+.page-nav__menu-link--mass-media-pr
+    height 63px
+
+    &::before
+        width 30px
+        height 29px
+        background-image url(../images/bg-page-nav-mass-media-pr.png)
+
+    &:active::before
+    &.page-nav__menu-link--active::before
+        background-image url(../images/bg-page-nav-mass-media-pr--active.png)
+
+.page-nav__menu-link--shops-restaurants
+    height 63px
+
+    &::before
+        width 30px
+        height 29px
+        background-image url(../images/bg-page-nav-shops-restaurants.png)
+
+    &:active::before
+    &.page-nav__menu-link--active::before
+        background-image url(../images/bg-page-nav-shops-restaurants--active.png)
+
+.page-nav__menu-link--photo-reviews
+    height 63px
+
+    &::before
+        width 30px
+        height 29px
+        background-image url(../images/bg-page-nav-photo-reviews.png)
+
+    &:active::before
+    &.page-nav__menu-link--active::before
+        background-image url(../images/bg-page-nav-photo-reviews--active.png)
+
+
 .page-nav__togglable-panel
-    //
+    position absolute
+    z-index -1
+    top 0
+    left (72px - 245px)
+    box-sizing border-box
+    height 100vh
+    width 245px
+    padding-top 30px
+    padding-bottom 30px
+    background-color $c_black-transparent-09
+    opacity 0
+    transition left 0.4s ease, opacity 0.4s ease, right 0.4s ease
+
+    @media (max-width $xsm)
+        top 100%
+        // top -100vh
+        left auto
+        right 100%
+        width 100%
+        height auto
+        transition right 0.4s ease, opacity 0.4s ease
+
+    // @media (max-width $xss)
+    //     width calc(100vw - 72px - 16px)
+    //     +ie-10-11-only()
+    //         width calc(100vw - 72px)
+
+
+.page-nav__togglable-panel--open
+    left 72px
+    opacity 1
+
+    @media (max-width $xsm)
+        left auto
+        right 0
+
+    // @media (max-width $xss)
+    //     left 0
+
 
 .page-nav__togglable-panel-title  // h
     fontHvRoman24_auto()
+    margin-top 0
+    margin-bottom 30px
+    padding-left 33px
+    padding-right 15px
     color $c_bright
 
 .page-nav__submenu  // ul
@@ -52,18 +343,34 @@
 
 .page-nav__submenu-link  // a
     fontHvRoman15_30()
+    display block
+    padding-left 33px
+    padding-right 15px
     color $c_white
     text-decoration none
-    transition background-color 0.4s ease
+    outline none
+    transition color 0.4s ease, background-color 0.4s ease
 
     &:hover
     &:focus
+        color $c_white
         background-color $c_dark-2
+        text-decoration none
 
     &:active
         color $c_light-3
-        background-color $c_dark-3
 
+.page-nav__submenu-link--active
+    color $c_light-6
+    cursor default
+
+    &:hover
+    &:focus
+        color $c_light-6 
+        background-color transparent
+
+    &:active
+        color $c_light-6
 
 
 

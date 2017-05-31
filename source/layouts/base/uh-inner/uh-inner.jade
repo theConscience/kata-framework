@@ -20,7 +20,7 @@ html(lang='ru' manifest='offline.manifest')
                subTemplateName ? subTemplateName + '_page' + (bodyClasses ? ' ' + bodyClasses : '') :
                'uh-inner-page ' + (bodyClasses ? bodyClasses : ''))
 
-        .body-inner
+        .body-inner.uh-inner-page__inner
             header.page-header(class=pageName ? pageName + '-page__header ' + pageName + '-header' + (subTemplateName ? ' ' + subTemplateName + '-page__header ' + subTemplateName + '-header ' : '')  + (mainClasses ? mainClasses : '') :
                                      subTemplateName ? ' ' + subTemplateName + '-page__header ' + subTemplateName + '-header ' + (headerClasses ? headerClasses : '') :
                                      'uh-inner-page__header uh-inner-header' + (headerClasses ? headerClasses : ''))
@@ -28,9 +28,8 @@ html(lang='ru' manifest='offline.manifest')
                 .page-header__top
                     block header
                         // default header
-                        nav.to-homepage-nav
-                            a.site-logo.site-logo--uh(href='#', title='Главная страница')
-                                img.site-logo__image(src='#' width='' height='' alt='Логотип Unihotel')
+                        a.site-logo.site-logo--uh(href='#', title='Главная страница')
+                            img.site-logo__image(src='./images/img-uh-logo.png' width='198' height='' alt='Логотип Unihotel')
                         h1.site-title Бесплатный международный туристический справочник
                         .site-language(tabindex=0)
                             form#site-language__form.site-language__form(method='POST' action="{% url 'language' %}")
@@ -47,8 +46,10 @@ html(lang='ru' manifest='offline.manifest')
                         // default search panel
                         section.site-search
                             form#site-search__form.site-search__form(method='GET' action="{% url 'companies_search' %}")
-                                csrf_token
-                                input#site-search__query.site-search__query(type='text' placeholder='Введите поисковый запрос')
+                                //- csrf_token
+                                //- .custom-input.custom-input--search
+                                //- .site-search__panel
+                                input#site-search__query.site-search__query(type='text' placeholder='Введите поисковый запрос' pattern='.+')
                                 select#site-search__company-type.site-search__company-type
                                     option(value='') Тип компании
                                     each label, value in {aircompany: 'Авиакомпания', hotel: 'Отель', 'tourism-bureau': 'Бюро по туризму'}
@@ -67,8 +68,7 @@ html(lang='ru' manifest='offline.manifest')
                 block right_side
                     // default right-side aside content
 
-                    header.uh-inner-aside__header
-                        button.uh-inner-aside__toggle
+                    header.uh-inner-aside__header 
                         nav.uh-inner-aside__user-controls.user-controls
                             ul.user-controls__menu
                                 li.user-controls__item
@@ -80,21 +80,32 @@ html(lang='ru' manifest='offline.manifest')
                                     a.user-controls__change-company(href='#' title='Change user company')
                                 li.user-controls__item
                                     a.user-controls__logout(href='#' title='Logout') Выход
+                        button.uh-inner-aside__toggle(data-alternate-title='Открыть' title='Свернуть') Свернуть
 
                     nav.main-nav(class=pageName ? pageName + '-page__site-nav ' + (subTemplateName ? ' ' + subTemplateName + '-page__site-nav ' : '')  + (siteNavClasses ? siteNavClasses : '') :
                                  subTemplateName ? ' ' + subTemplateName + '-site-nav ' + (siteNavClasses ? siteNavClasses : '') :
                                 'uh-inner-page__site-nav uh-inner-site-nav' + (siteNavClasses ? siteNavClasses : ''))
                         ul.main-nav__menu
                             li.main-nav__item
+                                a.main-nav__link.main-nav__link--company-profile(href='#', title='Профайл компании') Профайл компании
+                            li.main-nav__item
                                 a.main-nav__link.main-nav__link--hotels(href='#', title='Мои отели') Мои отели
+                            li.main-nav__item
+                                a.main-nav__link.main-nav__link--company-files(href='#', title='Файлы компании') Файлы компании
                             li.main-nav__item
                                 a.main-nav__link.main-nav__link--documents(href='#', title='Документы') Документы
                             li.main-nav__item
                                 a.main-nav__link.main-nav__link--instruments(href='#', title='Инструменты') Инструменты
                             li.main-nav__item
+                                a.main-nav__link.main-nav__link--finances(href='#', title='Финансы') Финансы
+                            li.main-nav__item
                                 a.main-nav__link.main-nav__link--avia(href='#', title='Авиа') Авиа
                             li.main-nav__item
                                 a.main-nav__link.main-nav__link--news(href='#', title='Новости') Новости
+                            li.main-nav__item
+                                a.main-nav__link.main-nav__link--contacts(href='#', title='Контакты') Контакты
+                            li.main-nav__item
+                                a.main-nav__link.main-nav__link--chat(href='#', title='Чат') Чат
 
                             block additional_main_nav
                                 // additional main navigation content
@@ -102,13 +113,13 @@ html(lang='ru' manifest='offline.manifest')
                     nav.actions-nav
                         ul.actions-nav__menu
                             li.actions-nav__item.actions-nav__item--big
-                                a.actions-nav__link.actions-nav__link--invite-partners(href='#', title='Приграсите всех ваших партнёров для совместной работы') Приграсите всех ваших партнёров для совместной работы
+                                a.actions-nav__link.actions-nav__link--invite-partners(href='#', title='Пригласите всех ваших партнёров для совместной работы') Приграсите всех ваших партнёров для совместной работы
                             li.actions-nav__item.actions-nav__item--small
-                                a.actions-nav__link.actions-nav__link--messages(href='#', title='Сообщения') Сообщения
+                                a.actions-nav__link.actions-nav__link--messages(data-items-count='7', href='#', title='Сообщения') Сообщения
                             li.actions-nav__item.actions-nav__item--small
                                 a.actions-nav__link.actions-nav__link--orders(href='#', title='Заявки') Заявки
                             li.actions-nav__item.actions-nav__item--small.actions-nav__item--offset-bottom
-                                a.actions-nav__link.actions-nav__link--bills(href='#', title='Счета') Счета
+                                a.actions-nav__link.actions-nav__link--bills(data-items-count='3', href='#', title='Счета') Счета
                             li.actions-nav__item.actions-nav__item--bright
                                 a.actions-nav__link.actions-nav__link--help(href='#', title='Помощь') Помощь
 
@@ -149,18 +160,19 @@ html(lang='ru' manifest='offline.manifest')
 
                 block footer
                     // default footer content
-                    .uh-inner-footer__copyright.
-                        Unihotel 2017<br>
-                        Все права защищены
-                    ul.uh-inner-footer__nav
-                        li.uh-inner-footer__nav-item
-                            a.uh-inner-footer__nav-link(href='#' title='Связаться с нами') Связаться с нами
-                        li.uh-inner-footer__nav-item
-                            a.uh-inner-footer__nav-link(href='#' title='Условия предоставления услуг') Условия предоставления услуг
-                    ul.uh-inner-footer__payments
-                        li.uh-inner-footer__payments-item
-                            a.uh-inner-footer__payments-link(href='#' title='visa / mastercard')
-                                img.uh-inner-footer__payments-image(src='' alt='visa / mastercard' width='' height='')
+                    .uh-inner-footer__info
+                        .uh-inner-footer__copyright.
+                            Unihotel 2017<br>
+                            Все права защищены
+                        ul.uh-inner-footer__nav
+                            li.uh-inner-footer__nav-item
+                                a.uh-inner-footer__nav-link(href='#' title='Связаться с нами') Связаться с нами
+                            li.uh-inner-footer__nav-item
+                                a.uh-inner-footer__nav-link(href='#' title='Условия предоставления услуг') Условия предоставления услуг
+                        ul.uh-inner-footer__payments
+                            li.uh-inner-footer__payments-item
+                                a.uh-inner-footer__payments-link(href='#' title='visa / mastercard')
+                                    img.uh-inner-footer__payments-image(src='./images/img-payments-visa.png' alt='visa / mastercard' width='46' height='58') 
                     ul.uh-inner-footer__social
                         li.uh-inner-footer__social-item
                             a.uh-inner-footer__social-link.uh-inner-footer__social-link--fb(href='#' title='facebook') facebook

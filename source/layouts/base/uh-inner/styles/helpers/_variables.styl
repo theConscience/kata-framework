@@ -6,11 +6,16 @@
 
 // colors
 $c_white = #fff
+$c_white-transparent-02 = rgba(255, 255, 255, 0.2)
+$c_white-transparent-03 = rgba(255, 255, 255, 0.3)
 $c_white-transparent-05 = rgba(255, 255, 255, 0.5)
 $c_white-transparent-063 = rgba(255, 255, 255, 0.63)
 $c_white-darkened = darken($c_white, 20%)
 
 $c_black = #000
+$c_black-transparent-02 = rgba(0, 0, 0, 0.2)
+$c_black-transparent-03 = rgba(0, 0, 0, 0.3)
+$c_black-transparent-05 = rgba(0, 0, 0, 0.5)
 $c_black-transparent-09 = rgba(0, 0, 0, 0.9)
 
 $c_dark = #06070e
@@ -27,11 +32,13 @@ $c_light-3 = #b4b4b4
 $c_light-4 = #d7d7d7
 $c_light-5 = #7f7f7f
 $c_light-6 = #909090
+$c_light-7 = #f8f8f8
 
 $c_bright = #ef0f54
 $c_bright-lightened = lighten($c_bright, 30%)
 $c_bright-light = lighten($c_bright, 20%)
 $c_bright-dark = darken($c_bright, 20%)
+$c_bright-darkened = darken($c_bright, 30%)
 $c_bright-transparent = rgba($c_bright, 0.9)
 
 $c_contrast = #4acdcd
@@ -41,6 +48,11 @@ $c_contrast-3-transparent = rgba($c_contrast-3, 0.93)
 $c_contrast-4 = rgb(165, 230, 230)
 $c_contrast-4-transparent-05 = rgba(165, 230, 230, 0.5)
 $c_contrast-5 = #4ccdcd
+$c_contrast-5-transparent-05 = rgba($c_contrast-5, 0.5)
+$c_contrast-light = #52dada
+$c_contrast-lightened = lighten($c_contrast-light, 5%)
+$c_contrast-lighter = lighten($c_contrast-light, 10%)
+$c_contrast-lightest = #6fffef
 
 $c_dull-lightened = #84aaaa
 $c_dull-light = #79baba
@@ -63,11 +75,14 @@ $pd-std = 16px
 
 // breakpoints
 $xss = 479px
+$xsm = 657px
 $xs = 767px
 $xs_plus_1 = 768px
 $sm = 867px
 $md = 991px
 $lg = 1023px
+$xls = 1160px
 $xl = 1199px
+$xll = 1210px
 
 $xs-y = 700px // need for rimma fix

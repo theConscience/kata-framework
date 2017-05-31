@@ -1,5 +1,25 @@
 @import '_variables';
 
+/*
+  Стайлгайд для стайлуса:
+    — переменные именуем в нижнем регистре через подчёркивания, начиная с  $  ,
+      например: $my_super_var
+    — плейсхолдеры (встроенный тип в стайлусе) именуем в нижнем регистре через дефисы, начиная с  $$  ,
+      например: $$some-placeholder-class
+    — миксины именуются обычным кэмел-кейсом, начиная с доллара,
+      например: $myCoolMixin()
+    — блочные (которые добавляют блок правил) миксины именуем обычным кэмел-кейсом,
+      например: mySuperBlockMixin()
+    — транзитные (которые меняют только селектор) миксины именуем в нижнем регистре через подчёркивание,
+      например: my_super_transition_mixin()
+    — функции именуем в нижнем регистре через подчёркивания, начиная с  _  ,
+      например: -my-nice-function()
+    — параметры внутри функций и миксинов именуем в нижнем регистре через нижнее подчёркивание,
+      например: my_awesome_param
+    — локальные переменные внутри области видимости функций и миксинов именуем в нижнем регистре через нижнее подчёркивание, начиная с $
+      например: $my_scoped_inner_variable
+*/
+
 box-shadow()
   -webkit-box-shadow arguments
   -moz-box-shadow arguments
@@ -10,3 +30,12 @@ transform()
   -moz-transform arguments
   -ms-transform arguments
   transform arguments
+
+not-ie-10-11()  // not ie 10-11 block mixin, for conditional css
+    @media not all and (-ms-high-contrast active) and (-ms-high-contrast none)  // не уверен что это корректно работающее медиа-выражение
+        {block}
+
+
+ie-10-11-only()  // ie 10-11 only block mixin, for conditional css
+    @media screen and (-ms-high-contrast active), (-ms-high-contrast none)
+        {block}

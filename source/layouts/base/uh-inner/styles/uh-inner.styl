@@ -1,12 +1,12 @@
 @import 'helpers/_variables'
 @import 'helpers/_mixins'
 @import 'helpers/_block_mixins'
+@import 'helpers/_placeholders'
 
 @import '_basic'
 @import '_grid'
 @import '_flex'
-@import '_components'
-
+@import '_components'$c_dark
 /*
   Стайлгайд для стайлуса:
     — переменные именуем в нижнем регистре через подчёркивания, начиная с  $  ,
@@ -28,23 +28,120 @@
 */
 
 
-
-
 .uh-inner-page  // body
-    //
+    position relative
+    margin 0
+    font-size 10px
+    line-height 1.6
+    color $c_dark
+    background-color $c_white
 
+.uh-inner-page--extended
+    // extended .un-inner-page__inner width and collapsed .uh-inner-page__aside.
+
+.uh-inner-page__inner  // .body-inner
+    position relative
+    overflow hidden
+    display flex
+    flex-wrap wrap
+    max-width 1366px
+    margin 0 auto
+    // box-shadow 0 0 30px rgba(0,0,0,0.5)
+    box-shadow 6px 0 30px -5px rgba(0,0,0,0.5)
+    // width (100% - 23%)
+    // max-width calc(1366px - 23%)
+    // margin-right 23%
+    // transform translateX(calc(-50% - 23%/2))
+    // transition width 0.4s ease
+
+.uh-inner-page__inner--extended
+    // width calc(100% - 60px)
+    // max-width (1366px - 60px)
+    // margin-right 60px
+    // transform translateX(calc(-50% - 60px/2))
 
 .uh-inner-page__header  // header
-    //
+    // flex-basis (100% - 23%)
+    // min-width (100% - 23%)
+    // margin-right 23%
+    width (100% - 23%)
+    transition width 0.4s ease
+
+    // bootstrap reset
+    &.page-header
+        padding-bottom 0
+        margin 0
+        border-bottom none
+
+    @media (max-width $xs)
+        width 100%
+        transition none
+
+    .uh-inner-page--extended &
+        // flex-basis calc(100% - 60px)
+        // min-width calc(100% - 60px)
+        // margin-right 60px
+        width calc(100% - 60px)  // IE не умеет делать transition: width если width посчитан через calc() :)
+
+        @media (max-width $xs)
+            width 100%
 
 .uh-inner-page__aside  // aside
+    position absolute
+    z-index 10
+    left calc(100% - 23%)
+    right 0
     //
+    width 23%
+    transition width 0.4s ease, left 0.4s ease
+
+    @media (max-width $xs)
+        position absolute  //xx
+        top 0px  //xx
+        overflow hidden
+        left auto
+        width 100%
+        height auto
+        transition height 0.4s ease
+
+    .uh-inner-page--extended &
+        // width calc(60px)  // gracefull degradation for IE - ослик не умеет делать transition: width если width посчитан через calc() :)
+        left calc(100% - 60px)
+
+        @media (max-width $xs)
+            left auto
+            height 110px
+
 
 .uh-inner-page__site-nav  // nav
     //
 
 .uh-inner-page__main  // main
-    //
+    overflow hidden
+    display flex
+    // flex-basis (100% - 23%)
+    // min-width (100% - 23%)
+    // margin-right 23%
+    width (100% - 23%)
+    transition width 0.4s ease
+    padding-bottom 21px
+
+    @media (max-width $xs)
+        width 100%
+        transition none
+
+    @media (max-width $xsm)
+        flex-wrap wrap
+
+    .uh-inner-page--extended &
+        // flex-basis calc(100% - 60px)
+        // min-width calc(100% - 60px)
+        // margin-right 60px
+        width calc(100% - 60px)  // IE не умеет делать transition: width если width посчитан через calc() :)
+
+        @media (max-width $xs)
+            width 100%
+
 
 .uh-inner-page__page-nav  // nav
     //
@@ -53,8 +150,25 @@
     //
 
 .uh-inner-page__footer  // footer
-    //
+    // flex-basis (100% - 23%)
+    // min-width (100% - 23%)
+    width (100% - 23%)
+    // margin-right 23%
+    border-top 1px solid $c_light
+    transition width 0.4s ease
 
+    @media (max-width $xs)
+        width 100%
+        transition none
+
+    .uh-inner-page--extended &
+        // flex-basis calc(100% - 60px)
+        // min-width calc(100% - 60px)
+        // margin-right 60px
+        width calc(100% - 60px)  // IE не умеет делать transition: width если width посчитан через calc() :)
+
+        @media (max-width $xs)
+            width 100%
 
 
 
@@ -63,26 +177,62 @@
 ////////////////////////////
 
 .page-header  // header.uh-inner-page__header
-    //
+    min-height 110px
 
 .page-header__top
-    //
+    display flex
+    box-sizing border-box
+    flex-wrap nowrap
+    justify-content space-between
+    align-items flex-start
+    min-height 110px
+    padding 30px 30px 0
 
 .page-header__bottom
+    padding-bottom 1px
+
+
+.site-logo  // a
+    flex-basis 25%
+    min-width 221px
+
+.site-logo--uh
+    //
+
+.site-logo--ut
+    //
+
+.site-logo__image
     //
 
 
 .site-title
     fontHvLight14_21()
+    // flex-basis 33%
+    flex-basis 36%
+    min-width 205px
+    margin 0
+    padding-left 1.6%
+    padding-right 1.6%
+    border-left 1px solid $c_light
     color $c_dark
     text-transform capitalize
 
 
 .site-language
     position relative
+    z-index 3
     width 180px
+    min-width 72px
     height 32px
     border 1px solid $c_light
+
+    @media (max-width $xs)
+        position absolute
+        z-index 11
+        right 82px
+        width 20%
+        border 1px solid $c_contrast-lightest
 
     &::after
         position absolute
@@ -97,9 +247,14 @@
         transition transform 0.4s ease
         content ''
 
+        @media (max-width $xs)
+            border-color $c_white transparent transparent transparent
+
         .site-language--open&
             transform rotate3D(0, 0, 1, 180deg)
 
+.site-language__form
+    //
 
 /*ul*/.site-language__menu
     position relative
@@ -108,11 +263,11 @@
     height 32px
     padding 0
     margin 0
+    box-shadow 0 3px 2px -1px rgba(0,0,0,0.4)
     transition height 0.4s ease
 
     .site-language--open &
         height (32+31*2)px
-
 
 /*li*/.site-language__menu-item
     box-sizing border-box
@@ -129,24 +284,42 @@
     &:active
         background-color $c_light
 
+    @media (max-width $xs)
+        border-top-color $c_contrast-lightest
+        background-color $c_contrast-light
+
+        &:hover
+        &:focus
+            background-color $c_contrast-lightened
+
+        &:active
+            background-color $c_contrast-lighter
+
     .site-language--open &
         opacity 1
 
-/*li*/.site-language__menu-item--active
+.site-language__menu-item--active  // li
     border-top 1px solid $c_white  // height 31px
     background-color $c_white !important
     opacity 1
 
-/*a*/.site-language__menu-link
+    @media (max-width $xs)
+        border-top 1px solid $c_contrast-lightest
+        background-color $c_contrast-light !important
+
+.site-language__menu-link  // a
     // fontHvLight14_21()
     fontHvLight14_30()
     display block
     // padding 10px 15px  // height 41px
     padding 0 4% 1px
     color $c_black
+    outline none
     text-transform capitalize
     text-decoration none
+    text-align left
     cursor pointer
+    transition background-color 0.4s ease
 
     // .site-language__menu-item--active &
     //     fontHvLight14_30()
@@ -154,7 +327,29 @@
 
     &:hover
     &:focus
-        //
+        color $c_black
+        background-color $c_light-2
+        text-decoration none
+
+    &:active
+        background-color $c_light
+
+    @media (max-width $xs)
+        color $c_white
+        // text-align right
+        padding-right 5px
+
+        &:hover
+        &:focus
+            color $c_white 
+            background-color $c_contrast-lightened
+
+        &:active
+            background-color $c_contrast-lighter
+
+    .site-language__menu-item--active &
+        // text-align left
+
 
 
 $$site-search-font
@@ -162,21 +357,201 @@ $$site-search-font
     color $c_dark-2
 
 .site-search
+    box-sizing border-box
+    min-height 50px
+    margin-bottom 19px
+    padding-top 8px
+    padding-right 40px
+    padding-bottom 8px
+    padding-left 40px
+    text-align center
+    background-color $c_bright
+
+    @media (max-width $lg)
+        padding-right 20px
+        padding-left 20px
+
+    @media (max-width $xss)
+        padding-right 10px
+        padding-left 10px
+
+.site-search--extended
     //
 
-.site-search__query
+.site-search__form  // form
+    position relative
+    display flex
+    justify-content space-between
+    flex-wrap wrap
+    overflow hidden
+    width 100%
+
+    & > *
+        flex-grow 1
+
+    // &::before
+    //     position absolute
+    //     top 10px
+    //     left 12px
+    //     width 17px
+    //     height 17px
+    //     background-repeat no-repeat
+    //     background-position contain
+    //     background-image url(../images/bg-site-search-query-lens.svg)
+    //     content ''
+
+// .site-search__panel
+//     border-radius 3px
+//     box-sizing border-box
+//     display flex
+//     margin-right 6.5px
+//     margin-left 6.5px
+
+
+.site-search__query  // input[type=text]
+    flex-basis 180px
+    flex-grow 4
+    padding-left 45px
+    padding-right 15px
+    padding-top 8px
+    padding-bottom 8px
+    border none
+    border-right 1px solid $c_light-3
+    border-radius 3px 0 0 3px
+    background-color $c_white
+    background-repeat no-repeat
+    background-size auto
+    background-position 12px 9px
+    background-image url(../images/bg-site-search-query-lens.svg)
+    // outline none
+    transition background-image 0.4s ease
     @extend $$site-search-font
 
-.site-search__company-type
+    &:hover
+    &:focus
+        background-image url(../images/bg-site-search-query-lens--hover.svg)
+
+    // &:invalid
+    //     background-image url(../images/bg-site-search-query-lens.svg)
+
+    // &:invalid:hover
+    // &:invalid:focus
+    //     background-image url(../images/bg-site-search-query-lens--hover.svg)
+
+    @media (max-width $xll)
+        flex-basis 100%
+        margin-bottom 8px
+        border-radius 3px
+
+        .site-search--extended &
+            flex-basis 180px
+            margin-bottom 0
+            border-radius 3px 0 0 3px
+
+    @media (max-width $md)
+        .site-search--extended &
+            flex-basis 100%
+            margin-bottom 8px
+            border-radius 3px
+
+.site-search__company-type  // select
+    box-sizing border-box
+    padding-left 21px
+    padding-top 8px
+    padding-right 15px
+    padding-bottom 8px
+    border none
+    border-right 1px solid $c_light-3
+    border-radius 0
+    background-color $c_white
+    background-repeat no-repeat
+    background-size auto
+    background-position 12px 9px
+    // outline none
     @extend $$site-search-font
 
-.site-search__country
+    @media (max-width $xll)
+        border-radius 3px 0 0 3px
+
+        .site-search--extended &
+            border-radius 0
+
+    @media (max-width $md)
+        .site-search--extended &
+            border-radius 3px 0 0 3px
+
+    @media (max-width $sm) and (min-width $xs+1)
+        margin-bottom 7px
+
+        .site-search--extended &
+            margin-bottom 0
+
+    @media (max-width $xsm)
+        margin-bottom 7px
+
+.site-search__country  // select
+    box-sizing border-box
+    padding-left 21px
+    padding-top 8px
+    padding-right 15px
+    padding-bottom 8px
+    border none
+    border-right 1px solid $c_light-3
+    border-radius 0
+    background-color $c_white
+    background-repeat no-repeat
+    background-size auto
+    background-position 12px 9px
+    // outline none
     @extend $$site-search-font
 
-.site-search__company-id
+    @media (max-width $sm) and (min-width $xs+1)
+        margin-bottom 7px
+
+        .site-search--extended &
+            margin-bottom 0
+
+    @media (max-width $xsm)
+        margin-bottom 7px
+
+.site-search__company-id  // input[type=text]
+    box-sizing border-box
+    margin-right 13px
+    padding-left 21px
+    padding-top 8px
+    padding-right 15px
+    padding-bottom 8px
+    border none
+    border-right 1px solid $c_light-3
+    border-radius 0 3px 3px 0
+    background-color $c_white
+    background-repeat no-repeat
+    background-size auto
+    background-position 12px 9px
+    // outline none
     @extend $$site-search-font
 
+    @media (max-width $sm) and (min-width $xs+1)
+        margin-right 0
+        margin-bottom 7px
 
+        .site-search--extended &
+            margin-right 13px
+            margin-bottom 0
+
+    @media (max-width $xsm)
+        margin-right 0
+        margin-bottom 7px
+
+.site-search__form-submit  // button
+    @media (max-width $sm) and (min-width $xs+1)
+        flex-basis 100%
+
+        .site-search--extended &
+            flex-basis auto
+
+    @media (max-width $xsm)
+        flex-basis 100%
 
 
 ///////////////////////////
@@ -185,33 +560,64 @@ $$site-search-font
 
 
 .uh-inner-aside  // aside.uh-inner-page__aside
+    height 100vh
+    box-shadow 0 0 30px rgba(0,0,0,.5)
     //
+    // width 23%
+    // transition width 0.4s ease
+
+    @media (max-width $xs)
+        box-shadow none
+        height auto
+        // min-height 110px  //xx
+        // transition height 0.4s ease
+
+        // &.uh-inner-aside--collapsed
+        //     height 110px
 
 .uh-inner-aside--collapsed
-    //
+    // width calc(60px)  // gracefull degradation for IE - ослик не умеет делать transition: width если width посчитан через calc() :)
+
+    @media (max-width $xs)
+        height 110px
 
 .uh-inner-aside__header  // header
+    position relative
+    box-sizing border-box
+    min-height 110px
+    padding-top 13px
+    padding-right 16px
+    padding-bottom 14px
+    padding-left 20px
     background-color $c_contrast-5
 
-.uh-inner-aside__toggle  // button
-    fontHvLight12_21()
-    position relative
-    color $c_contrast-4-transparent-05
+    .uh-inner-aside--collapsed &
+        // min-height 90px
 
-    &:hover
-    &:focus
-        text-decoration underline
+    @media (max-width $xs)
+        z-index 10
 
-    &:active
-        //
+    @media (max-width $xss)
+        padding-left 10px
+        padding-right 8px
 
 .uh-inner-aside__user-controls  // nav
-    //
+    position relative
+    transition opacity 0.4s ease-in
+
+    @media (min-width $xs+1)
+        .uh-inner-aside--collapsed &
+            opacity 0
+            z-index -1
 
 
 // mix
 .user-controls  // nav.uh-inner-aside__user-controls
-    //
+    box-sizing border-box
+    padding-right 27%
+
+    @media (max-width $xs)
+        padding-right calc(26% + 76px)
 
 .user-controls__menu  // ul
     padding 0
@@ -222,43 +628,177 @@ $$site-search-font
 
 .user-controls__user-name  // a
     fontHvBold14_21()
+    position relative
+    padding-left 17px
     color $c_white
+    text-decoration none
+    outline none
 
     &:hover
     &:focus
+        color $c_white
         text-decoration underline
 
     &:active
         //
+
+    &::before
+        @extend $$font-awesome
+        position absolute
+        left 2px
+        top 1px
+        font-size 14px
+        color $c_white
+        content $fa_pencil
 
 .user-controls__user-company  // a
     fontHvLight12_21()
+    position relative
+    padding-left 17px
     color $c_white
+    text-decoration none
+    outline none
 
     &:hover
     &:focus
+        color $c_white
         text-decoration underline
 
     &:active
         //
+
+    &::before
+        @extend $$font-awesome
+        position absolute
+        left 0
+        left 2px
+        top 1px
+        font-size 12px
+        color $c_white
+        content $fa_pencil
 
 .user-controls__company-id  // span
     //
 
 .user-controls__change-company  // a
-    //
+    fontHvLight12_21()
+    position relative
+    display inline-block
+    vertical-align middle
+    width 9px
+    height 14px
+    margin-left 3px
+    color $c_white
+    cursor pointer
+    outline none
+    transition text-shadow 0.2s ease
 
     &:hover
     &:focus
-        //
+        color $c_white
+        text-shadow 0 0 10px aliceblue
 
     &:active
         //
 
+    &::before
+        @extend $$font-awesome
+        position absolute
+        left 0
+        top 0
+        font-size 14px
+        content $fa_arrow-top
+
 .user-controls__logout  // a
     fontHvLight12_21()
-    color $c_contrast-4-transparent-05
+    color $c_white-transparent-05
+    text-decoration none
+    transition color 0.4s ease
+    outline none
+
+    &:hover
+    &:focus
+        color $c_white
+        text-decoration underline
 // end of mix
+
+
+.uh-inner-aside__toggle  // button
+    fontHvLight12_21()
+    position absolute
+    top 15px
+    left 75%
+    // right 15px
+    width 54px
+    height 54px
+    padding-top 32px
+    padding-right 0
+    padding-left 0
+    // border 1px solid $c_light
+    border none
+    background-color transparent
+    color $c_white-transparent-05
+    text-align center
+    cursor pointer
+    outline none
+    transition color 0.4s ease, left 0.4s ease
+
+    @media (max-width $xs)
+        left auto
+        right 15px
+        padding-top 42px
+
+    &:hover
+    &:focus
+        color $c_white
+        text-decoration underline
+        +ie-10-11-only()
+            text-decoration none
+
+    &:active
+        //
+
+    &::before
+        @extend $$icomoon
+        position absolute
+        top 0
+        right 0
+        left 0
+        margin 0 auto
+        font-size 40px
+        color $c_white
+        content $im_arrow
+        transition transform 0.4s ease
+
+        @media (max-width $xs)
+            transform rotateZ(-90deg)
+
+        .uh-inner-aside--collapsed &
+            transform scaleX(-1)
+
+            @media (max-width $xs)
+                transform rotateZ(90deg)
+
+
+    .uh-inner-aside--collapsed &
+        left calc(0.5% + 0.5%)  // ie fix for transition calc issue
+        color $c_contrast-5
+        content attr(data-alternate-title)
+
+        @media (max-width $xs)
+            left auto
+
+        &:focus
+            color $c_white-transparent-05
+
+        // &::before
+        //     transform scaleX(-1)
+
+        //     @media (max-width $xs)
+        //         transform rotateZ(270deg) scale(-1)
+
+
+
 
 
     //////////////////////////////
@@ -267,85 +807,400 @@ $$site-search-font
 
 
 .main-nav  // nav.uh-inner-page__site-nav
+    background-color $c_light-7
+    overflow hidden
+    position relative
+    top 0
+
+
+    @media (max-width $xs)
+        transition top 0.4s ease
+
+        &.main-nav--collapsed
+            top -500px
+
+
+.main-nav--collapsed
     //
 
 .main-nav__menu  // ul
     padding 0
     margin 0
 
+    @media (max-width $xs)
+        display flex
+        flex-wrap wrap
+        justify-content space-between
+
+    .main-nav--collapsed &
+        transition bottom 0.4s ease
+
+        @media (max-width $xs)
+            position absolute
+            bottom 100%
+
 .main-nav__item  // li
     list-style none
+    overflow hidden
+    border-bottom 1px solid $c_light
+
+    @media (max-width $xs)
+        box-sizing border-box
+        border-right 1px solid $c_light
+        flex-grow 1
 
 .main-nav__link  // a
     fontHvLight16_24()
+    position relative
+    box-sizing border-box
     display block
+    padding-top 13px
+    padding-bottom 14px
+    padding-left 60px
+    padding-right 15px
     color $c_dark
+    outline none
     text-decoration none
-    transition color 0.4s ease, background-color 0.4s ease
+    transition color 0.2s ease, background-color 0.4s ease
 
     &:hover
     &:focus
         text-decoration none
+        background-color $c_light-2
 
     &:active
-        //
+        background-color $c_light-4
+
+    &::before
+        position absolute
+        left 30px
+        top 50%
+        transform translateY(-50%) translateX(-50%)
+        background-repeat no-repeat
+        background-size contain
+        content ''
+
+    .main-nav--collapsed &
+        color $c_light-7
 
 .main-nav__link--active
-    //
+    box-shadow inset 0 0 15px 1px $c_light
+    cursor default
 
+    &:hover
+    &:focus
+        text-decoration none
+        background-color transparent
+
+    &:active
+        background-color transparent
+
+
+.main-nav__link--company-profile
+    &::before
+        @extend $$font-awesome
+        font-size 25px
+        color $c_bright
+        content $fa_globe
+
+.main-nav__link--hotels
+    &::before
+        width 26px
+        height 24px
+        background-image url(../images/bg-main-menu-hotels.png)
+
+.main-nav__link--prices
+    &::before
+        width 26px
+        height 24px
+        background-image url(../images/bg-main-menu-prices.png)
+
+.main-nav__link--documents
+    &::before
+        @extend $$font-awesome
+        font-size 25px
+        color $c_bright
+        content $fa_text-file
+
+.main-nav__link--company-files
+    &::before
+        width 26px
+        height 24px
+        background-image url(../images/bg-main-menu-company-files.png)
+
+.main-nav__link--instruments
+    &::before
+        width 26px
+        height 24px
+        background-image url(../images/bg-main-menu-instruments.png)
+
+.main-nav__link--finances
+    &::before
+        @extend $$font-awesome
+        font-size 23px
+        color $c_bright
+        content $fa_money
+
+.main-nav__link--avia
+    &::before
+        @extend $$icomoon
+        font-size 23px
+        color $c_bright
+        content $im_plane
+
+.main-nav__link--news
+    &::before
+        @extend $$font-awesome
+        font-size 25px
+        color $c_bright
+        content $fa_newspaper
+
+.main-nav__link--contacts
+    &::before
+        width 26px
+        height 24px
+        background-image url(../images/bg-main-menu-contacts.png)
+
+.main-nav__link--chat
+    &::before
+        width 26px
+        height 24px
+        background-image url(../images/bg-main-menu-chat.png)
 
 
 .actions-nav  // nav
+    position relative
+    top 0
+    background-color $c_light-7
+
+    @media (max-width $xs)
+        transition top 0.4s ease
+
+        &.actions-nav--collapsed
+            top -500px
+
+.actions-nav--collapsed
     //
 
 .actions-nav__menu  // ul
+    display flex
+    flex-wrap wrap
     padding 0
     margin 0
 
 .actions-nav__item  // li
     list-style none
+    overflow hidden
+    box-sizing border-box
+    border-bottom 1px solid $c_light
 
 .actions-nav__item--big
-    //
+    flex-basis 100%
+    min-width 100%
 
 .actions-nav__item--small
-    //
+    display inline-block
+    vertical-align top
+    flex-basis 33.3333%
+    min-width 33.3333%
+    margin-bottom 17px
+    +ie-10-11-only()
+        flex-basis 0
+
+    &:not(:last-of-type)
+        border-right 1px solid $c_light
+
+    .actions-nav--collapsed &
+        flex-basis 100%
+        min-width 100%
+        margin-bottom 0
+        border-bottom none
 
 .actions-nav__item--bright
+    flex-basis 100%
+    min-width 100%
     background-color $c_bright
 
 .actions-nav__link  // a
     fontHvMedium12_17()
+    position relative
     display block
+    padding-left 60px
+    padding-top 13px
+    padding-bottom 14px
+    padding-right 15px
     color $c_black
+    outline none
     text-decoration none
+    transition color 0.2s ease, background-color 0.4s ease
+
+    &::before
+        position absolute
+        left 30px
+        top 50%
+        transform translateY(-50%) translateX(-50%)
+        background-repeat no-repeat
+        background-size contain
+        content ''
+
+    &:hover
+    &:focus
+        text-decoration none
+        background-color $c_light-2
+
+    &:active
+        background-color $c_light-4
 
     .actions-nav__item--big &
         fontHvLight16_24()
+        padding-top 20px
+        padding-bottom 20px
+        padding-right 15px
+        padding-left 75px
         color $c_dark
+
+        .actions-nav--collapsed &
+            color $c_light-7
 
     .actions-nav__item--small &
         fontHvMedium12_17()
+        padding-top 46px
+        padding-right 15px
+        padding-bottom 7px
+        padding-left 15px
+        text-align center
         color $c_black
+        // transition background-color 0.4s ease
+
+        &::before
+            top 11px
+            left 0
+            right 0
+            margin 0 auto
+            text-align center
+            transform none
+
+        &[data-items-count]::after
+            fontHvMedium12()
+            position absolute
+            min-width 10px
+            vertical-align baseline
+            top 7px
+            right 10px
+            width 26px
+            padding 4px 0
+            border-radius 5px
+            text-align center
+            white-space nowrap
+            color $c_white
+            background-color $c_bright
+            content '+' attr(data-items-count)
+
+        .actions-nav--collapsed &
+            padding-left 60px
+            padding-top 13px
+            padding-bottom 14px
+            padding-right 15px
+            text-align left
+            color $c_light-7
+
+            &::before
+                left 30px
+                height 26px
+                right auto
+                top 50%
+                transform translateY(-50%) translateX(-50%)
+
+            &[data-items-count]::after
+                top 3px
+                left 37px
+                right auto
+                width auto
+                padding 1px 3px
+                font-size 10px
+                background-color $c_light-5
 
     .actions-nav__item--bright &
         fontHvLight16_21()
         color $c_white
 
+        &:hover
+        &:focus
+            background-color $c_bright-dark
+
+        &:active
+            background-color $c_bright-darkened
+
+
+        .actions-nav--collapsed &
+            color $c_bright
+
+.actions-nav__link--active
+    box-shadow inset 0 0 15px 1px $c_light
+    cursor default
+
+    &:hover
+    &:focus
+        text-decoration none
+        background-color transparent
+
+    &:active
+        background-color transparent
+
+    .actions-nav__item--bright &
+        box-shadow inset 0 0 15px 1px $c_bright-darkened
+
+        &:hover
+        &:focus
+            text-decoration none
+            background-color transparent
+
+        &:active
+            background-color transparent
+
+
 .actions-nav__link--invite-partners
-    //
+    &::before
+        width 32px
+        height 32px
+        background-image url(../images/bg-actions-menu-invite.png)
 
 .actions-nav__link--messages
-    //
+    &::before
+        width 35px
+        height 32px
+        background-image url(../images/bg-actions-menu-messages.png)
+
+    .actions-nav--collapsed &::before
+        height 26px
+        width 28px
+
 
 .actions-nav__link--orders
-    //
+    &::before
+        width 36px
+        height 32px
+        background-image url(../images/bg-actions-menu-orders.png)
+
+    .actions-nav--collapsed &::before
+        height 28px
+        width 30px
 
 .actions-nav__link--bills
-    //
+    &::before
+        width 29px
+        height 32px
+        background-image url(../images/bg-actions-menu-bills.png)
+
+    .actions-nav--collapsed &::before
+        height 28px
+        width 24px
 
 .actions-nav__link--help
-    //
+    &::before
+        width 24px
+        height 24px
+        background-image url(../images/bg-actions-menu-help.png)
 
 
 
@@ -379,12 +1234,25 @@ $$site-search-font
 
 
 .uh-inner-footer  // footer.uh-inner-page__footer
-    //
+    display flex
+    flex-wrap wrap
+    padding-left 15px
+
+    > *
+        flex-grow 1
+
+.uh-inner-footer__info
+    display flex
+    flex-direction column
+    flex-wrap wrap
+    margin-top 30px
+
+    > *
+        flex-grow 1
 
 .uh-inner-footer__copyright
     fontHvLight14_21()
     color $c_dark
-
 
 .uh-inner-footer__nav  // ul
     padding 0
@@ -402,6 +1270,7 @@ $$site-search-font
 
     &:hover
     &:focus
+        color $c_bright
         text-decoration none
 
     &:active
@@ -409,35 +1278,96 @@ $$site-search-font
 
 
 .uh-inner-footer__payments  // ul
-    //
+    margin 0
+    padding 0
+    flex-basis 100%
 
 .uh-inner-footer__payments-item  // li
-    //
+    list-style none
 
 .uh-inner-footer__payments-link  // a
     //
 
+    &:hover
+    &:focus
+        //
+
+    &:active
+        //
+
 .uh-inner-footer__payments-image  // img
-    //
+    display block
 
 
 .uh-inner-footer__social  // ul
-    //
+    display flex
+    justify-content space-between
+    align-items stretch
+    margin 0
+    padding 0
 
 .uh-inner-footer__social-item  // li
-    //
+    list-style none
+    flex-grow 1
+    border-right 1px solid $c_light
+    text-align center
+
+    &:first-of-type
+        border-left 1px solid $c_light
 
 .uh-inner-footer__social-link // a
-    //
+    position relative
+    top 50%
+    display block
+    width auto
+    height 16px
+    margin-bottom 12px
+    transform translateY(-50%)
+    font-size 0
+    font-weight 400
+    color $c_contrast-5
+    text-decoration none
+    cursor pointer
+    transition color 0.4s ease, background-color 0.4s ease
+    
+    &:hover
+    &:focus
+        color $c_contrast-4
+        text-decoration none
+
+    &:active
+        //
+
+    &::before
+        position absolute
+        left 0
+        right 0
+        margin 0 auto
+        font-size 14px
+        @extend $$font-awesome
+        content ''
+
 
 .uh-inner-footer__social-link--fb
     //
 
+    &::before
+        content $fa_facebook
+
 .uh-inner-footer__social-link--li
     //
+
+    &::before
+        content $fa_linkedin
 
 .uh-inner-footer__social-link--ytb
     //
 
+    &::before
+        content $fa_youtube
+
 .uh-inner-footer__social-link--inst
-    //
+    
+
+    &::before
+        content $fa_instagram

@@ -1,0 +1,49 @@
+@font-face {
+	font-family: 'icomoon_additional';
+	src:url('../fonts/icomoon_additional.eot?-fy6gj6');
+	src:url('../fonts/icomoon_additional.eot?#iefix-fy6gj6') format('embedded-opentype'),
+		url('../fonts/icomoon_additional.ttf?-fy6gj6') format('truetype'),
+		url('../fonts/icomoon_additional.woff?-fy6gj6') format('woff'),
+		url('../fonts/icomoon_additional.svg?-fy6gj6#icomoon_additional') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+[class^="icon-additional-"], [class*=" icon-additional-"] {
+	font-family: 'icomoon_additional';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.icon-additional-gear:before {
+	content: "\e600";
+}
+.icon-additional-plane:before {
+	content: "\e601";
+}
+.icon-additional-travel-list:before {
+	content: "\e602";
+}
+.icon-additional-heart:before {
+	content: "\e603";
+}
+.icon-additional-helicopter:before {
+	content: "\e604";
+}
+.icon-additional-masks:before {
+	content: "\e605";
+}
+.icon-additional-message:before {
+	content: "\e606";
+}
+.icon-additional-island:before {
+	content: "\e607";
+}
