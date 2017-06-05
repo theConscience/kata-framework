@@ -17,7 +17,7 @@
     //
 
 .news-list-content__news
-    text-align center 
+    text-align center
 
 .news-list-content__news-load-button
     //
@@ -63,12 +63,23 @@
     list-style none
 
     @media (max-width $xsm)
-        flex-basis 81px
+        // flex-basis 81px
+        flex-basis 73px
         flex-grow 1
+
+    @media (max-width $xsms)
+        flex-basis 57px
+
+    @media (max-width $xxs)
+        flex-basis 48px
+
+    @media (max-width $xxxs)
+        flex-basis 43px
 
 .page-nav__menu-link  // a
     position relative
     z-index 1
+    box-sizing border-box
     display block
     min-height 57px
     border-bottom 1px solid $c_light
@@ -366,7 +377,7 @@
 
     &:hover
     &:focus
-        color $c_light-6 
+        color $c_light-6
         background-color transparent
 
     &:active

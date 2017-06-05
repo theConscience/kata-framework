@@ -98,7 +98,7 @@
     @media (max-width $xs)
         position absolute  //xx
         top 0px  //xx
-        overflow hidden
+        // overflow hidden
         left auto
         width 100%
         height auto
@@ -186,7 +186,15 @@
     justify-content space-between
     align-items flex-start
     min-height 110px
-    padding 30px 30px 0
+    padding 30px 40px 0
+
+    @media (max-width $lg)
+        padding-right 20px
+        padding-left 20px
+
+    @media (max-width $xss)
+        padding-right 10px
+        padding-left 10px
 
 .page-header__bottom
     padding-bottom 1px
@@ -194,6 +202,7 @@
 
 .site-logo  // a
     flex-basis 25%
+    box-sizing content-box  // bootstrap reset
     min-width 221px
 
 .site-logo--uh
@@ -210,6 +219,7 @@
     fontHvLight14_21()
     // flex-basis 33%
     flex-basis 36%
+    box-sizing content-box  // bootsrap reset
     min-width 205px
     margin 0
     padding-left 1.6%
@@ -222,6 +232,7 @@
 .site-language
     position relative
     z-index 3
+    box-sizing content-box  // bootsrap reset
     width 180px
     min-width 72px
     height 32px
@@ -341,7 +352,7 @@
 
         &:hover
         &:focus
-            color $c_white 
+            color $c_white
             background-color $c_contrast-lightened
 
         &:active
@@ -411,6 +422,7 @@ $$site-search-font
 .site-search__query  // input[type=text]
     flex-basis 180px
     flex-grow 4
+    box-sizing content-box  // bootstrap reset
     padding-left 45px
     padding-right 15px
     padding-top 8px
@@ -1245,10 +1257,12 @@ $$site-search-font
     display flex
     flex-direction column
     flex-wrap wrap
+    justify-content flex-start
+    align-items flex-start
     margin-top 30px
 
-    > *
-        flex-grow 1
+    // > *
+    //     flex-grow 1
 
 .uh-inner-footer__copyright
     fontHvLight14_21()
@@ -1329,7 +1343,7 @@ $$site-search-font
     text-decoration none
     cursor pointer
     transition color 0.4s ease, background-color 0.4s ease
-    
+
     &:hover
     &:focus
         color $c_contrast-4
@@ -1367,7 +1381,7 @@ $$site-search-font
         content $fa_youtube
 
 .uh-inner-footer__social-link--inst
-    
+
 
     &::before
         content $fa_instagram
