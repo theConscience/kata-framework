@@ -169,15 +169,15 @@ block content
             input#slider__to-slide-2.slider__radio-control(type='radio' name='slider__radio-control' value='to-slide-2')
             input#slider__to-slide-3.slider__radio-control(type='radio' name='slider__radio-control' value='to-slide-3')
             input#slider__to-slide-4.slider__radio-control(type='radio' name='slider__radio-control' value='to-slide-4')
-            .slider__inner
+            .slider__inner(style='background-image: url(./images/img-slider-pic-1.jpg)')
                 header.slider__header
                     h1.slider__title
                         a.slider__title-link(href='#' title='LUX resorts & hotels')
                             span.slider__title-primary LUX
                             span.slider__title-secondary Resorts & Hotels
-                    .slider__logo
-                        a.slider__logo-link(href='#' title='LUX resorts & hotels')
-                            img.slider__logo-image(src='' alt='LUX resorts & hotels' width='' height='')
+                    //- .slider__logo
+                    a.slider__logo-wrapper(href='#' title='LUX resorts & hotels')
+                        img.slider__logo-image(src='./images/img-lux-en-logo-l.png' alt='LUX resorts & hotels' width='187' height='91')
                 .slider__content
                     h2.slider__promo-text Более лёгкий и яркий отдых
                     p.slider__description.
@@ -197,15 +197,15 @@ block content
                     li.slider__controls-item
                         label.slider__controls-label(for='slider__to-slide-4')
                             img.slider__controls-image(src='./images/img-news-pic-4.jpg' alt='' title='' width='263' height='')
-                ul.slider__slides
-                    li.slider__slide(data-slide-number='1')
-                        img.slider__slide-image(src='./images/img-slider-pic-1.jpg' alt='' title='' width='1140' height='')
-                    li.slider__slide(data-slide-number='2')
-                        img.slider__slide-image(src='./images/img-news-pic-2.jpg' alt='' title='' width='263' height='')
-                    li.slider__slide(data-slide-number='3')
-                        img.slider__slide-image(src='./images/img-news-pic-3.jpg' alt='' title='' width='263' height='')
-                    li.slider__slide(data-slide-number='4')
-                        img.slider__slide-image(src='./images/img-news-pic-4.jpg' alt='' title='' width='263' height='')
+                //- ul.slider__slides
+                //-     li.slider__slide(data-slide-number='1')
+                //-         img.slider__slide-image(src='./images/img-slider-pic-1.jpg' alt='' title='' width='1140' height='')
+                //-     li.slider__slide(data-slide-number='2')
+                //-         img.slider__slide-image(src='./images/img-news-pic-2.jpg' alt='' title='' width='263' height='')
+                //-     li.slider__slide(data-slide-number='3')
+                //-         img.slider__slide-image(src='./images/img-news-pic-3.jpg' alt='' title='' width='263' height='')
+                //-     li.slider__slide(data-slide-number='4')
+                //-         img.slider__slide-image(src='./images/img-news-pic-4.jpg' alt='' title='' width='263' height='')
                 .slider__additional-info Мальдивы
 
         section.news-list-content__nav.news-nav

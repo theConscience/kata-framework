@@ -1246,20 +1246,37 @@ $$site-search-font
 
 
 .uh-inner-footer  // footer.uh-inner-page__footer
+    box-sizing border-box
     display flex
     flex-wrap wrap
-    padding-left 15px
+    max-height 115px
+
+    @media (max-width $xsm)
+        max-height none
 
     > *
         flex-grow 1
+        flex-basis 50%
+
+        @media (max-width $xsm)
+            flex-basis 100%
+
+.uh-inner-footer--extended
+    //
 
 .uh-inner-footer__info
+    box-sizing border-box
     display flex
     flex-direction column
     flex-wrap wrap
     justify-content flex-start
     align-items flex-start
     margin-top 30px
+    padding-left 20px
+
+    @media (max-width $xsm)
+        max-height 115px
+        margin-bottom 20px
 
     // > *
     //     flex-grow 1
@@ -1295,9 +1312,22 @@ $$site-search-font
     margin 0
     padding 0
     flex-basis 100%
+    width calc(45% - 30px)
+    display flex
+    justify-content space-around
+    flex-wrap wrap
+
+    @media (max-width $xsm)
+        justify-content flex-end
+
+    .uh-inner-footer--extended &
+        width calc(50% - 30px)
 
 .uh-inner-footer__payments-item  // li
     list-style none
+
+    @media (max-width $xsm)
+        margin-left 10px
 
 .uh-inner-footer__payments-link  // a
     //
@@ -1321,22 +1351,34 @@ $$site-search-font
     padding 0
 
 .uh-inner-footer__social-item  // li
+    position relative
     list-style none
     flex-grow 1
     border-right 1px solid $c_light
     text-align center
 
+    @media (max-width $xsm)
+        border-top 1px solid $c_light
+        min-height 92px
+
     &:first-of-type
         border-left 1px solid $c_light
 
+        @media (max-width $xsm)
+            border-left none
+
+
 .uh-inner-footer__social-link // a
-    position relative
-    top 50%
+    position absolute
     display block
+    top 0
+    right 0
+    bottom 0
+    left 0
     width auto
-    height 16px
-    margin-bottom 12px
-    transform translateY(-50%)
+    // height 16px
+    // margin-bottom 12px
+    margin auto
     font-size 0
     font-weight 400
     color $c_contrast-5
@@ -1346,18 +1388,21 @@ $$site-search-font
 
     &:hover
     &:focus
-        color $c_contrast-4
+        color $c_contrast-2
+        background-color $c_light-2
         text-decoration none
 
     &:active
-        //
+        background-color $c_light
 
     &::before
         position absolute
+        top 50%
         left 0
         right 0
         margin 0 auto
-        font-size 14px
+        transform translateY(-50%)
+        font-size 19.6px
         @extend $$font-awesome
         content ''
 

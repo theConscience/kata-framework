@@ -6,7 +6,7 @@
     //
 
 .slider--type--1
-    //
+    min-height 523px
 
 .slider__radio-control
     display none
@@ -28,79 +28,187 @@
 
 .slider__inner
     position relative
+    box-sizing border-box
+    padding-top 37px
+    padding-left 8.33%
+    padding-right 8.33%
+    padding-bottom 45px
     text-align center
+    background-repeat no-repeat
+    background-position center
+    background-size cover
+
+    &::after
+        position absolute
+        z-index 1
+        top 0
+        right 0
+        bottom 0
+        left 0
+        margin auto
+        background-color $c_contrast-transparent-036
+        content ''
+
+    > *
+        position relative
+        z-index 2
 
 .slider__title  // h
     margin-top 0
+    display none
 
-.slider__promo-text
+.slider__logo
+    //
+
+.slider__logo-wrapper  // a
+    position relative
+    display block
+
+    &::before
+    &::after
+        position absolute
+        top 50%
+        box-sizing border-box
+        width 33.7%
+        height 53%
+        border-top 3px dotted $c_white-transparent-05
+        content ''
+
+    &::before
+        left 0
+        border-radius 9px 0 0 0
+        border-left 3px dotted $c_white-transparent-05
+
+    &::after
+        right 0
+        border-radius 0 9px 0 0
+        border-right 3px dotted $c_white-transparent-05
+
+.slider__logo-image  // img
+    display block
+    max-width 23.6%
+    height auto
+    margin 0 auto
+
+.slider__content
+    box-sizing border-box
+    padding-top 40px
+    padding-right 7.9114%
+    padding-bottom 65px
+    padding-left 7.9114%
+    border-left 3px dotted $c_white-transparent-05
+    border-right 3px dotted $c_white-transparent-05
+
+.slider__promo-text  // h1
+    margin-top 0
+    margin-bottom 26px
 
     .slider--type--1 &
         fontHvBold40_48()
         color $c_white
 
 .slider__description
+    margin 0
 
     .slider--type--1 &
         fontHvLight24_30()
         color $c_white
 
 .slider__additional-info
+    position absolute
+    left 0
+    bottom 32px
+    display inline-block
+    padding-top 6px
+    padding-right 21px
+    padding-bottom 5px
+    padding-left 32px
+
+    &::before
+        position absolute
+        left 21px
+        content '*'
 
     .slider--type--1 &
         fontHvBold14_18()
         color $c_dull
         background-color $c_white-transparent-063
 
-.slider__slides  // ul
-    position absolute
-    z-index -1
-    padding 0
-    margin 0
-    top 0
-    right 0
-    bottom 0
-    left 0
-    margin auto
-    background-color $c_black-transparent-05
+// .slider__slides  // ul
+//     position absolute
+//     z-index -1
+//     padding 0
+//     margin 0
+//     top 0
+//     right 0
+//     bottom 0
+//     left 0
+//     margin auto
+//     background-color $c_black-transparent-05
 
-    &::after
-        position absolute
-        top 0
-        right 0
-        bottom 0
-        left 0
-        margin auto
-        background-color $c_contrast-5-transparent-05
-        content ''
+//     &::after
+//         position absolute
+//         top 0
+//         right 0
+//         bottom 0
+//         left 0
+//         margin auto
+//         background-color $c_contrast-5-transparent-04
+//         content ''
 
-.slider__slide  // li
-    position absolute
-    list-style none
-    overflow hidden
-    width 100%
-    height 100%
-    opacity 0
-    transition opacity 0.4s ease
+// .slider__slide  // li
+//     position absolute
+//     list-style none
+//     overflow hidden
+//     width 100%
+//     height 100%
+//     opacity 0
+//     transition opacity 0.4s ease
 
-.slider__slide-image  // img
-    position absolute
-    top -9999px
-    bottom -9999px
-    left -9999px
-    right -9999px
-    margin auto
-    height auto
-    width 100%
+// .slider__slide-image  // img
+//     position absolute
+//     top -9999px
+//     bottom -9999px
+//     left -9999px
+//     right -9999px
+//     margin auto
+//     height auto
+//     width 100%
 
 .slider__controls  // ul
     padding 0
     margin 0
+    position relative
+    display block
+
+    &::before
+    &::after
+        position absolute
+        bottom 50%
+        box-sizing border-box
+        width 15.5%
+        height 53%
+        border-bottom 3px dotted $c_white-transparent-05
+        content ''
+
+    &::before
+        left 0
+        border-radius 0 0 0 9px
+        border-left 3px dotted $c_white-transparent-05
+
+    &::after
+        right 0
+        border-radius 0 0 9px 0
+        border-right 3px dotted $c_white-transparent-05
 
 .slider__controls-item  // li
     display inline-block
     vertical-align top
     list-style none
+    margin-right 7px
+
+    &:last-of-type
+        margin-right 0
 
 .slider__controls-label  // label
     position relative

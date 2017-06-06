@@ -125,7 +125,8 @@ var UTILS = (function() {
         COLLAPSED_ASIDE: 'uh-inner-aside--collapsed',
         COLLAPSED_MAIN_MENU: 'main-nav--collapsed',
         COLLAPSED_ACTIONS_MENU: 'actions-nav--collapsed',
-        EXTENDED_SITE_SEARCH: 'site-search--extended'
+        EXTENDED_SITE_SEARCH: 'site-search--extended',
+        EXTENDED_FOOTER: 'uh-inner-footer--extended'
       }
     },
     siteLanguage: {
@@ -167,6 +168,7 @@ var UTILS = (function() {
     var mainMenuToggleButton = uhInnerPage.querySelector('.uh-inner-aside__toggle');
     var mainMenu = uhInnerPage.querySelector('.main-nav');
     var actionsMenu = uhInnerPage.querySelector('.actions-nav');
+    var pageFooter = uhInnerPage.querySelector('.uh-inner-footer');
 
 
     // interface //
@@ -212,9 +214,10 @@ var UTILS = (function() {
       var mainNavIsCollapsed = mainMenu.classList.contains(config.stateClassNames.COLLAPSED_MAIN_MENU);
       var actionsNavIsCollapsed = actionsMenu.classList.contains(config.stateClassNames.COLLAPSED_ACTIONS_MENU);
       var siteSearchIsExtended = siteSearch.classList.contains(config.stateClassNames.EXTENDED_SITE_SEARCH);
-      if (pageIsExtended && siteSearchIsExtended && pageAsideIsCollapsed && mainNavIsCollapsed && actionsNavIsCollapsed) {
+      var pageFooterIsExtended = pageFooter.classList.contains(config.stateClassNames.EXTENDED_FOOTER);
+      if (pageIsExtended && siteSearchIsExtended && pageAsideIsCollapsed && mainNavIsCollapsed && actionsNavIsCollapsed && pageFooterIsExtended) {
         extendMainMenu();
-      } else if (!pageIsExtended && !siteSearchIsExtended && !pageAsideIsCollapsed && !mainNavIsCollapsed && !actionsNavIsCollapsed) {
+      } else if (!pageIsExtended && !siteSearchIsExtended && !pageAsideIsCollapsed && !mainNavIsCollapsed && !actionsNavIsCollapsed && !pageFooterIsExtended) {
         collapseMainMenu();
       } else {
         throw new Error('There is unexpected behaviour in uh main menu toggling logic.');
@@ -226,6 +229,7 @@ var UTILS = (function() {
         pageAside.classList.remove(config.stateClassNames.COLLAPSED_ASIDE);
         mainMenu.classList.remove(config.stateClassNames.COLLAPSED_MAIN_MENU);
         actionsMenu.classList.remove(config.stateClassNames.COLLAPSED_ACTIONS_MENU);
+        pageFooter.classList.remove(config.stateClassNames.EXTENDED_FOOTER);
         switchMainMenuToggleButtonValues();
       }
 
@@ -235,6 +239,7 @@ var UTILS = (function() {
         pageAside.classList.add(config.stateClassNames.COLLAPSED_ASIDE);
         mainMenu.classList.add(config.stateClassNames.COLLAPSED_MAIN_MENU);
         actionsMenu.classList.add(config.stateClassNames.COLLAPSED_ACTIONS_MENU);
+        pageFooter.classList.add(config.stateClassNames.EXTENDED_FOOTER);
         switchMainMenuToggleButtonValues();
       }
 
