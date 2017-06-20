@@ -5,37 +5,94 @@
 
 
 .media-card
-    //
+    position relative
+    background-color $c_white
+    transition box-shadow 0.4s ease
 
+    &:hover
+    &:focus
+        box-shadow 0 0 16px $c_dark-8-transparent-33
 
-.media-card__header
-    //
+.media-card__header  // header
+    padding-top 18px
+    padding-right 25px
+    padding-bottom 7px
+    padding-left 25px
+    text-align left
 
-.media-card__title
+.media-card__title  // h
     fontHvMedium16_auto()
+    margin-top 0
+    margin-bottom 0
+    text-align left
     color $c_dark-4
 
-.media-card__date
+.media-card__date  // span
     fontHvRoman12_24()
     color $c_light-4
     text-transform uppercase
+    text-align left
 
 
 .media-card__item
-    //
+    position relative
 
-.media-card__image
-    //
+.media-card__item--video
+    cursor pointer
 
+    &::before
+        position absolute
+        top 0
+        right 0
+        bottom 0
+        left 0
+        width 100%
+        margin auto
+        background-repeat no-repeat
+        background-position center
+        background-size contain
+        background-image url(../images/bg-media-card-image-with-video.svg)
+        content ''
+
+.media-card__image  // img
+    display block
+    max-width 100%
+    height auto
+    margin 0 auto
 
 .media-card__details
-    //
+    position absolute
+    opacity 0
+    z-index -1
+    top 0
+    right 0
+    bottom 0
+    left 0
+    padding 4px
+    display flex
+    flex-direction column
+    margin auto
+    text-align center
+    background-color $c_white-transparent-07
+    transition opacity 0.8s ease, z-index 0.8s ease
+
+    .media-card:hover &
+    .media-card:focus &
+        opacity 1
+        z-index 2
 
 .media-card__details-content
+    position relative
+    flex-grow 1
+    margin-bottom 4px
     background-color $c_contrast-3-transparent
 
 
 .media-card__social  // ul
+    position absolute
+    top 50%
+    left 50%
+    transform translate(-50%, -50%)
     width 61.18%
     max-width 156px
     padding 0
@@ -43,6 +100,7 @@
 
 .media-card__social-item  // li
     fontHvBold16_24()
+    position relative
     list-style none
     border 1px solid $c_white
     border-radius 3px
@@ -57,14 +115,40 @@
     &:not(:last-of-type)
         margin-bottom 5px
 
-.media-card__social-item--vk
-    //
+    &::before
+        position absolute
+        top 0
+        bottom 0
+        margin-top auto
+        margin-bottom auto
+        background-repeat no-repeat
+        background-position center
+        background-size contain
+        content ''
 
-.media-card__social-item--fb
-    //
+    > span
+        //
 
-.media-card__social-item--inst
-    //
+.media-card__social-item--vk  // li
+    &::before
+        left 11px
+        width 22px
+        height 12px
+        background-image url(../images/bg-social-vk-icon.svg)
+
+.media-card__social-item--fb  // li
+    &::before
+        left 16px
+        width 10px
+        height 20px
+        background-image url(../images/bg-social-fb-icon.svg)
+
+.media-card__social-item--inst  // li
+    &::before
+        left 13px
+        width 18px
+        height 18px
+        background-image url(../images/bg-social-inst-icon.svg)
 
 
 .media-card__controls  // ul
@@ -125,18 +209,23 @@
 
 
 .media-card__body
-    //
+    padding-top 17px
+    padding-right 25px
+    padding-left 25px
+    text-align left
 
 .media-card__body > p
     fontHvLight15_22()
+    margin-top 0
     color $c_dark-5
 
 
 .media-card__footer
-    //
+    padding-left 25px
+    padding-right 25px
+    text-align right
 
 .media-card__options-list  // ul
-    fontHvLight12_30()
     padding 0
     margin 0
     color $c_light-5
@@ -148,19 +237,37 @@
 // sub-component
 
 .card-options  // ul.media-card__options-list
-    fontHvLight12_30()
     padding 0
-    margin 0
     color $c_light-5
     text-transform uppercase
 
 .card-options__item  // li
+    fontHvLight12_30()
+    position relative
     list-style none
     display inline-block
     vertical-align top
+    padding-right 14px
+
+    &::after
+        position absolute
+        top 0
+        right 0
+        bottom 0
+        margin auto
+        background-repeat no-repeat
+        background-position center
+        background-size contain
+        content ''
 
 .card-options__item--comments
-    //
+    &::after
+        width 11px
+        height 12px
+        background-image url(../images/bg-comments-icon.svg)
 
 .card-options__item--likes
-    //
+    &::after
+        width 12px
+        height 12px
+        background-image url(../images/bg-likes-icon.svg)

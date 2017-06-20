@@ -1,0 +1,85 @@
+@import 'helpers/_variables'
+@import 'helpers/_block_mixins'
+
+$left_offset_base = 35px
+$left_offset_small = 20px
+
+$right_offset_base = 20px
+$right_offset_special = 114px
+
+
+.shiftable-panel
+    position relative
+    white-space nowrap
+    padding-left $left_offset_base
+    padding-right $right_offset_special
+
+    @media (max-width $xsm)
+        padding-left $left_offset_small
+
+    &::before
+    &::after
+        position absolute
+        top 0
+        z-index 1
+        height 100%
+        background-color $c_white
+        content ''
+
+    &::before
+        left 0
+        width $left_offset_base
+
+        @media (max-width $xsm)
+            width $left_offset_small
+
+    &::after
+        right 0
+        width $right_offset_special
+
+.shiftable-panel__content
+    position absolute
+    left $left_offset_base
+    transition left 0.4s ease, right 0.4s ease
+
+    @media (max-width $xsm)
+        left $left_offset_small
+
+.shiftable-panel__controls-list  // ul
+    position absolute
+    z-index 2
+    // left calc(100% - $right_offset_base)
+    right $right_offset_base
+    padding 0
+    margin 0
+
+.shiftable-panel__controls-item  // li
+    list-style none
+    display inline-block
+    vertical-align top
+    padding-right 5px
+    padding-left 5px
+
+.shiftable-panel__control
+    fontHvRoman14()
+    position relative
+    z-index -1
+    width 30px
+    height 32px
+    border 1px solid $c_light-3
+    border-radius 3px
+    cursor pointer
+    color $c_dull-dark
+    background-color $c_white
+    opacity 0
+    transition opacity 0.4s ease, z-index 0.4s ease
+
+.shiftable-panel__control--enabled
+    z-index 1
+    opacity 1
+
+.shiftable-panel__control--move--left
+    //
+
+.shiftable-panel__control--move--right
+    //

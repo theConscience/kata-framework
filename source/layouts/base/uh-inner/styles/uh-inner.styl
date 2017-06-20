@@ -137,7 +137,7 @@
         // flex-basis calc(100% - 60px)
         // min-width calc(100% - 60px)
         // margin-right 60px
-        width calc(100% - 60px)  // IE не умеет делать transition: width если width посчитан через calc() :)
+        width calc(100% - 60px)  // IE11 не умеет делать transition: width если width посчитан через calc() :)
 
         @media (max-width $xs)
             width 100%
@@ -147,7 +147,8 @@
     //
 
 .uh-inner-page__content  // article
-    //
+    position relative
+    z-index 1
 
 .uh-inner-page__footer  // footer
     // flex-basis (100% - 23%)
@@ -1257,9 +1258,13 @@ $$site-search-font
     > *
         flex-grow 1
         flex-basis 50%
+        +ie-10-11-only()
+            max-width 50%
 
         @media (max-width $xsm)
             flex-basis 100%
+            +ie-10-11-only()
+                max-width none
 
 .uh-inner-footer--extended
     //
@@ -1345,6 +1350,7 @@ $$site-search-font
 
 .uh-inner-footer__social  // ul
     display flex
+    box-sizing border-box
     justify-content space-between
     align-items stretch
     margin 0

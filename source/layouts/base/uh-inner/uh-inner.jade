@@ -68,7 +68,7 @@ html(lang='ru' manifest='offline.manifest')
                 block right_side
                     // default right-side aside content
 
-                    header.uh-inner-aside__header 
+                    header.uh-inner-aside__header
                         nav.uh-inner-aside__user-controls.user-controls
                             ul.user-controls__menu
                                 li.user-controls__item
@@ -128,7 +128,7 @@ html(lang='ru' manifest='offline.manifest')
 
             main(class=pageName ? pageName + '-page__main ' + (subTemplateName ? ' ' + subTemplateName + '-page__main ' : '')  + (mainClasses ? mainClasses : '') :
                        subTemplateName ? ' ' + subTemplateName + '-page__main ' + (mainClasses ? mainClasses : '') :
-                       'uh-inner-page__main uh-inner-main' + (mainClasses ? mainClasses : ''))
+                       'uh-inner-page__main uh-inner-main' + (mainClasses ? ' ' + mainClasses : ''))
 
                 block content_left_side
                     // default left-side block
@@ -172,7 +172,7 @@ html(lang='ru' manifest='offline.manifest')
                         ul.uh-inner-footer__payments
                             li.uh-inner-footer__payments-item
                                 a.uh-inner-footer__payments-link(href='#' title='visa / mastercard')
-                                    img.uh-inner-footer__payments-image(src='./images/img-payments-visa.png' alt='visa / mastercard' width='46' height='58') 
+                                    img.uh-inner-footer__payments-image(src='./images/img-payments-visa.png' alt='visa / mastercard' width='46' height='58')
                     ul.uh-inner-footer__social
                         li.uh-inner-footer__social-item
                             a.uh-inner-footer__social-link.uh-inner-footer__social-link--fb(href='#' title='facebook') facebook

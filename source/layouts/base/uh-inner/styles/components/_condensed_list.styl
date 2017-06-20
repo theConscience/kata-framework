@@ -2,8 +2,26 @@
 @import 'helpers/_block_mixins'
 
 .condensed-list  // ul
+    display flex
+    justify-content center
+    align-items flex-start
+    align-content center
+    flex-wrap wrap
     padding 0
     margin 0
+    margin-right -2.5px
+    margin-left -2.5px
+    margin-bottom -3px
+    margin-top -3px
 
 .condensed-list__item  // li
+    box-sizing border-box
+    flex-grow 0
+    flex-basis 25%
+    max-width 268px  // 25%
+    min-width 268px
     list-style none
+    padding-right 2.5px
+    padding-left 2.5px
+    padding-top 3px
+    padding-bottom 3px

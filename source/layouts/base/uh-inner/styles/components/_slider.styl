@@ -5,8 +5,12 @@
 .slider
     //
 
+.slider--extended
+    //
+
 .slider--type--1
     min-height 523px
+    background-color $c_contrast
 
 .slider__radio-control
     display none
@@ -26,17 +30,33 @@
         filter none
         cursor default
 
+        &:hover
+        &:focus
+            border-color $c_black-transparent-05
+
+// @keyframes slidechange
+//   0%, 100% { opacity: 1; }
+//   10%, 90% { opacity: 0.8; }
+//   20%, 80% { opacity: 0.6; }
+//   30%, 70% { opacity: 0.4; }
+//   40%, 60% { opacity: 0.2; }
+//   50% { opacity: 0; }
+
 .slider__inner
     position relative
+    z-index 0
     box-sizing border-box
     padding-top 37px
     padding-left 8.33%
     padding-right 8.33%
     padding-bottom 45px
     text-align center
-    background-repeat no-repeat
-    background-position center
-    background-size cover
+    background-color $c_black-transparent-02
+    // background-repeat no-repeat
+    // background-position center
+    // background-size cover
+    // transition background-image 0.4s ease-in-out
+    // animation slidechange 0.4s ease
 
     &::after
         position absolute
@@ -134,27 +154,102 @@
         color $c_dull
         background-color $c_white-transparent-063
 
-// .slider__slides  // ul
-//     position absolute
-//     z-index -1
-//     padding 0
-//     margin 0
-//     top 0
-//     right 0
-//     bottom 0
-//     left 0
-//     margin auto
-//     background-color $c_black-transparent-05
+.slider__controls  // ul
+    position relative
+    display block
+    margin 0
+    margin-bottom -8px  // compensation of li margin-bottom
+    padding 0
+    padding-left 12%
+    padding-right 12%
 
-//     &::after
-//         position absolute
-//         top 0
-//         right 0
-//         bottom 0
-//         left 0
-//         margin auto
-//         background-color $c_contrast-5-transparent-04
-//         content ''
+    .slider--extended &
+        padding-left 18%
+        padding-right 18%
+
+    &::before
+    &::after
+        position absolute
+        bottom 50%
+        box-sizing border-box
+        width 12%
+        height 53%
+        border-bottom 3px dotted $c_white-transparent-05
+        content ''
+
+        .slider--extended &
+            width 18%
+
+    &::before
+        left 0
+        border-radius 0 0 0 9px
+        border-left 3px dotted $c_white-transparent-05
+
+    &::after
+        right 0
+        border-radius 0 0 9px 0
+        border-right 3px dotted $c_white-transparent-05
+
+.slider__controls-item  // li
+    display inline-block
+    vertical-align top
+    list-style none
+    margin-left 8px
+    margin-right -1px
+    margin-bottom 8px
+
+    &:last-of-type
+        margin-right 0
+
+.slider__controls-label  // label
+    position relative
+    display block
+    overflow hidden
+    height 76px
+    width 112px
+    background-color $c_white-transparent-03
+    border 5px solid $c_white-transparent-02
+    cursor pointer
+    filter grayscale(1)
+    transition background-color 0.4s ease, border-color 0.4s ease, filter 0.4s ease
+    outline none
+
+    &:hover
+    &:focus
+        border-color $c_white-transparent-07
+
+    &:active
+        border-color $c_white
+
+    // .slider__controls-item:first-of-type &
+    //     background-color $c_black-transparent-03
+    //     border-color $c_black-transparent-02
+    //     filter none
+
+.slider__controls-image  // img
+    position absolute
+    top -9999px
+    bottom -9999px
+    left -9999px
+    right -9999px
+    margin auto
+    // width 112px
+    width auto
+    height 76px
+
+.slider__slides  // ul
+    position absolute
+    z-index -1
+    padding 0
+    margin 0
+    top 0
+    right 0
+    bottom 0
+    left 0
+    margin auto
+    background-repeat no-repeat
+    background-position center
+    background-size cover
 
 // .slider__slide  // li
 //     position absolute
@@ -174,66 +269,3 @@
 //     margin auto
 //     height auto
 //     width 100%
-
-.slider__controls  // ul
-    padding 0
-    margin 0
-    position relative
-    display block
-
-    &::before
-    &::after
-        position absolute
-        bottom 50%
-        box-sizing border-box
-        width 15.5%
-        height 53%
-        border-bottom 3px dotted $c_white-transparent-05
-        content ''
-
-    &::before
-        left 0
-        border-radius 0 0 0 9px
-        border-left 3px dotted $c_white-transparent-05
-
-    &::after
-        right 0
-        border-radius 0 0 9px 0
-        border-right 3px dotted $c_white-transparent-05
-
-.slider__controls-item  // li
-    display inline-block
-    vertical-align top
-    list-style none
-    margin-right 7px
-
-    &:last-of-type
-        margin-right 0
-
-.slider__controls-label  // label
-    position relative
-    display block
-    overflow hidden
-    height 76px
-    width 112px
-    background-color $c_white-transparent-03
-    border 5px solid $c_white-transparent-02
-    cursor pointer
-    filter grayscale(1)
-    transition background-color 0.4s ease, border-color 0.4s ease, filter 0.4s ease
-
-    // .slider__controls-item:first-of-type &
-    //     background-color $c_black-transparent-03
-    //     border-color $c_black-transparent-02
-    //     filter none
-
-.slider__controls-image  // img
-    position absolute
-    top -9999px
-    bottom -9999px
-    left -9999px
-    right -9999px
-    margin auto
-    // width 112px
-    width auto
-    height 76px

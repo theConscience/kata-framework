@@ -5,25 +5,41 @@
     position relative
     display inline-block
 
+.dropdown-simple__open  // input[type=checkbox]
+    display none
+
+@keyframes closedDropdownCaretShake
+    0%, 100% { transform: translateX(0); }
+    33% { transform: translateX(4px); }
+    66% { transform: translateX(-4px); }
+
+@keyframes openedDropdownCaretShake
+    // 0%, 100% { transform: translateX(0) rotateZ(180deg); }
+    // 33% { transform: translateX(4px) rotateZ(180deg); }
+    // 66% { transform: translateX(-4px) rotateZ(180deg); }
+
 .dropdown-simple--type--1
     //
 
 .dropdown-simple--type--2
     //
 
-.dropdown-simple--by-right
+.dropdown-simple--align--right
     //
 
 .dropdown-simple__button  // label
     fontHvMedium12_26()
     position relative
     z-index 2
-    display inline-block
-    vertical-align top
+    box-sizing border-box
+    display block
+    color $c_white
+    background-color $c_dull
     cursor pointer
+    outline none
 
     .dropdown-simple--type--1 &
-        padding-top 9px
+        padding-top 10px
         padding-right 27px
         padding-bottom 10px
         padding-left 10px
@@ -39,6 +55,9 @@
         width 0
         height 0
         border-style solid
+        transform-origin 50% 50%
+        transform rotateZ(0deg)
+        transition transform 0.4s ease, border-color 0.4s ease
         content ''
 
         .dropdown-simple--type--1 &
@@ -53,6 +72,23 @@
             border-width 5px 3.5px 0 3.5px
             border-color $c_dull transparent transparent transparent
 
+        .dropdown-simple__open:checked ~ &
+            transform rotateZ(180deg)
+
+    &:hover
+    &:focus
+        &::after
+            animation closedDropdownCaretShake 0.4s ease-out
+
+            .dropdown-simple--type--1 &
+                border-color $c_white transparent transparent transparent
+
+            .dropdown-simple--type--2 &
+                border-color $c_dull-darkened-02 transparent transparent transparent
+
+        .dropdown-social__open:checked ~ &::after
+            animation openedDropdownCaretShake 0.4s ease-out
+
     .dropdown-simple--type--1 &
         color $c_white
         background-color $c_dull
@@ -65,28 +101,77 @@
 .dropdown-simple__active-item  // span
     //
 
-.dropdown-simple__open  // input[type=checkbox]
-    display none
+    .dropdown-simple--type--1 &
+        fontHvMedium16_30()
+
+    .dropdown-simple--type--2 &
+        fontHvMedium12_26()
 
 .dropdown-simple__list  // ul
     position absolute
     z-index 1
+    min-width 100%
     padding 0
     margin 0
-    top -200%
-    color #fff
-    background-color #366363
     opacity 0
-    transition top .4s ease-in, opacity .4s ease-in
+    color $c_white
+    background-color $c_dull-darkened
 
-.dropdown-simple__open:checked + .dropdown-simple__list
-    bottom auto
-    top 100%
-    opacity 1
+    .dropdown-simple--type--1 &
+        top -180px
+        transition top 0.4s ease-in, opacity 0.4s ease-in
+
+    .dropdown-simple--type--2 &
+        top 0
+        overflow hidden
+        height 0
+        transition top 0.4s ease-in, opacity 0.4s ease-in, height 0.4s ease
+
+    .dropdown-simple--align--right &
+        right 0
+
+    .dropdown-simple__open:checked ~ &
+        top 100%
+        bottom auto
+        opacity 1
+
+        .dropdown-simple--type--1 &
+            //
+
+        .dropdown-simple--type--2 &
+            height (3*34px)
 
 .dropdown-simple__list-item  // li
     list-style none
 
 .dropdown-simple__link  // a
+    fontHvMedium14_30()
+    box-sizing border-box
+    display block
+    padding-top 2px
+    padding-right 5px
+    padding-bottom 2px
+    padding-left 5px
+    color $c_white
+    outline none
+    cursor pointer
     text-decoration none
+    transition color 0.4s ease, background-color 0.4s ease
 
+    .dropdown-simple--type--1 &
+        padding-left 21px
+        padding-right 20px
+
+    .dropdown-simple--type--2 &
+        padding-left 15px
+        padding-right 10px
+
+    &:hover
+    &:focus
+        color $c_white
+        background-color $c_dull-darker
+        text-decoration none
+
+    &:active
+        color $c_white-transparent-03
+        background-color $c_dull-darkest

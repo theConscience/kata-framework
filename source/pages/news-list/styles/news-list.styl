@@ -4,20 +4,38 @@
 @import './helpers/_placeholders'
 
 
-.news-list-content
+$left_offset_base = 35px
+$left_offset_small = 20px
+
+$right_offset_base = 20px
+
+.news-list  // main.uh-inner-page__main
+    background-color $c_creme
+
+.news-list-content  // section.uh-inner-page__content
     // padding-left 72px
 
 .news-list-content__slider
-    //
+    position relative
+    z-index 3
 
 .news-list-content__nav
-    //
+    position relative
+    z-index 2
 
 .news-list-content__filters
-    //
+    position relative
+    z-index 1
 
 .news-list-content__news
+    padding-left $left_offset_base
+    padding-right $right_offset_base
+    padding-bottom 52px
     text-align center
+    background-color $c_creme
+
+    @media (max-width $xsm)
+        padding-left $left_offset_small
 
 .news-list-content__news-load-button
     //
@@ -386,61 +404,170 @@
 
 
 .news-nav  // section.news-list-content__nav
+    box-sizing border-box
+    display flex
+    flex-wrap wrap
+    justify-content flex-end
+    align-items center
+    // max-width 1080px
+    min-height 50px
+    // padding-left $left_offset_base
     background-color $c_dull
+
+    // > *
+    //     flex-grow 1
 
 .news-nav__add-news  // a
     fontHvMedium18_30()
+    position relative
+    z-index 2
+    box-sizing border-box
+    flex-grow 0
+    padding-top 10px
+    padding-right 24px
+    padding-bottom 10px
+    padding-left 42px
+    border-right 1px solid $c_dull-other // $c_white-transparent-018
     color $c_white
+    background-color $c_dull
+    // text-align right
     text-decoration none
+    outline none
+    transition color 0.4s ease, background-color 0.4s ease
+
+    &::before
+        position absolute
+        left 10px
+        top 50%
+        transform translateY(-50%)
+        width 22px
+        height 22px
+        background-repeat no-repeat
+        background-position center
+        background-image url(../images/bg-news-nav-add-button-plus-icon.svg)
+        transition opacity 0.4s ease, transform 0.4s ease
+        content ''
+
+    &:hover
+    &:focus
+        color $c_white
+        background-color $c_dull-darkened-02
+        text-decoration none
+
+        &::before
+            transform translateY(-50%) rotate(270deg)
+
+    &:active
+        color $c_white-transparent-03
+        background-color $c_dull-darker
+
+        &::before
+            opacity 0.5
+            transform translateY(-50%) rotate(-450deg)
 
 .news-nav__menu  // ul
+    position relative
+    z-index 2
+    flex-grow 1
+    box-sizing border-box
+    display flex
+    // flex-wrap wrap
+    justify-content space-around
+    list-style-type none
+    max-width 515px
     padding 0
     margin 0
-    list-style-type none
+    background-color $c_dull
 
-.news-nav__menu-item
-    //
+    @media (max-width $xxs)
+        flex-wrap wrap
 
-.news-nav__menu-link
-    fontHvMedium18_30()
+.news-nav__menu-item  // li
+    flex-grow 1
+
+.news-nav__menu-link  // a
+    fontHvMedium16_30()
+    display block
+    padding-top 11px
+    padding-right 10px
+    padding-bottom 9px
+    padding-left 10px
     color $c_white
+    text-align center
+    text-decoration none
+    outline none
+    transition color 0.4s ease, background-color 0.4s ease
 
+    &:hover
+    &:focus
+        color $c_white
+        background-color $c_dull-darkened-02
+        text-decoration none
 
+    &:active
+        color $c_white-transparent-03
+        background-color $c_dull-darker
+
+.news-nav__dropdowns
+    box-sizing: border-box
+    display flex
+    justify-content flex-end
+    align-items center
+    flex-basis 294px
+
+.news-nav__dropdown-social-menu
+    flex-grow 1
+    flex-basis 142px
+    box-sizing border-box
+    max-width 142px
+
+.news-nav__country-selection
+    flex-grow 1
+    flex-basis 152px
+    box-sizing border-box
+    max-width 152px
+    // border-left 1px solid $c_dull-other // $c_white-transparent-02
+
+    .dropdown-simple__button
+        border-left 1px solid $c_dull-other
 
 
 .news-filters  // section.news-list-content__filters
     //
 
 .news-filters__top
-    //
+    position relative
+    box-sizing border-box
+    overflow hidden
+    min-height 86px
+    padding-top 41px
+    // padding-right $right_offset_base
+    padding-bottom 13px
+    padding-left $left_offset_base
+    background-color $c_white
+
+    @media (max-width $xsm)
+        padding-left $left_offset_small
 
 .news-filters__bottom
-    //
+    display flex
+    justify-content space-between
+    flex-wrap wrap
+    position relative
+    padding-top 26px
+    padding-right $right_offset_base
+    padding-bottom calc(34px - 10px)  // subtract bottom margin of inner .filters-lis__items of .news-filters__categories
+    padding-left $left_offset_base
+    background-color $c_creme
 
-.news-filters__to-left  // button
-    //
-
-.news-filters__popular-countries  // ul
-    //
-
-.news-filters__to-right  // button
-    //
-
-.news-filters__bottom
-    //
-
-.news-filters__categories  // ul
-    //
-
-.news-filters__controls
-    //
+    @media (max-width $xsm)
+        padding-left $left_offset_small
 
 
-
-
+// mix
 .filters-list  // ul
+    // height 32px
     padding 0
-    margin 0
 
 .filters-list--theme--dull
     //
@@ -450,10 +577,15 @@
 
 .filters-list__item  // li
     list-style none
+    display inline-block
+    // margin-right 24px
+
 
 .filters-list__item--active
+    margin-right 12px
     border-width 1px
     border-style solid
+    cursor default
 
     .filters-list--theme--dull &
         border-color $c_dull-light
@@ -463,18 +595,115 @@
 
 .filters-list__filter  // a
     fontHvRoman14_30()
+    display block
+    padding-left 12px
+    padding-right 12px
     text-decoration none
     text-transform uppercase
     cursor pointer
+    outline none
+    transition color 0.4s ease
 
     .filters-list--theme--dull &
         color $c_dull-dark
 
+        &:hover
+        &:focus
+            color $c_dull-darker
+            text-decoration none
+
+        &:active
+            color $c_dull-darkest
+
     .filters-list--theme--bright &
         color $c_bright
 
+        &:hover
+        &:focus
+            color $c_bright-dark
+            text-decoration none
+
+        &:active
+            color $c_bright-darkened
+
     .filters-list__item--active &
         fontHvMedium14_30()
+        padding-left 17px
+        padding-right 17px
+        cursor default
+
+        .filters-list--theme--dull &
+            &:hover
+            &:focus
+            &:active
+                color $c_dull-dark
+
+        .filters-list--theme--bright &
+            &:hover
+            &:focus
+            &:active
+                color $c_bright
+
+
+// end of mix
+
+
+.news-filters__popular-countries  // ul.filters-list
+    margin-top 0
+    margin-bottom 0
+
+.news-filters__categories  // ul.filters-list
+    margin-top 0
+    margin-bottom 0
+    flex-basis 483px
+    // min-width 483px
+    max-width 483px
+
+    li // .filters-list__item
+        margin-bottom 10px
+
+.news-filters__controls  // ul
+    padding 0
+    margin-top 0
+    margin-bottom 0
+
+    .news-filters__top &
+        position absolute
+        top 41px
+        margin-right -5px
+        margin-left -5px
+
+    .news-filters__bottom &
+        flex-basis 223px
+        text-align center
+        // position absolute
+        // top 28px
+        // right $right_offset_base
+        // overflow hidden
+        // padding-bottom 100vh
+
+// .news-filters__controls-item  // li
+//     list-style none
+//     display inline-block
+//     vertical-align top
+//     padding-right 5px
+//     padding-left 5px
+
+// .news-filters__button
+//     fontHvRoman14()
+//     width 30px
+//     height 32px
+//     border 1px solid $c_light-3
+//     border-radius 3px
+//     cursor pointer
+//     color $c_dull-dark
+//     background-color $c_white
+
+// .news-filters__button--to-left  // button
+//     //
+
+// .news-filters__button--to-right  // button
+//     //
 
 
 
@@ -482,11 +711,21 @@
 .news-controls  // .news-filters__controls
     //
 
-.news-controls__languages
-    //
+.news-controls__languages  // .dropdown-simple
+    vertical-align middle
+    margin-right 10px
+
+    .dropdown-simple__button
+        background-color $c_creme
 
 .news-controls__languages-list  // ul
     //
 
 .news-controls__add-news  // a
-    //
+    vertical-align middle
+
+
+
+
+.news  // ul.condensed-list
+    margin-bottom 20px

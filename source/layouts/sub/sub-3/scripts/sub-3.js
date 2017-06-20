@@ -6,7 +6,8 @@
   console.log('Global settings:', settings);
   // some uh-inner subtemplate scripts content
 
-  var LOGGER = {  // helper object for logging outs
+  var LOGGER = {
+    // helper object for logging outs
     IMPORTANT: true,
     DETAILED: true
   };
@@ -19,39 +20,45 @@
     pageMenuToggle: {
       stateClassNames: {
         ACTIVE_LINK: 'page-nav__menu-link--active',
-        OPEN_SUBMENU: 'page-nav__togglable-panel--open',
+        OPEN_SUBMENU: 'page-nav__togglable-panel--open'
       }
+    },
+    dropdownSimple: {
+      stateClassNames: {}
     }
   };
-
 
   ///////////////
   // interface //
   ///////////////
 
-  initPageMenuToggle(CONFIGURATION.pageMenuToggle);  // page menu toggle button initialization
+  // uh-inner subtemplate components initialization
+  initPageMenuToggle(CONFIGURATION.pageMenuToggle); // page menu toggle button initialization
 
+  // global components initialization
+  initDropdownSocial(CONFIGURATION.dropdownSocial); // dropdown-social component initialization
+  initDropdownSimple(CONFIGURATION.dropdownSimple); // dropdown-simple component initialization
 
   ////////////////////////////
   // implementation details //
   ////////////////////////////
 
-  function initPageMenuToggle(config) {  // page menu toggle scripts
+  function initPageMenuToggle(config) {
+    // page menu toggle scripts
 
     // configuration //
 
-    var pageMenuLinks = document.querySelectorAll('.page-nav__menu-link');  // NodeList
-
+    var pageMenuLinks = document.querySelectorAll('.page-nav__menu-link'); // NodeList
 
     // interface //
 
-    utils.forEachNode(pageMenuLinks, menuLinkCallback);  // iterating through pageMenuLinks NodeList object
+    utils.forEachNode(pageMenuLinks, menuLinkCallback); // iterating through pageMenuLinks NodeList object
 
-    function menuLinkCallback(index, node) {  // this callback is called for each node in pageMenuLinks NodeList
+    function menuLinkCallback(index, node) {
+      // this callback is called for each node in pageMenuLinks NodeList
       node.addEventListener('click', menuLinkClickHandler);
       node.addEventListener('keydown', menuLinkKeydownHandler);
     }
-
 
     // implementation details //
 
@@ -128,8 +135,117 @@
         });
       }
     }
-
   }
   // end of page menu toggle scripts
 
+  function initDropdownSocial(config) {
+    // dropdown-social component scripts
+
+    // configuration //
+
+    var dropdownSocialNodes = document.querySelectorAll('.dropdown-social'); // NodeList
+
+    // interface //
+
+    utils.forEachNode(dropdownSocialNodes, dropdownSocialNodeCallback);
+
+    function dropdownSocialNodeCallback(index, node) {
+      var dropdownSocialRadioControl = node.querySelector('.dropdown-social__open');
+      dropdownSocialRadioControl.addEventListener('change', dropdownSocialRadioControlChangeHandler);
+      var dropdownSocialButton = node.querySelector('.dropdown-social__button');
+      dropdownSocialButton.addEventListener('keydown', dropdownSocialButtonKeydownHandler);
+    }
+
+    // implementation details //
+
+    function dropdownSocialRadioControlChangeHandler(evt) {
+      if (LOGGER.DETAILED) console.log('dropdownSocialStateRadioChangeHandler is called!');
+      if (LOGGER.DETAILED) console.log(evt, evt.target.checked);
+      var dropdownSocialNode = evt.target.closest('.dropdown-social');
+      var dropdownSocialSubmenuLinks = dropdownSocialNode.querySelectorAll('.dropdown-social__submenu-link');
+      utils.forEachNode(dropdownSocialSubmenuLinks, function(index, node) {
+        if (evt.target.checked) {
+          node.setAttribute('tabindex', 0);
+        } else {
+          node.setAttribute('tabindex', -1);
+        }
+      });
+    }
+
+    function dropdownSocialButtonKeydownHandler(evt) {
+      if (LOGGER.DETAILED) console.log('dropdownSocialButtonKeydownHandler is called!');
+      if ([13, 32].indexOf(evt.keyCode) > -1) {
+        evt.preventDefault();
+        var boundedRadioControlID = evt.target.getAttribute('for');
+        var boundedRadioControl = document.querySelector('#' + boundedRadioControlID);
+        if (boundedRadioControl) {
+          var changeEvent = new Event('change', { bubbles: true, cancelable: false });
+          boundedRadioControl.checked = boundedRadioControl.checked ? false : true;
+          boundedRadioControl.dispatchEvent(changeEvent);
+        } else {
+          throw new Error(
+            'There is no radiobutton bound to label with id #' + boundedRadioControlID + 'and for attribute.'
+          );
+        }
+      }
+    }
+  }
+  // end of dropdown-social component scripts
+
+  function initDropdownSimple(config) {
+    // dropdown-simple component scripts
+
+    // configuration //
+
+    var dropdownSimpleNodes = document.querySelectorAll('.dropdown-simple'); // NodeList
+
+    // interface //
+    utils.forEachNode(dropdownSimpleNodes, dropdownSimpleNodeCallback);
+
+    function dropdownSimpleNodeCallback(index, node) {
+      var dropdownSimpleRadioControl = node.querySelector('.dropdown-simple__open');
+      dropdownSimpleRadioControl.addEventListener('change', dropdownSimpleRadioControlChangeHandler);
+      var dropdownSimpleButton = node.querySelector('.dropdown-simple__button');
+      dropdownSimpleButton.addEventListener('keydown', dropdownSimpleButtonKeydownHandler);
+    }
+
+    // implementation details //
+
+    function dropdownSimpleRadioControlChangeHandler(evt) {
+      if (LOGGER.DETAILED) console.log('dropdownSimpleRadioControlChangeHandler is called!');
+      if (LOGGER.DETAILED) console.log(evt, evt.target.checked);
+      var dropdownSimpleNode = evt.target.closest('.dropdown-simple');
+      var dropdownSimpleSubmenuLinks = dropdownSimpleNode.querySelectorAll('.dropdown-simple__link');
+      utils.forEachNode(dropdownSimpleSubmenuLinks, function(index, node) {
+        if (evt.target.checked) {
+          node.setAttribute('tabindex', 0);
+        } else {
+          node.setAttribute('tabindex', -1);
+        }
+      });
+    }
+
+    function dropdownSimpleButtonKeydownHandler(evt) {
+      if (LOGGER.DETAILED) console.log('dropdownSimpleButtonKeydownHandler is called!');
+      if ([13, 32].indexOf(evt.keyCode) > -1) {
+        evt.preventDefault();
+        var boundedRadioControlID = evt.target.getAttribute('for');
+        var boundedRadioControl = document.querySelector('#' + boundedRadioControlID);
+        if (boundedRadioControl) {
+          var changeEvent = new Event('change', { bubbles: true, cancelable: false });
+          boundedRadioControl.checked = boundedRadioControl.checked ? false : true;
+          boundedRadioControl.dispatchEvent(changeEvent);
+        } else {
+          throw new Error(
+            'There is no radiobutton bound to label with id #' + boundedRadioControlID + 'and for attribute.'
+          );
+        }
+      }
+    }
+  }
+  // end of dropdown-simple component scripts
+
+  /////////
+  // END //
+  /////////
 })(GLOBAL_SETTINGS, UTILS);

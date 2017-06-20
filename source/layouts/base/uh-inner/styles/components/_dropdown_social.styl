@@ -6,73 +6,154 @@
     display inline-block
     background-color $c_dull
 
-.dropdown-social__button  // label
-    position relative
-    display inline-block
-    vertical-align top
-    z-index 2
-    cursor pointer
-    color #fff
-    background-color $c_dull
-
-.dropdown-social__inner-list
-    //
-
-.dropdown-social__inner-item
-    //
-
-.dropdown-social__inner-item--vk
-.dropdown-social__inner-item--fb
-.dropdown-social__inner-item--inst
-    //
-
-.dropdown-social__inner-item--vk
-    //
-
-.dropdown-social__inner-item--fb
-    //
-
-.dropdown-social__inner-item--inst
-    //
-
-.dropdown-social__state-indicator
-    //
-
-.dropdown-social__open
+.dropdown-social__open  // input[type=checkbox]
     display none
 
-/*ul*/.dropdown-social__submenu
+@keyframes closedDropdownCaretShake
+    0%, 100% { transform: translateX(0); }
+    33% { transform: translateX(4px); }
+    66% { transform: translateX(-4px); }
+
+@keyframes openedDropdownCaretShake
+    // 0%, 100% { transform: translateX(0) rotateZ(180deg); }
+    // 33% { transform: translateX(4px) rotateZ(180deg); }
+    // 66% { transform: translateX(-4px) rotateZ(180deg); }
+
+.dropdown-social__button  // label
+    position relative
+    z-index 2
+    box-sizing border-box
+    display block
+    cursor pointer
+    color $c_white
+    background-color $c_dull
+    outline none
+
+    &::after
+        position absolute
+        top 23px
+        right 19px
+        width 0
+        height 0
+        border-style solid
+        border-width 6px 4px 0 4px
+        border-color $c_white-transparent-05 transparent transparent transparent
+        transform-origin 50% 50%
+        transform rotateZ(0deg)
+        transition transform 0.4s ease, border-color 0.4s ease
+        content ''
+
+        .dropdown-social__open:checked ~ &
+            transform rotateZ(180deg)
+
+    &:hover
+    &:focus
+        &::after
+            border-color $c_white transparent transparent transparent
+            animation closedDropdownCaretShake 0.4s ease-out
+
+        .dropdown-social__open:checked ~ &::after
+            animation openedDropdownCaretShake 0.4s ease-out
+
+
+.dropdown-social__inner-list  //ul
+    position relative
+    margin 0
+    padding-top 12px
+    padding-right 19px
+    padding-bottom 10px
+    padding-left 3px
+    font-size 0
+
+
+.dropdown-social__inner-item  // li
+    position relative
+    list-style none
+    box-sizing border-box
+    display inline-block
+    width 28px
+    height 28px
+    margin-right 7px
+    border 1px solid $c_white-transparent-02
+    font-size 10px
+
+    &::after
+        position absolute
+        top 0
+        right 0
+        bottom 0
+        left 0
+        margin auto
+        text-align center
+        background-repeat no-repeat
+        background-position center
+        background-size contain
+        content ''
+
+    &:last-of-type
+        margin-right 0
+
+.dropdown-social__inner-item--vk
+    &::after
+        width 17px
+        height 10px
+        background-image url(../images/bg-social-vk-icon.svg)
+
+.dropdown-social__inner-item--fb
+    &::after
+        width 10px
+        height 17px
+        background-image url(../images/bg-social-fb-icon.svg)
+
+.dropdown-social__inner-item--inst
+    &::after
+        width 14px
+        height 14px
+        background-image url(../images/bg-social-inst-icon.svg)
+
+.dropdown-social__submenu  // ul
     position absolute
-    top -200%
-    z-index 0
+    top -180px
+    z-index 1
+    width 100%
     padding 0
     margin 0
     opacity 0
     color $c_white
     background-color $c_dull-darkened
-    transition top .4s ease-in, opacity .4s ease-in
+    transition top 0.4s ease-in, opacity 0.4s ease-in
+
+    .dropdown-social__open:checked ~ &
+        bottom auto
+        top 100%
+        opacity 1
 
 .dropdown-social__submenu--centered
     //
 
-/*li*/.dropdown-social__submenu-item
+.dropdown-social__submenu-item  // li
     list-style none
-    background-color $c_dull-darkened
+    // background-color $c_dull-darkened
 
-/*a*/.dropdown-social__submenu-link
+.dropdown-social__submenu-link  // a
     fontHvRoman14_30()
+    box-sizing border-box
+    display block
+    padding-top 2px
+    padding-right 20px
+    padding-bottom 2px
+    padding-left 21px
     color $c_white
+    outline none
     text-decoration none
     transition color 0.4s ease, background-color 0.4s ease
 
     &:hover
     &:focus
+        color $c_white
         background-color $c_dull-darker
+        text-decoration none
 
     &:active
+        color $c_white-transparent-03
         background-color $c_dull-darkest
-
-.dropdown-social__open:checked + .dropdown-social__submenu
-    bottom auto
-    top 100%
-    opacity 1

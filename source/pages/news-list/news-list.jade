@@ -6,6 +6,7 @@ include ./blocks/_mixins.jade
 block append head
     //- var pageName = 'news-list';  // закомментил, иначе она будет влиять на классы body, header, main, aside и footer
     - var pageTitle = 'News-list page template';
+    - var mainClasses = 'news-list';
 
 
 block append links
@@ -16,7 +17,7 @@ block append links
 
 
 block append scripts
-    // Скрипт для расстановки переносов, добавляет метод $(<selector>).hyphens(<lang-code>) в jQuery
+    // Скрипт для расстановки переносов, добавляет метод $(<selector>).hyphenate(<lang-code>) в jQuery
     script(src='../../distrs/jquery/plugins/hypher/jquery.hypher.js')
     // Скрипт с паттернами переносов для английского языка, <lang-code> = 'en-us'
     script(src='../../distrs/jquery/plugins/hypher/patterns/en-us.js')
@@ -169,7 +170,7 @@ block content
             input#slider__to-slide-2.slider__radio-control(type='radio' name='slider__radio-control' value='to-slide-2')
             input#slider__to-slide-3.slider__radio-control(type='radio' name='slider__radio-control' value='to-slide-3')
             input#slider__to-slide-4.slider__radio-control(type='radio' name='slider__radio-control' value='to-slide-4')
-            .slider__inner(style='background-image: url(./images/img-slider-pic-1.jpg)')
+            .slider__inner
                 header.slider__header
                     h1.slider__title
                         a.slider__title-link(href='#' title='LUX resorts & hotels')
@@ -186,26 +187,26 @@ block content
                         и предлагаем поистине уникальный отдых
                 ul.slider__controls
                     li.slider__controls-item
-                        label.slider__controls-label(for='slider__to-slide-1')
+                        label.slider__controls-label(for='slider__to-slide-1' tabindex=0)
                             img.slider__controls-image(src='./images/img-slider-pic-1.jpg' alt='' title='' width='1140' height='')
                     li.slider__controls-item
-                        label.slider__controls-label(for='slider__to-slide-2')
+                        label.slider__controls-label(for='slider__to-slide-2' tabindex=0)
                             img.slider__controls-image(src='./images/img-news-pic-2.jpg' alt='' title='' width='263' height='')
                     li.slider__controls-item
-                        label.slider__controls-label(for='slider__to-slide-3')
+                        label.slider__controls-label(for='slider__to-slide-3' tabindex=0)
                             img.slider__controls-image(src='./images/img-news-pic-3.jpg' alt='' title='' width='263' height='')
                     li.slider__controls-item
-                        label.slider__controls-label(for='slider__to-slide-4')
+                        label.slider__controls-label(for='slider__to-slide-4' tabindex=0)
                             img.slider__controls-image(src='./images/img-news-pic-4.jpg' alt='' title='' width='263' height='')
-                //- ul.slider__slides
-                //-     li.slider__slide(data-slide-number='1')
-                //-         img.slider__slide-image(src='./images/img-slider-pic-1.jpg' alt='' title='' width='1140' height='')
-                //-     li.slider__slide(data-slide-number='2')
-                //-         img.slider__slide-image(src='./images/img-news-pic-2.jpg' alt='' title='' width='263' height='')
-                //-     li.slider__slide(data-slide-number='3')
-                //-         img.slider__slide-image(src='./images/img-news-pic-3.jpg' alt='' title='' width='263' height='')
-                //-     li.slider__slide(data-slide-number='4')
-                //-         img.slider__slide-image(src='./images/img-news-pic-4.jpg' alt='' title='' width='263' height='')
+                ul.slider__slides(style='background-image: url(./images/img-slider-pic-1.jpg)')
+                    //- li.slider__slide(data-slide-number='1')
+                    //-     img.slider__slide-image(src='./images/img-slider-pic-1.jpg' alt='' title='' width='1140' height='')
+                    //- li.slider__slide(data-slide-number='2')
+                    //-     img.slider__slide-image(src='./images/img-news-pic-2.jpg' alt='' title='' width='263' height='')
+                    //- li.slider__slide(data-slide-number='3')
+                    //-     img.slider__slide-image(src='./images/img-news-pic-3.jpg' alt='' title='' width='263' height='')
+                    //- li.slider__slide(data-slide-number='4')
+                    //-     img.slider__slide-image(src='./images/img-news-pic-4.jpg' alt='' title='' width='263' height='')
                 .slider__additional-info Мальдивы
 
         section.news-list-content__nav.news-nav
@@ -219,39 +220,38 @@ block content
                     a.news-nav__menu-link(href='#', title='Переводы') Переводы
                 li.news-nav__menu-item
                     a.news-nav__menu-link(href='#', title='Выгрузки') Выгрузки
-            .news-nav__dropdown-social-menu.dropdown-social
-                label.dropdown-social__button(for='dropdown-social__open' title='open social dropdown') open
-                    ul.dropdown-social__inner-list
-                        li.dropdown-social__inner-item.dropdown-social__inner-item--vk
-                        li.dropdown-social__inner-item.dropdown-social__inner-item--fb
-                        li.dropdown-social__inner-item.dropdown-social__inner-item--inst
-                    .dropdown-social__state-indicator
-                input#dropdown-social__open.dropdown-social__open(type='checkbox' name='dropdown-social')
-                ul.dropdown-social__submenu.dropdown-social__submenu--centered
-                    li.dropdown-social__submenu-item
-                        a.dropdown-social__submenu-link(href='#' title='Управление') Управление
-                    li.dropdown-social__submenu-item
-                        a.dropdown-social__submenu-link(href='#' title='Статистика') Статистика
-            .news-nav__country-selection.dropdown-simple.dropdown-simple--type--1.dropdown-simple--align--right
-                label.dropdown-simple__button(for='filter-by-country-1')
-                    span.dropdown-simple__active-item Маврикий
-                input#filter-by-country-1.dropdown-simple__open(type='checkbox' name='dropdown-simple')
-                ul.dropdown-simple__list
-                    li.dropdown-simple__list-item
-                        a#country-selection__us.dropdown-simple__link(href='#' title='Соединённые штаты') Соединённые штаты
-                    li.dropdown-simple__list-item
-                        a#country-selection__gb.dropdown-simple__link(href='#' title='Великобритания') Великобритания
-                    li.dropdown-simple__list-item
-                        a#country-selection__nw.dropdown-simple__link(href='#' title='Норвегия') Норвегия
-                    li.dropdown-simple__list-item
-                        a#country-selection__rf.dropdown-simple__link(href='#' title='Российская Федерация') Российская Федерация
+            .news-nav__dropdowns
+                .news-nav__dropdown-social-menu.dropdown-social
+                    input#dropdown-social__open.dropdown-social__open(type='checkbox' name='dropdown-social')
+                    label.dropdown-social__button(for='dropdown-social__open' title='open social dropdown' tabindex=0)
+                        ul.dropdown-social__inner-list
+                            li.dropdown-social__inner-item.dropdown-social__inner-item--vk
+                            li.dropdown-social__inner-item.dropdown-social__inner-item--fb
+                            li.dropdown-social__inner-item.dropdown-social__inner-item--inst
+                    ul.dropdown-social__submenu.dropdown-social__submenu--centered
+                        li.dropdown-social__submenu-item
+                            a.dropdown-social__submenu-link(href='#' title='Управление' tabindex=-1) Управление
+                        li.dropdown-social__submenu-item
+                            a.dropdown-social__submenu-link(href='#' title='Статистика' tabindex=-1) Статистика
+                .news-nav__country-selection.dropdown-simple.dropdown-simple--type--1.dropdown-simple--align--right
+                    input#filter-by-country-1.dropdown-simple__open(type='checkbox' name='dropdown-simple')
+                    label.dropdown-simple__button(for='filter-by-country-1' title='open country dropdown' tabindex=0)
+                        span.dropdown-simple__active-item Маврикий
+                    ul.dropdown-simple__list
+                        li.dropdown-simple__list-item
+                            a#country-selection__us.dropdown-simple__link(href='#' title='Соединённые штаты' tabindex=-1) Соединённые штаты
+                        li.dropdown-simple__list-item
+                            a#country-selection__gb.dropdown-simple__link(href='#' title='Великобритания' tabindex=-1) Великобритания
+                        li.dropdown-simple__list-item
+                            a#country-selection__nw.dropdown-simple__link(href='#' title='Норвегия' tabindex=-1) Норвегия
+                        li.dropdown-simple__list-item
+                            a#country-selection__rf.dropdown-simple__link(href='#' title='Российская Федерация' tabindex=-1) Российская Федерация
 
         section.news-list-content__filters.news-filters
-            .news-filters__top
-                button.news-filters__to-left
-                ul.news-filters__popular-countries.filters-list.filters-list--theme--dull
+            .news-filters__top.shiftable-panel
+                ul.news-filters__popular-countries.filters-list.filters-list--theme--dull.shiftable-panel__content
                     li.filters-list__item.filters-list__item--active
-                        a.filters-list__filter(href='#' title='Все страны') Все страны
+                        a.filters-list__filter(href='#' title='Все страны' tabindex=-1) Все страны
                     li.filters-list__item
                         a.filters-list__filter(href='#' title='Маврикий') Маврикий
                     li.filters-list__item
@@ -268,11 +268,15 @@ block content
                         a.filters-list__filter(href='#' title='Вьетнам') Вьетнам
                     li.filters-list__item
                         a.filters-list__filter(href='#' title='Италия') Италия
-                button.news-filters__to-right
+                ul.news-filters__controls.shiftable-panel__controls-list
+                    li.shiftable-panel__controls-item
+                        button.shiftable-panel__control.shiftable-panel__control--shift--left <
+                    li.shiftable-panel__controls-item
+                        button.shiftable-panel__control.shiftable-panel__control--shift--right >
             .news-filters__bottom
                 ul.news-filters__categories.filters-list.filters-list--theme--bright
                     li.filters-list__item.filters-list__item--active
-                        a.filters-list__filter(href='#' title='Со всего мира') Со всего мира
+                        a.filters-list__filter(href='#' title='Со всего мира' tabindex=-1) Со всего мира
                     li.filters-list__item
                         a.filters-list__filter(href='#' title='Партнерские') Партнерские
                     li.filters-list__item
@@ -287,13 +291,13 @@ block content
                     //-     input#news-controls__language-value(type='hidden' name='language-2')
 
                     .news-controls__languages.dropdown-simple.dropdown-simple--type--2.dropdown-simple--align--right
-                        label.dropdown-simple__button(for='news-controls__languages-open')
-                            span.dropdown-simple__active-item RUS
                         input#news-controls__languages-open.dropdown-simple__open(type='checkbox' name='dropdown-simple')
+                        label.dropdown-simple__button(for='news-controls__languages-open' title='open languages dropdown' tabindex=0)
+                            span.dropdown-simple__active-item RUS
                         ul.news-controls__languages-list.dropdown-simple__list
                             each language, index in ['RUS', 'ENG', 'CH']
                                 li.dropdown-simple__list-item
-                                    a.dropdown-simple__link(data-language-code='{{ language.code }}' title=language)= language
+                                    a.dropdown-simple__link(data-language-code='{{ language.code }}' title=language tabindex=-1)= language
                     a#news-controls__add-news.news-controls__add-news.btn.btn--type--1(href='#' title='Добавить новость') Добавить новость
 
         section.news-list-content__news
