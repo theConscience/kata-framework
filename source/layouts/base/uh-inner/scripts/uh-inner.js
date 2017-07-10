@@ -6,25 +6,24 @@
 // Element prototype polifilled methods //
 //////////////////////////////////////////
 
-(function(e) {
+(function (e) {
   // .matches polyfill, used by closest polyfill
   e.matches ||
     (e.matches =
       e.matchesSelector ||
-      function(selector) {
-        var matches = document.querySelectorAll(selector),
-          th = this;
-        return Array.prototype.some.call(matches, function(e) {
+      function (selector) {
+        var matches = document.querySelectorAll(selector), th = this;
+        return Array.prototype.some.call(matches, function (e) {
           return e === th;
         });
       });
 })(Element.prototype);
 
-(function(e) {
+(function (e) {
   // .closest polyfill
   e.closest =
     e.closest ||
-    function(css) {
+    function (css) {
       var node = this;
       while (node) {
         if (node.matches(css)) return node;
@@ -38,7 +37,7 @@
 // Global configuration //
 //////////////////////////
 
-var GLOBAL_SETTINGS = (function() {
+var GLOBAL_SETTINGS = (function () {
   var pageBody = document.body;
 
   var MEDIA_URL = pageBody.getAttribute('data-media-url');
@@ -49,31 +48,31 @@ var GLOBAL_SETTINGS = (function() {
   var INVALID_CLASSNAME = 'is-invalid';
   var VALID_CLASSNAME = 'is-valid';
 
-  var getHiddenClass = function() {
+  var getHiddenClass = function () {
     return HIDDEN_CLASS_NAME;
   };
 
-  var getActiveClass = function() {
+  var getActiveClass = function () {
     return ACTIVE_CLASS_NAME;
   };
 
-  var getInvalidClass = function() {
+  var getInvalidClass = function () {
     return INVALID_CLASSNAME;
   };
 
-  var getValidClass = function() {
+  var getValidClass = function () {
     return VALID_CLASSNAME;
   };
 
-  var getMediaUrl = function() {
+  var getMediaUrl = function () {
     return MEDIA_URL;
   };
 
-  var getStaticUrl = function() {
+  var getStaticUrl = function () {
     return STATIC_URL;
   };
 
-  var getRootComponent = function() {
+  var getRootComponent = function () {
     return {
       title: 'uhInnerPage',
       element: document.querySelector('.uh-inner-page')
@@ -95,7 +94,7 @@ var GLOBAL_SETTINGS = (function() {
 // Utility functions //
 ///////////////////////
 
-var UTILS = (function() {
+var UTILS = (function () {
   return {
     /**
      * Итерирует по объектам типа NodeList.
@@ -103,7 +102,7 @@ var UTILS = (function() {
      * @param {function} callback
      * @param {object} scope
      */
-    forEachNode: function(nodelist, callback, scope) {
+    forEachNode: function (nodelist, callback, scope) {
       for (var i = 0; i < nodelist.length; i++) {
         callback.call(scope, i, nodelist[i]);
       }
@@ -113,10 +112,10 @@ var UTILS = (function() {
      * Возвращает объект pub/sub.
      * @return {Object}
      */
-    eventChannelFactory: function() {
+    eventChannelFactory: function () {
       var subscribers = {};
 
-      var subscribe = function(eventType, subscriberFn) {
+      var subscribe = function (eventType, subscriberFn) {
         if (!subscribers[eventType]) subscribers[eventType] = [];
 
         var subscribersGroup = subscribers[eventType];
@@ -128,7 +127,7 @@ var UTILS = (function() {
         return this;
       };
 
-      var unsubscribe = function(eventType, subscriberFn) {
+      var unsubscribe = function (eventType, subscriberFn) {
         var subscribersGroup = subscribers[eventType];
         if (!subscribersGroup) return this;
 
@@ -144,7 +143,7 @@ var UTILS = (function() {
         return this;
       };
 
-      var publish = function(eventType, evtObj) {
+      var publish = function (eventType, evtObj) {
         var subscribersGroup = subscribers[eventType];
         if (!subscribersGroup) {
           console.log('There is no such event group!');
@@ -156,7 +155,7 @@ var UTILS = (function() {
         if (subscribersGroup.length < 1) {
           console.log('There is no events in ' + eventType + ' group!');
         } else {
-          subscribersGroup.forEach(function(subscriber) {
+          subscribersGroup.forEach(function (subscriber) {
             subscriber(evtObj);
           });
         }
@@ -164,7 +163,7 @@ var UTILS = (function() {
         return this;
       };
 
-      var getSubscribers = function() {
+      var getSubscribers = function () {
         return subscribers;
       };
 
@@ -182,7 +181,7 @@ var UTILS = (function() {
 // Base template scripts //
 ///////////////////////////
 
-(function(settings, utils, $) {
+(function (settings, utils, $) {
   console.log('Global settings:', settings);
   // some uh-inner scripts content
 
@@ -197,11 +196,26 @@ var UTILS = (function() {
   ///////////////////
 
   var CONFIGURATION = {
+    breakpoints: {
+      XS: 767,
+      XSM: 667
+    },
     components: {
       uhInnerPage: {
         TITLE: 'uh-inner-page',
         ELEMENTS: {},
         MODIFIERS: {},
+        STATE: {}
+      },
+      uhInnerAside: {
+        TITLE: 'uh-inner-page__aside',
+        ELEMENTS: {},
+        MODIFIERS: {
+          FIXED: 'uh-inner-page__aside--fixed'
+          // COLLAPSED_ASIDE: 'uh-inner-aside--collapsed',
+          // components
+          // EXTENDED_SLIDER: 'slider--extended'
+        },
         STATE: {}
       },
       mainMenuToggle: {
@@ -233,6 +247,14 @@ var UTILS = (function() {
           EXTENDED: 'site-search--extended'
         },
         STATE: {}
+      },
+      pageNavMenu: {
+        TITLE: 'page-nav__menu',
+        ELEMENTS: {},
+        MODIFIERS: {
+          FIXED: 'page-nav__menu--fixed'
+        },
+        STATE: {}
       }
     }
   };
@@ -243,6 +265,8 @@ var UTILS = (function() {
 
   // uh-inner base page components initialization
   initUhInnerEventChannel(CONFIGURATION.components.uhInnerPage); // extends uh-inner page component with eventChannel functionality
+  initElementScroll(CONFIGURATION.components.uhInnerAside, CONFIGURATION.breakpoints.XS, false); // uh-inner page aside scroll initialization
+  initElementScroll(CONFIGURATION.components.pageNavMenu, CONFIGURATION.breakpoints.XSM, true); // news page navigation menu scroll initialization
   initMainMenuToggle(CONFIGURATION.components.mainMenuToggle); // site main menu toggle button initialization
   initSiteLanguage(CONFIGURATION.components.siteLanguage); // site-language component initialization
   initSiteSearch(CONFIGURATION.components.siteSearch); // site-search component initialization
@@ -261,6 +285,199 @@ var UTILS = (function() {
     $.extend(uhInnerPage, uhInnerPageEventChannel);
   }
   // end of uh-inner page event channel initialization scripts
+
+  function initElementScroll(config, minBreakpoint, fixedClassChange) {
+    // uh-inner page aside scroll scripts
+
+    // configuration //
+
+    var isXsViewport = window.innerWidth <= minBreakpoint;
+    var prevScrollInfo = {
+      direction: null,
+      size: 0,
+      value: 0,
+      fix: false
+    };
+    var scrollableElement = document.querySelector('.' + config.TITLE);
+    var scrollableElementParent = scrollableElement.parentElement;
+
+    // interface //
+
+    if (!scrollableElement) return false;
+
+    toggleScrollableElementFixedState(fixedClassChange);
+
+    window.addEventListener('scroll', onWindowScroll);
+    window.addEventListener('resize', onWindowResize);
+
+    // implementation details //
+
+    function toggleScrollableElementFixedState(enabled) {
+      if (LOGGER.DETAILED) console.log('toggleScrollableElementFixedState is called!');
+
+      if (!enabled) return true;  // если переключение класса не нужно, значит элемент уже фиксированно спозиционирован, поэтому сразу возвращаем true
+
+      if (scrollableElement.parentElement.getBoundingClientRect().top < 0) {
+        scrollableElement.classList.add(config.MODIFIERS.FIXED);
+        if (LOGGER.DETAILED) console.log('scrollableElement', scrollableElement, ' is fixed now!');
+        return true;
+      } else {
+        scrollableElement.classList.remove(config.MODIFIERS.FIXED);
+        if (LOGGER.DETAILED) console.log('scrollableElement', scrollableElement, ' is no more fixed...');
+        return false;
+      }
+    }
+
+    function onWindowScroll() {
+      var viewportData = getViewportYPositionData();
+      var elementData = getElementYPositionData(scrollableElement, scrollableElementParent, 'marginTop');
+      var scrollInfo = getScrollInfo(viewportData.top);
+
+      var elementIsFixed = toggleScrollableElementFixedState(fixedClassChange);
+
+      if (elementIsFixed) {
+        if (isElementContentHeightMoreThanViewport(viewportData, elementData) && window.innerWidth > minBreakpoint) {
+          var newMarginValue = parseFloat(scrollableElement.style.marginTop || 0, 10) + scrollInfo.size;
+          if (scrollInfo.direction === 'down' && shouldScrollDown(viewportData, elementData, scrollInfo)) {
+            scrollableElement.style.marginTop = newMarginValue + 'px';
+          } else if (scrollInfo.direction === 'up' && shouldScrollUp(viewportData, elementData, scrollInfo)) {
+            scrollableElement.style.marginTop = (newMarginValue >= 0) ? '' : newMarginValue + 'px';
+          }
+        } else if (!isElementContentHeightMoreThanViewport(viewportData, elementData) && scrollableElement.style.marginTop) {
+          scrollableElement.style.marginTop = '';
+        }
+
+        prevScrollInfo = scrollInfo;  // запоминаем значения скролла внутри области видимости этого модуля
+      } else {
+        scrollableElement.style.marginTop = '';
+      }
+    }
+
+    function onWindowResize() {
+      var viewportData = getViewportYPositionData();
+      var scrollInfo = getScrollInfo(viewportData.top);
+
+      if (window.innerWidth <= minBreakpoint && !isXsViewport) {
+        if (LOGGER.DETAILED) console.log('removing scroll listener');
+        if (LOGGER.DETAILED) console.log('window width =', window.innerWidth);
+        window.removeEventListener('scroll', onWindowScroll);
+        scrollableElement.style.marginTop = '';
+        isXsViewport = true;
+        scrollableElement.classList.remove(config.MODIFIERS.FIXED);
+      } else if (window.innerWidth > minBreakpoint && isXsViewport) {
+        if (LOGGER.DETAILED) console.log('adding scroll listener');
+        if (LOGGER.DETAILED) console.log('window width =', window.innerWidth);
+        window.addEventListener('scroll', onWindowScroll);
+        scrollableElement.style.marginTop = '';
+        isXsViewport = false;
+      }
+
+      prevScrollInfo = scrollInfo;  // запоминаем значения скролла внутри области видимости этого модуля
+    }
+
+    function getViewportYPositionData() {
+      var viewportData = {};
+      viewportData.top = window.pageYOffset || document.documentElement.scrollTop;
+      viewportData.height = document.documentElement.clientHeight;
+      viewportData.getBottom = function getBottom() {
+        return this.top + this.height;
+      };
+
+      return viewportData;
+    }
+
+    function getElementYPositionData(element, elementParent, offsetCssProperty) {
+      var elementData = {};
+      var elementOffsets = element.getBoundingClientRect();
+      elementData.viewportTop = elementOffsets.top;
+      elementData.top = element.offsetTop;
+      elementData.viewportBottom = elementOffsets.bottom;
+      elementData.containerHeight = document.body.clientHeight;
+
+      elementData.firstChild = element.children[0];
+      var firstChildOffsets = elementData.firstChild.getBoundingClientRect();
+      elementData.firstChildViewportTop = firstChildOffsets.top;
+      elementData.firstChildTop = elementData.firstChild.offsetTop;
+      elementData.firstChildHeight = elementData.firstChild.clientHeight;
+
+      elementData.lastChild = element.children[element.children.length - 1];
+      var lastChildOffsets = elementData.lastChild.getBoundingClientRect();
+      elementData.lastChildViewportTop = lastChildOffsets.top;
+      elementData.lastChildTop = elementData.lastChild.offsetTop;
+      elementData.lastChildViewportBottom = lastChildOffsets.bottom;
+      elementData.lastChildHeight = elementData.lastChild.clientHeight;
+      elementData.getLastChildBottom = function getLastChildBottom() {
+        return this.lastChildTop + this.lastChildHeight;
+      };
+
+      var elementParentOffsets = elementParent.getBoundingClientRect();
+      elementData.parentViewportBottom = elementParentOffsets.bottom;
+
+      elementData.getElementContentHeight = function getElementContentHeight() {
+        return this.getLastChildBottom() - this.firstChildTop;
+      };
+
+      elementData.getElementHeight = function getElementHeight() {
+        return this.getLastChildBottom() - this.top;
+      };
+
+      elementData.innerOffsetTop = parseInt(element.style[offsetCssProperty] || 0, 10);
+
+      return elementData;
+    }
+
+    function getScrollInfo(scrollTop) {
+      var scrollSize = prevScrollInfo.value - scrollTop; // отрицательное значение - скролл вниз, положительное - вверх
+      var scrollDirection = scrollSize < 0 ? 'down' : 'up';
+
+      var info = {
+        value: scrollTop,
+        size: scrollSize,
+        direction: scrollDirection,
+        fix: prevScrollInfo.fix
+      };
+
+      return info;
+    }
+
+    /**
+     * @param {HTMLElement} element
+     * @return {Boolean}
+     */
+    function isElementContentHeightMoreThanViewport(viewportData, elementData) {
+      if (elementData.getElementContentHeight() > viewportData.height) {
+        return true;
+      }
+      return false;
+    }
+
+    function shouldScrollUp(viewportData, elementData, scrollInfo) {  // прокрутка вверх === опускаем блок вниз, за границу вьюпорта
+      if (elementData.innerOffsetTop) {
+        return true;
+      } else if (prevScrollInfo.fix) {
+        scrollInfo.fix = false;
+        return true;
+      }
+      return false;
+    }
+
+    function shouldScrollDown(viewportData, elementData, scrollInfo) {  // прокрутка вниз === поднимаем блок вверх, за границу вьюпорта
+      if ((viewportData.top + elementData.lastChildViewportBottom > viewportData.getBottom() &&
+        elementData.containerHeight >= elementData.getElementHeight() + Math.abs(scrollInfo.size)) || // {
+        elementData.lastChildViewportBottom >= elementData.parentViewportBottom) {
+        if (!prevScrollInfo.fix) {
+          scrollInfo.fix = true;
+          return false;
+        }
+        return true;
+      }
+
+      return false;
+    }
+
+    return true;
+  }
+  // end of uh-inner page aside scroll scripts
 
   function initMainMenuToggle(config) {
     // site main menu toggle scripts
@@ -361,7 +578,7 @@ var UTILS = (function() {
         actionsMenu.classList.remove(config.MODIFIERS.COLLAPSED_ACTIONS_MENU);
         pageFooter.classList.remove(config.MODIFIERS.EXTENDED_FOOTER);
         if (components.length) {
-          components.forEach(function(component) {
+          components.forEach(function (component) {
             component.element.classList.remove(component.MODIFIERS.EXTENDED);
           });
         }
@@ -378,8 +595,8 @@ var UTILS = (function() {
         actionsMenu.classList.add(config.MODIFIERS.COLLAPSED_ACTIONS_MENU);
         pageFooter.classList.add(config.MODIFIERS.EXTENDED_FOOTER);
         if (components.length) {
-          components.forEach(function(component) {
-            setTimeout(function() {
+          components.forEach(function (component) {
+            setTimeout(function () {
               component.element.classList.add(component.MODIFIERS.EXTENDED);
             }, 200);
           });

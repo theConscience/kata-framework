@@ -204,11 +204,13 @@
 .slider__controls-label  // label
     position relative
     display block
+    box-sizing content-box
     overflow hidden
     height 76px
     width 112px
-    background-color $c_white-transparent-03
+    margin-bottom 0
     border 5px solid $c_white-transparent-02
+    background-color $c_white-transparent-03
     cursor pointer
     filter grayscale(1)
     transition background-color 0.4s ease, border-color 0.4s ease, filter 0.4s ease

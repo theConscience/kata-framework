@@ -31,6 +31,7 @@
 .uh-inner-page  // body
     position relative
     margin 0
+    font-family sans-serif
     font-size 10px
     line-height 1.6
     color $c_dark
@@ -96,7 +97,7 @@
     transition width 0.4s ease, left 0.4s ease
 
     @media (max-width $xs)
-        position absolute  //xx
+        position absolute  // xx
         top 0px  //xx
         // overflow hidden
         left auto
@@ -112,6 +113,57 @@
             left auto
             height 110px
 
+.uh-inner-page__aside--fixed
+    position fixed
+    top 0
+    bottom 0
+    left calc((100% - 1366px) / 2 + 1366px * 0.77)
+    width calc(1366px * 0.23)
+
+    @media (max-width 1384px)
+        left calc(100% - 23%)
+        width 23%
+
+    @media (max-width $xs)
+        position absolute
+        top 0px  //xx
+        // overflow hidden
+        left auto
+        width 100%
+        height auto
+        transition height 0.4s ease
+
+    &::after
+        @media (min-width $xs + 1px)
+            position absolute
+            top 0
+            left 100%
+            z-index 10
+            width calc((100vw - 1366px) / 2)
+            height 100%
+            background $c_white
+            box-shadow 6px 0 19px -9px rgba(0,0,0,0.5) inset
+            transition left 0.4s ease
+            content ''
+
+            +ie-10-11-only()
+                transition none
+
+
+    .uh-inner-page--extended &
+        left calc((100% - 1366px) / 2 + 1366px - 60px)
+
+        &::after
+            @media (min-width $xs + 1px)
+                z-index 10
+                left 60px
+
+        @media (max-width 1384px)
+            left calc(100% - 60px)
+
+        @media (max-width $xs)
+            left auto
+
 
 .uh-inner-page__site-nav  // nav
     //
@@ -124,7 +176,7 @@
     // margin-right 23%
     width (100% - 23%)
     transition width 0.4s ease
-    padding-bottom 21px
+    // padding-bottom 21px
 
     @media (max-width $xs)
         width 100%
@@ -149,13 +201,15 @@
 .uh-inner-page__content  // article
     position relative
     z-index 1
+    width 100%
 
 .uh-inner-page__footer  // footer
+    position relative
+    z-index 10
     // flex-basis (100% - 23%)
     // min-width (100% - 23%)
     width (100% - 23%)
     // margin-right 23%
-    border-top 1px solid $c_light
     transition width 0.4s ease
 
     @media (max-width $xs)
@@ -573,7 +627,8 @@ $$site-search-font
 
 
 .uh-inner-aside  // aside.uh-inner-page__aside
-    height 100vh
+    min-height 100vh
+    padding-bottom 100px
     box-shadow 0 0 30px rgba(0,0,0,.5)
     //
     // width 23%
@@ -582,6 +637,8 @@ $$site-search-font
     @media (max-width $xs)
         box-shadow none
         height auto
+        min-height auto
+        padding-bottom 0
         // min-height 110px  //xx
         // transition height 0.4s ease
 
@@ -593,6 +650,9 @@ $$site-search-font
 
     @media (max-width $xs)
         height 110px
+
+.uh-inner-aside--fixed
+    //
 
 .uh-inner-aside__header  // header
     position relative
@@ -1251,6 +1311,8 @@ $$site-search-font
     display flex
     flex-wrap wrap
     max-height 115px
+    border-top 1px solid $c_light
+    background-color $c_white
 
     @media (max-width $xsm)
         max-height none

@@ -37,7 +37,7 @@ charset = utf-8
 indent_style = space
 indent_size = 2
 
-[*.jade]
+[*.{jade,pug}]
 indent_style = space
 indent_size = 4
 

@@ -2,7 +2,7 @@
 
 'use strict';
 
-(function(settings, utils, $) {
+(function (settings, utils, $) {
   // news-list scripts content
 
   console.log('Global settings:', settings);
@@ -38,6 +38,16 @@
           CONTROL_ENABLED: 'shiftable-panel__control--enabled'
         },
         STATE: {}
+      },
+      mediaCard: {
+        TITLE: 'media-card',
+        ELEMENTS: {
+          CONTROLS_BUTTON: 'media-card__controls-button'
+        },
+        MODIFIERS: {
+          FOCUSED: 'media-card--focused'
+        },
+        STATE: {}
       }
     }
   };
@@ -48,6 +58,7 @@
 
   initNewsSlider(CONFIGURATION.components.newsSlider); // news slider initialization
   initShiftablePanel(CONFIGURATION.components.shiftablePanel); // shiftable filters panel initialization
+  initMediaCardActions(CONFIGURATION.components.mediaCard); // media-card actions initialization
   initMediaCardBodyHyphens(); // hyphenation of news media cards body content initialization
 
   ////////////////////////////
@@ -113,10 +124,10 @@
       var sliderControlsImageSRC = sliderControlsImage.getAttribute('src');
       if (LOGGER.DETAILED) console.log('sliderCOntrolsImageSRC:', sliderControlsImageSRC);
       // newsSliderInner.style.backgroundImage = 'url(' + sliderControlsImageSRC + ')';
-      $(newsSliderSlides).fadeOut(400, function() {
+      $(newsSliderSlides).fadeOut(400, function () {
         newsSliderSlides.style.backgroundImage = 'url(' + sliderControlsImageSRC + ')';
       });
-      $(newsSliderSlides).fadeIn(400, function() {});
+      $(newsSliderSlides).fadeIn(400, function () { });
     }
   }
   // end of news slider scripts
@@ -136,29 +147,30 @@
       var shiftablePanelControlsList = node.querySelector('.' + config.ELEMENTS.CONTROLS_LIST);
       var shiftablePanelControls = shiftablePanelControlsList.querySelectorAll('.' + config.ELEMENTS.CONTROL); //NodeList
 
-      utils.forEachNode(shiftablePanelControls, function(i, shiftablePanelControl) {
+      utils.forEachNode(shiftablePanelControls, function (i, shiftablePanelControl) {
         shiftablePanelControl.addEventListener('click', shiftPanelControlClickHandler);
         shiftablePanelControl.addEventListener('keydown', shiftPanelControlKeydownHandler);
       });
 
       toggleShiftablePanelControls(node); // on load script
 
-      window.addEventListener('resize', function() {
+      window.addEventListener('resize', function () {
         // on resize event listener
         toggleShiftablePanelControls(node);
       });
 
       var uhInnerEventChannel = settings.getRootComponent().element;
       console.log('uhInnerEventChannel:', uhInnerEventChannel);
-      uhInnerEventChannel.subscribe('mainMenu:toggle/end', function() {
+      uhInnerEventChannel.subscribe('mainMenu:toggle/end', function () {
         // menu toggle handler
 
-        var cssLeftTransitionTimeout = parseFloat(getComputedStyle(node.querySelector('.' + config.ELEMENTS.CONTENT)).transitionDuration, 10) * 1000;
+        var cssLeftTransitionTimeout =
+          parseFloat(getComputedStyle(node.querySelector('.' + config.ELEMENTS.CONTENT)).transitionDuration, 10) * 1000;
         // должен быть равен 400, это значение свойства transition-duration в CSS-правиле
         // для .shiftable-panel__content, причём - только для transition-property: left
         if (LOGGER.DETAILED) console.log('cssLeftTransitionTimeout:', cssLeftTransitionTimeout);
 
-        setTimeout(function() {
+        setTimeout(function () {
           toggleShiftablePanelControls(node);
         }, cssLeftTransitionTimeout);
       });
@@ -197,7 +209,8 @@
       var shiftablePanelCSS = getComputedStyle(closestShiftablePanel);
       var shiftablePanelPaddingLeft = parseFloat(shiftablePanelCSS.paddingLeft, 10);
       var shiftablePanelPaddingRight = parseFloat(shiftablePanelCSS.paddingRight, 10);
-      var shiftablePanelInnerWidth = shiftablePanelCoords.width - shiftablePanelPaddingLeft - shiftablePanelPaddingRight;
+      var shiftablePanelInnerWidth =
+        shiftablePanelCoords.width - shiftablePanelPaddingLeft - shiftablePanelPaddingRight;
       var shiftablePanelInnerRight = shiftablePanelCoords.right - shiftablePanelPaddingRight;
       var shiftablePanelInnerLeft = shiftablePanelCoords.left + shiftablePanelPaddingLeft;
       var panelContentCoords = panelContent.getBoundingClientRect();
@@ -249,7 +262,6 @@
         }
 
         panelContent.style.left = panelContentCssleftProperty + shiftSize + 'px';
-
       } else if (shiftLeft && !canDoLeftShift) {
         if (LOGGER.IMPORTANT) console.log('Left button is pressed, but panel is already shifted to left!');
       } else if (shiftRight && canDoRightShift) {
@@ -280,10 +292,15 @@
     }
 
     function toggleShiftablePanelControls(shiftablePanelElement) {
-      if (LOGGER.DETAILED) console.log('toggleShiftablePanelControls is called with shiftablePanelElement:', shiftablePanelElement);
+      if (LOGGER.DETAILED)
+        console.log('toggleShiftablePanelControls is called with shiftablePanelElement:', shiftablePanelElement);
 
-      var shiftablePanelControlShiftLeft = shiftablePanelElement.querySelector('.' + config.MODIFIERS.CONTROL_SHIFT_LEFT);
-      var shiftablePanelControlShiftRight = shiftablePanelElement.querySelector('.' + config.MODIFIERS.CONTROL_SHIFT_RIGHT);
+      var shiftablePanelControlShiftLeft = shiftablePanelElement.querySelector(
+        '.' + config.MODIFIERS.CONTROL_SHIFT_LEFT
+      );
+      var shiftablePanelControlShiftRight = shiftablePanelElement.querySelector(
+        '.' + config.MODIFIERS.CONTROL_SHIFT_RIGHT
+      );
 
       var shiftablePanelContent = shiftablePanelElement.querySelector('.' + config.ELEMENTS.CONTENT);
       var shiftablePanelCoords = shiftablePanelElement.getBoundingClientRect();
@@ -291,7 +308,8 @@
       var shiftablePanelCSS = getComputedStyle(shiftablePanelElement);
       var shiftablePanelPaddingLeft = parseFloat(shiftablePanelCSS.paddingLeft, 10);
       var shiftablePanelPaddingRight = parseFloat(shiftablePanelCSS.paddingRight, 10);
-      var shiftablePanelInnerWidth = shiftablePanelCoords.width - shiftablePanelPaddingLeft - shiftablePanelPaddingRight;
+      var shiftablePanelInnerWidth =
+        shiftablePanelCoords.width - shiftablePanelPaddingLeft - shiftablePanelPaddingRight;
       var shiftablePanelInnerLeft = shiftablePanelCoords.left + shiftablePanelPaddingLeft;
       var shiftablePanelInnerRight = shiftablePanelCoords.right - shiftablePanelPaddingRight;
 
@@ -310,14 +328,18 @@
 
       var hideButtons = shiftablePanelInnerWidth > shiftablePanelContentCoords.width;
 
-      if (hideButtons) {  // если кнопки можно скрыть
-        if (LOGGER.DETAILED) console.log('Ширина содержимого меньше ширины маски! Кнопки можно скрыть, а содержимое прижимаем к левому краю.');
-        shiftablePanelContent.style.left = shiftablePanelInnerLeft - shiftablePanelCoords.left + 'px';  // сдвигаем содержимое в начало
-        shiftablePanelContentCoords = shiftablePanelContent.getBoundingClientRect();  // пересчитываем координаты содержимого
+      if (hideButtons) {
+        // если кнопки можно скрыть
+        if (LOGGER.DETAILED)
+          console.log(
+            'Ширина содержимого меньше ширины маски! Кнопки можно скрыть, а содержимое прижимаем к левому краю.'
+          );
+        shiftablePanelContent.style.left = shiftablePanelInnerLeft - shiftablePanelCoords.left + 'px'; // сдвигаем содержимое в начало
+        shiftablePanelContentCoords = shiftablePanelContent.getBoundingClientRect(); // пересчитываем координаты содержимого
       }
 
-      var showLeftControlButton = (shiftablePanelInnerRight < shiftablePanelContentCoords.right) && !hideButtons;
-      var showRightControlButton = (shiftablePanelInnerLeft > shiftablePanelContentCoords.left) && !hideButtons;
+      var showLeftControlButton = shiftablePanelInnerRight < shiftablePanelContentCoords.right && !hideButtons;
+      var showRightControlButton = shiftablePanelInnerLeft > shiftablePanelContentCoords.left && !hideButtons;
 
       if (showLeftControlButton) {
         if (LOGGER.DETAILED) console.log('Показываем кнопку смещения влево');
@@ -334,10 +356,36 @@
         if (LOGGER.DETAILED) console.log('Скрываем кнопку смещения вправо');
         shiftablePanelControlShiftRight.classList.remove(config.MODIFIERS.CONTROL_ENABLED);
       }
-
     }
   }
   // end of shiftable panel scripts
+
+  function initMediaCardActions(config) {
+    // media-card actions scripts
+
+    var mediaCards = document.querySelectorAll('.' + config.TITLE); // NodeList
+
+    utils.forEachNode(mediaCards, mediaCardsCallback);
+
+    function mediaCardsCallback(index, node) {
+      node.addEventListener('focus', function (evt) {
+        evt.currentTarget.classList.add(config.MODIFIERS.FOCUSED);
+        var controlsButtons = evt.currentTarget.querySelectorAll('.' + config.ELEMENTS.CONTROLS_BUTTON); // NodeList
+        utils.forEachNode(controlsButtons, function (i, btn) {
+          btn.setAttribute('tabindex', '0');
+        });
+      });
+
+      node.addEventListener('blur', function (evt) {
+        evt.currentTarget.classList.remove(config.MODIFIERS.FOCUSED);
+        var controlsButtons = evt.currentTarget.querySelectorAll('.' + config.ELEMENTS.CONTROLS_BUTTON); // NodeList
+        utils.forEachNode(controlsButtons, function (i, btn) {
+          btn.setAttribute('tabindex', '-1');
+        });
+      });
+    }
+  }
+  // end of media-card actions scripts
 
   function initMediaCardBodyHyphens() {
     $('.media-card__body p').hyphenate('ru');

@@ -6,6 +6,7 @@ include ./blocks/_mixins.jade
 block append head
     //- var pageName = 'news-list';  // закомментил, иначе она будет влиять на классы body, header, main, aside и footer
     - var pageTitle = 'News-list page template';
+    - var asideClasses = '';
     - var mainClasses = 'news-list';
 
 
@@ -30,7 +31,7 @@ block append scripts
 
 block content_left_side
     // news-list page navigation
-    nav.page-nav.uh-inner-page__page-nav.uh-inner-page-nav
+    nav.page-nav.page-nav.uh-inner-page__page-nav.uh-inner-page-nav
         ul.page-nav__menu
             li.page-nav__menu-item
                 a#page-nav__filter-reset.page-nav__menu-link.page-nav__menu-link--filter-reset(href='#', title='Сбросить фильтры')
@@ -303,7 +304,7 @@ block content
         section.news-list-content__news
             ul#puzzled-list.news.condensed-list
                 li.condensed-list__item
-                    article.news__article.media-card(data-news-id='1' data-news-video='false')
+                    article.news__article.media-card(data-news-id='1' data-news-video='false' tabindex='0')
                         header.media-card__header
                             h1.media-card__title На гуаме проходит Летний Пляжный Фестиваль
                             span.media-card__date 23.08.2016
@@ -332,9 +333,9 @@ block content
                                             span.news__article-inst-user-cover(title='user cover') 2440
                                 ul.media-card__controls
                                     li.media-card__controls-item
-                                        a.news__article-more.media-card__controls-button.media-card__controls-button--dark(href='#' title='Читать подробнее') Читать подробнее
+                                        a.news__article-more.media-card__controls-button.media-card__controls-button--dark(href='#' title='Читать подробнее' tabindex='-1') Читать подробнее
                                     li.media-card__controls-item
-                                        a.news__article-repost.media-card__controls-button.media-card__controls-button--light(href='#' title='Перепост') Перепост
+                                        a.news__article-repost.media-card__controls-button.media-card__controls-button--light(href='#' title='Перепост' tabindex='-1') Перепост
                         .media-card__body
                             p.
                                 White Summer – фестиваль,
@@ -346,7 +347,7 @@ block content
                                 li.card-options__item.card-options__item--comments(title='comments') 7
                                 li.card-options__item.card-options__item--likes(title='likes') 18
                 li.condensed-list__item
-                    article.news__article.media-card(data-news-id='1' data-news-video='true')
+                    article.news__article.media-card(data-news-id='1' data-news-video='true' tabindex='0')
                         header.media-card__header
                             h1.media-card__title Сервис высшего уровня
                             span.media-card__date 23.08.2016
@@ -375,9 +376,9 @@ block content
                                             span.news__article-inst-user-cover(title='user cover') 2440
                                 ul.media-card__controls
                                     li.media-card__controls-item
-                                        a.news__article-more.media-card__controls-button.media-card__controls-button--dark(href='#' title='Читать подробнее') Смотреть далее
+                                        a.news__article-more.media-card__controls-button.media-card__controls-button--dark(href='#' title='Читать подробнее' tabindex='-1') Смотреть далее
                                     li.media-card__controls-item
-                                        a.news__article-repost.media-card__controls-button.media-card__controls-button--light(href='#' title='Перепост') Перепост
+                                        a.news__article-repost.media-card__controls-button.media-card__controls-button--light(href='#' title='Перепост' tabindex='-1') Перепост
                         .media-card__body
                             p.
                                 Искренние. Полные энтузиазма.
@@ -389,7 +390,7 @@ block content
                                 li.card-options__item.card-options__item--comments(title='comments') 7
                                 li.card-options__item.card-options__item--likes(title='likes') 18
                 li.condensed-list__item
-                    article.news__article.media-card(data-news-id='3' data-news-video='false')
+                    article.news__article.media-card(data-news-id='3' data-news-video='false' tabindex='0')
                         header.media-card__header
                             h1.media-card__title По древнему чайному пути
                             span.media-card__date 23.08.2016
@@ -418,9 +419,9 @@ block content
                                             span.news__article-inst-user-cover(title='user cover') 2440
                                 ul.media-card__controls
                                     li.media-card__controls-item
-                                        a.news__article-more.media-card__controls-button.media-card__controls-button--dark(href='#' title='Читать подробнее') Читать подробнее
+                                        a.news__article-more.media-card__controls-button.media-card__controls-button--dark(href='#' title='Читать подробнее' tabindex='-1') Читать подробнее
                                     li.media-card__controls-item
-                                        a.news__article-repost.media-card__controls-button.media-card__controls-button--light(href='#' title='Перепост') Перепост
+                                        a.news__article-repost.media-card__controls-button.media-card__controls-button--light(href='#' title='Перепост' tabindex='-1') Перепост
                         .media-card__body
                             p.
                                 Заинтригованный южным
@@ -436,7 +437,7 @@ block content
                                 li.card-options__item.card-options__item--comments(title='comments') 7
                                 li.card-options__item.card-options__item--likes(title='likes') 18
                 li.condensed-list__item
-                    article.news__article.media-card(data-news-id='4' data-news-video='false')
+                    article.news__article.media-card(data-news-id='4' data-news-video='false' tabindex='0')
                         header.media-card__header
                             h1.media-card__title Беззаботный и яркий отдых не обязательно
                             span.media-card__date 23.08.2016
@@ -465,9 +466,9 @@ block content
                                             span.news__article-inst-user-cover(title='user cover') 2440
                                 ul.media-card__controls
                                     li.media-card__controls-item
-                                        a.news__article-more.media-card__controls-button.media-card__controls-button--dark(href='#' title='Читать подробнее') Читать подробнее
+                                        a.news__article-more.media-card__controls-button.media-card__controls-button--dark(href='#' title='Читать подробнее' tabindex='-1') Читать подробнее
                                     li.media-card__controls-item
-                                        a.news__article-repost.media-card__controls-button.media-card__controls-button--light(href='#' title='Перепост') Перепост
+                                        a.news__article-repost.media-card__controls-button.media-card__controls-button--light(href='#' title='Перепост' tabindex='-1') Перепост
                         .media-card__body
                             p.
                                 Искренние. Полные энтузиазма.
@@ -478,7 +479,7 @@ block content
                                 li.card-options__item.card-options__item--comments(title='comments') 7
                                 li.card-options__item.card-options__item--likes(title='likes') 18
                 li.condensed-list__item
-                    article.news__article.media-card(data-news-id='5' data-news-video='false')
+                    article.news__article.media-card(data-news-id='5' data-news-video='false' tabindex='0')
                         header.media-card__header
                             h1.media-card__title Беззаботный и яркий отдых не обязательно
                             span.media-card__date 23.08.2016
@@ -507,9 +508,9 @@ block content
                                             span.news__article-inst-user-cover(title='user cover') 2440
                                 ul.media-card__controls
                                     li.media-card__controls-item
-                                        a.news__article-more.media-card__controls-button.media-card__controls-button--dark(href='#' title='Читать подробнее') Читать подробнее
+                                        a.news__article-more.media-card__controls-button.media-card__controls-button--dark(href='#' title='Читать подробнее' tabindex='-1') Читать подробнее
                                     li.media-card__controls-item
-                                        a.news__article-repost.media-card__controls-button.media-card__controls-button--light(href='#' title='Перепост') Перепост
+                                        a.news__article-repost.media-card__controls-button.media-card__controls-button--light(href='#' title='Перепост' tabindex='-1') Перепост
                         .media-card__body
                             p.
                                 Искренние. Полные энтузиазма.
@@ -520,7 +521,7 @@ block content
                                 li.card-options__item.card-options__item--comments(title='comments') 7
                                 li.card-options__item.card-options__item--likes(title='likes') 18
                 li.condensed-list__item
-                    article.news__article.media-card(data-news-id='6' data-news-video='false')
+                    article.news__article.media-card(data-news-id='6' data-news-video='false' tabindex='0')
                         header.media-card__header
                             h1.media-card__title На Гуаме проходит Летний Пляжный Фестиваль
                             span.media-card__date 23.08.2016
@@ -549,9 +550,9 @@ block content
                                             span.news__article-inst-user-cover(title='user cover') 2440
                                 ul.media-card__controls
                                     li.media-card__controls-item
-                                        a.news__article-more.media-card__controls-button.media-card__controls-button--dark(href='#' title='Читать подробнее') Читать подробнее
+                                        a.news__article-more.media-card__controls-button.media-card__controls-button--dark(href='#' title='Читать подробнее' tabindex='-1') Читать подробнее
                                     li.media-card__controls-item
-                                        a.news__article-repost.media-card__controls-button.media-card__controls-button--light(href='#' title='Перепост') Перепост
+                                        a.news__article-repost.media-card__controls-button.media-card__controls-button--light(href='#' title='Перепост' tabindex='-1') Перепост
                         .media-card__body
                             p.
                                 White Summer – фестиваль,
@@ -564,7 +565,7 @@ block content
                                 li.card-options__item.card-options__item--comments(title='comments') 7
                                 li.card-options__item.card-options__item--likes(title='likes') 18
                 li.condensed-list__item
-                    article.news__article.media-card(data-news-id='7' data-news-video='false')
+                    article.news__article.media-card(data-news-id='7' data-news-video='false' tabindex='0')
                         header.media-card__header
                             h1.media-card__title Беззаботный и яркий отдых не обязательно
                             span.media-card__date 23.08.2016
@@ -593,9 +594,9 @@ block content
                                             span.news__article-inst-user-cover(title='user cover') 2440
                                 ul.media-card__controls
                                     li.media-card__controls-item
-                                        a.news__article-more.media-card__controls-button.media-card__controls-button--dark(href='#' title='Читать подробнее') Читать подробнее
+                                        a.news__article-more.media-card__controls-button.media-card__controls-button--dark(href='#' title='Читать подробнее' tabindex='-1') Читать подробнее
                                     li.media-card__controls-item
-                                        a.news__article-repost.media-card__controls-button.media-card__controls-button--light(href='#' title='Перепост') Перепост
+                                        a.news__article-repost.media-card__controls-button.media-card__controls-button--light(href='#' title='Перепост' tabindex='-1') Перепост
                         .media-card__body
                             p.
                                 Искренние. Полные энтузиазма.
@@ -606,7 +607,7 @@ block content
                                 li.card-options__item.card-options__item--comments(title='comments') 7
                                 li.card-options__item.card-options__item--likes(title='likes') 18
                 li.condensed-list__item
-                    article.news__article.media-card(data-news-id='8' data-news-video='false')
+                    article.news__article.media-card(data-news-id='8' data-news-video='false' tabindex='0')
                         header.media-card__header
                             h1.media-card__title Сервис высшего уровня
                             span.media-card__date 23.08.2016
@@ -635,9 +636,9 @@ block content
                                             span.news__article-inst-user-cover(title='user cover') 2440
                                 ul.media-card__controls
                                     li.media-card__controls-item
-                                        a.news__article-more.media-card__controls-button.media-card__controls-button--dark(href='#' title='Читать подробнее') Читать подробнее
+                                        a.news__article-more.media-card__controls-button.media-card__controls-button--dark(href='#' title='Читать подробнее' tabindex='-1') Читать подробнее
                                     li.media-card__controls-item
-                                        a.news__article-repost.media-card__controls-button.media-card__controls-button--light(href='#' title='Перепост') Перепост
+                                        a.news__article-repost.media-card__controls-button.media-card__controls-button--light(href='#' title='Перепост' tabindex='-1') Перепост
                         .media-card__body
                             p.
                                 Искренние. Полные энтузиазма.

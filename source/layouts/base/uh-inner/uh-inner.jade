@@ -18,12 +18,12 @@ html(lang='ru' manifest='offline.manifest')
     body.page(id=pageName ? pageName + '_page' : subTemplateName ? subTemplateName + '_page' : 'uh-inner_page',
          class=pageName ? pageName + '_page' + (subTemplateName ? ' ' + subTemplateName + '_page' : '') + (bodyClasses ? ' ' + bodyClasses : '') :
                subTemplateName ? subTemplateName + '_page' + (bodyClasses ? ' ' + bodyClasses : '') :
-               'uh-inner-page ' + (bodyClasses ? bodyClasses : ''))
+               'uh-inner-page' + (bodyClasses ? ' ' + bodyClasses : ''))
 
         .body-inner.uh-inner-page__inner
-            header.page-header(class=pageName ? pageName + '-page__header ' + pageName + '-header' + (subTemplateName ? ' ' + subTemplateName + '-page__header ' + subTemplateName + '-header ' : '')  + (mainClasses ? mainClasses : '') :
-                                     subTemplateName ? ' ' + subTemplateName + '-page__header ' + subTemplateName + '-header ' + (headerClasses ? headerClasses : '') :
-                                     'uh-inner-page__header uh-inner-header' + (headerClasses ? headerClasses : ''))
+            header.page-header(class=pageName ? pageName + '-page__header ' + pageName + '-header' + (subTemplateName ? ' ' + subTemplateName + '-page__header ' + subTemplateName + '-header ' : '') + (headerClasses ? ' ' + headerClasses : '') :
+                                     subTemplateName ? ' ' + subTemplateName + '-page__header ' + subTemplateName + '-header ' + (headerClasses ? ' ' + headerClasses : '') :
+                                     'uh-inner-page__header uh-inner-header' + (headerClasses ? ' ' + headerClasses : ''))
 
                 .page-header__top
                     block header
@@ -61,9 +61,9 @@ html(lang='ru' manifest='offline.manifest')
                                 input#site-search__company-id.site-search__company-id(type='text' placeholder='ID Компании')
                                 button#site-search__form-submit.site-search__form-submit.btn.btn--type--3(type='submit') Поиск
 
-            aside.page-aside(class=pageName ? pageName + '-page__aside ' + pageName + '-aside' + (subTemplateName ? ' ' + subTemplateName + '-page__aside ' + subTemplateName + '-aside ' : '')  + (mainClasses ? mainClasses : '') :
-                             subTemplateName ? ' ' + subTemplateName + '-page__aside ' + subTemplateName + '-aside ' + (asideClasses ? asideClasses : '') :
-                             'uh-inner-page__aside uh-inner-aside' + (asideClasses ? asideClasses : ''))
+            aside.page-aside(class=pageName ? pageName + '-page__aside ' + pageName + '-aside' + (subTemplateName ? ' ' + subTemplateName + '-page__aside ' + subTemplateName + '-aside ' : '') + (asideClasses ? ' ' + asideClasses : '') :
+                             subTemplateName ? ' ' + subTemplateName + '-page__aside ' + subTemplateName + '-aside ' + (asideClasses ? ' ' + asideClasses : '') :
+                             'uh-inner-page__aside uh-inner-page__aside--fixed uh-inner-aside' + (asideClasses ? ' ' + asideClasses : ''))
 
                 block right_side
                     // default right-side aside content
@@ -82,9 +82,9 @@ html(lang='ru' manifest='offline.manifest')
                                     a.user-controls__logout(href='#' title='Logout') Выход
                         button.uh-inner-aside__toggle(data-alternate-title='Открыть' title='Свернуть') Свернуть
 
-                    nav.main-nav(class=pageName ? pageName + '-page__site-nav ' + (subTemplateName ? ' ' + subTemplateName + '-page__site-nav ' : '')  + (siteNavClasses ? siteNavClasses : '') :
-                                 subTemplateName ? ' ' + subTemplateName + '-site-nav ' + (siteNavClasses ? siteNavClasses : '') :
-                                'uh-inner-page__site-nav uh-inner-site-nav' + (siteNavClasses ? siteNavClasses : ''))
+                    nav.main-nav(class=pageName ? pageName + '-page__site-nav ' + (subTemplateName ? ' ' + subTemplateName + '-page__site-nav ' : '') + (siteNavClasses ? ' ' + siteNavClasses : '') :
+                                 subTemplateName ? ' ' + subTemplateName + '-site-nav ' + (siteNavClasses ? ' ' + siteNavClasses : '') :
+                                'uh-inner-page__site-nav uh-inner-site-nav' + (siteNavClasses ? ' ' + siteNavClasses : ''))
                         ul.main-nav__menu
                             li.main-nav__item
                                 a.main-nav__link.main-nav__link--company-profile(href='#', title='Профайл компании') Профайл компании
@@ -126,15 +126,15 @@ html(lang='ru' manifest='offline.manifest')
                             block additional_actions_nav
                                 // additional actions navigation content
 
-            main(class=pageName ? pageName + '-page__main ' + (subTemplateName ? ' ' + subTemplateName + '-page__main ' : '')  + (mainClasses ? mainClasses : '') :
-                       subTemplateName ? ' ' + subTemplateName + '-page__main ' + (mainClasses ? mainClasses : '') :
+            main(class=pageName ? pageName + '-page__main ' + (subTemplateName ? ' ' + subTemplateName + '-page__main ' : '') + (mainClasses ? ' ' + mainClasses : '') :
+                       subTemplateName ? ' ' + subTemplateName + '-page__main ' + (mainClasses ? ' ' + mainClasses : '') :
                        'uh-inner-page__main uh-inner-main' + (mainClasses ? ' ' + mainClasses : ''))
 
                 block content_left_side
                     // default left-side block
-                    nav.page-nav(class=pageName ? pageName + '-page__page-nav ' + (subTemplateName ? ' ' + subTemplateName + '-page__page-nav ' : '')  + (pageNavClasses ? pageNavClasses : '') :
-                       subTemplateName ? ' ' + subTemplateName + '-page-nav ' + (pageNavClasses ? pageNavClasses : '') :
-                       'uh-inner-page__page-nav uh-inner-page-nav' + (pageNavClasses ? pageNavClasses : ''))
+                    nav.page-nav(class=pageName ? pageName + '-page__page-nav ' + (subTemplateName ? ' ' + subTemplateName + '-page__page-nav ' : '') + (pageNavClasses ? ' ' + pageNavClasses : '') :
+                       subTemplateName ? ' ' + subTemplateName + '-page-nav ' + (pageNavClasses ? ' ' + pageNavClasses : '') :
+                       'uh-inner-page__page-nav uh-inner-page-nav' + (pageNavClasses ? ' ' + pageNavClasses : ''))
                         ul.page-nav__menu
                             li.page-nav__menu-item
                                 a.page-nav__menu-link(href='#', title='Ссылка 1') Ссылка 1
@@ -146,17 +146,17 @@ html(lang='ru' manifest='offline.manifest')
 
                 block content
                     // default page content
-                    article.page-content(class=pageName ? pageName + '-page__content ' + pageName + '-content' + (subTemplateName ? ' ' + subTemplateName + '-page__content ' + subTemplateName + '-content ' : '')  + (contentClasses ? contentClasses : '') :
-                                               subTemplateName ? ' ' + subTemplateName + '-page__content ' + subTemplateName + '-content ' + (contentClasses ? contentClasses : '') :
-                                               'uh-inner-page__content uh-inner-content' + (contentClasses ? contentClasses : ''))
+                    article.page-content(class=pageName ? pageName + '-page__content ' + pageName + '-content' + (subTemplateName ? ' ' + subTemplateName + '-page__content ' + subTemplateName + '-content ' : '') + (contentClasses ? ' ' + contentClasses : '') :
+                                               subTemplateName ? ' ' + subTemplateName + '-page__content ' + subTemplateName + '-content ' + (contentClasses ? ' ' + contentClasses : '') :
+                                               'uh-inner-page__content uh-inner-content' + (contentClasses ? ' ' + contentClasses : ''))
                         p Default page content
 
                         block additional_content
                             // additional default page content
 
-            footer.page-footer(class=pageName ? pageName + '-page__footer ' + pageName + '-footer' + (subTemplateName ? ' ' + subTemplateName + '-page__footer ' + subTemplateName + '-footer ' : '')  + (mainClasses ? mainClasses : '') :
-                                     subTemplateName ? ' ' + subTemplateName + '-page__footer ' + subTemplateName + '-footer ' + (footerClasses ? footerClasses : '') :
-                                     'uh-inner-page__footer uh-inner-footer' + (footerClasses ? footerClasses : ''))
+            footer.page-footer(class=pageName ? pageName + '-page__footer ' + pageName + '-footer' + (subTemplateName ? ' ' + subTemplateName + '-page__footer ' + subTemplateName + '-footer ' : '') + (footerClasses ? ' ' + footerClasses : '') :
+                                     subTemplateName ? ' ' + subTemplateName + '-page__footer ' + subTemplateName + '-footer ' + (footerClasses ? ' ' + footerClasses : '') :
+                                     'uh-inner-page__footer uh-inner-footer' + (footerClasses ? ' ' + footerClasses : ''))
 
                 block footer
                     // default footer content
