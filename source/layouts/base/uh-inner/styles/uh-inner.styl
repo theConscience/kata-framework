@@ -620,6 +620,68 @@ $$site-search-font
     @media (max-width $xsm)
         flex-basis 100%
 
+.site-search__results  // div
+    position absolute
+
+.search-results
+    //
+
+    // jq-ui widget restyling
+    .ui-autocomplete li.ui-menu-item,
+    .ui-autocomplete li.ui-menu-item
+        box-sizing border-box
+        font-size 12px
+        text-align left
+        line-height normal
+        padding 5px
+        background-color #fff
+        color #000
+        border-bottom 1px solid #ddd
+        border-top none
+        border-collapse collapse
+        cursor pointer
+        min-height 50px
+
+    .ui-autocomplete li.ui-menu-item.ui-state-focus
+        background-color #3798db
+        border 0
+        border-bottom 1px solid #DDDDDD
+        font-weight inherit
+        margin 0
+        color #fff
+
+    .ui-widget-content
+        border 1px solid #ddd
+        background-color #fff
+        color #444
+
+    // end of jq-ui widget restyling
+
+    .search-results__img-wrapper
+        float left
+        width 40px
+        height 40px
+        position relative
+        margin-right 5px
+
+    .search-results__img  // img
+        position absolute
+        top 0
+        left 0
+        bottom 0
+        right 0
+        max-width 100%
+        max-height 100%
+        margin auto
+
+    .search-results__sub-info  // span
+        color #bbb
+        font-size 80%
+
+    .search-results__background-div
+        background-color hsla(0,0%,50%,.12)
+        height 100%
+
 
 ///////////////////////////
 // .uh-inner-page__aside //
@@ -881,7 +943,7 @@ $$site-search-font
 
 .main-nav  // nav.uh-inner-page__site-nav
     background-color $c_light-7
-    overflow hidden
+    // overflow hidden    // TEMP
     position relative
     top 0
 
@@ -913,8 +975,9 @@ $$site-search-font
             bottom 100%
 
 .main-nav__item  // li
+    position relative
     list-style none
-    overflow hidden
+    // overflow hidden    // TEMP
     border-bottom 1px solid $c_light
 
     @media (max-width $xs)
@@ -1039,6 +1102,59 @@ $$site-search-font
         width 26px
         height 24px
         background-image url(../images/bg-main-menu-chat.png)
+
+.main-nav__submenu  // ul
+    position absolute
+    top 0
+    right -100%
+    z-index -1
+    min-width 100%
+    padding 0
+    margin 0
+    background-color $c_light-2
+    box-shadow 0 0 30px -5px $c_black-transparent-05
+    transition right 0.4s ease
+
+    @media (max-width $xs)
+        top -100%
+        right 0
+        left 0
+        transition top 0.4s ease
+
+.main-nav__submenu--open
+    right 100%
+
+    @media (max-width $xs)
+        top 100%
+        z-index 1
+
+.main-nav__submenu-item  // li
+    list-style none
+    overflow hidden
+    border-bottom 1px solid $c_light
+
+.main-nav__submenu-link  // a
+    fontHvLight16_24()
+    position relative
+    box-sizing border-box
+    display block
+    padding-top 13px
+    padding-bottom 14px
+    padding-left 15px
+    padding-right 15px
+    color $c_dark
+    outline none
+    text-decoration none
+    transition color 0.2s ease, background-color 0.4s ease
+
+    &:hover
+    &:focus
+        text-decoration none
+        background-color $c_dark-9
+        color $c_white
+
+    &:active
+        background-color $c_dark-9-light
 
 
 .actions-nav  // nav

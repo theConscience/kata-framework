@@ -1,17 +1,19 @@
-/* global GLOBAL_SETTINGS, UTILS, jQuery */
+/* global GLOBAL_SETTINGS, UTILS, jQuery, throttle, debounce, CONFIG_BASE_UH_INNER, CONFIG_SUB_3 */
 
 'use strict';
 
-(function (settings, utils, $) {
-  // news-list scripts content
 
-  console.log('Global settings:', settings);
+var CONFIG_PAGE_NEWS_LIST = (function (settings, utils, baseConfig, subConfig, $) {
+  // news-list scripts content
 
   var LOGGER = {
     // helper object for logging outs
     IMPORTANT: true,
     DETAILED: true
   };
+
+  if (LOGGER.DETAILED) console.log('Global settings:', settings);
+
 
   ///////////////////
   // configuration //
@@ -39,6 +41,14 @@
         },
         STATE: {}
       },
+      puzzledList: {
+        TITLE: 'js-puzzled-list',
+        ELEMENTS: {
+          ITEM: 'js-puzzled-list__item'
+        },
+        MODIFIERS: {},
+        STATE: {}
+      },
       mediaCard: {
         TITLE: 'media-card',
         ELEMENTS: {
@@ -52,14 +62,23 @@
     }
   };
 
+
   ///////////////
   // interface //
   ///////////////
+
+  // var uhInnerEventChannel = baseConfig.root.NODE;
+  var uhInnerEventChannel = settings.getRootComponent().element;
+  if (LOGGER.DETAILED) console.log('uhInnerEventChannel:', uhInnerEventChannel);
 
   initNewsSlider(CONFIGURATION.components.newsSlider); // news slider initialization
   initShiftablePanel(CONFIGURATION.components.shiftablePanel); // shiftable filters panel initialization
   initMediaCardActions(CONFIGURATION.components.mediaCard); // media-card actions initialization
   initMediaCardBodyHyphens(); // hyphenation of news media cards body content initialization
+  // initPuzzledList() должен вызываться после initMediaCardBodyHyphens() потому что последний
+  // пересчитывает размеры карточек новостей, а первый использует эти размеры в рассчётах.
+  initPuzzledList(CONFIGURATION.components.puzzledList);  // puzzled list initialization
+
 
   ////////////////////////////
   // implementation details //
@@ -135,9 +154,11 @@
   function initShiftablePanel(config) {
     // shiftable panel scripts
 
+
     // configuration //
 
     var shiftablePanel = document.querySelectorAll('.' + config.TITLE); // NodeList
+
 
     // interface //
 
@@ -154,13 +175,11 @@
 
       toggleShiftablePanelControls(node); // on load script
 
-      window.addEventListener('resize', function () {
+      window.addEventListener('resize', throttle(function () {
         // on resize event listener
         toggleShiftablePanelControls(node);
-      });
+      }, 60));
 
-      var uhInnerEventChannel = settings.getRootComponent().element;
-      console.log('uhInnerEventChannel:', uhInnerEventChannel);
       uhInnerEventChannel.subscribe('mainMenu:toggle/end', function () {
         // menu toggle handler
 
@@ -175,6 +194,7 @@
         }, cssLeftTransitionTimeout);
       });
     }
+
 
     // implementation details //
 
@@ -360,6 +380,107 @@
   }
   // end of shiftable panel scripts
 
+  function initPuzzledList(config) { // puzzled list scripts
+
+    // configuration
+
+    var puzzledLists = document.querySelectorAll('.' + config.TITLE);  // NodeList
+
+    // interface
+
+    setTimeout(puzzledListHandler, 100);  // костыль
+
+    uhInnerEventChannel.subscribe('mainMenu:toggle/end', function () {
+      // menu toggle handler
+
+      var cssLeftTransitionTimeout = 400;  // костыль
+      // parseFloat(getComputedStyle(node.querySelector('.' + config.ELEMENTS.CONTENT)).transitionDuration, 10) * 1000;
+      // должен быть равен 400, это значение свойства transition-duration в CSS-правиле
+      // для .shiftable-panel__content, причём - только для transition-property: left
+      if (LOGGER.DETAILED) console.log('cssLeftTransitionTimeout:', cssLeftTransitionTimeout);
+
+      setTimeout(puzzledListHandler, cssLeftTransitionTimeout);
+    });
+
+    window.addEventListener('resize', puzzledListHandler);
+
+    function puzzledListHandler() {
+      if (LOGGER.DETAILED) console.log('puzzledListHandler is called!');
+      utils.forEachNode(puzzledLists, puzzledListCallback);
+    }
+
+    // implementation details
+
+    function puzzledListCallback(index, node) {
+      if (LOGGER.DETAILED) console.log('puzzledListCallback is called!');
+      var puzzledListItem = node.querySelector('.' + config.ELEMENTS.ITEM);
+
+      var columnsCount = getColumnsCount(node, puzzledListItem);
+      if (LOGGER.DETAILED) {
+        console.log('node.previousColumnsCount:', node.previousColumnsCount);
+        console.log('columnsCount:', columnsCount);
+      }
+      if (columnsCount !== node.previousColumnsCount) {
+        shiftListItems(node, columnsCount);
+      }
+      node.previousColumnsCount = columnsCount;
+    }
+
+    function getColumnsCount(puzzledList, puzzledListItem) {
+      var puzzledListOffsets = puzzledList.getBoundingClientRect();
+      var puzzledListItemOffsets = puzzledListItem.getBoundingClientRect();
+      var columnsCount = Math.floor(puzzledListOffsets.width / puzzledListItemOffsets.width);
+      return columnsCount;
+    }
+
+    function shiftListItems(puzzledList, columnsCount) {
+      var puzzledListItems = puzzledList.querySelectorAll('.' + config.ELEMENTS.ITEM);  // NodeList
+      var columnsCountIndex = columnsCount - 1;
+      var restColumns = puzzledListItems.length % columnsCount;
+      var restColumnsStartIndex = puzzledListItems.length - restColumns;
+      if (LOGGER.DETAILED) {
+        console.log('columnsCountIndex:', columnsCountIndex);
+        console.log('restColumns:', restColumns);
+        console.log('restColumnsStartIndex:', restColumnsStartIndex);
+      }
+      utils.forEachNode(puzzledListItems, function shiftListItemCallback(index, itemNode) {
+        if (index > columnsCountIndex && index < restColumnsStartIndex) {
+          var upperItem = puzzledListItems[index - columnsCount];
+          var upperItemOffsets = getOffsetRect(upperItem);
+          itemNode.style.marginTop = '';
+          var itemOffsets = getOffsetRect(itemNode);
+          var marginShift = upperItemOffsets.bottom - itemOffsets.top;
+          if (LOGGER.DETAILED) {
+            console.log('upperItem:', upperItem);
+            console.log('upperItemOffsets:', upperItemOffsets);
+            console.log('itemNode:', itemNode);
+            console.log('itemOffsets:', itemOffsets);
+            console.log('marginShift:', marginShift);
+          }
+
+          itemNode.style.marginTop = marginShift + 'px';
+        } else {
+          itemNode.style.marginTop = '';
+        }
+      });
+    }
+
+    function getOffsetRect(elem) {
+      var box = elem.getBoundingClientRect();
+      var body = document.body;
+      var docElem = document.documentElement;
+      var scrollTop = window.pageYOffset || docElem.scrollTop || body.scrollTop;
+      // var scrollLeft = window.pageXOffset || docElem.scrollLeft || body.scrollLeft;
+      var clientTop = docElem.clientTop || body.clientTop || 0;
+      // var clientLeft = docElem.clientLeft || body.clientLeft || 0;
+      var top = box.top + scrollTop - clientTop;
+      var bottom = top + box.height;
+      // var left = box.left + scrollLeft - clientLeft;
+      return { top: Math.round(top), bottom: Math.round(bottom) }; //, left: Math.round(left) }
+    }
+  }
+  // end of puzzled list scripts
+
   function initMediaCardActions(config) {
     // media-card actions scripts
 
@@ -368,22 +489,57 @@
     utils.forEachNode(mediaCards, mediaCardsCallback);
 
     function mediaCardsCallback(index, node) {
-      node.addEventListener('focus', function (evt) {
-        evt.currentTarget.classList.add(config.MODIFIERS.FOCUSED);
-        var controlsButtons = evt.currentTarget.querySelectorAll('.' + config.ELEMENTS.CONTROLS_BUTTON); // NodeList
-        utils.forEachNode(controlsButtons, function (i, btn) {
-          btn.setAttribute('tabindex', '0');
-        });
-      });
+      node.addEventListener('focus', mediaCardFocusHandler);
+      // node.addEventListener('blur', mediaCardBlurHandler);
 
-      node.addEventListener('blur', function (evt) {
-        evt.currentTarget.classList.remove(config.MODIFIERS.FOCUSED);
-        var controlsButtons = evt.currentTarget.querySelectorAll('.' + config.ELEMENTS.CONTROLS_BUTTON); // NodeList
-        utils.forEachNode(controlsButtons, function (i, btn) {
-          btn.setAttribute('tabindex', '-1');
+      function mediaCardFocusHandler(evt) {
+        if (LOGGER.DETAILED) console.log('mediaCardFocusHandler is called!');
+
+        var focusedMediaCard = evt.currentTarget;
+        var controlsClassName = config.ELEMENTS.CONTROLS_BUTTON;
+        var controlsButtons = focusedMediaCard.querySelectorAll('.' + controlsClassName);  // NodeList
+
+        uhInnerEventChannel.publish('mediaCard:focus', {
+          focusedClassName: config.MODIFIERS.FOCUSED,
+          controlsClassName: controlsClassName,
+          focusedMediaCard: focusedMediaCard,
+          controlsButtons: controlsButtons
         });
+      }
+    }
+
+    uhInnerEventChannel.subscribe('mediaCard:focus', mediaCardFocusSubscriber);
+    uhInnerEventChannel.subscribe('mediaCard:blur', mediaCardBlurSubscriber);
+
+    function mediaCardFocusSubscriber(evtObj) {
+      if (LOGGER.DETAILED) console.log('uhInnerEventChannel mediaCard:focus event published!');
+
+      var previousFocusedMediaCard = document.querySelector('.' + evtObj.focusedClassName);
+      if (previousFocusedMediaCard) {  // actions for blurring previous mediaCard
+        var previousControlsButtons = previousFocusedMediaCard.querySelectorAll('.' + evtObj.controlsClassName);  // NodeList
+
+        uhInnerEventChannel.publish('mediaCard:blur', {
+          focusedClassName: evtObj.focusedClassName,
+          previousFocusedMediaCard: previousFocusedMediaCard,
+          previousControlsButtons: previousControlsButtons
+        });
+      }
+
+      utils.forEachNode(evtObj.controlsButtons, function (i, controlButton) {
+        controlButton.setAttribute('tabindex', '0');
+      });
+      evtObj.focusedMediaCard.classList.add(evtObj.focusedClassName);
+    }
+
+    function mediaCardBlurSubscriber(evtObj) {
+      if (LOGGER.DETAILED) console.log('uhInnerEventChannel mediaCard:blur event published!');
+
+      evtObj.previousFocusedMediaCard.classList.remove(evtObj.focusedClassName);
+      utils.forEachNode(evtObj.previousControlsButtons, function (i, controlButton) {
+        controlButton.setAttribute('tabindex', '-1');
       });
     }
+
   }
   // end of media-card actions scripts
 
@@ -391,7 +547,11 @@
     $('.media-card__body p').hyphenate('ru');
   }
 
+
+  return CONFIGURATION;
+
   /////////
   // END //
   /////////
-})(GLOBAL_SETTINGS, UTILS, jQuery);
+
+})(GLOBAL_SETTINGS, UTILS, CONFIG_BASE_UH_INNER, CONFIG_SUB_3, jQuery);

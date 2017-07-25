@@ -1,16 +1,19 @@
-/* global GLOBAL_SETTINGS, UTILS */
+/* global GLOBAL_SETTINGS, UTILS, CONFIG_BASE_UH_INNER, throttle, debounce */
 
 'use strict';
 
-(function(settings, utils) {
-  console.log('Global settings:', settings);
+
+var CONFIG_SUB_3 = (function (settings, utils, baseConfig) {
   // some uh-inner subtemplate scripts content
 
   var LOGGER = {
     // helper object for logging outs
-    IMPORTANT: true,
-    DETAILED: true
+    IMPORTANT: false,
+    DETAILED: false
   };
+
+  if (LOGGER.DETAILED) console.log('Global settings:', settings);
+
 
   ///////////////////
   // configuration //
@@ -28,6 +31,7 @@
     }
   };
 
+
   ///////////////
   // interface //
   ///////////////
@@ -38,6 +42,7 @@
   // global components initialization
   initDropdownSocial(CONFIGURATION.dropdownSocial); // dropdown-social component initialization
   initDropdownSimple(CONFIGURATION.dropdownSimple); // dropdown-simple component initialization
+
 
   ////////////////////////////
   // implementation details //
@@ -111,7 +116,7 @@
       function switchOffActiveMenuLinks(activeClassName) {
         if (LOGGER.DETAILED) console.log('switchOffActiveMenuLinks is called!');
         var activeLinks = document.querySelectorAll('.' + activeClassName);
-        utils.forEachNode(activeLinks, function(index, node) {
+        utils.forEachNode(activeLinks, function (index, node) {
           node.classList.remove(activeClassName);
         });
       }
@@ -119,7 +124,7 @@
       function closeAllSubmenus(openClassName) {
         if (LOGGER.DETAILED) console.log('closeAllSubmenus is called!');
         var openedSubmenus = document.querySelectorAll('.' + openClassName);
-        utils.forEachNode(openedSubmenus, function(index, node) {
+        utils.forEachNode(openedSubmenus, function (index, node) {
           node.classList.remove(openClassName);
           setSubmenuLinksTabindexes(node, '-1');
         });
@@ -130,7 +135,7 @@
         console.log('submenuElement:', submenuElement);
         console.log('tabindex:', tabindex);
         var submenuLinks = submenuElement.querySelectorAll('.page-nav__submenu-link');
-        utils.forEachNode(submenuLinks, function(index, node) {
+        utils.forEachNode(submenuLinks, function (index, node) {
           node.setAttribute('tabindex', tabindex);
         });
       }
@@ -163,7 +168,7 @@
       if (LOGGER.DETAILED) console.log(evt, evt.target.checked);
       var dropdownSocialNode = evt.target.closest('.dropdown-social');
       var dropdownSocialSubmenuLinks = dropdownSocialNode.querySelectorAll('.dropdown-social__submenu-link');
-      utils.forEachNode(dropdownSocialSubmenuLinks, function(index, node) {
+      utils.forEachNode(dropdownSocialSubmenuLinks, function (index, node) {
         if (evt.target.checked) {
           node.setAttribute('tabindex', 0);
         } else {
@@ -216,7 +221,7 @@
       if (LOGGER.DETAILED) console.log(evt, evt.target.checked);
       var dropdownSimpleNode = evt.target.closest('.dropdown-simple');
       var dropdownSimpleSubmenuLinks = dropdownSimpleNode.querySelectorAll('.dropdown-simple__link');
-      utils.forEachNode(dropdownSimpleSubmenuLinks, function(index, node) {
+      utils.forEachNode(dropdownSimpleSubmenuLinks, function (index, node) {
         if (evt.target.checked) {
           node.setAttribute('tabindex', 0);
         } else {
@@ -245,7 +250,11 @@
   }
   // end of dropdown-simple component scripts
 
+
+  return CONFIGURATION;
+
   /////////
   // END //
   /////////
-})(GLOBAL_SETTINGS, UTILS);
+
+})(GLOBAL_SETTINGS, UTILS, CONFIG_BASE_UH_INNER);

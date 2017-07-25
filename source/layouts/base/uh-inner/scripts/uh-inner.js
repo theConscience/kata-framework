@@ -1,6 +1,7 @@
-/* global jQuery */
+/* global jQuery, throttle, debounce */
 
 'use strict';
+
 
 //////////////////////////////////////////
 // Element prototype polifilled methods //
@@ -32,6 +33,7 @@
       return null;
     };
 })(Element.prototype);
+
 
 //////////////////////////
 // Global configuration //
@@ -89,6 +91,7 @@ var GLOBAL_SETTINGS = (function () {
     getRootComponent: getRootComponent
   };
 })();
+
 
 ///////////////////////
 // Utility functions //
@@ -177,19 +180,22 @@ var UTILS = (function () {
   };
 })();
 
+
 ///////////////////////////
 // Base template scripts //
 ///////////////////////////
 
-(function (settings, utils, $) {
-  console.log('Global settings:', settings);
+var CONFIG_BASE_UH_INNER = (function (settings, utils, $) {
   // some uh-inner scripts content
 
   var LOGGER = {
     // helper object for logging outs
-    IMPORTANT: true,
+    IMPORTANT: false,
     DETAILED: true
   };
+
+  if (LOGGER.DETAILED) console.log('Global settings:', settings);
+
 
   ///////////////////
   // configuration //
@@ -203,6 +209,7 @@ var UTILS = (function () {
     components: {
       uhInnerPage: {
         TITLE: 'uh-inner-page',
+        NODE: document.querySelector('.uh-inner-page'),
         ELEMENTS: {},
         MODIFIERS: {},
         STATE: {}
@@ -219,6 +226,7 @@ var UTILS = (function () {
         STATE: {}
       },
       mainMenuToggle: {
+        ELEMENTS: {},
         MODIFIERS: {
           // EXTENDED_INNER: 'uh-inner-page__inner--extended',
           EXTENDED_PAGE: 'uh-inner-page--extended',
@@ -229,6 +237,20 @@ var UTILS = (function () {
           EXTENDED_FOOTER: 'uh-inner-footer--extended'
           // components
           // EXTENDED_SLIDER: 'slider--extended'
+        },
+        STATE: {}
+      },
+      mainNav: {
+        TITLE: 'main-nav',
+        ELEMENTS: {
+          ITEM: 'main-nav__item',
+          LINK: 'main-nav__link',
+          SUBMENU: 'main-nav__submenu',
+          SUBMENU_LINK: 'main-nav__submenu-link'
+        },
+        MODIFIERS: {
+          LINK_ACTIVE: 'main-nav__link--active',
+          SUBMENU_OPEN: 'main-nav__submenu--open'
         },
         STATE: {}
       },
@@ -255,24 +277,37 @@ var UTILS = (function () {
           FIXED: 'page-nav__menu--fixed'
         },
         STATE: {}
+      },
+      siteLoader: {
+        TITLE: 'site-loader',
+        ELEMENTS: {},
+        MODIFIERS: {
+          OPEN: 'site-loader--open'
+        },
+        STATE: {}
       }
+
     }
   };
+
 
   ///////////////
   // interface //
   ///////////////
 
   // uh-inner base page components initialization
-  initUhInnerEventChannel(CONFIGURATION.components.uhInnerPage); // extends uh-inner page component with eventChannel functionality
+  var uhInnerEventChannel = initUhInnerEventChannel(CONFIGURATION.components.uhInnerPage); // extends uh-inner page component with eventChannel functionality
   initElementScroll(CONFIGURATION.components.uhInnerAside, CONFIGURATION.breakpoints.XS, false); // uh-inner page aside scroll initialization
   initElementScroll(CONFIGURATION.components.pageNavMenu, CONFIGURATION.breakpoints.XSM, true); // news page navigation menu scroll initialization
   initMainMenuToggle(CONFIGURATION.components.mainMenuToggle); // site main menu toggle button initialization
+  initMainNavSubmenu(CONFIGURATION.components.mainNav); // site main nav submenus initialization
   initSiteLanguage(CONFIGURATION.components.siteLanguage); // site-language component initialization
   initSiteSearch(CONFIGURATION.components.siteSearch); // site-search component initialization
+  initSiteLoader(CONFIGURATION.components.siteLoader);  // site-loader component initialization
 
   // // global components initialization
   // initDropdownSimple(CONFIGURATION.dropdownSimple);  // dropdown-simple component initialization
+
 
   ////////////////////////////
   // implementation details //
@@ -283,11 +318,13 @@ var UTILS = (function () {
     var uhInnerPageEventChannel = utils.eventChannelFactory();
     var uhInnerPage = document.querySelector('.' + config.TITLE);
     $.extend(uhInnerPage, uhInnerPageEventChannel);
+    return uhInnerPage;
   }
   // end of uh-inner page event channel initialization scripts
 
   function initElementScroll(config, minBreakpoint, fixedClassChange) {
     // uh-inner page aside scroll scripts
+
 
     // configuration //
 
@@ -301,14 +338,19 @@ var UTILS = (function () {
     var scrollableElement = document.querySelector('.' + config.TITLE);
     var scrollableElementParent = scrollableElement.parentElement;
 
+
     // interface //
 
     if (!scrollableElement) return false;
 
     toggleScrollableElementFixedState(fixedClassChange);
 
-    window.addEventListener('scroll', onWindowScroll);
-    window.addEventListener('resize', onWindowResize);
+    var throttledWindowScrollElementScroll = throttle(onWindowScroll, 60);
+    var throttledWindowResizeElementScroll = throttle(onWindowResize, 60);
+
+    window.addEventListener('scroll', throttledWindowScrollElementScroll);
+    window.addEventListener('resize', throttledWindowResizeElementScroll);
+
 
     // implementation details //
 
@@ -360,15 +402,16 @@ var UTILS = (function () {
       if (window.innerWidth <= minBreakpoint && !isXsViewport) {
         if (LOGGER.DETAILED) console.log('removing scroll listener');
         if (LOGGER.DETAILED) console.log('window width =', window.innerWidth);
-        window.removeEventListener('scroll', onWindowScroll);
+        window.removeEventListener('scroll', throttledWindowScrollElementScroll);
         scrollableElement.style.marginTop = '';
-        isXsViewport = true;
         scrollableElement.classList.remove(config.MODIFIERS.FIXED);
+        isXsViewport = true;
       } else if (window.innerWidth > minBreakpoint && isXsViewport) {
         if (LOGGER.DETAILED) console.log('adding scroll listener');
         if (LOGGER.DETAILED) console.log('window width =', window.innerWidth);
-        window.addEventListener('scroll', onWindowScroll);
+        window.addEventListener('scroll', throttledWindowScrollElementScroll);
         scrollableElement.style.marginTop = '';
+        scrollableElement.classList.add(config.MODIFIERS.FIXED);
         isXsViewport = false;
       }
 
@@ -617,6 +660,61 @@ var UTILS = (function () {
   }
   // end of site main menu toggle scripts
 
+  function initMainNavSubmenu(config) {
+    // site main nav submenus initialization
+
+    // configuration //
+
+    var mainNav = document.querySelector('.' + config.TITLE);
+    var mainNavLinks = mainNav.querySelectorAll('.' + config.ELEMENTS.LINK);  // NodeList
+
+    // interface //
+
+    utils.forEachNode(mainNavLinks, mainNavLinkCallback);
+
+    // implementation details //
+
+    function mainNavLinkCallback(index, node) {
+      var parentMainNavItem = node.closest('.' + config.ELEMENTS.ITEM);
+      var boundedMainNavSubmenu = parentMainNavItem.querySelector('.' + config.ELEMENTS.SUBMENU);
+
+      node.addEventListener('click', function (evt) {
+        toggleBoundedSubmenu(evt, boundedMainNavSubmenu);
+      });
+      node.addEventListener('keydown', function (evt) {
+        if ([13, 32].indexOf(evt.keyCode) > -1) {
+          toggleBoundedSubmenu(evt, boundedMainNavSubmenu);
+        }
+      });
+    }
+
+    function toggleBoundedSubmenu(evt, boundedSubmenu) {
+      if (LOGGER.DETAILED) console.log('toggleBoundedSubmenu is called!');
+      var openedSubmenu = document.querySelector('.' + config.MODIFIERS.SUBMENU_OPEN);
+
+      if (openedSubmenu) {
+        openedSubmenu.classList.remove(config.MODIFIERS.SUBMENU_OPEN);
+        setSubmenuLinksTabindex(openedSubmenu, '-1');
+      }
+
+      if (boundedSubmenu && openedSubmenu !== boundedSubmenu) {
+        evt.preventDefault();
+        boundedSubmenu.classList.add(config.MODIFIERS.SUBMENU_OPEN);
+        setSubmenuLinksTabindex(boundedSubmenu, '0');
+      } else if (openedSubmenu !== boundedSubmenu) {
+        evt.preventDefault();
+      }
+    }
+
+    function setSubmenuLinksTabindex(submenu, tabindex) {
+      var submenuLinks = submenu.querySelectorAll('.' + config.ELEMENTS.SUBMENU_LINK);  //NodeList
+      utils.forEachNode(submenuLinks, function (index, node) {
+        node.setAttribute('tabindex', tabindex);
+      });
+    }
+
+  }
+
   function initSiteLanguage(config) {
     // site-language component scripts
 
@@ -684,6 +782,35 @@ var UTILS = (function () {
     }
   }
   // end of site-search component scripts
+
+  function initSiteLoader(config) {
+    // site-loader component scripts
+
+    // configuration
+    var siteLoader = document.querySelector('#' + config.TITLE);
+
+    // interface
+    uhInnerEventChannel.subscribe('siteLoader:show', showSiteLoaderHandler);
+    uhInnerEventChannel.subscribe('siteLoader:hide', hideSiteLoaderHandler);
+
+    // implementation details
+
+    function showSiteLoaderHandler() {
+      if (LOGGER.DETAILED) console.log('showSiteLoaderHandler:', showSiteLoaderHandler);
+      if (!siteLoader.classList.contains(config.MODIFIERS.OPEN)) {
+        siteLoader.classList.add(config.MODIFIERS.OPEN);
+      }
+    }
+
+    function hideSiteLoaderHandler() {
+      if (LOGGER.DETAILED) console.log('hideSiteLoaderHandler:', hideSiteLoaderHandler);
+      siteLoader.classList.remove(config.MODIFIERS.OPEN);
+    }
+  }
+  // end of site-loader component scripts
+
+
+  return CONFIGURATION;
 
   /////////
   // END //
