@@ -1,3 +1,6 @@
+@import 'helpers/_variables'
+@import 'helpers/_block_mixins'
+
 .site-loader
     position fixed
     z-index -1
@@ -6,12 +9,12 @@
     bottom 0
     left 0
     right 0
-    background-color rgba(0, 0, 0, 0.8)
+    background-color $c_black-transparent-08
     transition z-index 0.4s ease, opacity 0.4s ease
 
 .site-loader--open
     opacity 1
-    z-index 50
+    z-index 999
 
 .site-loader__circle.site-loader__circle
     position absolute

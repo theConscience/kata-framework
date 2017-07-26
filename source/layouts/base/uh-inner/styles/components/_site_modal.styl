@@ -1,0 +1,217 @@
+@import 'helpers/_variables'
+@import 'helpers/_block_mixins'
+
+
+@keyframes modal-open
+    0%   { transform: translateY(-2000px); }
+    70%  { transform: translateY(30px);    }
+    90%  { transform: translateY(-10px);   }
+    100% { transform: translateY(0);       }
+
+@keyframes modal-close
+    0%   { transform: translateY(0);       }
+    70%  { transform: translateY(-10px);   }
+    90%  { transform: translateY(30px);    }
+    100% { transform: translateY(-2000px); }
+
+@keyframes modal-error
+    0%, 100%                { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-10px); }
+    20%, 40%, 60%, 80%      { transform: translateX(10px); }
+
+
+.site-modal  // section
+    position fixed
+    z-index -1
+    background-color $c_black-transparent-05
+    top 0px
+    left 0px
+    right 0px
+    bottom 0px
+    margin auto
+    opacity 0
+    transition z-index 0.4s ease, opacity 0.4s ease
+
+    & *
+        box-sizing border-box
+
+.site-modal--open
+    opacity 1
+    z-index 999
+
+.site-modal--closed
+    //
+
+.site-modal--error
+    //
+
+.site-modal__inner
+    position absolute
+    display inline-block
+    top 30px
+    left 0
+    right 0
+    width calc(100% - 60px)
+    max-width 600px
+    min-height 225px
+    margin auto
+    background-color $c_white
+    background-clip padding-box
+    border 1px solid $c_light-6
+    border 1px solid $c_black-transparent-02
+    border-radius 0
+    outline 0
+    box-shadow 0 3px 9px $c_black-transparent-05
+
+    @media (max-width $xs)
+        top 10px
+        width calc(100% - 20px)
+
+    .site-modal--open &
+        animation modal-open 0.4s
+
+    .site-modal--closed &
+        animation modal-close 0.4s ease-out
+
+    .site-modal--error &
+        animation modal-error 0.6s
+
+.site-modal__header  // header
+    min-height 16.43px
+    padding 15px
+    border-bottom 1px solid $c_light-8
+
+.site-modal__title  // h
+    fontHvLight18_25()
+    font-weight 500
+    margin 0
+
+.site-modal__footer  // footer
+    padding 15px
+    border-top 1px solid $c_light-8
+    text-align right
+
+.site-modal__content
+    position relative
+    padding 15px
+
+.site-modal__controls  // ul
+    margin 0
+
+// mix
+.modal-controls  // ul.site-modal__controls
+    padding 0
+
+.modal-controls__item  // li
+    list-style none
+    display inline-block
+
+    .modal-controls & + &
+        margin-bottom 0
+        margin-left 5px
+
+.modal-controls__button  // button
+    // font-family inherit
+    // font-size inherit
+    // line-height inherit
+    fontHvLight14_21()
+    font-weight 400
+    display inline-block
+    padding 6px 12px
+    margin 0
+    font inherit
+    color inherit
+    overflow visible
+    text-transform none
+    -webkit-appearance button
+    cursor pointer
+    transition background-color 0.4s ease, box-shadow 0.2s ease
+
+    &:hover
+    &:focus
+        outline thin dotted
+        outline 5px auto -webkit-focus-ring-color
+        outline-offset -2px
+
+    &:active
+        background-image none
+        outline 0
+        box-shadow inset 0 3px 5px rgba(0,0,0,.125)
+
+    &:active:focus
+        outline none
+        font-family helveticaneuecyrlight
+
+
+.modal-controls__button--cancel
+    fontHvLight16()
+    padding-top 0.6875em  // 11px
+    padding-right 2em  // 32px
+    padding-bottom 0.6875em  // 11px
+    padding-left 2em  // 32px
+    border 1px solid #ccc
+    background-color $c_white
+    color #333
+
+    &:hover
+    &:focus
+        outline none
+        color #333
+        background-color #e6e6e6
+        border-color #adadad
+
+.modal-controls__button--submit  // button[type=submit]
+    fontHvLight16()
+    font-weight 300
+    position relative
+    padding-top 0.6875em  // 11px
+    padding-right 2em  // 32px
+    padding-bottom 0.6875em  // 11px
+    padding-left 2em  // 32px
+    border 2px solid $c_reliable
+    border-radius 0
+    background-color $c_white
+    color $c_reliable
+    transition color ease-out .5s, background-color ease-out .5s, border-color ease-out .5s
+
+    &:focus
+        color $c_reliable-dark
+        border-color $c_reliable-dark
+
+    &:hover
+        color $c_white
+        background-color $c_reliable
+
+    &:active
+        outline none
+
+    &:active:focus
+    &:hover:focus
+        border-color $c_reliable
+
+
+.site-modal__close  // button
+    font-size 21px
+    font-weight 700
+    line-height 1
+    box-sizing border-box
+    float right
+    padding 0
+    border 0
+    margin-top -2px
+    border none
+    opacity 0.2
+    background 0 0
+    background-color $c_white
+    color $c_black
+    cursor pointer
+    text-shadow 0 1px 0 $c_white
+    -webkit-appearance none
+    transition color 0.4s ease, opacity 0.4s ease
+
+    &:hover
+    &:focus
+        color $c_black
+        text-decoration none
+        cursor pointer
+        opacity 0.5

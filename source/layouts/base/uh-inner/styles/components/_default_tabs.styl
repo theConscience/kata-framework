@@ -1,0 +1,81 @@
+@import 'helpers/_variables'
+@import 'helpers/_block_mixins'
+
+.default-tabs  // section
+    //
+
+.default-tabs__radio-control // input[type=radio]
+    display none
+
+.default-tabs__controls  // ul
+    display inline-block
+    list-style-type none
+    padding 16px  // 1.6em
+    padding-top 0
+    margin 0
+    text-align left
+
+
+.default-tabs__controls-item  // li
+    list-style none
+    display inline-block
+    vertical-align top
+
+    margin-right -2.5px  // -.25em
+    padding 10px 6px 16px  // 1em .6em 1.6em
+    border-bottom 1px solid $c_light
+
+// .default-tabs__controls-item--active
+//     text-decoration underline
+
+.default-tabs__controls-label  // label
+    fontHvLight14()
+    // font-family helveticaneuecyrlight
+    // font-size 14px // 1.4em
+    // line-height 14px  // 1em
+    box-sizing border-box
+    padding 14px (14*0.4)px (14*0.93)px  // 1em .4em .93em
+    margin 0
+    color $c_bright
+
+    cursor pointer
+
+    .default-tabs__radio-control[value=select-tab]:checked ~ .default-tabs__controls &[for=select-tab]
+    .default-tabs__radio-control[value=enter-tab]:checked ~ .default-tabs__controls &[for=enter-tab]
+            cursor default
+            border-bottom 2px solid #313233
+            text-decoration none
+
+.default-tabs__controls-link  // a
+    text-decoration none
+
+    fontHvLight14()
+    // font-family helveticaneuecyrlight
+    // font-size 14px // 1.4em
+    // line-height 14px  // 1em
+    box-sizing border-box
+    padding 14px (14*0.4)px (14*0.93)px  // 1em .4em .93em
+    margin 0
+    color $c_bright
+
+    &:hover
+    &:focus
+    &:active
+    .default-tabs__controls-item--active &
+        border-bottom 2px solid #313233
+        text-decoration none
+
+.default-tabs__content
+    padding-left 30px
+    padding-right 30px
+
+.default-tabs__tab-panel  // section
+    display none
+
+    .default-tabs__radio-control[value=select-tab]:checked ~ .default-tabs__content &--select
+    .default-tabs__radio-control[value=enter-tab]:checked ~ .default-tabs__content &--enter
+        display block
+
+// .default-tabs__tab-panel--active
+//     //
+

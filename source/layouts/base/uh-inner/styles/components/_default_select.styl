@@ -1,0 +1,41 @@
+@import 'helpers/_variables'
+@import 'helpers/_block_mixins'
+
+.default-select  // select
+    margin 0
+    font inherit
+    color inherit
+
+    text-transform none
+
+    font-family inherit
+    font-size inherit
+    line-height inherit
+
+    font-size 14px
+    line-height 1.42857143
+
+    display block
+    width 100%
+    height 34px
+    padding 6px 12px
+
+    color #555
+    background-color $c_white
+    background-image none
+    transition border-color ease-in-out .15s,box-shadow ease-in-out .15s
+
+    fontHvLight14_28()
+    // font-size 1.4em
+    // line-height 2em
+
+    height 2.8571428em
+    padding .42857em .85714em
+    border-radius 0
+    border 1px solid $c_light
+    box-shadow none
+
+    &:focus
+        border-color #66afe9
+        outline 0
+        box-shadow inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6)

@@ -77,7 +77,7 @@ html(lang='ru' manifest='offline.manifest')
                                     a.user-controls__user-company(href='#' title='Active user company').
                                         Unihotel administration account
                                         (ID: <span class="user-controls__company-id">515</span>)
-                                    a.user-controls__change-company(href='#' title='Change user company')
+                                    a.user-controls__change-company(data-open-modal='changeCompanyModal' href='#' title='Change user company')
                                 li.user-controls__item
                                     a.user-controls__logout(href='#' title='Logout') Выход
                         button.uh-inner-aside__toggle(data-alternate-title='Открыть' title='Свернуть') Свернуть
@@ -86,57 +86,65 @@ html(lang='ru' manifest='offline.manifest')
                                  subTemplateName ? ' ' + subTemplateName + '-site-nav ' + (siteNavClasses ? ' ' + siteNavClasses : '') :
                                 'uh-inner-page__site-nav uh-inner-site-nav' + (siteNavClasses ? ' ' + siteNavClasses : ''))
                         ul.main-nav__menu
-                            li.main-nav__item
-                                a.main-nav__link.main-nav__link--company-profile(href='#', title='Профайл компании') Профайл компании
-                                ul.main-nav__submenu
-                                    li.main-nav__submenu-item
-                                        a.main-nav__submenu-link(href="#" title='Профайл компании' tabindex='-1') Профайл компании
-                                    li.main-nav__submenu-item
-                                        a.main-nav__submenu-link(href="#" title='Файлы компании' tabindex='-1') Файлы компании
-                                    li.main-nav__submenu-item
-                                        a.main-nav__submenu-link(href="#" title='Онлайн модуль' tabindex='-1') Онлайн модуль
-                            li.main-nav__item
-                                a.main-nav__link.main-nav__link--hotels(href='#', title='Мои отели') Мои отели
-                            li.main-nav__item
-                                a.main-nav__link.main-nav__link--company-files(href='#', title='Файлы компании') Файлы компании
-                                ul.main-nav__submenu
-                                    li.main-nav__submenu-item
-                                        a.main-nav__submenu-link(href="#" title='Файлы компании' tabindex='-1') Файлы компании
-                                    li.main-nav__submenu-item
-                                        a.main-nav__submenu-link(href="#" title='Онлайн модуль' tabindex='-1') Онлайн модуль
-                            li.main-nav__item
-                                a.main-nav__link.main-nav__link--documents(href='#', title='Документы') Документы
-                            li.main-nav__item
-                                a.main-nav__link.main-nav__link--instruments(href='#', title='Инструменты') Инструменты
-                            li.main-nav__item
-                                a.main-nav__link.main-nav__link--finances(href='#', title='Финансы') Финансы
-                            li.main-nav__item
-                                a.main-nav__link.main-nav__link--avia(href='#', title='Авиа') Авиа
-                            li.main-nav__item
-                                a.main-nav__link.main-nav__link--news(href='#', title='Новости') Новости
-                            li.main-nav__item
-                                a.main-nav__link.main-nav__link--contacts(href='#', title='Контакты') Контакты
-                            li.main-nav__item
-                                a.main-nav__link.main-nav__link--chat(href='#', title='Чат') Чат
 
-                            block additional_main_nav
-                                // additional main navigation content
+                            block main_nav
+                                // default main navigation content
+
+                                li.main-nav__item
+                                    a.main-nav__link.main-nav__link--company-profile(href='#', title='Профайл компании') Профайл компании
+                                    ul.main-nav__submenu
+                                        li.main-nav__submenu-item
+                                            a.main-nav__submenu-link(href="#" title='Профайл компании' tabindex='-1') Профайл компании
+                                        li.main-nav__submenu-item
+                                            a.main-nav__submenu-link(href="#" title='Файлы компании' tabindex='-1') Файлы компании
+                                        li.main-nav__submenu-item
+                                            a.main-nav__submenu-link(href="#" title='Онлайн модуль' tabindex='-1') Онлайн модуль
+                                li.main-nav__item
+                                    a.main-nav__link.main-nav__link--hotels(href='#', title='Мои отели') Мои отели
+                                li.main-nav__item
+                                    a.main-nav__link.main-nav__link--company-files(href='#', title='Файлы компании') Файлы компании
+                                    ul.main-nav__submenu
+                                        li.main-nav__submenu-item
+                                            a.main-nav__submenu-link(href="#" title='Файлы компании' tabindex='-1') Файлы компании
+                                        li.main-nav__submenu-item
+                                            a.main-nav__submenu-link(href="#" title='Онлайн модуль' tabindex='-1') Онлайн модуль
+                                li.main-nav__item
+                                    a.main-nav__link.main-nav__link--documents(href='#', title='Документы') Документы
+                                li.main-nav__item
+                                    a.main-nav__link.main-nav__link--instruments(href='#', title='Инструменты') Инструменты
+                                li.main-nav__item
+                                    a.main-nav__link.main-nav__link--finances(href='#', title='Финансы') Финансы
+                                li.main-nav__item
+                                    a.main-nav__link.main-nav__link--avia(href='#', title='Авиа') Авиа
+                                li.main-nav__item
+                                    a.main-nav__link.main-nav__link--news(href='#', title='Новости') Новости
+                                li.main-nav__item
+                                    a.main-nav__link.main-nav__link--contacts(href='#', title='Контакты') Контакты
+                                li.main-nav__item
+                                    a.main-nav__link.main-nav__link--chat(href='#', title='Чат') Чат
+
+                                block additional_main_nav
+                                    // additional main navigation content
 
                     nav.actions-nav
                         ul.actions-nav__menu
-                            li.actions-nav__item.actions-nav__item--big
-                                a.actions-nav__link.actions-nav__link--invite-partners(href='#', title='Пригласите всех ваших партнёров для совместной работы') Приграсите всех ваших партнёров для совместной работы
-                            li.actions-nav__item.actions-nav__item--small
-                                a.actions-nav__link.actions-nav__link--messages(data-items-count='7', href='#', title='Сообщения') Сообщения
-                            li.actions-nav__item.actions-nav__item--small
-                                a.actions-nav__link.actions-nav__link--orders(href='#', title='Заявки') Заявки
-                            li.actions-nav__item.actions-nav__item--small.actions-nav__item--offset-bottom
-                                a.actions-nav__link.actions-nav__link--bills(data-items-count='3', href='#', title='Счета') Счета
-                            li.actions-nav__item.actions-nav__item--bright
-                                a.actions-nav__link.actions-nav__link--help(href='#', title='Помощь') Помощь
 
-                            block additional_actions_nav
-                                // additional actions navigation content
+                            block actions_nav
+                                // default actions navigation content
+
+                                li.actions-nav__item.actions-nav__item--big
+                                    a.actions-nav__link.actions-nav__link--invite-partners(href='#', title='Пригласите всех ваших партнёров для совместной работы') Приграсите всех ваших партнёров для совместной работы
+                                li.actions-nav__item.actions-nav__item--small
+                                    a.actions-nav__link.actions-nav__link--messages(data-items-count='7', href='#', title='Сообщения') Сообщения
+                                li.actions-nav__item.actions-nav__item--small
+                                    a.actions-nav__link.actions-nav__link--orders(href='#', title='Заявки') Заявки
+                                li.actions-nav__item.actions-nav__item--small.actions-nav__item--offset-bottom
+                                    a.actions-nav__link.actions-nav__link--bills(data-items-count='3', href='#', title='Счета') Счета
+                                li.actions-nav__item.actions-nav__item--bright
+                                    a.actions-nav__link.actions-nav__link--help(href='#', title='Помощь') Помощь
+
+                                block additional_actions_nav
+                                    // additional actions navigation content
 
             main(class=pageName ? pageName + '-page__main ' + (subTemplateName ? ' ' + subTemplateName + '-page__main ' : '') + (mainClasses ? ' ' + mainClasses : '') :
                        subTemplateName ? ' ' + subTemplateName + '-page__main ' + (mainClasses ? ' ' + mainClasses : '') :
@@ -221,6 +229,39 @@ html(lang='ru' manifest='offline.manifest')
                         animate(attributeName="opacity" dur="4s" repeatCount="indefinite" begin="2s" keyTimes="0;0.33;1" values="1;1;0")
                         circle(cx="50" cy="50" r="40" stroke="#eeeeee" fill="none" stroke-width="2" stroke-linecap="round")
                             animate(attributeName="r" dur="4s" repeatCount="indefinite" begin="2s" keyTimes="0;0.33;1" values="0;22;44")
+
+            section.site-modal.change-company(data-modal-name="changeCompanyModal" aria-hidden="true" aria-labelledby="changeCompanyModal" role="dialog")
+                .site-modal__inner
+                    header.site-modal__header
+                        button.site-modal__close(data-dismiss="modal" aria-label="Close" type="button" title="{% trans 'Close modal' %}")
+                            span(aria-hidden="true") &times;
+                        h4#changeCompanyModal.site-modal__title Company change
+                    div.site-modal__content.change-company__content
+                        form#company-change-form(action="{% url 'change_company' %}" method='POST')
+                            csrf_token
+                            section.default-tabs(role="tabpanel")
+                                input#select-tab.default-tabs__radio-control(type="radio" name="default-tabs-control" value="select-tab" checked=true)
+                                input#enter-tab.default-tabs__radio-control(type="radio" name="default-tabs-control" value="enter-tab")
+                                ul.default-tabs__controls(role="tablist")
+                                    li.default-tabs__controls-item(role="presentation")
+                                        label.default-tabs__controls-label(data-toggle="tab" aria-controls="home" aria-expanded="true" role="tab" for="select-tab") Select from the list
+                                    li.default-tabs__controls-item(role="presentation")
+                                        label.default-tabs__controls-label(data-toggle="tab" aria-controls="profile" aria-expanded="false" role="tab" for="enter-tab") Ввести ID компании
+                                .default-tabs__content
+                                    section.default-tabs__tab-panel.default-tabs__tab-panel--select(role="tabpanel")
+                                        select.default-select(name='company_to')
+                                            each company, id in ['corona travel', 'nkar', 'santibury beach and spa']
+                                                option(value=id selected=(id === 1) ? true : false title="your company")= company
+                                                |(id: id)
+                                    section.default-tabs__tab-panel.default-tabs__tab-panel--enter(role="tabpanel")
+                                        input.default-input(type="text" title="your company" name="company_to" placeholder="ID")
+                            input(type='hidden' name='active_tab')
+                    footer.site-modal__footer
+                        ul.site-modal__controls.modal-controls
+                            li.modal-controls__item
+                                button.modal-controls__button.modal-controls__button--cancel(data-dismiss="modal" type="button" title="Cancel") Cancel
+                            li.modal-controls__item
+                                button.modal-controls__button.modal-controls__button--submit(type="submit" form="company-change-form" title="Change company") Change company
 
 
         block templates

@@ -285,6 +285,25 @@ var CONFIG_BASE_UH_INNER = (function (settings, utils, $) {
           OPEN: 'site-loader--open'
         },
         STATE: {}
+      },
+      siteModal: {
+        TITLE: 'site-modal',
+        ELEMENTS: {
+          CLOSE: 'site-modal__close',
+          CONTROLS_BUTTON: 'modal-controls__button',
+          CONTROLS_CANCEL: 'modal-controls__button--cancel',
+          CONTROLS_SUBMIT: 'modal-controls__button--submit'
+        },
+        MODIFIERS: {
+          OPEN: 'site-modal--open',
+          CLOSED: 'site-modal--closed',
+          ERROR: 'site-modal--error'
+        },
+        STATE: {},
+        DATA: {
+          MODAL_NAME: 'data-modal-name',
+          OPEN_MODAL_BUTTON: 'data-open-modal'
+        }
       }
 
     }
@@ -297,6 +316,7 @@ var CONFIG_BASE_UH_INNER = (function (settings, utils, $) {
 
   // uh-inner base page components initialization
   var uhInnerEventChannel = initUhInnerEventChannel(CONFIGURATION.components.uhInnerPage); // extends uh-inner page component with eventChannel functionality
+
   initElementScroll(CONFIGURATION.components.uhInnerAside, CONFIGURATION.breakpoints.XS, false); // uh-inner page aside scroll initialization
   initElementScroll(CONFIGURATION.components.pageNavMenu, CONFIGURATION.breakpoints.XSM, true); // news page navigation menu scroll initialization
   initMainMenuToggle(CONFIGURATION.components.mainMenuToggle); // site main menu toggle button initialization
@@ -304,6 +324,7 @@ var CONFIG_BASE_UH_INNER = (function (settings, utils, $) {
   initSiteLanguage(CONFIGURATION.components.siteLanguage); // site-language component initialization
   initSiteSearch(CONFIGURATION.components.siteSearch); // site-search component initialization
   initSiteLoader(CONFIGURATION.components.siteLoader);  // site-loader component initialization
+  initSiteModal(CONFIGURATION.components.siteModal);  // site-modal component initialization
 
   // // global components initialization
   // initDropdownSimple(CONFIGURATION.dropdownSimple);  // dropdown-simple component initialization
@@ -810,9 +831,133 @@ var CONFIG_BASE_UH_INNER = (function (settings, utils, $) {
   // end of site-loader component scripts
 
 
+  function initSiteModal(config) {
+    // site-modal scripts
+
+    // configuration //
+    var siteModals = document.querySelectorAll('.' + config.TITLE);  // NodeList
+    var modalOpenButtons = document.querySelectorAll('[' + config.DATA.OPEN_MODAL_BUTTON + ']');  //NodeList
+
+
+    // interface //
+
+    utils.forEachNode(siteModals, siteModalCallback);
+    utils.forEachNode(modalOpenButtons, modalOpenButtonCallback);
+
+    function siteModalCallback(index, node) {
+      var modalName = node.getAttribute(config.DATA.MODAL_NAME);
+
+      var openEventName = modalName + ':open';
+      var closeEventName = modalName + ':close';
+      var errorEventName = modalName + ':error';
+      uhInnerEventChannel.subscribe(openEventName, siteModalOpenObserver);
+      uhInnerEventChannel.subscribe(closeEventName, siteModalCloseObserver);
+      uhInnerEventChannel.subscribe(errorEventName, siteModalErrorObserver);
+
+      // // Кнопок для открытия одного и того же модального окна может быть много:
+      // var modalOpenButtons = document.querySelectorAll('[' + config.DATA.OPEN_MODAL_BUTTON + '=' + modalName + ']');  //NodeList
+      // utils.forEachNode(modalOpenButtons, modalOpenButtonCallback);
+
+      var modalCloseButton = node.querySelector('.' + config.ELEMENTS.CLOSE);
+      var modalCancelButton = node.querySelector('.' + config.ELEMENTS.CONTROLS_CANCEL);
+      var modalSubmitButton = node.querySelector('.' + config.ELEMENTS.CONTROLS_SUBMIT);
+      modalCloseButton.addEventListener('click', closeModalClickHandler);
+      modalCancelButton.addEventListener('click', closeModalClickHandler);
+      modalSubmitButton.addEventListener('click', closeModalClickHandler);
+      modalCloseButton.addEventListener('keydown', closeModalKeydownHandler);
+      modalCancelButton.addEventListener('keydown', closeModalKeydownHandler);
+      modalSubmitButton.addEventListener('keydown', closeModalKeydownHandler);
+    }
+
+    function modalOpenButtonCallback(index, node) {
+      node.addEventListener('click', openModalClickHandler);
+      node.addEventListener('keydown', openModalKeydownHandler);
+    }
+
+
+    // implementation details //
+
+    function siteModalOpenObserver(evt) {
+      var siteModal = document.querySelector('[' + config.DATA.MODAL_NAME + '=' + evt.modalName + ']');
+      siteModal.classList.remove(config.MODIFIERS.CLOSED);
+      siteModal.classList.add(config.MODIFIERS.OPEN);
+    }
+
+    function siteModalCloseObserver(evt) {
+      var siteModal = evt.modalElement;
+      siteModal.classList.remove(config.MODIFIERS.OPEN);
+      siteModal.classList.add(config.MODIFIERS.CLOSED);
+    }
+
+    function siteModalErrorObserver(evt) {
+      var siteModal = evt.modalElement;
+      siteModal.classList.add(config.MODIFIERS.ERROR);
+    }
+
+
+    function closeModalClickHandler(evt) {
+      // evt.preventDefault();
+      closeModal(evt.currentTarget);
+    }
+
+    function closeModalKeydownHandler(evt) {
+      var isEnterOrSpaceKeyPressed = [13, 32].indexOf(evt.keyCode) > -1;
+      if (isEnterOrSpaceKeyPressed) {
+        // evt.preventDefault();
+        closeModal(evt.currentTarget);
+      }
+    }
+
+    function closeModal(innerClosingButton) {
+      var modalElement = innerClosingButton.closest('.' + config.TITLE);
+      var modalName = modalElement.getAttribute(config.DATA.MODAL_NAME);
+
+      var closeEventName = modalName + ':close';
+
+      uhInnerEventChannel.publish(closeEventName, {
+        modalElement: modalElement
+      });
+    }
+
+
+    function errorModal(modalElement) {
+      var modalName = modalElement.getAttribute(config.DATA.MODAL_NAME);
+
+      var errorEventName = modalName + ':error';
+
+      uhInnerEventChannel.publish(errorEventName, {
+        modalElement: modalElement
+      });
+    }
+
+
+    function openModalClickHandler(evt) {
+      evt.preventDefault();
+      openModal(evt.currentTarget);
+    }
+
+    function openModalKeydownHandler(evt) {
+      var isEnterOrSpaceKeyPressed = [13, 32].indexOf(evt.keyCode) > -1;
+      if (isEnterOrSpaceKeyPressed) openModal(evt.currentTarget);
+    }
+
+    function openModal(openButton) {
+      var modalName = openButton.getAttribute(config.DATA.OPEN_MODAL_BUTTON);
+      var openEventName = modalName + ':open';
+
+      uhInnerEventChannel.publish(openEventName, {
+        modalName: modalName
+      });
+    }
+
+  }
+  // end of site-modal scripts
+
+
   return CONFIGURATION;
 
   /////////
   // END //
   /////////
+
 })(GLOBAL_SETTINGS, UTILS, jQuery);
