@@ -90,6 +90,8 @@ html(lang='ru' manifest='offline.manifest')
                             block main_nav
                                 // default main navigation content
 
+                                li.main-nav__item.main-nav__item--xs
+                                    a.main-nav__link.main-nav__link--uh-home(href='#', title='Домашнаяя страница') Домашнаяя страница
                                 li.main-nav__item
                                     a.main-nav__link.main-nav__link--company-profile(href='#', title='Профайл компании') Профайл компании
                                     ul.main-nav__submenu
@@ -139,12 +141,18 @@ html(lang='ru' manifest='offline.manifest')
                                 li.actions-nav__item.actions-nav__item--small
                                     a.actions-nav__link.actions-nav__link--orders(href='#', title='Заявки') Заявки
                                 li.actions-nav__item.actions-nav__item--small.actions-nav__item--offset-bottom
-                                    a.actions-nav__link.actions-nav__link--bills(data-items-count='3', href='#', title='Счета') Счета
+                                    a.actions-nav__link.actions-nav__link--bills(data-items-count='0', href='#', title='Счета') Счета
                                 li.actions-nav__item.actions-nav__item--bright
                                     a.actions-nav__link.actions-nav__link--help(href='#', title='Помощь') Помощь
 
                                 block additional_actions_nav
                                     // additional actions navigation content
+
+            - var siteMessages = true;
+            if siteMessages
+                ul.site-messages
+                    each messageText, messageType in {success: 'Successful operation!', error: 'Sorry, an Error occured!', alert: 'Alert! Important information!'}
+                        .site-messages__message(class='site-messages__message--' + messageType, title=messageType + ' message')= messageText
 
             main(class=pageName ? pageName + '-page__main ' + (subTemplateName ? ' ' + subTemplateName + '-page__main ' : '') + (mainClasses ? ' ' + mainClasses : '') :
                        subTemplateName ? ' ' + subTemplateName + '-page__main ' + (mainClasses ? ' ' + mainClasses : '') :
@@ -255,7 +263,6 @@ html(lang='ru' manifest='offline.manifest')
                                                 |(id: id)
                                     section.default-tabs__tab-panel.default-tabs__tab-panel--enter(role="tabpanel")
                                         input.default-input(type="text" title="your company" name="company_to" placeholder="ID")
-                            input(type='hidden' name='active_tab')
                     footer.site-modal__footer
                         ul.site-modal__controls.modal-controls
                             li.modal-controls__item

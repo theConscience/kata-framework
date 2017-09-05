@@ -1,0 +1,48 @@
+@import 'helpers/_variables'
+@import 'helpers/_block_mixins'
+
+
+@keyframes message-live
+    0%   { position: static; z-index: 0 }
+
+.site-messages  // ul
+    display block
+    width 77%
+    text-align center
+    padding 0
+    margin 0
+    list-style-type none
+    transition width 0.4s ease
+
+    @media (max-width $xs)
+        width 100%
+
+.site-messages--extended
+    width calc(100% - 60px)
+
+    @media (max-width $xs)
+        width 100%
+
+.site-messages__message  // li
+    fontHvMedium16_24()
+    position absolute
+    z-index -1
+    padding 7px 15px 9px
+    list-style none
+
+    animation-name message-live
+    animation-duration 10s
+    animation-iteration-count 1
+
+.site-messages__message--success
+    color  darkslateblue
+    background-color lightseagreen
+
+.site-messages__message--error
+    color $c_white
+    background-color lightcoral
+
+.site-messages__message--alert
+    color lightslategray
+    background-color lightsalmon
+

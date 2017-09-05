@@ -13,6 +13,9 @@
     &:focus
         box-shadow 0 0 16px $c_dark-8-transparent-33
 
+.media-card--tall
+    //
+
 .media-card--focused
     box-shadow 0 0 16px $c_dark-8-transparent-33
 
@@ -36,9 +39,21 @@
     text-transform uppercase
     text-align left
 
+.media-card__ti-autorepost
+    fontHvBold14_21()
+    vertical-align middle
+    text-align right
+    position absolute
+    right 25px
+    color $c_bright-dark
+
 
 .media-card__item
     position relative
+    min-height 150px
+
+    .media-card--tall &
+        min-height 176px
 
 .media-card__item--video
     cursor pointer
@@ -79,7 +94,7 @@
     background-color $c_white-transparent-07
     transition opacity 0.8s ease, z-index 0.8s ease
 
-    .media-card:hover &
+    // .media-card:hover &
     .media-card:focus &
     .media-card--focused &
         opacity 1
@@ -161,14 +176,18 @@
     flex-wrap wrap
     padding 0
     margin 0
+    margin-top -2.5px
     margin-left -2.5px
+    margin-bottom -2.5px
     margin-right -2.5px
 
 .media-card__controls-item  // li
     list-style none
     text-align center
     flex-grow 1
+    margin-top 2.5px
     margin-right 2.5px
+    margin-bottom 2.5px
     margin-left 2.5px
 
 
@@ -211,6 +230,40 @@
             color $c_dark
             background-color $c_light
 
+    &.media-card__controls-button--contrast
+        padding-left 16.84%
+        padding-right 16.79%
+        background-color $c_contrast
+        color $c_white
+
+        &:hover
+        &:focus
+            background-color $c_contrast-2
+            text-decoration none
+
+        &:active
+            color $$c_white-darkened
+            background-color $c_contrast-5
+
+    &.media-card__controls-button--bright
+        padding-left 16.84%
+        padding-right 16.79%
+        background-color $c_bright
+        color $c_white
+
+        &:hover
+        &:focus
+            background-color $c_bright-dark
+            text-decoration none
+
+        &:active
+            color $c_white-darkened
+            background-color $c_bright-darkened
+
+.media-card__controls-button--small-icon
+    // width 25px
+    // overflow hidden
+
 
 .media-card__body
     padding-top 17px
@@ -224,6 +277,17 @@
     margin-bottom 15px
     color $c_dark-5
 
+.media-card__body-link
+    fontHvMedium16_24()
+    display block
+    text-align right
+    color $c_dark-4
+    text-decoration none
+
+    &:focus
+    &:hover
+        color $c_dark-2
+        text-decoration underline
 
 .media-card__footer
     padding-left 25px

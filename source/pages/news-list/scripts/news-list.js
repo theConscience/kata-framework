@@ -74,6 +74,7 @@ var CONFIG_PAGE_NEWS_LIST = (function (settings, utils, baseConfig, subConfig, $
   initNewsSlider(CONFIGURATION.components.newsSlider); // news slider initialization
   initShiftablePanel(CONFIGURATION.components.shiftablePanel); // shiftable filters panel initialization
   initMediaCardActions(CONFIGURATION.components.mediaCard); // media-card actions initialization
+  initMediaCardTitleHyphens(); // hyphenation of news media cards title content initialization
   initMediaCardBodyHyphens(); // hyphenation of news media cards body content initialization
   // initPuzzledList() должен вызываться после initMediaCardBodyHyphens() потому что последний
   // пересчитывает размеры карточек новостей, а первый использует эти размеры в рассчётах.
@@ -542,6 +543,10 @@ var CONFIG_PAGE_NEWS_LIST = (function (settings, utils, baseConfig, subConfig, $
 
   }
   // end of media-card actions scripts
+
+  function initMediaCardTitleHyphens() {
+    $('.media-card__title').hyphenate('ru');
+  }
 
   function initMediaCardBodyHyphens() {
     $('.media-card__body p').hyphenate('ru');

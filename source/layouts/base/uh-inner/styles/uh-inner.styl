@@ -985,6 +985,10 @@ $$site-search-font
         border-right 1px solid $c_light
         flex-grow 1
 
+.main-nav__item--xs
+    @media (min-width $xs + 1px)
+        display none
+
 .main-nav__link  // a
     fontHvLight16_24()
     position relative
@@ -996,6 +1000,7 @@ $$site-search-font
     padding-right 15px
     color $c_dark
     outline none
+    cursor pointer
     text-decoration none
     transition color 0.2s ease, background-color 0.4s ease
 
@@ -1031,6 +1036,18 @@ $$site-search-font
     &:active
         background-color transparent
 
+
+.main-nav__link--uh-home
+    &::before
+        width 26px
+        height 24px
+        background-image url(../images/bg-uh-logo--small.png)
+
+.main-nav__link--ut-home
+    &::before
+        width 26px
+        height 24px
+        background-image url(../images/bg-ut-logo--small.png)
 
 .main-nav__link--company-profile
     &::before
@@ -1288,6 +1305,9 @@ $$site-search-font
             background-color $c_bright
             content '+' attr(data-items-count)
 
+        &[data-items-count="0"]::after
+            display none
+
         .actions-nav--collapsed &
             padding-left 60px
             padding-top 13px
@@ -1311,6 +1331,9 @@ $$site-search-font
                 padding 1px 3px
                 font-size 10px
                 background-color $c_light-5
+
+            &[data-items-count="0"]::after
+                display none
 
     .actions-nav__item--bright &
         fontHvLight16_21()

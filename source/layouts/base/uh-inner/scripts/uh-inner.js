@@ -234,6 +234,7 @@ var CONFIG_BASE_UH_INNER = (function (settings, utils, $) {
           COLLAPSED_MAIN_MENU: 'main-nav--collapsed',
           COLLAPSED_ACTIONS_MENU: 'actions-nav--collapsed',
           EXTENDED_SITE_SEARCH: 'site-search--extended',
+          EXTENDED_SITE_MESSAGES: 'site-messages--extended',
           EXTENDED_FOOTER: 'uh-inner-footer--extended'
           // components
           // EXTENDED_SLIDER: 'slider--extended'
@@ -553,6 +554,7 @@ var CONFIG_BASE_UH_INNER = (function (settings, utils, $) {
     // var mainMenu = uhInnerPage.querySelector('.uh-inner-page__aside');
     // var mainMenuToggleButton = uhInnerPage.querySelector('.uh-inner-aside__toggle');
     var siteSearch = document.querySelector('.site-search');
+    var siteMessages = document.querySelector('.site-messages');
     var pageAside = uhInnerPage.querySelector('.uh-inner-aside');
     var mainMenuToggleButton = uhInnerPage.querySelector('.uh-inner-aside__toggle');
     var mainMenu = uhInnerPage.querySelector('.main-nav');
@@ -610,6 +612,7 @@ var CONFIG_BASE_UH_INNER = (function (settings, utils, $) {
       var mainNavIsCollapsed = mainMenu.classList.contains(config.MODIFIERS.COLLAPSED_MAIN_MENU);
       var actionsNavIsCollapsed = actionsMenu.classList.contains(config.MODIFIERS.COLLAPSED_ACTIONS_MENU);
       var siteSearchIsExtended = siteSearch.classList.contains(config.MODIFIERS.EXTENDED_SITE_SEARCH);
+      // var siteMessagesIsExtended = siteMessages.classList.contains(config.MODIFIERS.EXTENDED_SITE_MESSAGES);
       var pageFooterIsExtended = pageFooter.classList.contains(config.MODIFIERS.EXTENDED_FOOTER);
       if (
         pageIsExtended &&
@@ -637,6 +640,9 @@ var CONFIG_BASE_UH_INNER = (function (settings, utils, $) {
         uhInnerPage.publish('mainMenu:toggle/extend/start');
         uhInnerPage.classList.remove(config.MODIFIERS.EXTENDED_PAGE);
         siteSearch.classList.remove(config.MODIFIERS.EXTENDED_SITE_SEARCH);
+        if (siteMessages) {
+          siteMessages.classList.remove(config.MODIFIERS.EXTENDED_SITE_MESSAGES);
+        }
         pageAside.classList.remove(config.MODIFIERS.COLLAPSED_ASIDE);
         mainMenu.classList.remove(config.MODIFIERS.COLLAPSED_MAIN_MENU);
         actionsMenu.classList.remove(config.MODIFIERS.COLLAPSED_ACTIONS_MENU);
@@ -654,6 +660,9 @@ var CONFIG_BASE_UH_INNER = (function (settings, utils, $) {
         uhInnerPage.publish('mainMenu:toggle/collapse/start');
         uhInnerPage.classList.add(config.MODIFIERS.EXTENDED_PAGE);
         siteSearch.classList.add(config.MODIFIERS.EXTENDED_SITE_SEARCH);
+        if (siteMessages) {
+          siteMessages.classList.add(config.MODIFIERS.EXTENDED_SITE_MESSAGES);
+        }
         pageAside.classList.add(config.MODIFIERS.COLLAPSED_ASIDE);
         mainMenu.classList.add(config.MODIFIERS.COLLAPSED_MAIN_MENU);
         actionsMenu.classList.add(config.MODIFIERS.COLLAPSED_ACTIONS_MENU);

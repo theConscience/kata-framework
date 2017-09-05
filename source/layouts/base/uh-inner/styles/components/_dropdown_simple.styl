@@ -99,6 +99,9 @@
         color $c_dull
         background-color transparent
 
+.dropdown-simple__button--active
+    background-color $c_dull-darkened
+
 .dropdown-simple__active-item  // span
     //
 
@@ -112,6 +115,8 @@
     position absolute
     z-index 1
     min-width 100%
+    max-height 175px
+    overflow-y overlay
     padding 0
     margin 0
     opacity 0
@@ -124,8 +129,9 @@
 
     .dropdown-simple--type--2 &
         top 0
-        overflow hidden
+        // overflow hidden
         height 0
+        text-align left
         transition top 0.4s ease-in, opacity 0.4s ease-in, height 0.4s ease
 
     .dropdown-simple--align--right &
@@ -144,6 +150,9 @@
 
 .dropdown-simple__list-item  // li
     list-style none
+
+.dropdown-simple__list-item--hidden
+    display none
 
 .dropdown-simple__link  // a
     fontHvMedium14_30()

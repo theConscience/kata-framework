@@ -31,7 +31,7 @@ block append scripts
 
 block content_left_side
     // news-list page navigation
-    nav.page-nav.page-nav.uh-inner-page__page-nav.uh-inner-page-nav
+    nav.page-nav.uh-inner-page__page-nav.uh-inner-page-nav
         ul.page-nav__menu
             li.page-nav__menu-item
                 a#page-nav__filter-reset.page-nav__menu-link.page-nav__menu-link--filter-reset(href='#', title='Сбросить фильтры')
@@ -222,7 +222,7 @@ block content
                 li.news-nav__menu-item
                     a.news-nav__menu-link(href='#', title='Выгрузки') Выгрузки
             .news-nav__dropdowns
-                .news-nav__dropdown-social-menu.dropdown-social
+                .news-nav__social-menu.dropdown-social
                     input#dropdown-social__open.dropdown-social__open(type='checkbox' name='dropdown-social')
                     label.dropdown-social__button(for='dropdown-social__open' title='open social dropdown' tabindex=0)
                         ul.dropdown-social__inner-list
@@ -308,6 +308,7 @@ block content
                         header.media-card__header
                             h1.media-card__title На гуаме проходит Летний Пляжный Фестиваль
                             span.media-card__date 23.08.2016
+                            span.media-card__ti-autorepost R
                         .media-card__item
                             img.media-card__image(src='./images/img-news-pic-1.jpg' srcset='' sizes='' alt='news article 1 image' width='263' height='')
                             .media-card__details
@@ -357,7 +358,7 @@ block content
                                 .media-card__details-content
                                     ul.media-card__social
                                         li.media-card__social-item.media-card__social-item--vk
-                                            span(title='likes count') 24
+                                            span.news__article-vk-likes(title='likes count') 24
                                             |/
                                             span.news__article-vk-reposts(title='reposts count') 8
                                             |/
@@ -400,9 +401,9 @@ block content
                                 .media-card__details-content
                                     ul.media-card__social
                                         li.media-card__social-item.media-card__social-item--vk
-                                            span(title='likes count') 24
+                                            span.news__article-vk-likes(title='likes count') 24
                                             |/
-                                            span(title='reposts count') 8
+                                            span.news__article-vk-reposts(title='reposts count') 8
                                             |/
                                             span.news__article-vk-user-cover(title='user cover') 3118
                                         li.media-card__social-item.media-card__social-item--fb
@@ -421,7 +422,9 @@ block content
                                     li.media-card__controls-item
                                         a.news__article-more.media-card__controls-button.media-card__controls-button--dark(href='#' title='Читать подробнее' tabindex='-1') Читать подробнее
                                     li.media-card__controls-item
-                                        a.news__article-repost.media-card__controls-button.media-card__controls-button--light(href='#' title='Перепост' tabindex='-1') Перепост
+                                        a.news__article-edit.media-card__controls-button.media-card__controls-button--small-icon.media-card__controls-button--contrast(href='#' title='Редактировать' tabindex='-1') Редактировать
+                                    li.media-card__controls-item
+                                        a.news__article-delete.media-card__controls-button.media-card__controls-button--small-icon.media-card__controls-button--bright(href='#' title='Удалить' tabindex='-1') Удалить
                         .media-card__body
                             p.
                                 Заинтригованный южным
@@ -447,9 +450,9 @@ block content
                                 .media-card__details-content
                                     ul.media-card__social
                                         li.media-card__social-item.media-card__social-item--vk
-                                            span(title='likes count') 24
+                                            span.news__article-vk-likes(title='likes count') 24
                                             |/
-                                            span(title='reposts count') 8
+                                            span.news__article-vk-reposts(title='reposts count') 8
                                             |/
                                             span.news__article-vk-user-cover(title='user cover') 3118
                                         li.media-card__social-item.media-card__social-item--fb
@@ -489,9 +492,9 @@ block content
                                 .media-card__details-content
                                     ul.media-card__social
                                         li.media-card__social-item.media-card__social-item--vk
-                                            span(title='likes count') 24
+                                            span.news__article-vk-likes(title='likes count') 24
                                             |/
-                                            span(title='reposts count') 8
+                                            span.news__article-vk-reposts(title='reposts count') 8
                                             |/
                                             span.news__article-vk-user-cover(title='user cover') 3118
                                         li.media-card__social-item.media-card__social-item--fb
@@ -521,19 +524,20 @@ block content
                                 li.card-options__item.card-options__item--comments(title='comments') 7
                                 li.card-options__item.card-options__item--likes(title='likes') 18
                 li.condensed-list__item.js-puzzled-list__item
-                    article.news__article.media-card(data-news-id='6' data-news-video='false' tabindex='0')
+                    article.news__article.media-card.media-card--tall(data-news-id='6' data-news-video='false' tabindex='0')
                         header.media-card__header
                             h1.media-card__title На Гуаме проходит Летний Пляжный Фестиваль
                             span.media-card__date 23.08.2016
+                            span.media-card__ti-autorepost R
                         .media-card__item
                             img.media-card__image(src='./images/img-news-pic-6.jpg' srcset='' sizes='' alt='news article 6 image' width='263' height='')
                             .media-card__details
                                 .media-card__details-content
                                     ul.media-card__social
                                         li.media-card__social-item.media-card__social-item--vk
-                                            span(title='likes count') 24
+                                            span.news__article-vk-likes(title='likes count') 24
                                             |/
-                                            span(title='reposts count') 8
+                                            span.news__article-vk-reposts(title='reposts count') 8
                                             |/
                                             span.news__article-vk-user-cover(title='user cover') 3118
                                         li.media-card__social-item.media-card__social-item--fb
@@ -552,7 +556,9 @@ block content
                                     li.media-card__controls-item
                                         a.news__article-more.media-card__controls-button.media-card__controls-button--dark(href='#' title='Читать подробнее' tabindex='-1') Читать подробнее
                                     li.media-card__controls-item
-                                        a.news__article-repost.media-card__controls-button.media-card__controls-button--light(href='#' title='Перепост' tabindex='-1') Перепост
+                                        a.news__article-edit.media-card__controls-button.media-card__controls-button--light(href='#' title='Редактировать' tabindex='-1') Редактировать
+                                    li.media-card__controls-item
+                                        a.news__article-delete.media-card__controls-button.media-card__controls-button--light(href='#' title='Удалить' tabindex='-1') Удалить
                         .media-card__body
                             p.
                                 White Summer – фестиваль,
@@ -575,11 +581,11 @@ block content
                                 .media-card__details-content
                                     ul.media-card__social
                                         li.media-card__social-item.media-card__social-item--vk
-                                            span(title='likes count') 24
+                                            span.news__article-vk-likes(title='likes count') 24
                                             |/
-                                            span(title='reposts count') 8
+                                            span.news__article-vk-reposts(title='reposts count') 8
                                             |/
-                                            span(title='user cover') 3118
+                                            span.news__article-vk-user-cover(title='user cover') 3118
                                         li.media-card__social-item.media-card__social-item--fb
                                             span.news__article-fb-likes(title='likes count') 12
                                             |/
@@ -617,9 +623,9 @@ block content
                                 .media-card__details-content
                                     ul.media-card__social
                                         li.media-card__social-item.media-card__social-item--vk
-                                            span(title='likes count') 24
+                                            span.news__article-vk-likes(title='likes count') 24
                                             |/
-                                            span(title='reposts count') 8
+                                            span.news__article-vk-reposts(title='reposts count') 8
                                             |/
                                             span.news__article-vk-user-cover(title='user cover') 3118
                                         li.media-card__social-item.media-card__social-item--fb
@@ -651,3 +657,67 @@ block content
                                 li.card-options__item.card-options__item--comments(title='comments') 7
                                 li.card-options__item.card-options__item--likes(title='likes') 18
             a#load-more-news.news-list-content__news-load-button.btn.btn--type--2(href='' title='Загрузить ещё') Загрузить ещё
+
+
+block append templates
+    template#template--condensed-list-news-item
+        li.condensed-list__item.js-puzzled-list__item
+            article.news__article.media-card(data-news-id='' data-news-video='false' tabindex='0')
+                header.media-card__header
+                    h1.media-card__title
+                    span.media-card__date
+                .media-card__item
+                    img.media-card__image(src='' srcset='' sizes='' alt='' width='263' height='')
+                    .media-card__details
+                        .media-card__details-content
+                            ul.media-card__social
+                                li.media-card__social-item.media-card__social-item--vk
+                                    span.news__article-vk-likes(title='likes count')
+                                    |/
+                                    span.news__article-vk-reposts(title='reposts count')
+                                    |/
+                                    span.news__article-vk-user-cover(title='user cover')
+                                li.media-card__social-item.media-card__social-item--fb
+                                    span.news__article-fb-likes(title='likes count')
+                                    |/
+                                    span.news__article-fb-reposts(title='reposts count')
+                                    |/
+                                    span.news__article-fb-user-cover(title='user cover')
+                                li.media-card__social-item.media-card__social-item--inst
+                                    span.news__article-inst-likes(title='likes count')
+                                    |/
+                                    span.news__article-inst-reposts(title='reposts count')
+                                    |/
+                                    span.news__article-inst-user-cover(title='user cover')
+                        ul.media-card__controls
+                            li.media-card__controls-item
+                                a.news__article-more.media-card__controls-button.media-card__controls-button--dark(href='#' title='Читать подробнее' tabindex='-1') Читать подробнее
+                            li.media-card__controls-item
+                                a.news__article-repost.media-card__controls-button.media-card__controls-button--light(href='#' title='Перепост' tabindex='-1') Перепост
+                .media-card__body
+                    p
+                footer.media-card__footer
+                    ul.media-card__options-list.card-options
+                        li.card-options__item.card-options__item--comments(title='comments')
+                        li.card-options__item.card-options__item--likes(title='likes')
+
+    template#template--media-card-social
+        ul.media-card__social
+            li.media-card__social-item.media-card__social-item--vk
+                span(title='likes count')
+                |/
+                span(title='reposts count')
+                |/
+                span.news__article-vk-user-cover(title='user cover')
+            li.media-card__social-item.media-card__social-item--fb
+                span.news__article-fb-likes(title='likes count')
+                |/
+                span.news__article-fb-reposts(title='reposts count')
+                |/
+                span.news__article-fb-user-cover(title='user cover')
+            li.media-card__social-item.media-card__social-item--inst
+                span.news__article-inst-likes(title='likes count')
+                |/
+                span.news__article-inst-reposts(title='reposts count')
+                |/
+                span.news__article-inst-user-cover(title='user cover')
