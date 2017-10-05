@@ -36,6 +36,8 @@ var path = require('path'),
     var fixed_file_path = checkExtension(file_path, default_ext);
     console.log('!!!!!!!! fixed_file_path === ' + fixed_file_path);
 
+    // { TODO: next string fails if *.jade files has extends directive and CRLF string endings. Works only with LF. }
+
     var f = fs.readFileSync(fixed_file_path, 'utf8');
     var file_strings_data = f.split('\n');
     var extends_in_file = [];
