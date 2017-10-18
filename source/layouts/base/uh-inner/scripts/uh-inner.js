@@ -358,6 +358,10 @@ var CONFIG_BASE_UH_INNER = (function (settings, utils, $) {
       fix: false
     };
     var scrollableElement = document.querySelector('.' + config.TITLE);
+    if (!scrollableElement) {
+      console.warn('There is no scrollableElement:', '.' + config.TITLE);
+      return;
+    }
     var scrollableElementParent = scrollableElement.parentElement;
 
 

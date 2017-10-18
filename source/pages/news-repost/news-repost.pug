@@ -1,0 +1,111 @@
+extends ../../layouts/sub/sub-3/sub-3
+
+include ./blocks/_mixins
+
+
+block append head
+    //- - var pageName = 'news-repost';  // закомментил, иначе она будет влиять на классы body, header, main, aside и footer
+    - var pageTitle = 'News repost page template';
+    - var asideClasses = '';
+    - var mainClasses = 'news-repost';
+
+
+block append links
+    link(href='./css/page_css.css' rel='stylesheet')
+    link(href='./css/page_style.css' rel='stylesheet')
+    //- link(href='./css/page_css.min.css' rel='stylesheet')
+    //- link(href='./css/page_style.min.css' rel='stylesheet')
+
+
+block append scripts
+    script(src='./js/page_js.js')
+    //- script(src='./js/page_js.min.js')
+
+
+block content_left_side
+    //
+
+
+block append content
+    section.news-repost
+        .news-repost__inner
+            button.news-repost__close
+            form.news-repost__form
+                header.news-repost__part.news-repost__part--top.news-repost__part--limited.news-repost__urgency
+                    p.news-repost__title Вы хотите перепостить эту новость:
+                    .flex.flex-main-between.flex-no-wrap
+                        .custom-radio.custom-radio--t2
+                            input#custom-radio__repost-now.custom-radio__input(type="radio" name="repost_urgency" value="now")
+                            label.custom-radio__label(for="custom-radio__repost-now") Сейчас
+                        .custom-radio.custom-radio--t2
+                            input#custom-radio__repost-later.custom-radio__input(type="radio" name="repost_urgency" value="later" checked="true")
+                            label.custom-radio__label(for="custom-radio__repost-later") Позже
+                .news-repost__part.news-repost__date
+                    .custom-radio.custom-radio--t2
+                        input#custom-radio__repost-tomorrow.custom-radio__input(type="radio" name="repost_date" value="tomorrow")
+                        label.custom-radio__label(for="custom-radio__repost-tomorrow") Перепостить завтра
+                    .custom-radio.custom-radio--t2
+                        input#custom-radio__repost-after-tomorrow.custom-radio__input(type="radio" name="repost_date" value="after tomorrow")
+                        label.custom-radio__label(for="custom-radio__repost-after-tomorrow") Перепостить послезавтра
+                    .custom-radio.custom-radio--t2
+                        input#custom-radio__repost-week-later.custom-radio__input(type="radio" name="repost_date" value="week later")
+                        label.custom-radio__label(for="custom-radio__repost-week-later") Перепостить через неделю
+                    .flex.flex-main-between.flex-no-wrap
+                        .custom-radio.custom-radio--t2
+                            input#custom-radio__repost-select-date.custom-radio__input(type="radio" name="repost_date" value="custom date" checked="true")
+                            label.custom-radio__label(for="custom-radio__repost-select-date") Другая дата
+                        button.news-repost__date-selected 17.09.2016
+                .news-repost__part.news-repost__part--darkened.news-repost__calendar
+                    .calendar.calendar--t1
+                .news-repost__part.news-repost__part--limited.news-repost__time
+                    p.news-repost__title Выберите время для перепоста:
+                    .custom-radio.custom-radio--t2
+                        input#custom-radio__repost-morning.custom-radio__input(type="radio" name="repost_time" value="08-14")
+                        label.custom-radio__label(for="custom-radio__repost-morning") С 08 до 14 часов
+                    .custom-radio.custom-radio--t2
+                        input#custom-radio__repost-day.custom-radio__input(type="radio" name="repost_time" value="14-20")
+                        label.custom-radio__label(for="custom-radio__repost-day") С 14 до 20 часов
+                    .custom-radio.custom-radio--t2
+                        input#custom-radio__repost-night.custom-radio__input(type="radio" name="repost_time" value="20-08")
+                        label.custom-radio__label(for="custom-radio__repost-night") С 20 до 08 часов
+                    .custom-radio.custom-radio--t2
+                        input#custom-radio__repost-select-time.custom-radio__input(type="radio" name="repost_time" value="custom time")
+                        label.custom-radio__label(for="custom-radio__repost-select-time") Своё время
+                    .flex.flex-main-between.flex-no-wrap
+                        .custom-timepicker.custom-timepicker--hours
+                            button.custom-timepicker__prev
+                            input.custom-timepicker__input.news-repost__hours
+                            ul.custom-timepicker__backdrop
+                                - var hour = 0;
+                                while hour < 24
+                                    li.custom-timepicker__backdrop-item= hour++
+                            button.custom-timepicker__next
+                            .custom-timepicker__description Часов
+                        .custom-timepicker.custom-timepicker--minutes
+                            button.custom-timepicker__prev
+                            input.custom-timepicker__input.news-repost__minutes
+                            ul.custom-timepicker__backdrop
+                                - var minute = 0;
+                                while minute < 60
+                                    li.custom-timepicker__backdrop-item #{minute++}
+                            button.custom-timepicker__next
+                            .custom-timepicker__description Минут
+                        .custom-timepicker.custom-timepicker--timezone
+                            button.custom-timepicker__prev
+                            input.custom-timepicker__input.news-repost__timezone
+                            ul.custom-timepicker__backdrop
+                                - var timeZone = 1;
+                                while timeZone <= 12
+                                    li.custom-timepicker__backdrop-item +#{timeZone++} часа
+                            button.custom-timepicker__next
+                            .custom-timepicker__description Часовой пояс
+                .news-repost__part.news-repost__social-networks
+                    p.news-repost__title Выберите сети для перепоста:
+                    ul.news-repost__networks-list.networks-list
+                        li.networks-list__item
+                            each suffix, sn in {instagram: '--inst', facebook: '--fb', twitter: '--twit', vkontakte: '--vk'}
+                                a.networks-list__link(class="networks-list__link" + suffix, href="#") #{sn}
+
+
+                footer.news-repost__part.news-repost__part--bottom
+                    a.news-repost__accept.btn.btn--dull.btn--big(href="#") Перепост
