@@ -1,15 +1,15 @@
 # to do:
 
-- папки баз и сабов в source лежат внутри папки страниц - это неудобно, нужно вынести их на один уровень с pages. Но чтобы исправить - нужно будет переписать много путей в .jade / .styl файлах, и возможно ещё где-то в .js (harvestBoundedAssets.js, gulpfile.js, smartDestRename.js)  `+++`
-  - jade  `+++`
+- папки баз и сабов в source лежат внутри папки страниц - это неудобно, нужно вынести их на один уровень с pages. Но чтобы исправить - нужно будет переписать много путей в .pug / .styl файлах, и возможно ещё где-то в .js (harvestBoundedAssets.js, gulpfile.js, smartDestRename.js)  `+++`
+  - pug  `+++`
     - extends (extends):
         изменились только для страниц (pages/pagename)
           (у блоков и сабов связь осталась такая же как и была, т.к. их взаимное расположение не изменилось)
         extends ../../layouts/sub/name/name -> ../../layouts/sub/name/name
         т.е. теперь нужно подниматься на один уровень выше
     - includes (include):
-        изменились только для миксинов страниц (pages/pagename/blocks/_mixins.jade_):
-        include ../../layouts/sub/sub-2/blocks/_mixins.jade_ -> ../../../layouts/sub/sub-2/blocks/_mixins.jade_
+        изменились только для миксинов страниц (pages/pagename/blocks/_mixins.pug_):
+        include ../../layouts/sub/sub-2/blocks/_mixins.pug_ -> ../../../layouts/sub/sub-2/blocks/_mixins.pug_
         тоже нужно подниматься на один уровень выше
   -stylus  `+++`
     - imports (@import):
@@ -56,13 +56,13 @@
 - добавить rupture примеси, bem-jade и другие приблуды, из CSSSR-Generator'а
 
 - подумать как можно использовать Компоненты  `?????`
-  - пока вариант 1 (тупой) - добавлять jade(html)-реализацию через include в
+  - пока вариант 1 (тупой) - добавлять pug(html)-реализацию через include в
     нужном месте конкретной страницы, а для подключения статики компонента -
     создать файлы с линками/скриптами, которые в свою очередь будут ссылаться
     на правильное расположение ресурсов Компонента в папке build/components/componentname
     (т.е. не копировать ассеты компонента внутрь папки Страницы) и добавить эти файлы с
-    линками через инклюды в jade. Для каждого компонента будет два файла:
-    componentname-script.jade и componentname-link.jade. Которые будут лежать в
+    линками через инклюды в pug. Для каждого компонента будет два файла:
+    componentname-script.pug и componentname-link.pug. Которые будут лежать в
     папке source/componentname/blocks
 
 - разобраться с иконками в head, сделать для них таск

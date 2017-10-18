@@ -1,0 +1,944 @@
+extends ../../layouts/sub/sub-presentation/sub-presentation
+
+include ./blocks/_mixins.pug
+
+
+block append head
+    - var pageName = 'agents';
+    - var pageTitle = 'Agents page template';
+    - var bodyClasses = '';
+    - var mainClasses = ' is-scalable';
+
+
+block append links
+    //- link(href='https://fonts.googleapis.com/css?family=Roboto:400,700,900&subset=cyrillic' rel='stylesheet')
+    //- link(href='./css/page_css.css' rel='stylesheet')
+    link(href='./css/page_style.css' rel='stylesheet')
+    //- link(href='./css/page_css.min.css' rel='stylesheet')
+    //- link(href='./css/page_style.min.css' rel='stylesheet')
+
+
+block append scripts
+    script(src='./js/page_jq.js')
+    script(src='./js/page_js.js')
+    //- script(src='./js/page_js.min.js')
+
+
+block append content
+    //- h1.test TEST MEDIA QUERIES
+    header.presentation-content__header.presentation-content__header--primary.agents-content__header.agents-content__header--primary
+        div#video-block.presentation-content__video-block.video-block
+            span.video-block__play-button Смотреть видео
+        h1.presentation-content__title.presentation-content__title--main Агентам и туроператорам
+        h1.presentation-content__title.presentation-content__title--secondary Бесплатные сервисы
+    p.presentation-content__mission.
+        Мы – <mark class="primary">Бесплатный Глобальный Туристический Справочник</mark>  для всех участников туристического
+        рынка – авиакомпаний и их представительств, отелей, туроператоров, агентств,  офисов по туризму,
+        объектов культуры, медицинского туризма и сервисных компаний из различных стран. Платформа
+        создана как эффективный инструмент вашего продвижения, а также для повышения охвата и
+        унификации туристического рынка во всех странах, для скоростного обмена информацией и
+        удобного доступа из любой точки мира в любой момент времени к базе самых свежих новостей – от
+        отелей, агентств, авиакомпаний и офисов по туризму. Большой туристический справочник на всех
+        языках мира!
+
+    section.default-section.presentation-content__search-and-promo-tools
+        header.default-section__header.default-section__header--decorated
+            span.additional-text Раздел
+            h2.default-section__title Инструменты поиска и<br> продвижения
+        ul.features-list.presentation-content__tools.text-center
+            li.feature-item.feature-item--big-icon.feature-item--fast-search.features-list__item
+                h3.feature-item__title Быстрый поиск
+                p.feature-item__content.
+                    Справочник  поможет найти
+                    Вас и ваши материалы из любой
+                    точки мира! Поиск ведется по
+                    имени компании,  по стране, по
+                    типу деятельности компании. Все
+                    внесенные Вами материалы сразу
+                    отображаются на профиле компании,
+                    который доступен всем
+                    нашим пользователям
+            li.feature-item.feature-item--big-icon.feature-item--representation.features-list__item
+                h3.feature-item__title Представительство
+                p.feature-item__content.
+                    Любая компания внутри
+                    Справочника представлена рядом
+                    разделов: профайл, новости,
+                    сервисы, файлы для работы и
+                    скачивания, коллекция публикаций,
+                    рейтинг компании
+            li.feature-item.feature-item--big-icon.feature-item--usability.features-list__item
+                h3.feature-item__title Удобство
+                p.feature-item__content.
+                    Покажите вашим
+                    существующим и потенциальным
+                    партнерам все, чем бы Вы
+                    хотели с ними поделиться: вся
+                    информация представлена
+                    графически и наглядно!
+            li.feature-item.feature-item--big-icon.feature-item--partnership.features-list__item
+                h3.feature-item__title Партнёрство
+                p.feature-item__content.
+                    Потенциальные партнеры
+                    могут найти Вас внутри
+                    Справочника и выслать запрос на
+                    скачивание всех необходимых для работы
+                    материалов. Одобрите
+                    запрос и поделитесь своими
+                    материалами
+            li.feature-item.feature-item--big-icon.feature-item--privacy.features-list__item
+                h3.feature-item__title Приватность
+                p.feature-item__content.
+                    Три настройки видимости
+                    ваших материалов: приватные или
+                    для сотрудников, для выделенных
+                    партнеров и агентств, для всех
+                    (публичные).
+            li.feature-item.feature-item--big-icon.feature-item--mediality.features-list__item
+                h3.feature-item__title Медийность
+                p.feature-item__content.
+                    Будьте еще ближе к вашим
+                    партнерам и новым
+                    потенциальным агентам!
+
+    section.media-block.agents-content__company-news
+        header.media-block__header
+            span.additional-text Блок
+            h2.media-block__title Новости вашей компании
+        .media-block__content
+            p.
+                Время рассылок по электронной почте, участия в выставках или печати дорогих буклетов / каталогов
+                стремительно  уступает место перед  более высокотехнологичными, удобными, быстрыми и
+                недорогими инструментами, такими как интернет и мгновенная  публикация новостей сразу по нескольким
+                каналам интернета – в системах, на сайте, в соцсетях.
+            p.
+                Всего за один клик любую вашу новость могут забрать к себе на сайт и в соцсети все ваши партнеры
+                для активного продвижения ваших отелей или вашей представительской компании, страны,
+                региона, выступая автором этих новостей.
+
+    ul.features-list.features-list--rounded-icons.presentation-content__news-features.text-center
+        li.feature-item.feature-item--instant-publication.features-list__item
+            h3.feature-item__title Мгновенная публикация
+            p.feature-item__content.
+                По всем вашим каналам
+                маркетинга из нашей  плат-
+                формы: на ваш сайт, в вашу
+                RSS ленту, во все социальные
+                сети – Фейсбук, Инстаграм,
+                Твиттер, Вконтакте
+        li.feature-item.feature-item--no-spam.features-list__item
+            h3.feature-item__title Нет <span class="text-uppercase">спам</span>у
+            p.feature-item__content.
+                Новость не попадает в <span class="text-uppercase">спам</span>, ее
+                не только видят и читают, но и
+                могут ею поделиться за один
+                клик - на сайте, в своих соцсетях
+                и что важно для ваших партнеров
+                - под своим авторством
+        li.feature-item.feature-item--news-channels.features-list__item
+            h3.feature-item__title 2 канала новостей
+            p.feature-item__content.
+                Вы получаете сразу два канала
+                распространения новостей – для
+                рынка профессионалов B2B или
+                для рынка прямых
+                путешественников B2C.
+                Вы сами решаете, куда
+                отправить новость и сами
+                выступаете автором ваших новостей!
+        li.feature-item.feature-item--audience-coverage.features-list__item
+            h3.feature-item__title Охват аудитории
+            p.feature-item__content.
+                На базе охвата аудитории к
+                каждой вашей новости и по всем
+                социальным сетям – Фейсбук,
+                Инстаграм, ВКонтакте, Твиттер Вы
+                можете проанализировать, какая
+                ваша новость популярна и активно
+                распространяется вашими партнерами
+        li.feature-item.feature-item--carry-news.features-list__item
+            h3.feature-item__title Продающие новости
+            p.feature-item__content.
+                Новости внутри Unihotel и на
+                Travelinfo – это исключительно
+                «продающие» новости, которые
+                продвигают сервисы вашей
+                авиакомпании и ее направления
+                партнерам и клиентам. Вы сами
+                выступаете автором новостей.
+                Максимально эффективные
+                блоки информации на
+                любую тему
+        li.feature-item.feature-item--multilanguage.features-list__item
+            h3.feature-item__title Мультиязычность
+            p.feature-item__content.
+                Вы можете использовать любой
+                язык мира для ваших публикаций и
+                продвижения!
+
+    section.presentation-content__publications-collection.agents-content__publications-collection.custom-banner.custom-banner--v2
+        header.custom-banner__header
+            span.custom-banner__help-text Блок
+            h2.custom-banner__title.
+                <span class="primary-text">Коллекция публикаций</span>
+                <span class="secondary-text">для совместного продвижения</span>
+        .custom-banner__content
+            p.
+                Создайте собственную коллекцию постов о вашей авиакомпании, ее особенностях и
+                «фишках» для максимально быстрого и эффективного  продвижения среди продающих
+                агентов. Любой пользователь интернета сможет не только прочитать ее на профайле
+                вашей компании, но и после регистрации настроить все ваши публикации для перепоста
+                на свой сайт и в свои социальные сети с помощью создания очереди публикаций.
+            a#modal__open--inner.btn.btn--v8(href='#') Подробнее
+
+    section.default-section.presentation-content__company-profile.agents-content__company-profile.text-center
+        header.default-section__header
+            h2.default-section__title Профайл компании
+        section.media-block.default-section__content.text-left
+            header.media-block__header.media-block__header--cover
+            .media-block__content
+                p.
+                    <b class="important-text">Мини-сайт вашей компании</b> на трех языках: английском, русском и китайском. Страница, по
+                    которой вашу компанию могут легко найти внутри нашего <b class="important-text">Глобального Туристического Справочника</b>
+                    и которая аккумулирует все сведения, помеченные в системе «для всех»: описание вашей компании,
+                    лого и главное фото, ваши сервисы, туры и экскурсии, новости компании, коллекция публикаций,
+                    публичные контакты для связи, рабочие файлы для скачивания, пресс-релизы.
+                p.
+                    Тем самым, профайл помогает Вам продвигать ваши услуги и сервисы еще эффективнее.
+                    Профайл доступен любому пользователю интернета!
+        ul.box-list
+            li.box-list__item.bordered-box.bordered-box--v1
+                a.box-list__item-link(href='#')
+                    img.bordered-box__image.img-responsive(src='./images/img-logo-ada-tours.jpg' alt='ada tours')
+            li.box-list__item.bordered-box.bordered-box--v1
+                a.box-list__item-link(href='#')
+                    img.bordered-box__image.img-responsive(src='./images/img-logo-SN-rus.jpg' alt='sn rus')
+            li.box-list__item.bordered-box.bordered-box--v1
+                a.box-list__item-link(href='#')
+                    img.bordered-box__image.img-responsive(src='./images/img-logo-nkar.jpg' alt='nkar')
+            li.box-list__item.bordered-box.bordered-box--v1
+                a.box-list__item-link(href='#')
+                    img.bordered-box__image.img-responsive(src='./images/img-logo-russ-tico.jpg' alt='russ tico')
+
+    section.default-section.agents-content__bids-and-booking.agents-content__client-documents-package
+        header.default-section__header
+            span.additional-text Раздел
+            h2.default-section__title.
+                Работа с заявками и бронированиями.
+                Пакет документов для клиента
+        ul.bounded-list.default-section__content
+            li.bounded-list__item.bounded-list__item--monitor-icon
+                p.bounded-list__item-content.
+                    Получайте заявки с вашего сайта от
+                    клиентов и субагентов. Заведите их в
+                    нашей удобной автоматизированной
+                    форме заявки со всеми деталями
+                    поездки: страна, данные клиента,
+                    перелёты, трансферы, туры, экскурсии и
+                    сервисы по программе, виза
+            li.bounded-list__item.bounded-list__item--discussion-icon
+                p.bounded-list__item-content.
+                    Сквозная заявка поступает по всем
+                    каналам от субагентов до
+                    принимающей компании
+            li.bounded-list__item.bounded-list__item--user-bubble-icon
+                p.bounded-list__item-content.
+                    Каждая заявка имеет ряд статусов
+                    запроса: спросить наличие, пре-букинг,
+                    подтвердить, оплачено и пр.
+            li.bounded-list__item.bounded-list__item--chat-bubbles-icon
+                p.bounded-list__item-content.
+                    Чатрум по каждой заявке: не теряйте
+                    переписку к каждой заявке и группе
+            li.bounded-list__item.bounded-list__item--documents-icon
+                p.bounded-list__item-content.
+                    Пакет документов: договор, счета,
+                    подтверждения, ваучеры на ваших
+                    фирменных бланках
+            li.bounded-list__item.bounded-list__item--user-link-icon
+                p.bounded-list__item-content.
+                    Линк-ссылка для клиента на его личный
+                    кабинет: все доступно клиенту из
+                    любой точки мира
+
+    section.default-section.agents-content__hotel-prices-transfers-excursions-tours
+        header.default-section__header
+            span.additional-text Раздел
+            h2.default-section__title.
+                Динамические прайсы на отели, трансферы,
+                Экскурсии и туры
+        .text-slat.default-section__content.text-center
+            p.text-slat__content.
+                Начните работать с динамическими, «живыми»  и подвижными ценами на номера в отелях и на ваши
+                услуги: трансферы, туры, экскурсии, сервисы. Внесите в ваш ЛК основные параметры, от которых будет
+                зависеть стоимость услуг: ежедневный курс валюты, СПО, бонусы, скидки сезона, тип транспорта, наличие
+                гида и пр. важные моменты при формировании цены и Вы сможете автоматически менять цены за один
+                клик для любого маркета или субагента.
+            ul.icons-list.icons-list--site-sections
+                li.icons-list__item.icon-list__item--hotels
+                    a.icons-list__item-link(href='#' title='link to ') Отели
+                li.icons-list__item.icons-list__item--tours
+                    a.icons-list__item-link(href='#' title='link to ') Туры
+                li.icons-list__item.icons-list__item--excursions
+                    a.icons-list__item-link(href='#' title='link to ') Экскурсии
+                li.icons-list__item.icons-list__item--services
+                    a.icons-list__item-link(href='#' title='link to ') Услуги
+                li.icons-list__item.icons-list__item--transfers
+                    a.icons-list__item-link(href='#' title='link to ') Трансферы
+
+    section.default-section.presentation-content__prices-and-contacts
+        header.default-section__header.default-section__header--decorated
+            span.additional-text Блок
+            h2.default-section__title Работа с прайсами и<br> контактами
+        ul.features-list.features-list--accurate.default-section__content
+            li.feature-item.feature-item--accurate.feature-item--easy-prices-filling.features-list__item
+                h3.feature-item__title.
+                    Легкость в заполнении
+                    прайсов и отелей.
+                p.feature-item__content.
+                    Обычные цены, специальные
+                    предложения, бонусы и правила
+                    политики отмен/штрафов
+            li.feature-item.feature-item--accurate.feature-item--pricings.features-list__item
+                h3.feature-item__title.
+                    Возможность создавать
+                    прайсинги для разных
+                    маркетов с разными
+                    ценами.
+                p.feature-item__content.
+                    Никаких ограничений в
+                    количестве подрядчиков или
+                    партнёров
+            li.feature-item.feature-item--accurate.feature-item--instant-online-calculation.features-list__item
+                h3.feature-item__title.
+                    Немедленный и точный
+                    онлайн расчёт.
+                p.feature-item__content.
+                    Со всеми бонусами и специальными
+                    предложениями, исходя из
+                    индивидуальных условий договора
+                    для всех агентов и субагентов до
+                    конечного потребителя.
+            li.feature-item.feature-item--accurate.feature-item--multicurrency-rates.features-list__item
+                h3.feature-item__title Ставки в любой валюте.
+                p.feature-item__content.
+                    Можно ставить ставки в любой
+                    валюте, какой Вам удобно, и
+                    установить наиболее выгодные
+                    курсы валют на каждый день.
+            li.feature-item.feature-item--accurate.feature-item--partners-informing.features-list__item
+                h3.feature-item__title.
+                    Оперативное
+                    информирование всех
+                    партнёров
+                p.feature-item__content.
+                    обо всех новых SPOs и продлении
+                    контракта.
+            li.feature-item.feature-item--accurate.feature-item--automatic-check.features-list__item
+                h3.feature-item__title.
+                    Автоматическая проверка
+                    неверных или не полных
+                    сведений в контрактах.
+                p.feature-item__content.
+                    Система позволяет избежать потери
+                    и недоразумения при отправке
+                    условий договора,
+                    спецпредложений, прайсов и т.д
+                    через все цепи между отелем и
+                    клиентами/субагентами.
+
+    section.default-section.agents-content__automation
+        header.default-section__header
+            span.additional-text Блок
+            h2.default-section__title Автоматизация работы<br> туркомпании
+        ul.features-list.features-list--accurate.default-section__content
+            li.feature-item.feature-item--accurate.feature-item--automation.features-list__item
+                h3.feature-item__title.
+                    Полная автоматизация
+                    цепочки – «клиент -
+                    менеджер - бухгалтерия».
+                p.feature-item__content.
+                    Нашу платформу Вы можете
+                    использовать в офисе, дома, в
+                    дороге, везде, где есть доступ к
+                    интернету.
+            li.feature-item.feature-item--accurate.feature-item--access-rights-control.features-list__item
+                h3.feature-item__title.
+                    Различные права доступа
+                    для ваших сотрудников.
+                p.feature-item__content.
+                    Подключайте ваших сотрудников,
+                    давайте им различные права
+                    доступа и администрирования,
+                    создавайте финансовые центры и
+                    Вы сможете легко настроить ваш
+                    персональный туристический
+                    офис без утомительного
+                    использования десятка программ
+                    по учету, документообороту,
+                    бухгалтерии.
+            li.feature-item.feature-item--accurate.feature-item--clients-database.features-list__item
+                h3.feature-item__title.
+                    Базы данных клиентов.
+                p.feature-item__content.
+                    Ведите в вашем личном кабинете
+                    базы данных клиентов, составляйте
+                    заявки и брони, подтверждения,
+                    инвойсы, ваучеры, учитывайте
+                    финансы и многое другое.
+
+    .text-slat.text-slat--alternate.text-center.presentation-content__promo-text
+        p.text-slat__content.
+            <span class='important-text'>Платформа Unitravel</span> не ограничена только вашим офисом, она охватывает весь мир – в этом ее
+            принципиальное отличие от подобных локальных систем, она охватывает все туристические
+            компании мира, а также все отели. Это позволяет создавать базы данных, прайсы, пакеты
+            документов, спецпредложения, новости и всё необходимое в вашей работе, доступное для
+            любого вашего партнера или агента. Вы также получаете прямые ссылки на отель для ваших
+            клиентов из системы, чтобы не нужно было тратить время на поиски свежей информации по
+            отелю-описаниям комнат, фото, видео, программам отеля, сохранять и отправлять клиенту.
+            Актуальная информация будет всегда у Вас под рукой!
+
+    section.default-section.agents-content__services
+        header.default-section__header.default-section__header--diamond--primary
+            span.additional-text Блок
+            h2.default-section__title.text-uppercase Сервисы
+        .default-section__content
+            section.media-block.text-center
+                header.media-block__header.media-block__header--cover
+                .media-block__content
+                    p.
+                        Ваши партнёры не всегда знают возможности каждой страны, региона или вашей
+                        компании. Расскажите им, какие актуальные сервисы будущий клиент сможет приобрести
+                        по приезду или во время своего отдыха – будь то заказ букета цветов или СПА для двоих,
+                        романтическое оформление номера, торт или завтрак в постель… список может быть
+                        самым обширным! Важно донести до всех ваших партнеров и заказчиков, какие сервисы
+                        Вы можете предоставить в вашей стране, чтобы клиент смог с ними ознакомиться через
+                        вашего партнёра и забронировать их заранее или на месте, задать Вам нужные вопросы
+                        и обсудить детали выбора тех или иных услуг
+            h2.default-section__title-secondary Если Вы – принимающее туристическое агентство
+            ol.features-list.features-list--loose.features-list--diamond
+                li.features-list__item.feature-item.feature-item--loose.feature-item--diamond--secondary
+                    h3.feature-item__title.
+                        Блок выгрузки
+                        сервисов для ваших
+                        партнёров
+                    p.feature-item__content.
+                        C наценкой для ваших агентов и субагентов
+                        внутри Unihotel.Org
+                li.features-list__item.feature-item.feature-item--loose.feature-item--diamond--secondary
+                    h3.feature-item__title.
+                        Блок выгрузки
+                        сервисов для прямых
+                        путешественников
+                    p.feature-item__content.
+                        С наценкой и  выгрузкой на портал для прямых
+                        путешественников, которые будут проживать в
+                        вашем отеле и забронировали ваш отель
+                        напрямую.
+                        <br><br>
+                        А также для тех, кто уже живёт в вашем отеле
+                        или для тех, кто хочет сделать подарок друзьям
+                        или близким и не знает, как это сделать
+                        максимально быстро и на удобном ему языке!
+
+    article.unique-article.presentation-page__tripservice-club(data-unique-ribbon-text='скоро')
+        header.unique-article__header
+            h2.unique-article__header-title.unique-article__header-title--secondary.
+                Уникальный портал<br>
+                для прямых путешественников
+            h2.unique-article__header-title.unique-article__header-title--primary TripService Club
+        .unique-article__content
+            section.media-block.presentation-page__tripservice-club-media-block
+                .media-block__content.media-block__content--with-wallpaper
+                    p.
+                        Tripservice Club –это платформа, созданная по типу интернет-магазина для продажи ваших
+                        уникальных сервисов прямым путешественникам! Площадка агрегирует все ваши сервисы по нужным
+                        категориям – платные или бесплатные, рассказывает о них на нужном языке (актуальном для
+                        ваших продаж) и максимально эффективно представляет их в одном месте и в самой наглядной и
+                        современной форме подачи материала.
+                    p.
+                        Платформа позволяет Вам быть ближе к своему клиенту, благодаря удобной навигации, родному
+                        языка. Заказ любого сервиса становится приятным и легким действием, для которого не нужно
+                        знание языка, и которое не требует ознакомления с печатными материалами. Все делается
+                        буквально за пару кликов и максимально экономично по времени. Продвигайте и продавайте Ваши
+                        сервисы для клиента из любой точки мира, теперь это стало еще проще!
+                footer.media-block__footer.text-center
+                    b.media-block__primary-info Хотите узнать об открытии первым?
+                    p.media-block__secondary-info Введите свой электронный адрес
+                    form#make-subscription-form(action='' method='POST')
+                        .custom-input.custom-input--with-button.center-block
+                            input.custom-input__field.has-dynamic-placeholder(type='text' placeholder='E-mail')
+                            button.custom-input__button(type='submit') Ok
+            h2.unique-article__content-title
+                span.underlined-important Преимущества площадки
+            ol.features-list.features-list--complex-icons.presentation-content__tripservice-club-features.text-center
+                li.feature-item.feature-item--complex-icon.feature-item--accessibility.features-list__item
+                    p.feature-item__content.
+                        Более доступная и
+                        максимально дружелюбная
+                        форма донесения информации
+                        до конечного потребителя
+                        вашего сервиса, клиента,
+                        нежели книга сервисов, теле
+                        презентация или пакетов
+                        буклетов, к которым
+                        привыкли отели и принимающие
+                        операторы в своей работе
+                li.feature-item.feature-item--complex-icon.feature-item--multiplatformer.features-list__item
+                    p.feature-item__content.
+                        Приложение доступно
+                        для скачивания на
+                        Google Play
+                    a.feature-item__content-link(href='#' title='Tripservice club on Google Play')
+                        img.feature-item__content-image(src='./images/i-google-play.jpg' width='151' height='48' alt='Tripservice club on Google Play')
+                li.feature-item.feature-item--complex-icon.feature-item--multilingual.features-list__item
+                    p.feature-item__content.
+                        Стирает языковой
+                        барьер: авторизуясь в
+                        отельном интернете, клиент
+                        сразу попадает на
+                        приложение с сервисами на
+                        родном ему языке и может,
+                        не выходя из номера,
+                        выбрать завтрак на виллу/
+                        в номер или заказать трансфер/
+                        экскурсию, заказать в номер
+                        вино и фрукты или декорировать
+                        его цветами. Забронировать
+                        или сразу оплатить необходимый
+                        ему сервис, не снимая трубки
+                        телефона и не спускаясь
+                        на фронт деск
+                li.feature-item.feature-item--complex-icon.feature-item--tour-planner.features-list__item
+                    p.feature-item__content.
+                        Позволяет заблаговременно
+                        спланировать свое будущее
+                        путешествие тем, кто купил
+                        ваш отель на сайтах онлайн
+                        бронирования или подготовить
+                        сюрприз для близких или
+                        друзей, которые еще только
+                        собираются в ваш
+                        отель или страну
+                li.feature-item.feature-item--complex-icon.feature-item--handbook.features-list__item
+                    p.feature-item__content.
+                        Ваши партнеры,
+                        принимающие операторы,
+                        тоже не всегда могут верно и
+                        полно донести информацию о
+                        вашем отеле: его сервисах и
+                        возможностях. Они могут
+                        пользоваться этой платформой
+                        как справочником
+                li.feature-item.feature-item--complex-icon.feature-item--economy.features-list__item
+                    p.feature-item__content.
+                        Вы экономите ваши
+                        деньги: не нужно печатать
+                        буклеты, листовки и
+                        оптимизируете работу ваших
+                        сотрудников
+
+    section.default-section.agents-content__replies
+        header.default-section__header
+            span.additional-text Блок
+            h2.default-section__title Отзывы по отелям и авиакомпаниям
+            span.important-text для формирования рейтинга от профессионала
+        .default-section__content
+            ul.paired-comparison
+                li.paired-comparison__element.paired-comparison__element--first
+                    h3.paired-comparison__element-header Если Вы – отправляющий оператор
+                    .paired-comparison__element-content
+                        p.
+                            Вы часто бываете в рекламных турах, а также в
+                            командировках и можете уверенно посоветовать тот или иной
+                            отель или авиакомпанию? Действительно, сотрудники из
+                            тур.индустрии как никто другой могут правильно и
+                            объективно оценить те или иные отели и авиакомпании
+                            по особым «пунктикам», составляющим отдых их будущих
+                            клиентов. И  которые влияют на выбор того или иного отеля,
+                            той или иной авиакомпании в каждой конкретной ситуации.
+                        p.
+                            Пройдите опрос по отелю, авиакомпании, турам или
+                            услугам вашего принимающего партнера! Поделитесь
+                            вашим мнением с другими профессионалами!
+                li.paired-comparison__element.paired-comparison__element--second
+                    h3.paired-comparison__element-header Если Вы – принимающий оператор
+                    .paired-comparison__element-content
+                        p.
+                            Вы часто принимаете у себя рекламные туры? Сразу
+                            после приема рекламного тура вышлите каждому
+                            вашему партнеру или субагенту опросник, и попросите
+                            оценить своё пребывание во всех отелях, а также ваши
+                            собственные сервисы и достопримечательности страны
+                            по программе по профессиональным критериям!
+                        p.
+                            Вы сможете понять, какие ваши услуги нуждаются в
+                            доработке, какие отели нравятся вашим партнерам и
+                            сможете донести до отелей важную и нужную для них
+                            информацию.
+            ul.features-list.features-list--bordered.text-center.presentation-content__questionnare
+                li.feature-item.feature-item--bordered.feature-item--bordered--wide.feature-item--info-aggregation.features-list__item
+                    p.feature-item__content.
+                        Профессиональный сбор
+                        информации с минимизаци-
+                        ей субъективных мнений,
+                        максимально детализированный
+                        по каждому аспекту
+                        путешествия на борту
+                        самолета/в стране/в лаунже -
+                li.feature-item.feature-item--bordered.feature-item--bordered--wide.feature-item--novices-help.features-list__item
+                    p.feature-item__content.
+                        Помогает новичкам из
+                        сферы туризма правильно
+                        выбрать авиакомпанию и
+                        услуги для своего клиента,
+                        ориентируясь на мнение
+                        опытных профессионалов туризма
+                li.feature-item.feature-item--bordered.feature-item--bordered--wide.feature-item--experienced-help.feature-item--thin-padding.features-list__item
+                    p.feature-item__content.
+                        Помогает «бывалым»
+                        ориентироваться на мнение
+                        хорошо знакомого им
+                        профессионала из сферы
+                        туризма, налаживает контакт для
+                        получения дополнительной
+                        информации из «первых уст»
+                        по звонку/письму знакомому,
+                        кто написал этот отзыв
+                li.feature-item.feature-item--bordered.feature-item--bordered--wide.feature-item--incoming-operator-help.features-list__item
+                    p.feature-item__content.
+                        Принимающий
+                        туроператор собирает
+                        ценную информацию, каких
+                        сервисов не хватает
+                        партнерам, что необходимо
+                        улучшить и доработать
+                li.feature-item.feature-item--bordered.feature-item--bordered--wide.feature-item--replies-rating.features-list__item
+                    p.feature-item__content.
+                        Поисковик отзывов.
+                        Рейтинги по каждому
+                        разделу отдыха – от
+                        отеля до авиакомпании
+                li.feature-item.feature-item--bordered.feature-item--bordered--wide.feature-item--analisys-and-statictics.features-list__item
+                    p.feature-item__content.
+                        Анализ и статистика по
+                        каждому разделу: графики и
+                        диаграммы
+
+    section.default-section.default-section--bright.presentation-content__other-blocks
+        ul.features-list.features-list--inverted-color.default-section__content.text-center
+            li.feature-item.feature-item--inverted-color.feature-item--statictics.features-list__item
+                span.feature-item__help-text Блок
+                h2.feature-item__title Статистика
+                p.feature-item__content.
+                    Статистика по перепосту ваших
+                    новостей и публикаций на сайты и
+                    социальные сети ваших
+                    партнеров. Охват аудитории и
+                    лайки в Фейсбуке, Вконтакте,
+                    Инстаграмме, Твиттере
+            li.feature-item.feature-item--inverted-color.feature-item--working-files.features-list__item
+                span.feature-item__help-text Блок
+                h2.feature-item__title Рабочие файлы
+                p.feature-item__content.
+                    Облачное хранилище всех ваших
+                    материалов по странам, в которые
+                    Вы летаете, и по вашей
+                    авиакомпании и ее самолетам.
+                    Бесплатно загрузите в ваш Личный
+                    Кабинет на Unitravel.pro любое
+                    количество файлов, которые могут
+                    быть востребованы у ваших
+                    партнеров и агентств: фото, видео,
+                    карту полетов, описание
+                    самолетов, рассадку кресел, меню,
+                    сервисы на борту, программу
+                    развлечений и пр. Используйте
+                    настройки видимости и тэги
+            li.feature-item.feature-item--inverted-color.feature-item--languages.features-list__item
+                span.feature-item__help-text Блок
+                h2.feature-item__title Языки
+                p.feature-item__content.
+                    Сайт адаптирован и переведен под
+                    русский, английский, китайский
+                    языки. В будущем мы планируем его
+                    перевести на все основные языки.
+
+    header.presentation-content__header.presentation-content__header--secondary.agents-content__header.agents-content__header--secondary
+        h1.presentation-content__title.presentation-content__title--main Агенствам и туроператорам
+        h1.presentation-content__title.presentation-content__title--secondary Платные сервисы
+
+    ul.features-list.features-list--align-stretch.features-list--space-around.text-center.agents-content__paid-services
+        li.feature-item.feature-item--flex.feature-item--online-booking.features-list__item
+            span.feature-item__help-text.feature-item__help-text--additional-offset Блок
+            h2.feature-item__title.feature-item__title--bright.feature-item__title--condensed Онлайн бронирование
+            p.feature-item__content.feature-item__content--lighten.flex-grow-1.
+                Установка модуля онлайн
+                бронирования в корпоративном
+                стиле вашей компании и с
+                использованием цвета, стиля,
+                логотипа вашей компании.
+                Круглосуточное он-лайн
+                бронирование из любой точки
+                мира
+            a.btn.btn--v7.btn--narrow(href='#' title='Заказать перевод') Заказать
+        li.feature-item.feature-item--flex.feature-item--share-services.features-list__item
+            span.feature-item__help-text.feature-item__help-text--additional-offset Блок
+            h2.feature-item__title.feature-item__title--bright.feature-item__title--condensed Выгрузка
+            p.feature-item__content.feature-item__content--lighten.flex-grow-1.
+                Выгрузка ваших данных и их
+                последующая синхронизация с
+                системами бронирования и
+                сайтами онлайн и офлайн
+                агентств: прайсы, фото/видео
+                файлы в другие системы:
+                Мастер-Тур, ТопХотелс,
+                БукингКом  и подобные системы,
+                а также на любой сайт агентов в
+                стандартном виде автоматически.
+            a.btn.btn--v7.btn--narrow(href='#' title='Заказать перевод') Как загрузить?
+        li.feature-item.feature-item--flex.feature-item--tripservice-club-app.features-list__item
+            span.feature-item__help-text.feature-item__help-text--additional-offset Блок
+            h2.feature-item__title.feature-item__title--bright.feature-item__title--condensed Приложение Tripservice Club
+            p.feature-item__content.feature-item__content--lighten.flex-grow-1.
+                Мобильное приложение,
+                доступное из Google Play для
+                ваших туристов: туры, экскурсии,
+                трансферы, сервисы и услуги
+                всегда у них под рукой!
+            a.btn.btn--v7.btn--narrow(href='#' title='Заказать перевод') Скоро
+
+    section#uploadable--our-partners.uploadable.uploadable--our-partners.presentation-content__our-partners(data-collapsed='true')
+        b.uploadable__title.promo-text С нами уже более <span id="partners-count">300</span> партнёров
+        ul.uploadable__content.uploadable__list.uploadable__list--fixed-height.cards-list
+            li.cards-list__item.uploadable__list-item.cards-list__image-wrapper(data-ajax-load-status='none')
+                a.card-list__link.card-list__link--hover-effect(href='#')
+                    img.logo-card.cards-list__image(src='./images/img-logo-baltimore.jpg' alt='baltimore' width='120' height='46')
+                    span.cards-list__label.card-list__label--contrast baltimore
+            li.cards-list__item.uploadable__list-item.cards-list__image-wrapper(data-ajax-load-status='none')
+                a.card-list__link.card-list__link--hover-effect(href='#')
+                    img.logo-card.cards-list__image(src='./images/img-logo-houston.jpg' alt='houston' width='117' height='36')
+                    span.cards-list__label.card-list__label--contrast houston
+            li.cards-list__item.uploadable__list-item.cards-list__image-wrapper(data-ajax-load-status='none')
+                a.card-list__link.card-list__link--hover-effect(href='#')
+                    img.logo-card.cards-list__image(src='./images/img-logo-phoenix.jpg' alt='phoenix' width='131' height='63')
+                    span.cards-list__label.card-list__label--contrast phoenix
+            li.cards-list__item.uploadable__list-item.cards-list__image-wrapper(data-ajax-load-status='none')
+                a.card-list__link.card-list__link--hover-effect(href='#')
+                    img.logo-card.cards-list__image(src='./images/img-logo-rapid-city.jpg' alt='rapid city' width='140' height='76')
+                    span.cards-list__label.card-list__label--contrast rapid city
+            li.cards-list__item.uploadable__list-item.cards-list__image-wrapper(data-ajax-load-status='none')
+                a.card-list__link.card-list__link--hover-effect(href='#')
+                    img.logo-card.cards-list__image(src='./images/img-logo-salt-lake.jpg' alt='salt lake city' width='108' height='84')
+                    span.cards-list__label.card-list__label--contrast salt lake city
+        a.uploadable__load-button.btn.btn--v9.btn--3d(href='#') <i class="uploadable__load-button-state-icon"></i> Показать еще
+
+    section#uploadable--clients-replies.uploadable.uploadable--clients-replies.default-section.presentation-content__clients-replies
+        header.default-section__header
+            h2.default-section__title Клиенты о нас
+        ul.default-section__content.features-list.features-list--bordered.features-list--with-images.text-center.uploadable__list.uploadable__list--auto-height
+            li.feature-item.feature-item--bordered.feature-item--bordered--thin.feature-item--with-image.features-list__item.uploadable__list-item(data-ajax-load-status='none')
+                figure.feature-item__picture-wrapper.box--rounded.box--bordered.box--bordered--light
+                    img.feature-item__picture(src='./images/img-logo-chateau-monfort.jpg' alt='chateau monfort' width='97' height='97')
+                b.feature-item__title Михаил Григорьев
+                span.feature-item__sub-title (<span class="feature-item__sub-title-value">TopHotel</span>)
+                p.feature-item__content.
+                    Угол курса поступательно
+                    учитывает периодический
+                    ротор.
+                    Степень свободы
+                    принципиально переворачивает
+                    дифференциальный гиротахометр.
+            li.feature-item.feature-item--bordered.feature-item--bordered--thin.feature-item--with-image.features-list__item.uploadable__list-item(data-ajax-load-status='none')
+                figure.feature-item__picture-wrapper.box--rounded.box--bordered.box--bordered--dark
+                    img.feature-item__picture(src='./images/img-logo-como-shambala.jpg' alt='como shambala' width='148' height='99')
+                b.feature-item__title Григорий Успенский
+                span.feature-item__sub-title (<span class="feature-item__sub-title-value">Coral Travel</span>)
+                p.feature-item__content.
+                    Угол курса поступательно
+                    учитывает
+                    периодический ротор.
+                    Степень свободы
+                    принципиально переворачивает
+                    дифференциальный гиротахометр.
+                    Время набора максимальной
+                    скорости, обобщая
+                    изложенное, колебательно
+                    даёт более простую
+                    систему дифференциальных
+            li.feature-item.feature-item--bordered.feature-item--bordered--thin.feature-item--with-image.features-list__item.uploadable__list-item(data-ajax-load-status='none')
+                figure.feature-item__picture-wrapper.box--rounded.box--bordered.box--bordered--dark
+                    img.feature-item__picture(src='./images/img-logo-wa.jpg' alt='w a' width='133' height='98')
+                b.feature-item__title Василий Уткин
+                span.feature-item__sub-title (<span class="feature-item__sub-title-value">Tez Tour</span>)
+                p.feature-item__content.
+                    Время набора максимальной
+                    скорости, обобщая изложенное,
+                    колебательно даёт
+            li.feature-item.feature-item--bordered.feature-item--bordered--thin.feature-item--with-image.features-list__item.uploadable__list-item(data-ajax-load-status='none')
+                figure.feature-item__picture-wrapper.box--rounded.box--bordered.box--bordered--dark
+                    img.feature-item__picture(src='./images/img-logo-como-shambala.jpg' alt='como shambala' width='148' height='99')
+                b.feature-item__title Григорий Успенский
+                span.feature-item__sub-title (<span class="feature-item__sub-title-value">Coral Travel</span>)
+                p.feature-item__content.
+                    Угол курса поступательно
+                    учитывает
+                    периодический ротор.
+                    Степень свободы
+                    принципиально переворачивает
+                    дифференциальный гиротахометр.
+                    Время набора максимальной
+                    скорости, обобщая
+                    изложенное, колебательно
+                    даёт более простую
+                    систему дифференциальных
+            li.feature-item.feature-item--bordered.feature-item--bordered--thin.feature-item--with-image.features-list__item.uploadable__list-item(data-ajax-load-status='none')
+                figure.feature-item__picture-wrapper.box--rounded.box--bordered.box--bordered--dark
+                    img.img-bordered.feature-item__picture(src='./images/img-logo-wa.jpg' alt='w a' width='133' height='98')
+                b.feature-item__title Василий Уткин
+                span.feature-item__sub-title (<span class="feature-item__sub-title-value">Tez Tour</span>)
+                p.feature-item__content.
+                    Время набора максимальной
+                    скорости, обобщая изложенное,
+                    колебательно даёт
+            li.feature-item.feature-item--bordered.feature-item--bordered--thin.feature-item--with-image.features-list__item.uploadable__list-item(data-ajax-load-status='none')
+                figure.feature-item__picture-wrapper.box--rounded.box--bordered.box--bordered--light
+                    img.feature-item__picture(src='./images/img-logo-chateau-monfort.jpg' alt='chateau monfort' width='97' height='97')
+                b.feature-item__title Михаил Григорьев
+                span.feature-item__sub-title (<span class="feature-item__sub-title-value">TopHotel</span>)
+                p.feature-item__content.
+                    Угол курса поступательно
+                    учитывает периодический
+                    ротор.
+                    Степень свободы
+                    принципиально переворачивает
+                    дифференциальный гиротахометр.
+
+        a.uploadable__load-button.btn.btn--v10(href='#' title='показать ещё') Показать ещё
+
+    a#back-to-top.back-to-top(href="#agents_page")
+        span.icon.icon-arrow-up
+
+
+block append inner_modals
+    section#modal--publications--presentation.modal.modal--inner.modal--publications--presentation.publications.presentation-page__modal--inner
+        header.modal__header.publications__header
+            h2.publications__title
+                span.publications__title-primary Коллекция публикаций
+                span.publications__title-secondary для совместного продвижения
+        ol.publications__features-list.modal__content
+            li.publications-feature.publications-feature--share.publications__features-list-item.modal__content-part
+                header.publications-feature__header
+                    h3.publications-feature__title
+                        span.publications-feature__title-primary Делитесь накопленными
+                        span.publications-feature__title-secondary материалами
+                .publications-feature__content.publications-feature__content--shifted
+                    p.
+                        Ваша компания обладает накопленными материалами и
+                        опытом, которые актуальны в любое время – это детали и
+                        нюансы по любому вашему сервису, услуге или
+                        туру/экскурсии; особенностях  места или города, в которых
+                        они проходят; истории страны/курорта и ее
+                .publications-feature__buttons.publications-feature__buttons--shifted
+                    a.btn.btn--v7.btn--small(href='#' title='Подробнее') Подробнее
+            li.publications-feature.publications-feature--mini-reviews.publications__features-list-item.modal__content-part
+                header.publications-feature__header
+                    h3.publications-feature__title
+                        span.publications-feature__title-primary Создавайте мини-обзоры
+                        span.publications-feature__title-secondary по вашей компании
+                .publications-feature__content.publications-feature__content--shifted
+                    p.
+                        Создайте такие мини-обзоры по вашей стране и по вашей компании. Это будет
+                        текст из 1-2-х абзацев и красочное фото.
+                    p.
+                        Ваша персональная Коллекция Публикаций может состоять из 20-50
+                        обзоров и более (оптимально – от 100 постов, чтобы сформировать
+                        Ваш уникальный контент).
+                    p.
+                        Положите их под облаком тэгов внутри Unitravel Pro.
+            li.publications-feature.publications-feature--settings-control.publications__features-list-item.modal__content-part
+                header.publications-feature__header
+                    h3.publications-feature__title
+                        span.publications-feature__title-primary Управляйте настройками
+                        span.publications-feature__title-secondary своих публикаций
+                .publications-feature__content
+                    p.
+                        Используйте настройки видимости и использования публикаций
+                        – сначала для меня, а потом для всех пользователей или для
+                        определенных агентств
+            li.publications-feature.publications-feature--availability.publications__features-list-item.modal__content-part
+                header.publications-feature__header
+                    h3.publications-feature__title
+                        span.publications-feature__title-primary Ваши обзоры
+                        span.publications-feature__title-secondary читают все
+                .publications-feature__content
+                    p.
+                        Публикации будут доступны на Профайле ваших отелей. Любой
+                        пользователь нашего Справочника или интернета может их
+                        забрать на свой сайт или наполнить ими социальные сети
+            li.publications-feature.publications-feature--auto-posting.publications__features-list-item.modal__content-par
+                header.publications-feature__header
+                    h3.publications-feature__title
+                        span.publications-feature__title-primary Автоматический
+                        span.publications-feature__title-secondary постинг
+                .publications-feature__content
+                    p.
+                        Оформив подписку на вашу Коллекцию публикаций, любой
+                        потенциальный продавец вашего отеля сможет настроить из них очередь
+                        автоматической публикации – отобрать посты, которые ему кажется
+                        наиболее удачными и продающими, указать количество публикаций в
+                        неделю/месяц/год. Ваша Коллекция будет настроена в автоматическую
+                        ротацию на сайтах партнеров и в их социальных сетях
+            li.publications-feature.publications-feature--distribution.publications__features-list-item.modal__content-part
+                header.publications-feature__header
+                    h3.publications-feature__title
+                        span.publications-feature__title-primary Запускайте рассылку
+                        span.publications-feature__title-secondary Поделитесь со всеми вашей коллекцией
+                .publications-feature__content
+                    p.
+                        Ваши продавцы скажут Вам СПАСИБО за такую помощь в
+                        автоматическом наполнении их сайтов и страниц соцсетей!
+        button.modal__close(type='button' title='Закрыть модальное окно') Закрыть модальное окно
+
+
+block append modals
+    section#modal--presentation-video.modal.modal--presentation-video
+        .modal__content
+            iframe#promo_video.presentation-promo-video.embed-responsive-item(src='https://www.youtube.com/embed/FT0tESjQpjw?enablejsapi=1' frameborder='0' allowfullscreen)
+        button.modal__close(type='button' title='Закрыть модальное окно') Закрыть модальное окно
+
+
+block templates
+    template#template--partner-logo
+        li.cards-list__item.uploadable__list-item.cards-list__image-wrapper(data-ajax-load-status='')
+            a.card-list__link.card-list__link--hover-effect(href='')
+                img.logo-card.cards-list__image(src='' alt='' width='' height='')
+                span.cards-list__label.card-list__label--contrast
+
+    template#template--client-reply
+        li.feature-item.feature-item--bordered.feature-item--bordered--thin.feature-item--with-image.features-list__item.uploadable__list-item(data-ajax-load-status='')
+            figure.feature-item__picture-wrapper.box--rounded.box--bordered
+                img.feature-item__picture(src='' alt='' width='' height='')
+            b.feature-item__title
+            span.feature-item__sub-title (<span class="feature-item__sub-title-value"></span>)
+            p.feature-item__content
+
+
+block right_side
+    aside#scrollable-panel--fixed.presentation-page__company-type-menu.menu-company-type
+        header.menu-company-type__header Начать работу <button class="menu-company-type__header-switch" type="button">Toggle menu</button>
+        ul.menu-company-type__content.company-types-list
+            li.company-types-list__item
+                a.company-types-list__link(href='#' title='Отелям') Отелям
+            li.company-types-list__item
+                a.company-types-list__link.company-types-list__link--current(title='Агенствам и туроператорам') Агенствам и<br> туроператорам
+            li.company-types-list__item
+                a.company-types-list__link(href='#' title='Авиакомпаниям') Авиакомпаниям
+            li.company-types-list__item
+                a.company-types-list__link(href='#' title='Бюро по туризму') Бюро по туризму
+            li.company-types-list__item
+                a.company-types-list__link(href='#' title='Объектам культуры') Объектам культуры
+            li.company-types-list__item
+                a.company-types-list__link(href='#' title='Медицинскому туризму') Медицинскому туризму
+            li.company-types-list__item
+                a.company-types-list__link(href='#' title='Сервисным компаниям') Сервисным компаниям

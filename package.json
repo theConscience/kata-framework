@@ -48,7 +48,7 @@
     "imagemin-pngquant": "^5.0.0",
     "merge-stream": "^1.0.0",
     "minimist": "^1.2.0",
-    "pug": "^2.0.0-rc.2",
+    "pug": "^2.0.0-rc.4",
     "pug-lint": "^2.4.0",
     "run-sequence": "^1.2.2",
     "stylint": "^1.5.9",

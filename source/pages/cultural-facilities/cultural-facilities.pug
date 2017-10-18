@@ -1,0 +1,626 @@
+extends ../../layouts/sub/sub-presentation/sub-presentation
+
+include ./blocks/_mixins.pug
+
+
+block append head
+    - var pageName = 'cultural-facilities';
+    - var pageTitle = 'Cultural facilities page template';
+    - var bodyClasses = '';
+    - var mainClasses = ' is-scalable';
+
+
+block append links
+    link(href='./css/page_css.css' rel='stylesheet')
+    link(href='./css/page_style.css' rel='stylesheet')
+    //- link(href='./css/page_css.min.css' rel='stylesheet')
+    //- link(href='./css/page_style.min.css' rel='stylesheet')
+
+
+block append scripts
+    script(src='./js/page_js.js')
+    //- script(src='./js/page_js.min.js')
+
+
+block append content
+    header.presentation-content__header.presentation-content__header--primary.cultural-facilities-content__header.cultural-facilities-content__header--primary
+        div#video-block.presentation-content__video-block.video-block
+            span.video-block__play-button Смотреть видео
+        h1.presentation-content__title.presentation-content__title--main Объектам культуры
+        h1.presentation-content__title.presentation-content__title--secondary сервисы
+    p.presentation-content__mission.
+        Мы – <mark class="primary">Глобальный Туристический Справочник</mark>  для всех участников туристического рынка
+        – объектов культуры, авиакомпаний, отелей, туроператоров, агентств, медицинского туризма
+        и сервисных компаний из различных стран. Платформа создана как эффективный
+        инструмент вашего продвижения, а также для скоростного обмена информацией и удобного
+        доступа из любой точки мира в любой момент времени к базе самых свежих новостей – от
+        турагентства до прямого клиента. Большой туристический справочник на всех языках мира!
+
+    section.default-section.cultural-facilities-content__services-promo
+        .default-section__header
+        .default-section__content
+            section.info-block.info-block--t1
+                header.info-block__header
+                    b.info-block__title Если вы:
+                .info-block__content.info-block__content--decorated
+                    .lists-wrapper.lists-wrapper--t1.lists-wrapper--curly-braced
+                        ul.decorative-list.decorative-list--t1.l-col-1-3.l-col-padding-right.min-width-145
+                            li.decorative-list__item Театр
+                            li.decorative-list__item Выставка
+                            li.decorative-list__item Музей
+                            li.decorative-list__item Художественная галерея
+                            li.decorative-list__item Центр искусств
+                        ul.decorative-list.decorative-list--t1.l-col-2-3.min-width-286
+                            li.decorative-list__item Публичная библиотека
+                            li.decorative-list__item Памятник архитектуры или культуры
+                            li.decorative-list__item Цирк
+                            li.decorative-list__item Мюзикл
+                            li.decorative-list__item … или любая другая площадка культурной направленности
+            p.default-section__description.default-section__description--medium.
+                То Вы знаете, что вашими клиентами являются не только самостоятельные путешественники,
+                но и туристические агентства по всему миру, которые отправляют к Вам своих клиентов из
+                разных уголков нашей планеты. Разместите информацию о Вас внутри туристического
+                справочника Unitravel. Pro на любом языке и продвигайтесь еще эффективнее!
+            b.default-section__title.default-section__title--medium.
+                Мы предоставляем Вам<br>
+                <span class="light-text smaller-text">2 канала продвижения</span>
+            ul.alternatives-list
+                li.alternatives-list__item Для турагентств и профессионалов туристической сферы – B2B рынок
+                li.alternatives-list__item Для прямых<br> путешественников – B2С рынок
+
+    section.media-block.cultural-facilities-content__company-news
+        header.media-block__header
+            span.additional-text Блок
+            h2.media-block__title Новости вашей компании
+        .media-block__content
+            p.
+                Время рассылок по электронной почте, участия в выставках или печати дорогих буклетов / каталогов
+                стремительно  уступает место перед  более высокотехнологичными, удобными, быстрыми и
+                недорогими инструментами, такими как интернет и мгновенная  публикация новостей сразу по нескольким
+                каналам интернета – в системах, на сайте, в соцсетях.
+            p.
+                Всего за один клик любую вашу новость могут забрать к себе на сайт и в соцсети все ваши партнеры
+                для активного продвижения ваших отелей или вашей представительской компании, страны,
+                региона, выступая автором этих новостей.
+
+    ul.features-list.features-list--rounded-icons.presentation-content__news-features.text-center
+        li.feature-item.feature-item--instant-publication.features-list__item
+            h3.feature-item__title Мгновенная публикация
+            p.feature-item__content.
+                По всем вашим каналам
+                маркетинга из нашей  плат-
+                формы: на ваш сайт, в вашу
+                RSS ленту, во все социальные
+                сети – Фейсбук, Инстаграм,
+                Твиттер, Вконтакте
+        li.feature-item.feature-item--no-spam.features-list__item
+            h3.feature-item__title Нет <span class="text-uppercase">спам</span>у
+            p.feature-item__content.
+                Новость не попадает в <span class="text-uppercase">спам</span>, ее
+                не только видят и читают, но и
+                могут ею поделиться за один
+                клик - на сайте, в своих соцсетях
+                и что важно для ваших партнеров
+                - под своим авторством
+        li.feature-item.feature-item--news-channels.features-list__item
+            h3.feature-item__title 2 канала новостей
+            p.feature-item__content.
+                Вы получаете сразу два канала
+                распространения новостей – для
+                рынка профессионалов B2B или
+                для рынка прямых
+                путешественников B2C.
+                Вы сами решаете, куда
+                отправить новость и сами
+                выступаете автором ваших новостей!
+        li.feature-item.feature-item--audience-coverage.features-list__item
+            h3.feature-item__title Охват аудитории
+            p.feature-item__content.
+                На базе охвата аудитории к
+                каждой вашей новости и по всем
+                социальным сетям – Фейсбук,
+                Инстаграм, ВКонтакте, Твиттер Вы
+                можете проанализировать, какая
+                ваша новость популярна и активно
+                распространяется вашими партнерами
+        li.feature-item.feature-item--carry-news.features-list__item
+            h3.feature-item__title Продающие новости
+            p.feature-item__content.
+                Новости внутри Unihotel и на
+                Travelinfo – это исключительно
+                «продающие» новости, которые
+                продвигают сервисы вашей
+                авиакомпании и ее направления
+                партнерам и клиентам. Вы сами
+                выступаете автором новостей.
+                Максимально эффективные
+                блоки информации на
+                любую тему
+        li.feature-item.feature-item--multilanguage.features-list__item
+            h3.feature-item__title Мультиязычность
+            p.feature-item__content.
+                Вы можете использовать любой
+                язык мира для ваших публикаций и
+                продвижения!
+
+    .custom-banner.custom-banner--v1.cultural-facilities-content__news-categories
+        h2.custom-banner__title
+            span.wrapped-in-braces Категории новостей
+        ul.custom-banner__content
+            li.custom-banner__item
+                a.custom-banner__link(href='#') События в сфере культуры: выставки, театральные постановки,
+            li.custom-banner__item
+                a.custom-banner__link(href='#') опера, балет, перфомансы и пр.
+            li.custom-banner__item
+                a.custom-banner__link(href='#') Афиши и расписания
+            li.custom-banner__item
+                a.custom-banner__link(href='#') Специальные предложения по билетам
+            li.custom-banner__item
+                a.custom-banner__link(href='#') Обзоры и детали: костюмы, площадки, интерьеры, факты
+            li.custom-banner__item
+                a.custom-banner__link(href='#') Люди культуры: художники, авторы постановок, артисты и исполнители
+            li.custom-banner__item
+                a.custom-banner__link(href='#') Исторические факты… и т.д.
+
+    section.presentation-content__publications-collection.cultural-facilities-content__publications-collection.custom-banner.custom-banner--v2
+        header.custom-banner__header
+            span.custom-banner__help-text Блок
+            h2.custom-banner__title.
+                <span class="primary-text primary-text--bright">Коллекция постов</span>
+                <span class="secondary-text">для объектов культуры</span>
+        p.custom-banner__description.
+            Создайте коллекцию ваших собственных заметок о выдающихся экспонатах,
+            выставках, ваших особенностях и деталях. Расскажите об истории создания картины
+            или скульптуры, опишите творческий замысел художника.<br>
+            Расскажите об авторе и его судьбе.
+        .custom-banner__content.custom-banner__content--light
+            p.
+                Напишите небольшой очерк из 5-10 предложений, прикрепите к нему качественное фото и
+                поместите его внутри нашего справочника. Мы убеждены, что абсолютно всем
+                пользователям будет интересно узнавать истории уникальных экспонатов, культурно образовываться
+                и развивать интерес к искусству в т.ч. и среди потенциальных клиентов и агентств.
+                Отрегулируйте настройки видимости Ваших постов  для всех или только для ряда ваших
+                партнеров, и их смогут разместить на страницах соцсетей и сайте все желающие агентства
+                по всему миру, используя их в качестве базовых новостных наполнений о Вашем культурном
+                объекте/учреждении.
+                Тем самым Вы сможете продвигать ваши сервисы и мероприятия еще эффективнее и для
+                большого круга публики! Создайте свою аудиторию сами!
+            a#modal__open--inner.btn.btn--v8(href='#') Подробнее
+
+    section.default-section.cultural-facilities-content__publication-pricing
+        header.default-section__header
+            span.additional-text Блок
+            h4.default-section__title.
+                Стоимость публикации<br>
+                <span class="light-text">по новостям и коллекциям публикаций</span>
+        section.default-section__content.media-block
+            header.media-block__header
+            .media-block__content.media-block__content--loose.media-block__content--condensed-paragraphs.text-center
+                p.
+                    Мы открываем Вам <b class="important-text">сквозной канал</b> для показа ваших новостей и коллекции<br>
+                    публикаций для всех категорий наших пользователей
+                p.important-text 6 месяцев — бесплатно!
+                p.
+                    За это время Вы можете протестировать удобство и инструменты нашего Справочника,<br>
+                    проанализировать охват аудитории и распространения ваших новостей и принять<br>
+                    решение о дальнейшем сотрудничестве
+        h4.default-section__title-simple.text-center.
+            Стоимость безлимитной публикации<br>
+            <span class="light-text">на Unitravel.pro  +  Travelinfo.pro</span>
+        ul.buttons-list
+            li.buttons-list__item
+                a.promo-button.promo-button--medium.promo-button--contrast(href='#' title='подписка на месячную безлимитную публикацию').
+                    30 USD<br>
+                    <span class="small-text">в месяц</span>
+            li.buttons-list__item
+                a.promo-button.promo-button--big.promo-button--bright(href='#' title='подписка на годовую безлимитную публикацию').
+                    250 USD<br>
+                    <span class="small-text">в год</span>
+
+    section.default-section.presentation-content__company-profile.cultural-facilities-content__facility-profile.text-center
+        header.default-section__header
+            h2.default-section__title Профайл объекта культуры
+        .default-section__content
+            section.media-block.text-left
+                header.media-block__header.media-block__header--cover
+                .media-block__content
+                    p.
+                        <b class="important-text">Мини-сайт на трех языках:</b> английском, русском и китайском. Страница, по
+                        которой вашу компанию и объект для посещения cмогут легко найти внутри нашего Глобального Туристического Справочника и
+                        которая аккумулирует все сведения, помеченные в системе «для всех».
+                    p.
+                        А это такие полезные сведения для продажи ваших сервисов как: новости и пресс-релизы, файлы
+                        для скачивания, коллекция публикаций, видео-материалы и многое другое. Тем самым, профайл
+                        помогает Вам быстро обновлять информацию и показывать партнерам и путешественникам все самое
+                        свежее и актуальное. Ваш профайл доступен любому пользователю интернета!
+                    p.no-margin.text-center.
+                        <b class="important-text">Мы списываем только абонентскую плату за техническое сопровождение<br>
+                        вашего мини-сайта:</b>
+                    p.important-text.text-center.
+                        <span class="inline-block">1 месяц – 40 USD</span> <span class="inline-block">1 год – 300 USD</span>
+            ul.box-list.box-list--big
+                li.box-list__item.bordered-box.bordered-box--v1
+                    a.box-list__item-link(href='#')
+                        img.bordered-box__image.img-responsive(src='./images/img-logo-garage.jpg' alt='garage')
+
+    section.default-section.presentation-content__search-and-promo-tools
+        header.default-section__header
+            span.additional-text Раздел
+            h2.default-section__title Инструменты поиска и<br> продвижения
+        section.default-section__content.media-block
+            header.media-block__header
+            .media-block__content
+                p.
+                    В век больших объемов информации, которые довлеют над любым сотрудником туристической
+                    компании важно, чтобы она была в одном месте и на нужном ему языке.
+                p.
+                    Кроме того, необходимо быстро и качественно не только показать всю имеющуюся у Вас
+                    информацию о компании, но и иметь возможность мгновенно ее обновлять.
+        ul.features-list.presentation-content__tools.text-center
+            li.feature-item.feature-item--big-icon.feature-item--fast-search.features-list__item
+                h3.feature-item__title Быстрый поиск
+                p.feature-item__content.
+                    Справочник  поможет найти
+                    Вас и ваши материалы из любой
+                    точки мира! Поиск ведется по
+                    имени компании,  по стране, по
+                    типу деятельности компании. Все
+                    внесенные Вами материалы сразу
+                    отображаются на профиле компании,
+                    который доступен всем
+                    нашим пользователям
+            li.feature-item.feature-item--big-icon.feature-item--representation.features-list__item
+                h3.feature-item__title Представительство
+                p.feature-item__content.
+                    Любая компания внутри
+                    Справочника представлена рядом
+                    разделов: профайл, новости,
+                    сервисы, файлы для работы и
+                    скачивания, коллекция публикаций,
+                    рейтинг компании
+            li.feature-item.feature-item--big-icon.feature-item--usability.features-list__item
+                h3.feature-item__title Удобство
+                p.feature-item__content.
+                    Покажите вашим
+                    существующим и потенциальным
+                    партнерам все, чем бы Вы
+                    хотели с ними поделиться: вся
+                    информация представлена
+                    графически и наглядно!
+            li.feature-item.feature-item--big-icon.feature-item--partnership.features-list__item
+                h3.feature-item__title Партнёрство
+                p.feature-item__content.
+                    Потенциальные партнеры
+                    могут найти Вас внутри
+                    Справочника и выслать запрос на
+                    скачивание всех необходимых для работы
+                    материалов. Одобрите
+                    запрос и поделитесь своими
+                    материалами
+            li.feature-item.feature-item--big-icon.feature-item--privacy.features-list__item
+                h3.feature-item__title Приватность
+                p.feature-item__content.
+                    Три настройки видимости
+                    ваших материалов: приватные или
+                    для сотрудников, для выделенных
+                    партнеров и агентств, для всех
+                    (публичные).
+            li.feature-item.feature-item--big-icon.feature-item--mediality.features-list__item
+                h3.feature-item__title Медийность
+                p.feature-item__content.
+                    Будьте еще ближе к вашим
+                    партнерам и новым
+                    потенциальным агентам!
+            li.feature-item.feature-item--big-icon.feature-item--profile.features-list__item
+                h3.feature-item__title Профиль
+                p.feature-item__content.
+                    Регулярно пополняйте свой
+                    профиль и смотрите, как он
+                    выглядит для других в системе.
+                    Следите за появлением новых
+                    инструментов!
+
+    section.default-section.default-section--bright.presentation-content__other-blocks
+        ul.features-list.features-list--inverted-color.default-section__content.text-center
+            li.feature-item.feature-item--inverted-color.feature-item--statictics.features-list__item
+                span.feature-item__help-text Блок
+                h2.feature-item__title Статистика
+                p.feature-item__content.
+                    Статистика по перепосту ваших
+                    новостей и публикаций на сайты и
+                    социальные сети ваших
+                    партнеров. Охват аудитории и
+                    лайки в Фейсбуке, Вконтакте,
+                    Инстаграмме, Твиттере
+            li.feature-item.feature-item--inverted-color.feature-item--working-files.features-list__item
+                span.feature-item__help-text Блок
+                h2.feature-item__title Рабочие файлы
+                p.feature-item__content.
+                    Облачное хранилище всех ваших
+                    материалов по странам, в которые
+                    Вы летаете, и по вашей
+                    авиакомпании и ее самолетам.
+                    Бесплатно загрузите в ваш Личный
+                    Кабинет на Unitravel.pro любое
+                    количество файлов, которые могут
+                    быть востребованы у ваших
+                    партнеров и агентств: фото, видео,
+                    карту полетов, описание
+                    самолетов, рассадку кресел, меню,
+                    сервисы на борту, программу
+                    развлечений и пр. Используйте
+                    настройки видимости и тэги
+            li.feature-item.feature-item--inverted-color.feature-item--languages.features-list__item
+                span.feature-item__help-text Блок
+                h2.feature-item__title Языки
+                p.feature-item__content.feature-item__content--loose.
+                    Сайт адаптирован и переведен под
+                    русский, английский, китайский
+                    языки. В будущем мы планируем его
+                    перевести на все основные языки.
+
+    section.default-section.cultural-facilities-content__paid-services
+        header.presentation-content__header.presentation-content__header--secondary.cultural-facilities-content__header.cultural-facilities-content__header--secondary.default-section__header
+            h1.presentation-content__title.presentation-content__title--main Для вашей компании
+            h1.presentation-content__title.presentation-content__title--secondary Платные сервисы
+        ul.features-list.features-list--align-stretch.default-section__content.text-center
+            li.feature-item.feature-item--flex.feature-item--translates.features-list__item
+                span.feature-item__help-text.feature-item__help-text--additional-offset Блок
+                h2.feature-item__title.feature-item__title--bright.feature-item__title--condensed Переводы
+                p.feature-item__content.feature-item__content--lighten.flex-grow-1.
+                    Переведите вашу новость или любые
+                    необходимые Вам в работе материалы
+                    на любой язык мира.
+                    Просто закажите из вашего Личного
+                    Кабинета на платформе Unitravel.pro
+                    перевод на нужный Вам язык.
+                a.btn.btn--v7.btn--narrow(href='#' title='Заказать перевод') Заказать
+
+    section.default-section.cultural-facilities-content__contacts-and-chat.text-center
+        header.default-section__header
+            h2.default-section__title Работа с контактами и чат
+        section.media-block.default-section__content.text-left
+            header.media-block__header.media-block__header--cover
+            .media-block__content
+                p.
+                    Внесите в список контактов всех ваших партнеров и клиентов, чтобы информация всегда была под
+                    рукой и доступной всем вашим сотрудникам.
+                p.
+                    Под одним аккаунтом в вашем Личном Кабинете может работать любое количество ваших
+                    сотрудников, назначьте им разные права администрирования. Сделайте некоторые контакты публичными,
+                    чтобы каждый пользователь внутри Unitravel.pro мог с ним связаться через удобный чат, минуя почту
+                    и многочисленные ICQ/SKYPE.
+                p.
+                    Все сообщения будут поступать сразу в систему сообщений в чате, для этого не нужно знать ваш
+                    мейл или номера ICQ/SKYPE.
+
+    section#uploadable--our-partners.uploadable.uploadable--our-partners.presentation-content__our-partners(data-collapsed='true')
+        b.uploadable__title.promo-text С нами уже более <span id="partners-count">300</span> партнёров
+        ul.uploadable__content.uploadable__list.uploadable__list--fixed-height.cards-list
+            li.cards-list__item.uploadable__list-item.cards-list__image-wrapper(data-ajax-load-status='none')
+                a.card-list__link.card-list__link--hover-effect(href='#')
+                    img.logo-card.cards-list__image(src='./images/img-logo-baltimore.jpg' alt='baltimore' width='120' height='46')
+                    span.cards-list__label.card-list__label--contrast baltimore
+            li.cards-list__item.uploadable__list-item.cards-list__image-wrapper(data-ajax-load-status='none')
+                a.card-list__link.card-list__link--hover-effect(href='#')
+                    img.logo-card.cards-list__image(src='./images/img-logo-houston.jpg' alt='houston' width='117' height='36')
+                    span.cards-list__label.card-list__label--contrast houston
+            li.cards-list__item.uploadable__list-item.cards-list__image-wrapper(data-ajax-load-status='none')
+                a.card-list__link.card-list__link--hover-effect(href='#')
+                    img.logo-card.cards-list__image(src='./images/img-logo-phoenix.jpg' alt='phoenix' width='131' height='63')
+                    span.cards-list__label.card-list__label--contrast phoenix
+            li.cards-list__item.uploadable__list-item.cards-list__image-wrapper(data-ajax-load-status='none')
+                a.card-list__link.card-list__link--hover-effect(href='#')
+                    img.logo-card.cards-list__image(src='./images/img-logo-rapid-city.jpg' alt='rapid city' width='140' height='76')
+                    span.cards-list__label.card-list__label--contrast rapid city
+            li.cards-list__item.uploadable__list-item.cards-list__image-wrapper(data-ajax-load-status='none')
+                a.card-list__link.card-list__link--hover-effect(href='#')
+                    img.logo-card.cards-list__image(src='./images/img-logo-salt-lake.jpg' alt='salt lake city' width='108' height='84')
+                    span.cards-list__label.card-list__label--contrast salt lake city
+        a.uploadable__load-button.btn.btn--v9.btn--3d(href='#') <i class="uploadable__load-button-state-icon"></i> Показать еще
+
+    section#uploadable--clients-replies.uploadable.uploadable--clients-replies.default-section.presentation-content__clients-replies
+        header.default-section__header
+            h2.default-section__title Клиенты о нас
+        ul.default-section__content.features-list.features-list--bordered.features-list--with-images.text-center.uploadable__list.uploadable__list--auto-height
+            li.feature-item.feature-item--bordered.feature-item--bordered--thin.feature-item--with-image.features-list__item.uploadable__list-item(data-ajax-load-status='none')
+                figure.feature-item__picture-wrapper.box--rounded.box--bordered.box--bordered--light
+                    img.feature-item__picture(src='./images/img-logo-chateau-monfort.jpg' alt='chateau monfort' width='97' height='97')
+                b.feature-item__title Михаил Григорьев
+                span.feature-item__sub-title (<span class="feature-item__sub-title-value">TopHotel</span>)
+                p.feature-item__content.
+                    Угол курса поступательно
+                    учитывает периодический
+                    ротор.
+                    Степень свободы
+                    принципиально переворачивает
+                    дифференциальный гиротахометр.
+            li.feature-item.feature-item--bordered.feature-item--bordered--thin.feature-item--with-image.features-list__item.uploadable__list-item(data-ajax-load-status='none')
+                figure.feature-item__picture-wrapper.box--rounded.box--bordered.box--bordered--dark
+                    img.feature-item__picture(src='./images/img-logo-como-shambala.jpg' alt='como shambala' width='148' height='99')
+                b.feature-item__title Григорий Успенский
+                span.feature-item__sub-title (<span class="feature-item__sub-title-value">Coral Travel</span>)
+                p.feature-item__content.
+                    Угол курса поступательно
+                    учитывает
+                    периодический ротор.
+                    Степень свободы
+                    принципиально переворачивает
+                    дифференциальный гиротахометр.
+                    Время набора максимальной
+                    скорости, обобщая
+                    изложенное, колебательно
+                    даёт более простую
+                    систему дифференциальных
+            li.feature-item.feature-item--bordered.feature-item--bordered--thin.feature-item--with-image.features-list__item.uploadable__list-item(data-ajax-load-status='none')
+                figure.feature-item__picture-wrapper.box--rounded.box--bordered.box--bordered--dark
+                    img.feature-item__picture(src='./images/img-logo-wa.jpg' alt='w a' width='133' height='98')
+                b.feature-item__title Василий Уткин
+                span.feature-item__sub-title (<span class="feature-item__sub-title-value">Tez Tour</span>)
+                p.feature-item__content.
+                    Время набора максимальной
+                    скорости, обобщая изложенное,
+                    колебательно даёт
+            li.feature-item.feature-item--bordered.feature-item--bordered--thin.feature-item--with-image.features-list__item.uploadable__list-item(data-ajax-load-status='none')
+                figure.feature-item__picture-wrapper.box--rounded.box--bordered.box--bordered--dark
+                    img.feature-item__picture(src='./images/img-logo-como-shambala.jpg' alt='como shambala' width='148' height='99')
+                b.feature-item__title Григорий Успенский
+                span.feature-item__sub-title (<span class="feature-item__sub-title-value">Coral Travel</span>)
+                p.feature-item__content.
+                    Угол курса поступательно
+                    учитывает
+                    периодический ротор.
+                    Степень свободы
+                    принципиально переворачивает
+                    дифференциальный гиротахометр.
+                    Время набора максимальной
+                    скорости, обобщая
+                    изложенное, колебательно
+                    даёт более простую
+                    систему дифференциальных
+            li.feature-item.feature-item--bordered.feature-item--bordered--thin.feature-item--with-image.features-list__item.uploadable__list-item(data-ajax-load-status='none')
+                figure.feature-item__picture-wrapper.box--rounded.box--bordered.box--bordered--dark
+                    img.img-bordered.feature-item__picture(src='./images/img-logo-wa.jpg' alt='w a' width='133' height='98')
+                b.feature-item__title Василий Уткин
+                span.feature-item__sub-title (<span class="feature-item__sub-title-value">Tez Tour</span>)
+                p.feature-item__content.
+                    Время набора максимальной
+                    скорости, обобщая изложенное,
+                    колебательно даёт
+            li.feature-item.feature-item--bordered.feature-item--bordered--thin.feature-item--with-image.features-list__item.uploadable__list-item(data-ajax-load-status='none')
+                figure.feature-item__picture-wrapper.box--rounded.box--bordered.box--bordered--light
+                    img.feature-item__picture(src='./images/img-logo-chateau-monfort.jpg' alt='chateau monfort' width='97' height='97')
+                b.feature-item__title Михаил Григорьев
+                span.feature-item__sub-title (<span class="feature-item__sub-title-value">TopHotel</span>)
+                p.feature-item__content.
+                    Угол курса поступательно
+                    учитывает периодический
+                    ротор.
+                    Степень свободы
+                    принципиально переворачивает
+                    дифференциальный гиротахометр.
+
+        a.uploadable__load-button.btn.btn--v10(href='#' title='показать ещё') Показать ещё
+
+    a#back-to-top.back-to-top(href="#cultural-facilities_page")
+        span.icon.icon-arrow-up
+
+
+block append inner_modals
+    section#modal--publications--presentation.modal.modal--inner.modal--publications--presentation.publications.presentation-page__modal--inner
+        header.modal__header.publications__header
+            h2.publications__title
+                span.publications__title-primary Коллекция публикаций
+                span.publications__title-secondary для совместного продвижения
+        ol.publications__features-list.modal__content
+            li.publications-feature.publications-feature--share.publications__features-list-item.modal__content-part
+                header.publications-feature__header
+                    h3.publications-feature__title
+                        span.publications-feature__title-primary Делитесь накопленными
+                        span.publications-feature__title-secondary материалами
+                .publications-feature__content
+                    p.
+                        Ваша компания представляет объект культурного или архитектурного
+                        наследия, который также является визитной карточкой страны или региона.
+                        Также она обладает накопленными материалами по нему, которые актуальны
+                .publications-feature__buttons
+                    a.btn.btn--v7.btn--small(href='#' title='Подробнее') Подробнее
+            li.publications-feature.publications-feature--mini-reviews.publications__features-list-item.modal__content-part
+                header.publications-feature__header
+                    h3.publications-feature__title
+                        span.publications-feature__title-primary Создавайте мини-обзоры
+                        span.publications-feature__title-secondary
+                .publications-feature__content.publications-feature__content--shifted
+                    p.
+                        Создайте такие мини-обзоры по вашему объекту. Это будет текст из
+                        1-2-х абзацев и красочное фото. Ваша персональная Коллекция
+                        Публикаций может состоять из 20-50 обзоров и более (оптимально –
+                        от 100 постов, чтобы сформировать Ваш уникальный контент).
+                    p.
+                        Положите их под облаком тэгов внутри Unitravel Pro.
+            li.publications-feature.publications-feature--settings-control.publications__features-list-item.modal__content-part
+                header.publications-feature__header
+                    h3.publications-feature__title
+                        span.publications-feature__title-primary Управляйте настройками
+                        span.publications-feature__title-secondary своих публикаций
+                .publications-feature__content
+                    p.
+                        Используйте настройки видимости и использования публикаций
+                        – сначала для меня, а потом для всех пользователей или для
+                        определенных агентств
+            li.publications-feature.publications-feature--availability.publications__features-list-item.modal__content-part
+                header.publications-feature__header
+                    h3.publications-feature__title
+                        span.publications-feature__title-primary Ваши обзоры
+                        span.publications-feature__title-secondary читают все
+                .publications-feature__content
+                    p.
+                        Публикации будут доступны на Профайле ваших отелей. Любой
+                        пользователь нашего Справочника или интернета может их
+                        забрать на свой сайт или наполнить ими социальные сети
+            li.publications-feature.publications-feature--auto-posting.publications__features-list-item.modal__content-par
+                header.publications-feature__header
+                    h3.publications-feature__title
+                        span.publications-feature__title-primary Автоматический
+                        span.publications-feature__title-secondary постинг
+                .publications-feature__content
+                    p.
+                        Оформив подписку на вашу Коллекцию публикаций, любой
+                        потенциальный продавец вашего отеля сможет настроить из них очередь
+                        автоматической публикации – отобрать посты, которые ему кажется
+                        наиболее удачными и продающими, указать количество публикаций в
+                        неделю/месяц/год. Ваша Коллекция будет настроена в автоматическую
+                        ротацию на сайтах партнеров и в их социальных сетях
+            li.publications-feature.publications-feature--distribution.publications__features-list-item.modal__content-part
+                header.publications-feature__header
+                    h3.publications-feature__title
+                        span.publications-feature__title-primary Запускайте рассылку
+                        span.publications-feature__title-secondary Поделитесь со всеми вашей коллекцией
+                .publications-feature__content
+                    p.
+                        Ваши продавцы скажут Вам СПАСИБО за такую помощь в
+                        автоматическом наполнении их сайтов и страниц соцсетей!
+        button.modal__close(type='button' title='Закрыть модальное окно') Закрыть модальное окно
+
+
+block append modals
+    section#modal--presentation-video.modal.modal--presentation-video
+        .modal__content
+            iframe#promo_video.presentation-promo-video.embed-responsive-item(src='https://www.youtube.com/embed/FT0tESjQpjw?enablejsapi=1' frameborder='0' allowfullscreen)
+        button.modal__close(type='button' title='Закрыть модальное окно') Закрыть модальное окно
+
+
+block templates
+    template#template--partner-logo
+        li.cards-list__item.uploadable__list-item.cards-list__image-wrapper(data-ajax-load-status='')
+            a.card-list__link.card-list__link--hover-effect(href='')
+                img.logo-card.cards-list__image(src='' alt='' width='' height='')
+                span.cards-list__label.card-list__label--contrast
+
+    template#template--client-reply
+        li.feature-item.feature-item--bordered.feature-item--bordered--thin.feature-item--with-image.features-list__item.uploadable__list-item(data-ajax-load-status='')
+            figure.feature-item__picture-wrapper.box--rounded.box--bordered
+                img.feature-item__picture(src='' alt='' width='' height='')
+            b.feature-item__title
+            span.feature-item__sub-title (<span class="feature-item__sub-title-value"></span>)
+            p.feature-item__content
+
+
+block right_side
+    aside#scrollable-panel--fixed.presentation-page__company-type-menu.menu-company-type
+        header.menu-company-type__header Начать работу <button class="menu-company-type__header-switch" type="button">Toggle menu</button>
+        ul.menu-company-type__content.company-types-list
+            li.company-types-list__item
+                a.company-types-list__link.company-types-list__link--current(title='Отелям') Отелям
+            li.company-types-list__item
+                a.company-types-list__link(href='#' title='Агенствам и туроператорам') Агенствам и туроператорам
+            li.company-types-list__item
+                a.company-types-list__link(href='#' title='Авиакомпаниям') Авиакомпаниям
+            li.company-types-list__item
+                a.company-types-list__link(href='#' title='Бюро по туризму') Бюро по туризму
+            li.company-types-list__item
+                a.company-types-list__link(href='#' title='Объектам культуры') Объектам культуры
+            li.company-types-list__item
+                a.company-types-list__link(href='#' title='Медицинскому туризму') Медицинскому туризму
+            li.company-types-list__item
+                a.company-types-list__link(href='#' title='Сервисным компаниям') Сервисным компаниям
