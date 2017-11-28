@@ -1,0 +1,62 @@
+//Below is a list of the Sass rules that could not be converted to Stylus
+// @debug: line 51 in your Sass file
+
+
+// =====================================================
+// ------------ MegaType Tools - Units -------------
+// =====================================================
+// @author Thomas Bredin-Grey <tom@studiothick.com>
+// Megatype: https://github.com/StudioThick/megatype
+// =====================================================
+
+// Returns a unitless number
+// no-unit($n)
+//   return $n / ($n * 0 + 1)
+
+unitless(val)
+  !unit(val)
+
+no-unit(val)
+  unit(val, '')
+
+// Converts an em value to px. Should only work in absolute em document context (root level)
+em-to-px($value, $context = $current-rootsize)  // working
+  if unit($value) == "em"
+    $value = no-unit($value) * no-unit($current-rootsize)  // maybe $context ?
+    $value = $value * 1px
+  return $value
+
+// Converts an rem value to px. Should only work in absolute em document context (root level)
+rem-to-px($value, $context = $current-rootsize)  // working
+  if unit($value) == "rem"
+    $value = no-unit($value) * no-unit($current-rootsize)  // maybe $context ?
+    $value = $value * 1px
+  return $value
+
+// Converts a px value to ems. Should only work in absolute em document context (root level), unless $context is specified
+px-to-em($value, $context = $current-rootsize)  // working
+  if unit($context) == "em"
+    $context = em-to-px($context)
+  if unit($value) == "px"
+    $value = no-unit($value) / no-unit($context)
+    $value = $value * 1em
+  return $value
+
+// Converts a px value to rems. Should only work in absolute em document context (root level), unless $context is specified
+px-to-rem($value, $context = $current-rootsize, $report = false)  // working
+  if $report == true
+    //Stylus does not support @debug
+    //@debug $value $context
+    p($value $context)
+  if unit($context) == "rem"
+    $context = rem-to-px($context)
+  if unit($value) == "px"
+    $value = no-unit($value) / no-unit($context)
+    $value = $value * 1rem
+  return $value
+
+// Converts a em value to rems. Should only work in absolute em document context (root level), unless $context is specified
+em-to-rem($value)  // working
+  if unit($value) == "em"
+    $value = no-unit($value) * 1rem
+  return $value

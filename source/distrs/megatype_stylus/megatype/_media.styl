@@ -1,0 +1,120 @@
+// =====================================================
+// ------------ Megatype media query mixins ------------
+// =====================================================
+// @author Thomas Bredin-Grey <tom@studiothick.com>
+// Megatype: https://github.com/StudioThick/megatype
+// =====================================================
+
+
+// Media queries. Accepts px or em
+// Defaults to min-width, but both min->max and max-width are available too.
+// Parts based on https://gist.github.com/timknight/03e6335b8816aa534cf7
+media($min = 0, $max = 0)
+  // Type of break variable
+  $min-val = type-of($min)
+  $min-unit = unit($min)
+  $max-val = ''
+  $max-unit = ''
+
+  // Make sure breakpoints aren't the same, or provided as the first breakpoint key (0)
+  if $min != $max or $min == 0
+    if $max != 0
+      $max-val = type-of($max)
+      $max-unit = unit($max)
+
+    if $min-unit == 'px'
+      $min = no-unit($min) / 16 * 1em
+
+    if $max-unit == 'px'
+      $max = no-unit($max) / 16 * 1em
+
+    $query ?= 'all'
+
+    // If it is a number then we can proceed  // 'number' is called 'unit' in stylus!!!
+    if $min-val == 'unit' or $max-val == 'unit'
+      // first, lets kick any breakpoint variables back to the breakpoint-layout mixin, which can handle these
+      if unitless($min) and unitless($max)
+        if map-has-key($breakpoint-map, $min)
+          // make current breakpoint context available in global scope
+          $current-breakpoint = $min
+          $current-rootsize = break-get($min, 'rootsize')  // TODO: ? not now stylus has globals
+
+          if $current-breakpoint == 0 and $max == 0
+            {block}
+          else
+            $minw = break-get($min, 'start')
+            $maxw = null
+
+            if map-has-key($breakpoint-map, $max)
+              $maxw = break-get($max, 'start') - 1px
+            else
+              warn($max + ' is not a valid breakpoint number')
+
+            if $min != 0 and $max != 0
+              +media($minw, $maxw)
+                {block}
+            else if $min != 0
+              +media($minw)
+                {block}
+            else if $max != 0
+              +media(0, $maxw)
+                {block}
+
+          // reset current breakpoint context
+          $current-breakpoint = 0  // TODO: ? not now stylus has globals
+          $current-rootsize = break-get(0, 'rootsize')  // TODO: ? not now stylus has globals
+        else
+          warn($min + ' is not a valid breakpoint number')
+
+      else
+        if $min-unit == 'px' or $min-unit == 'em'
+            // If using other numbers output value in ems either for min, min & max or max width breakpoints.
+            if $max-unit == 'px' or $max-unit == 'em'
+                $query = '(min-width: ' + $min + ') and (max-width: ' + $max + ')'
+            else
+                $query = '(min-width: ' + $min + ')'
+        else if $max-unit == 'px' or $max-unit == 'em'
+          $query = '(max-width: ' + $max + ')'
+        else
+          warn('' + $min + ' and ' + $max + ' are not valid for use in media query mixin - must use px or ems')
+
+        if $query != 'all'
+          @media $query
+            {block}
+        else
+          warn('' + $min + ' and ' + $max + ' did not resolve to a valid media query, styles not output')
+
+    else
+      warn('' + $min + ' and ' + $max + ' values do not form a valid media query')
+  else
+    warn('Provided ' + $min + ' and ' + $max + ' breakpoints are the same and will not produce any styles, so this query has not been output')
+
+
+// WARNING: depreciated, may not work in future versions
+// fallback included for backwards compatible support
+breakpoint-layout($min = 0, $max = 0)
+  warn('breakpoint-layout mixin depreciated in 1.0.11 and may not work in future versions. Use media mixin instead')
+
+  +media($min, $max)
+    {block}
+
+
+// apply min-width media query to one or more breakpoints
+set-min-width($apply-breaks = 0)
+  for $break in $apply-breaks
+    +media($break)
+      {block}
+
+
+// apply max-width media query to one or more breakpoints
+set-max-width($apply-breaks = 1)
+  for $break in $apply-breaks
+    +media(0, $break)
+      {block}
+
+
+// apply a style at all breakpoints, taking into account any change in baseline at different breakpoints
+all-breakpoints()
+  for $break in $breaks
+    +media($break)
+      {block}

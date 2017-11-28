@@ -1,0 +1,179 @@
+// =====================================================
+// --------------- Megatype debug mixins ---------------
+// =====================================================
+// @author Thomas Bredin-Grey <tom@studiothick.com>
+// Megatype: https://github.com/StudioThick/megatype
+// =====================================================
+
+// debug breakpoints
+debug-breakpoints()
+  if $debug-breakpoints == true and $debug-allow == true
+    html
+      &::before
+        display: block
+        box-sizing: border-box
+        animation-fill-mode: both
+        min-height: 3em
+        line-height: 1.6
+        text-align: center
+        background-color: $debug-base
+        //Function transparentize is not supported in Stylus
+        //background-color: transparentize($debug-base, 0.15)
+        background-color: transparentify($debug-base, #fff, 0.5)
+        color: #fff
+        font-size: $debug-size
+        z-index: 99999
+        padding: 0.75em 2em
+        text-shadow: 0 -1px 0 darken($debug-base, 25%)
+        animation: debug-in 0.75s $easeOutCubic
+        position: fixed
+        bottom: 0
+        left: 0
+        right: 0
+        font-feature-settings: "kern" 1, "onum" 0, "lnum" 1, "liga" 1
+        font-family: font-family-of($monospace)
+        -webkit-font-smoothing: subpixel-antialiased
+
+        //+all-breakpoints()
+        //  content: ('breakpoint: ' + $current-breakpoint ' --- start: ' + break-get($current-breakpoint, start) + ' --- max-width: ' + break-get($current-breakpoint, 'max'))
+        for $break in $breaks
+          $actual-breakpoint = $break
+          +media($break)
+            content: ('breakpoint: ' + $actual-breakpoint ' --- start: ' + break-get($actual-breakpoint, start) + ' --- max-width: ' + break-get($actual-breakpoint, 'max'))
+
+
+// debug grid
+debug-grid()
+  if $debug-grid == true and $debug-allow == true
+    body
+      position: relative
+      height: auto !important  // makes sure grid will span down screen as scrolling
+      z-index: 0
+
+      &::before
+        //+all-breakpoints()
+        for $break in $breaks
+          $actual-rootsize = break-get($break, 'rootsize')
+          +media($break)
+            // vertical grid starts at 0
+            // for horizontal grid, starts at center, is more complex to draw
+            //background: linear-gradient(to bottom, transparentify(darken($debug-base, 5%), #fff, 0.4) 1px, transparent 1px, transparent $current-rootsize), linear-gradient(to right, transparent 0px, transparent $current-rootsize / 2 - 1px, transparentify(darken($debug-base, 5%), #fff, 0.9) $current-rootsize / 2 - 1px, transparentify(darken($debug-base, 5%), #fff, 0.9) $current-rootsize / 2, transparent $current-rootsize / 2, transparent $current-rootsize)
+            if $debug-doubled-grid
+                background:
+                    linear-gradient(to bottom, transparentify(darken($debug-base, 5%), #fff, 0.4) 1px, transparent 1px, transparent $actual-rootsize),
+                    linear-gradient(to right, transparent 0px, transparent $actual-rootsize / 2 - 1px, transparentify(darken($debug-base, 5%), #fff, 0) $actual-rootsize / 2 - 1px, transparentify(darken($debug-base, 5%), #fff, 0.14) $actual-rootsize / 2, transparent $actual-rootsize / 2, transparent $actual-rootsize),
+                    linear-gradient(to bottom, transparentify(darken($debug-base-2, 5%), #fff, 0.4) 1px, transparent 1px, transparent $actual-rootsize * 2),
+                    linear-gradient(to right, transparent 0px, transparent $actual-rootsize / 2 - 1px, transparentify(darken($debug-base, 5%), #fff, 0) $actual-rootsize / 2 - 1px, transparentify(darken($debug-base, 5%), #fff, 0.14) $actual-rootsize / 2, transparent $actual-rootsize / 2, transparent $actual-rootsize * 2)
+            else
+                background:
+                    linear-gradient(to bottom, transparentify(darken($debug-base, 5%), #fff, 0.4) 1px, transparent 1px, transparent $actual-rootsize),
+                    linear-gradient(to right, transparent 0px, transparent $actual-rootsize / 2 - 1px, transparentify(darken($debug-base, 5%), #fff, 0) $actual-rootsize / 2 - 1px, transparentify(darken($debug-base, 5%), #fff, 0.14) $actual-rootsize / 2, transparent $actual-rootsize / 2, transparent $actual-rootsize)
+            background-repeat: repeat
+            background-position: center top
+            //   background-size: $current-rootsize $current-rootsize
+            if $debug-doubled-grid
+                background-size:
+                    $actual-rootsize $actual-rootsize,
+                    $actual-rootsize $actual-rootsize,
+                    $actual-rootsize $actual-rootsize * 2,
+                    $actual-rootsize $actual-rootsize * 2
+            else
+                background-size:
+                    $actual-rootsize $actual-rootsize,
+                    $actual-rootsize $actual-rootsize
+            position: absolute
+            top: 0
+            left: 0
+            right: 0
+            bottom: 0
+            z-index: 99998
+            content: ''
+            pointer-events: none
+
+      > *
+        opacity: 0.75
+
+
+// debug site root size
+debug-rootsize($sizes)
+  if $debug-allow == true and $debug-type == true
+    &::after
+      content: ('rootsize: ' + $sizes[0] + ' (' + no-unit($sizes[0] / 16px) * 100% + ')')
+      display: inline-block
+      position: fixed
+      top: 0
+      left: 0
+      width: auto
+      background-color: $debug-base
+      //Function transparentize is not supported in Stylus
+      //background-color: transparentize($debug-base, 0.15)
+      background-color: transparentify($debug-base, #fff, 0.5)
+      color: white
+      animation: debug-in 0.75s $easeOutCubic
+      margin-left: 0
+      padding: 0 1em
+      line-height: 3em
+      border-bottom-right-radius: 0.5em
+      font-size: $debug-size
+      font-family: font-family-of($monospace)
+      -webkit-font-smoothing: subpixel-antialiased
+      z-index: 1000
+
+      //+all-breakpoints()
+      //  content: ('rootsize: ' + break-get($current-breakpoint, 'rootsize') + ' (' + no-unit(break-get($current-breakpoint, 'rootsize') / 16px) * 100% + ')')
+      for $break in $breaks
+        +media($break)
+          content: ('rootsize: ' + break-get($break, 'rootsize') + ' (' + no-unit(break-get($break, 'rootsize') / 16px) * 100% + ')')
+
+// debug typeset typography
+debug-type($type-top, $type-bottom, $type-space, $color-space, $color-type, $offset-shift)
+  if $debug-allow == true and $debug-type == true
+    &::before
+    &::after
+      content: ''
+      display: block
+      position: absolute
+      width: 100%
+      left: 0
+      box-sizing: border-box
+      pointer-events: none
+
+    &::before
+      top: px-to-rem(-1 * $type-top + 1px)
+      bottom: px-to-rem(-1 * $type-bottom + $type-top)
+      //Function transparentize is not supported in Stylus
+      //background: transparentize($color-space, 0.7)
+      background-color: transparentify($color-space, #fff, 0.7)
+      outline: 1px solid transparentify(darken(mix($color-type, $color-space), 10%), #fff, 0)
+
+    &::after
+      top: px-to-rem($type-space + $offset-shift)
+      bottom: px-to-rem($type-space - $offset-shift)
+      //Function transparentize is not supported in Stylus
+      //background: transparentize($color-type, 0.7)
+      background-color: transparentify($color-type, #fff, 0.7)
+
+    if $debug-hover == false
+      &:hover
+        &::before
+          //Function transparentize is not supported in Stylus
+          //background: transparentize($color-space, 0.5)
+          background-color: transparentify($color-type, #fff, 0.5)
+
+        &::after
+          //Function transparentize is not supported in Stylus
+          //background: transparentize($color-type, 0.5)
+          background-color: transparentify($color-type, #fff, 0.5)
+
+if $debug-grid == true and $debug-allow == true
+  // debug grid - lets grid show through images
+  img
+    opacity: 0.75
+
+if $debug-allow == true
+  if $debug-breakpoints == true or $debug-type == true
+
+    // fade in
+    @keyframes debug-in
+      0%   { opacity: 0; }
+      100% { opacity: 1; }

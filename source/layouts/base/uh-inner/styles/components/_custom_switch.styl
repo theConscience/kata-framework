@@ -1,0 +1,138 @@
+@import 'helpers/_variables'
+@import 'helpers/_block_mixins'
+@import 'helpers/_placeholders'
+
+$source = '../../../'
+$distrs = $source + 'distrs/'
+
+// Megatype config //
+@import $distrs + 'megatype_stylus/megatype'
+$debug-allow = false
+$debug-doubled-grid = true
+@import $distrs + 'megatype_stylus/_megatype_config_12px'
+megatype()
+// end of Megatype config //
+
+$c_custom-switch-base = $c_dull
+$c_custom-switch-alter = $c_dark-8
+$c_custom-switch-base-bg = $c_white
+$c_custom-switch-alter-bg = #faf7dc
+$c_custom-switch-alter-border = #1b1d1d
+
+.custom-switch
+    position relative
+    // display inline-block
+    width 4.1667rem
+    // height 1.75rem
+    min-height 17px
+    font-size 1rem
+
+.custom-switch--dull
+    //
+
+.custom-switch__checkbox  // input[type=checkbox]
+    position absolute
+    opacity 0
+
+.custom-switch__label  // label[for=]
+    position absolute
+    top 0
+    left 0
+    width 4.1667rem
+    height 1.75rem
+    will-change transform
+    overflow hidden
+    border-radius 27px
+    font-family-of($helveticaNeueCyrBold)
+    // typeset($font: $helveticaNeueCyrBold, $fontsize: 10px, $lineheight: 24px, $leader: 0, $trailer: 0)  // $trailer not working in table cells, because they can't apply margin.
+    transition border-color 0.2s linear
+    border 1px solid $c_custom-switch-alter-border
+
+    .custom-switch__checkbox:checked + &
+        border-color transparent
+
+.custom-switch__slider
+    position absolute
+    box-sizing border-box
+    top 0
+    width 4.1667rem
+    height 1.75rem
+    padding-top 0  // 0.15rem
+    font-size 1rem
+    cursor pointer
+    box-shadow 0 0 0 2px rgba(0, 0, 0, 0.1) inset, 0 0 4px rgba(0, 0, 0, 0.5) inset, 0 5px 4px 1px rgba(0, 0, 0, 0.3) inset, 0 27px 0 rgba(0, 0, 0, 0.007) inset
+    border-radius 27px
+    transition transform 0.2s linear, background-color 0.2s linear
+
+    .custom-switch--dull &
+        // box-shadow 0 0 0 1px rgba(0, 0, 0, 0.1) inset, 0 27px 0 rgba(0, 0, 0, 0.007) inset
+        box-shadow none
+        color $c_custom-switch-alter
+
+    .custom-switch--dull .custom-switch__checkbox:checked + .custom-switch__label &
+        color $c_custom-switch-base
+
+.custom-switch__slider--on
+    left 0
+    // width 2.25rem
+    padding-left 0.75rem
+    text-align left
+    color $c_white
+    background-color #3498db
+
+    .custom-switch--dull &
+        background-color $c_custom-switch-alter-bg
+
+.custom-switch__slider--off
+    right 0
+    text-align right
+    padding-right 0.55rem
+    color #3498db
+    background-color $c_white
+
+    .custom-switch--dull &
+        background-color $c_custom-switch-base-bg
+
+    .custom-switch__checkbox:checked + .custom-switch__label &
+        transform translateX(27px)
+        background-color $c_custom-switch-alter-bg
+
+    &::after
+        position absolute
+        top 0.15rem  // 0.125rem
+        left 0.25rem
+        width 1.5rem
+        height 1.5rem
+        border-radius 50%
+        background-color #3498db
+        background-image linear-gradient(#D0D0D0, #FDFDFD)
+        box-shadow 0 0 2px 2px $c_white inset, 0 0 4px 1px rgba(0, 0, 0, 0.6)
+        transition background-color 0.2s linear
+        content ''
+
+        .custom-switch--dull &
+            background-image none
+            background-color $c_custom-switch-alter
+            // box-shadow 0 0 2px 2px rgba(255, 255, 255, 1)
+            box-shadow none
+
+        .custom-switch__label:active &
+        .custom-switch__checkbox:focus + .custom-switch__label &
+            background-color #D5D5D5
+            background-image linear-gradient(#C8C8C8, #E4E4E4)
+
+            .custom-switch--dull &
+                background-color $c_custom-switch-alter  // #3498db
+                background-image none
+
+        .custom-switch__checkbox:checked + .custom-switch__label &
+            //
+
+            .custom-switch--dull &
+                background-color $c_custom-switch-base
+
+        .custom-switch__checkbox:disabled + .custom-switch__label &
+            background-color #ddd
+
+            .custom-switch--dull &
+                background-color #ddd

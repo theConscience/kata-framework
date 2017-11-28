@@ -1,0 +1,214 @@
+@import 'helpers/_variables'
+@import 'helpers/_block_mixins'
+@import 'helpers/_placeholders'
+
+$source = '../../../'
+$distrs = $source + 'distrs/'
+
+// Megatype config //
+@import $distrs + 'megatype_stylus/megatype'
+$debug-allow = false
+$debug-doubled-grid = true
+@import $distrs + 'megatype_stylus/_megatype_config_12px'
+megatype()
+// end of Megatype config //
+
+$c_custom-timepicker-base = $c_dull
+$c_custom-timepicker-description = #a3a3a3
+
+.custom-timepicker-clock
+    position relative
+    display flex
+    flex-wrap nowrap
+    justify-content space-between
+    width 104px
+
+
+    &::before
+        width 17px
+        height 100%
+        left 0
+        right 0
+        margin 0 auto
+        font-family font-family-of($helveticaNeueCyrRoman)
+        typeset($font: $helveticaNeueCyrRoman, $fontsize: 16px, $lineheight: 20px, $leader: 1rem, $trailer: 0)
+        position absolute
+        color $c_custom-timepicker-base
+        content ':'
+
+.custom-timepicker
+    box-sizing border-box
+    position relative
+    overflow hidden
+    // height 2rem
+    max-height 3rem
+    padding-left 7px
+    padding-right 7px
+    padding-bottom 1rem
+
+// .custom-timepicker--wide
+//     max-width 7.5rem
+
+.custom-timepicker--year
+    max-width 6.667rem
+
+.custom-timepicker--month
+    max-width 10rem
+
+.custom-timepicker--hours
+.custom-timepicker--minutes
+    max-width 3.5rem
+
+.custom-timepicker--timezone
+    max-width 7.5rem
+
+
+.custom-timepicker__prev  // button
+.custom-timepicker__next  // button
+    position absolute
+    z-index 10
+    top 0
+    bottom 0  // 28%
+    border 0
+    background-color $c_white
+    margin-top auto
+    margin-bottom auto
+    margin-left 0
+    margin-right 0
+    padding 0
+    width 7px
+    height 12px
+    cursor pointer
+
+    &::before
+        @extend $$font-awesome
+        font-size 24px
+        position absolute
+        width 100%
+        height 12px
+        top -6px
+        color rgba($c_dark-6, 0.93)
+        transition color 0.2s ease-in
+
+    &:hover::before
+        color darken($c_dark-6, 50%)
+
+.custom-timepicker__prev  // button
+    left 0
+
+    &::before
+        left 0
+        content $fa_angle_left
+
+
+.custom-timepicker__next  // button
+    right 0
+
+    &::before
+        right 1px
+        content $fa_angle_right
+
+.custom-timepicker__input  // input[type=text]
+    z-index -1
+    width 3rem
+    padding 0
+    border 0
+    color $c_custom-timepicker-base
+    text-align center
+    opacity 0
+    transition opacity 0.2s ease-in
+    font-family font-family-of($helveticaNeueCyrRoman)
+    typeset($font: $helveticaNeueCyrRoman, $fontsize: 16px, $lineheight: 20px, $leader: 1rem, $trailer: 0)
+
+    // .custom-timepicker--wide &
+    //     width 76px
+
+    .custom-timepicker--hours &
+    .custom-timepicker--minutes &
+        width 2.4rem
+
+    .custom-timepicker--timezone &
+        width 6.3rem
+
+    .custom-timepicker--month &
+        width 8.9rem
+
+    .custom-timepicker--year &
+        width 5.5rem
+
+.custom-timepicker__input--visible
+    opacity 1
+    z-index 1
+
+.custom-timepicker__backdrop  // ul
+    top 0
+    left 0
+    display flex
+    // width 100%
+    margin 0
+    padding 0
+    padding-left 0.5rem
+    height 3rem
+    will-change transform
+    transform translateZ(0) // translateX(0.5rem)
+    transition transform 0.2s ease-in, opacity 0.2s ease-in
+    opacity 1
+    font-family font-family-of($helveticaNeueCyrRoman)
+    typeset($font: $helveticaNeueCyrRoman, $fontsize: 16px, $lineheight: 20px, $leader: 1rem, $trailer: 0)
+    position absolute
+
+    // .custom-timepicker--wide &
+    //     // transform translateZ(0) translateX(0.8rem)
+    //     transform translateZ(0) translateX(-0.8rem)
+
+    // .custom-timepicker--year &
+    //     padding-left 0.5rem
+
+    // .custom-timepicker--month &
+    //    padding-left 0.5rem
+
+    // .custom-timepicker--hours &
+    // .custom-timepicker--minutes &
+    //     padding-left 0.5rem
+
+    // .custom-timepicker--timezone &
+    //     padding-left 0.5rem
+
+
+.custom-timepicker__backdrop--hidden
+    opacity 0
+    z-index -1
+
+.custom-timepicker__backdrop-item  // li
+    list-style none
+    flex-grow 1
+    flex-basis 3rem
+    min-width 3rem
+    color $c_custom-timepicker-base
+    cursor pointer
+
+    // .custom-timepicker--wide &
+    //     flex-basis 7.5rem
+    //     min-width 7.5rem
+
+    .custom-timepicker--hours &
+    .custom-timepicker--minutes &
+        flex-basis 2.4rem
+        min-width 2.4rem
+
+    .custom-timepicker--timezone &
+        flex-basis 6.3rem
+        min-width 6.3rem
+
+    .custom-timepicker--month &
+        flex-basis 8.9rem
+        min-width 8.9rem
+
+    .custom-timepicker--year &
+        flex-basis 5.5rem
+        min-width 5.5rem
+
+.custom-timepicker__description
+    color $c_custom-timepicker-description
+    font-family font-family-of($helveticaNeueCyrLight)
+    typeset($font: $helveticaNeueCyrLight, $fontsize: 12px, $lineheight: 1.2, $leader: 1rem, $trailer: 0)

@@ -1,0 +1,19 @@
+x = 11
+
+create-context()
+  for $class in arguments
+    .{$class} &
+      {block}
+
+context--alternate-template()
+  +create-context('about', 'blog')
+    {block}
+
+.{x}
+  width: 10px
+
+.header
+  height 12em
+  background red
+  +context--alternate-template()
+    background green;

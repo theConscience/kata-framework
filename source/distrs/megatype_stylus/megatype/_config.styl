@@ -1,0 +1,219 @@
+//Below is a list of the Sass rules that could not be converted to Stylus
+//map-get: line 134 in your Sass file
+
+
+// =====================================================
+// ------------------ Megatype config ------------------
+// =====================================================
+// @author Thomas Bredin-Grey <tom@studiothick.com>
+// Megatype: https://github.com/StudioThick/megatype
+// =====================================================
+// ===================================
+// Colors
+// ===================================
+// colors
+$palettes ?= {
+  blue: #169dbf,
+  white: white,
+  black: black
+}
+
+$site-color-names ?= map-keys($palettes)
+// ===================================
+// Debugging
+// ===================================
+// debug grid columns, grid, type baseline, & breakpoints
+$debug-grid ?= true
+$debug-doubled-grid ?= false
+$debug-type ?= true
+$debug-breakpoints ?= true
+// makes type debugging show on hover instead of all the time
+$debug-hover ?= true
+// debug colors
+$debug-base ?= #f54848
+$debug-base-2 ?= #4865f5
+$debug-cap ?= yellow
+$debug-spacing ?= turquoise
+// size of debug text
+$debug-size ?= 12px
+// grid opacity, for debugging max-width
+$debug-opacity ?= 0.3
+// limit where baseline will report warnings
+$debug-tolerance = 1px
+// ===================================
+// Breakpoints & Grid
+// ===================================
+// enable responsive baseline & type scaling.
+// increases root font size from each breakpoint, starting from the min size specified in $rootsizes below
+$baseline-scaling ?= false
+// enable formal baseline grid
+// snaps all type to the baseline grid
+// for best results, declare spacing and leading using unitless numbers in typeset mixin
+// can be disabled per-typeset mixin by passing last paramter ($snap) as false
+$baseline-snap ?= true
+// baseline subdivisions specify a fraction of the grid that type can be snapped to.
+// useful for small text
+// can be overridden in typeset mixin with parameter $use-subdivisions: false
+$baseline-subdivisions = 1
+// map for flexible retrieval of breakpoint info
+$breakpoint-map ?= {
+  '0': {
+    start: 0px,
+    max: 420px,
+    rootsize: 12px
+  },
+  '1': {
+    start: 480px,
+    max: 560px,
+    rootsize: 14px
+  },
+  '2': {
+    start: 768px,
+    max: 840px,
+    rootsize: 16px
+  },
+  '3': {
+    start: 980px,
+    max: 1080px,
+    rootsize: 18px
+  },
+  '4': {
+    start: 1280px,
+    max: 1440px,
+    rootsize: 20px
+  }
+}
+
+// $breakpoint-map ?= {
+//   '0': {
+//     start: 0px,
+//     max: 420px,
+//     rootsize: 12px
+//   },
+//   '1': {
+//     start: 480px,
+//     max: 560px,
+//     rootsize: 14px
+//   },
+//   '2': {
+//     start: 768px,
+//     max: 840px,
+//     rootsize: 16px
+//   },
+//   '3': {
+//     start: 980px,
+//     max: 1080px,
+//     rootsize: 18px
+//   },
+//   '4': {
+//     start: 1280px,
+//     max: 1440px,
+//     rootsize: 20px
+//   }
+// }
+
+// default breakpoint. This is where the default html font size will be set,
+// media queries will be generated to either side to apply rootsizes at remaining breakpoints
+// eg: for mobile first set this to 0, for desktop first set this to your largest breakpoint (with this config, 4)
+$default-break ?= 0
+// optional: set a minimum size for all typeset typography
+$min-font-size ?= false
+// typographic measure for paragraphs, lists, and headings
+$type-measure ?= 40rem
+// link offset from baseline
+$link-color ?= palette('blue')
+// link offset from baseline
+$link-offset ?= 2px
+// link underline opacity
+$link-underline-opacity ?= 0.6
+// link underline hover opacity
+$link-underline-hover-opacity ?= 0.8
+// breakpoint count
+$breakpoint-count ?= get-keys-length(map-keys($breakpoint-map))
+// breakpoint names
+$breaks ?= map-keys-indent($breakpoint-map)
+// set the initial breakpoint information referenced by type mixins
+// you can use these to retrieve current breakpoint info within breakpoint mixins
+$current-breakpoint ?= 0
+$current-rootsize ?= break-get(0, 'rootsize')
+// ===================================
+// Compatibility
+// ===================================
+// fix line-height rounding errors in webkit safari
+$webkit-line-height-fix ?= true
+// ===================================
+// Typefaces
+// ===================================
+// Set cap height to set to the baseline.
+// Here are some cap-height sizes to get you started:
+// Georgia: 0.66, Times / Times New Roman: 0.65, Palatino: 0.52
+// Lucida Grande: 0.72, Helvetica: 0.65, Helvetica Neue: 0.71, Verdana: 0.76, Tahoma: 0.76
+$sans ?= {
+  font-family: '"Helvetica Neue", Arial, sans-serif',
+  regular: normal,
+  bold: bold,
+  cap-height: 0.71,
+  cap-position: 0.525
+}
+$serif ?= {
+  font-family: "Georgia, serif",
+  regular: normal,
+  bold: bold,
+  cap-height: 0.69,
+  cap-position: 0.525
+}
+$monospace ?= {
+  font-family: "Menlo, Courier, monospace",
+  regular: 400,
+  cap-height: 0.68,
+  cap-position: 0.5
+}
+
+$helveticaNeueCyrThin = {
+    font-family: '"helveticaneuecyrthin", Tahoma, sans-serif'
+    font-weight: normal
+    regular: normal
+    bold: bold
+    cap-height: 0.71
+    cap-position: 0.5
+}
+$helveticaNeueCyrLight = {
+    font-family: '"helveticaneuecyrlight", Tahoma, sans-serif'
+    font-weight: normal
+    regular: normal
+    bold: bold
+    cap-height: 0.71
+    cap-position: 0.5
+}
+$helveticaNeueCyrRoman = {
+    font-family: '"helveticaneuecyrroman", Tahoma, sans-serif'
+    font-weight: normal
+    regular: normal
+    bold: bold
+    cap-height: 0.71
+    cap-position: 0.5
+}
+$helveticaneuecyrmedium = {
+    font-family: '"helveticaneuecyrmedium", Tahoma, sans-serif'
+    font-weight: normal
+    regular: normal
+    bold: bold
+    cap-height: 0.71
+    cap-position: 0.5
+}
+$helveticaNeueCyrBold = {
+    font-family: '"helveticaneuecyrbold", Tahoma, sans-serif'
+    font-weight: normal
+    regular: normal
+    bold: bold
+    cap-height: 0.71
+    cap-position: 0.5
+}
+$fontAwesome = {
+    font-family: '"FontAwesome"'
+    font-weight: normal
+    regular: normal
+    bold: bold
+    cap-height: 0.61
+    cap-position: 0.6
+}

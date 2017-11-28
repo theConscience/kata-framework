@@ -1,0 +1,59 @@
+@import './helpers/_variables'
+@import './helpers/_mixins'
+@import './helpers/_block_mixins'
+
+
+@import '../../../distrs/megatype_stylus/megatype'
+
+// $debug-allow ?= true
+megatype()
+
+$helveticaNeueCyrLight = {
+    font-family: '"helveticaneuecyrlight", Tahoma, sans-serif'
+    font-weight: normal
+    regular: normal
+    bold: bold
+    cap-height: 0.71
+    cap-position: 0.55
+}
+
+$helveticaNeueCyrRoman = {
+    font-family: '"helveticaneuecyrroman", Tahoma, sans-serif'
+    font-weight: normal
+    regular: normal
+    bold: bold
+    cap-height: 0.71
+    cap-position: 0.55
+}
+
+$helveticaNeueCyrBold = {
+    font-family: '"helveticaneuecyrbold", Tahoma, sans-serif'
+    font-weight: normal
+    regular: normal
+    bold: bold
+    cap-height: 0.71
+    cap-position: 0.55
+}
+
+.my-container
+    +set-container()
+        //
+
+// Heading level 1.
+h1
+  // Set font-family
+  font-family: font-family-of($helveticaNeueCyrLight)
+  // Set type settings
+  typeset($font: $helveticaNeueCyrLight, $fontsize: 24px, $lineheight: 24px, $leader: 2, $trailer: 2rem)
+
+// Heading level 2.
+h2
+  font-family: font-family-of($helveticaNeueCyrBold)
+  typeset($helveticaNeueCyrBold, 18px, 24px, 2, 1)
+
+
+// Paragraph.
+p
+  font-family: font-family-of($helveticaNeueCyrRoman)
+  typeset($helveticaNeueCyrRoman, 16px, 2rem, 0, 2)
+

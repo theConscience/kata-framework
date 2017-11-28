@@ -1,0 +1,110 @@
+@import 'helpers/_variables'
+@import 'helpers/_block_mixins'
+
+
+// Megatype config //
+@import '../../../distrs/megatype_stylus/megatype'
+$debug-allow = false
+$debug-size = 12px
+$breakpoint-map = {
+  '0': {
+    start: 0px,
+    max: 420px,
+    rootsize: 12px
+  },
+  '1': {
+    start: 480px,
+    max: 560px,
+    rootsize: 12px
+  },
+  '2': {
+    start: 768px,
+    max: 840px,
+    rootsize: 12px
+  },
+  '3': {
+    start: 980px,
+    max: 1080px,
+    rootsize: 12px
+  },
+  '4': {
+    start: 1280px,
+    max: 1440px,
+    rootsize: 12px
+  }
+}
+$breakpoint-count = get-keys-length(map-keys($breakpoint-map))
+$breaks = map-keys-indent($breakpoint-map)
+$current-breakpoint = 0
+$current-rootsize = break-get(0, 'rootsize')
+megatype()
+// end of Megatype config //
+
+
+$c_custom-radio-base = #477a78
+
+
+.custom-radio
+    //
+
+.custom-radio--loose
+    //
+
+.custom-radio--t1
+    //
+
+.custom-radio__input  // input[type=radio]
+    display none
+
+.custom-radio__label  // label
+    // fontHvRoman16_24()
+    font-family font-family-of($helveticaNeueCyrRoman)
+    typeset($font: $helveticaNeueCyrRoman, $fontsize: 16px, $lineheight: 24px, $leader: 1rem, $trailer: 1rem)
+    position relative
+    padding-left 33px
+    color $c_dark-8
+    cursor pointer
+
+    .custom-radio__input:checked ~ &
+        // fontHvBold16_24()
+        font-family font-family-of($helveticaNeueCyrBold)
+        // typeset($font: $helveticaNeueCyrBold, $fontsize: 16px , $lineheight: 24px, $leader: 1rem, $trailer: 1rem)
+
+    &::before
+        position absolute
+        left 0
+        top 0
+        bottom 0
+        margin-top auto
+        margin-bottom auto
+        border 1px solid $c_custom-radio-base
+        border-radius 50%
+        width 19px
+        height 18px
+        content ''
+
+    &::after
+        position absolute
+        box-sizing border-box
+        left 4px
+        top 0
+        bottom 0
+        margin-top auto
+        margin-bottom auto
+        border 4px solid $c_custom-radio-base
+        border-radius 50%
+        width 13px
+        height 12px
+        opacity 0
+        transition opacity 0.4s ease
+        content ''
+
+        .custom-radio__input:checked ~ &
+            opacity 1
+
+    .custom-radio--loose &
+        typeset($font: $helveticaNeueCyrRoman, $fontsize: 16px, $lineheight: 30px, $leader: 1rem, $trailer: 1rem)
+        // line-height 1.875
+
+    .custom-radio--loose .custom-radio__input:checked ~ &
+        font-family font-family-of($helveticaNeueCyrBold)

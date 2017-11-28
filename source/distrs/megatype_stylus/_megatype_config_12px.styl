@@ -1,0 +1,42 @@
+@import 'megatype'
+
+// $debug-allow = true
+// $debug-doubled-grid = false
+
+$debug-base = #f54848
+$debug-base-2 = #4865f5
+$debug-size = 12px
+$breakpoint-map = {
+'0': {
+    start: 0px,
+    max: 420px,
+    rootsize: 12px
+},
+'1': {
+    start: 480px,
+    max: 560px,
+    rootsize: 12px
+},
+'2': {
+    start: 768px,
+    max: 840px,
+    rootsize: 12px
+},
+'3': {
+    start: 980px,
+    max: 1080px,
+    rootsize: 12px
+},
+'4': {
+    start: 1280px,
+    max: 1440px,
+    rootsize: 12px
+}
+}
+$breakpoint-count = get-keys-length(map-keys($breakpoint-map))
+$breaks = map-keys-indent($breakpoint-map)
+$current-breakpoint = 0
+$current-rootsize = break-get(0, 'rootsize')
+
+// megatype()
+
