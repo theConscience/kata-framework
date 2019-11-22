@@ -1,0 +1,96 @@
+extends ../../base/base-2/base-2
+
+include ./blocks/_mixins.jade
+
+
+block append links
+    //- link(href='./css/sub_css.css' rel='stylesheet') // простых css файлов у этого темплейта нет
+    link(href='./css/sub_style.css' rel='stylesheet')
+
+
+block append scripts
+    script(src='../../distrs/hammerJS/hammer.min.js')
+    script(src='../../distrs/hammerJS/hammer-time.min.js')
+    script(src='../../distrs/utils/debounce.js')
+    script(src='./js/sub_js.js')
+
+
+block left_side
+    nav.external-page__navigation.nav-external
+        ul.nav-external__list
+            li.nav-external__item.lang-selection
+                a.nav-external__link.nav-external__link--lang-selection(href='#' title='Выберите язык') Rus
+                form#language__form.lang-selection__form(method='post' action='')
+                    input#language__value(type='hidden' name='language')
+                    ul.lang-selection__popup-1
+                        li.lang-selection__item
+                            a.lang-selection__link(href='#' data-language-code='en' title='Английский') Eng
+                        li.lang-selection__item
+                            a.lang-selection__link(href='#' data-language-code='zh-cn' title='Китайский') Chi
+                        li.lang-selection__item
+                            a.lang-selection__link(href='#' data-language-code='it' title='Итальянский') Ita
+                    ul.lang-selection__popup-2.languages
+                        li.languages__item
+                            a.languages__link(href='#') Deutch
+                        li.languages__item
+                            a.languages__link(href='#') Espanol
+                        li.languages__item
+                            a.languages__link(href='#') Francais
+            li.nav-external__item
+                a.nav-external__link.nav-external__link--logo.nav-external__link--logo-uh(href='#' title='Главная страница')
+                    img.logo--white-small.img-responsive(src='images/img-uh-logo.svg' width='100' height='81')
+                .logo__popup
+                    | Бесплатный Международный
+                    | Туристический Справочник для
+                    | отелей и операторов
+            li.nav-external__item.position-static
+                a.nav-external__link.nav-external__link--sign-in(href='#sign-in' title='Вход') Вход
+                section#sign-in.sign-in__popup
+                    form#sign-in_form(action='#', method='POST')
+                        header.sign-in__header Войти
+                        .custom-label.custom-label--v1(data-validation-message='Вы указали несуществующий логин пользователя')
+                            input#sign-in__login.sign-in__login(type='text', name='login', required='')
+                            label.sign-in__label Логин
+                        .custom-label.custom-label--v1(data-validation-message='Вы ввели неверный пароль пользователя')
+                            input#sign-in__password.sign-in__password(type='password', name='password', required='')
+                            label.sign-in__label Пароль
+                        .custom-checkbox.custom-checkbox--bright.sign-in__label
+                            input#sign-in__stay-logged(name='auth-never-expire' type='checkbox')
+                            label(for='sign-in__stay-logged' tabindex='5') Оставаться в сети
+                        a.sign-in__forgot-password(href='#' title='Сброс пароля') Забыли пароль?
+                        button.btn.btn--v5(type='submit') Войти
+                    a.btn.btn--v6(href='#' title='Регистрация') Регистрация
+
+            li.nav-external__item.nav-external__item--special
+                a.nav-external__link.nav-external__link--about(href='#' title='О нас') О нас
+            li.nav-external__item
+                a.nav-external__link.nav-external__link--xml-test(href='#' title='XML-тест') XML-тест
+
+
+block right_side
+    //- aside.external-page__additional-info.info-additional
+    //-     h2.info-additional__header
+    //-         | Публикация ваших новостей
+    //-         | для турагентов и
+    //-         | путешественников по всему
+    //-         | миру
+    //-     .info-additional__promo-banner
+    //-         | Эффективный инструмент
+    //-         | для вашего продвижения
+    //-         | с охватом аудитории!
+    //-     ul.info-additional__for-clients.for-clients
+    //-         li.for-clients__item
+    //-             a.for-clients__link(href='#') Авиакомпаниям
+    //-             .for-clients__tooltip Авиакомпаниям
+    //-         li.for-clients__item
+    //-             a.for-clients__link(href='#') Бюро по туризму
+    //-             .for-clients__tooltip Офисам, департаментам и бюро по туризму
+    //-         li.for-clients__item
+    //-             a.for-clients__link(href='#') Объектам культуры
+    //-             .for-clients__tooltip Объектам культуры
+    //-         li.for-clients__item
+    //-             a.for-clients__link(href='#') Медицинскому туризму
+    //-             .for-clients__tooltip Медицинскому туризму
+    //-         li.for-clients__item
+    //-             a.for-clients__link(href='#') Сервисным компаниям
+    //-             .for-clients__tooltip Сервисным компаниям

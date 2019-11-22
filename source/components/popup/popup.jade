@@ -1,0 +1,36 @@
+//- extends ../../layouts/base/components-base/components-base
+
+if pageName
+    section#popup.popup
+        .popup__title Popup title #{pageName}
+        .popup__inner
+            | hello, i am popup! 
+            span= pageName
+        button.popup__close(type='button') Close popup
+else
+    doctype html
+    html(lang='ru')
+        head
+            - var componentName = 'popup';
+            - var componentTitle = 'Popup component template';
+            - var componentDescription = 'Popup component, can be used for modal windows etc.';
+
+            include ../../layouts/base/components-base/blocks/_head
+
+            block links
+                include ../../layouts/base/components-base/blocks/_links
+                include ../../components/popup/blocks/popup-link
+
+        body(id=componentName ? componentName + '-component_page' : 'components-base_page', class=componentName ? componentName + '-component-page' : 'components-base-page')
+
+            section#popup.popup
+                .popup__title Popup title #{componentName}
+                .popup__inner
+                    | hello, i am popup! 
+                    span= componentName
+                button.popup__close(type='button') Close popup
+
+            block scripts
+                include ../../layouts/base/components-base/blocks/_scripts
+                include ../../components/popup/blocks/popup-script
+  

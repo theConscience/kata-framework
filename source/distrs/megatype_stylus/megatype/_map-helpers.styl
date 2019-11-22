@@ -1,0 +1,70 @@
+//Below is a list of the Sass rules that could not be converted to Stylus
+//map-get: line 10 in your Sass file
+//map-get: line 15 in your Sass file
+
+
+// =====================================================
+// ------------- Megatype helper functions -------------
+// =====================================================
+// @author Thomas Bredin-Grey <tom@studiothick.com>
+// Megatype: https://github.com/StudioThick/megatype
+// =====================================================
+
+hash-get($hash, $key)
+  $result = false
+  if typeof($key) != 'string'
+    $key = join('', $key)
+  $result = $hash[$key]
+  return $result
+
+// shorthand function to retreive breakpoint values
+break-get($break, $val)
+  // warn('$break: ' + $break + ' $val: ' + $val)
+  // warn('typeof($break): ' + typeof($break) + ' typeof($val): ' + typeof($val))
+
+  $result = false
+  if typeof($break) != 'string'
+    $break = join('', $break)
+    // warn('$break: ' + $break)
+  if typeof($val) != 'string'
+    $val = join('', $val)
+    // warn('$val: ' + $val)
+
+  $result = $breakpoint-map[$break]
+
+  // warn('demi $result: ' + $result)
+  // warn('demi typeof($result): ' + typeof($result))
+
+  $result = $result[$val]
+
+  // warn('$result: ' + $result)
+  // warn('typeof($result): ' + typeof($result))
+
+  return $result
+
+// color variable helper
+palette($color)
+  return $palettes[$color]
+
+// make comma separated keys as literal
+map-keys($hash)
+  unquote(join(', ', keys($hash)))
+
+// make space separated keys as units
+map-keys-indent($hash)
+  $temp = ()
+  push($temp, convert(join(' ', keys($hash))))
+  return $temp
+
+// get keys as units length. Analogue of length(map-keys($breakpoint-map)) in sass
+get-keys-length($mapKeys)
+  length(split(', ', join('', $mapKeys)))
+
+// sass unitless simulation
+unitless($someVar)
+  return !unit($someVar)
+
+// sass map-has-key simulation with hash
+map-has-key($hash, $key)
+  $s_key = join('', $key)
+  return !!$hash[$s_key]

@@ -1,0 +1,15 @@
+include ./blocks/_mixins
+
+doctype html
+html(lang='ru')
+    head
+        include ./blocks/_head
+        block links
+            include ./blocks/_links
+
+    body(id=componentName ? componentName + '-component_page' : 'components-base_page', class=componentName ? componentName + '-component-page' : 'components-base-page')
+
+        block component
+
+        block scripts
+            include ./blocks/_scripts

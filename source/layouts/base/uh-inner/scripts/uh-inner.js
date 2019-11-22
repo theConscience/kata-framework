@@ -307,6 +307,9 @@ var CONFIG_BASE_UH_INNER = (function (settings, utils, $) {
         }
       }
 
+    },
+    functions: {
+      initElementScroll: initElementScroll
     }
   };
 
@@ -575,6 +578,8 @@ var CONFIG_BASE_UH_INNER = (function (settings, utils, $) {
 
     // interface //
 
+    if (!mainMenuToggleButton) return false;
+
     mainMenuToggleButton.addEventListener('click', mainMenuClickHandler);
     mainMenuToggleButton.addEventListener('keydown', mainMenuKeydownHandler);
 
@@ -700,6 +705,9 @@ var CONFIG_BASE_UH_INNER = (function (settings, utils, $) {
     // configuration //
 
     var mainNav = document.querySelector('.' + config.TITLE);
+
+    if (!mainNav) return false;
+
     var mainNavLinks = mainNav.querySelectorAll('.' + config.ELEMENTS.LINK);  // NodeList
 
     // interface //
@@ -755,6 +763,9 @@ var CONFIG_BASE_UH_INNER = (function (settings, utils, $) {
     // configuration //
 
     var siteLanguage = document.querySelector('.site-language');
+
+    if (!siteLanguage) return false;
+
     var siteLanguageActiveLanguageItem = siteLanguage.querySelector('.site-language__menu-item--active');
     var siteLanguageActiveLanguageLink = siteLanguageActiveLanguageItem.querySelector('.site-language__menu-link');
 
@@ -799,6 +810,9 @@ var CONFIG_BASE_UH_INNER = (function (settings, utils, $) {
     // configuration //
 
     var siteSearch = document.querySelector('.site-search');
+
+    if (!siteSearch) return false;
+
     var siteSearchQuery = siteSearch.querySelector('#site-search__query');
 
     // interface //

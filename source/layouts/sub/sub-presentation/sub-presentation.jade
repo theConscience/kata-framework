@@ -1,0 +1,17 @@
+extends ../sub-2/sub-2
+
+include ./blocks/_mixins.jade
+
+
+block head
+    - var subTemplateName = 'presentation';
+
+
+block append links
+    link(href='https://fonts.googleapis.com/css?family=Roboto:400,500,700,900&subset=cyrillic' rel='stylesheet')
+    link(href='./css/sub2_style.css' rel='stylesheet')
+
+
+block append scripts
+    script(src='./js/sub2_jq.js')
+    script(src='./js/sub2_js.js')

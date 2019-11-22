@@ -1,0 +1,24 @@
+extends ../../layouts/sub/<SUB_FOLDER>/<SUB_FILE>
+
+include ./blocks/_mixins.jade
+
+
+block append head
+    - var pageName = '<PAGE_NAME>';
+    - var pageTitle = '<PAGE_NAME> page template';
+
+
+block append links
+    link(href='./css/page_css.css' rel='stylesheet')
+    link(href='./css/page_style.css' rel='stylesheet')
+    //- link(href='./css/page_css.min.css' rel='stylesheet')
+    //- link(href='./css/page_style.min.css' rel='stylesheet')
+
+
+block append scripts
+    script(src='./js/page_js.js')
+    //- script(src='./js/page_js.min.js')
+
+
+block append content
+    article.<PAGE_NAME>-content

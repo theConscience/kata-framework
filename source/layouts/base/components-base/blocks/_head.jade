@@ -1,0 +1,12 @@
+meta(charset='utf-8')
+meta(name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1, minimal-ui')
+meta(http-equiv='X-UA-Compatible' content='IE=edge')
+
+meta(name='application-name' content=componentTitle || '')
+meta(name='msapplication-tooltip' content=componentDescription || '')
+
+script(src='../../distrs/modernizr/modernizr-custom.js') //- всегда должен быть в HEAD
+block head
+title= componentTitle || ''
+meta(name='description' content=componentDescription || '')
+meta(name='keywords' content=componentKeywords || '')

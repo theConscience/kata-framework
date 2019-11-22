@@ -1,0 +1,49 @@
+extends ../../layouts/sub/sub-2/sub-2
+
+include ./blocks/_mixins.jade
+
+
+block head
+    - var pageName = 'registration';
+    - var pageTitle = 'Send recovery email page template';
+
+
+block append links
+    //- link(href='./css/page_css.css' rel='stylesheet')
+    link(href='../registration/css/page_style.css' rel='stylesheet')
+    link(href='./css/page_style.css' rel='stylesheet')
+    //- link(href='./css/page_css.min.css' rel='stylesheet')
+    //- link(href='./css/page_style.min.css' rel='stylesheet')
+    
+    link(href='../../assets/css/registration-temporary-fix.min.css' rel='stylesheet')
+
+block append scripts
+    //- script(src='./js/page_js.js')
+    //- script(src='./js/page_js.min.js')
+
+
+block append content
+    article.content-registration
+        h1.content-registration__title Введите e-mail<br> для сброса пароля
+        form#send-recovery-email-form.content-registration__form.registration-form(method=POST)
+            .registration-form__inner
+                fieldset.registration-form__step.registration-form__step-1
+                    legend.registration-form__legend(data-step-number='1') Введите e-mail
+                    .l-row.l-row-main-start.l-row-wrap
+                        .l-row.l-row-wrap.l-col-basis-500
+                            .l-col-basis-200
+                                label.registration-form__label(for='send-recovery-user-email') E-mail
+                            .l-col-basis-300
+                                +custom_input('dark', 'email', 'send-recovery-user-email', 'registration-form__input', 'user-email', required=true, false, '[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$') 
+                    .l-row.l-row-main-start.l-row-wrap
+                        .l-row.l-row-wrap.l-row-cross-end.l-col-basis-500 
+                            .l-col-basis-200
+                                label.registration-form__label(for='send-recovery-captcha') Введите код с картинки
+                                img#reg-captcha__image.registration-form__captcha-image(alt='captcha image' src='images/bg-captcha.png' width='97' height='35')
+                            .l-col-basis-300
+                                +custom_input('dark', 'text', 'send-recovery-captcha', 'registration-form__input', 'captcha', true)
+
+            button.btn.btn--v7#send-recovery-email-form__submit(type=submit) Отправить
+
+block right_side
+//- обнуляем этот блок, иначе он унаследуется от sub-2.jade

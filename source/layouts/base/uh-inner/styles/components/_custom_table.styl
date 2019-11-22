@@ -1,0 +1,114 @@
+@import 'helpers/_variables'
+@import 'helpers/_mixins'
+@import 'helpers/_block_mixins'
+@import 'helpers/_placeholders'
+
+$source = '../../../'
+$distrs = $source + 'distrs/'
+
+// Megatype config //
+@import $distrs + 'megatype_stylus/megatype'
+$debug-allow = false
+$debug-doubled-grid = true
+@import $distrs + 'megatype_stylus/_megatype_config_12px'
+megatype()
+// end of Megatype config //
+
+$c_custom-table-base = $c_dull
+$c_custom-table-temp = #c8d9d9
+
+.custom-table  // table
+    display table
+    border-spacing 0
+    border-collapse separate
+    padding 0
+
+.custom-table__body  // tbody
+    display table-row-group
+
+.custom-table__row  // tr
+    display table-row
+    // font-family font-family-of($helveticaNeueCyrRoman)
+    // typeset($font: $helveticaNeueCyrRoman, $fontsize: 14px, $lineheight: 24px, $leader: 1rem, $trailer: 1rem)
+    border-radius 3px
+    color $c_dark-8
+    background-color $c_custom-table-temp  // $c_white
+    background-image linear-gradient(to bottom, rgba(30,87,153,0) 98%,rgba(255,255,255,1) 98%)
+    font-family font-family-of($helveticaNeueCyrRoman)
+    transition background-color 0.4s ease-in, color 0.4s ease-in
+
+.custom-table__row--selected
+    background-color $c_custom-table-base
+    color $c_white
+
+.custom-table__cell  // td
+    display table-cell
+    // padding-top 8px
+    padding-bottom 1rem
+    text-align left
+    font-family font-family-of($helveticaNeueCyrRoman)
+    typeset($font: $helveticaNeueCyrRoman, $fontsize: 14px, $lineheight: 24px, $leader: 1rem, $trailer: 0)  // $trailer not working in table cells, because they can't apply margin.
+
+    +ie-10-11-only()
+        padding-top 1rem
+
+.custom-table__cell--control
+    // padding-top 8px
+    // padding-bottom 6px
+    text-align center
+    padding-left 22px
+    padding-right 22px
+    // top 0.5rem
+
+.custom-table__icon
+    // font-family font-family-of($fontAwesome)
+    // typeset($font: $fontAwesome, $fontsize: 14px, $lineheight: 24px, $leader: 0, $trailer: 2rem)
+    @extend $$font-awesome
+    position absolute
+    box-sizing border-box
+    width 21px
+    height 22px
+    border-radius 3px
+    border 1px solid $c_dark-8
+
+    &::before
+        font-size 16px
+        top 2px
+        position absolute
+
+    .custom-table__row--selected &
+        border 1px solid $c_white
+
+.custom-table__icon--inst
+    width 22px
+    border 0
+
+    &::before
+        font-size 25px
+        top 0
+        content $fa_instagram
+
+    .custom-table__row--selected &
+        border 0
+
+.custom-table__icon--fb::before
+    left 5px
+    content $fa_facebook
+
+.custom-table__icon--vk::before
+    font-size 15px
+    left 1px
+    content $fa_vkontakte
+
+.custom-table__icon--twit::before
+    left 3px
+    content $fa_twitter
+
+
+.custom-table__description
+    // color $c_dark-8
+    // font-family font-family-of($helveticaNeueCyrRoman)
+    // typeset($font: $helveticaNeueCyrRoman, $fontsize: 14px, $lineheight: 24px, $leader: 1rem, $trailer: 1rem)
+    margin-left 30px
+
+

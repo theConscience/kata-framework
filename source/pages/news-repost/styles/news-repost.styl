@@ -2,3 +2,314 @@
 @import './helpers/_mixins'
 @import './helpers/_block_mixins'
 @import './helpers/_placeholders'
+
+$source_dir = '../../../'
+$components_dir = $source_dir + 'layouts/base/uh-inner/styles/components/'
+$distrs = $source_dir + 'distrs/'
+
+// @import '../../../layouts/base/uh-inner/styles/_flex'
+@import $components_dir + '_custom_radio'
+@import $components_dir + '_custom_timepicker'
+@import $components_dir + '_custom_table'
+@import $components_dir + '_custom_switch'
+
+
+// Megatype config //
+@import $distrs + 'megatype_stylus/megatype'
+$debug-allow = true
+$debug-doubled-grid = true
+@import $distrs + 'megatype_stylus/_megatype_config_12px'
+megatype()
+// end of Megatype config //
+
+.news-repost
+    // position fixed
+    z-index 100
+    top 0
+    bottom 0
+    left 0
+    right 0
+    // width 100%
+    // height 100%
+    // min-width 100%
+    // min-height 100vh
+    margin auto
+    padding-top 6rem  // 3rem
+    text-align center
+    background-color rgba(45, 81, 81, 0.86)
+    padding-bottom 6rem
+
+.news-repost__inner
+    position relative
+    width 465px
+    // width 20rem
+    border-radius 3px
+    background-color $c_white
+    margin auto
+
+.news-repost__close  // button
+    font-size 0
+    position absolute
+    top -28px
+    right -17px
+    width 18px
+    height 18px
+    border 0
+    outline 0
+    cursor pointer
+    background-color transparent
+    background-image linear-gradient(-45deg, transparent 0%, transparent 47%, white 47%,  white 53%,transparent 53%, transparent 100%), linear-gradient(45deg, transparent 0%, transparent 47%, white 47%,  white 53%,transparent 53%, transparent 100%)
+
+.news-repost__part
+    display flex
+    justify-content center
+    flex-wrap wrap
+    // padding-left 37px
+    // padding-right 37px
+    // padding-top 24px
+    // padding-bottom 24px
+    padding-top 2rem  // 1rem
+    padding-bottom 2rem  // 1rem
+
+    > *
+        flex-basis 100%
+
+    .news-repost__part--limited + &
+        margin-top -1px
+
+.news-repost__part--top  // header
+    // padding-top 36px
+    padding-top 4rem
+
+.news-repost__part--limited
+    border-bottom 1px solid $c_light-8
+
+.news-repost__part--bottom
+    // padding-bottom 36px
+    padding-bottom 4rem  // 2rem
+
+.news-repost__part--darkened
+    background-color $c_light-repost
+
+.news-repost__part-inner
+    padding-left 110px
+    padding-right 110px
+    padding-top 1rem
+
+.news-repost__title  // p
+    font-family font-family-of($helveticaNeueCyrLight)
+    typeset($font: $helveticaNeueCyrLight, $fontsize: 20px , $lineheight: 24px, $leader: 1rem, $trailer: 2rem)
+
+    // fontHvLight20_24()
+    // margin-top 0
+    // margin-bottom 24px  // 12px
+    color $c_contrast-repost
+
+.news-repost__list  // ul
+    display flex
+    justify-content flex-start
+    flex-wrap wrap
+    margin 0
+    // margin-bottom -1rem
+    padding-left 110px
+    padding-right 70px
+    text-align left
+
+.news-repost__list--shifted
+    padding-left 150px
+    padding-right 110px
+
+.news-repost__list--loose
+    margin-top -1rem
+    margin-bottom -1rem
+
+.news-repost__list--nowrap
+    flex-wrap nowrap
+
+.news-repost__list-item  // li
+    flex-grow 1
+    flex-basis 100%
+    list-style none
+
+    // font-family font-family-of($helveticaNeueCyrRoman)
+    // typeset($font: $helveticaNeueCyrRoman, $fontsize: 16px , $lineheight: 24px, $leader: 1rem, $trailer: 0)
+
+    .news-repost__list--nowrap > &
+        flex-basis 50%
+
+    .news-repost__list--loose > &
+        // typeset($font: $helveticaNeueCyrRoman, $fontsize: 16px , $lineheight: 30px, $leader: 1rem, $trailer: 0)
+
+.news-repost__date-selected  // button
+    margin 0
+    padding 0
+    border 0
+    font-family font-family-of($helveticaNeueCyrLight)
+    typeset($font: $helveticaNeueCyrLight, $fontsize: 16px, $lineheight: 30px, $leader: 1rem, $trailer: 1rem)
+    background-color transparent
+    +text-link($color: #54928f, $hover: rgba(#54928f, 0.5), $offset: $link-offset, $opacity: $link-underline-opacity, $hover-opacity: $link-underline-hover-opacity)
+        //
+    transition color 0.4s ease-in, background-image 0.4s ease-in
+    text-decoration none
+
+    &:hover
+        text-decoration none
+
+.news-repost__networks-list  // ul
+    margin 0
+
+.networks-list  // ul.news-repost__networks-list
+    display flex
+    flex-wrap nowrap
+    justify-content center
+    padding 0
+
+.networks-list__item  // li
+    list-style none
+    padding-left 6px
+    padding-right 6px
+
+.networks-list__link  // a
+    // font-size 14px
+    position relative
+    display block
+    box-sizing border-box
+    width 39px  // 4rem
+    height 39px  // 4rem
+    margin-bottom 9px
+    // 39 + 9 = 48, 48 % 12 = 0, т.е. размер элемента кратен 12px, или 1rem
+    border-radius 3px
+    border 1px dashed $c_dull
+    background-color $c_white
+    color $c_dull
+    cursor pointer
+    // font-family font-family-of($fontAwesome)
+    // typeset($font: $fontAwesome, $fontsize: 14px, $lineheight: 24px, $leader: 0, $trailer: 2rem)
+    transition background-color 0.4s ease, color 0.4s ease
+
+    &:hover
+        background-color $c_dull
+        color $c_white
+
+    &::before
+        font-size 16px
+        @extend $$font-awesome
+        position absolute
+        top 1rem
+        left 0
+        right 0
+        margin 0 auto
+
+.networks-list__link--active
+    background-color $c_dull
+    color $c_white
+
+.networks-list__link--inst
+    &::before
+        font-size 18px
+        top 0.9rem
+        content $fa_instagram
+
+.networks-list__link--fb
+    &::before
+        content $fa_facebook
+
+.networks-list__link--twit
+    &::before
+        content $fa_twitter
+
+.networks-list__link--vk
+    &::before
+        content $fa_vkontakte
+
+.news-repost__social-bundles  // ul
+    margin 0
+
+.social-bundles  // ul.news-repost__social-bundles
+    display flex
+    justify-content center
+    padding 0
+
+.social-bundles__item  // li
+    list-style none
+    margin 0
+    padding-right 6px
+    padding-left 6px
+    margin-bottom -1px
+
+    +ie-10-11-only()
+        margin-bottom -3px
+
+.social-bundles__link  // a
+    display block
+    box-sizing border-box
+    width 90px
+    height 48px
+    padding-top 1rem
+    padding-bottom 12px
+    padding-left 6px
+    padding-right 6px
+    border 1px dashed $c_dull
+    border-radius 3px
+    background-color $c_white
+    color $c_dull
+    cursor pointer
+    font-family font-family-of($helveticaNeueCyrLight)
+    typeset($font: $helveticaNeueCyrLight, $fontsize: 12px, $lineheight: 12px, $leader: 1rem, $trailer: 2rem)
+    transition background-color 0.4s ease-in, color 0.4s ease-in
+
+    &:hover
+        background-color $c_dull
+        color $c_white
+
+    &::before
+        font-size 16px
+        @extend $$font-awesome
+        position absolute
+        top 1.2rem
+        left 0
+        right 0
+        margin 0 auto
+
+.social-bundles__link--active
+    background-color $c_dull
+    color $c_white
+
+.news-repost__table  // table.custom-table
+    width 100%
+    margin 0
+
+.news-repost__edit
+    flex-basis auto
+    font-family-of($helveticaNeueCyrRoman)
+    typeset($font: $helveticaNeueCyrLight, $fontsize: 14px, $lineheight: 24px, $leader: 1rem, $trailer: 2rem)
+    +text-link($color: $c_bright, $hover: rgba($c_bright, 0.5), $offset: $link-offset, $opacity: $link-underline-opacity, $hover-opacity: $link-underline-hover-opacity)
+        // color $c_bright
+    text-decoration none
+    transition color 0.4s ease-in, background-image 0.4s ease
+
+    &:hover
+        text-decoration none
+
+// $c_repost-accept-base = $c_white
+// $c_repost-accept-base-bg = #184242
+
+.news-repost__accept
+    flex-basis auto
+    width 179px
+    // padding-top
+    // padding-bottom 0.5rem
+    // margin-top 0.5rem
+    // // min-height 39px
+    // // margin-bottom 9px
+    // border-radius 3px
+    // color $c_repost-accept-base
+    // background-color $c_repost-accept-base-bg
+    // font-family-of($helveticaNeueCyrBold)
+    // typeset($font: $helveticaNeueCyrBold, $fontsize: 14px, $lineheight: 24px, $leader: 0, $trailer: 0)
+    // text-transform uppercase
+    // text-decoration none
+
+    // &:hover
+    //     text-decoration none
+    //     background-color lighten($c_repost-accept-base-bg, 20%)

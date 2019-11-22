@@ -1,0 +1,28 @@
+map-get($some_map, keyname)  $some_hash['keyname'] 
+map-keys($some_map)  keys($some_hash)
+map-has-key($some_map, keyname)  !!$some_hash['keyname']
+x: 10;  x = 10
+@mixin name  name
+@include name  +name
+@content  {block}
+unitless  -unitless
+!default  ?=
+rootsize  'rootsize'
+start  'start'
+
+palette(blue)  palette('blue')
+length(map-keys($breakpoint-map))  get-keys-length(map-keys($breakpoint-map))
+transparentize($color, $amount)   transparentify(top[, bottom, alpha])  //  a little difference in docs
+transparentize($debug-base, 1 - $debug-opacity);  transparentify($debug-base, #fff, 1 - $debug-opacity)
+
+type-of(100px) --> number  ||  type-of(100px) --> 'unit'
+nth($list, 1)  $hash[0]
+16px / 10px --> 1.6  | 16px / 10px * 100% --> 160%    ||    10px / 16px --> 1.6px | 10px / 16px * 100% --> 160px  | no-unit(10px / 16px) --> 1.6 | no-unit(10px / 16px) * 100%  --> 160%
+                                          $list = (1 2 3 item 4)
+index(1px solid red, solid) => 2    ||    index($list, item)  => 3
+index(1px solid red, dashed) => null    ||    index($list, test) =>  // 'null'
+
+inspect()   ||    p()
+
+
+background-position: 0 calc(43% + 0.44em + #{$offset});     background-position: convert('0 calc(43% + 0.44em + ' + $offset + ')')

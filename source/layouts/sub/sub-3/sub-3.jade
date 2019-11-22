@@ -1,0 +1,35 @@
+extends ../../base/uh-inner/uh-inner
+
+include ./blocks/_mixins.jade
+
+
+block append links
+    //- link(href='./css/sub_css.css' rel='stylesheet') // простых css файлов у этого темплейта нет
+    link(href='./css/sub_style.css' rel='stylesheet')
+
+
+block append scripts
+    //- script(src='../../distrs/hammerJS/hammer.min.js')
+    //- script(src='../../distrs/hammerJS/hammer-time.min.js')
+    //- script(src='../../distrs/utils/debounce.js')
+    script(src='./js/sub_js.js')
+
+
+block additional_main_nav
+    //- li.main-nav__item
+    //-     a.main-nav__link(href='#', title='Пригласите всех ваших партнеров для совместной работы.') Пригласите всех ваших партнеров для совместной работы.
+    //- li.main-nav__item
+    //-     a.main-nav__link(href='#', title='Новости') Новости
+
+
+block content_left_side
+    // sub-3 trough template page navigation
+    nav.page-nav
+        ul.page-nav__menu
+            li.page-nav__menu-item
+                a.page-nav__menu-link(href='#', title='Ссылка 1') Ссылка 1
+            li.page-nav__menu-item
+                a.page-nav__menu-link(href='#', title='Ссылка 2') Ссылка 2
+
+            block additional_page_nav
+                // sub-3 through template additional page navigation
